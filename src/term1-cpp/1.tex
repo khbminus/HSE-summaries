@@ -1,0 +1,26 @@
+\Subsection{Полезное}
+\begin{itemize}
+    \item CSC wiki
+    \item HSE-spb-2021.cpp/lectures
+    \item cpprereference --- справочник, но не учебник. Все довольно строго объяснено.
+    \item cppplusplus.com --- проще, но больше ошибок.
+    \item notes.algoprog.ru/cpp --- сайт Петра Калинина, для тех, кто переходит с питона. 
+\end{itemize}
+\Subsection{Оценка и ДЗ. Правила стиля}
+Оценка ставится в декабре и июне. \\
+$$\text{Оценка} = 0.6\cdot\text{ДЗ} + 0.4\cdot\text{Экзамен}$$. $$\text{ДЗ} = 0.6\cdot\text{Корректность} + 0.4\cdot\text{Стиль}$$
+ДЗ: блок из 4 недели
+\begin{enumerate}
+    \item Первое ДЗ.
+    \item Второе ДЗ.
+    \item Исправление первого ДЗ.
+    \item Исправление второго ДЗ.
+\end{enumerate}
+
+Будет автопроверка: должно быть 0 варнингов, два прошедших статических анализаторов + clang-format. На данном сервере запрещено:
+\begin{itemize}
+    \item \texttt{static\_cast<T>(x)} --- использовать вместо \texttt{(T)x}. Потому что могут быть side-effects,
+    \item \texttt{using namespace std},
+    \item $\&\& \to \texttt{and}$ или $|| \to \texttt{or}$ и ему подобные,
+    \item писать плохой код.
+\end{itemize}
