@@ -205,7 +205,7 @@ def build_target(target, config, util, hashes_new):
             # we need to run xelatex twice to get table of contents setup'ed correctly.
             for i in range(1 if config['rush'] else 2):
                 try:
-                    proc = subprocess.Popen(['tectonic', lconf['main'] + '.tex'], stdout=subprocess.DEVNULL, cwd=tmpdir)
+                    proc = subprocess.Popen(['xelatex', '-interaction=nonstopmode', '-halt-on-error', lconf['main'] + '.tex'], stdout=subprocess.DEVNULL, cwd=tmpdir)
                     proc.wait()
                     if proc.returncode != 0:
                         nonzero = True
