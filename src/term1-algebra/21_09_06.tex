@@ -1,0 +1,148 @@
+\Subsection{НОД, делимость, линейные диофантовы уравнения}
+\begin{definition}
+    Диофантовым уравнение называется уравнение, которое можно решить $\mathbb{Z}$.
+\end{definition}
+Рассмотрим линейное диофантово уравнене \[
+ ax+by=c.
+.\] 
+Если бы мы были в $\mathbb{R}$, то решение быстро бы нашлось: $y = \frac{c - ax}{b}$. Но в целых штуках такая штука не всегда будет решением, т.к. $b$ не всегда делит $c - ax$.
+ \begin{definition}
+     $a$ делится на $b$ ($a \vdots b, b \vert a$), если $\exists c \in \mathbb{Z}: a = bc$.
+\end{definition}
+Простые свойства:
+\begin{enumerate}
+    \item             
+            $\forall a: 1 \vert a$.
+    \item
+            $\forall a: a \vert a$.
+    \item
+        $\forall a, b \vdots c, k, l \in \mathbb{Z} \Rightarrow (ka + lb) \vdots c$.
+            \begin{proof}
+                $a, b \vdots c \Rightarrow \exists d, e: \begin{array}{l} a = c \cdot l \\ b = c \cdot e \end{array}$. Тогда  $ka + lb = k \cdot cd + l \cdot ce = c \cdot (kd + le) \Rightarrow (ka + lb) \vdots c$
+            \end{proof}
+    \item
+            $\forall k \neq 0, k \in \mathbb{Z}: a \vdots b \iff ak \vdots bk$.
+    \item
+            $a \vdots b \iff a^2 \vdots b^2$.
+    \item
+            $a \vdots b \Rightarrow \left[ \begin{array}{l} |a| > |b| \\ a = 0 \end{array} \right.$.
+    \item
+            $a \vdots b, b \vdots c \Rightarrow a \vdots c$.
+    \item 
+            $a \vdots a$.
+    \item 
+            $a \vdots b, b \vdots a \Rightarrow a = \pm b$.
+\end{enumerate}
+
+\begin{theorem}[О делении с остатком]
+    $a, b \in \mathbb{Z} \exists ! (q,r): \left\{ \begin{array}{l} q, r \in \mathbb{Z} \\ a = b \cdot q + r \\ 0 \le r < |b| \end{array} \right.$
+\end{theorem}
+\begin{proof}
+    \begin{itemize}
+        \item 
+        Единственность. Пусть есть два результата: $a = b \cdot q_1 + r_1$ и $a = b \cdot q_2 + r_2$. Тогда приравняем: $b \cdot q_1 + r_1 = b \cdot q_2 + r_2 \iff b(q_1 - q_2) = r_2 - r_1 \xRightarrow{r_1, r_2 \in \left[0;|b|-1\right]}[|r_1-r_2| < |b|] r_2-r_1 \vdots b \Rightarrow r_2-r_1=0 \iff r_1=r_2 \Rightarrow b(q_1-q_2)=0 \iff q_1=q_2$ 
+    \item Существование. 
+        \begin{enumerate}[label=\Roman*.,ref=\arabic*]
+            \item $a \ge 0, b \ge 0$. 
+            \begin{itemize}
+            \item    
+                База: $a = 0$. $0 = b \cdot 0 + 0$.  $(0, 0)$ -- подходит.
+            \item
+                Переход:  $a \to a + 1$.\\
+                $a = b \cdot q + r$, где  $0 \le r < b$.\\
+                $a + 1 = b \cdot q + (r + 1)$.
+                \begin{itemize}
+                    \item $r < b - 1$. Тогда  $r + 1 < b \Rightarrow \left(q, r+1\right)$ --- подходит.
+                    \item  $r = b - 1$. Тогда $a + 1 = b \cdot q + b = b \cdot (q + 1) \Rightarrow (q + 1, 0)$ --- подходит.
+                \end{itemize}
+            \end{itemize}
+        \item  $a  < 0, b > 0$. $a < 0 \Rightarrow -a > 0$. \\
+            Из I:  $\exists (q, r): -a = b \cdot q + r$, где $0 \le r < b$. Соответственно $a = -bq - r$.
+            \begin{itemize}
+                \item $r = 0$.  $a = b \cdot q + 0 \Rightarrow (-q, 0)$ --- подходит.
+                \item  $r > 0 \Rightarrow r \in \left[1; b - 1\right]$.  $a = -bq -b + b -r = b \cdot (-q -1) + b - r \Rightarrow \left( -q -1, b-r\right) --- подходит$
+            \end{itemize}
+        \item $b < 0 \iff -b > 0$.  $\exists q, r: a = (-b) \cdot q + r$, где  $0 \le r < |b|$, тогда $a = b(-q) +r \Rightarrow (-q, r)\text{ --- подходит}$
+        \end{enumerate}
+    \end{itemize}
+\end{proof}
+
+Вернемся к диофантову уравнению $ax+by=c$, где  $a,b,c$ фиксированы, а  $x, y$ --- переменные. \\
+Пусть только  $a, b$ --- фиксированы. Тогда подумаем, когда же  $ax + by = c$ имеет решения. Тогда решим задачу: описать $\left\{ ax+by \; \vert \; x,y \in \mathbb{Z} \right\} \eqqcolon <a, b>$
+ \begin{example}
+     $\left<1,b\right> = \mathbb{Z}$ \\
+\end{example}
+\begin{example}
+         $\left<4, 6\right> = \text{четные числа}$ 
+\end{example}
+Заметим: 
+\begin{enumerate}
+    \item
+        $\forall m, n \in \left<a,b\right> m + n \in\left<a,b\right>$
+    \item
+        $m \in <a,b> \Rightarrow km \in <a,b> \forall k$
+\end{enumerate}
+
+\begin{definition}
+    Пусть $I \subset \mathbb{Z}$.  $I$ называется идеалом, если  \[\left\{ \begin{array}{l} m, n \in I \Rightarrow m+n \in I \text{ (замкнутость по сложению)} \\ m \in I \Rightarrow \forall k \in \mathbb{Z} k \cdot m \in I \text{ (замкнутость по домножению)} \\ I \neq \varnothing \end{array} \right.\]
+\end{definition}
+\begin{example}
+    $\{0\}$ --- идеал.
+\end{example}
+\begin{example}
+    $\mathbb{Z}$ --- идеал (собственный).
+\end{example}
+\begin{example}
+    $\left<a,b\right>$ --- идеал, порожденный $a$ и $b$.
+\end{example}
+    $\forall a \in \mathbb{Z} \left<a\right> = \{ ax \; \vert \; x \in \mathbb{Z}$\} --- главный идеал (порожденный $a$).
+\begin{example}
+    $\{0\} = \left<0\right>, \mathbb{Z} = \left<1\right>, \left<4, 6\right> = \left<2\right>$
+\end{example}
+\begin{theorem}
+   В $\mathbb{Z}$ любой идеал главный.
+\end{theorem}
+\begin{proof}
+    $I=\{0\}$ --- ок. Тогда  пусть $I \neq \{0\}$. Пусть $a \in I \land a < 0 \Rightarrow -a = (-1)a \in I \land -a \in \mathbb{N}$. То есть $I \cap \mathbb{N} \neq \varnothing$. Найдем наименьшее $r \in I \cap \mathbb{N}$. Проверим, что $I = \left<r\right>$ (тогда $I$ --- главный). Надо проверить $\left<r\right> \subset I \land I \subset \left< r \right>$.
+     \begin{itemize}
+         \item $x \in \left<r\right>$. То есть $x = r \cdot z$. Т.к.  $r \in I$, то $r \cdot z \in I$ (по определению идеала), т.е.  $\left<r\right> \subset I$.
+         \item  Пусть $a \in I$. Поделим с остатком: $a = r \cdot q + r_1$, $0 \le r_1 < r$, то есть $r_1 = a - r \cdot q = a + (-q) \cdot r$. Т.к. $r \in I \Rightarrow (-q) \cdot r \in I \land q \in I \Rightarrow a + (-q) \cdot r \in I$, т.е. $r_1 \in I$. Но! $0 < r_1 < r$, а $r$ --- минимальное натуральное из  $I$. Тогда  $r_1 = 0 \Rightarrow a = r \cdot q$, т.е. $a \in \left<r\right>$, а значит  $I \subset \left<r\right>$.
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    Пусть $a, b \in \mathbb{Z}$. Тогда $d$ ---  $\text{НОД}(a,b) = \gcd(a,b) = (a, b)$ 
+\end{definition}
+Докажем единственность. $\begin{cases}a \vdots d, b \vdots d \\ a \vdots d_1, b \vdots d_1\end{cases} \iff d \vdots d_1$. Тогда $d \vdots d_1 \land d_1 \vdots d$, а значит $d = \pm d_1$. 
+\begin{theorem}
+   \begin{enumerate}
+       \item $\forall a, b\; \exists d = (a,b)$
+       \item  $\exists x, y \in \mathbb{Z}:\; d = ax +by$
+       \item  $ax + by = c \text{ имеет решение } \iff c \vdots d$.
+   \end{enumerate} 
+\end{theorem}
+\begin{proof}
+    Докажем каждый пункт отдельно:
+    \begin{itemize}
+        \item
+            Рассмотрим $\left<a, b\right>$ --- идеал. Он главный по предыдущей теореме:  $\exists d \left<a, b\right> = \left<d\right>$. \\
+        \item
+            $d \in \left<d\right> = \left<a, b\right>$. А значит  $\exists x, y: d = ax+by$.\\
+            $a = a \cdot 1 + b \cdot 0 \in \left<a, b\right> = \left<d\right>$, значит $a \vdots d$. Аналогично  $b \vdots d$. \\
+        С другой стороны пусть  $a \vdots d, b \vdots d$, тогда  $d = \underbrace{ax}_{\vdots d} + \underbrace{by}_{\vdots d} \vdots d$. \\
+        \item
+            $ax + by = c$ имеет решение  $\iff c \in \left<a,b\right> = \left<d\right>$. А  $c \in \left<d\right> \iff c \vdots d$.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    $a, b$ --- взаимно просты, если  $(a, b) = 1$, то есть  $\left<a, b\right> = \mathbb{Z}$
+\end{definition}
+\begin{lemma}
+    $\begin{cases} ab \vdots c \\ (a,c) = 1 \end{cases} \Rightarrow b \vdots c$.
+\end{lemma}
+\begin{proof}
+    \par 
+    По условию $ab \vdots c$, значит $\exists x \in \mathbb{Z}: ab = c \cdot x$.
+
+    Так как $(a, c) = 1$, то $\exists y, z \in \mathbb{Z}: ay + cz = 1$. Тогда домножим все на $b$ и получим $aby + czb = b$. А значит $\begin{cases} aby \vdots c \\ czb \vdots c \end{cases} \Rightarrow b \vdots c$
+\end{proof}
