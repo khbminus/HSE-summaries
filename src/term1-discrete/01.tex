@@ -1,0 +1,125 @@
+\Subsection{Базовые понятия}
+Есть официальный конспект, который будет \href{}{Здесь}.
+\begin{definition}
+    Множество --- набор различимых между собой по какому-то признаку предметов.
+\end{definition}
+\begin{definition}
+    Предметы входящие в это множество называются его элементами.
+\end{definition}
+Если мы хотим описать множество, то нужно просто описать предметы этого множества. Например, чтобы задать множество студентов необходимо задать просто студентов.
+
+Есть конечные, счетные, несчетные и целый зоопарк множеств разных мощностей. Самое простое множество --- $\varnothing$, множество ничего не содержащее --- пустое.
+\begin{definition}
+     $X$ подмножество ($\subseteq$)  $Y$  $\Leftarrow \forall y \in Y: \; y \in X$. \\
+     $\varnothing$ и $X$ --- тривиальные, остальные --- нетривиальные.
+     все подмножества, кроме $X$ --- собственные.
+\end{definition}
+
+\Subsection{Операции с множествами}
+\begin{center}
+      \renewcommand{\arraystretch}{1.7}
+  \large
+
+\begin{tabular}{| c | c | c |}
+    \hline 
+    \textbf{Символ} & \textbf{Определение} & \textbf{Словами} \\
+    \hline
+    $\Large{\cap}$ & $A \cap B = \ldots$ & Пересечение множества \\
+    \hline
+    $\Large{\cup}$ & $A \cup B= \ldots$ & Объединение множеств \\
+    \hline
+    $\Large{\setminus}$ & $A\setminus B$ = \ldots & Разность множеств \\
+    \hline
+    $\Large{\bigtriangleup}$ & $A \bigtriangleup B = \ldots$ & Симметрическая разность множеств \\
+    \hline
+\end{tabular}
+\end{center}
+\begin{definition}
+    Алгебраическая структура --- множество, на котором ввели какую-то операцию.
+\end{definition}
+\begin{example}
+    Пусть заданы несколько множеств:
+     \begin{enumerate}
+         \item $\exists e: \; a\cdot e = a\; \forall a \in G$
+         \item  $\forall a \in G \; \exists a^{-1} \in G: \; a \cdot a^{-1} = a^{-1} \cdot a = e$ 
+         \item $\forall a,b,c:\; (a \cdot b) \cdot c = a \cdot (b \cdot c)$
+         \item  $\forall a, b \in G a \cdot b = b \cdot a$
+    \end{enumerate}
+    То это абелева группа и это к алгебре.
+\end{example}
+
+А дискретная математика не имеет аксиом, то есть мало чего можно использовать из алгебры / матана. 
+
+Если задать какое-то надмножество $X$ над $A$, то появится операция дополнения:  $A' = X \setminus A$.
+Законы Де Моргана:
+\begin{theorem}
+    $(A \cup B)' = A' \cap B'$
+\end{theorem}
+\begin{theorem}
+    $(A \cap B)' = A' \cup B'$
+\end{theorem}
+
+Доказательство смотри в конспекте Омеля, тут мне лень это делать.
+
+\begin{definition}
+    Система иножеств --- множество, элементами которого являются множества.
+\end{definition}
+\begin{definition}
+    Семейство множеств --- упорядоченный набор неких множеств $(X_1, X_2,\ldots, X_k)$. Причем множества в наборе могут повторяться.
+\end{definition}
+\begin{definition}
+    Некоторое покрытие множества $X$ системой множеств --- система множеств, объединение элементов которого равняется $X$.
+\end{definition}
+\begin{definition}
+    Разбиение множества $X$ на блоки --- система $(X_1,X_2,\ldots,X_k)$, удовлетворяющая неким условиям:
+     \begin{enumerate}
+         \item $X = \bigcup_{i = 1}^k X_i$
+         \item $\forall i: \; X_i \neq \varnothing$
+         \item  $\forall i, j = 1..k: \; X_i \cap X_j = \varnothing$
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Пара элементов $(x,y)$ --- упорядоченный набор из двух элементов. То есть для $x \neq y$:  $(x, y) \neq (y,x)$
+\end{definition}
+\begin{definition}[Декартово произведение]
+    $X \times Y$ =  $\{ (x, y) \; \vert \; x \in X, y \in Y \}$
+\end{definition}
+можно ввести понятие <<$n$ки>> --- упорядоченный набор из $n$ элементов. Поэтому можно ввести $A \times B \times C \times \ldots$ и $A^2$,  $A^n$
+\begin{definition}
+    Отношение между множествами --- некое подмножество декартого произведения этих множеств
+\end{definition}
+Пусть $\omega$ --- отношение между $X$ и $Y$. Тогда их записывают $X \omega Y$, а отсутствие --- $X \xcancel{\omega} Y$. 
+\begin{definition}
+    Отношение эквивалентности $(X, \sim)$:
+     \begin{enumerate}
+         \item $x \sim x \; \forall x \in X$
+         \item $x \sim, y \Rightarrow y \sim x \; \forall x, y \in X$
+         \item  $x \sim y, y \sim z, \Rightarrow x \sim z\; \forall x, y, z \in X$
+    \end{enumerate}
+\end{definition}
+Пусть $\widetilde{x}= \{ y \in X \; \vert \; y \sim x\}$. 
+\begin{property}
+пусть $y \in \widetilde{x} \Rightarrow \widetilde{y} = \widetilde{x}$ 
+\end{property}
+
+\begin{theorem}
+    Разбиение на блоки задает классы эквивалентности.
+\end{theorem}
+    %Кек.
+    \begin{itemize}
+        \item $X = \bigcup_{x \in X} \widetilde{x}$
+        \item $\widetilde{x} \neq \varnothing$, т.к. хотя бы $x \in \widetilde{x}$.
+        \item Рассмотрим  $\widetilde{x}, \widetilde{y}$. Пусть $\exists z: \; z \in \widetilde{x} \cap \widetilde{y}$. Тогда  $\left. \begin{array}{l} \widetilde{z} = \widetilde{x} \\ \widetilde{z} = \widetilde{y} \end{array} \right\} \Rightarrow \widetilde{x} = \widetilde{y}$
+    \end{itemize}
+
+\begin{definition}
+    Мультимножество --- $(x; \varphi): \; \varphi \to \mathbb{Z}_+$ 
+\end{definition}
+
+Есть еще несколько базовых понятий: $k$-перестановки/сочетания из $n$ элементов с/без повторений.
+
+$|A \cup B| = |A| + |B|$, если  $A \cap B = \varnothing$. Поэтому, если есть разбиение на блоки, то  $X=X_1\cup\ldots\cup X_k \Rightarrow |X| = |X_1|+\ldots+|X_k|$ 
+
+$X = X_1 \times \ldots \times X_k$, тогда $|X| = |X_1| \cdot \ldots \cdot |X_k|$ 
+
+$|A' \cap B'| = |(A \cup B)'| = |X| - |A \cup B| = |X| - |A| - |B| + |A \cap B|$
