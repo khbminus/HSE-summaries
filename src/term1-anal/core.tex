@@ -1,0 +1,336 @@
+% Core.Tex, version=13
+% Satin Dmitri, 2016-2018
+
+% Changelog:
+% 13: Add No Title mode
+% 12.1: Improve \N, \Q, \R, \Z, \CC definitions a bit, add some customizations for moth mode
+% 12: Improve \TODO, \skip[sub][sub]section (takes optional counter now), fix code a bit, add exec end.
+% 11: Add cmap
+% 10.6: Styling changes
+% 10.5: Add \slashn stuff, custom theorem namespace support, style changes.
+% 10.4: replace \emptyset in math mode.
+% 10.3: add properties(theorems), add \ref example, add \ThmSpacing configure var.
+% 10.2: fix for proofs
+% 10.1: better style for theorems, thmslashn
+% 10: more math symbols, theorems support (\enablemath), using paralist, using cancel, moved code support to \enablecode
+% 9: new math symbols (\enablemath), \skip[sub][sub]section, \CustomTitle support
+% 8: better source code support, padding.
+% 7: custom head, foot, sections.
+
+\documentclass[a4paper,12pt]{article}
+%\usepackage{cmap}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{polyglossia}
+\usepackage{xspace}
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}
+\setmainfont[Ligatures={TeX,Historic}]{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\let\CYRDZE\relax
+\usepackage{graphicx}
+
+\pagestyle{plain}
+\usepackage[
+  left=0.50in,
+  right=0.50in,
+  top=0.8in,
+  bottom=0.7in,
+  headheight=0.8in]{geometry}
+\pagenumbering{gobble}
+
+\setlength{\parskip}{0.15cm}
+
+\usepackage{indentfirst}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+\usepackage{paralist}
+\usepackage{cancel}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{mdframed}
+\usepackage{lastpage}
+\usepackage{microtype}
+\usepackage[super]{cite}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Основано на коде С. Копелиовича.
+\newcommand\Section[2]{
+  \newpage % new page
+  \stepcounter{section}
+  \bigskip
+  \phantomsection
+  \addcontentsline{toc}{section}{\arabic{section}. #1}
+  \begin{center}
+    {\huge \bf \arabic{section}. #1}\\
+  \end{center}
+  \bigskip
+  \gdef\SectionName{#1}
+  \gdef\AuthorName{#2}
+
+  \lhead{\ShortCourseName}
+  \chead{}
+  \rhead{\SectionName}
+
+  \cfoot{
+%    \topskip0pt\vspace*{\fill}
+    \thepage~из~\pageref*{LastPage}
+%    \vspace*{\fill}
+  }
+  
+  \renewcommand{\headrulewidth}{0.15 mm}
+
+  \ifx\LaconicFooter\undefined
+  \lfoot{
+%    \topskip0pt\vspace*{\fill}
+    Глава \texttt{\#\arabic{section}}
+%    \vspace*{\fill}
+  }
+  \rfoot{
+%    \topskip0pt\vspace*{\fill}
+    Автор: \AuthorName
+%    \vspace*{\fill}
+  }
+  \renewcommand{\footrulewidth}{0.15 mm}
+  \fi
+}
+
+\newcommand\Subsection[1]{
+  % Пока здесь нет никаких кастомизаций,
+  % Но рекомендуется использовать имено вариацию с большой буквы,
+  % На случай, если в будущем они появятся.
+  \subsection{#1}
+}
+
+\newcommand\Subsubsection[1]{
+  % Пока здесь нет никаких кастомизаций,
+  % Но рекомендуется использовать имено вариацию с большой буквы,
+  % На случай, если в будущем они появятся.
+  \subsubsection{#1}
+}
+
+\newcommand\slashnl{~\\*[-26pt]}
+\newcommand\slashn{~\\*[-22pt]}
+\newcommand\slashns{~\\*[-18pt]}
+\newcommand\slashnss{~\\*[-14pt]}
+\newcommand\slashnsss{~\\*[-10pt]}
+
+\newcommand{\makegood}{
+  \ifx\ShortCourseName\undefined
+  \gdef\ShortCourseName{\CourseName}
+  \fi
+  
+  % \new command\Custom Title{...} до \make good для того, чтобы
+  % переопределить содержимое титульной страницы до содержания.
+
+  \ifx\NoTitlePage\undefined
+  
+  \ifx\CustomTitle\undefined
+    \title{\CourseName}
+    \maketitle
+  \else
+    \pagestyle{empty}
+    \CustomTitle
+  \fi
+  \tableofcontents
+  \pagebreak
+  \fi
+  
+  \pagestyle{fancy}
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
+
+  \lhead{\ShortCourseName}
+  
+  \ifdefined\ENABLEDMATH
+  \renewcommand\proofname{\em\textbf{Доказательство}}
+  \else
+  \fi
+}
+
+% Использовать как \skipsection или \skipsection[2]
+
+\newcommand\skipsection[1][1]{
+  \addtocounter{section}{#1}
+}
+
+\newcommand\skipsubsection[1][1]{
+  \addtocounter{subsection}{#1}
+}
+
+\newcommand\skipsubsubsection[1][1]{
+  \addtocounter{subsubsection}{#1}
+}
+
+\newcommand{\TODO}[1][]{
+  \vspace{0.2em}
+  \textbf{{\bf\color{red} TODO:} #1}
+  \vspace{0.2em}
+}
+
+% Должна использоваться вне \document.
+\newcommand\enablemath{
+  \usepackage{amsmath,amsthm,amssymb,mathtext}
+  \usepackage{thmtools}
+  \usepackage{tikz}
+
+  \newcommand\R{\ensuremath{\mathbb{R}}\xspace}
+  \newcommand\Q{\ensuremath{\mathbb{Q}}\xspace}
+  \newcommand\N{\ensuremath{\mathbb{N}}\xspace}
+  \newcommand\Z{\ensuremath{\mathbb{Z}}\xspace}
+  \newcommand\CC{\ensuremath{\mathbb{C}}\xspace} % C.C. from Code Geass
+
+  \DeclareRobustCommand{\divby}{%
+    \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+  }
+  \newcommand\notmid{\centernot\mid}
+  
+  \let\Im\relax % Переопределяем стрёмные значки для понятных вещей.
+  \let\Re\relax
+  \DeclareMathOperator\Im{Im}
+  \DeclareMathOperator\Re{Re}
+  
+  \DeclareMathOperator*{\lcm}{lcm}
+  \newcommand\vphi{\varphi}
+  
+  \usepackage{
+    nameref,
+    hyperref,
+    cleveref}
+
+  \ifx\ThmSpacing\undefined
+  \def\ThmSpacing{9pt}
+  \fi
+
+  \ifx\ThmNamespace\undefined
+  \def\ThmNamespace{section}
+  \fi
+  
+  \declaretheoremstyle[
+    spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+    headfont=\slshape\bfseries,
+    bodyfont=\normalfont,
+    postheadspace=0.5em,
+  ]{thmstyle_def}
+
+  \declaretheoremstyle[
+    spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+    postheadspace=0.5em,
+  ]{thmstyle_thm}
+
+  \declaretheoremstyle[
+    spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+    headfont=\itshape\bfseries,
+    notefont=\itshape\bfseries, notebraces={}{},
+    bodyfont=\normalfont,
+    postheadspace=0.5em,
+  ]{thmstyle_cons}
+
+  \declaretheoremstyle[
+    spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+    headfont=\bfseries,
+    notefont=\bfseries, notebraces={}{},
+    bodyfont=\normalfont,
+    postheadspace=0.5em,
+  ]{thmstyle_examp}  
+
+  \declaretheoremstyle[
+    spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+    headfont=\ttfamily\itshape,
+    notefont=\ttfamily\itshape, notebraces={}{},
+    bodyfont=\normalfont,
+    postheadspace=0.5em,
+  ]{thmstyle_remark}
+  
+  \declaretheorem[numberwithin=\ThmNamespace, name=Теорема, style=thmstyle_thm]{theorem}
+  \declaretheorem[numberwithin=\ThmNamespace, name=Определение, style=thmstyle_def]{definition}
+  \declaretheorem[sibling=theorem, name=Утверждение, style=thmstyle_thm]{statement}
+  \declaretheorem[numbered=no, name=Замечание, style=thmstyle_remark]{remark}
+  \declaretheorem[numbered=no, name=Лемма, style=thmstyle_thm]{lemma}
+  \declaretheorem[numbered=no, name=Следствие, style=thmstyle_cons]{consequence}
+  \declaretheorem[numbered=no, name=Пример, style=thmstyle_examp]{example}
+  \declaretheorem[numbered=no, name=Свойства, style=thmstyle_cons]{properties}
+  \declaretheorem[numbered=no, name=Свойство, style=thmstyle_cons]{property}
+  \declaretheorem[numbered=no, name=Упражнение, style=thmstyle_examp]{exerc}
+  
+  % написать после \begin{proof} и т.п., чтобы
+  % продолжить на новой строчке.
+  % Вообще рекомендуется использовать \slashn[...].
+  \newcommand\thmslashn{\slashn}
+  
+  % Примеры:
+  % Первый, простейший:
+  % \begin{theorem} theorem-statement \end{theorem}
+  %
+  % Второй, использовать название теоремы в заголовке.
+  % \begin{definition}[My name] the definition \end{definition}
+  %
+  % Третий, создать метку, чтобы потом можно было сделать сюда ссылку.
+  % \begin{statement}\label{stm:identifier} the statement \end{statement}
+  %
+  % Четвёртый: ссылки (чтобы понять, в чём разница, нужно собрать и посмотреть).
+  % \begin{statement}\label{otherlabel}
+  %   Согласно \hyperref[stm:identifier]{Теореме о волшебных палочках} магия существует.
+  %   \ref{stm:identifier}
+  %   \autoref{stm:identifier} ‘‘\nameref{stm:identifier}’’,
+  % \end{statement}
+    
+  \newcommand\eps{\varepsilon}
+  \renewcommand\le{\leqslant}
+  \renewcommand\ge{\geqslant}
+  \newcommand\empysetold{\emptyset}
+  \renewcommand\emptyset{\varnothing}
+  
+  \newcommand\ENABLEDMATH{YES}
+}
+
+\newcommand\enablecode{
+  \usepackage{listings}
+  \lstset{
+    belowcaptionskip=1\baselineskip,
+    breaklines=true,
+    frame=L,
+    xleftmargin=\parindent,
+    showstringspaces=false,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\bfseries\color{blue},
+    commentstyle=\itshape\color{Maroon},
+    identifierstyle=\color{black},
+    stringstyle=\color{orange},
+    numbers=left
+  }
+
+  % Some voodoo magic:
+  % При желании можно адаптировать цвета под себя,
+  % Для этого скопируйте это в conspect.tex с новым названием стиля и отредактируйте
+  % Соответствующие куски.
+  \lstdefinestyle{supercpp} {
+    language=C++,
+    deletekeywords={int, long, char, short, unsigned, signed,
+      uint64\_t, int64\_t, uint32\_t, int32\_t, uint16\_t, int16\_t, uint8\_t, int8\_t,
+      size\_t, ptrdiff\_t, \#include,\#define,\#if,\#ifdef,\#ifndef},
+    classoffset=1,
+    morekeywords={vector,stack,queue,set,map,unordered\_set,unordered\_map,deque,array,string,multiset,multimap,
+      int, long, char, short, unsigned, signed,
+      uint64\_t, int64\_t, uint32\_t, int32\_t, uint16\_t, int16\_t, uint8\_t, int8\_t,
+      size\_t, ptrdiff\_t
+    },
+    keywordstyle=\bfseries\color{green!40!black},
+    classoffset=0,
+    classoffset=2,
+    morekeywords={std},
+    keywordstyle=\bfseries\color{ForestGreen},
+    classoffset=0,
+    more comment=[l][\bfseries\color{purple!99!black}]{\#}
+  }
+}

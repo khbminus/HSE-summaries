@@ -1,0 +1,224 @@
+\Subsection{Орг. моменты}
+\begin{itemize}
+    \item За основу начала была взята книжка "Виноградов, Громов <<Курс по математическому анализу>>. Том 1". Но это было давно, как база, но смотреть туда можно.
+    \item Зорич <<Математический анализ>>.
+    \item Фихтенгольц. Книжка устарела, написана старым языком, но там разобрано много примеров, поэтому можно смотреть просто темы.
+    \item \href{https://stepik.org/course/716/promo}{Курс на степике}. (\href{https://stepik.org/course/711/promo}{Часть вторая}).
+\end{itemize}
+Для связи можно использовать почту \texttt{aikhrabrov@mail.ru}.
+
+Система состоит из нескольких кусочков: $0.3 \cdot \text{оценка за практику(АЗ, кр\ldots)} + 0.35 \cdot \text{Коллоквиум в нечетном модуле} + \cdot \text{Экзамен в четном модуле}$. Хвост образуется только в конце семестра.
+
+Первый модуль --- общие слова, последовательности, пределы последовательности, функции, непрерывность. Второй модуль --- конец непрерывности, производная, начало интегралов.
+
+\Subsection{Множества и отношения.}
+
+Обойдемся без формалистики --- мы тут занимаемся прикладной математикой. Поэтому
+ \begin{definition}
+    Множество --- какой-то набор элементов. Для любого элемента можно сказать принадлежит множеству или нет.
+\end{definition}
+\begin{center}
+    \begin{tabular}{| c | c | c |}
+    \hline
+    Операция & определение & название \\
+    \hline
+    \Large{$\subset$} & $\forall x: \; x \in A \Rightarrow x \in B$ & $А$ --- подмножество $B$ \\
+    \hline
+    \Large{=} & $A \subset B \land B \subset A$ & $A$ равно $B$ \\
+    \hline
+              & $A \subset B \land A != b $ &  $A$ --- собственное подмножество  $B$ \\
+    \hline
+    \end{tabular}
+\end{center}
+Способы задания множеств:
+\begin{itemize}
+    \item Полное задание: $\{a,b,c\}$.
+    \item  Неполное: $a_1,a_2,\ldots, a_k$. Но должно быть понятно как образована последовательно. Например $\{1,5,\ldots,22\}$ --- непонятно
+    \item Можно так же и бесконечные: $\{a_1,a_2,\ldots$
+    \item Словесным описанием. Например, множество простых чисел.
+    \item Формулой. Например, пусть задана функция $\Phi(x)$ --- функция для всех чисел, которая возращает истину или ложь. Тогда можно взять множество  $\{x: \; \Phi(x) = \text{истина}$. \\
+            Но не всякая функция подходит, особенно если функция из реального мира. Например: <<натуральное число может быть описано не более чем 20 словами русского языка>>. Не подходит оно по следующей причине: пусть наша функция подходит, то образуется множество  $A = \{x_1, x_2,x_3,\ldots\}$. У каждого множества есть минимальный элемент, тогда минимальное невходящее число может быть описано как <<первое число, которое нельзя описать не более чем 20 словами русского язык>>, что меньше 20 слов. Противоречие.
+\end{itemize}
+\Subsection{Операции с множествами.}
+\begin{center}
+  \renewcommand{\arraystretch}{1.7}
+  \large
+  \begin{tabular}{| c | c | c |}
+    \hline
+    \textbf{Символ} & \textbf{Определение} & \textbf{Описание}\\
+    \hline
+    {\Large $\cap$} & $A \cap B = \{ x \mid x \in A \land x \in B\}$ & Пересечение множеств\\
+    \hline
+    {\Large $\bigcap_{k=1}^n A_k$} & $A = A_1 \cap A_2 \cap \ldots \cap A_n$ & Пересечение множества множеств \\
+    \hline
+    {\Large $\cup$} & $A \cup B = \{ x \mid x \in A \lor x \in B\}$ & Объединение множеств\\
+    \hline
+    {\Large $\bigcup_{k=1}^n A_k$} & $A = A_1 \cup A_2 \cup \ldots \cup A_n$ & Объединение множества множеств \\
+    \hline
+    {\Large $\setminus$} & $A \setminus B = \{ x \mid x \in A \land x \notin B\}$ & Разность множеств\\
+    \hline
+    {\Large $\times$} & $A \times B = \{ (x,\,y) \mid x \in A, y \in B\}$ & Произведение множеств\\
+    \hline
+    {\Large $\bigtriangleup$} & $A \bigtriangleup B = (A \setminus B) \cup (B \setminus A)$ & Симметрическая разность\\
+    \hline
+    {\Large $\varnothing$} & $\forall x: \; x \notin \varnothing$ & пустое множество\\ 
+    \hline
+    {\Large $\mathbb{N}$} & & Натуральные числа\\
+    \hline
+    {\Large $\mathbb{Z}$} & & целые числа \\
+    \hline
+    {\Large $\mathbb{Q}$} & $\frac{a}{b}$, где $a \in \mathbb{Z}, b \in \mathbb{N}$ & рациональные числа \\
+    \hline
+    {\Large $\mathbb{R}$} & & действительные числа \\
+    \hline
+    {\Large $2^X$} & & множество всех подмножеств $X$ \\
+    \hline
+  \end{tabular}
+\end{center}
+\bigskip
+
+Важный момент: $1 \in \{1\}$, но  $1 \notin\{\{1\}\}$ 
+
+Правила де Моргана. Пусть есть $A_\alpha \subset X$
+ \begin{enumerate}
+     \item $X \setminus \bigcup_{\alpha \in I} = \bigcap_{\alpha \in I} X \setminus A_\alpha$.
+     \item $X \setminus \bigcap_{\alpha \in I} = \bigcup_{\alpha \in I} X \setminus A_\alpha$.
+\end{enumerate}
+\textbf{Доказательство}: $X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \{x: x \in X \land x \notin A_{\alpha} \; \forall \alpha \in I\} = \{x: \forall \alpha \in I X \setminus A_{\alpha} = \bigcap_{\alpha \in I} X \setminus A_{\alpha}$.
+\begin{theorem}
+    $A \cap \bigcup_{\alpha \in I} B_\alpha = \bigcup_{\alpha \in I} A \cap B_\alpha$\\
+    $A \cup \bigcap_{\alpha \in I} B_\alpha = \bigcap_{\alpha \in I} A \cup B_\alpha$\\
+\end{theorem}
+\begin{proof}
+    TODO.
+\end{proof}
+ \begin{definition}
+    Упорядоченная пара $\left<x,y\right>$. Важное свойство $\left<x, y\right> = \left<x',\right> \iff x = x' \land y = y'$
+\end{definition}
+\begin{definition}
+    Пусть даны множества $X_1,\ldots,X_n$, то упорядоченной $n-кой$ (кортеж) ---  $\left<x_1,\ldots,x_n\right>$, обладающее условием $\left<x_1,\ldots,x_n\right> = \left<y_1,\ldots,y_n\right> \iff x_1 = y_1 \land \ldots \land x_n = y_n$ 
+\end{definition}
+\begin{definition}
+    Отношение $R \subset X \times Y$. $x$ и $y$ находятся в отношении $R$, если их $\left<x, y\right> \in R$.
+\end{definition}
+\begin{definition}
+    Область отношения $\delta_R = \text{dom}_R = \{x \in X: \; \exists y \in Y: \; \left<x, y\right> \in R$.
+\end{definition}
+ \begin{definition}
+     Область значений $\rho_R = \text{ran}_R = \{y \in Y: \; \exists x \in X: \; \left<x, y\right> \in R$
+\end{definition}
+\begin{definition}
+    Обратное отношение $R^{-1} \subset Y \times X \; \; R^{-1} = \{\left<y,x\right>\} \in R$.
+\end{definition}
+\begin{definition}
+    Композиция отношения. $R_1 \subset X \times Y, R_2 \subset Y \times Z: \; R_1 \circ R_2 \subset X \times Z$. \\
+    $R_1 \circ R_2 = \{\left<x, z\right> \in X \times Z\; \vert \; \exists y \in Y: \; \left<x,y\right> \in R_1 \land \left<y,z\right> \in R_2\}$
+\end{definition}
+Примеры отношений. \begin{itemize}
+    \item Отношение равенства. $R = \{\left<x,x\right>: \; x \in X\}$. Но это просто равенство.
+    \item "$\ge$" ($X = \R$). $R = \{ \left<x,y\right>: \; x \ge y\}$
+    \item "$>$" ($X= \R$). $R = \{\left<x,y\right>: x > y\}$ \\
+        $\delta_{>} = {2,3,4\ldots}$\\
+        $\rho_> = \N$\\
+        $>^{-1} = < = \{\left<x,y\right>: \; x < t\}$ \\
+        $> \circ > = \{\left<x,z\right>\; x-z\ge2\}$
+    \item $X$ --- прямые на плоскости. "$\perp$":  $R = \{\left<x,y\right>: \; x \perp y\}$. \\
+            $\delta_\perp = \rho_\perp = X$ \\
+            $\perp^{-1} = \perp$\\
+            $\perp \circ \perp = \|$
+    \item $\left<x, y\right> \subset R$, когда  $x$ --- отец  $y$. \\ 
+        $\delta_R = \{\text{Все, у кого есть сыновья}\}$. \\
+        $\rho_R$ --- религиозный вопрос. См. Библию \\
+        $R^{-1} = \text{сын}$ \\
+        $R \circ R = \{\text{дед по отцовской линии}\}$
+\end{itemize}
+\begin{definition}
+    Функция из $X$ в  $Y$ --- отношение ($\delta_f = X$), если:
+     \[
+         \left. \begin{array}{l} \left<x,y\right> \in f \\ \left<x, z\right> \in f \end{array} \right\} \Rightarrow y = z
+    .\] 
+    Используется запись $y = f(y)$.
+\end{definition}
+\begin{definition}
+    Последовательность --- функция у которой $\delta_f = \N$
+\end{definition}
+\begin{definition}
+Отношение $R$ называется рефлективным, если $\forall x: \; \left<x, x\right> \in R$.
+\end{definition}
+\begin{definition}
+    Отношение $R$ называется симметричным, если  $\forall x, y \in X: \; \left<x, y\right> \in R \Rightarrow \left<y, x\right> \in R$
+\end{definition}
+\begin{definition}
+    Отношение $R$ называется иррефлективным, если  $\forall x \left<x,x\right> \notin R$
+\end{definition}
+\begin{definition}
+    Отношение $R$ называется антирефлексивным, если  $\left. \begin{array}{r} \left<x, y\right> \in R \\ \left<y, x\right> \in R\end{array} \right\} \Rightarrow x = y$
+\end{definition}
+
+\begin{definition}
+    Отношение $R$ называется транзитивным, если  $\left. \begin{array}{r} \left<x, y\right> \in R \\ \left<x, z\right> \in R\end{array} \right\} \Rightarrow \left<x, z\right> \in R$
+\end{definition}
+ \begin{definition}
+    Отношение называется отношением эквивалентности, если отношение рефлективно, симметрично, транзитивно.
+\end{definition}
+\begin{example}
+    Равенство, сравнение по модулю $\Z$,  $\|$, отношение подобия треугольников.
+\end{example}
+\begin{definition}
+    Если выполняется рефлективность, антисимметричность и транзитивность, от данное отношение --- отношение нестрогий частичного порядка.
+\end{definition}
+\begin{example}
+    $\ge$; $A \subset B$ на $2^X$. 
+\end{example}
+\begin{definition}
+    Если выполняется иррефлективность и транзитивность, то данное отношение --- отношение строгого частичного порядка. 
+\end{definition}
+ \begin{example}
+    $>$;  $A$ собственное подмножество  $B$ на  $2^X$.
+\end{example}
+\begin{exerc}
+    Иррефлексивность + транзитивность $\Rightarrow$ антисимметрично.
+\end{exerc}
+\begin{exerc}
+    $R$ --- нестрогий ч.п.  $\Rightarrow$ $R = \{\left<x,y\right> \in R: \; x \neq y\}$ --- строгий ч.п.
+\end{exerc}
+\Subsection{Вещественные числа}
+Есть две операции.
+\begin{itemize}
+    \item $+: \R \times \R \to \R$.
+        \begin{itemize}
+            \item Коммутативность. $x+y=y+x$.
+            \item Ассоциативность.  $(x+y)+z=x+(y+z)$
+            \item Существует ноль.  $\exists 0 \in \R \; \; x + 0 = x$
+            \item Существует противоположный элемент. $\exists (-x) \in \R \; \; x+(-x) = 0$
+        \end{itemize}
+    \item $\times: \R \times R \to \R$.
+        \begin{itemize}
+            \item Коммутативность. $x\cdot y=y\cdot x$.
+            \item Ассоциативность.  $(x\cdot y)\cdot z=x\cdot (y\cdot z)$
+            \item Существует единица.  $\exists 0 \in \R \; \; x \cdot 1 = x$
+            \item Существует обратный элемент. $\exists x^{-1} \in \R \; \; x \cdot x^{-1} = 1$
+        \end{itemize}
+\end{itemize}
+Свойство дистрибутивности: $(x+y) \cdot z = x \cdot z + y \cdot z$. Структура с данными операциями называется полем.
+
+Введем отношение $\le$. Оно рефлексивно, антисимметрично и транизитивно, то есть нестрогий частичного порядка. Причем:
+\begin{itemize}
+    \item $x< y \Rightarrow x+z < y+z$
+    \item  $0 \le x \land 0 \le y \Rightarrow 0 \le x\cdot y$
+\end{itemize}
+\textbf{Аксиома полноты.} Если $A$ и $B \subset \R$ и $\forall a \in A, b \in B: \; a \le b$ и $A \neq \varnothing \land B \neq \varnothing$, тогда $\exists c \in \R\; a \le c \le b$.
+\begin{remark}
+    Множество рациональных не удовлетворяет аксиоме полноты. Например: $A = \{x \in \Q \; \vert \; x^2 < 2\}$,  $B = \{x \in Q \; \vert \; x>0 \land x^2 > 2\}$. Единственная точка, между этими множествами --- $\sqrt{2}$ 
+\end{remark}
+
+\begin{theorem}[Принцип Архимеда]
+    Пусть $x \in \R \land y > 0$. Тогда  $\exists n \in \N:\; x < ny$
+\end{theorem}
+\begin{proof}
+    $A = \{u \in \R:\; \exists n \in \N:\; u < ny\}$. Пусть $A \neq! \R$, $B = \R \setminus A \neq \varnothing$,  $A \neq \varnothing$, т.к.  $0 \in A$.\\
+    Возьмем  $a \in A, b \in B$.  $b < a \Rightarrow \exists n: \; a < ny \Rightarrow b < ny \Rightarrow \texttt{противоречие}$. \\
+    По аксиоме полноты $\exists c \in \R: \; a \le c \le b \; \forall a \in A, \forall b \in B$.  \\
+    Пусть $c \in A$. Тогда  $c < ny \Rightarrow c < c + y < ny + y = (n+1)y \Rightarrow c < c + y \Rightarrow c + y \in A$. Противоречие. \\
+    Пусть  $c \in B$.  Рассмотрим $c-y<c \Rightarrow c-y \in A \Rightarrow \exists n: \; c - y < ny \Rightarrow c < ny + y = (n+1)y \Rightarrow c \in A$. Противоречие.
+\end{proof}
