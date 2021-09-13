@@ -1,0 +1,92 @@
+\Subsection{Пара комментариев про предыдущую лекцию}
+\begin{enumerate}
+    \item Для любого набора $a_1, \ldots, a_n \in \Z$ $\exists \gcd(a_1,\ldots,a_n)$ и $\exists x_1,\ldots,x_n: \; \text{НОД} = x_1a_1 + \ldots + x_n a_n$. 
+
+        НОД - такое $d$, что  $\left< a_1,\ldots,a_n \right> = \left<d\right>$.
+    \item Алгоритм Евклида. 
+        \begin{itemize}
+            \item $(a, b) = (a, b - a)$, но и  $b = a \cdot q + r$, тогда  $(a, b) = (a, r)$.
+            
+            \item Пусть $r = b \mod a$,  $x_1,x_2 \in \N$. Сделаем последовательность $x_{n+1} = x_{n - 1} \mod x_{n}$. Тогда  $(x_1, x_2) = (x_3, x_4) = \ldots$. Заметим, что $x_n$ --- убывает.
+
+            \item Тогда существует такое  $x_n$, что  $(x_1, x_2) = (x_n, 0) = x_n$.
+        \end{itemize}
+\end{enumerate}
+\Subsection{Основная теорема арифметики}
+\begin{definition}
+    $x \in \Z, x \neq 1$, тогда  $x$ --- простое число, если $x = x_1x_2 \iff \begin{cases} x_1 = \pm 1 \\ x_2 = \pm 1 \end{cases} \; \forall x_1, x_2$
+\end{definition}
+\begin{property}[*]
+    $x$ --- обладает свойством  *, $\iff x \neq \pm 1 \land ab \vdots x \Rightarrow \left[ \begin{array}{l} a \vdots x \\ b \vdots x \end{array} \right.$ 
+\end{property}
+\begin{statement}
+    $p$ --- простое  $\iff$ $p$ --- обладает свойством *. \\
+\end{statement}
+\begin{proof}
+     \begin{itemize}
+         \item $\Leftarrow$ Пусть $p$ --- простое и  $p = x_1x_2$. Тогда $x_1x_2 \vdots p$ по *, $\left[ \begin{array}{l} x_1 \vdots p \\ x_2 \vdots p \end{array} \right.$. Пусть $x_1 = py$. $p = x_1x_2 = pyx_2$. $1 = yx_2 \Rightarrow x_2 = \pm 1$.
+             \item $\Rightarrow$. Пусть  $p$ --- простое и  $ab \vdots p$.  $d = (a, p)$,  $d = d \cdot d_1$, $p$ --- простое  $\Rightarrow d = p \lor d = 1$.
+
+                 $d = p \Rightarrow a \vdots p$. $d = 1 \land (a, p) = 1$, по лемме  $ab \vdots p \land (a,p) = 1 \Rightarrow b \vdots p$.
+     \end{itemize}
+\end{proof}
+\begin{theorem}[Основная теорема арифмктики]
+    Пусть $n \in \Z, n \neq 0$. Тогда  $n$ единственным образом с точностью до перестановки сомножителей, представимо в виде($p_i$ --- простые)  \[
+        n = \epsilon p_1p_2\ldots p_n, \epsilon \pm 1 = \text{sign}(n), p_1 < p_2 < \ldots < p_n
+    .\] 
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+    \item Существование. От противного. Пусть $\exists$ нераскладываемое число. Рассмотрим минимальное такое число.
+        \begin{itemize}
+            \item $x = 1$ --- пустое произведение. Противоречие.
+            \item  $x = p$ --- произведение из 1 члена. Противоречие.
+            \item  $x = x_1x_2$. $x_1,x_2 = \pm 1 \Rightarrow x_1, x_2 < X \Rightarrow x_1, x_2$ --- раскладываемые. Или $x_1 = p_1 p_2\ldots p_n, x_2 = q_1 q_2 \ldots q_m \Rightarrow x = p_1 p_2 \ldots p_n q_1 q_2 \ldots q_m$.
+        \end{itemize}
+    \item Единственность. Пусть есть плохие числа. $X$ --- минимальное из них.  $q_1 q_2 \ldots q_n = X = p_1 p_2 \ldots p_m$. Значит $p_1 p_2 \ldots p_m \vdots q_1 \Rightarrow p_1 \vdots q_1 \lor p_2\ldots p_m \vdots q_1$. Тогда $\exists p_i \vdots q_1$. Тогда можно поделить на  $q_1$, но $p_i$ --- простое, тогда  $p_i = $. Рассмотрим  $X' = \frac{X}{q_1}$. $q_2 q_3 \ldots q_n = X' = p_1 p_2 \ldots p_k$. $X' < X$, значит  $q = p$. А значит противоречие. 
+\end{enumerate}
+\end{proof}
+Контр-примеры для О. Т. А:
+\begin{enumerate}
+    \item Рассмотрим $2\Z$ --- множество четных чисел. Теперь 6 --- простое. и все $(4k + 2)$.
+
+        Теперь как разложить на простые 60?  $60 = 2 \cdot 30$, а также  $60 = 6 \cdot 10$.
+    \item $\Z \cup \{\sqrt{5}\} = \{ a + b\sqrt{5} \mid a,b \in \Z\}$. Заметим, что  $\Z \subset \Z\{\sqrt{5}\}$
+
+        $4 = 2 \cdot 2 = \overbrace{(\sqrt{5} - 1)}^{\text{простое}}\overbrace{(\sqrt{5} + 1)}^{\text{простое}}$
+\end{enumerate}
+\begin{definition}
+    $n \in \Z, n \neq 0, p$ --- простое, тогда степень вхождения ($V_p(n) = k$)  $p$ в  $n$ ---  $\max\{k \mid n \vdots p^k\}$
+
+    В терминах разложения: $n = p_1^{a_1} p_2^{a_2} \ldots p_k^{a_k}$. $V_p(n) = a_i$, а если  $p$ нет в разложении, то  $V_p(n) = 0$.
+\end{definition}
+Свойства: $V_p(n)$
+ \begin{enumerate}
+     \item $V_p(xy) = V_p(x) + V_p(y)$
+     \item  $V_p(x+y) = \min(V_p(x), V_p(y))$, и если $V_p(x) \neq V_p(y)$ 
+         \begin{proof}
+             $V_p(x)= a, V_p(y) = b$ и  $x = p^a \cdot \widetilde{x}, y = p^b \cdot \widetilde{y}$.
+
+             Не умаляя общности:  $a \ge b$. Тогда $x+y = p^a \widetilde{x} + p^b \widetilde{y} = p^b(p^{a-b} \widetilde{x} + \widetilde{y})$. Если  $a > b$, то  $\underbrace{p^{a-b} \widetilde{x}}_{\vdots p} + \widetilde{y}$ не делится на $p$. А значит $V_p(x+y) = \min(V_p(x), V_p(y))$.
+         \end{proof}
+\end{enumerate}
+Еще следствия из О. Т. А.
+\begin{enumerate}
+    \item $x \vdots y \Rightarrow V_p(x) \ge V_p(y) \; \forall\text{ простого }p$
+    \item $x = p_1^{a_1} \ldots p_n^{a_n}, y = p_1^{b_1} \ldots p_n ^ {b_n} \Rightarrow (x,y) = p_1^{\min(a_1, b_2)} \ldots p_n ^ {\min(a_n, b_n)}$
+    \item $x = z^k \iff \forall\text{ простого } p \; V_p(x) \vdots k$
+    \item Количество натуральных делителей  $x = \prod x_i^{a_i}$ равно  $\tau(x) = \prod (a_i + 1)$
+        \begin{proof}
+            Делители $X$ однозначно соотносятся с  $\{(b_1, b_2, \ldots, b_n) \mid 0\le b_i \le a_i$ 
+        \end{proof}
+    \item $\sigma(x)$ --- сумма натуральных делителей  $x$. Тогда  $\sigma(x) =  \frac{\prod(p_{i}^{a_i + 1} - 1)}{\prod (p_i - 1)}$.
+        \begin{proof}
+            $\frac{\prod(p_{i}^{a_i + 1} - 1)}{\prod (p_i - 1)} = \prod \frac{p_{i}^{a_i + 1} - 1}{p_i - 1} = \prod (1 + p_i + \ldots + p_{i}^{a_i}) =$ раскроем скобки. = сумма делителей. 
+        \end{proof}
+    \item 
+        \begin{definition}
+            $m$ --- НОК (LCM, $[a, b]$), если $m \vdots a, m \vdots b$ и  $\forall n\; n \vdots a \land n \vdots b \Rightarrow n \vdots m$
+        \end{definition}
+        $[a,b] = \prod p_{i}^{\max(a_i, b_i)}$
+    \item $a, b \in \Z \; (a, b) = 1 \; ab = c^k \Rightarrow \exists c_1, c_2 \; a = c_{1}^k, b = c_{2}^k$
+\end{enumerate}
