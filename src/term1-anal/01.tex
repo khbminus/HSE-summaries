@@ -11,7 +11,8 @@
 
 Первый модуль --- общие слова, последовательности, пределы последовательности, функции, непрерывность. Второй модуль --- конец непрерывности, производная, начало интегралов.
 
-\Subsection{Множества и отношения.}
+\Subsection{Что такое множество}
+
 
 Обойдемся без формалистики --- мы тут занимаемся прикладной математикой. Поэтому
  \begin{definition}
@@ -192,7 +193,7 @@
             \item Существует ноль.  $\exists 0 \in \R \; \; x + 0 = x$
             \item Существует противоположный элемент. $\exists (-x) \in \R \; \; x+(-x) = 0$
         \end{itemize}
-    \item $\times: \R \times R \to \R$.
+    \item $\cdot: \R \times \R \to \R$.
         \begin{itemize}
             \item Коммутативность. $x\cdot y=y\cdot x$.
             \item Ассоциативность.  $(x\cdot y)\cdot z=x\cdot (y\cdot z)$
@@ -221,4 +222,11 @@
     По аксиоме полноты $\exists c \in \R: \; a \le c \le b \; \forall a \in A, \forall b \in B$.  \\
     Пусть $c \in A$. Тогда  $c < ny \Rightarrow c < c + y < ny + y = (n+1)y \Rightarrow c < c + y \Rightarrow c + y \in A$. Противоречие. \\
     Пусть  $c \in B$.  Рассмотрим $c-y<c \Rightarrow c-y \in A \Rightarrow \exists n: \; c - y < ny \Rightarrow c < ny + y = (n+1)y \Rightarrow c \in A$. Противоречие.
+\end{proof}
+
+\begin{consequence}
+    Если $\epsilon > 0$, то $\exists n \in \N \; \frac{1}{n} < \epsilon$
+\end{consequence}
+\begin{proof}
+    $x = 1, y = \epsilon \Rightarrow ny = n \epsilon > x = 1 \iff \epsilon > \frac{1}{n}$
 \end{proof}
