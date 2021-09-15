@@ -1,0 +1,76 @@
+\Subsection{Инфинум/Супремум}
+\begin{definition}
+    $A \subset \R$ --- непустое и ограниченное сверху. Тогда супремум --- наименьшая из всех верхних границ  $A$. Обозначается  $\sup A$.
+\end{definition}
+\begin{definition}
+    $A \subset \R$ --- непустое и ограниченное снизу. Тогда инфинум --- наибольшая из всех нижних границ  $A$. Обозначается  $\inf A$.
+\end{definition}
+\begin{example}
+    $A = \{\frac{1}{n} \mid n \in \N\}$. $\sup A = 1$.  $\inf A = 0$. 
+\end{example}
+\begin{theorem}
+    Пусть $A$ --- непустое и  $A \subset \R$. Тогда  $\sup A$ существует и единственен. 
+\end{theorem}
+\begin{proof}
+    Существование:
+    Пусть $B$ --- все верхние границы $A$. Во-первых $B$ --- не пусто, так как $A$ ограничено сверху.
+
+    Тогда возьмем  $b \in B$. $b$ --- верхняя граница для  $A$, то есть  $\forall a \in A: \; a \le b$. Тогда по аксиоме полноты $\exists C \in \R \; \forall a \in A, b \in B: \; a \le c \le b$. Из левого неравенства получаем, что $c$ --- верхняя граница, то есть  $c \in B$. Из второго неравенства получаем, что  $c$ --- наименьший элемент $B$. Так и получается, что  $c = \sup A$.
+
+    Единственность. Если $c = \sup A$ и  $c' = \sup A$, то  $c \le c'$, так как $c$ --- наименьший элемент  $B$, но и  $c' \le c$, так как $c'$ --- наименьший элемент $B$. Значит  $c = c'$. Противоречие.
+\end{proof}
+\begin{consequence}
+    $A \subset B \subset \R$,  $B$ ограничено сверху,  $A$ --- не пустое. Тогда  $\sup A \le \sup B$.
+\end{consequence}
+\begin{proof}
+    Если $c$ --- верхняя граница  $B$, то  $c$ --- верхняя граница для  $A$. Заметим, что все верхние границы  $A \supset B$. Тогда все понятно. 
+\end{proof}
+
+\begin{theorem}
+    Пусть $A$ --- непустое и  $A \subset \R$. Тогда  $\inf A$ существует и единственен. 
+\end{theorem}
+\begin{exerc}
+    Доказательство. 
+\end{exerc}
+\begin{consequence}
+    $A \subset B \subset \R$,  $B$ ограничено снизу,  $A$ --- не пустое. Тогда  $\inf A \ge \inf B$.
+\end{consequence}
+\begin{remark}
+    Без аксиомы полноты теоремы существования не верны. $A = \{x \in \Q\mid x^2 < 2\}$. Любое рациональное число  $>\sqrt{2}$ --- верхние границы. А вот  $\sup A$ нет.
+\end{remark}
+
+\begin{theorem}
+    Пусть непустое $A \in \R$. Тогда
+\begin{itemize}
+    \item $a = \inf A \iff \begin{cases} a \le x \; \forall x \in A \\ \forall \epsilon > 0 \; \exists x \in A: \; x < a + \epsilon \end{cases}$.
+    \item $b = \sup A \iff \begin{cases} a \ge x \; \forall x \in A \\ \forall \epsilon > 0 \; \exists x \in A: \; x > a - \epsilon \end{cases}$
+\end{itemize}
+\end{theorem}
+\begin{proof}
+    Рассмотрим два неравенства по отдельности:
+    \begin{enumerate}
+        \item $b$ --- верхняя граница.
+        \item  $b - \epsilon$ --- не является верхней границей множества  $A$. То есть  $\forall b' < b: \; b'$ --- не является верхней границей. 
+    \end{enumerate}
+    Все это в точности значит, что $b = \sup A$.
+\end{proof}
+
+\begin{theorem}[Теорема о вложенных отрезках]
+    Пусть $[a_1,b_1] \supset [a_2, b_2] \supset [a_3, b_3] \supset \ldots$. Тогда $\exists c \in \R: \forall n: \; c \in [a_n,b_n]$.
+\end{theorem}
+\begin{proof}
+    Пусть $A = \{a_1,a_2,\ldots\}, B = \{b_1,b_2,\ldots\}$. Заметим, что так как отрезки вложены, то $a_1 \le a_2 \le \ldots$,а $b_1 \ge b_2 \ge \ldots$. Проверим, что $a_i \le b_j \forall i, j \in \N$. Пусть $i \le j$, тогда $a_1 \le a_2 \le \ldots \le a_i \le \ldots \le a_j \le b_j$. Пусть $i > j$, тогда  $b_1 \ge b_2 \ge \ldots b_j \ge \ldots b_i \ge a_i$. Тогда по аксиоме полноты $\exists c \in \R: \ a_i \le c \le b_j  \; \forall i, j \in \N \Rightarrow \forall n \forall a_n \le c \le b_n \Rightarrow c\in[a_n,b_n]$
+\end{proof}
+\begin{remark}
+    $\sqrt{2} = 1.41\ldots$. Тогда отрезке: $[1,2],[1.4,1.5],[1.41,1.42],\ldots$. Тогда единственная точка, лежащая во всех отрезках: $\sqrt{2}$.
+\end{remark}
+\begin{remark}
+    Для полуинтервалов, (интервалов) неверно: \[
+        \bigcap_{n=1}^\infty (0, \frac{1}{n}) = \varnothing
+    .\]  
+\end{remark}
+\begin{remark}
+    Для лучей неверно.\[
+        \bigcap_{n=1}^\infty [n, +\infty) = \varnothing
+    .\] 
+\end{remark}

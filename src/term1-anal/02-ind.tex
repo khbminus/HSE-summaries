@@ -1,0 +1,74 @@
+\Subsection{Мат. индукции}
+Пусть $P_n$ - последовательность утверждений. Тогда, если  $P_1$ --- верное и из того, что $P_n$ --- верно следует, что  $P_{n+1}$ --- верно. Тогда все $P_n$ верны  $\forall n \in \N$
+
+\begin{definition}
+    Пусть $A \subset \R$. Тогда  $A$ --- ограничено сверху, если  $\exists с \in \R: \; \forall a \in A\; a < c$. Такое  $c$ называется верхней границей.
+\end{definition}
+\begin{definition}
+    Пусть $A \subset \R$. Тогда  $A$ --- ограничено снизу, если  $\exists b \in \R: \; \forall a \in A\; a > b$. Такое  $b$ называется нижней границей.
+\end{definition}
+\begin{definition}
+    Пусть $A \subset \R$. Тогда  $A$ --- ограничено, если оно ограничено сверху и снизу.
+\end{definition}
+
+\begin{example}
+    $\N$ не ограничено сверху, но ограничено снизу.
+\end{example}
+\begin{proof}
+    Пусть $\exists c \in \R: \; c \ge n\; \forall n \in \N$. Тогда это противоречит принципу Архимеда при $x = c, y = 1$. \\ Для ограниченности снизу достаточно взять $c=-1$.
+\end{proof}
+\Subsection{Наибольшие/наименьшие элементы}
+\begin{theorem}
+    В непустом конечном множестве $A$ есть наибольший и наименьший элементы.
+\end{theorem}
+\begin{proof}
+    Докажем по индукции:
+    \begin{itemize}
+        \item База. $|A| = 1$. Очевидно.
+        \item Переход.  $n \to n + 1$.
+        \item Доказательство. Рассмотрим множество из  $n + 1$ элемента  $\{x_1\ldots x_n,x_{n+1}\}$. Выкинем из него последний элемент. Тогда по индукционному предположению у нас есть максимальный элемент $x_k$. Тогда рассмотрим два случая:
+             \begin{enumerate}
+                 \item $x_k \ge x_{n+1}$. Тогда $x_k$ --- наибольший элемент множества $\{x_1\ldots x_n,x_{n+1}\}$.
+                 \item $x_k < x_{n+1}$. Тогда по транзитивности  $x_{n+1}$ больше всех других элементов множества. Значит, $x_{n+1}$ --- наибольший элемент множества $\{x_1\ldots x_n,x_{n+1}\}$.
+            \end{enumerate}
+    \end{itemize}
+\end{proof}
+\begin{theorem}
+    В непустом ограниченном сверху (снизу) множестве целых чисел есть наибольший (наименьший) элемент.
+\end{theorem}
+\begin{proof}
+    Пусть $A \subset \Z$.  $c$ --- его верхняя граница. 
+
+    Возьмем  $b \in A$ и рассмотрим  $B \coloneqq {x \in A \mid x \ge b}$. Заметим, что $B$ содержит конечное число элементов, значит в нем есть наибольший элемент. Пусть это $m \in B$:  $\forall x \in B:\; x \le m$. Докажем, что $m$ --- наибольший элемент и в  $A$. 
+
+    Для этого заметим, что любой $x \in A$ либо лежит в $B$, либо  $x < b$, а по транзитивности  $x < b \le m$.
+\end{proof}
+
+\begin{definition}
+    Пусть $x \in \R$, тогда  $[x] = \lfloor x \rfloor$ --- наименьшее целое число, не превосходящее  $x$.
+\end{definition}
+\begin{enumerate}
+    \item $[x]  \le x < [x] + 1$
+
+        Левое неравенство очевидно. Правое неравенство можно доказать от противного: пусть $x \ge [x] + 1$, тогда справа целое число большое $[x]$, но меньшее  $x$. Противоречие.
+    \item $x - 1 < [x] \le x$
+\end{enumerate}
+
+\begin{theorem}
+    Если $x < y$ ($x, y \in \R$), то
+    \begin{enumerate}
+        \item $\exists r \in \Q: \; x < r < y$.
+        \item $\exists r \notin \Q: \; x < r < y$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}[Пункт 1.]
+    $\epsilon \coloneqq y - x > 0$.
+    
+    Найдется  $n \in \N: \; \frac{1}{n} < \eps = y - x$. Тогда $m \coloneqq [xn]+1$:  $r = \frac{m}{n}$ подходит.
+    
+    $\frac{m}{n} > x \iff [xn] + 1 = m > xn$ --- свойство целой части.
+    $\frac{m}{n} < y$. $\frac{m-1}{n} = \frac{[nx]}{n} \le \frac{nx}{n} = x \Rightarrow \frac{m}{n} \le x + \frac{1}{n} < x + \epsilon = x + y - x = y$
+\end{proof}
+\begin{proof}[Пункт 2.]
+    $\sqrt{2} \notin \Q$. Рассмотрим $x - \sqrt{2}$ <  $y - \sqrt{2} \Rightarrow \exists r \in Q: \; x - \sqrt{2} < r < y - \sqrt{2} \Rightarrow x < \underbrace{r + \sqrt{2}}_{r'} < y$. Почему  $r'$ иррационально? Иначе  $\sqrt{2} = r' - r \in \Q$.
+\end{proof}
