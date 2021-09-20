@@ -1,0 +1,126 @@
+Рассмотрим $a^2 - b^2 = 15^{2021} \iff (a-b)(a + b) = 3^{2021} \cdot 5^{2021} \Rightarrow \begin{cases} a+b=3^k \cdot 5^l \\ a-b=3^{2021-k} \cdot 5^{2021-l} \end{cases} \Rightarrow a = \frac{3^k \cdot 5^l + 3^{2021-k} \cdot 5^{2021-l}}{2}$.  
+
+Уравнение $81a^2-169b^2=15^{2021}$ --- тоже решается. А вот $a^2-2b^2 = 15^{2021} \iff (a-\sqrt{2}b)(s+\sqrt{2}b) = 3^{2021}5^{2021}$ уже не решается в целых чисел. Если вылезать, то надо расписывать разложение $a+\sqrt{2}b$, "3", "5" и единственность разложения на множители.
+
+Еще один пример:  $a^2+b^2=15^{2021}$. Посмотрим на остатки от деления на 4:  $a^2, b^2 \mod 4 \in \{0, 1\}, 15^{2021} \mod 4 = 3$. Но для этого нам нужно понимать что-то по кольцо вычетов по модулю.
+
+\Subsection{Группы}
+ \begin{definition}
+     Группой называется пара $(G, \ast)$, где  $G$ --- множество, а  $\ast: G \to G$ --- бинарная операция, так что выполнены свойства:
+     \begin{enumerate}
+         \item $\forall a,b,c \in G:$  $(a \ast b) \ast c = a \ast (b \ast c)$. Ассоциативность.
+         \item $\exists e \in G:$ $a \ast e = e \ast a = a$. Существование нейтрального элемента.
+         \item $\exists a^{-1}:$  $a \ast a^{-1} = a^{-1} \ast a = e$. Существование обратного элемента.
+     \end{enumerate}
+ \end{definition}
+\slashn
+Несколько примеров:
+\begin{enumerate}
+    \item $(\Z, +)$.  $e=0, a^{-1}=-a$.
+    \item  $(\Q \setminus 0, \cdot)$,  $e=1, a^{-1}= \frac{1}{a}$.
+    \item $(2^M, \bigtriangleup)$ $e=\varnothing, A^{-1} = A$.
+\end{enumerate}
+\begin{definition}
+    Группа $G$ называется абелевой, если  $\forall x, y \in G:$ $x \ast y = y \ast x$.
+\end{definition}
+\begin{example}[Главный пример группы]
+    Пусть $G=S(M) = \{f: M \to M \mid f\text{ --- биекция}\}$
+    \begin{itemize}
+    \item Ассоциативность --- упражнение.
+    \item Нейтральный элемент --- $f(x) = x$, тождественное отображение.
+    \item  $f^{-1}=$ обратная функция. Она существует, так как $f$ --- биекция. 
+    \end{itemize}
+    \slashn
+    Получили группы по композиции.
+\end{example}
+\begin{example}
+    $M=\{1,2,3\}$.  $f_1, f_2: M \to M$ --- биекция.  $f_1$ --- меняет местами  1 и 2: $1 \to 2, 2 \to 1, 3 \to 3$,  $f_2$ переставляет по циклу: $1 \to 2, 2 \to 3, 3 \to 1$. $f_2 \circ f_1: 1 \to 3, 2\to 2, 3\to 1$. $f_1 \circ f_2: 1 \to 1, 2 \to 3, 3 \to 2$. Ну значит группа не абелева.
+\end{example}
+\slashn
+Докажем простейшие свойства групп:
+\begin{enumerate}
+\item $\exists!$ нейтральный элемент.
+
+    \textbf{Доказательство:} заметим, что $e_1=e_1 \ast e_2 = e_2$
+\item $\exists!$ обратный элемент. 
+
+    \textbf{Доказательство:} пусть $b, c$ --- обратные к  $a$. Тогда  $(b\ast a)\ast c = e \ast c = c$, но при этом $b \ast (a \ast c) = b \ast e = b$. Значит  $b=c$.
+\item $a \ast b = b \ast c \iff a = c$
+
+    \textbf{Доказательство:} $a \ast b = a \ast c \iff (a^{-1} \ast a) \ast b = (a^{-1} \ast a) \ast c \iff e \ast b = e \ast c \iff b = c$
+\end{enumerate}
+\Subsection{Кольца}
+\begin{definition}
+    Кольцо --- тройка $(R, +, \cdot)$ ($R$ --- множество,  $+, \cdot: R \times R \to R$), такая что:
+     \begin{enumerate}
+         \item[1--4.] $(R, +)$ --- абелева группа. Нейтральный элемент обозначается $0$, обратный к  $a$ ---  $-a$.
+         \item[5.] $a\cdot(b+c) = a \cdot b + a \cdot c$ и  $(b+c) \cdot a = b \cdot a + b \cdot c$. Дистрибутивность.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Кольцо $R$ называется ассоциативным, если выполнено 
+    \begin{itemize}
+        \item[6.] $a \cdot (b \cdot c) = (a \cdot b) \cdot c$.
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Кольцо $R$ называется коммутативным, если
+    \begin{itemize}
+        \item[6.] $a \cdot b = b \cdot a$
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Кольцо $R$ называется кольцом с 1, если  
+    \begin{enumerate}
+        
+        \item[7.] $\exists 1 \in R: 1 \cdot a = a \cdot 1 = a$
+    \end{enumerate}
+\end{definition}
+\slashn
+\begin{example}
+    $(\Z, +, \cdot)$ --- коммутативное ассоциативное кольцо с 1.
+\end{example}
+\begin{definition}
+    Коммутативное ассоциативное кольцо с 1 называется полем, если выполнена 
+    \begin{enumerate}
+        \item[8.] $\forall a \in R \ \{0\}$  $\exists b \in R$  $ab = 1 \land 1 \neq 0$
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    $(\Q, +, \cdot)$ --- поле, а вот  $(\Z, +, \cdot)$ --- не поле.
+\end{example}
+
+\Subsection{Построение кольца вычетов}
+\begin{definition}
+Пусть $a, b \in \Z$, говорят, что  $a$ сравнимо с  $b$ по модулю  $n$ ($a \equiv b \pmod{n}$), если $n \mid a - b$. Эквивалентное определение:  $a$ и  $b$ имеют одинаковые остатки по модулю  $n$.
+\end{definition}
+Докажем, что сравнимость по модулю --- отношение эквивалентности.
+\begin{itemize}
+    \item $a \equiv a \pmod{n} \iff n \mid 0$
+    \item $n | a - b \iff n | b - a \Rightarrow a \equiv b \pmod{n} \iff b \equiv a \pmod{n}$.
+    \item Транзитивность...
+\end{itemize}
+\slashn
+Наблюдение.  $a \in \Z \rightarrow \overline{a} = \{b \mid a \equiv b\} = \{a + kn \mid k \in \Z\}$. $\Z = \overline{0} \cup \overline{1} \ldots$
+
+\begin{definition}
+    Фактор множества по отношению $\equiv$ обозначается  $\Z / n\Z$.
+\end{definition}
+
+$\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются классами вычетами по модулю.
+
+ \begin{enumerate}
+     \item $a \equiv b \pmod{n} \land c \equiv d \pmod{n} \iff a+c \equiv b+d \pmod{n} \land ac \equiv bd \pmod{n}$. 
+
+         Доказательство  $(a+c) - (b+d) = \underbrace{(a-b)}_{\vdots n} - \underbrace{(b+d)}_{\vdots n} \vdots n$. 
+
+         Доказательство $ac - bd = ac - bc + bc - bd = c (a-b) + b(c-d) \vdots n$.
+
+         Значит класс суммы и произведения зависит только от классов множителей и слагаемых.
+\end{enumerate}
+\begin{theorem}
+    Пусть $n \in \N$. Тогда класс $(\Z / n\Z, +, \cdot)$, где $\overline{a}+\overline{b} = \overline{a+b} \land \overline{a} \cdot \overline{b} = \overline{a \cdot b}$ --- ассоциативное коммутативное кольцо с единицей.
+\end{theorem}
+\begin{proof}
+    Все аксиомы --- следствия из $\Z$. Докажем для примера  $(\overline{a} + \overline{b}) + \overline{c} = \overline{a} + (\overline{b} + \overline{c}) = \overline{a+b} + \overline{c} = \overline{(a+b)+c} = \overline{a + (b+c)} = \overline{a} + \overline{(b+c)} = \overline{a} + (\overline{b} + \overline{c}).$
+\end{proof}

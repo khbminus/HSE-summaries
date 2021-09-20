@@ -1,0 +1,21 @@
+\Subsection{Амортизационные анализ}
+ \begin{definition}
+     Пусть у нас программа разбита на кусочки. Тогда $t_i$ --- реальное время работы. Тогда пусть есть какая-то функция  $\phi$. Амортизационное время работы  $a_i = t_i + \overbrace{\varphi_{i+1} - \varphi_{i}}^{\Delta \varphi}$
+ \end{definition}
+
+ Среднее время работы программы: $\frac{\sum t_i}{m} = \frac{\sum a_i}{m} - \frac{\Delta \varphi_i}{m} = \frac{\sum a_i}{m} - (\varphi_n - \varphi_0)$ 
+ \begin{theorem}
+     $\frac{\sum t_i}{m} \le \max a_i$.
+ \end{theorem}
+ \begin{proof}
+     Очевидно.
+ \end{proof}
+ \Subsection{Вектор. Реальное время работы.}
+ $t_i=$ 1 1 1 1 1 1 1 $n$. Тогда $a_i = t_i + \varphi$. Интересно рассмотреть функцию $\varphi = -\texttt{size}$. Тогда операция без удвоения $a_i = n + (-n) = 0$, а операция у удвоением  $a_i = 1 + 0 = 1$. Тогда  $\max a_i = \mathcal{O}(1)$. Еще есть добавочка, так как наша $\varphi$ --- плохая, тогда среднее время работы равно $\max |a|  + \frac{2m}{m}$
+
+ \Subsection{$a^2+b^2=N$ двумя указателями}
+
+ Применим время работы к этой задаче. Хотим $a_i = t_i + \Delta \varphi = \mathcal{O}(1)$. В качестве функции  $\varphi$ можно выбрать  $B$.  $\varphi \ge 0$, но $\phi_0 \neq 0$. Ну тогда  \[
+     \frac{\sum t_i}{m} \le \max a_i + \frac{\max |\varphi|}{m} = \mathcal{O}(1)
+ .\] 
+ Т.к. $\max |\varphi| = m = \sqrt{N}$, а  $\max a_i = \mathcal{O}(1)$.
