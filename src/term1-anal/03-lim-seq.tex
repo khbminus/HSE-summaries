@@ -50,7 +50,186 @@
     \item Если из последовательности выкинуть какое-то число членов, то предел не изменится. Доказательство через картинку.
     \item Если как-то переставить члены последовательности, то предел не изменится. Ну очевидно, что количество членов не изменилось, точки не поменяли своё местоположение.
     \item Если члены последовательности записать с какой-то кратностью (конечной), то предел не изменится.
+    \item Если добавить к последовательности конечное число членов, то наличие/отсутствие предела и значение предела, если он существует, не поменяется. Доказательство по картинке.
+    \item Изменение конечного числа членов в последовательности не меняет предел.
 \end{enumerate}
 \begin{example}
     $\lim \frac{1}{n} = 0$. Мы знаем, что найдется такой номер, что $\frac{1}{n} < \beta$, тогда при $n \ge N$ $0 < \frac{1}{n} \le \frac{1}{N} < \beta$
 \end{example}
+\begin{example}
+    $a_n = (-1)^n$ не имеет предела.
+\end{example}
+\begin{proof}
+    Посмотрим на картинку. Возьмем сначала точку не равную $\pm 1$. Тогда можно выбрать интервал, которые не содержит $\pm 1$. То есть интервал не содержит бесконечное число точек.
+
+    Для $x=1$ можно взять  $(0;2)$, для  $x=-1$ можно взять  $(-2;0)$.
+\end{proof}
+\begin{lemma}
+    $\forall a, b, x_n, y_n, \epsilon > 0: a = \lim x_n \land b = \lim y_n \Rightarrow \exists N: \forall n \ge N: |x_n-a| < \epsilon \land |y_n-b| < \epsilon$ 
+\end{lemma}
+\begin{proof}
+    Запишем определения пределов: $\forall \epsilon > 0 \exists N_1 \forall n \ge N_1 |x_n-a| < \epsilon$ и $\forall \epsilon > 0 \exists N_2 \forall n \ge N_2 |y_n-b| < \epsilon$. Тогда просто возьмем $N=\max(N_1, N_2)$.
+\end{proof}
+\begin{theorem}[Предельный переход в неравенствах]
+    $\forall x_n, y_n (x_i < y_i \; \forall i)\; a = \lim x_n \land b = \lim y_n \Rightarrow a \le b$
+\end{theorem}
+\begin{proof}
+    Докажем от противного. Пусть $a>b$. Посмотрим картиночку. Пусть $\epsilon \coloneqq \frac{a-b}{2}$. По лемме $\exists N: \forall n \ge N: |x_n-a|<\epsilon \land |y_n-b|<\epsilon$. Заметим, что $x_n-a| < \epsilon \Rightarrow x_n > a - \epsilon$, а $|y_n-b|<\epsilon \Rightarrow y_n < b + \epsilon \Rightarrow x_n > a - \epsilon = b + \epsilon > y_n$. Противоречие.
+\end{proof}
+\begin{remark}
+    Строгий знак может не сохраняться. Пример: $x_n = -\frac{1}{n} < y_n = \frac{1}{n}$, но предел и там, и там 0. Т.к. $\forall \epsilon > 0 \exists N: \forall n \ge N: \frac{1}{n} = |y_n| = |x_n| < \epsilon$ 
+\end{remark}
+\begin{consequence}
+   Три пункта:
+   \begin{enumerate}
+       \item $\forall n x_n \le b \land \lim x_n = a \Rightarrow a \le b$.
+       \item $\forall n a \le y_n \land \lim y_n = b \Rightarrow a \le b$.
+       \item $\forall n x_n \in [a;b] \land \lim x_n = l \Rightarrow l \in [a, b]$.
+   \end{enumerate}
+\end{consequence}
+ \begin{proof}
+     Константу можно заменить на последовательность $z_n = \text{const}$
+\end{proof}
+\begin{theorem}[Теорема о двух милиционерах(теорема о сжатой последовательности)]
+    Пусть $\forall n: x_n \le y_n \le z_n \land \lim x_n = \lim z_n \eqqcolon l$, тогда $\lim y_n = l$.
+\end{theorem}
+\begin{proof}
+    Возьмем $\epsilon > 0$. По лемме:  $\exists N: \forall n \ge N: |x_n-l| < \epsilon \land |z_n-l| < \epsilon$, откуда $x_n > l - \epsilon$ и  $z_n < l + \epsilon$. Тогда  $l - \epsilon < x_n \le y_n \le z_n < l + \epsilon \Rightarrow l - \epsilon < y_n < l + \epsilon$, то есть $|y_n - l| < \epsilon$.
+\end{proof}
+\begin{consequence}
+     Если $\forall n |y_n| \le z_n \land \lim z_n = 0 \Rightarrow \lim y_n = 0$
+\end{consequence}
+\begin{proof}
+    $x_n \coloneqq -z_n$. Тогда  $|y_n| \le z_n \iff -z_n \le y_n \le z_n$. Ну тогда и $\lim y_n = 0$
+\end{proof}
+\begin{theorem}[Теорема Вейерштрасса для монотонной последовательности]
+    Три пункта:
+    \begin{enumerate}
+        \item $\forall x_n x_n \uparrow \land x_n\text{ --- ограничена сверху} \Rightarrow \exists a = \lim x_n$.
+        \item $\forall x_n x_n \downarrow \land x_n\text{ --- ограничена снизу} \Rightarrow \exists a = \lim x_n$. 
+        \item Монотонная последовательность имеет предел $\iff$ она ограничена.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}[Пункт 1.]
+    $b \coloneqq \sup \{x_1,x_2,\ldots\}$ --- существует, т.к. $x_n$ --- ограничено сверху. Теперь докажем, что  $\lim x_n = b$, возьмем  $\epsilon > 0$. $b$ --- наименьшая верхняя граница  $\Rightarrow \forall \epsilon > 0 b - \epsilon$ --- не верхняя граница. То есть  $\exists N: x_N > b - \epsilon$. Проверим, что такое  $N$ подходит: при  $n \ge N$ $b - \epsilon < x_N < x_{N+1} < \ldots x_n \le b \le b + \epsilon \Rightarrow b - \epsilon < x_n < b + \epsilon$.
+\end{proof}
+\begin{proof}[Пункт 3.]
+    Докажем отдельно в каждую сторону:
+    \begin{itemize}
+        \item[$\Leftarrow$]Если $\uparrow$, то пункт 1, иначе  пункт 2.
+        \item[$\Rightarrow$]Докажем это утверждение для любой последовательности.
+
+            Пусть $\lim x_n = a$. Возьмем  $\epsilon = 1$, тогда  $\exists N: \forall n > N: |x_n-a| < 1 \Rightarrow a-1<x_n<a+1$. Ну тогда верхняя граница $\max\{a+1,x_1,x_2,\ldots, x_{N+1}\}$, а нижняя $\min\{a-1,\ldots\}$.
+    \end{itemize}
+\end{proof}
+\begin{remark}
+    В 1: $\lim x_n = \sup\{x_1,x_2,\ldots\}$, во 2: $\lim x_n = \inf\{x_1,x_2,\ldots\}$.
+\end{remark}
+\begin{theorem}[О арифметичеких операциях с пределами]
+    $\forall x_n, y_n a = \lim x_n \land \lim y_n = b$. Тогда: 
+     \begin{enumerate}
+         \item $x_n+y_n$ имеет предел и он равен  $a+b$
+         \item $x_n-y_n$ имеет предел и он равен  $a-b$
+         \item $x_n*y_n$ имеет предел и он равен  $a*b$
+         \item $|x_n|$ имеет предел и он равен  $|a|$
+         \item $\frac{x_n}{y_n}$ имеет предел, если $b \neq 0 \land \forall n y_n \neq 0$ и он  равен  $\frac{a}{b}$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Возьмем $\epsilon > 0$ и найдем  $N$ из леммы для  $\frac{\epsilon}{2}$. Тогда $\forall n \ge N: |x_n-a| < \frac{\epsilon}{2} \land |y_n-a| <  \frac{\epsilon}{2} \Rightarrow |(x_n+y_n) - (a+b)| \le |x_n - a| + |y_n-b| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$
+        \item Так же.
+        \item Поскольку $\lim y_n = b$, то $y_n$ --- ограничена, а значит  $\exists M: |y_n| \le M$. Рассмотрим $|x_ny_n - ab| = |x_ny_n - ay_n + ay_n - ab| \le |x_ny_n - ay_n| + |ay_n - ab| = |y_n| |x_n-a| + |a| |y_n-b| \le M |x_n-a| + |a| |y_n|-b$. $M |x_n - a| < \frac{\epsilon}{2} \iff |x_n - a| < \frac{\epsilon}{2M}$. Значит $\exists N_1$ при котором $\forall n > N_1$ выполнено.  $|a| |y_n - b| < \frac{\epsilon}{2} \Leftarrow |y_n - b| < \frac{\epsilon}{2|a|+1}$. Тогда найдется $N_2$, такой что  $\forall n \ge N_2$ это выполнено. Такой что $N = \max{N_1, N_2}$.
+        \item $||x|-|a|| \le |x_n-a| \iff -|x_n-a| \le |x_n| - |a| \le |x_n-a|$, а в правой части написано, что $|x_n| = |(x_n-a)+a| \le |x_n-a| + |a|$. Понятно, что это выполняется при любых $x_n, a$. 
+
+            Возьмем  $N$, для которого  $\forall n > N: |x_n - a| < \epsilon$. Тогда  $\forall n \ge N: ||x_n|-|a|| \le |x_n-a| < \epsilon$
+        \item Докажем, что $\lim \frac{1}{y_n} = \frac{1}{b}$.  Возьмем  $|\frac{1}{y_n} - \frac{1}{b}| = \frac{|y_n-b|}{|y_n||b|} \iff (1)$. Посмотрим на картинку: возьмем $\epsilon = \frac{b}{2}$. Получим интервал $(\frac{b}{2}; \frac{3b}{2})$. Тогда берем $N_1: \forall n \ge N |y_n-b| < |b|/2 \Rightarrow |y_n| > \frac{|b|}{2}$. Тогда $(1) \iff \frac{|y_n-b|}{\frac{|b|}{2}|b|} = \frac{2}{|b|^2}|y_n-b|<\epsilon \iff |y_n-b| < \epsilon \cdot \frac{|b|}{2}$. Поэтому $\exists N_2: \forall n \ge N_2$ такой, что это выполняется. Ну тогда $N=\max{N_1, N_2}$.
+    \end{enumerate}
+\end{proof}
+\begin{consequence}
+   Если $\lim x_n = a$, то  $\lim cx_n = ca$. 
+\end{consequence}
+\begin{consequence}
+    Если $\lim x_n=a \land \lim y_n = b$, то $\lim(cx_n+dy_n) = ca+db$
+\end{consequence}
+ \begin{remark}
+    Если $\lim y_n = b \neq 0$, то начиная с некоторого  $N$,  $y_n \neq 0$
+\end{remark}
+\begin{example}
+    $\lim \frac{n^2+2n-3}{4n^2-5n+6} = \frac{1 + \frac{2}{n} - \frac{3}{n^2}}{4-\frac{5}{n}+\frac{6}{n^2}} = \frac{\lim(1+\frac{2}{n}-\frac{3}{n^2})}{4 - \frac{5}{n}+\frac{6}{n^2}} = \frac{1}{4}$
+\end{example}
+\Subsection{Бесконечно большие и бесконечно малые}
+\begin{definition}
+    Последовательность $x_n$ называется бесконечной малой, если $\lim x_n=0$.
+\end{definition}
+\begin{statement}
+    $\forall x_n, y_n: x_n\text{ --- бесконечно мала последовательность} \land y_n\text{ ограничена}, то x_ny_n$ --- бесконечно малая последовательность.
+\end{statement}
+\begin{proof}
+    $y_n$ --- ограничена  $\Rightarrow \exists M: \forall n: |y_n| \le M$. Возьмем $\epsilon > 0$ и подставим в определение  $\lim x_n = 0$. Тогда найдется  $N: \forall n \ge N: |x_n| < \frac{\epsilon}{M}$. Следовательно $x_ny_n \le M |x_n| < M \frac{\epsilon}{M} = \epsilon \Rightarrow \lim x_n y_n = 0$.
+\end{proof}
+\begin{definition}
+    $\lim x_n = +\infty$ означает то, что вне любого луча вида  $(E; +\infty)$ лежит лишь конечное число членов последовательности. Или:  $\forall E \exists N: \forall n \ge N x_n > E$.
+\end{definition}
+\begin{definition}
+    $\lim x_n = -\infty$ означает то, что вне любого луча вида  $(-\infty, E)$ лежит лишь конечное число членов последовательности. Или:  $\forall E \exists N: \forall n \ge N x_n < E$.
+\end{definition}
+\begin{definition}
+    $\lim x_n = \infty$ означает то, что в любом промежутке содержится конечное число членов последовательности. Или:  $\forall \exists N \forall n \ge N |x_n| > E$.
+\end{definition}
+\begin{remark}
+    $\lim x_n = \infty \iff \lim |x_n| = +\infty$
+\end{remark}
+\begin{remark}
+    $\lim x_n = +\infty$(или $0\infty$)$\Rightarrow \lim x_n=\infty$. Но $\not \Leftarrow$! Пример  $x_n = (-1)^n \cdot n$.
+\end{remark}
+\begin{remark}
+    $\lim x_n = \infty \Rightarrow x_n$ --- неограниченная последовательность. Но наоборот неверно. Пример: $x_n = \begin{cases} n & n\text{ --- четно} \\ 0 & n\text{ --- нечетно}\end{cases}$.
+\end{remark}
+\begin{definition}
+    $x_n$ называется бесконечно большой, если  $\lim x_n = \infty$.
+\end{definition}
+\begin{theorem}
+    $\forall x_n: \forall n x_n \neq 0 \Rightarrow x_n\text{ --- бесконечно малая} \iff \frac{1}{x_n}$ --- бесконечно большая.
+\end{theorem}
+\begin{proof}
+    Докажем в каждую сторону отдельно:
+    \begin{itemize}
+        \item[$\Rightarrow$] $x_n$ --- бесконечно малая  $\iff \lim x_n=0$. Возьмем  $E$ из определения бесконечно большой и  $\varepsilon = \frac{1}{E}$, подставим в предел. Тогда $\exists N: \forall n \ge N|x_n| < \varepsilon = \frac{1}{E} \Rightarrow |\frac{1}{x_n}| > E$.
+        \item[$\Leftarrow$] $\frac{1}{x_n}$ --- бесконечно большая $\Rightarrow \frac{1}{x_m} = \infty$. Возьмем $\varepsilon > 0$ из определения бесконечно малой и  $E = \frac{1}{\varepsilon}$ и подставим в $\lim$. Тогда $\exists N, \forall n \ge N: |\frac{1}{x_n}| >E=\frac{1}{\varepsilon} \Rightarrow |x_n| < \varepsilon$
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    $\overline{\R} = \R \cup {\pm \infty}$
+\end{definition}
+\begin{theorem}
+    В $\overline{\R}$ предел единственен.
+\end{theorem}
+\begin{proof}
+    Пусть $\lim x_n = a \in \overline{\R}$ и  $\lim x_n = b \in \overline{\R}$. Если  $a, b \in \R$, то знаем. Иначе рассмотрим случаи:
+     \begin{itemize}
+         \item $a = \pm \infty, b \in \R$. Картинка.
+         \item  $a = +\infty, b = -\infty$. Ну такого быть не может, смотри картинку.
+    \end{itemize}
+\end{proof}
+\begin{theorem}[о стабилизации знака]
+    Если $\lim x_n = a \in \overline{\R} \land a \neq 0 \Rightarrow \exists N: \forall n \ge N$ все члены последовательности имеют тот же знак, что и $a$.
+\end{theorem}
+\begin{proof}
+    Несколько случаев:
+     \begin{itemize}
+         \item $a \in \R$. Картинка. Начиная с некоторого номер все  $x_n \in (0; 2a)$ или  $x_n \in (2a; 0)$.
+         \item  $a = +\infty$. Картинка. Возьмем  $E=0$, начина с некоторого номера все члены попали в этот луч.
+         \item  $a = \infty$. Аналогично.
+    \end{itemize}
+\end{proof}
+\begin{theorem}[предельный переход в неравентсве $\overline{\R}$]
+    $\forall n: x_n \le y_n \land \lim x_n = a \in \overline{\R} \land \lim y_n = b \in \overline{\R} \Rightarrow a \le b$.
+\end{theorem}
+\begin{proof}
+    Если $a, b \in \R$, то уже есть. Иначе предположим противное:
+     \begin{itemize}
+         \item $a = +\infty$ и  $b \in \R$. Картинка...
+    \end{itemize}
+\end{proof}
