@@ -124,3 +124,113 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 \begin{proof}
     Все аксиомы --- следствия из $\Z$. Докажем для примера  $(\overline{a} + \overline{b}) + \overline{c} = \overline{a} + (\overline{b} + \overline{c}) = \overline{a+b} + \overline{c} = \overline{(a+b)+c} = \overline{a + (b+c)} = \overline{a} + \overline{(b+c)} = \overline{a} + (\overline{b} + \overline{c}).$
 \end{proof}
+\slashn
+Закон сокращения не очень работает в кольце вычетов по модулю: $2 \cdot 1 = 2 \cdot 4$ ($\pmod 6$), но  $1 \neq 4 \pmod 6$.
+
+\begin{definition}
+    Пусть $R$ --- коммутативное ассоциативное кольцо с единицей. Тогда  $\forall a \in R: a\text{ --- делитель} \Rightarrow \exists B \neq 0: ab = 0$.
+\end{definition}
+\begin{example}
+    $n$ --- составное  $n=p_1p_2$ в $\Z / n\Z \overline{p_1} \overline{p_2}=\overline{n}=0$. Значит $p_1,p_2$ --- делители числа.
+\end{example}
+\begin{lemma}
+    $\forall a, b, c \in R ab = ac \land a\text{ --- не делитель 0} \Rightarrow b = c$. 
+\end{lemma}
+\begin{proof}
+    $ab=ac$:  $ab - ac = 0 \iff a(b-c) = 0$.  $a$ --- не делитель 0  $\Rightarrow b-c=0 \iff b = c$.
+\end{proof}
+\begin{lemma}
+    $a \in R a$ --- обратим $\Rightarrow a$ --- не делитель 0.
+\end{lemma}
+\begin{proof}
+    Пусть $ab=0 \Rightarrow a^{-1}(ab) = a^{-1} \cdot 0 = (a^{-1}a)b = 0 \Rightarrow b =0$.
+\end{proof}
+\begin{remark}
+    Обратное неверно: в $\Z$ 2 -- не делитель нуля, но  $\frac{1}{2} \notin \Z$ .
+\end{remark}
+\begin{theorem}
+    $\forall a \in Z: \overline{a} \in \Z / n\Z$. Тогда:  
+    \begin{enumerate}
+        \item $\overline{a}$ --- обратим $\iff (a, n) = 1$
+        \item  $\overline{a}$ --- делитель нуля $\iff (a, b) \neq 1$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $\overline{a}$ --- обратим  $\iff \exists \overline{b}: \overline{a} - \overline{b} = \overline{1} \iff exists b: ab = 1 \pmod{n} \iff \exists b: ab - 1 \vdots n \iff \exists b, k: ab-1=nk \iff \exists b, k: ab-nk=1 \iff (a,n)  = 1$.
+
+    $(a, n) = 1 \Rightarrow \overline{a}\text{ --- обратим} \Rightarrow$ не делитель нуля.
+
+    $(a, n) = d > 1, a = dx$. Тогда  $\overline{a} \cdot \frac{\overline{n}}{\overline{d}} = \overline{d}x \frac{\overline{n}}{\overline{d}} = \overline{nx} = 0$ и $\frac{\overline{n}}{\overline{d}} \neq 0$. Значит  $9 < |\frac{n}{d}| < n$.
+\end{proof}
+\begin{consequence}
+    $n$ --- простое  $\Rightarrow \Z / n\Z$ --- поле.
+\end{consequence}
+\begin{proof}
+    Достаточно проверить существование обратного. $\overline{a} \neq \overline{0} \iff a \not\vdots n \iff (a, n) = 1 \iff a$ --- обратим.
+\end{proof}
+\begin{definition}
+    $\forall $ ассоциативного кольца с 1 $R$:  $R$ --- называется кольцом без делителей 0 (область целостности), если делитель 0 только 0.  $ab = 0 \iff a = 0 \lor b = 0$  .
+\end{definition}
+ \begin{remark}
+     $R$ --- область  $\Rightarrow ax_1=ax_2 \Rightarrow x_1=x_2$ ($a \neq 0$).
+\end{remark}
+\slashn
+Вернемся к диофантову уравнению $ax+by=1$, $(a, b) = 1$. Тогда $ax = c \pmod{b}$ и  $by = c \pmod{a}$. Тогда  $\overline{a}\overline{x}=\overline{c}$ в  $\Z / n\Z \xRightarrow{(a,b)=1} \overline{x} = \overline{a}^{-1}\overline{c} \pmod{b}$. Тогда $x = x_0+kb$.
+
+\Subsection{Квадратное уравнение}
+Посмотрим на $x^2+px+q=0$ в  $\Z / n\Z$. Работает ли  $x_{1,2} = \frac{-p \pm \sqrt{p^2 - 4q}}{2}$. Есть проблемки:
+ \begin{enumerate}
+     \item $p^2 - 4q$ --- не квадрат в  $\Z / n\Z$ (не решений).
+     \item $2 = 0$. Или  $\nexists 2^{-1}$ (нельзя поделить на два).
+     \item  $n$ --- не простое. Тогда  $(x-x_1)(x-x_2)\ldots=0$. Тогда не следует, что $x = x_1 \lor x = x_2$. Пример: $x^2-1=0 \pmod{8}$
+\end{enumerate}
+\Subsection{Китайская теорема об остатках}
+Чтобы решать такие уравнения можно свести к простым модулям при помощи китайской теоремы об остатках.
+
+Вопрос такой: как связаны $\Z / n\Z, \Z / m\Z, \Z / mn\Z$. Пусть $P_m: \Z \mapsto \Z / m\Z$, а $P_mn \Z \mapsto \Z / mn\Z$. 
+
+ \begin{definition}
+     Гомоморфизмом колец $f: R_1 \mapsto R_2$ называется такое отображение, что $\forall r_1, r_1 \in R_1: f(r_1 + r_2) = f(r_1) + f(r_2), f(r_1r_2)=f(r_1)\cdot f(r_2), f(1) = 1$.
+\end{definition}
+\begin{definition}
+    Гомоморфизмом группы $f: G_1 \mapsto G_2$ называется такое отображение, что $\forall g_1, g_2: f(g_1g_2) = f(g_1) \cdot f(g_2)$.
+\end{definition}
+\begin{remark}
+    $f$ --- гомоморфизм групп  $G_1, G_2 \Rightarrow f(e_{G_1}) = e_{g_2}$.  В частности  $f$ --- гомоморфизм колец  $R_1,R_2 \Rightarrow f(0_{R_1}) = 0_{R_2}$.
+\end{remark}
+\begin{proof}
+    $f(e_{G_1}) = f(e_{G_1} \cdot e_{G_1}) = f(e_{G_1}) \cdot f(e_{G_1})$. Дальше сокращаем.
+\end{proof}
+\slashn
+
+Существует $P_{mn,m}: P_{mn, m} \cdot P_{mn} = P_{m}$. 
+ \begin{proof}
+     $P_{mn, m}(\overline{a_{mn}}) = \overline{a_m}$.
+\end{proof}
+\begin{proof}[Корректность]
+    $\overline{a_m} = \overline{b_mn} \iff a \equiv b \pmod{mn} \iff a-b \vdots mn \Rightarrow a-b \vdots m \Rightarrow \overline{a_m} = \overline(b_m)$
+\end{proof}
+\slashn Аналогично существует гомоморфизм $P_{mn, n}$. То есть $\overline{a_{mn}} \rightarrow (\overline{a_m}, \overline{a_n})$ --- отображение. То есть $\Z / mn \Z \mapsto \Z / m\Z \times \Z / n \Z$.
+Отступление.
+\begin{definition}
+    $R_1, R_2$ --- кольца. Рассмотрим  $(R_1 \times R_2, +, \cdot): (r_1, r_2) +_{R_1\times R_2} (r_1'r_2') \coloneqq (r_1+_{R_1}r_2, r_2+_{R_2}r_2')$. Тоже самое для умножения. Тогда $R_1 \times R_2$ --- тоже кольцо.
+\end{definition}
+\slashn
+Итак мы построили гомоморфизм $\Z / mn \Z \mapsto \Z / m\Z \times \Z / n \Z$. Подумаем про его свойства. Во-первых заметим, что слева $mn$ элементов, но и справа $mn$ элементов!
+
+\begin{definition}
+    Биективный гомоморфизм (групп, колец, ...) (называется изоморфизмом, $\cong$) если каждом $a_i$ задано ровно одно  $b_j$ и наоборот.
+\end{definition}
+\begin{theorem}[Китайская теорема об остатках]
+    Пусть $(m, n)=1$, тогда $\Z / mn \Z \cong \Z / m\Z \times \Z / n \Z$.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $i_{m,n}$ --- инъективно. Пусть $i_{m,n}(\overline{a_{m,n}}) = (\overline{a_m}, \overline{a_n})$,  $i_{m,n}(\overline{b_{n, m}}) = (\overline{b_m}, \overline{b_n}) \Rightarrow  a-b \vdots m \land a-b\vdots n \xRightarrow{(n, m) = 1} a - b \vdots mn$.
+        \item $i_{m, n}: a \mapsto B$ инъективно: $|A| = |B| \Rightarrow i_{m, n}$ --- суръективно.  
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[КТО 2]
+    $m_1,m_2,m_3,\ldots,m_n \in \Z \land (m_i, m_j) = 1 \Rightarrow \Z / m_1,m_2,\ldots,_n \Z \mapsto \Z / m_1\Z \times \Z / m_2\Z \ldots$ - изоморфизм колец. 
+\end{theorem}
