@@ -233,3 +233,195 @@
          \item $a = +\infty$ и  $b \in \R$. Картинка...
     \end{itemize}
 \end{proof}
+
+\begin{theorem}[Теорема о двух миллиционерах]
+    \slashn
+    \begin{enumerate}
+        \item $\forall x_n, y_n: x_n \le y_n \land \lim x_n = +\infty \Rightarrow \lim y_n = +\infty$
+        \item $\forall x_n, y_n: x_n \le y_n \land \lim y_n = -\infty \Rightarrow \lim x_n = -\infty$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $\forall E: \lim x_n = +\infty \Rightarrow \exists N : n \ge N x_n > E$, но $y_n \ge x_n > E$.
+        \item Упражнение для читателя.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[О арифметических действиях с бесконечно большими]
+    \slashn
+    \begin{enumerate}
+        \item $\forall x_n, y_n \lim x_n = +\infty, y_n\text{ --- ограничена снизу} \Rightarrow \lim(x_n+y_n)=+\infty$
+        \item $\forall x_n, y_n \lim x_n = -\infty, y_n\text{ --- ограничена сверху} \Rightarrow \lim(x_n+y_n)=-\infty$
+        \item $\forall x_n, y_n \lim x_n = \infty, y_n\text{ --- ограничена} \Rightarrow \lim(x_n+y_n)=\infty$
+        \item $\forall x_n, y_n \lim x_n = \pm\infty \land \exists C: \forall n: y_n \ge C > 0  \Rightarrow \lim(x_ny_n)=\pm\infty$
+        \item $\forall x_n, y_n \lim x_n = \pm\infty \land \exists C: \forall n: y_n \le C < 0  \Rightarrow \lim(x_ny_n)=\mp\infty$
+        \item $\forall x_n, y_n \lim x_n = \infty \land \exists C: \forall n: |y_n| \ge C > 0  \Rightarrow \lim(x_ny_n)=\infty$
+        \item $\forall x_n, y_n \lim x_n = a \neq 0 \land \forall n: \lim y_n = 0  \Rightarrow \lim \frac{x_n}{y_n}=\infty$
+        \item $\forall x_n\text{ --- ограничена}, y_n: \lim y_n = \infty \Rightarrow \lim \frac{x_n}{y_n} = 0$
+        \item $\forall x_n, y_n\text{ --- ограничена}: \lim x_n = \infty \land y_n \neq 0 \Rightarrow \lim \frac{x_n}{y_n} = \infty$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $y_n$ --- ограничена снизу  $\Rightarrow y_n \ge c$. А так как $\lim x_n = +\infty \Rightarrow \forall E \exists N: \forall n \ge N: x_n > E$. Подставим $E-c$ вместо  $E$.  $\exists N \forall n \ge N x_n > E - C \Rightarrow x_n + y_n \ge E - c + y_n \ge E - c + c= E$.
+        \item Упражнение.
+        \item Упражнение.
+        \item $\lim x_n = +\infty \Rightarrow \forall E \exists N \forall n \ge N: x_n > E$. Подставим $\frac{E}{c}$ вместо $E$:  $x_n > \frac{E}{c} \Rightarrow x_ny_n \ge xn_C > \frac{E}{c}\cdot c = E$.
+        \item Упражнение.
+        \item Упражнение.
+        \item $\lim y_n = 0 \Rightarrow y_n$ --- бесконечно малое $\Rightarrow \frac{1}{y_n}$ --- бесконечно большая. Поймем, что $|x_n| \ge C > 0$ при больших $n$. Возьмем картинку и окрестность  $\frac{a}{2}$. Заметим, что начиная с некоторого номер $|x_n| \ge \frac{a}{2} > 0$.
+        \item $y_n $ --- бесконечно большая  $\Rightarrow \frac{1}{y_n}$ --- бесконечно малая $\Rightarrow x_n \cdot \frac{1}{y_n}$ --- произведение ограниченное и бесконечно малой.
+        \item $x_n$ --- бесконечно большая  $\frac{1}{x_n}$ --- бесконечно малая $\Rightarrow y_n \cdot \frac{1}{x_n}$ --- бесконечно малая $\Rightarrow$  $\frac{y_n}{x_n}$ --- бесконечно малая.
+    \end{enumerate}
+\end{proof}
+\slashn Арифметика с бесконечностями:
+\begin{enumerate}
+    \item $\pm \infty + c = \pm \infty$ 
+    \item $+\infty + \infty = +\infty$
+    \item  $-\infty + -\infty = -\infty$
+    \item  $\pm \infty \cdot c = \pm \infty$, если  $c>0$
+    \item  $\pm \infty \cdot c = \mp \infty$, если $c<0$
+    \item  $+\infty\cdot+\infty = +\infty$\\
+        $-\infty-\infty=+\infty$\\
+        $+\infty-\infty = -\infty$
+\end{enumerate}
+Запрещенные операции:
+\begin{enumerate}
+    \item $+\infty - +\infty$ или  $+\infty + -\infty$. Может получиться беспредел, любое число, любая бесконечность.
+    \item $+\infty \cdot 0$
+    \item $\frac{\pm \infty}{\pm infty}$.Может получиться беспредел, любое число, бесконечность правильного знака.
+    \item $\frac{0}{0}$ --- любое число, любая бесконечность, отсутствие предела.
+\end{enumerate}
+\begin{example}
+    \slashn
+    \begin{itemize}
+        \item $x_n = n + a, y_n=n, x_n-y_n=a: \lim x_n = +\infty, \lim y_n = +\infty, \lim x_n - y_n = a$
+        \item  $x_n = 2n \to +\infty, y_n = n \infty + \infty, x_n - y_n = n \to +\infty$
+        \item ясно.
+        \item  $x_n = n + (-1)^n \to +\infty, y_n = n \to +\infty, x_n - y_n = (-1)^n$ --- нет предела.
+    \end{itemize}
+\end{example}
+\begin{exerc}
+    Примеры к остальному.
+\end{exerc}
+\Subsection{Экспонента}
+\begin{theorem}[Неравенство Бернулли]
+    $\forall x \ge -1, n \in \N (1+x)^n \ge 1 + nx$. Равенство при $x=0 \lor n=1$.
+\end{theorem}
+\begin{proof}
+    Индукция:
+    \begin{itemize}
+        \item База $n=1$: $1+x  \ge 1+x$.
+        \item Переход $n \to n+1$.
+        \item Предположение: $(1+x)^n \ge 1+nx$.
+        \item Заметим, что $(1+x)^{n+1} = (1+x)\cdot(1+x)^n \ge (1+x)(1+nx) = 1 + x + nx + nx^2 = 1 + (n+1)x + nx^2 \ge 1 + (n+1)x$. Строгий знак при $x \neq 0$.
+    \end{itemize}
+\end{proof}
+\begin{remark}
+    На самом деле $(1+x)^P \ge 1 + Px$, если $x > -1$ и  $P \ge -1$ или $P \le 0$. Иначе верно $(1+x)^P \le 1 + Px$.
+\end{remark}
+\begin{theorem}
+    Пусть $a \in \R$ и  $x_n \coloneqq(1 + \frac{a}{n})^n$. Тогда при $n > -a$ монотонно возрастает и ограничена сверху.
+\end{theorem}
+\begin{proof}
+    $\frac{x_n}{x_{n+1}} = \frac{(1+\frac{a}{n})^n}{(1+\frac{a}{n-1})^{n-1}} = \frac{(n+a)^n}{n^n} \cdot \frac{(n-1)^{n-1}}{(n-1+a)^{n-1}} = \frac{n-1+a}{n-1} \left(\frac{(n+a)(n-1)}{n\cdot (n-1+a)}\right)^n = \frac{n-a+1}{n-1}\left(\frac{n^2+an-n-a}{n^2+an-n}\right)^n = \frac{n-1+a}{n-1}\left(1-\frac{a}{n(n-1+a)} \right)^n \ge \frac{n-1+a}{n-1}(1+n \cdot \frac{-a}{(n-1+a)}) = 1$
+
+    Посмотрим на $\frac{a}{n-1+a}$. Если $a>0$, то очевидно. Если  $a<0$, то  $n_1 > a$, а значит дробь меньше нуля.
+
+    Ограниченность: $y_n \coloneqq (1-\frac{a}{n})^n$ возрастает при $n>a$.  $x_ny_n = \left(\left(a+\frac{a}{n}\right)\left(1-\frac{a}{n}\right)\right)^n = \left(1-\frac{a^2}{n^2}\right)^n \le 1$. Тогда $x_n \le \frac{1}{y_n} \le \frac{1}{y_{n-1}} \le \ldots \le \frac{1}{y_{[a] + 1}}$ 
+\end{proof}
+\begin{consequence}
+    $x_n \coloneqq \left(1 + \frac{a}{n}\right)^n$ имеет предел.
+\end{consequence}
+\begin{definition}
+    $\exp a \coloneqq \lim \left(1+\frac{a}{n}\right)^n$\\
+    $e \coloneqq \exp 1 = \lim(1 + \frac{1}{n})^n \approx 2.7182818284590$
+\end{definition}
+\begin{consequence}
+    Последовательность $z_n \coloneqq (1+\frac{1}{n})^{n+1}$ монотонно убывает и стремится к $e$.
+\end{consequence}
+\begin{proof}
+    $\lim z_n = \lim \left(1+\frac{1}{n}\right)^n \lim \left(1+\frac{1}{n}\right) = e \cdot 1 = e$.
+    $\frac{1}{z_n} = \frac{1}{\left(\frac{n+1}{n}\right)^{n+1}} = \left(\frac{n}{n+1}\right)^{n+1} = \left(1 - \frac{1}{n+1}\right)^{n+1}$ --- строго монотонно возрастает.
+\end{proof}
+\slashn
+Свойства экспоненты:
+\begin{enumerate}
+    \item $\exp 0 = 1, \exp 1 = e$.
+    \item  $\exp a > 0$
+    \item  $\exp a \ge 1+a$. $\left(1+\frac{a}{n}\right)^n \ge 1 + n \frac{a}{n} = 1+a$, при $n > -a$. Далее совершим предельный переход.
+    \item  $\exp a \exp (-a) \le 1$. $\left(1+\frac{a}{n}\right)^n\cdot\left(1-\frac{a}{n}\right)^n = \left(1-\frac{a^2}{n^2}\right)^n \le 1$. Далее предельный переход.
+    \item $\forall a, b: a \le b \Rightarrow \exp a \le \exp b$. Знаем, что $1 + \frac{a}{n} \le 1 + \frac{b}{n}$ и при больших $n$ они положительны, тогда можно возвести в  $n$-ую степень и совершить предельный переход. 
+    \item  $\exp a < \frac{1}{1-a}$ при $a \le 1$. $\exp a \cdot \exp (-a) \le 1 \Rightarrow \exp a \le \frac{1}{\exp(-a)}$. А $\exp(-a) \ge 1 + (-a) = 1 - a$. Тогда можно уменьшить знаменатель, тем самым увеличить дробь.
+    \item $\forall n \in \N x_n < e < z_n$. Знаем, что $x_n \uparrow$. Тогда возьмем  $k \ge n + 1: x_n < x_{n+1} < x_k$. Устремляем $k \to \infty: x_n < x_{n+1} \le e \iff x_n < e$.
+
+        С другой стороны $z_n \downarrow$. Тогда по той же технике $z_n > z_{n+1} \ge e \iff z_n \ge e$.
+    \item $2 < e < 3$. $2 = x_1$,  $3 = z_{5}$ или  $z_6$.
+\end{enumerate}
+\begin{remark}
+    $x_n - z_n = \frac{x_n}{n} \approx \frac{e}{n}$.
+\end{remark}
+\begin{lemma}
+    $\forall a_n \lim a_n = a \Rightarrow y_n \coloneqq (1+\frac{a_n}{n})^n \to \exp a$.
+\end{lemma}
+\begin{proof}
+    Пусть $x_n = (1+\frac{a}{n})^n$, $A = 1 + \frac{a}{n}$, $B = 1 + \frac{a_n}{n}$. Тогда $|x_n - y_n| = |A^n - B^n| = \underbrace{|A-B|}_{=\frac{|a-a_n|}{n}}\cdot|A^{n-1} + A^{n-2}B + \ldots + B^{n-1}|$.
+
+    Тогда $\lim a_n = a \Rightarrow a_n$ --- ограниченная последовательность ($|a_n| \le M$). Тогда  $|a_n| \le M \Rightarrow A = 1 + \frac{a}{n} \le 1 + \frac{M}{n}, B = 1 + \frac{a}{n} \le 1 + \frac{M}{n}$.Тогда исходное: $\frac{|a-a_n|}{n} n \left(1+\frac{M}{n}\right)^{n-1} \le |a-a_n|(1+\frac{M}{n})^n \le |a-a_n|\exp M \to 0$.
+
+    То есть $\lim x_n - y_n \Rightarrow \lim x_n - \lim (x_n - y_n) = \exp a - 0 = \exp a$.
+\end{proof}
+\begin{theorem}
+    $\exp(a+b) = \exp a \cdot \exp b$.
+\end{theorem}
+\begin{proof}
+    $x_n \coloneqq = \left(1+\frac{a}{n}\right)^n \to \exp a$. $y_n \coloneqq (1 + \frac{b}{n})^n \to \exp b$. Тогда $x_ny_n = \left((1+\frac{1}{n})(1+\frac{b}{n})\right)^n = \left(1+\frac{a+b+\frac{ab}{n}}{n}\right)^n \xrightarrow{\text{Лемма}} \exp(a+b)$
+\end{proof}
+\begin{consequence}
+    \slashn
+    \begin{enumerate}
+        \item $\forall t: |t| < 1 \Rightarrow \lim t^n = 0$
+        \item  $\forall t: |t| > 1 \Rightarrow \lim t^n = \infty$
+    \end{enumerate}
+\end{consequence}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item[2.] Пусть $x = |t| - 1 > 0$. Тогда  $|t^n| = |t|^n = (1+x)^n > 1+nx \to +\infty$
+        \item[1.] Если $0<|t|<1$, то  $|\frac{1}{t}| > 1$ и $\left(\frac{1}{t}\right)^n$ --- бесконечно большая $\Rightarrow$ $t^n$ --- бесконечно малая. 
+    \end{enumerate}
+\end{proof}
+\begin{theorem}
+    $\forall x_n > 0 \lim \frac{x_{n+1}}{x_n} = a < 1 \Rightarrow \lim x_n = 0$.
+\end{theorem}
+\begin{proof}
+    Картинка. Возьмем окрестность с правой границей $\frac{a+1}{2}$. Тогда начиная с некоторого номера $m$ члены последовательности  $\frac{x_{n+1}}{x_n}$ попали в этот интервал. То есть $\frac{x_{n+1}}{x_n} \le b < 1$ при $n \ge m$. 
+
+    Пусть $n > m$.  $x_n = \frac{x_n}{x_{n+1}} \cdot \frac{x_{n-1}{x_{n-2}}}\cdot\ldots\cdot\frac{x_{m+1}}{x_m} \cdot x_m \le b^{n-m}\cdot x_m = b^n \frac{x_m}{b^m}$. Тогда $0 < x_n < \underbrace{b^n}_{\to 0}\frac{x_m}{b^m}$. 
+\end{proof}
+\begin{consequence}
+    \slashn
+     \begin{enumerate}
+         \item $\lim \frac{n^k}{a_n} = 0$ при $a>1$ и  $k \in \N$. 
+         \item $\lim \frac{a^n}{n!} = 0$, при $a \in \R$.
+         \item $\lim \frac{n!}{n^n} = 0$.
+    \end{enumerate}
+\end{consequence}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $x_n = \frac{n^k}{a^n}$. $\frac{x_{n+1}}{x_n} = \frac{(n+1)^k}{a^{n+1}} \cdot \frac{a^n}{n^k} = \left(\frac{n+1} {n}\right)^k \cdot \frac{1}{a} \to \frac{1}{a} < 1$.
+        \item $x_n = \frac{a^n}{n!}$. $\frac{x_{n+1}}{x_n} = \frac{a^{n+1}}{(n+1)!} \cdot \frac{n!}{a^n} = \frac{a}{n+1} \to 0$.
+        \item $x_n = \frac{n!}{n^n}$. $\frac{x_{n+1}}{x_n} = \frac{(n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{n!} = \frac{n+1}{(n+1)^{n+1}} n^n = \left(\frac{n}{n+1}\right)^n = \frac{1}{\left(1+\frac{1}{n}\right)^n} \to \frac{1}{e} < 1$.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[Теорема Штольца]
+    Пусть $y_1 < y_2 < y_3 < \ldots$ и $\lim y_n = +\infty$. Если  $\lim \frac{x_{n+1}-x_n}{y_{n+1}-y_n} = l \in \overline{\R}$, то  $\lim \frac{x_n}{y_n} = l$.
+\end{theorem}
+\begin{proof}
+    Ключевой случай: $l = 0$. Пусть  $a_n \coloneqq \frac{x_{n+1} - x_n}{y_{n+1} - y_n}$. По условию $\lim a_n = 0$. Зафиксируем  $\varepsilon > 0$. Тогда найдется номер  $m$, такой, что при $n \ge m \Rightarrow |a_n| < \varepsilon$. Тогда $|x_{n+1} -x_n| = |a_n|(y_{n+1} - y_n) < \varepsilon (y_{n+1} - y_n)$.  $|x_n - x_m| \le |x_n - x_{n-1}| - |x_{n-1} - x_{n-2}| - \ldots - |x_{m+1} - x_m| < \varepsilon(y_n - y_{n-1}) + \varepsilon(y_{n-1} + y_{n-2}) + \ldots + \varepsilon(y_{m+1} - y_m) = \varepsilon(y_n - y_m)$.
+
+    Теперь посмотрим на $|\frac{x_n}{y_n}| \le \frac{|x_n -x_m| + |x_m|}{|y_n|} < \frac{\varepsilon(y_n - y_m)}{y_n} + \frac{|x_m|}{y_n} < \varepsilon \frac{y_m}{y_n} + \frac{|x_m|}{y_n} = \varepsilon + \frac{|x_m|}{y_n} < 2\varepsilon$. Берем такой $N: \forall n \ge N y_n \ge \frac{1}{\varepsilon}|x_m|$. Если $n > \max\{m, N\}$, то  $|\frac{x_n}{y_n}| < 2\varepsilon$. Тогда  $\lim \frac{x_n}{y_n} = 0$
+\end{proof}
