@@ -326,11 +326,11 @@
     Пусть $a \in \R$ и  $x_n \coloneqq(1 + \frac{a}{n})^n$. Тогда при $n > -a$ монотонно возрастает и ограничена сверху.
 \end{theorem}
 \begin{proof}
-    $\frac{x_n}{x_{n+1}} = \frac{(1+\frac{a}{n})^n}{(1+\frac{a}{n-1})^{n-1}} = \frac{(n+a)^n}{n^n} \cdot \frac{(n-1)^{n-1}}{(n-1+a)^{n-1}} = \frac{n-1+a}{n-1} \left(\frac{(n+a)(n-1)}{n\cdot (n-1+a)}\right)^n = \frac{n-a+1}{n-1}\left(\frac{n^2+an-n-a}{n^2+an-n}\right)^n = \frac{n-1+a}{n-1}\left(1-\frac{a}{n(n-1+a)} \right)^n \ge \frac{n-1+a}{n-1}(1+n \cdot \frac{-a}{(n-1+a)}) = 1$
+    $\frac{x_n}{x_{n+1}} = \frac{(1+\frac{a}{n})^n}{(1+\frac{a}{n-1})^{n-1}} = \frac{(n+a)^n}{n^n} \cdot \frac{(n-1)^{n-1}}{(n-1+a)^{n-1}} = \frac{n-1+a}{n-1} \left(\frac{(n+a)(n-1)}{n\cdot (n-1+a)}\right)^n = \frac{n-1+a}{n-1}\left(\frac{n^2+an-n-a}{n^2+an-n}\right)^n = \frac{n-1+a}{n-1}\left(1-\frac{a}{n(n-1+a)} \right)^n \ge \frac{n-1+a}{n-1}(1+n \cdot \frac{-a}{n(n-1+a)}) = \frac{n-1+a}{n-1} \cdot \frac{n-1+a-a}{n-1+a} = 1$
 
-    Посмотрим на $\frac{a}{n-1+a}$. Если $a>0$, то очевидно. Если  $a<0$, то  $n_1 > a$, а значит дробь меньше нуля.
+     Убедимся в выполнении условий для неравенства Бернулли. Посмотрим на $\frac{a}{n-1+a}$. Если $a>0$, то очевидно. Если  $a<0$, то  $n_1 > a$, а значит дробь меньше нуля.
 
-    Ограниченность: $y_n \coloneqq (1-\frac{a}{n})^n$ возрастает при $n>a$.  $x_ny_n = \left(\left(a+\frac{a}{n}\right)\left(1-\frac{a}{n}\right)\right)^n = \left(1-\frac{a^2}{n^2}\right)^n \le 1$. Тогда $x_n \le \frac{1}{y_n} \le \frac{1}{y_{n-1}} \le \ldots \le \frac{1}{y_{[a] + 1}}$ 
+    Ограниченность: $y_n \coloneqq (1-\frac{a}{n})^n$ возрастает при $n>a$.  $x_ny_n = \left(\left(1+\frac{a}{n}\right)\left(1-\frac{a}{n}\right)\right)^n = \left(1-\frac{a^2}{n^2}\right)^n \le 1$. Тогда $x_n \le \frac{1}{y_n} \le \frac{1}{y_{n-1}} \le \ldots \le \frac{1}{y_{[a] + 1}}$ 
 \end{proof}
 \begin{consequence}
     $x_n \coloneqq \left(1 + \frac{a}{n}\right)^n$ имеет предел.
@@ -354,14 +354,14 @@
     \item  $\exp a \ge 1+a$. $\left(1+\frac{a}{n}\right)^n \ge 1 + n \frac{a}{n} = 1+a$, при $n > -a$. Далее совершим предельный переход.
     \item  $\exp a \exp (-a) \le 1$. $\left(1+\frac{a}{n}\right)^n\cdot\left(1-\frac{a}{n}\right)^n = \left(1-\frac{a^2}{n^2}\right)^n \le 1$. Далее предельный переход.
     \item $\forall a, b: a \le b \Rightarrow \exp a \le \exp b$. Знаем, что $1 + \frac{a}{n} \le 1 + \frac{b}{n}$ и при больших $n$ они положительны, тогда можно возвести в  $n$-ую степень и совершить предельный переход. 
-    \item  $\exp a < \frac{1}{1-a}$ при $a \le 1$. $\exp a \cdot \exp (-a) \le 1 \Rightarrow \exp a \le \frac{1}{\exp(-a)}$. А $\exp(-a) \ge 1 + (-a) = 1 - a$. Тогда можно уменьшить знаменатель, тем самым увеличить дробь.
+    \item  $\exp a < \frac{1}{1-a}$ при $a \le 1$. $\exp a \cdot \exp (-a) \le 1 \Rightarrow \exp a \le \frac{1}{\exp(-a)}$. А $\exp(-a) \ge 1 + (-a) = 1 - a$ (применили Бернулли). Тогда можно уменьшить знаменатель, тем самым увеличить дробь.
     \item $\forall n \in \N x_n < e < z_n$. Знаем, что $x_n \uparrow$. Тогда возьмем  $k \ge n + 1: x_n < x_{n+1} < x_k$. Устремляем $k \to \infty: x_n < x_{n+1} \le e \iff x_n < e$.
 
         С другой стороны $z_n \downarrow$. Тогда по той же технике $z_n > z_{n+1} \ge e \iff z_n \ge e$.
     \item $2 < e < 3$. $2 = x_1$,  $3 = z_{5}$ или  $z_6$.
 \end{enumerate}
 \begin{remark}
-    $x_n - z_n = \frac{x_n}{n} \approx \frac{e}{n}$.
+    $z_n - x_n = \frac{x_n}{n} \approx \frac{e}{n}$.
 \end{remark}
 \begin{lemma}
     $\forall a_n \lim a_n = a \Rightarrow y_n \coloneqq (1+\frac{a_n}{n})^n \to \exp a$.
@@ -377,7 +377,7 @@
     $\exp(a+b) = \exp a \cdot \exp b$.
 \end{theorem}
 \begin{proof}
-    $x_n \coloneqq = \left(1+\frac{a}{n}\right)^n \to \exp a$. $y_n \coloneqq (1 + \frac{b}{n})^n \to \exp b$. Тогда $x_ny_n = \left((1+\frac{1}{n})(1+\frac{b}{n})\right)^n = \left(1+\frac{a+b+\frac{ab}{n}}{n}\right)^n \xrightarrow{\text{Лемма}} \exp(a+b)$
+    $x_n \coloneqq \left(1+\frac{a}{n}\right)^n \to \exp a$. $y_n \coloneqq (1 + \frac{b}{n})^n \to \exp b$. Тогда $x_ny_n = \left((1+\frac{a}{n})(1+\frac{b}{n})\right)^n = \left(1+\frac{a+b+\frac{ab}{n}}{n}\right)^n \xrightarrow{\text{Лемма}} \exp(a+b)$
 \end{proof}
 \begin{consequence}
     \slashn
@@ -397,14 +397,14 @@
     $\forall x_n > 0 \lim \frac{x_{n+1}}{x_n} = a < 1 \Rightarrow \lim x_n = 0$.
 \end{theorem}
 \begin{proof}
-    Картинка. Возьмем окрестность с правой границей $\frac{a+1}{2}$. Тогда начиная с некоторого номера $m$ члены последовательности  $\frac{x_{n+1}}{x_n}$ попали в этот интервал. То есть $\frac{x_{n+1}}{x_n} \le b < 1$ при $n \ge m$. 
+    Картинка. Возьмем окрестность с правой границей $b = \frac{a+1}{2}$. Тогда начиная с некоторого номера $m$ члены последовательности  $\frac{x_{n+1}}{x_n}$ попали в этот интервал. То есть $\frac{x_{n+1}}{x_n} \le b < 1$ при $n \ge m$. 
 
     Пусть $n > m$.  $x_n = \frac{x_n}{x_{n+1}} \cdot \frac{x_{n-1}{x_{n-2}}}\cdot\ldots\cdot\frac{x_{m+1}}{x_m} \cdot x_m \le b^{n-m}\cdot x_m = b^n \frac{x_m}{b^m}$. Тогда $0 < x_n < \underbrace{b^n}_{\to 0}\frac{x_m}{b^m}$. 
 \end{proof}
 \begin{consequence}
     \slashn
      \begin{enumerate}
-         \item $\lim \frac{n^k}{a_n} = 0$ при $a>1$ и  $k \in \N$. 
+         \item $\lim \frac{n^k}{a^n} = 0$ при $a>1$ и  $k \in \N$. 
          \item $\lim \frac{a^n}{n!} = 0$, при $a \in \R$.
          \item $\lim \frac{n!}{n^n} = 0$.
     \end{enumerate}
@@ -421,7 +421,7 @@
     Пусть $y_1 < y_2 < y_3 < \ldots$ и $\lim y_n = +\infty$. Если  $\lim \frac{x_{n+1}-x_n}{y_{n+1}-y_n} = l \in \overline{\R}$, то  $\lim \frac{x_n}{y_n} = l$.
 \end{theorem}
 \begin{proof}
-    Ключевой случай: $l = 0$. Пусть  $a_n \coloneqq \frac{x_{n+1} - x_n}{y_{n+1} - y_n}$. По условию $\lim a_n = 0$. Зафиксируем  $\varepsilon > 0$. Тогда найдется номер  $m$, такой, что при $n \ge m \Rightarrow |a_n| < \varepsilon$. Тогда $|x_{n+1} -x_n| = |a_n|(y_{n+1} - y_n) < \varepsilon (y_{n+1} - y_n)$.  $|x_n - x_m| \le |x_n - x_{n-1}| - |x_{n-1} - x_{n-2}| - \ldots - |x_{m+1} - x_m| < \varepsilon(y_n - y_{n-1}) + \varepsilon(y_{n-1} + y_{n-2}) + \ldots + \varepsilon(y_{m+1} - y_m) = \varepsilon(y_n - y_m)$.
+    Ключевой случай: $l = 0$. Пусть  $a_n \coloneqq \frac{x_{n+1} - x_n}{y_{n+1} - y_n}$. По условию $\lim a_n = 0$. Зафиксируем  $\varepsilon > 0$. Тогда найдется номер  $m$, такой, что при $n \ge m \Rightarrow |a_n| < \varepsilon$. Тогда $|x_{n+1} -x_n| = |a_n|(y_{n+1} - y_n) < \varepsilon (y_{n+1} - y_n)$.  $|x_n - x_m| \le |x_n - x_{n-1}| + |x_{n-1} + x_{n-2}| + \ldots + |x_{m+1} - x_m| < \varepsilon(y_n - y_{n-1}) + \varepsilon(y_{n-1} + y_{n-2}) + \ldots + \varepsilon(y_{m+1} - y_m) = \varepsilon(y_n - y_m)$.
 
-    Теперь посмотрим на $|\frac{x_n}{y_n}| \le \frac{|x_n -x_m| + |x_m|}{|y_n|} < \frac{\varepsilon(y_n - y_m)}{y_n} + \frac{|x_m|}{y_n} < \varepsilon \frac{y_m}{y_n} + \frac{|x_m|}{y_n} = \varepsilon + \frac{|x_m|}{y_n} < 2\varepsilon$. Берем такой $N: \forall n \ge N y_n \ge \frac{1}{\varepsilon}|x_m|$. Если $n > \max\{m, N\}$, то  $|\frac{x_n}{y_n}| < 2\varepsilon$. Тогда  $\lim \frac{x_n}{y_n} = 0$
+    Теперь посмотрим на $|\frac{x_n}{y_n}| \le \frac{|x_n -x_m| + |x_m|}{|y_n|} < \frac{\varepsilon(y_n - y_m)}{y_n} + \frac{|x_m|}{y_n} < \varepsilon \frac{y_n}{y_n} + \frac{|x_m|}{y_n} = \varepsilon + \frac{|x_m|}{y_n} < 2\varepsilon$. Берем такой $N: \forall n \ge N y_n \ge \frac{1}{\varepsilon}|x_m|$. Если $n > \max\{m, N\}$, то  $|\frac{x_n}{y_n}| < 2\varepsilon$. Тогда  $\lim \frac{x_n}{y_n} = 0$
 \end{proof}
