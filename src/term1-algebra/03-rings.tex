@@ -234,3 +234,46 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 \begin{theorem}[КТО 2]
     $m_1,m_2,m_3,\ldots,m_n \in \Z \land (m_i, m_j) = 1 \Rightarrow \Z / m_1,m_2,\ldots,_n \Z \mapsto \Z / m_1\Z \times \Z / m_2\Z \ldots$ - изоморфизм колец. 
 \end{theorem}
+\begin{theorem}[КТО без колец]
+    $\forall m_1, \ldots, m_n \in \Z$, $\forall a_1, \ldots, a_n$ $(m_i, m_j) = 1 \Rightarrow \exists x_0 \in Z x \equiv a_1 \pmod{m_1} \land \ldots \land x \equiv a_n \pmod{m_n} \iff x \equiv x_0 \pmod {\prod_i m_i}$
+\end{theorem}
+\slashn
+То есть по факту мы хотим получить обратную функцию к $f_{m_1,m_2,\ldots}: \overline{a_{m_1m_2m_3}} \mapsto (\overline{a_{m_1}}, \overline{a_{m_2}}, \overline{a_{m_3}})$. Пусть тогда $g=f^{-1}$. Заметим, что  $g$ --- гомоморфизм колец. Раз  $g$ сохраняет операции, то  $g(\overline{x}, \overline{y}, \overline{z}) = g(\overline{x}, 0, 0) + g(0, \overline{y}, 0) + g(0, 0, \overline{z}) = \overline{x}g(1, 0, 0) + \overline{y}g(0, 1, 0) + \overline{z}g(0, 0, 1)$.
+
+Пусть  $x=g(1, 0, 0) \iff \begin{cases} x \equiv 1 \pmod{m_1} \\ x \equiv 0 \pmod{m_2} \\ x \equiv 0 \pmod{m_3} \end{cases} \iff \begin{cases} x \equiv 1 \pmod{m_1} \\ x \equiv 0 \pmod{m_1m_2} \end{cases}$.
+
+В группе $\forall a \neq e\; \forall x: ax \neq x$. Тогда посмотрим группу  $(\Z / m\Z \times \Z / n\Z) \supset \{(a, 0) \mid a \in \Z / m\Z\} \cong \Z / m\Z$.
+ 
+Тогда для любого $n \in \N: n = p_1^{\alpha_1} p_2^{\alpha_2}\ldots p_n^{\alpha_3}$  $\Z / n\Z \cong \Z / p_1^{\alpha_1}\Z \times \ldots \times \Z / p_n^{\alpha_n}$.
+\begin{example}
+    Для того, чтобы решить $b^2 = a$ надо решить  $b_i^2 = a$ для все состовляющих.
+\end{example}
+\begin{definition}
+    Пусть $C$ --- группа ($a \in C$), тогда порядок элемента $a$:  $\ord(a) = \{\min k \in \N \mid a^k = 1\}$. А если такого  $k$ нет, то  $\ord(a) = \infty$
+\end{definition}
+\begin{lemma}
+    Пусть $G$ --- группа ($a \in G$). $\langle a \rangle = \{a, a^2,\ldots; a^{-1}, (a^{-1})^2, \ldots, e\} = \{a^k \mid k \in \Z\}$.Тогда $(\langle a \rangle, *)$ --- группа.
+\end{lemma}
+\begin{proof}
+    Проверим замкнутость относительно операций: 0-рной ($\{\dot\} \to e$), унарной $a \to a^{-1}$, бинарной  $(a, b) \to a * b$.
+    \begin{itemize}
+        \item $e = a^0 \in \langle a \rangle$
+        \item  $b \in \langle a \rangle. b = a^k \Rightarrow b^{-1} = a^{-k} \in \langle a \rangle$.
+        \item  $b, c \in \langle a \rangle$.  $b = a^k, c = a^l \Rightarrow bc = a^{k+l} \in \langle a \rangle$.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    $\langle a \rangle$ называется циклической группой, порожденной  $a$.  $G$ --- циклическая группа  $ \iff \exists a \in G G \cong \langle a \rangle$
+\end{definition}
+\begin{theorem}
+    $\ord a = \infty \Rightarrow \langle a \rangle \cong (\Z, +)$.  $\ord a = k \in \N \Rightarrow \langle a \rangle \cong (\Z / k\Z, +)$
+\end{theorem}
+\begin{proof}
+    $f: (\Z, +) \to \langle a \rangle$. То есть  $k \mapsto a^k$.  $f(k+l) = a^{k+l} = a^k \cdot a^l = f(k) + f(l)$. Тогда $f$ --- сюръекция по определению циклической группы.
+
+    Докажем инъективность. Пусть $a^k = a^l \iff a^{k-l} \cdot a^l = e a^l \iff a^{k-l} = e$. Но  $\ord a = \infty$! Значит $k-l=0$.  
+
+    Теперь $\ord a \neq \infty$. Тогда построим  $f: \Z / k \Z \to \langle a \rangle$, то есть  $\overline{m_k} \mapsto a^m$.
+
+    Корректность:  $\overline{m_k} = \overline{n_k} \Rightarrow (m - n) $
+\end{proof}
