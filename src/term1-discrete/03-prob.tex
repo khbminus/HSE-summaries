@@ -5,10 +5,46 @@
 Событие $A$ --- подмножество  $\Omega$. 
 
 Рассмотрим какой-то набор событий, добавим туда  $\varnothing, \Omega$. Получим алгебру. Тогда вероятность это отображение  $P: \Omega \mapsto [0, 1]$, такое что  $\sum_{\omega \in \Omega} P(\omega)=1$. Тогда  $P(A) = \sum_{\omega \in A} P(\omega).$
-\begin{enumerate}[label=Свойства]
+\begin{enumerate}[]
     \item $P(\varnothing) = 0, P(\Omega) = 1$
     \item  $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
 \end{enumerate}
  \begin{definition}
     Назовем события $A$ и  $B$ несовместными, если  $A \cap B = \varnothing$.
 \end{definition}
+\slashn 
+Некоторым очень хочется дать определение вида $P_r(A) = \frac{|A|}{|\Omega|}$. Это не работает, если события не равновероятны. 
+
+Пусть есть два события на кубике: $A$ --- число > 3,  $B$ --- четное число.  $P_r(A) = \frac{1}{2}, P_r(B) = \frac{1}{2}$.
+
+Теперь пусть есть инсайд: событие $A$ произошло. Тогда  $P_r(B \mid A) = \frac{2}{3}$. Тогда посмотрим на картинку и получим $P_r(B \mid A = \frac{|A \cap B|}{|A|})$. Но не забудем, про то, что мы смотрели на равновероятные события, тогда поделим на $|\Omega|$. Получим  $P_r(B|A) \defeq \frac{P_r(A \cap B)}{P_r(A)}$.
+
+Посмотрим на крайние случаи: $P_r(A | A) = 1$,  $P_r(A | \Omega) = P_r(A)$,  $P_r(B|A) = 1$, если  $A \subseteq B$.
+
+Тогда пусть $B_1 \cap B_2 = \varnothing$. Тогда  $P_r((B_1 \cup B_2) \cap A) = P_r((B_1 \cap A) \cup (b_2 \cap A)) = P_r(B_1 \cap A) + P_r(B_2 \cap A)$. А $P_r(B_1 \cup B_2 \mid A) = P_r(B_1 \mid A) + P_r(B_2 \mid A)$.
+
+Посмотрим на $P_r(B | \overline{A}) = \frac{1}{3}$. Докажем, что $P_r(B \mid A) \cdot P_r(A) + P_r(B \mid \overline{A}) \cdot P_2(\overline{A}) = 1$.
+Докажем формулу полной вероятности.
+ \begin{proof}
+     Пусть $\Omega$ разбита на блоки  $\{A_1,\ldots,A_k\}$. Заметим, что $P_r(B) = P_r(B \cap \Omega) = P_r(B \cap (A_1 \cup \ldots \cup A_k)) = P_r((B \cap A_1) \cup (B \cap A_2) \cup \ldots \cup (B \cap A_k))$. Дальше заметим, что $\forall i, j: A_i \cap A_j = \varnothing$. Тогда получаем $P_r(B \cap A_1) + P_r(B \cap A_2) + \ldots + P_r(B \cap A_k)$. Применив формулу условной вероятности, получим формулу полной вероятности: \[
+         P_r(B) = P_r(B \mid A_1) \cdot P_r(A_1) + P_r(B \mid A_2) \cdot P_r(A_2) + \ldots + P_r(B | A_k) \cdot P_r(A_k)
+     .\] 
+\end{proof}
+Заметим, что $P_r(A \cap B) = P_r(B \mid A) \cdot P_r(A)$ и  $P_r(B \cap A) = P_r(A \mid B) \cdot P_r(B) \Rightarrow P_r(A\mid B) = \frac{P_r(B \mid A) P_r(A)}{P_r(B)}$. Тогда, вспомнив формулу полной вероятности, получаем: \[
+    P_r(A_i \mid B) = \frac{P_r(B \mid A_i) \cdot P_r(A_i)}{\sum_{j=1}^k P_r(B \mid A_j) \cdot P_r(A_j)}
+.\] 
+
+Пусть у вас есть событие $P_r(B)$, причем  $P_r(B) = P_r(B \mid A) = \frac{P_r(A \cap B)}{P_2(A)}P_r(A) \Rightarrow P_r(A \cap B) = P_r(A) \cdot P_r(B)$
+
+ \begin{definition}
+    Два события называются независимыми, если вероятность их пересечения равна произведению вероятностей этих событий.
+\end{definition}
+\slashn
+Схема Бернулли: есть $n$ независимых испытаний, где есть два исхода:  $p>0$ и  $q>0$,  $p+q=1$. Все элементарных исходов можно записать в виде бинарной строки длины  $n$.  Тогда для какого-то $\omega$  $P_r(\omega) = p^k \cdot q^{n-k}, k = \sum_{i=1}^n a_i$. Заметим, что  $\sum_{k=0}^n \binom{n}{k}p^kq^{n-k} = (p+q)^n = 1^n = 1$. 
+\begin{definition}
+    Независимые в совокупности события --- события  $A_1, \ldots, A_k$, такие что $P_r(A_1 \cap A_2 \cap \ldots \cap A_k) = P_r(A_1) \cdot P_r(A_2) \cdot \ldots \cdot P_r(A_k)$,
+\end{definition}
+\slashn
+$\Omega_1 = \{\text{успех},\text{неудача}\}$, $P_{r_1}(\omega) = \begin{cases} p & \text{успех} \\ q & \text{неуспех} \end{cases}$,  $A_1 = \{ \varnothing, \text{успех}, \text{неудача}, \Omega\}$. Тогда $\Omega = \Omega_1 \times \ldots \Omega_n$, $A = A_1 \times \ldots \times A_n$. 
+
+Тогда рассмотрим $(\Omega_1, A_1, P_{r_1})$, $(\Omega_2, A_2, P_{r_2})$. Тогда $\Omega = \Omega_1 \times \Omega_2$, $A = A_1 \times A_2$. Тогда события $A_1 \times \Omega_2$, $\Omega_1 \times A_2$.
