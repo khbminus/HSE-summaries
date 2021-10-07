@@ -423,5 +423,170 @@
 \begin{proof}
     Ключевой случай: $l = 0$. Пусть  $a_n \coloneqq \frac{x_{n+1} - x_n}{y_{n+1} - y_n}$. По условию $\lim a_n = 0$. Зафиксируем  $\varepsilon > 0$. Тогда найдется номер  $m$, такой, что при $n \ge m \Rightarrow |a_n| < \varepsilon$. Тогда $|x_{n+1} -x_n| = |a_n|(y_{n+1} - y_n) < \varepsilon (y_{n+1} - y_n)$.  $|x_n - x_m| \le |x_n - x_{n-1}| + |x_{n-1} + x_{n-2}| + \ldots + |x_{m+1} - x_m| < \varepsilon(y_n - y_{n-1}) + \varepsilon(y_{n-1} + y_{n-2}) + \ldots + \varepsilon(y_{m+1} - y_m) = \varepsilon(y_n - y_m)$.
 
-    Теперь посмотрим на $|\frac{x_n}{y_n}| \le \frac{|x_n -x_m| + |x_m|}{|y_n|} < \frac{\varepsilon(y_n - y_m)}{y_n} + \frac{|x_m|}{y_n} < \varepsilon \frac{y_n}{y_n} + \frac{|x_m|}{y_n} = \varepsilon + \frac{|x_m|}{y_n} < 2\varepsilon$. Берем такой $N: \forall n \ge N y_n \ge \frac{1}{\varepsilon}|x_m|$. Если $n > \max\{m, N\}$, то  $|\frac{x_n}{y_n}| < 2\varepsilon$. Тогда  $\lim \frac{x_n}{y_n} = 0$
+    Теперь посмотрим на $|\frac{x_n}{y_n}| \le \frac{|x_n -x_m| + |x_m|}{|y_n|} < \frac{\varepsilon(y_n - y_m)}{y_n} + \frac{|x_m|}{y_n} < \varepsilon \frac{1y_n}{y_n} + \frac{|x_m|}{y_n} = \varepsilon + \frac{|x_m|}{y_n} < 2\varepsilon$. Берем такой $N: \forall n \ge N y_n \ge \frac{1}{\varepsilon}|x_m|$. Если $n > \max\{m, N\}$, то  $|\frac{x_n}{y_n}| < 2\varepsilon$. Тогда  $\lim \frac{x_n}{y_n} = 0$
+
+    Рассмотрим случай $l \in \R$. Рассмотрим  $\widetilde{x_n} \coloneqq x_n - l y_n$. Тогда  $\frac{(\widetilde{x_{n+1}} - \widetilde{x_n}) - (x_n - l y_n)}{y_{n+1} - y_n} = \frac{x_{n+1} - x_n}{y_{n+1} - y_n} - l \to 0$, т.к. $\frac{x_{n+1} - x_n}{y_{n+1} - y_n} \to 0$. 
+
+    Рассмотрим случай $l = +\infty$.  $\frac{x_{n+1} - x_n}{y_{n+1} - t_n} \to +\infty \Rightarrow \frac{x_{n+1} - x_n}{y_{n+1} - y_n} > 1$ при $n \ge N \Rightarrow x_{n+1} - x_n > y_{n+1} - y_n > 0 \Rightarrow x_n \uparrow$.
+
+    Из того, что для $x_n - x_{n-1} > y_n - y_{n-1} \land \ldots \land x_{N + 1} - x_{N} > y_{N} - y_{N-1} \Rightarrow x_n - x_N > y_n - y_N \Rightarrow x_n > \underbrace{y_n}_{\to +\infty} + \underbrace{(x_N - y_N)}_{=const} \Rightarrow x_n \to +\infty$. Тогда $\frac{y_{n+1} - y_n}{x_{n+1} - x_n} \to 0 \xRightarrow{\text{Случай 0}} \frac{y_n}{x_n} \to 0 \Rightarrow \frac{x_n}{y_n} \to \infty \frac{x_n}{y_n} \to +\infty$.
+
+    Случай  $l=-\infty$.  $\widetilde{x_n} = -x_n$.
+\end{proof}
+\begin{example}
+    $S_n = 1^k + 2^k + \ldots + n^k < n^nk = n^{k+1}$. Можно еще взять половину: получим $\le \frac{n^{k+1}}{2^{k+1}}$
+
+    Тогда $\lim \frac{S_n}{n^{k+1}} = \lim \frac{S_n - S_{n-1}}{n^{k+1} - (n-1)^{k+1}} = \lim \frac{n^k}{n^{k+1} - (n^{k+1} - k\cdot n^k + \frac{k(k-1)}{2} n^{k-1} - \ldots)} = \lim \frac{1}{k - \ldots n^{-1} + \ldots n^{-2} + \ldots} = \frac{1}{k}$
+\end{example}
+\begin{remark}
+    Тоже самое можно сказать, если $y_n \downarrow -\infty$
+\end{remark}
+\begin{theorem}[Теорема Штольца 2]
+    $\lim x_n = \lim y_n = 0 \land y_n > y_{n+1} > 0$. Тогда  $\lim \frac{x_{n+1} - x_n}{y_{n+1} - y_n} = l \in \overline{\R} \Rightarrow \lim \frac{x_n}{y_n} = l$.
+\end{theorem}
+\begin{proof}
+    Случай $l = 0$.  $a_k \coloneqq \frac{x_{k+1} - x_k}{y_{k+1} - y_k}$.  $\lim a_n = 0$. Возьмем  $\varepsilon > 0$ и найдем  $m \ge N: |a_n| < \varepsilon$ при  $n \ge N$. Тогда $x_n - x_m = (x_n - x_{n-1}) + (x_{n-1} + x_{n-2}) + \ldots + (x_{m+1} - x_m) = a_{n-1}(y_n - y_{n-1}) + a_{n-2}(y_{n-1} - y_{n-2}) + \ldots + a_{m} (y_{n+1} - y_n).$
+
+    Тогда $|x_n - x_m| \le |a_{n-1}|(y_{n-1} - y_n) + \ldots + |a_m|(y_m - y_{m-1}) < \varepsilon ((y_{n-1} - y_n) + (y_{n-2} - y_{n-1}) + \ldots + (y_m - y_{m+1})) = \varepsilon(y_m - y_n)$ 
+
+    $|x_n - x_m| < \varepsilon(y_m - y_n) \to \varepsilon y_m \Rightarrow |x_m| \le \varepsilon y_m \Rightarrow |\frac{x_m}{y_m} \le \varepsilon$. Получили определение предела!!!
+
+    Случай $l \in \R$. См. выше.
+
+    Случай $l = +\infty$ нужна лишь монотонность.
+
+    Случай  $l = -\infty$.
+\end{proof}
+\Subsection{Подпоследовательность}
+\begin{definition}
+    Последовательность: последовательность $x_{n_i}$, заданная как набор индексов $n_i: 1 \le n_1 < n_2 < n_3 < \ldots$. 
+\end{definition}
+\slashn
+Свойства.
+\begin{enumerate}
+    \item $n_k \ge k$. Индукция. $n_{k+1} > n_k \ge k$.
+    \item Если последовательность предел в $\overline{\R}$, то подпоследовательность имеет тот же предел.
+    \item Две две подпоследовательности  $x_{n_1}, x_{n_2},\ldots$ и $x_{m_1}, x_{m_2},\ldots$ в объединение дают всю последовательность и они имеют один и тот же предел $l \in \overline{R}$, то  $\lim x_n = l$. Доказательство по картинке.
+\end{enumerate}
+\begin{theorem}[О стягивающихся отрезках]
+    Пусть $[a_1; b_1] \supset [a_2; b_2] \supset [a_3, b_3] \supset \ldots$ и $\lim (b_n - a_n) = 0$. Тогда  $\exists! c \in \R$ принадлежащая всем отрезкам и  $\lim a_n = \lim b_n = c$.
+\end{theorem}
+\begin{proof}
+    Существование следует из теоремы о вложенных отрезка. Докажем единственность. Пусть $c, d \in [a_n; b_n]$. Тогда  $c-d \le b_n - a_n \to 0 \Rightarrow c = d$.
+
+    Проверим, что $\lim a_n=c$.  $|a_n - c|$ --- длина подотрезка  $[a_n; b_n]$, тогда $|a_n - c| \le b_n - a_n \to 0 \Rightarrow a_n - c \to 0 \Rightarrow \lim a_n = c$.
+\end{proof}
+\begin{theorem}[Больцано-Вейерштрасса]
+    Из любой ограниченной последовательности можно выделить сходящуюся подпоследовательность. То есть, если $x_n$ --- ограниченная последовательность, то существует  $x_{n_k}$ имеющая конечный предел.
+\end{theorem}
+\begin{proof}
+    $a$ --- нижняя граница,  $b$ --- верхняя для  $x_n$. То есть  $\forall n: x_n \in [a; b]$. В какой-то половине отрезка бесконечное число членов (иначе в сумме конечное число членов). Назовем подходящую $[a_1;b_1]$. Теперь делю эту половинку пополам. В одной из половинок половинки бесконечное число членов. Получили процесс деления отрезков на кусочки. 
+
+    Заметим, что $[a; b] \supset [a_1; b_1] \supset \ldots$. $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда $\exists c \in R: \lim a_n = \lim b_n = c$. Берем  $[a_1; b_1]$, там бесконечное число членов. Берем какой-то $x_{n_1}$. Берем $[a_2; b_2]$, там есть  $x_{n_2} > n_1$. Тогда получили возрастание индексов и  $x_{n_k} \in [a_k; b_k]$.  $a_k \le x_{n_k} < b_k$, то тогда по двум милиционерам $\lim x_{n_k} = c$.
+\end{proof}
+\begin{theorem}
+    Несколько пунктов:
+    \begin{enumerate}
+        \item Монотонная неограниченная последовательность стремится к $\pm\infty$.
+        \item Из неограниченной сверху последовательности можно выбрать подпоследовательность, стремящуюся к $+\infty$.
+        \item Из неограниченной снизу последовательности можно выбрать подпоследовательность, стремящуюся к $-\infty$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Пусть $x_n$ монотонно возрастает. Докажем, что  $\lim x_n = +\infty$. Берем  $E$. Это не верхняя граница, значит найдется  $x_N > E \Rightarrow n \ge N \Rightarrow E < x_N \le X_{N+1} \le \ldots \le x_n$.
+        \item 1 --- не верхняя граница $\Rightarrow$ есть  $x_{n_1} > 1$. 2 +  $x_{n_1}$ ---  не верхняя граница $\Rightarrow$ есть  $x_{n_k} > 2 + x_{n_k} + 2$. И так далее \ldots Получилось, что $x_{n_k} > k \to \infty \Rightarrow x_{n_k} \to +\infty$. Дальше переставим члены в порядке возрастания индексов.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    $l$ --- Частичный предел предел последовательности, если существует подпоследовательность, стремящаяся к $l$.
+\end{definition}
+\begin{remark}
+    Больцано-Виерштрасса + 2/3 пункт предыдущей теоремы говорят о том, что частичный предел точно существует.
+\end{remark}
+\begin{definition}
+    Пусть $l \in \R$. Тогда окрестность  $l$  --- произвольный интервал  $(l-\varepsilon; l+\varepsilon)$.
+\end{definition}
+\begin{definition}
+    Окрестность $+\infty$ --- луч  $(E; +\infty)$,  $-\infty$ --- луч $(-\infty; E)$
+\end{definition}
+\begin{theorem}
+    $l \in \overline{R}$ --- частичный предел последовательности  $\iff $ в любой окрестности  $l$ содержится бесконечно много членов.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item $\Rightarrow$ $l$ --- частичный предел  $\Rightarrow$ найдется подпоследовательность  $x_{n_k} \to l \Rightarrow$ вне любой окрестности  $l$ конечное число членов последовательности $\Rightarrow$ внутри конечное.
+        \item $\Leftarrow$ точка в  $(l-1, l+1)$ бесконечно мало членов последовательности. Если бесконечное число совпало с  $l$, то берем их в качестве подпоследовательности. 
+
+            Если конечно, то берем член, не равный  $l$. Пусть это  $x_{n_1} \neq l$. Рассмотрим  $\varepsilon_2 = \min \{\frac{1}{2}, |x_{n_1} - l|\}>0$. Тогда в $(l-\varepsilon_2; l + \varepsilon_2$ бесконечное число членов. Берем  $n_2 > n_1$ и  $x_{n_2} \neq l$. Берем  $n_2 > n_1$. Рассмотрим $\varepsilon_3$ \ldots. Получилось $n_1 < n_2 < \ldots$ и $0 \le |x_{n_k} - l| < \varepsilon_k \le \frac{1}{k} \to 0$.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    $x_n$ --- фундаментальная (сходящаяся в себе, последовательность Коши), если  $\varepsilon >0 \exists N: m, n \ge N |x_n - x_m| < \varepsilon$.
+\end{definition}
+\begin{property}
+    Сходящаяся последовательность фундаментальна.
+\end{property}
+\begin{proof}
+    Берем $\varepsilon$. Пусть предел  $l = \lim x_n$. Берем  $\varepsilon>0$.  $\exists N \forall n \ge N |x_n - l| < \frac{\varepsilon}{2} \land |x_m - l| < \frac{\varepsilon}{2} \Rightarrow |x_n - x_m| \le |x_n - l| + |l - x_m < \varepsilon$ 
+\end{proof}
+\begin{property}
+    Фундаментальная последовательность ограничена.
+\end{property}
+\begin{proof}
+    Берем $\varepsilon=1$. Тогда  $\exists N \forall m, n \ge N: |x_n - x_m| < 1 \Rightarrow |x_n - x_N| < 1 \Rightarrow |x_n| < 1 + |x_N| \Rightarrow |x_n| \le \max\{|x_1|, \ldots, |x_{N-1}|, 1 + |x_n|$.
+\end{proof}
+\begin{property}
+   Если фундаментальная последовательность содержит сходящуюся последовательность, то она сама сходящаяся.
+\end{property}
+\begin{proof}
+    Берем $\varepsilon >0$.  $\exists N: \forall n, m \ge N |x_n - x_m| < \varepsilon$. $\exists K: \forall k \ge K |x_{n_k} - l| < \varepsilon$. Возьмем $n \ge N$ и рассмотрим $x_n - l \le |x_n - x_{n_k}| + |x_{n_k} -l| < 2 \varepsilon$, если $k = \max\{N, K\}$.
+\end{proof}
+\begin{theorem}[Критерий Коши]
+    Последовательности фундаментальна $\iff$ последовательность сходящаяся. 
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item $\Leftarrow$. Св-во 1.
+        \item  $\Rightarrow$ Фундаментальна  $\Rightarrow$ ограничена  $\Rightarrow$ существует сходящаяся подпоследовательность.
+    \end{itemize}
+\end{proof}
+\begin{example}
+    $x_n \coloneqq \displaystyle \sum_{k=1}^n \frac{\sin k}{2^k}$. Проверим фундаментальность. Пусть $n > m$.  $|x_n - x_m| = |\sum_{k=m+1}^n \frac{\sin k}{2^k}| \le \sum_{k=m+1}^n \frac{|sin k|}{2^k} \le \sum_{m+1}^n \frac{1}{2^k} = \frac{1}{2^m} - \frac{1}{2^n} < \frac{1}{2^m} < \varepsilon$.
+\end{example}
+\begin{definition}
+    $x_n$ --- последовательность.  $y_n \coloneqq \inf_{k \ge n} x_k, z_n \coloneqq \sup_{k \ge n} x_k$. Тогда верхний предел $x_i$  $\overline{\lim} x_n = \lim z_n$, а нижний предел  $\underline{\lim} x_n = \lim y_n$
+\end{definition}
+\begin{theorem}
+    $\exists \underline{\lim}$ и $\overline{\lim}$.  $\overline{\lim} \ge \underline{\lim}$.
+\end{theorem}
+\begin{proof}
+    $y_n \le z_n \Rightarrow \underline{\lim} \le \overline{\lim}$.
+
+    Существование. $y_n$ монотонно убывает.  $y_{n+1} = \inf \{x_{n+1},\ldots\} \ge \inf\{x_n,\ldots\} = y_n$. Тогда у нее есть предел. Аналогично $z_n$ монотонно убывает.
+\end{proof}
+\begin{remark}
+    $\overline{\lim} = \inf z_n = \inf \sup_{k \ge n} x_n$.
+
+    $\underline{\lim} = \sup y_n = \sup \inf_{k \ge n} x_n$.
+\end{remark}
+
+\begin{theorem}
+    \slashn
+    \begin{enumerate}
+        \item Верхний предел --- наибольший из всех частичных пределов.
+        \item Нижний предел --- наименьший из всех частичных пределов.
+        \item Если $\underline{\lim} = \overline{\lim}$, то последовательность имеет предел и он равен  $\underline{\lim}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item
+        \item
+        \item $y_n = \inf \{x_n, x_{n+1},\ldots\} \le x_n \le \sup \{x_n, x_n+1,\ldots\} = x_n$. Тогда два милиционера.
+    \end{enumerate}
 \end{proof}
