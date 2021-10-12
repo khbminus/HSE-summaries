@@ -1,0 +1,36 @@
+\Subsection{Численные характеристики}
+$\xi(\omega) \in X = \{x_1,\ldots,x_n\}$. $\{p_1,p_n\}$ --- распределение вероятности: $p_i = \Pr(\xi(\omega) = x_i)$. Посмотрим на среднее:  $\frac{x_1\cdot(p_1N) + x_2\cdot(p_2N) + \ldots + x_n \cdot (p_n N)}{N} = \sum_{i=1}^n p_i \cdot x_i \eqqcolon E(\xi)$. 
+
+\begin{definition}
+    $E(\xi)$ --- мат. ожидание величины  $\xi$.
+\end{definition}
+\slashn
+\begin{definition}
+    Медианой называется число $m$, такое что  $\Pr(\xi(\omega) \ge m) \ge \frac{1}{2}$ и $\Pr(\xi(\omega) \le m) \ge \frac{1}{2}$
+\end{definition}
+\begin{example}
+    Пусть в университете работает 100 человек, у 96 зарплата 20 тысяч рублей, у 4 --- 2 миллиона. Тогда $E = 99200$ рублей. А медиана равна 20 тысячам. Поэтому медиану лучше использовать в неравномерных распределениях. 
+\end{example}
+\slashn
+Помним, что  $E(\xi) = \sum_{k=1}^n x_k \cdot p_k = \sum_{\omega \in \Omega} \xi(\omega) \cdot \Pr(\omega)$. Так как $p_k = \Pr(\xi(\omega) = x_k) = \sum_{\omega: \xi(\omega) = x_k}  \Pr(\omega)$.
+
+\begin{statement}
+$E(c_1 \xi_1 + c_2 \xi_2) = c_1E(\xi_1) + c_2E(\xi_2)$.
+\end{statement}
+\begin{proof}
+    $E(\xi_1 + \xi_2) = \sum_{\omega \in \Omega}(\xi_1 + \xi_2) \Pr(\omega) = \sum_{\omega} \xi_1 \Pr(\omega) + \sum_{\omega} \xi_2 \Pr(\omega) = E(\xi_1) + E(\xi_2)$
+\end{proof}
+\begin{definition}
+    Дисперсия $Var(\xi) = E(\xi - E(\xi))^2$
+\end{definition}
+\slashn
+Посчитаем это: $=E(\xi^2 - 2E(\xi)\xi + E^2(\xi)) = E(\xi^2) - 2 E(\xi) E(\xi) + E^2(\xi) = E(\xi^2) - E^2(\xi)$.
+
+Заметим, что дисперсия не линейна: $Var(\xi_1 + \xi_2) = E((\xi_1 + \xi_2)^2) - E^2(\xi_1 + \xi_2) = \ldots = E(\xi_1^2) + 2 E(\xi_1 \cdot \xi_2) + E(\xi^2) - E^2(\xi_1) - 2E(\xi_1) E(\xi_2) -E^2(\xi_2) = Var(\xi_1) + Var(\xi_2) + 2 cor(\xi_1; \xi_2)$, где $cor(\xi_1, \xi_2) = E(\xi_1 \xi_2) - E(\xi_1) \cdot E(\xi_2)$
+
+\begin{theorem}[Теорема Чебышева]
+    $E((\xi - \mu)^2 \ge \alpha) \le \frac{Var(\xi)}{\alpha} \; \forall \alpha>0$, где $\mu \coloneqq E(\xi)$.
+\end{theorem}
+\begin{consequence}
+    $\sigma \coloneqq \sqrt{Var(\xi)}; Var(\xi) = \sigma^2 \Rightarrow \alpha = c^2 \sigma^2$. Тогда  $E(|\xi-\mu| \ge c \sigma) \le \frac{1}{c^2}$.
+\end{consequence}
