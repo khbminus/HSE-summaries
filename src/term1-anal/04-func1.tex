@@ -1,0 +1,95 @@
+\Subsection{Предел функции}
+\begin{definition}
+    $a \in \R$, тогда  $U_a$ --- окрестность точки  $a$  $\Leftarrow U_a = (a-\varepsilon, a + \varepsilon)$.
+\end{definition}
+\begin{definition}
+    $\dot{U_a} = U_a \setminus \{a\}$ --- выколотая окрестность.
+\end{definition}
+\begin{definition}
+    $E \subset \R$ a --- предельная точка  $E$, если любая  $\dot{U_a}$ пересекается с  $E$.
+\end{definition}
+\begin{theorem}
+    Следующие условия равносильны:
+    \begin{enumerate}
+        \item $a$ --- предельная точка  $E$.
+        \item В любой  $U_a$ содержится бесконечное кол-во точек из  $E$.
+        \item  $\exists \{a_n\}: \forall n: a_n \in E \land a_n \to a$. Более того, можно выбрать последовательность  $x_n \in E$ так, что  $|x_n - a| \downarrow 0$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item $2 \Rightarrow 1$. $U_a cap E$ содержит бесконечное число точек  $\Rightarrow$ хотя бы одна из них не  $a$ и тогда  $\dot{U_a} \cap E \neq \varnothing$.
+        \item $3 \Rightarrow 2$. Берем  $x_n \neq a \in E: \lim x_n = a$. Возьмем  $U_a = (a-\varepsilon, a+\varepsilon)$.  $\exists N: \forall n \ge N\; x_n \in (x_n) \in U_a$.
+        \item $1 \Rightarrow 3$. Возьмем $\varepsilon_1 = 1$:  $(a-1; a+1)$ содержит точку из $E \setminus \{a\}$. Назовем такую точку $x_i$.
+
+            Возьмем  $\varepsilon_2 = \min\{\frac{1}{2}, |x_i - a|\} > 0: (a - \varepsilon_2; a + \varepsilon_2)$ содержит точку из $E \setminus \{a\}$. Назовем её  $x_2$.
+
+            Возьмем  $\varepsilon_3 = \min\{\frac{1}{3}, |x_2 - a|\} > 0$ (заметим, что $|x_2 - a| < \varepsilon_2 < |x_1 - a|$). Тогда $(a-\varepsilon_3, a + \varepsilon_3)$ содержит точку из  $E \setminus \{a\}$.
+
+            Получили  $|x_1-a| > |x_2 - a| > \ldots$ причем $|x_k - a| < \varepsilon_k = \min\{\frac{1}{k}, |x_{k-1} - a|\} \le \frac{1}{k} \to 0 \Rightarrow x_k - a \to 0 \Rightarrow x_k \to a$. 
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    Пусть $a$ --- предельная точка  $E$.  $f: E \to \R$. Тогда  $A = \lim_{x\to a} f(x)$, если
+     \begin{enumerate}
+         \item По Коши. $\forall \varepsilon > 0\, \exists \delta >0 \, \forall x \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon$.
+         \item Окрестности. $\forall U_A \exists U_a: f(\dot{U_a} \cap E) \subset U_A$.
+         \item По Гейне. Для любой последовательности  $a \neq x_n \in E: \lim x_n = a \Rightarrow f(x_n) = A$.
+    \end{enumerate}
+\end{definition}
+\begin{proof}[Равносильность 1. и 2.]
+    $\forall U_a \exists U_a: f(\dot{U_a} \cap E) \subset U_A$.  
+
+    $\forall U_a \iff \forall \varepsilon > 0: U_A = (A - \varepsilon, A + \varepsilon)$. 
+
+    $\exists U_a \iff \exists \delta > 0: U_a = (a - \delta, a + \delta)$.  
+
+    $x \in \dot{U_a} \in E \iff x \in E \land x \in \dot{U_a} \iff 0 < |x-a|<\delta$.  
+
+    $f(\ldots)\in U_A \iff |f(x) - A| < \varepsilon$.
+\end{proof}
+\begin{property}
+    Определение предела --- локальное свойство. То есть, если $f$ и  $g$ совпадают в  $\dot{V_a}$, то либо оба предела не существуют, либо существуют и равны.
+\end{property}
+\begin{proof}
+    $\lim_{x\to a} f(x) = A$.  $\forall U_A \, \exists U_a: f(\dot{U_a} \cap E) \subset U_A$. Возьмем $U_a \cap V_a$. Тогда все совпадет.
+\end{proof}
+\begin{property}
+    Значение $f$ в точке  $a$ не участвует в определении.
+\end{property}
+\begin{property}
+    В определении по Гейне. Если для любой последовательности $x_n \in E: x_n \to a$  $\lim f(x_n)$ существует, то все эти пределы равны.
+\end{property}
+\begin{proof}
+    Пусть $x_n \in E x_n \to a$ и  $\lim f(x_n) = A$ и  $y_n \to E y_n \to a$ и  $\lim f(y_n) = B$.
+
+    Рассмотрим  $z_n \coloneqq x_1, y_1, x_2, y_2,\ldots \Rightarrow z_n \to a \Rightarrow \lim f(z_n) \eqqcolon C$. Но $\{f(x_n)\}$ --- подпоследовательность  $\{f(z_n)\} \Rightarrow \lim f(x_n) = \lim f(z_n) = C$. Тоже самое для  $y_n$.
+\end{proof}
+\begin{theorem}
+    Определение по Коши и по Гейне равносильны.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item $C \Rightarrow H$. $\forall \varepsilon > 0\, \exists \delta >0 \, \forall x \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon$. Пусть  $x_n \in E: \lim x_n = a$. Проверим, что  $\lim(x_n) = A$. Возьмем $\varepsilon > 0$, берем соответствующий  $\delta$ из определения. Найдется $N: \forall n \ge N: 0 \le \underbrace{|x_n-a|<\delta}_{\text{предел последовательности}} \Rightarrow |f(x_n) - A| < \varepsilon$. 
+        \item $H \Rightarrow C$. От противного: нашелся  $\varepsilon > 0$ для которого ни одна  $\delta > 0$ не подходит. Возьмем  $\delta =\frac{1}{n}$. Она не подходит, то есть $\exists x \in E: 0 < |x-a| < \delta$, но  $|f(x) - A| \ge \varepsilon$. Получили $x_n$. 
+
+            Посмотрим на последовательность:  $x_n \neq a \in E\; |x_n-a| < \frac{1}{n} \Rightarrow \lim x_n = a \Rightarrow \lim f(x_n) = A \Rightarrow |f(x_n) - A| < \varepsilon$. Противоречие. 
+    \end{itemize}
+\end{proof}
+\slashn
+Свойства пределов:
+\begin{enumerate}
+    \item Предел единственный.
+    \item Если существует $\lim_{x\to a} f(x) = A$, то  $f$ локально ограничена, то есть существует  $U_a$,  $f$ в  $U_a$ ограничена.
+    \item (Стабилизация знака). Если  $\lim_{x\to a} f(x) = A \neq 0$, то существует такая окрестность  $U_a$, что  $f(x)$ при  $x \in \dot{U_a}$ имеет тот же знак, что и  $A$.
+\end{enumerate}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Пусть  $\lim_{x\to a} f(x) = A$ и  $\lim_{x\to a} f(x) = B$. Возьмем  $\lim x_n \in E$, такой, что  $x_n \to a$ (рассматриваем только предельные точки $E$). Тогда $\lim f(x_n) = A$ и  $\lim f(x_n) = B$, но предел последовательности единственен $\Rightarrow A=B$.  
+        \item Возьмем $\varepsilon = 1$ в определении по Коши.  $\exists \delta > 0\, \forall x \in E 0 < |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon = 1$. $U_a = (a - \delta, a + \delta)$, тогда  $f$ ограничена на  $U_a \cap E$.  $|f(x)| \le |A| + |f(x) - A| < A + 1$. Аккуратно рассмотрим еще про $x = a$.
+        \item Пусть $A > 0$. Возьмем  $\varepsilon = A$.  $\exists \delta > 0: 0 < |x-a| < \delta \land x \in E \Rightarrow |f(x) - A| < A \iff 0 < f(x) < 2A$. Берем  $U_a = (a-\delta, a+\delta)$ для нее значения  $>0$.
+    \end{enumerate}
+\end{proof}

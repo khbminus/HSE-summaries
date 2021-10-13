@@ -585,8 +585,87 @@
 \begin{proof}
     \slashn
     \begin{enumerate}
-        \item
-        \item
+        \item Пусть $a = \overline{\lim} \in \R$. Тогда  $a = \lim z_n$, где  $z_n = \sup_{k \ge n} x_k$. Мы знаем, что $z_n \downarrow a$. Значем, что $z_1 \ge a = \sup x_n \Rightarrow n_1: x_{n_1} > a - 1$. Тогда знаем, что $z_{n_1+1} = \sup_{k \ge n + 1} \ge a \Rightarrow \exists n_2 > n_1: x_{n_2} > a-\frac{1}{3}$. И так далее.
+
+            Тогда получили $n_1 < n_2 < \ldots$ и $z_{n_k} > x_{n_k} > a-\frac{1}{k} \Rightarrow x_{n_k} \to a$. Так как $z_{n_k} \to a$.
+
+            Пусть $a = -\infty$, значит  $z_n \downarrow -\infty$, тогда  $x_n \le z_n \to -\infty \Rightarrow x_n \to -\infty$.
+
+            Пусть $a = +\infty$, значит  $\forall n: z_n = +\infty \Rightarrow$ последовательность  $x_n$ не ограничена сверху. Тогда выберем подпоследовательность, стремящаяся к $+\infty$.
+
+            Поняли, что  $a$ --- частичный предел. Докажем, что он максимальный. Возьмем $x_{n_k} \to b$. Тогда  $x_{n_k} < z_{n_k} \land x_{n_k} \to b \land z_{n_k} \to a \Rightarrow b \le a$. 
+        \item Упражнение.
         \item $y_n = \inf \{x_n, x_{n+1},\ldots\} \le x_n \le \sup \{x_n, x_n+1,\ldots\} = x_n$. Тогда два милиционера.
     \end{enumerate}
+\end{proof}
+\begin{theorem}
+    \slashn
+    \begin{enumerate}
+        \item $a = \underline{\lim x_n} \iff
+            \begin{cases}
+                \forall \varepsilon > 0\; \exists N \; \forall n \ge N: x_n > a - \varepsilon \\
+                \forall \varepsilon >0\; \forall N\; \exists n \ge N: x_n < a + \varepsilon
+            \end{cases}
+            $
+        \item $a = \overline{\lim x_n} \iff
+            \begin{cases}
+                \forall \varepsilon > 0\; \exists N \; \forall n \ge N: x_n < b + \varepsilon \\
+                \forall \varepsilon >0\; \forall N\; \exists n \ge N: x_n > b - \varepsilon
+            \end{cases} 
+            $
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+   Будем доказывать второй пункт.$z_n = \sup \{x_n, x_{n+1}, \ldots\}$
+   \begin{enumerate}
+       \item $\forall \varepsilon > 0 \exists N \forall n \ge N x_n < b + \varepsilon \xLeftrightarrow[\text{def } z_n]{\text{def } \sup} \forall \varepsilon > 0 \exists N: z_N < b + \varepsilon$. Там достаточно этого по определению $z_n$ и  $\sup$.
+       \item  $\forall \varepsilon > 0 \forall N \exists n \ge N x_n > b-\varepsilon \iff \varepsilon > 0 \forall N z_N > b - \varepsilon$. Так как $z_n \downarrow \iff \forall \varepsilon > 0 \exists N: \forall n \ge N: z_n \le b + \varepsilon$, а так же $\forall N \in N: z_n \ge b \land z_n > b + \varepsilon$, то $z_n \to b$.
+   \end{enumerate}
+\end{proof}
+\begin{theorem}
+    $\forall x_n, y_n: x_n \le y_n \Rightarrow \underline{\lim} x_n \le \underline{\lim} y_n \land \overline{\lim} x_n \le \overline{\lim} y_n$.
+\end{theorem}
+\begin{proof}
+    Раскрываем определения, получаем $\inf \{\ldots\} \le \inf\{\ldots\}$. 
+\end{proof}
+\begin{remark}
+    Арифметики нет. Пример: $x_n = (-1)^n, y_n = (-1)^{n+1}$.
+\end{remark}
+\Subsection{Ряды}
+\begin{definition}
+    $\sum_{n=1}^\infty a_n \coloneqq \lim \sum_{k=1}^n a_k$, если $\lim$ существует, и $\in \overline{\R}$.
+\end{definition}
+\begin{definition}
+    Ряд $\sum_{n=1}^\infty a_n$ --- сходится, если его сумма конечна, иначе ряд расходится.
+\end{definition}
+\begin{example}
+    $\sum_{n=0}^\infty q^n = \lim_{n\to\infty} \sum_{k=0}^n q^k = \lim \frac{q^{n+1} - 1}{q-1} = \frac{1}{1 - q} + \frac{\lim q^n}{q-1}$.
+
+    Если $|q| < 1$, то  $\lim q^n = 0$ и  $\sum_{n=0}^\infty q^n = \frac{1}{1 - q}$ ряд сходится.
+
+    Если $q > 1$, то $\lim q^n = +\infty$ и  $\sum_{n=0}^\infty q^n = +\infty$ ряд расходится.
+
+    Если  $q \le -1$, то $\lim q^n$ не существует и  $\sum_{n=0}^\infty q^n$ расходится.
+\end{example}
+\begin{example}
+    $\sum_{k=1}^\infty \frac{1}{k(k+1)}$. $S_n = \frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \ldots + \frac{1}{n \cdot (n+1)} = \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \ldots + \left(\frac{1}{n} - \frac{1}{n-1}\right) = 1 - \frac{1}{n + 1} \to 1$.
+\end{example}
+\begin{example}
+    Гармонический ряд $\sum_{k=1}^\infty \frac{1}{k}$. $H_n \coloneqq 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n}$.
+    Поймем, что $\lim H_n = +\infty$. Разобьем на блоки:  $1 + \frac{1}{2} + \underbrace{\left(\frac{1}{3} + \frac{1}{4}\right)}_{ > 2 \cdot \frac{1}{4}} + \underbrace{\left(\frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}\right)}_{4 \cdot \frac{1}{8}  = \frac{1}{2}} + \ldots > 1 + \frac{n}{2} \to +\infty$
+\end{example}
+\slashn
+Свойства:
+\begin{enumerate}
+    \item Если ряд cходился, то сумма определена однозначно.
+    \item Добавление/выкидывание из ряда конечного числа членов не влияет на сходимость (но может влиять на сумму).
+    \item Расстановка скобок: $a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + a_7 + a_8 + a_9 + a_{10} + \ldots \to (a_1 + a_2) + a_3 + (a_4 + a_5 + a_6) + (a_7 + a_8) + a_9 + a_{10} + \ldots$. Взятие в скобки означает, что мы заменяем скобки на посчитанную сумму. Но это не меняет его сумму.
+        \begin{remark}
+            Ряд $1 -1 + 1 - 1 + \ldots$ можно сгруппировать двумя способами: $(1 - 1) + (1 - 1) + \ldots = 0$ и $1 + (-1 + 1) + (-1 + 1) + \ldots = 1$, так что надо сначала проверить сходимость.
+        \end{remark}
+    \item $\forall a_n, b_n \; \sum_{n=1}^\infty a_n$ --- сходится и $\sum_{n=1}^\infty b_n$ --- сходится $\Rightarrow \sum_{n=1}^\infty (a_n \pm b_n)$ --- сходится, причем  $\sum_{n=1}^\infty (a_n \pm b_n) = \sum_{n=1}^\infty a_n \pm \sum_{n=1}^\infty b_n$.
+    \item $\forall a_n\; \sum_{n=1}^\infty a_n$ --- сходится $\Rightarrow \sum_{n=1}^\infty ca_n = c\sum_{n=1}^\infty a_n$
+\end{enumerate}
+\begin{proof}
+    $A_n \coloneqq \sum_{k=1}^n a_k \land B_n \coloneqq \sum_{k=1}^n B_k \Rightarrow S_n \coloneqq \sum_{k=1}^n (a_k+b_k) = \sum_{k=1}^n a_k + \sum_{k=1}^n b_k = A_n + B_n$
 \end{proof}
