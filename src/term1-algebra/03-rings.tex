@@ -156,7 +156,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    $\overline{a}$ --- обратим  $\iff \exists \overline{b}: \overline{a} - \overline{b} = \overline{1} \iff exists b: ab = 1 \pmod{n} \iff \exists b: ab - 1 \vdots n \iff \exists b, k: ab-1=nk \iff \exists b, k: ab-nk=1 \iff (a,n)  = 1$.
+    $\overline{a}$ --- обратим  $\iff \exists \overline{b}: \overline{a} - \overline{b} = \overline{1} \iff \exists b: ab = 1 \pmod{n} \iff \exists b: ab - 1 \vdots n \iff \exists b, k: ab-1=nk \iff \exists b, k: ab-nk=1 \iff (a,n)  = 1$.
 
     $(a, n) = 1 \Rightarrow \overline{a}\text{ --- обратим} \Rightarrow$ не делитель нуля.
 
@@ -187,7 +187,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 \Subsection{Китайская теорема об остатках}
 Чтобы решать такие уравнения можно свести к простым модулям при помощи китайской теоремы об остатках.
 
-Вопрос такой: как связаны $\Z / n\Z, \Z / m\Z, \Z / mn\Z$. Пусть $P_m: \Z \mapsto \Z / m\Z$, а $P_mn \Z \mapsto \Z / mn\Z$. 
+Вопрос такой: как связаны $\Z / n\Z, \Z / m\Z, \Z / mn\Z$. Пусть $P_m: \Z \mapsto \Z / m\Z$, а $P_{mn} \Z \mapsto \Z / mn\Z$. 
 
  \begin{definition}
      Гомоморфизмом колец $f: R_1 \mapsto R_2$ называется такое отображение, что $\forall r_1, r_1 \in R_1: f(r_1 + r_2) = f(r_1) + f(r_2), f(r_1r_2)=f(r_1)\cdot f(r_2), f(1) = 1$.
@@ -196,7 +196,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     Гомоморфизмом группы $f: G_1 \mapsto G_2$ называется такое отображение, что $\forall g_1, g_2: f(g_1g_2) = f(g_1) \cdot f(g_2)$.
 \end{definition}
 \begin{remark}
-    $f$ --- гомоморфизм групп  $G_1, G_2 \Rightarrow f(e_{G_1}) = e_{g_2}$.  В частности  $f$ --- гомоморфизм колец  $R_1,R_2 \Rightarrow f(0_{R_1}) = 0_{R_2}$.
+    $f$ --- гомоморфизм групп  $G_1, G_2 \Rightarrow f(e_{G_1}) = e_{G_2}$.  В частности  $f$ --- гомоморфизм колец  $R_1,R_2 \Rightarrow f(0_{R_1}) = 0_{R_2}$.
 \end{remark}
 \begin{proof}
     $f(e_{G_1}) = f(e_{G_1} \cdot e_{G_1}) = f(e_{G_1}) \cdot f(e_{G_1})$. Дальше сокращаем.
@@ -219,7 +219,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 Итак мы построили гомоморфизм $\Z / mn \Z \mapsto \Z / m\Z \times \Z / n \Z$. Подумаем про его свойства. Во-первых заметим, что слева $mn$ элементов, но и справа $mn$ элементов!
 
 \begin{definition}
-    Биективный гомоморфизм (групп, колец, ...) (называется изоморфизмом, $\cong$) если каждом $a_i$ задано ровно одно  $b_j$ и наоборот.
+    Биективный гомоморфизм (групп, колец, ...) (называется изоморфизмом, $\cong$) если каждым $a_i$ задано ровно одно  $b_j$ и наоборот.
 \end{definition}
 \begin{theorem}[Китайская теорема об остатках]
     Пусть $(m, n)=1$, тогда $\Z / mn \Z \cong \Z / m\Z \times \Z / n \Z$.
@@ -228,11 +228,11 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     \slashn
     \begin{enumerate}
         \item $i_{m,n}$ --- инъективно. Пусть $i_{m,n}(\overline{a_{m,n}}) = (\overline{a_m}, \overline{a_n})$,  $i_{m,n}(\overline{b_{n, m}}) = (\overline{b_m}, \overline{b_n}) \Rightarrow  a-b \vdots m \land a-b\vdots n \xRightarrow{(n, m) = 1} a - b \vdots mn$.
-        \item $i_{m, n}: a \mapsto B$ инъективно: $|A| = |B| \Rightarrow i_{m, n}$ --- суръективно.  
+        \item $i_{m, n}: a \mapsto B$ инъективно: $|A| = |B| \Rightarrow i_{m, n}$ --- сюръективно.  
     \end{enumerate}
 \end{proof}
 \begin{theorem}[КТО 2]
-    $m_1,m_2,m_3,\ldots,m_n \in \Z \land (m_i, m_j) = 1 \Rightarrow \Z / m_1,m_2,\ldots,_n \Z \mapsto \Z / m_1\Z \times \Z / m_2\Z \ldots$ - изоморфизм колец. 
+    $m_1,m_2,m_3,\ldots,m_n \in \Z \land (m_i, m_j) = 1 \Rightarrow \Z / m_1,m_2,\ldots,m_n \Z \mapsto \Z / m_1\Z \times \Z / m_2\Z \ldots$ - изоморфизм колец. 
 \end{theorem}
 \begin{theorem}[КТО без колец]
     $\forall m_1, \ldots, m_n \in \Z$, $\forall a_1, \ldots, a_n$ $(m_i, m_j) = 1 \Rightarrow \exists x_0 \in Z x \equiv a_1 \pmod{m_1} \land \ldots \land x \equiv a_n \pmod{m_n} \iff x \equiv x_0 \pmod {\prod_i m_i}$
@@ -240,7 +240,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 \slashn
 То есть по факту мы хотим получить обратную функцию к $f_{m_1,m_2,\ldots}: \overline{a_{m_1m_2m_3}} \mapsto (\overline{a_{m_1}}, \overline{a_{m_2}}, \overline{a_{m_3}})$. Пусть тогда $g=f^{-1}$. Заметим, что  $g$ --- гомоморфизм колец. Раз  $g$ сохраняет операции, то  $g(\overline{x}, \overline{y}, \overline{z}) = g(\overline{x}, 0, 0) + g(0, \overline{y}, 0) + g(0, 0, \overline{z}) = \overline{x}g(1, 0, 0) + \overline{y}g(0, 1, 0) + \overline{z}g(0, 0, 1)$.
 
-Пусть  $x=g(1, 0, 0) \iff \begin{cases} x \equiv 1 \pmod{m_1} \\ x \equiv 0 \pmod{m_2} \\ x \equiv 0 \pmod{m_3} \end{cases} \iff \begin{cases} x \equiv 1 \pmod{m_1} \\ x \equiv 0 \pmod{m_1m_2} \end{cases}$.
+Пусть  $x=g(1, 0, 0) \iff \begin{cases} x \equiv 1 \pmod{m_1} \\ x \equiv 0 \pmod{m_2} \\ x \equiv 0 \pmod{m_3} \end{cases} \iff \begin{cases} x \equiv 1 \pmod{m_1} \\ x \equiv 0 \pmod{m_2m_3} \end{cases}$.
 
 В группе $\forall a \neq e\; \forall x: ax \neq x$. Тогда посмотрим группу  $(\Z / m\Z \times \Z / n\Z) \supset \{(a, 0) \mid a \in \Z / m\Z\} \cong \Z / m\Z$.
  
@@ -316,7 +316,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     Пусть $G$ --- группа,  $|G| = p$ --- простое. Тогда  $G \cong (\Z / p\Z, +)$.  $G$ --- циклическая.
 \end{remark}
 \begin{proof}
-    Возьмем $a \neq e$. Тогда  $p \ord a \Rightarrow \ord(a) = 1 \lor \ord(a) = p \Rightarrow a = e \lor \langle a \rangle = G \Rightarrow$
+    Возьмем $a \neq e$. Тогда  $p \vdots \ord(a) \Rightarrow \ord(a) = 1 \lor \ord(a) = p \Rightarrow a = e \lor \langle a \rangle = G \Rightarrow$
     $G$ --- циклическая  $\Rightarrow G \cong (\Z / p \Z, +)$. 
 \end{proof}
 \begin{definition}
@@ -332,7 +332,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     $a^n = 1 \Rightarrow \in R^*$. Т.к. тут записано, что  $a \cdot a^{n-1} = 1$ --- то есть он обратим.
 \end{remark}
 \slashn
-Рассмотрим $R = \Z / n\Z$. Тогда  $R^* = \{ \overline{a} \in \Z / n\Z \mid \exists \overline{b}: \overline{a} = \overline{b} = 1\} = \{\overline{a} \in \Z / n\Z \mid (a, n) = 1\}$. Тогда $|R^*| = \varphi(n)$ --- функция Эйлера.
+Рассмотрим $R = \Z / n\Z$. Тогда  $R^* = \{ \overline{a} \in \Z / n\Z \mid \exists \overline{b}: \overline{a} \overline{b} = 1\} = \{\overline{a} \in \Z / n\Z \mid (a, n) = 1\}$. Тогда $|R^*| = \varphi(n)$ --- функция Эйлера.
  \begin{theorem}[Теорема Эйлера]
      $\forall b \in \left(\Z / n\Z\right)^* = b^{\varphi(n)} = 1$
 \end{theorem}
@@ -349,16 +349,16 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 
          По КТО:  \[\Z / n\Z \cong (\Z / p_1^{\alpha_1} \Z) \times \ldots \times (\Z / p_k^{\alpha_k} \Z).\].
          Тогда заметим, что \[
-             (\Z / p_1^{\alpha_1} \Z \times \ldots \times \Z / p_k^{\alpha_k} \Z)^* = (\Z / p_1 \Z)^* \times \ldots \times (\Z / p_k^{\alpha_k} \Z)*
+             (\Z / p_1^{\alpha_1} \Z \times \ldots \times \Z / p_k^{\alpha_k} \Z)^* = (\Z / p_1 \Z)^* \times \ldots \times (\Z / p_k^{\alpha_k} \Z)^*
          .\] Так как если $(x_1,\ldots,x_k)$ --- обратим, то $x_i$ --- обратимы.
 
-         Из этого получаем, что  \[\varphi(n) = |(\Z / n\Z)^*| = |(\Z / p_1^{\alpha_1} \Z \times \ldots \times \Z / p_k^{\alpha_k} \Z)^*| = \prod_{i=1}^k\ |(Z / p_i^{\alpha_i} \Z)^*.\]
+         Из этого получаем, что  \[\varphi(n) = |(\Z / n\Z)^*| = |(\Z / p_1^{\alpha_1} \Z \times \ldots \times \Z / p_k^{\alpha_k} \Z)^*| = \prod_{i=1}^k\ |(Z / p_i^{\alpha_i} \Z)^*|.\]
          Получили формулу из а). Применим её: \[
              \varphi(n) = (p_1^{\alpha_1} - p_1^{\alpha_1 - 1})\ldots(p_k^{\alpha_k} - p_k^{\alpha_k - 1}) = n \cdot (1 - \frac{1}{p_1})\cdot\ldots\cdot(1-\frac{1}{p_k})
          .\] 
  \end{enumerate}
  \begin{theorem}[Теорема о первообразном корне]
-     $p \in \Z$ --- простое  $\Rightarrow (\Z / p\Z)*$ --- циклическая.
+     $p \in \Z$ --- простое  $\Rightarrow (\Z / p\Z)^*$ --- циклическая.
  \end{theorem}
  \begin{proof}
      В ноябре.
@@ -413,7 +413,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     Общее утверждение:  $G_1, G_2, G$ --- группы (конечные). 
     \begin{enumerate}
         \item $G \cong G_1 \times G_2$. $(|G_1|, |G_2|) \neq 1 \Rightarrow G$ --- не циклическая.
-        \item $()|G_1|, |G_2|) = 1$ и $G_1, G_2$ --- циклическая $\Rightarrow G_1 \times G_2$ --- циклическая. (КТО).
+        \item $(|G_1|, |G_2|) = 1$ и $G_1, G_2$ --- циклическая $\Rightarrow G_1 \times G_2$ --- циклическая. (КТО).
     \end{enumerate}
 
     Тогда $\forall a \in G_1, b \in G_2 a^{|G_1|} = e_{G_1} \land b^{|G_2|} = e_{G_2} \Rightarrow (a, b)^{\lcm(|G_1|, |G_2|)} = (e, e) \Rightarrow \forall x \in G_1 \times G_2: ord(x) \le \lcm(|G_1|, |G_2|) < |G_1| \cdot |G_2| = |G_1\times G_2| \Rightarrow G_1 \times G_2$ --- не циклическая.
@@ -421,7 +421,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     $a^{\varphi(n)} = 1$. Точна ли оценка  $\varphi(n)$? Если  $(\Z / n\Z)^*$ --- циклическая (например, $n$ --- простое). Тогда да. Иначе пусть $n = pq$,  $p,q$ --- простые. Тогда  по Эйлеру $a^{(q-1)(p-1)} = 1$, а на самом деле  $a^{\frac{(q-1)(p-1)}{2}} = 1$. 
 \end{remark}
 \begin{proof}
-    $n = p_1^{\alpha_1} \ldots p_k^{\alpha_k}$. Тогда $|(\Z / p_i^{\alpha_i} \Z)^*| = p_i^{\alpha_i} - p_i^{\alpha_i - 1} \vdots 2$, кроме случая  $p_i = 2, a_i = 1$. Поэтому, если  $k > 2$ или  $k = 2$ $p_1^{\alpha_1}, p_2^{\alpha_2} \neq 2^1 \Rightarrow p_i^{\alpha_i} - p_i^{\alpha_i - 1}$ --- не циклическая  $Rightarrow$  $(\Z / n\Z)*$ --- не простое. Остались случаи  $k=1, n=p^a$,  $k=2 n = 2 \cdot p^a$.
+    $n = p_1^{\alpha_1} \ldots p_k^{\alpha_k}$. Тогда $|(\Z / p_i^{\alpha_i} \Z)^*| = p_i^{\alpha_i} - p_i^{\alpha_i - 1} \vdots 2$, кроме случая  $p_i = 2, a_i = 1$. Поэтому, если  $k > 2$ или  $k = 2$ $p_1^{\alpha_1}, p_2^{\alpha_2} \neq 2^1 \Rightarrow p_i^{\alpha_i} - p_i^{\alpha_i - 1}$ --- не циклическая  $\Rightarrow$  $(\Z / n\Z)^*$ --- не простое. Остались случаи  $k=1, n=p^a$,  $k=2 n = 2 \cdot p^a$.
 
     Случай  $n = 2p^a, p \neq 2$.  $(\Z / n \Z)^* \times (\Z / p^a \Z)^* = (\Z / p^a \Z)^*$ --- свели к случаю  $1$.
 
@@ -434,8 +434,8 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 \begin{proof}
     \slashn
     \begin{itemize}
-        \item $\Rightarrow$.  $a = x^2 \Rightarrow a^{\frac{p-1}{2}} = (x^2)^{\frac{p-1}{2}} = x^{p-1} = 1$ (МТф).
-        \item $\Leftarrow$.  $a^{\frac{p-1}{2}} = 1$. $\exists c: (\Z / p \Z)^* = \langle c \rangle$.  $\exists k: a = c^k$. Тогда  $a^{\frac{p-1}{2}} = (c^k)^{\frac{p-1}{2}} \iff c^{\frac{k(p-1)}{2}} = 1$ Та как $\ord \frac{k(p-1)}{2} \vdots p - 1$. Тогда  $\frac{k}{2 \in \Z}$, то есть $k = 2l$.  $a = c^{2l} = (c^l)^2$.
+        \item $\Rightarrow$.  $a = x^2 \Rightarrow a^{\frac{p-1}{2}} = (x^2)^{\frac{p-1}{2}} = x^{p-1} = 1$ (МТФ).
+        \item $\Leftarrow$.  $a^{\frac{p-1}{2}} = 1$. $\exists c: (\Z / p \Z)^* = \langle c \rangle$.  $\exists k: a = c^k$. Тогда  $a^{\frac{p-1}{2}} = (c^k)^{\frac{p-1}{2}} \iff c^{\frac{k(p-1)}{2}} = 1$ Та как $\ord \frac{k(p-1)}{2} \vdots p - 1$. Тогда  $\frac{k}{2}\in \Z$, то есть $k = 2l$.  $a = c^{2l} = (c^l)^2$.
     \end{itemize}
 \end{proof}
 \Subsection{Группы вычетов и криптографические протоколы}
