@@ -93,3 +93,209 @@
         \item Пусть $A > 0$. Возьмем  $\varepsilon = A$.  $\exists \delta > 0: 0 < |x-a| < \delta \land x \in E \Rightarrow |f(x) - A| < A \iff 0 < f(x) < 2A$. Берем  $U_a = (a-\delta, a+\delta)$ для нее значения  $>0$.
     \end{enumerate}
 \end{proof}
+\begin{theorem}[Теорема о арифметических действиях с пределами]
+    Пусть $a$ --- предельная точка  $E$,  $f, g: E \to \R$ и  $\lim_{x\to a} f(x)=A$,  $\lim_{x\to a} g(x)=B$. Тогда 
+    \begin{enumerate}
+        \item $\lim_{x\to a} (f(x) \pm g(x)) = A \pm B$
+        \item $\lim_{x\to a} f(x) \cdot g(x) = A \cdot B$
+        \item $\lim_{x\to a} |f(x)| = |A|$
+        \item $B \neq 0 \Rightarrow \lim_{x\to a} \frac{f(x)}{g(x)} = \frac{A}{B}$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Проверим определение по Гейне. Берем последовательность $a \neq x_n \in E: \lim x_n = a$. Тогда  $\lim f(x_n) = A$  и  $\lim g(x_n) = B$. Следовательно  $\lim (f(x_n) \pm g(x_n)) = A \pm B \Rightarrow \lim (f(x) \pm g(x)) = A \pm B$.
+
+    Второй и третий пункт доказывается ровно так же.
+
+    Но вот в четвертом пункте надо что-то сказать про $g(x)$. Если  $\lim_{x\to a} g(x) = B \neq 0$, то по теореме о стабилизации знака $\exists \delta > 0: a \neq x_n \in E \land |x-a| < \delta \Rightarrow g(x) \neq 0$. Тогда для $x \in (a-\delta; a + \delta) \cap E$ можно писать  $\frac{f(x)}{g(g)}$.
+\end{proof}
+
+\begin{theorem}[О предельном переходе в неравенствах]
+    Пусть $a$ --- предельная точка  $E$,  $f, g: E \to \R$ и $f(x) \le g(x)$. Если $\lim_{x\to a} f(x) = A$ и $\lim_{x \to a} g(x) = B$, то  $A \le B$.
+\end{theorem}
+\begin{proof}
+    Возьмем какую-то последовательность $a \neq x_n \in E: \lim x_n = a$ (найдется, так как $a$ --- предельная точка  $E$). Тогда $A = \lim f(x_n)$ и  $B = \lim g(x_n)$.
+
+    Тогда знаем, что  $\forall n: f(x_n) \le g(x_n) \xRightarrow[\text{для послед.}]{\text{пред. переход}} A \le B$
+\end{proof}
+\begin{theorem}[О двух милиционерах]
+    Пусть $a$ --- предельная точка  $E$,  $f, g, h: E \to \R$ и  $f(x) \le g(x) \le h(x)$ при всех $x \in E$. Тогда, $\lim_{x\to a} f(x) = \lim_{x \to a} h(x) \eqqcolon A \Rightarrow \lim_{x\to a} g(x) = A$.
+\end{theorem}
+\begin{proof}
+    Проверим определение по Гейне для $\lim_{x \to a} g(x) = A$. Берем любую последовательность  $a \neq x_n \in E: \lim x_n = a$. Тогда  $\lim f(x_n) = A \land \lim h(x_n) = A \land f(x_n) \le g(x_n) \le h(x_n) \xRightarrow[\text{для послед.}]{\text{Th. о 2 мил.}} \lim g(x_n) = A$.
+\end{proof}
+\begin{theorem}[Критерий Коши для предела функции]
+    $a$ --- предельная точка  $E$,  $f: E \to \R$. Тогда  существует конечный  $\lim_{x\to a} f(x) \iff \forall \varepsilon > 0 \exists delta > 0 \forall x, y \in E:  \begin{array}{l} |x-a| < \delta \\ |y-a| < \delta\end{array} \Rightarrow |f(x) - f(y)| < \varepsilon$
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item $\Rightarrow$. Пусть  $\lim_{x\to a} f(x) = A$. Тогда $\forall \varepsilon > 0 \exists \delta > 0 \begin{array}{l} \forall a \neq x \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \frac{\varepsilon}{2} \\ \forall a \neq y \in E: |y-a| < \delta \Rightarrow |f(y) - A| < \frac{\varepsilon}{2} \end{array}$. 
+
+            Тогда, если сложить получим $|f(x) - f(y)| \le |f(x) - A| + |A - f(y)| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$
+        \item $\Leftarrow$. Докажем, что существует конечный  $\lim_{x \to a} f(x)$ по Гейне. Берем последовательно  $a \neq x_n \in E: \lim x_n = a$. Надо доказать, что $\lim f(x_n)$ существует и конечен. Для этого проверим, что $f(x_n)$ фундаментальная последовательность.
+
+            Возьмем $\varepsilon > 0$ и соответствующую ему $\delta > 0$.  $\exists N: \forall n \ge N |x_n - a| < \delta$. Берем $m, n \ge N \begin{array}{l} |x_n - a| < \delta \\ |x_m- a| < \delta \end{array} \land a \neq x_n \in E \land a \neq x_m \in E \Rightarrow |f(x_n) - f(x_m)| < \varepsilon$, т.е. $f(x_т)$ --- фундаментальная последовательность  $\Rightarrow$ существует конечный  $\lim f(x)$.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    $f: E \to \R$,  $E_1 = (-\infty, a) \cap E$. Пусть  $a$ - предельная точка  $E_1$,  $g \coloneqq f$ на  $E_1$.  $\lim_{x\to a} g(x) = A$, то  $\lim_{x \to a-} f(x)= A$ ($\lim_{x \to a-0} f(x) = A$) --- предел слева в точке $A$.
+\end{definition}
+\begin{definition}
+    $f: E \to \R$,  $E_2 = (a, +\infty) \cap E$. Пусть  $a$ - предельная точка  $E_2$,  $g \coloneqq f$ на  $E_2$.  $\lim_{x\to a} g(x) = A$, то  $\lim_{x \to a+} f(x)= A$ ($\lim_{x \to a+0} f(x) = A$) --- предел справа в точке $A$.
+\end{definition}
+\begin{remark}
+    $A = \lim_{x \to a-} f(x) \iff \forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in E: a-\delta < x < a \Rightarrow |f(x) - A| < \varepsilon$
+\end{remark}
+\begin{remark}
+    $B = \lim_{x \to a+} f(x) \iff \forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in E: a < x < a + \delta \Rightarrow |f(x) - B| < \varepsilon$
+\end{remark}
+\begin{remark}
+    $\lim_{x\to a-} f(x) = \lim_{x \to a+} f(x) = \eqqcolon A \iff \lim_{x \to a} f(x) = A$
+\end{remark}
+\begin{definition}
+    $f: E \to \R$. Тогда  $f$ --- монотонно возрастает $\Leftarrow \forall x, y \in E: x < y \Rightarrow f(x) \le f(y)$.
+    Дальше бла-бла-бла.
+\end{definition}
+\begin{theorem}
+    $f: E \to \R, E_1 \coloneqq (-\infty, a) \cap E$,  $a$ --- предельная точка  $E_1$. Тогда
+     \begin{enumerate}
+         \item Если $f$ монотонно возрастает и ограничена сверху, то существует конечный предел  $\lim_{x \to a-} f(x)$.
+         \item Если $f$ монотонно убывает и ограничена снизу, то существует конечный предел  $\lim_{x \to a- f(x)}$.
+    \end{enumerate}
+\end{theorem}
+\begin{remark}
+    На самом деле в 1  $\lim_{x \to a-} f(x) = \sup_{x \in E_1} f(x)$, в  2  $\lim_{x \to a-} f(x) = \inf_{x \in E_1} f(x)$.
+\end{remark}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $A \coloneqq \sup_{x \in E_1} f(x)$. Проверим, что  $\lim_{x \to a-} f(x) = A$. Возьмем  $\varepsilon > 0$. Тогда  $A - \varepsilon$ не верхняя граница $\{f(x): x \in E_1\} \Rightarrow$ найдется $x_0 \in E_1: f(x_0) > A - \varepsilon$. $\delta \coloneqq a - x_0 > 0$. Проверим, что он подходит. Возьмем  $x \in E: a - \delta = x_0 < x < a \Rightarrow f(x_0) \le A-\varepsilon < f(x) \le A < A + \varepsilon \Rightarrow |f(x) - A| < \varepsilon$.
+    \end{enumerate}
+\end{proof}
+\Subsection{Непрерывные функции}
+\begin{definition}
+    $f: E \to \R$ и  $a \in E$.  $f$ непрерывна в точке  $a$, если  $a$ --- не предельная точка или  $a$ --- предельная точка и  $\lim_{x \to a} f(x) = f(a)$.
+\end{definition}
+\begin{definition}
+    с  $\varepsilon$-- $\delta$. Тогда  $\forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in E |x-a| < \delta \Rightarrow |f(x) = f(a)| < \varepsilon$
+\end{definition}
+\begin{definition}
+    С окрестностями. $\forall U_{f(a)} \exists U_a f(U_a \cap E) \subset U_{f(a)}$
+\end{definition}
+\begin{definition}
+    $\forall x_n \in E: \lim x_n = a \Rightarrow \lim f(x_n) = f(a)$.
+\end{definition}
+\begin{example}
+    $f(x) = c$ --- непрерывна всегда.
+\end{example}
+\begin{example}
+    $f(x) = x$ --- непрерывна всегда.
+\end{example}
+\begin{example}
+    $f(x) = [x]$. Если  $a \not \in \Z \lim_{x\to a} [x] = n = [a]$. Иначе предела нет.
+\end{example}
+\begin{example}
+    $f(x) = |\{x\} - \frac{1}{2}|$.
+
+    $a \not \in \Z$ --- очевидно.
+    $a = n \in \Z$:  $\lim_{x \to n+} |\{x\} - \frac{1}{2} | = \lim_{x \to n+} = |x-n-\frac{1}{2}| = \frac{1}{2} = f(n)$. $\lim_{x \to n-} |\{x\} - \frac{1}{2}| = \lim_{x\to n-} = |x-(n-1)-\frac{1}{2}| = \frac{1}{2} = f(n)$.
+
+    Функция непрерывна!
+\end{example}
+
+\begin{theorem}
+    $\exp x$ непрерывна во всех точках.
+\end{theorem}
+\begin{proof}
+    $\lim_{x\to a} \exp x = \exp a$. Пусть  $h \coloneqq x - a \to 0$.  $\lim_{h \to 0} \exp(a + h) = \exp a$. Тогда надо доказать, что  $\lim_{h \to 0} \exp h = 1$. Заметим, что  $1 + h \le \exp h \le \frac{1}{1- h}$, при $|h| \le 1$. Значит, по 2 милиционерам $\exp h \to 1$.
+\end{proof}
+\begin{theorem}[Теорема об арифметических действиях с непрерывными функциями]
+    $f, g: E \to \R, a \in E$,  $f, g$ непрерывны в  $a$.
+    Тогда:
+     \begin{enumerate}
+         \item $f \pm g$ непрерывна   $a$.
+         \item  $f \cdot g$ непрерывна в  $a$.
+         \item  $|f|$ непрерывна в  $a$.
+         \item если  $g(a) \neq 0$, то  $\frac{f}{g}$ непрерывна.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Если $a$ не предельная, то очев. Иначе ссылаемся на арифм. действия с пределами.
+\end{proof}
+\begin{consequence}
+    \slashn
+   \begin{enumerate}
+       \item Многочлены непрерывны во всех точках.
+       \item Рациональные функции функции (т.е. отношение двух многочленов) непрерывны на всех области определения.
+   \end{enumerate} 
+\end{consequence}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $f(x) = c, g(x) = x \Rightarrow c x^k$ --- непрерывна $\Rightarrow$ многочлены непрерывны.
+        \item  $\frac{P(x)}{Q(x)}$ непрерывна в точке $a$, если  $Q(a) \neq 0$.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[О стабилизации знака]
+    $f: E \to \R$,  $a \in E$,  $f$ --- непрерывна в  $a$ и  $f(a) \neq 0$. Тогда  $\exists U_a: \forall x \in U_a \cap E$ знак $f(x)$ совпадает с  $f(a)$.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item Точка не предельная. Берем окрестность только из $a$.
+        \item Иначе ссылаемся на соответствующую теорему из условия.
+    \end{itemize}
+\end{proof}
+\begin{theorem}
+    Пусть $f, a$ такие же, как выше.  $g: D \to \R, \lim_{x \to a} f(x) = A$,  $g$ --- непрерывна в  $A$,  $D \supset f(E)$, тогда  $\lim_{x \to a} g(f(x)) = g(A)$.
+\end{theorem}
+\begin{proof}
+    $g$ непрерывна в точке  $A \Rightarrow \forall \varepsilon > 0 \; \exists \delta > 0 \; \forall y \in D |y-A| < \delta \Rightarrow |g(y) - g(A)| < \varepsilon$. 
+
+    Зафиксируем  $\varepsilon > 0$ и по нему возьмем  $\delta > 0$ и подставим его вместо  $\varepsilon$ в определение  $\lim_{x \to a} f(x) = A$. 
+
+    $\forall \delta > 0 \; \exists \gamma > 0 \; \forall x \in E |x - a| < \gamma \Rightarrow |f(x)  - A| < \delta$. Подставим $y = f(x)$:  $|g(f(x)) - g(A)| < \varepsilon$.
+\end{proof}
+\begin{consequence}[Непрерывность композиции]
+    $f, a, g$ бла-бла-бла.  $g \circ f$ непрерывна в  $a$.
+\end{consequence}
+\begin{proof}
+    Если $a$ не предельная, то там неинтересно.
+
+    Если предельная, то предыдущая теорема.
+\end{proof}
+\begin{remark}
+    Без непрерывности $g$ неверно.  $f(x) = x \sin \frac{1}{x}$. $\lim_{x \to 0} f(x) = 0$
+    $g(y) = \begin{cases} 0 & y = 0 \\ 1 & y \neq 0\end{cases}$.  $\lim_{y \to 0} g(y) = 1$.  Но  $\lim g(f(x))$ не существует.  $x_n = \frac{1}{\pi n}$, $f(x_n) = 0$.  $g(f(x_n)) = 0$.  $y_n = \frac{1}{2\pi n + \frac{\pi}{2}}$ $f(y_0) = y_n \neq 0$.
+\end{remark}
+\begin{theorem}
+    $0 < x < \frac{\pi}{2} \Rightarrow \sin x < x < \tg x$.
+\end{theorem}
+\begin{consequence}
+    $\forall x: |\sin x| \le |x|$
+\end{consequence}
+\begin{proof}
+\slashn
+    \begin{itemize}
+        \item $0 < x < \frac{\pi}{2}$ --- уже было.
+        \item $x > \frac{\pi}{2} \Rightarrow |\sin x| \le 1 < \frac{\i}{2} \le |x|$.
+        \item При $x < 0 \Rightarrow |x| = |-x|$ и  $|\sin x| = |sin(-x)|$.
+    \end{itemize}
+\end{proof}
+\begin{consequence}
+\slashn
+\begin{enumerate}
+    \item $|\sin x - \sin y| \le |x-y|$
+    \item $|\cos x - \cos y| \le |x-y|$
+\end{enumerate}
+\end{consequence}
+\begin{proof}
+    $|\sin x - \sin y = 2|\sin \frac{x-y}{2}||cos \frac{x+y}{2}| \le 2 |sin \frac{x-y}{2}| \le 2 |\frac{x-y}{2}| \le |x-y|$ 
+
+    Второй так же.
+\end{proof}
+\begin{theorem}
+    $\sin, \cos, \tg, \ctg$ --- непрерывны.
+\end{theorem}
+
