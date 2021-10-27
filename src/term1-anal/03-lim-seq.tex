@@ -37,13 +37,13 @@
     $l = \lim a_n \iff$ вне любого интервала, содержащего $l$ находится конечное число членов последовательности. 
 \end{definition}
 \begin{remark}
-    Мы можем смотреть только на симметричные относительно точки $l$ интервалы. Если он не симметричен, то можно большую границу уменьшить. Так можно сделать, так как мы знаем, что вне меньшего конечное число точек, то и снаружи большего точно конечное число точек. Тогда наш интервал выглядит как $(l - \epsilon; l + \epsilon)$
+    Мы можем смотреть только на симметричные относительно точки $l$ интервалы. Если он не симметричен, то можно большую границу уменьшить. Так можно сделать, так как мы знаем, что вне меньшего конечное число точек, то и снаружи большего точно конечное число точек. Тогда наш интервал выглядит как $(l - \varepsilon; l + \varepsilon)$
 \end{remark}
 \begin{remark}
     Конечное число точек снаружи интервала $\iff$ начиная с некоторого номера все попали в интервал, так как возьмем последнюю точку вне интервалов, и взяли её номер + 1.
 \end{remark}
 \begin{definition}[Традиционное определение предела]
-    $l = \lim a_n \iff \forall \epsilon > 0: \; \exists N: \; \forall n\ge N: \;  |a_n-l| < \epsilon$
+    $l = \lim a_n \iff \forall \varepsilon > 0: \; \exists N: \; \forall n\ge N: \;  |a_n-l| < \varepsilon$
 \end{definition}
 \begin{enumerate}
     \item Предел единственный. Пусть $l$ и  $l'$ единственный. \emph{(Картинка)}. Рассмотрим интервал содержащий  $l$, но не  $l'$. Снаружи конечное число точек, теперь наоборот, там тоже конечное число точек. Тогда последовательность конечна.
@@ -65,19 +65,19 @@
     Для $x=1$ можно взять  $(0;2)$, для  $x=-1$ можно взять  $(-2;0)$.
 \end{proof}
 \begin{lemma}
-    $\forall a, b, x_n, y_n, \epsilon > 0: a = \lim x_n \land b = \lim y_n \Rightarrow \exists N: \forall n \ge N: |x_n-a| < \epsilon \land |y_n-b| < \epsilon$ 
+    $\forall a, b, x_n, y_n, \varepsilon > 0: a = \lim x_n \land b = \lim y_n \Rightarrow \exists N: \forall n \ge N: |x_n-a| < \varepsilon \land |y_n-b| < \varepsilon$ 
 \end{lemma}
 \begin{proof}
-    Запишем определения пределов: $\forall \epsilon > 0 \exists N_1 \forall n \ge N_1 |x_n-a| < \epsilon$ и $\forall \epsilon > 0 \exists N_2 \forall n \ge N_2 |y_n-b| < \epsilon$. Тогда просто возьмем $N=\max(N_1, N_2)$.
+    Запишем определения пределов: $\forall \varepsilon > 0 \exists N_1 \forall n \ge N_1 |x_n-a| < \varepsilon$ и $\forall \varepsilon > 0 \exists N_2 \forall n \ge N_2 |y_n-b| < \varepsilon$. Тогда просто возьмем $N=\max(N_1, N_2)$.
 \end{proof}
 \begin{theorem}[Предельный переход в неравенствах]
     $\forall x_n, y_n (x_i < y_i \; \forall i)\; a = \lim x_n \land b = \lim y_n \Rightarrow a \le b$
 \end{theorem}
 \begin{proof}
-    Докажем от противного. Пусть $a>b$. Посмотрим картиночку. Пусть $\epsilon \coloneqq \frac{a-b}{2}$. По лемме $\exists N: \forall n \ge N: |x_n-a|<\epsilon \land |y_n-b|<\epsilon$. Заметим, что $x_n-a| < \epsilon \Rightarrow x_n > a - \epsilon$, а $|y_n-b|<\epsilon \Rightarrow y_n < b + \epsilon \Rightarrow x_n > a - \epsilon = b + \epsilon > y_n$. Противоречие.
+    Докажем от противного. Пусть $a>b$. Посмотрим картиночку. Пусть $\varepsilon \coloneqq \frac{a-b}{2}$. По лемме $\exists N: \forall n \ge N: |x_n-a|<\varepsilon \land |y_n-b|<\varepsilon$. Заметим, что $x_n-a| < \varepsilon \Rightarrow x_n > a - \varepsilon$, а $|y_n-b|<\varepsilon \Rightarrow y_n < b + \varepsilon \Rightarrow x_n > a - \varepsilon = b + \varepsilon > y_n$. Противоречие.
 \end{proof}
 \begin{remark}
-    Строгий знак может не сохраняться. Пример: $x_n = -\frac{1}{n} < y_n = \frac{1}{n}$, но предел и там, и там 0. Т.к. $\forall \epsilon > 0 \exists N: \forall n \ge N: \frac{1}{n} = |y_n| = |x_n| < \epsilon$ 
+    Строгий знак может не сохраняться. Пример: $x_n = -\frac{1}{n} < y_n = \frac{1}{n}$, но предел и там, и там 0. Т.к. $\forall \varepsilon > 0 \exists N: \forall n \ge N: \frac{1}{n} = |y_n| = |x_n| < \varepsilon$ 
 \end{remark}
 \begin{consequence}
    Три пункта:
@@ -94,7 +94,7 @@
     Пусть $\forall n: x_n \le y_n \le z_n \land \lim x_n = \lim z_n \eqqcolon l$, тогда $\lim y_n = l$.
 \end{theorem}
 \begin{proof}
-    Возьмем $\epsilon > 0$. По лемме:  $\exists N: \forall n \ge N: |x_n-l| < \epsilon \land |z_n-l| < \epsilon$, откуда $x_n > l - \epsilon$ и  $z_n < l + \epsilon$. Тогда  $l - \epsilon < x_n \le y_n \le z_n < l + \epsilon \Rightarrow l - \epsilon < y_n < l + \epsilon$, то есть $|y_n - l| < \epsilon$.
+    Возьмем $\varepsilon > 0$. По лемме:  $\exists N: \forall n \ge N: |x_n-l| < \varepsilon \land |z_n-l| < \varepsilon$, откуда $x_n > l - \varepsilon$ и  $z_n < l + \varepsilon$. Тогда  $l - \varepsilon < x_n \le y_n \le z_n < l + \varepsilon \Rightarrow l - \varepsilon < y_n < l + \varepsilon$, то есть $|y_n - l| < \varepsilon$.
 \end{proof}
 \begin{consequence}
      Если $\forall n |y_n| \le z_n \land \lim z_n = 0 \Rightarrow \lim y_n = 0$
@@ -111,7 +111,7 @@
     \end{enumerate}
 \end{theorem}
 \begin{proof}[Пункт 1.]
-    $b \coloneqq \sup \{x_1,x_2,\ldots\}$ --- существует, т.к. $x_n$ --- ограничено сверху. Теперь докажем, что  $\lim x_n = b$, возьмем  $\epsilon > 0$. $b$ --- наименьшая верхняя граница  $\Rightarrow \forall \epsilon > 0 b - \epsilon$ --- не верхняя граница. То есть  $\exists N: x_N > b - \epsilon$. Проверим, что такое  $N$ подходит: при  $n \ge N$ $b - \epsilon < x_N < x_{N+1} < \ldots x_n \le b \le b + \epsilon \Rightarrow b - \epsilon < x_n < b + \epsilon$.
+    $b \coloneqq \sup \{x_1,x_2,\ldots\}$ --- существует, т.к. $x_n$ --- ограничено сверху. Теперь докажем, что  $\lim x_n = b$, возьмем  $\varepsilon > 0$. $b$ --- наименьшая верхняя граница  $\Rightarrow \forall \varepsilon > 0 b - \varepsilon$ --- не верхняя граница. То есть  $\exists N: x_N > b - \varepsilon$. Проверим, что такое  $N$ подходит: при  $n \ge N$ $b - \varepsilon < x_N < x_{N+1} < \ldots x_n \le b \le b + \varepsilon \Rightarrow b - \varepsilon < x_n < b + \varepsilon$.
 \end{proof}
 \begin{proof}[Пункт 3.]
     Докажем отдельно в каждую сторону:
@@ -119,7 +119,7 @@
         \item[$\Leftarrow$]Если $\uparrow$, то пункт 1, иначе  пункт 2.
         \item[$\Rightarrow$]Докажем это утверждение для любой последовательности.
 
-            Пусть $\lim x_n = a$. Возьмем  $\epsilon = 1$, тогда  $\exists N: \forall n > N: |x_n-a| < 1 \Rightarrow a-1<x_n<a+1$. Ну тогда верхняя граница $\max\{a+1,x_1,x_2,\ldots, x_{N+1}\}$, а нижняя $\min\{a-1,\ldots\}$.
+            Пусть $\lim x_n = a$. Возьмем  $\varepsilon = 1$, тогда  $\exists N: \forall n > N: |x_n-a| < 1 \Rightarrow a-1<x_n<a+1$. Ну тогда верхняя граница $\max\{a+1,x_1,x_2,\ldots, x_{N+1}\}$, а нижняя $\min\{a-1,\ldots\}$.
     \end{itemize}
 \end{proof}
 \begin{remark}
@@ -130,7 +130,7 @@
      \begin{enumerate}
          \item $x_n+y_n$ имеет предел и он равен  $a+b$
          \item $x_n-y_n$ имеет предел и он равен  $a-b$
-         \item $x_n*y_n$ имеет предел и он равен  $a*b$
+         \item $x_n \cdot y_n$ имеет предел и он равен  $a \cdot b$
          \item $|x_n|$ имеет предел и он равен  $|a|$
          \item $\frac{x_n}{y_n}$ имеет предел, если $b \neq 0 \land \forall n y_n \neq 0$ и он  равен  $\frac{a}{b}$
     \end{enumerate}
@@ -138,13 +138,13 @@
 \begin{proof}
     \slashn
     \begin{enumerate}
-        \item Возьмем $\epsilon > 0$ и найдем  $N$ из леммы для  $\frac{\epsilon}{2}$. Тогда $\forall n \ge N: |x_n-a| < \frac{\epsilon}{2} \land |y_n-a| <  \frac{\epsilon}{2} \Rightarrow |(x_n+y_n) - (a+b)| \le |x_n - a| + |y_n-b| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$
+        \item Возьмем $\varepsilon > 0$ и найдем  $N$ из леммы для  $\frac{\varepsilon}{2}$. Тогда $\forall n \ge N: |x_n-a| < \frac{\varepsilon}{2} \land |y_n-a| <  \frac{\varepsilon}{2} \Rightarrow |(x_n+y_n) - (a+b)| \le |x_n - a| + |y_n-b| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$
         \item Так же.
-        \item Поскольку $\lim y_n = b$, то $y_n$ --- ограничена, а значит  $\exists M: |y_n| \le M$. Рассмотрим $|x_ny_n - ab| = |x_ny_n - ay_n + ay_n - ab| \le |x_ny_n - ay_n| + |ay_n - ab| = |y_n| |x_n-a| + |a| |y_n-b| \le M |x_n-a| + |a| |y_n|-b$. $M |x_n - a| < \frac{\epsilon}{2} \iff |x_n - a| < \frac{\epsilon}{2M}$. Значит $\exists N_1$ при котором $\forall n > N_1$ выполнено.  $|a| |y_n - b| < \frac{\epsilon}{2} \Leftarrow |y_n - b| < \frac{\epsilon}{2|a|+1}$. Тогда найдется $N_2$, такой что  $\forall n \ge N_2$ это выполнено. Такой что $N = \max{N_1, N_2}$.
+        \item Поскольку $\lim y_n = b$, то $y_n$ --- ограничена, а значит  $\exists M: |y_n| \le M$. Рассмотрим $|x_ny_n - ab| = |x_ny_n - ay_n + ay_n - ab| \le |x_ny_n - ay_n| + |ay_n - ab| = |y_n| |x_n-a| + |a| |y_n-b| \le M |x_n-a| + |a| |y_n|-b$. $M |x_n - a| < \frac{\varepsilon}{2} \iff |x_n - a| < \frac{\varepsilon}{2M}$. Значит $\exists N_1$ при котором $\forall n > N_1$ выполнено.  $|a| |y_n - b| < \frac{\varepsilon}{2} \Leftarrow |y_n - b| < \frac{\varepsilon}{2|a|+1}$. Тогда найдется $N_2$, такой что  $\forall n \ge N_2$ это выполнено. Такой что $N = \max{N_1, N_2}$.
         \item $||x|-|a|| \le |x_n-a| \iff -|x_n-a| \le |x_n| - |a| \le |x_n-a|$, а в правой части написано, что $|x_n| = |(x_n-a)+a| \le |x_n-a| + |a|$. Понятно, что это выполняется при любых $x_n, a$. 
 
-            Возьмем  $N$, для которого  $\forall n > N: |x_n - a| < \epsilon$. Тогда  $\forall n \ge N: ||x_n|-|a|| \le |x_n-a| < \epsilon$
-        \item Докажем, что $\lim \frac{1}{y_n} = \frac{1}{b}$.  Возьмем  $|\frac{1}{y_n} - \frac{1}{b}| = \frac{|y_n-b|}{|y_n||b|} \iff (1)$. Посмотрим на картинку: возьмем $\epsilon = \frac{b}{2}$. Получим интервал $(\frac{b}{2}; \frac{3b}{2})$. Тогда берем $N_1: \forall n \ge N |y_n-b| < |b|/2 \Rightarrow |y_n| > \frac{|b|}{2}$. Тогда $(1) \iff \frac{|y_n-b|}{\frac{|b|}{2}|b|} = \frac{2}{|b|^2}|y_n-b|<\epsilon \iff |y_n-b| < \epsilon \cdot \frac{|b|}{2}$. Поэтому $\exists N_2: \forall n \ge N_2$ такой, что это выполняется. Ну тогда $N=\max{N_1, N_2}$.
+            Возьмем  $N$, для которого  $\forall n > N: |x_n - a| < \varepsilon$. Тогда  $\forall n \ge N: ||x_n|-|a|| \le |x_n-a| < \varepsilon$
+        \item Докажем, что $\lim \frac{1}{y_n} = \frac{1}{b}$.  Возьмем  $|\frac{1}{y_n} - \frac{1}{b}| = \frac{|y_n-b|}{|y_n||b|} \iff (1)$. Посмотрим на картинку: возьмем $\varepsilon = \frac{b}{2}$. Получим интервал $(\frac{b}{2}; \frac{3b}{2})$. Тогда берем $N_1: \forall n \ge N |y_n-b| < |b|/2 \Rightarrow |y_n| > \frac{|b|}{2}$. Тогда $(1) \iff \frac{|y_n-b|}{\frac{|b|}{2}|b|} = \frac{2}{|b|^2}|y_n-b|<\varepsilon \iff |y_n-b| < \varepsilon \cdot \frac{|b|}{2}$. Поэтому $\exists N_2: \forall n \ge N_2$ такой, что это выполняется. Ну тогда $N=\max{N_1, N_2}$.
     \end{enumerate}
 \end{proof}
 \begin{consequence}
@@ -167,7 +167,7 @@
     $\forall x_n, y_n: x_n\text{ --- бесконечно мала последовательность} \land y_n\text{ ограничена}, то x_ny_n$ --- бесконечно малая последовательность.
 \end{statement}
 \begin{proof}
-    $y_n$ --- ограничена  $\Rightarrow \exists M: \forall n: |y_n| \le M$. Возьмем $\epsilon > 0$ и подставим в определение  $\lim x_n = 0$. Тогда найдется  $N: \forall n \ge N: |x_n| < \frac{\epsilon}{M}$. Следовательно $x_ny_n \le M |x_n| < M \frac{\epsilon}{M} = \epsilon \Rightarrow \lim x_n y_n = 0$.
+    $y_n$ --- ограничена  $\Rightarrow \exists M: \forall n: |y_n| \le M$. Возьмем $\varepsilon > 0$ и подставим в определение  $\lim x_n = 0$. Тогда найдется  $N: \forall n \ge N: |x_n| < \frac{\varepsilon}{M}$. Следовательно $x_ny_n \le M |x_n| < M \frac{\varepsilon}{M} = \varepsilon \Rightarrow \lim x_n y_n = 0$.
 \end{proof}
 \begin{definition}
     $\lim x_n = +\infty$ означает то, что вне любого луча вида  $(E; +\infty)$ лежит лишь конечное число членов последовательности. Или:  $\forall E \exists N: \forall n \ge N x_n > E$.
@@ -176,13 +176,13 @@
     $\lim x_n = -\infty$ означает то, что вне любого луча вида  $(-\infty, E)$ лежит лишь конечное число членов последовательности. Или:  $\forall E \exists N: \forall n \ge N x_n < E$.
 \end{definition}
 \begin{definition}
-    $\lim x_n = \infty$ означает то, что в любом промежутке содержится конечное число членов последовательности. Или:  $\forall \exists N \forall n \ge N |x_n| > E$.
+    $\lim x_n = \infty$ означает то, что в любом промежутке содержится конечное число членов последовательности. Или:  $\forall E \exists N \forall n \ge N |x_n| > E$.
 \end{definition}
 \begin{remark}
     $\lim x_n = \infty \iff \lim |x_n| = +\infty$
 \end{remark}
 \begin{remark}
-    $\lim x_n = +\infty$(или $0\infty$)$\Rightarrow \lim x_n=\infty$. Но $\not \Leftarrow$! Пример  $x_n = (-1)^n \cdot n$.
+    $\lim x_n = +\infty$(или $-\infty$)$\Rightarrow \lim x_n=\infty$. Но $\not \Leftarrow$! Пример  $x_n = (-1)^n \cdot n$.
 \end{remark}
 \begin{remark}
     $\lim x_n = \infty \Rightarrow x_n$ --- неограниченная последовательность. Но наоборот неверно. Пример: $x_n = \begin{cases} n & n\text{ --- четно} \\ 0 & n\text{ --- нечетно}\end{cases}$.
@@ -197,7 +197,7 @@
     Докажем в каждую сторону отдельно:
     \begin{itemize}
         \item[$\Rightarrow$] $x_n$ --- бесконечно малая  $\iff \lim x_n=0$. Возьмем  $E$ из определения бесконечно большой и  $\varepsilon = \frac{1}{E}$, подставим в предел. Тогда $\exists N: \forall n \ge N|x_n| < \varepsilon = \frac{1}{E} \Rightarrow |\frac{1}{x_n}| > E$.
-        \item[$\Leftarrow$] $\frac{1}{x_n}$ --- бесконечно большая $\Rightarrow \frac{1}{x_m} = \infty$. Возьмем $\varepsilon > 0$ из определения бесконечно малой и  $E = \frac{1}{\varepsilon}$ и подставим в $\lim$. Тогда $\exists N, \forall n \ge N: |\frac{1}{x_n}| >E=\frac{1}{\varepsilon} \Rightarrow |x_n| < \varepsilon$
+        \item[$\Leftarrow$] $\frac{1}{x_n}$ --- бесконечно большая $\Rightarrow \lim \frac{1}{x_n} = \infty$. Возьмем $\varepsilon > 0$ из определения бесконечно малой и  $E = \frac{1}{\varepsilon}$ и подставим в $\lim$. Тогда $\exists N, \forall n \ge N: |\frac{1}{x_n}| >E=\frac{1}{\varepsilon} \Rightarrow |x_n| < \varepsilon$
     \end{itemize}
 \end{proof}
 \begin{definition}
@@ -221,7 +221,7 @@
      \begin{itemize}
          \item $a \in \R$. Картинка. Начиная с некоторого номер все  $x_n \in (0; 2a)$ или  $x_n \in (2a; 0)$.
          \item  $a = +\infty$. Картинка. Возьмем  $E=0$, начина с некоторого номера все члены попали в этот луч.
-         \item  $a = \infty$. Аналогично.
+         \item  $a = -\infty$. Аналогично.
     \end{itemize}
 \end{proof}
 \begin{theorem}[предельный переход в неравентсве $\overline{\R}$]
@@ -244,7 +244,7 @@
 \begin{proof}
     \slashn
     \begin{enumerate}
-        \item $\forall E: \lim x_n = +\infty \Rightarrow \exists N : n \ge N x_n > E$, но $y_n \ge x_n > E$.
+        \item $\lim x_n = +\infty \Rightarrow \forall E: \exists N : \forall n \ge N x_n > E$, но $y_n \ge x_n > E$.
         \item Упражнение для читателя.
     \end{enumerate}
 \end{proof}
@@ -257,7 +257,7 @@
         \item $\forall x_n, y_n \lim x_n = \pm\infty \land \exists C: \forall n: y_n \ge C > 0  \Rightarrow \lim(x_ny_n)=\pm\infty$
         \item $\forall x_n, y_n \lim x_n = \pm\infty \land \exists C: \forall n: y_n \le C < 0  \Rightarrow \lim(x_ny_n)=\mp\infty$
         \item $\forall x_n, y_n \lim x_n = \infty \land \exists C: \forall n: |y_n| \ge C > 0  \Rightarrow \lim(x_ny_n)=\infty$
-        \item $\forall x_n, y_n \lim x_n = a \neq 0 \land \forall n: \lim y_n = 0  \Rightarrow \lim \frac{x_n}{y_n}=\infty$
+        \item $\forall x_n, y_n \lim x_n = a \neq 0 \land \lim y_n = 0  \Rightarrow \lim \frac{x_n}{y_n}=\infty$
         \item $\forall x_n\text{ --- ограничена}, y_n: \lim y_n = \infty \Rightarrow \lim \frac{x_n}{y_n} = 0$
         \item $\forall x_n, y_n\text{ --- ограничена}: \lim x_n = \infty \land y_n \neq 0 \Rightarrow \lim \frac{x_n}{y_n} = \infty$
     \end{enumerate}
@@ -268,7 +268,7 @@
         \item $y_n$ --- ограничена снизу  $\Rightarrow y_n \ge c$. А так как $\lim x_n = +\infty \Rightarrow \forall E \exists N: \forall n \ge N: x_n > E$. Подставим $E-c$ вместо  $E$.  $\exists N \forall n \ge N x_n > E - C \Rightarrow x_n + y_n \ge E - c + y_n \ge E - c + c= E$.
         \item Упражнение.
         \item Упражнение.
-        \item $\lim x_n = +\infty \Rightarrow \forall E \exists N \forall n \ge N: x_n > E$. Подставим $\frac{E}{c}$ вместо $E$:  $x_n > \frac{E}{c} \Rightarrow x_ny_n \ge xn_C > \frac{E}{c}\cdot c = E$.
+        \item $\lim x_n = +\infty \Rightarrow \forall E \exists N \forall n \ge N: x_n > E$. Подставим $\frac{E}{c}$ вместо $E$:  $x_n > \frac{E}{c} \Rightarrow x_ny_n \ge xnC > \frac{E}{c}\cdot c = E$.
         \item Упражнение.
         \item Упражнение.
         \item $\lim y_n = 0 \Rightarrow y_n$ --- бесконечно малое $\Rightarrow \frac{1}{y_n}$ --- бесконечно большая. Поймем, что $|x_n| \ge C > 0$ при больших $n$. Возьмем картинку и окрестность  $\frac{a}{2}$. Заметим, что начиная с некоторого номер $|x_n| \ge \frac{a}{2} > 0$.
@@ -291,7 +291,7 @@
 \begin{enumerate}
     \item $+\infty - +\infty$ или  $+\infty + -\infty$. Может получиться беспредел, любое число, любая бесконечность.
     \item $+\infty \cdot 0$
-    \item $\frac{\pm \infty}{\pm infty}$.Может получиться беспредел, любое число, бесконечность правильного знака.
+    \item $\frac{\pm \infty}{\pm \infty}$.Может получиться беспредел, любое число, бесконечность правильного знака.
     \item $\frac{0}{0}$ --- любое число, любая бесконечность, отсутствие предела.
 \end{enumerate}
 \begin{example}
@@ -330,7 +330,7 @@
 
      Убедимся в выполнении условий для неравенства Бернулли. Посмотрим на $\frac{a}{n-1+a}$. Если $a>0$, то очевидно. Если  $a<0$, то  $n_1 > a$, а значит дробь меньше нуля.
 
-    Ограниченность: $y_n \coloneqq (1-\frac{a}{n})^n$ возрастает при $n>a$.  $x_ny_n = \left(\left(1+\frac{a}{n}\right)\left(1-\frac{a}{n}\right)\right)^n = \left(1-\frac{a^2}{n^2}\right)^n \le 1$. Тогда $x_n \le \frac{1}{y_n} \le \frac{1}{y_{n-1}} \le \ldots \le \frac{1}{y_{[a] + 1}}$ 
+    Ограниченность: $y_n \coloneqq (1-\frac{a}{n})^n$ возрастает при $n>a$.  $x_ny_n = \left(\left(1+\frac{a}{n}\right)\left(1-\frac{a}{n}\right)\right)^n = \left(1-\frac{a^2}{n^2}\right)^n$, что не больше $1$. Тогда $x_n \le \frac{1}{y_n} \le \frac{1}{y_{n-1}} \le \ldots \le \frac{1}{y_{[a] + 1}}$ 
 \end{proof}
 \begin{consequence}
     $x_n \coloneqq \left(1 + \frac{a}{n}\right)^n$ имеет предел.
@@ -369,15 +369,15 @@
 \begin{proof}
     Пусть $x_n = (1+\frac{a}{n})^n$, $A = 1 + \frac{a}{n}$, $B = 1 + \frac{a_n}{n}$. Тогда $|x_n - y_n| = |A^n - B^n| = \underbrace{|A-B|}_{=\frac{|a-a_n|}{n}}\cdot|A^{n-1} + A^{n-2}B + \ldots + B^{n-1}|$.
 
-    Тогда $\lim a_n = a \Rightarrow a_n$ --- ограниченная последовательность ($|a_n| \le M$). Тогда  $|a_n| \le M \Rightarrow A = 1 + \frac{a}{n} \le 1 + \frac{M}{n}, B = 1 + \frac{a}{n} \le 1 + \frac{M}{n}$.Тогда исходное: $\frac{|a-a_n|}{n} n \left(1+\frac{M}{n}\right)^{n-1} \le |a-a_n|(1+\frac{M}{n})^n \le |a-a_n|\exp M \to 0$.
+    Тогда $\lim a_n = a \Rightarrow a_n$ --- ограниченная последовательность ($|a_n| \le M$). Тогда  $|a_n| \le M \Rightarrow A = 1 + \frac{a}{n} \le 1 + \frac{M}{n}, B = 1 + \frac{a}{n} \le 1 + \frac{M}{n}$.Тогда исходное: $\frac{|a-a_n|}{n} n \left(1+\frac{M}{n}\right)^{n-1} \le |a-a_n|(1+\frac{M}{n})^n \le |a-a_n|\exp M \to 0$. Что произошло: $(1+\frac{M}{n})^n < \exp M$ при любом $n$, а  $|a-a_n| \to 0$, получили  в пределе $0 \cdot \text{const} = 0$. 
 
-    То есть $\lim x_n - y_n \Rightarrow \lim x_n - \lim (x_n - y_n) = \exp a - 0 = \exp a$.
+    То есть $\lim x_n - y_n = 0 \Rightarrow \lim y_n = \lim x_n - \lim (x_n - y_n) = \exp a - 0 = \exp a$.
 \end{proof}
 \begin{theorem}
     $\exp(a+b) = \exp a \cdot \exp b$.
 \end{theorem}
 \begin{proof}
-    $x_n \coloneqq \left(1+\frac{a}{n}\right)^n \to \exp a$. $y_n \coloneqq (1 + \frac{b}{n})^n \to \exp b$. Тогда $x_ny_n = \left((1+\frac{a}{n})(1+\frac{b}{n})\right)^n = \left(1+\frac{a+b+\frac{ab}{n}}{n}\right)^n \xrightarrow{\text{Лемма}} \exp(a+b)$
+    $x_n \coloneqq \left(1+\frac{a}{n}\right)^n \to \exp a$. $y_n \coloneqq (1 + \frac{b}{n})^n \to \exp b$. Тогда $x_ny_n = \left((1+\frac{a}{n})(1+\frac{b}{n})\right)^n = \left(1+\frac{a+b+\frac{ab}{n}}{n}\right)^n \xrightarrow[a+b+\frac{ab}{n} \to a+b]{\text{Лемма}} \exp(a+b)$
 \end{proof}
 \begin{consequence}
     \slashn
@@ -399,7 +399,7 @@
 \begin{proof}
     Картинка. Возьмем окрестность с правой границей $b = \frac{a+1}{2}$. Тогда начиная с некоторого номера $m$ члены последовательности  $\frac{x_{n+1}}{x_n}$ попали в этот интервал. То есть $\frac{x_{n+1}}{x_n} \le b < 1$ при $n \ge m$. 
 
-    Пусть $n > m$.  $x_n = \frac{x_n}{x_{n+1}} \cdot \frac{x_{n-1}{x_{n-2}}}\cdot\ldots\cdot\frac{x_{m+1}}{x_m} \cdot x_m \le b^{n-m}\cdot x_m = b^n \frac{x_m}{b^m}$. Тогда $0 < x_n < \underbrace{b^n}_{\to 0}\frac{x_m}{b^m}$. 
+    Пусть $n < m$.  $x_n = x_m \cdot \frac{x_{m+1}}{x_m} \cdot \frac{x_{m+2}}{x_{m+1}} \cdot \ldots \cdot \frac{x_n}{x_{n-1}} \le x_m b^{n-m}\cdot x_m = \frac{x_m}{b^m} \cdot b^n \to \frac{x_m}{b^m} \lim b^n = 0$. 
 \end{proof}
 \begin{consequence}
     \slashn

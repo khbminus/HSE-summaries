@@ -23,11 +23,11 @@
     \hline
     Операция & определение & название \\
     \hline
-    \Large{$\subset$} & $\forall x: \; x \in A \Rightarrow x \in B$ & $А$ --- подмножество $B$ \\
+    \Large{$A \subset B$}          & $\forall x: \; x \in A \Rightarrow x \in B$ & $A$ --- подмножество $B$ \\
     \hline
-    \Large{=} & $A \subset B \land B \subset A$ & $A$ равно $B$ \\
+    \Large{$A = B$}          & $A \subset B \land B \subset A$ & $A$ равно $B$ \\
     \hline
-              & $A \subset B \land A != b $ &  $A$ --- собственное подмножество  $B$ \\
+    \Large{$A \subsetneq B$} & $A \subset B \land A \neq b $ &  $A$ --- собственное подмножество  $B$ \\
     \hline
     \end{tabular}
 \end{center}
@@ -35,9 +35,9 @@
 \begin{itemize}
     \item Полное задание: $\{a,b,c\}$.
     \item  Неполное: $a_1,a_2,\ldots, a_k$. Но должно быть понятно как образована последовательно. Например $\{1,5,\ldots,22\}$ --- непонятно
-    \item Можно так же и бесконечные: $\{a_1,a_2,\ldots$
+    \item Можно так же и бесконечные: $\{a_1,a_2,\ldots\}$
     \item Словесным описанием. Например, множество простых чисел.
-    \item Формулой. Например, пусть задана функция $\Phi(x)$ --- функция для всех чисел, которая возращает истину или ложь. Тогда можно взять множество  $\{x: \; \Phi(x) = \text{истина}$. \\
+    \item Формулой. Например, пусть задана функция $\Phi(x)$ --- функция для всех чисел, которая возращает истину или ложь. Тогда можно взять множество  $\{x: \; \Phi(x) = \text{истина}\}$. \\
             Но не всякая функция подходит, особенно если функция из реального мира. Например: <<натуральное число может быть описано не более чем 20 словами русского языка>>. Не подходит оно по следующей причине: пусть наша функция подходит, то образуется множество  $A = \{x_1, x_2,x_3,\ldots\}$. У каждого множества есть минимальный элемент, тогда минимальное невходящее число может быть описано как <<первое число, которое нельзя описать не более чем 20 словами русского язык>>, что меньше 20 слов. Противоречие.
 \end{itemize}
 \Subsection{Операции с множествами.}
@@ -82,8 +82,8 @@
 
 Правила де Моргана. Пусть есть $A_\alpha \subset X$
  \begin{enumerate}
-     \item $X \setminus \bigcup_{\alpha \in I} = \bigcap_{\alpha \in I} X \setminus A_\alpha$.
-     \item $X \setminus \bigcap_{\alpha \in I} = \bigcup_{\alpha \in I} X \setminus A_\alpha$.
+     \item $X \setminus \bigcup_{\alpha \in I} A_\alpha = \bigcap_{\alpha \in I} X \setminus A_\alpha$.
+     \item $X \setminus \bigcap_{\alpha \in I} A_\alpha = \bigcup_{\alpha \in I} X \setminus A_\alpha$.
 \end{enumerate}
 \textbf{Доказательство}: $X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \{x: x \in X \land x \notin A_{\alpha} \; \forall \alpha \in I\} = \{x: \forall \alpha \in I X \setminus A_{\alpha} = \bigcap_{\alpha \in I} X \setminus A_{\alpha}$.
 \begin{theorem}
@@ -94,7 +94,7 @@
     TODO.
 \end{proof}
  \begin{definition}
-    Упорядоченная пара $\left<x,y\right>$. Важное свойство $\left<x, y\right> = \left<x',\right> \iff x = x' \land y = y'$
+    Упорядоченная пара $\left<x,y\right>$. Важное свойство $\left<x, y\right> = \left<x',y'\right> \iff x = x' \land y = y'$
 \end{definition}
 \begin{definition}
     Пусть даны множества $X_1,\ldots,X_n$, то упорядоченной $n-кой$ (кортеж) ---  $\left<x_1,\ldots,x_n\right>$, обладающее условием $\left<x_1,\ldots,x_n\right> = \left<y_1,\ldots,y_n\right> \iff x_1 = y_1 \land \ldots \land x_n = y_n$ 
@@ -134,7 +134,7 @@
         $R \circ R = \{\text{дед по отцовской линии}\}$
 \end{itemize}
 \begin{definition}
-    Функция из $X$ в  $Y$ --- отношение ($\delta_f = X$), если:
+    Функция из $X$ в  $Y$ --- отношение ($\delta_f = X$), для которого верно:
      \[
          \left. \begin{array}{l} \left<x,y\right> \in f \\ \left<x, z\right> \in f \end{array} \right\} \Rightarrow y = z
     .\] 
@@ -153,7 +153,7 @@
     Отношение $R$ называется иррефлективным, если  $\forall x \left<x,x\right> \notin R$
 \end{definition}
 \begin{definition}
-    Отношение $R$ называется антирефлексивным, если  $\left. \begin{array}{r} \left<x, y\right> \in R \\ \left<y, x\right> \in R\end{array} \right\} \Rightarrow x = y$
+    Отношение $R$ называется антисимметричным, если  $\left. \begin{array}{r} \left<x, y\right> \in R \\ \left<y, x\right> \in R\end{array} \right\} \Rightarrow x = y$
 \end{definition}
 
 \begin{definition}
@@ -166,7 +166,7 @@
     Равенство, сравнение по модулю $\Z$,  $\|$, отношение подобия треугольников.
 \end{example}
 \begin{definition}
-    Если выполняется рефлективность, антисимметричность и транзитивность, от данное отношение --- отношение нестрогий частичного порядка.
+    Если выполняется рефлективность, антисимметричность и транзитивность, от данное отношение --- отношение нестрогого частичного порядка.
 \end{definition}
 \begin{example}
     $\ge$; $A \subset B$ на $2^X$. 
@@ -197,7 +197,7 @@
         \begin{itemize}
             \item Коммутативность. $x\cdot y=y\cdot x$.
             \item Ассоциативность.  $(x\cdot y)\cdot z=x\cdot (y\cdot z)$
-            \item Существует единица.  $\exists 0 \in \R \; \; x \cdot 1 = x$
+            \item Существует единица.  $\exists 1 \in \R \; \; x \cdot 1 = x$
             \item Существует обратный элемент. $\exists x^{-1} \in \R \; \; x \cdot x^{-1} = 1$
         \end{itemize}
 \end{itemize}
