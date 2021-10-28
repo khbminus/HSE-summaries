@@ -425,11 +425,11 @@
 
     Теперь посмотрим на $|\frac{x_n}{y_n}| \le \frac{|x_n -x_m| + |x_m|}{|y_n|} < \frac{\varepsilon(y_n - y_m)}{y_n} + \frac{|x_m|}{y_n} < \varepsilon \frac{1y_n}{y_n} + \frac{|x_m|}{y_n} = \varepsilon + \frac{|x_m|}{y_n} < 2\varepsilon$. Берем такой $N: \forall n \ge N y_n \ge \frac{1}{\varepsilon}|x_m|$. Если $n > \max\{m, N\}$, то  $|\frac{x_n}{y_n}| < 2\varepsilon$. Тогда  $\lim \frac{x_n}{y_n} = 0$
 
-    Рассмотрим случай $l \in \R$. Рассмотрим  $\widetilde{x_n} \coloneqq x_n - l y_n$. Тогда  $\frac{(\widetilde{x_{n+1}} - \widetilde{x_n}) - (x_n - l y_n)}{y_{n+1} - y_n} = \frac{x_{n+1} - x_n}{y_{n+1} - y_n} - l \to 0$, т.к. $\frac{x_{n+1} - x_n}{y_{n+1} - y_n} \to 0$. 
+    Рассмотрим случай $l \in \R$. Рассмотрим  $\widetilde{x_n} \coloneqq x_n - l y_n$. Тогда  $\frac{(\widetilde{x_{n+1}} - \widetilde{x_n}) - (x_n - l y_n)}{y_{n+1} - y_n} = \frac{x_{n+1} - x_n}{y_{n+1} - y_n} - l \to 0$, т.к. $\frac{x_{n+1} - x_n}{y_{n+1} - y_n} \to l$. Тогда, по случаю выше получаем что $\frac{\widetilde{x_n}}{y_n} \to 0 \iff \frac{x_n}{y_n} - l \to 0 \Rightarrow \frac{x_n}{y_n} \to l$ 
 
-    Рассмотрим случай $l = +\infty$.  $\frac{x_{n+1} - x_n}{y_{n+1} - t_n} \to +\infty \Rightarrow \frac{x_{n+1} - x_n}{y_{n+1} - y_n} > 1$ при $n \ge N \Rightarrow x_{n+1} - x_n > y_{n+1} - y_n > 0 \Rightarrow x_n \uparrow$.
+    Рассмотрим случай $l = +\infty$.  $\frac{x_{n+1} - x_n}{y_{n+1} - y_n} \to +\infty \Rightarrow \frac{x_{n+1} - x_n}{y_{n+1} - y_n} > 1$ при $n \ge N \Rightarrow x_{n+1} - x_n > y_{n+1} - y_n > 0 \Rightarrow x_n \uparrow$.
 
-    Из того, что для $x_n - x_{n-1} > y_n - y_{n-1} \land \ldots \land x_{N + 1} - x_{N} > y_{N} - y_{N-1} \Rightarrow x_n - x_N > y_n - y_N \Rightarrow x_n > \underbrace{y_n}_{\to +\infty} + \underbrace{(x_N - y_N)}_{=const} \Rightarrow x_n \to +\infty$. Тогда $\frac{y_{n+1} - y_n}{x_{n+1} - x_n} \to 0 \xRightarrow{\text{Случай 0}} \frac{y_n}{x_n} \to 0 \Rightarrow \frac{x_n}{y_n} \to \infty \frac{x_n}{y_n} \to +\infty$.
+    Из того, что для $x_n - x_{n-1} > y_n - y_{n-1} \land \ldots \land x_{N + 1} - x_{N} > y_{N + 1} - y_{N} \Rightarrow x_n - x_N > y_n - y_N \Rightarrow x_n > \underbrace{y_n}_{\to +\infty} + \underbrace{(x_N - y_N)}_{=const} \Rightarrow x_n \to +\infty$. Тогда $\frac{y_{n+1} - y_n}{x_{n+1} - x_n} \to 0 \xRightarrow{\text{Случай 0}} \frac{y_n}{x_n} \to 0 \Rightarrow \frac{x_n}{y_n} \to \infty \frac{x_n}{y_n} \to +\infty$.
 
     Случай  $l=-\infty$.  $\widetilde{x_n} = -x_n$.
 \end{proof}
@@ -482,7 +482,7 @@
 \begin{proof}
     $a$ --- нижняя граница,  $b$ --- верхняя для  $x_n$. То есть  $\forall n: x_n \in [a; b]$. В какой-то половине отрезка бесконечное число членов (иначе в сумме конечное число членов). Назовем подходящую $[a_1;b_1]$. Теперь делю эту половинку пополам. В одной из половинок половинки бесконечное число членов. Получили процесс деления отрезков на кусочки. 
 
-    Заметим, что $[a; b] \supset [a_1; b_1] \supset \ldots$. $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда $\exists c \in R: \lim a_n = \lim b_n = c$. Берем  $[a_1; b_1]$, там бесконечное число членов. Берем какой-то $x_{n_1}$. Берем $[a_2; b_2]$, там есть  $x_{n_2} > n_1$. Тогда получили возрастание индексов и  $x_{n_k} \in [a_k; b_k]$.  $a_k \le x_{n_k} < b_k$, то тогда по двум милиционерам $\lim x_{n_k} = c$.
+    Заметим, что $[a; b] \supset [a_1; b_1] \supset \ldots$. $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда $\exists c \in R: \lim a_n = \lim b_n = c$. Берем  $[a_1; b_1]$, там бесконечное число членов. Берем какой-то $x_{n_1}$. Берем $[a_2; b_2]$, там есть  $n_2 > n_1$. Тогда получили возрастание индексов и  $x_{n_k} \in [a_k; b_k]$.  $a_k \le x_{n_k} \le b_k$, то тогда по двум милиционерам $\lim x_{n_k} = c$.
 \end{proof}
 \begin{theorem}
     Несколько пунктов:
@@ -495,7 +495,7 @@
 \begin{proof}
     \slashn
     \begin{enumerate}
-        \item Пусть $x_n$ монотонно возрастает. Докажем, что  $\lim x_n = +\infty$. Берем  $E$. Это не верхняя граница, значит найдется  $x_N > E \Rightarrow n \ge N \Rightarrow E < x_N \le X_{N+1} \le \ldots \le x_n$.
+        \item Пусть $x_n$ монотонно возрастает. Докажем, что  $\lim x_n = +\infty$. $\forall E$. Это не верхняя граница, значит найдется  $x_N > E \Rightarrow \exists n \ge N \Rightarrow E < x_N \le X_{N+1} \le \ldots \le x_n$.
         \item 1 --- не верхняя граница $\Rightarrow$ есть  $x_{n_1} > 1$. 2 +  $x_{n_1}$ ---  не верхняя граница $\Rightarrow$ есть  $x_{n_k} > 2 + x_{n_k} + 2$. И так далее \ldots Получилось, что $x_{n_k} > k \to \infty \Rightarrow x_{n_k} \to +\infty$. Дальше переставим члены в порядке возрастания индексов.
     \end{enumerate}
 \end{proof}
@@ -517,26 +517,24 @@
 \begin{proof}
     \slashn
     \begin{itemize}
-        \item $\Rightarrow$ $l$ --- частичный предел  $\Rightarrow$ найдется подпоследовательность  $x_{n_k} \to l \Rightarrow$ вне любой окрестности  $l$ конечное число членов последовательности $\Rightarrow$ внутри конечное.
-        \item $\Leftarrow$ точка в  $(l-1, l+1)$ бесконечно мало членов последовательности. Если бесконечное число совпало с  $l$, то берем их в качестве подпоследовательности. 
-
-            Если конечно, то берем член, не равный  $l$. Пусть это  $x_{n_1} \neq l$. Рассмотрим  $\varepsilon_2 = \min \{\frac{1}{2}, |x_{n_1} - l|\}>0$. Тогда в $(l-\varepsilon_2; l + \varepsilon_2$ бесконечное число членов. Берем  $n_2 > n_1$ и  $x_{n_2} \neq l$. Берем  $n_2 > n_1$. Рассмотрим $\varepsilon_3$ \ldots. Получилось $n_1 < n_2 < \ldots$ и $0 \le |x_{n_k} - l| < \varepsilon_k \le \frac{1}{k} \to 0$.
+        \item $\Rightarrow$ $l$ --- частичный предел  $\Rightarrow$ найдется подпоследовательность  $x_{n_k} \to l \Rightarrow$ вне любой окрестности  $l$ конечное число членов последовательности $x_{n_k}$ $\Rightarrow$ внутри бесконечное.
+        \item $\Leftarrow$ Возьмем $(l - 1; l + 1)$. В ней бесконечное число членов. Возьмем любой  $x_{n_1}$. Далее из $(a - \frac{1}{2}; a + \frac{1}{2})$ возьмем $x_{n_2}, n_2 > n_1$. Повторим процесс:  $x_{n_k} \in (a - \frac{1}{k}; a + \frac{1}{k}), n_k > n_{k-1}$. Тогда получили подпоследовательность, для которой верно: $a - \frac{1}{k} < x_{n_k} < a + \frac{1}{k} \xRightarrow[\text{2 мил.}]{\text{Th.}} x_{n_k} \to a \Rightarrow l$ --- частичный предел.
     \end{itemize}
-\end{proof}
+        \end{proof}
 \begin{definition}
-    $x_n$ --- фундаментальная (сходящаяся в себе, последовательность Коши), если  $\varepsilon >0 \exists N: m, n \ge N |x_n - x_m| < \varepsilon$.
+    $x_n$ --- фундаментальная (сходящаяся в себе, последовательность Коши), если  $\forall \varepsilon >0 \exists N \forall m, n \ge N: |x_n - x_m| < \varepsilon$.
 \end{definition}
 \begin{property}
     Сходящаяся последовательность фундаментальна.
 \end{property}
 \begin{proof}
-    Берем $\varepsilon$. Пусть предел  $l = \lim x_n$. Берем  $\varepsilon>0$.  $\exists N \forall n \ge N |x_n - l| < \frac{\varepsilon}{2} \land |x_m - l| < \frac{\varepsilon}{2} \Rightarrow |x_n - x_m| \le |x_n - l| + |l - x_m < \varepsilon$ 
+    Пусть предел  $l = \lim x_n$. Берем  $\varepsilon>0$.  $\exists N \forall n \ge N |x_n - l| < \frac{\varepsilon}{2} \land |x_m - l| < \frac{\varepsilon}{2} \Rightarrow |x_n - x_m| \le |x_n - l| + |l - x_m| < \varepsilon$ 
 \end{proof}
 \begin{property}
     Фундаментальная последовательность ограничена.
 \end{property}
 \begin{proof}
-    Берем $\varepsilon=1$. Тогда  $\exists N \forall m, n \ge N: |x_n - x_m| < 1 \Rightarrow |x_n - x_N| < 1 \Rightarrow |x_n| < 1 + |x_N| \Rightarrow |x_n| \le \max\{|x_1|, \ldots, |x_{N-1}|, 1 + |x_n|$.
+    Берем $\varepsilon=1$. Тогда  $\exists N \forall m, n \ge N: |x_n - x_m| < 1 \Rightarrow |x_n - x_N| < 1 \Rightarrow |x_n| < 1 + |x_N| \Rightarrow |x_n| \le \max\{|x_1|, \ldots, |x_{N-1}|, 1 + |x_N|\}$.
 \end{proof}
 \begin{property}
    Если фундаментальная последовательность содержит сходящуюся последовательность, то она сама сходящаяся.
@@ -593,7 +591,7 @@
 
             Пусть $a = +\infty$, значит  $\forall n: z_n = +\infty \Rightarrow$ последовательность  $x_n$ не ограничена сверху. Тогда выберем подпоследовательность, стремящаяся к $+\infty$.
 
-            Поняли, что  $a$ --- частичный предел. Докажем, что он максимальный. Возьмем $x_{n_k} \to b$. Тогда  $x_{n_k} < z_{n_k} \land x_{n_k} \to b \land z_{n_k} \to a \Rightarrow b \le a$. 
+            Поняли, что  $a$ --- частичный предел. Докажем, что он максимальный. Возьмем $x_{n_k} \to b$. Тогда  $x_{n_k} \le z_{n_k} \land x_{n_k} \to b \land z_{n_k} \to a \Rightarrow b \le a$. 
         \item Упражнение.
         \item $y_n = \inf \{x_n, x_{n+1},\ldots\} \le x_n \le \sup \{x_n, x_n+1,\ldots\} = x_n$. Тогда два милиционера.
     \end{enumerate}
@@ -607,7 +605,7 @@
                 \forall \varepsilon >0\; \forall N\; \exists n \ge N: x_n < a + \varepsilon
             \end{cases}
             $
-        \item $a = \overline{\lim x_n} \iff
+        \item $b = \overline{\lim x_n} \iff
             \begin{cases}
                 \forall \varepsilon > 0\; \exists N \; \forall n \ge N: x_n < b + \varepsilon \\
                 \forall \varepsilon >0\; \forall N\; \exists n \ge N: x_n > b - \varepsilon
@@ -619,7 +617,8 @@
    Будем доказывать второй пункт.$z_n = \sup \{x_n, x_{n+1}, \ldots\}$
    \begin{enumerate}
        \item $\forall \varepsilon > 0 \exists N \forall n \ge N x_n < b + \varepsilon \xLeftrightarrow[\text{def } z_n]{\text{def } \sup} \forall \varepsilon > 0 \exists N: z_N < b + \varepsilon$. Там достаточно этого по определению $z_n$ и  $\sup$.
-       \item  $\forall \varepsilon > 0 \forall N \exists n \ge N x_n > b-\varepsilon \iff \varepsilon > 0 \forall N z_N > b - \varepsilon$. Так как $z_n \downarrow \iff \forall \varepsilon > 0 \exists N: \forall n \ge N: z_n \le b + \varepsilon$, а так же $\forall N \in N: z_n \ge b \land z_n > b + \varepsilon$, то $z_n \to b$.
+       \item  $\forall \varepsilon > 0 \forall N \exists n \ge N x_n > b-\varepsilon \iff \varepsilon > 0 \forall N z_N > b - \varepsilon$. 
+       \item Так как $z_n \downarrow \Rightarrow \forall \varepsilon > 0 \exists N: \forall n \ge N: z_n \le b + \varepsilon$. Поэтому $\forall N \in N: z_N \ge b - \varepsilon \land z_N \le b + \varepsilon$, то $z_n \to b$.
    \end{enumerate}
 \end{proof}
 \begin{theorem}
