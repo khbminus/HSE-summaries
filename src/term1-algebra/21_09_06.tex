@@ -7,7 +7,7 @@
 .\] 
 Если бы мы были в $\mathbb{R}$, то решение быстро бы нашлось: $y = \frac{c - ax}{b}$. Но в целых штуках такая штука не всегда будет решением, т.к. $b$ не всегда делит $c - ax$.
  \begin{definition}
-     $a$ делится на $b$ ($a \vdots b, b \vert a$), если $\exists c \in \mathbb{Z}: a = bc$.
+     $a$ делится на $b$ ($a \divby b, b \vert a$), если $\exists c \in \mathbb{Z}: a = bc$.
 \end{definition}
 Простые свойства:
 \begin{enumerate}
@@ -16,22 +16,22 @@
     \item
             $\forall a: a \vert a$.
     \item
-        $\forall a, b \vdots c, k, l \in \mathbb{Z} \Rightarrow (ka + lb) \vdots c$.
+        $\forall a, b \divby c, k, l \in \mathbb{Z} \Rightarrow (ka + lb) \divby c$.
             \begin{proof}
-                $a, b \vdots c \Rightarrow \exists d, e: \begin{array}{l} a = c \cdot l \\ b = c \cdot e \end{array}$. Тогда  $ka + lb = k \cdot cd + l \cdot ce = c \cdot (kd + le) \Rightarrow (ka + lb) \vdots c$
+                $a, b \divby c \Rightarrow \exists d, e: \begin{array}{l} a = c \cdot l \\ b = c \cdot e \end{array}$. Тогда  $ka + lb = k \cdot cd + l \cdot ce = c \cdot (kd + le) \Rightarrow (ka + lb) \divby c$
             \end{proof}
     \item
-            $\forall k \neq 0, k \in \mathbb{Z}: a \vdots b \iff ak \vdots bk$.
+            $\forall k \neq 0, k \in \mathbb{Z}: a \divby b \iff ak \divby bk$.
     \item
-            $a \vdots b \iff a^2 \vdots b^2$.
+            $a \divby b \iff a^2 \divby b^2$.
     \item
-            $a \vdots b \Rightarrow \left[ \begin{array}{l} |a| > |b| \\ a = 0 \end{array} \right.$.
+            $a \divby b \Rightarrow \left[ \begin{array}{l} |a| > |b| \\ a = 0 \end{array} \right.$.
     \item
-            $a \vdots b, b \vdots c \Rightarrow a \vdots c$.
+            $a \divby b, b \divby c \Rightarrow a \divby c$.
     \item 
-            $a \vdots a$.
+            $a \divby a$.
     \item 
-            $a \vdots b, b \vdots a \Rightarrow a = \pm b$.
+            $a \divby b, b \divby a \Rightarrow a = \pm b$.
 \end{enumerate}
 
 \begin{theorem}[О делении с остатком]
@@ -40,7 +40,7 @@
 \begin{proof}
     \begin{itemize}
         \item 
-        Единственность. Пусть есть два результата: $a = b \cdot q_1 + r_1$ и $a = b \cdot q_2 + r_2$. Тогда приравняем: $b \cdot q_1 + r_1 = b \cdot q_2 + r_2 \iff b(q_1 - q_2) = r_2 - r_1 \xRightarrow{r_1, r_2 \in \left[0;|b|-1\right]}[|r_1-r_2| < |b|] r_2-r_1 \vdots b \Rightarrow r_2-r_1=0 \iff r_1=r_2 \Rightarrow b(q_1-q_2)=0 \iff q_1=q_2$ 
+        Единственность. Пусть есть два результата: $a = b \cdot q_1 + r_1$ и $a = b \cdot q_2 + r_2$. Тогда приравняем: $b \cdot q_1 + r_1 = b \cdot q_2 + r_2 \iff b(q_1 - q_2) = r_2 - r_1 \xRightarrow{r_1, r_2 \in \left[0;|b|-1\right]}[|r_1-r_2| < |b|] r_2-r_1 \divby b \Rightarrow r_2-r_1=0 \iff r_1=r_2 \Rightarrow b(q_1-q_2)=0 \iff q_1=q_2$ 
     \item Существование. 
         \begin{enumerate}[label=\Roman*.,ref=\arabic*]
             \item $a \ge 0, b \ge 0$. 
@@ -113,12 +113,12 @@
 \begin{definition}
     Пусть $a, b \in \mathbb{Z}$. Тогда $d$ ---  $\text{НОД}(a,b) = \gcd(a,b) = (a, b)$ 
 \end{definition}
-Докажем единственность. $\begin{cases}a \vdots d, b \vdots d \\ a \vdots d_1, b \vdots d_1\end{cases} \iff d \vdots d_1$. Тогда $d \vdots d_1 \land d_1 \vdots d$, а значит $d = \pm d_1$. 
+Докажем единственность. $\begin{cases}a \divby d, b \divby d \\ a \divby d_1, b \divby d_1\end{cases} \iff d \divby d_1$. Тогда $d \divby d_1 \land d_1 \divby d$, а значит $d = \pm d_1$. 
 \begin{theorem}
    \begin{enumerate}
        \item $\forall a, b\; \exists d = (a,b)$
        \item  $\exists x, y \in \mathbb{Z}:\; d = ax +by$
-       \item  $ax + by = c \text{ имеет решение } \iff c \vdots d$.
+       \item  $ax + by = c \text{ имеет решение } \iff c \divby d$.
    \end{enumerate} 
 \end{theorem}
 \begin{proof}
@@ -128,21 +128,21 @@
             Рассмотрим $\left<a, b\right>$ --- идеал. Он главный по предыдущей теореме:  $\exists d \left<a, b\right> = \left<d\right>$. \\
         \item
             $d \in \left<d\right> = \left<a, b\right>$. А значит  $\exists x, y: d = ax+by$.\\
-            $a = a \cdot 1 + b \cdot 0 \in \left<a, b\right> = \left<d\right>$, значит $a \vdots d$. Аналогично  $b \vdots d$. \\
-        С другой стороны пусть  $a \vdots d, b \vdots d$, тогда  $d = \underbrace{ax}_{\vdots d} + \underbrace{by}_{\vdots d} \vdots d$. \\
+            $a = a \cdot 1 + b \cdot 0 \in \left<a, b\right> = \left<d\right>$, значит $a \divby d$. Аналогично  $b \divby d$. \\
+        С другой стороны пусть  $a \divby d, b \divby d$, тогда  $d = \underbrace{ax}_{\divby d} + \underbrace{by}_{\divby d} \divby d$. \\
         \item
-            $ax + by = c$ имеет решение  $\iff c \in \left<a,b\right> = \left<d\right>$. А  $c \in \left<d\right> \iff c \vdots d$.
+            $ax + by = c$ имеет решение  $\iff c \in \left<a,b\right> = \left<d\right>$. А  $c \in \left<d\right> \iff c \divby d$.
     \end{itemize}
 \end{proof}
 \begin{definition}
     $a, b$ --- взаимно просты, если  $(a, b) = 1$, то есть  $\left<a, b\right> = \mathbb{Z}$
 \end{definition}
 \begin{lemma}
-    $\begin{cases} ab \vdots c \\ (a,c) = 1 \end{cases} \Rightarrow b \vdots c$.
+    $\begin{cases} ab \divby c \\ (a,c) = 1 \end{cases} \Rightarrow b \divby c$.
 \end{lemma}
 \begin{proof}
     \par 
-    По условию $ab \vdots c$, значит $\exists x \in \mathbb{Z}: ab = c \cdot x$.
+    По условию $ab \divby c$, значит $\exists x \in \mathbb{Z}: ab = c \cdot x$.
 
-    Так как $(a, c) = 1$, то $\exists y, z \in \mathbb{Z}: ay + cz = 1$. Тогда домножим все на $b$ и получим $aby + czb = b$. А значит $\begin{cases} aby \vdots c \\ czb \vdots c \end{cases} \Rightarrow b \vdots c$
+    Так как $(a, c) = 1$, то $\exists y, z \in \mathbb{Z}: ay + cz = 1$. Тогда домножим все на $b$ и получим $aby + czb = b$. А значит $\begin{cases} aby \divby c \\ czb \divby c \end{cases} \Rightarrow b \divby c$
 \end{proof}

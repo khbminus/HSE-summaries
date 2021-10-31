@@ -112,9 +112,9 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
  \begin{enumerate}
      \item $a \equiv b \pmod{n} \land c \equiv d \pmod{n} \iff a+c \equiv b+d \pmod{n} \land ac \equiv bd \pmod{n}$. 
 
-         Доказательство  $(a+c) - (b+d) = \underbrace{(a-b)}_{\vdots n} - \underbrace{(d-c)}_{\vdots n} \vdots n$. 
+         Доказательство  $(a+c) - (b+d) = \underbrace{(a-b)}_{\divby n} - \underbrace{(d-c)}_{\divby n} \divby n$. 
 
-         Доказательство $ac - bd = ac - bc + bc - bd = c (a-b) + b(c-d) \vdots n$.
+         Доказательство $ac - bd = ac - bc + bc - bd = c (a-b) + b(c-d) \divby n$.
 
          Значит класс суммы и произведения зависит только от классов множителей и слагаемых.
 \end{enumerate}
@@ -156,7 +156,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    $\overline{a}$ --- обратим  $\iff \exists \overline{b}: \overline{a} - \overline{b} = \overline{1} \iff \exists b: ab = 1 \pmod{n} \iff \exists b: ab - 1 \vdots n \iff \exists b, k: ab-1=nk \iff \exists b, k: ab-nk=1 \iff (a,n)  = 1$.
+    $\overline{a}$ --- обратим  $\iff \exists \overline{b}: \overline{a} - \overline{b} = \overline{1} \iff \exists b: ab = 1 \pmod{n} \iff \exists b: ab - 1 \divby n \iff \exists b, k: ab-1=nk \iff \exists b, k: ab-nk=1 \iff (a,n)  = 1$.
 
     $(a, n) = 1 \Rightarrow \overline{a}\text{ --- обратим} \Rightarrow$ не делитель нуля.
 
@@ -166,7 +166,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     $n$ --- простое  $\Rightarrow \Z / n\Z$ --- поле.
 \end{consequence}
 \begin{proof}
-    Достаточно проверить существование обратного. $\overline{a} \neq \overline{0} \iff a \not\vdots n \iff (a, n) = 1 \iff a$ --- обратим.
+    Достаточно проверить существование обратного. $\overline{a} \neq \overline{0} \iff a \not\divby n \iff (a, n) = 1 \iff a$ --- обратим.
 \end{proof}
 \begin{definition}
     $\forall $ ассоциативного кольца с 1 $R$:  $R$ --- называется кольцом без делителей 0 (область целостности), если делитель 0 только 0.  $ab = 0 \iff a = 0 \lor b = 0$  .
@@ -208,7 +208,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
      $P_{mn, m}(\overline{a_{mn}}) = \overline{a_m}$.
 \end{proof}
 \begin{proof}[Корректность]
-    $\overline{a_m} = \overline{b_mn} \iff a \equiv b \pmod{mn} \iff a-b \vdots mn \Rightarrow a-b \vdots m \Rightarrow \overline{a_m} = \overline(b_m)$
+    $\overline{a_m} = \overline{b_mn} \iff a \equiv b \pmod{mn} \iff a-b \divby mn \Rightarrow a-b \divby m \Rightarrow \overline{a_m} = \overline(b_m)$
 \end{proof}
 \slashn Аналогично существует гомоморфизм $P_{mn, n}$. То есть $\overline{a_{mn}} \rightarrow (\overline{a_m}, \overline{a_n})$ --- отображение. То есть $\Z / mn \Z \mapsto \Z / m\Z \times \Z / n \Z$.
 Отступление.
@@ -227,7 +227,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 \begin{proof}
     \slashn
     \begin{enumerate}
-        \item $i_{m,n}$ --- инъективно. Пусть $i_{m,n}(\overline{a_{m,n}}) = (\overline{a_m}, \overline{a_n})$,  $i_{m,n}(\overline{b_{n, m}}) = (\overline{b_m}, \overline{b_n}) \Rightarrow  a-b \vdots m \land a-b\vdots n \xRightarrow{(n, m) = 1} a - b \vdots mn$.
+        \item $i_{m,n}$ --- инъективно. Пусть $i_{m,n}(\overline{a_{m,n}}) = (\overline{a_m}, \overline{a_n})$,  $i_{m,n}(\overline{b_{n, m}}) = (\overline{b_m}, \overline{b_n}) \Rightarrow  a-b \divby m \land a-b\divby n \xRightarrow{(n, m) = 1} a - b \divby mn$.
         \item $i_{m, n}: a \mapsto B$ инъективно: $|A| = |B| \Rightarrow i_{m, n}$ --- сюръективно.  
     \end{enumerate}
 \end{proof}
@@ -275,20 +275,20 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 
     Теперь $\ord a \neq \infty$. Тогда построим  $f: \Z / k \Z \to \langle a \rangle$, то есть  $\overline{m_k} \mapsto a^m$.
 
-    Корректность:  $\overline{m_k} = \overline{n_k} \Rightarrow (m - n) \vdots k$. То есть $m = n + k \cdot l$. Значит  $a^m = a^{n + k \cdot l} \iff a^m = a^n \cdot a^{kl} = a^m$.
+    Корректность:  $\overline{m_k} = \overline{n_k} \Rightarrow (m - n) \divby k$. То есть $m = n + k \cdot l$. Значит  $a^m = a^{n + k \cdot l} \iff a^m = a^n \cdot a^{kl} = a^m$.
 
     Суръективность/инъективность: смотри выше. Или ниже, ну тут бан короче.
 \end{proof}
 \slashn
 Простыми словами, если $\ord a = \infty \Rightarrow$ в последовательности $\{a^i\}$ - элементы не повторяются. А если  $\ord a \neq \infty$, то элементы повторяются с периодом $k$, а внутри элементы не повторяются. 
 \begin{theorem}[Теорема Лангранжа]
-    Пусть $G$ --- группа.  $\forall G$ ---  $n$-элементная группа, тогда  $\forall a \in G: n \vdots \ord a$
+    Пусть $G$ --- группа.  $\forall G$ ---  $n$-элементная группа, тогда  $\forall a \in G: n \divby \ord a$
 \end{theorem}
 \begin{proof}
     Пусть $\ord a = k$.
     Рассмотрим отображение $m_a(x) = ax$. $m_a G \to G$. Нарисуем граф отображений (вершины --- элементы $G$, ребра (стрелки) ---  $x \to a_x$). $x \to ax \to a^2x \to a^3x \to \ldots \to a^kx \to x$, так как для $\forall i, j \le k: a^i x = a^j x \Rightarrow a^i = a^j$. 
 
-    Значит все элементы $G$ разбиваются на циклы длины  $k$. Следовательно $n \vdots k$.
+    Значит все элементы $G$ разбиваются на циклы длины  $k$. Следовательно $n \divby k$.
 \end{proof}
 \begin{consequence}
     $G$ --- конечная группа ($a \in G$) $\Rightarrow a^{|G|} = e$
@@ -304,7 +304,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     $G \coloneqq (\Z / p\Z \setminus \{0\}, \cdot) $. $|G| = p - 1$. Тогда $a^{p-1} = 1$. Малая теорема Ферма. 
 \end{example}
 \slashn
-На языке сравнений: $a \in \Z, a \vdots p \Rightarrow a^{p-1} - 1 \vdots p \iff a^{p-1} \equiv 1 \pmod{p}$. 
+На языке сравнений: $a \in \Z, a \divby p \Rightarrow a^{p-1} - 1 \divby p \iff a^{p-1} \equiv 1 \pmod{p}$. 
  \begin{example}
      $(\Z / p\Z, +)$ --- циклическая группа. А вот с  $G$ из предыдущего пункта --- тоже, если $p$ --- простое. Но не очев.  
 \end{example}
@@ -316,7 +316,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     Пусть $G$ --- группа,  $|G| = p$ --- простое. Тогда  $G \cong (\Z / p\Z, +)$.  $G$ --- циклическая.
 \end{remark}
 \begin{proof}
-    Возьмем $a \neq e$. Тогда  $p \vdots \ord(a) \Rightarrow \ord(a) = 1 \lor \ord(a) = p \Rightarrow a = e \lor \langle a \rangle = G \Rightarrow$
+    Возьмем $a \neq e$. Тогда  $p \divby \ord(a) \Rightarrow \ord(a) = 1 \lor \ord(a) = p \Rightarrow a = e \lor \langle a \rangle = G \Rightarrow$
     $G$ --- циклическая  $\Rightarrow G \cong (\Z / p \Z, +)$. 
 \end{proof}
 \begin{definition}
@@ -344,7 +344,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
  \begin{enumerate}
      \item $n = p^k$, $p$ --- простое.
 
-         $\varphi(n) = \{x \in \{1,\ldots,p^k\} \mid (x, p^k)=1\} = \{x \in \{1,\ldots, p^k\} \mid x \not \vdots p\} = p^k - |\{p, 2p,..,p^k\}| = p^k - p^{k-1}$.
+         $\varphi(n) = \{x \in \{1,\ldots,p^k\} \mid (x, p^k)=1\} = \{x \in \{1,\ldots, p^k\} \mid x \not \divby p\} = p^k - |\{p, 2p,..,p^k\}| = p^k - p^{k-1}$.
      \item $n$ --- составное. $n = p_1^{\alpha_1}p_2^{\alpha_2}\ldots p_k^{\alpha_k}$
 
          По КТО:  \[\Z / n\Z \cong (\Z / p_1^{\alpha_1} \Z) \times \ldots \times (\Z / p_k^{\alpha_k} \Z).\].
@@ -421,11 +421,11 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     $a^{\varphi(n)} = 1$. Точна ли оценка  $\varphi(n)$? Если  $(\Z / n\Z)^*$ --- циклическая (например, $n$ --- простое). Тогда да. Иначе пусть $n = pq$,  $p,q$ --- простые. Тогда  по Эйлеру $a^{(q-1)(p-1)} = 1$, а на самом деле  $a^{\frac{(q-1)(p-1)}{2}} = 1$. 
 \end{remark}
 \begin{proof}
-    $n = p_1^{\alpha_1} \ldots p_k^{\alpha_k}$. Тогда $|(\Z / p_i^{\alpha_i} \Z)^*| = p_i^{\alpha_i} - p_i^{\alpha_i - 1} \vdots 2$, кроме случая  $p_i = 2, a_i = 1$. Поэтому, если  $k > 2$ или  $k = 2$ $p_1^{\alpha_1}, p_2^{\alpha_2} \neq 2^1 \Rightarrow p_i^{\alpha_i} - p_i^{\alpha_i - 1}$ --- не циклическая  $\Rightarrow$  $(\Z / n\Z)^*$ --- не простое. Остались случаи  $k=1, n=p^a$,  $k=2 n = 2 \cdot p^a$.
+    $n = p_1^{\alpha_1} \ldots p_k^{\alpha_k}$. Тогда $|(\Z / p_i^{\alpha_i} \Z)^*| = p_i^{\alpha_i} - p_i^{\alpha_i - 1} \divby 2$, кроме случая  $p_i = 2, a_i = 1$. Поэтому, если  $k > 2$ или  $k = 2$ $p_1^{\alpha_1}, p_2^{\alpha_2} \neq 2^1 \Rightarrow p_i^{\alpha_i} - p_i^{\alpha_i - 1}$ --- не циклическая  $\Rightarrow$  $(\Z / n\Z)^*$ --- не простое. Остались случаи  $k=1, n=p^a$,  $k=2 n = 2 \cdot p^a$.
 
     Случай  $n = 2p^a, p \neq 2$.  $(\Z / n \Z)^* \times (\Z / p^a \Z)^* = (\Z / p^a \Z)^*$ --- свели к случаю  $1$.
 
-    Пусть  $n = p^a$.  $p=2$,  $a = 1,2$ --- очев.  $a>2 \Rightarrow (\Z / 2^a \Z)^*$ --- не циклическая. Пусть циклическая, тогда $(\Z / 2^a \Z)^* = \langle x \rangle, \ord x = 2^{a-1}$. Тогда  в $(\Z / 2^a \Z)^*$:  $y^2 = 1 \iff \exists k (x^k)^2 = 1 \iff x^{2k} = 1$. $2k \vdots 2^{a-1} \land 2k \vdots 2^{a-2} \Rightarrow k = 0 \lor k = 2^{a-2}$. $y^2$ --- имеет два решения.
+    Пусть  $n = p^a$.  $p=2$,  $a = 1,2$ --- очев.  $a>2 \Rightarrow (\Z / 2^a \Z)^*$ --- не циклическая. Пусть циклическая, тогда $(\Z / 2^a \Z)^* = \langle x \rangle, \ord x = 2^{a-1}$. Тогда  в $(\Z / 2^a \Z)^*$:  $y^2 = 1 \iff \exists k (x^k)^2 = 1 \iff x^{2k} = 1$. $2k \divby 2^{a-1} \land 2k \divby 2^{a-2} \Rightarrow k = 0 \lor k = 2^{a-2}$. $y^2$ --- имеет два решения.
 \end{proof}
 
 \begin{theorem}
@@ -435,7 +435,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     \slashn
     \begin{itemize}
         \item $\Rightarrow$.  $a = x^2 \Rightarrow a^{\frac{p-1}{2}} = (x^2)^{\frac{p-1}{2}} = x^{p-1} = 1$ (МТФ).
-        \item $\Leftarrow$.  $a^{\frac{p-1}{2}} = 1$. $\exists c: (\Z / p \Z)^* = \langle c \rangle$.  $\exists k: a = c^k$. Тогда  $a^{\frac{p-1}{2}} = (c^k)^{\frac{p-1}{2}} \iff c^{\frac{k(p-1)}{2}} = 1$ Та как $\ord \frac{k(p-1)}{2} \vdots p - 1$. Тогда  $\frac{k}{2}\in \Z$, то есть $k = 2l$.  $a = c^{2l} = (c^l)^2$.
+        \item $\Leftarrow$.  $a^{\frac{p-1}{2}} = 1$. $\exists c: (\Z / p \Z)^* = \langle c \rangle$.  $\exists k: a = c^k$. Тогда  $a^{\frac{p-1}{2}} = (c^k)^{\frac{p-1}{2}} \iff c^{\frac{k(p-1)}{2}} = 1$ Та как $\ord \frac{k(p-1)}{2} \divby p - 1$. Тогда  $\frac{k}{2}\in \Z$, то есть $k = 2l$.  $a = c^{2l} = (c^l)^2$.
     \end{itemize}
 \end{proof}
 \Subsection{Группы вычетов и криптографические протоколы}
@@ -500,7 +500,7 @@ RSA --- шифрование с открытым ключом:
 
     Рассмотрим  $K_p = \min \{a^{k!} \equiv 1 \pmod(p) \mid k \in \N \}$.  
 
-    $k_p, k_q$ - не велики. Действительно:  $k_p \vdots \prod p_i^{a_i}$.
+    $k_p, k_q$ - не велики. Действительно:  $k_p \divby \prod p_i^{a_i}$.
 
     скорее всего $k_p \neq k_q$. Не умаляя общности считаем  $k_p < k_q$, тогда  $(a^{k_p!}, n) = p$. 
 \end{remark}
