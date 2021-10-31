@@ -45,7 +45,7 @@
 \item $\exists!$ обратный элемент. 
 
     \textbf{Доказательство:} пусть $b, c$ --- обратные к  $a$. Тогда  $(b\ast a)\ast c = e \ast c = c$, но при этом $b \ast (a \ast c) = b \ast e = b$. Значит  $b=c$.
-\item $a \ast b = b \ast c \iff a = c$
+\item $a \ast b = a \ast c \iff b = c$
 
     \textbf{Доказательство:} $a \ast b = a \ast c \iff (a^{-1} \ast a) \ast b = (a^{-1} \ast a) \ast c \iff e \ast b = e \ast c \iff b = c$
 \end{enumerate}
@@ -83,7 +83,7 @@
 \begin{definition}
     Коммутативное ассоциативное кольцо с 1 называется полем, если выполнена 
     \begin{enumerate}
-        \item[8.] $\forall a \in R \ \{0\}$  $\exists b \in R$  $ab = 1 \land 1 \neq 0$
+        \item[8.] $\forall a \in R \setminus \{0\}$  $\exists b \in R$  $ab = 1 \land 1 \neq 0$
     \end{enumerate}
 \end{definition}
 \begin{example}
@@ -98,10 +98,10 @@
 \begin{itemize}
     \item $a \equiv a \pmod{n} \iff n \mid 0$
     \item $n | a - b \iff n | b - a \Rightarrow a \equiv b \pmod{n} \iff b \equiv a \pmod{n}$.
-    \item Транзитивность...
+    \item $n \mid a - b \land n \mid b - c \Rightarrow n \mid a - b + b - c = a - c$
 \end{itemize}
 \slashn
-Наблюдение.  $a \in \Z \rightarrow \overline{a} = \{b \mid a \equiv b\} = \{a + kn \mid k \in \Z\}$. $\Z = \overline{0} \cup \overline{1} \ldots$
+Наблюдение.  $a \in \Z \Rightarrow \overline{a} = \{b \mid a \equiv b\} = \{a + kn \mid k \in \Z\}$. $\Z = \overline{0} \cup \overline{1} \ldots$
 
 \begin{definition}
     Фактор множества по отношению $\equiv$ обозначается  $\Z / n\Z$.
@@ -125,7 +125,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     Все аксиомы --- следствия из $\Z$. Докажем для примера  $(\overline{a} + \overline{b}) + \overline{c} = \overline{a} + (\overline{b} + \overline{c}) = \overline{a+b} + \overline{c} = \overline{(a+b)+c} = \overline{a + (b+c)} = \overline{a} + \overline{(b+c)} = \overline{a} + (\overline{b} + \overline{c}).$
 \end{proof}
 \slashn
-Закон сокращения не очень работает в кольце вычетов по модулю: $2 \cdot 1 = 2 \cdot 4$ ($\pmod 6$), но  $1 \neq 4 \pmod 6$.
+Закон сокращения не очень работает в кольце вычетов по модулю: $2 \cdot 1 = 2 \cdot 4$ $\pmod 6$, но  $1 \neq 4 \pmod 6$.
 
 \begin{definition}
     Пусть $R$ --- коммутативное ассоциативное кольцо с единицей. Тогда  $\forall a \in R: a\text{ --- делитель} \Rightarrow \exists B \neq 0: ab = 0$.
@@ -134,13 +134,13 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     $n$ --- составное  $n=p_1p_2$ в $\Z / n\Z \overline{p_1} \overline{p_2}=\overline{n}=0$. Значит $p_1,p_2$ --- делители числа.
 \end{example}
 \begin{lemma}
-    $\forall a, b, c \in R ab = ac \land a\text{ --- не делитель 0} \Rightarrow b = c$. 
+    $\forall a, b, c \in R\!: ab = ac \land a\text{ --- не делитель 0} \Rightarrow b = c$. 
 \end{lemma}
 \begin{proof}
     $ab=ac$:  $ab - ac = 0 \iff a(b-c) = 0$.  $a$ --- не делитель 0  $\Rightarrow b-c=0 \iff b = c$.
 \end{proof}
 \begin{lemma}
-    $a \in R a$ --- обратим $\Rightarrow a$ --- не делитель 0.
+    $a \in R\!: a$ --- обратим $\Rightarrow a$ --- не делитель 0.
 \end{lemma}
 \begin{proof}
     Пусть $ab=0 \Rightarrow a^{-1}(ab) = a^{-1} \cdot 0 = (a^{-1}a)b = 0 \Rightarrow b =0$.
@@ -156,17 +156,17 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    $\overline{a}$ --- обратим  $\iff \exists \overline{b}: \overline{a} - \overline{b} = \overline{1} \iff \exists b: ab = 1 \pmod{n} \iff \exists b: ab - 1 \divby n \iff \exists b, k: ab-1=nk \iff \exists b, k: ab-nk=1 \iff (a,n)  = 1$.
+    $\overline{a}$ --- обратим  $\iff \exists \overline{b}: \overline{a}\overline{b} = \overline{1} \iff \exists b: ab = 1 \pmod{n} \iff \exists b: ab - 1 \divby n \iff \exists b, k: ab-1=nk \iff \exists b, k: ab-nk=1 \iff (a,n)  = 1$.
 
     $(a, n) = 1 \Rightarrow \overline{a}\text{ --- обратим} \Rightarrow$ не делитель нуля.
 
-    $(a, n) = d > 1, a = dx$. Тогда  $\overline{a} \cdot \frac{\overline{n}}{\overline{d}} = \overline{d}x \frac{\overline{n}}{\overline{d}} = \overline{nx} = 0$ и $\frac{\overline{n}}{\overline{d}} \neq 0$. Значит  $9 < |\frac{n}{d}| < n$.
+    $(a, n) = d > 1, a = dx$. Тогда  $\overline{a} \cdot \frac{\overline{n}}{\overline{d}} = \overline{d}x \frac{\overline{n}}{\overline{d}} = \overline{nx} = 0$ и $\frac{\overline{n}}{\overline{d}} \neq 0$. Значит  $0 < |\frac{n}{d}| < n$.
 \end{proof}
 \begin{consequence}
     $n$ --- простое  $\Rightarrow \Z / n\Z$ --- поле.
 \end{consequence}
 \begin{proof}
-    Достаточно проверить существование обратного. $\overline{a} \neq \overline{0} \iff a \not\divby n \iff (a, n) = 1 \iff a$ --- обратим.
+    Достаточно проверить существование обратного. $\overline{a} \neq \overline{0} \iff a \centernot\divby n \iff (a, n) = 1 \iff a$ --- обратим.
 \end{proof}
 \begin{definition}
     $\forall $ ассоциативного кольца с 1 $R$:  $R$ --- называется кольцом без делителей 0 (область целостности), если делитель 0 только 0.  $ab = 0 \iff a = 0 \lor b = 0$  .
@@ -187,10 +187,10 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
 \Subsection{Китайская теорема об остатках}
 Чтобы решать такие уравнения можно свести к простым модулям при помощи китайской теоремы об остатках.
 
-Вопрос такой: как связаны $\Z / n\Z, \Z / m\Z, \Z / mn\Z$. Пусть $P_m: \Z \mapsto \Z / m\Z$, а $P_{mn} \Z \mapsto \Z / mn\Z$. 
+Вопрос такой: как связаны $\Z / n\Z, \Z / m\Z, \Z / mn\Z$. Пусть $P_m: \Z \mapsto \Z / m\Z$, а $P_{mn}: \Z \mapsto \Z / mn\Z$. 
 
  \begin{definition}
-     Гомоморфизмом колец $f: R_1 \mapsto R_2$ называется такое отображение, что $\forall r_1, r_1 \in R_1: f(r_1 + r_2) = f(r_1) + f(r_2), f(r_1r_2)=f(r_1)\cdot f(r_2), f(1) = 1$.
+     Гомоморфизмом колец $f: R_1 \mapsto R_2$ называется такое отображение, что $\forall r_1, r_2 \in R_1: f(r_1 + r_2) = f(r_1) + f(r_2), f(r_1r_2)=f(r_1)\cdot f(r_2), f(1) = 1$.
 \end{definition}
 \begin{definition}
     Гомоморфизмом группы $f: G_1 \mapsto G_2$ называется такое отображение, что $\forall g_1, g_2: f(g_1g_2) = f(g_1) \cdot f(g_2)$.
@@ -208,7 +208,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
      $P_{mn, m}(\overline{a_{mn}}) = \overline{a_m}$.
 \end{proof}
 \begin{proof}[Корректность]
-    $\overline{a_m} = \overline{b_mn} \iff a \equiv b \pmod{mn} \iff a-b \divby mn \Rightarrow a-b \divby m \Rightarrow \overline{a_m} = \overline(b_m)$
+    $\overline{a_m} = \overline{b_{mn}} \iff a \equiv b \pmod{mn} \iff a-b \divby mn \Rightarrow a-b \divby m \Rightarrow \overline{a_m} = \overline{b_m}$
 \end{proof}
 \slashn Аналогично существует гомоморфизм $P_{mn, n}$. То есть $\overline{a_{mn}} \rightarrow (\overline{a_m}, \overline{a_n})$ --- отображение. То есть $\Z / mn \Z \mapsto \Z / m\Z \times \Z / n \Z$.
 Отступление.
@@ -246,7 +246,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
  
 Тогда для любого $n \in \N: n = p_1^{\alpha_1} p_2^{\alpha_2}\ldots p_n^{\alpha_3}$  $\Z / n\Z \cong \Z / p_1^{\alpha_1}\Z \times \ldots \times \Z / p_n^{\alpha_n}$.
 \begin{example}
-    Для того, чтобы решить $b^2 = a$ надо решить  $b_i^2 = a$ для все состовляющих.
+    Для того, чтобы решить $b^2 = a$ надо решить  $b_i^2 = a$ для все составляющих.
 \end{example}
 \begin{definition}
     Пусть $C$ --- группа ($a \in C$), тогда порядок элемента $a$:  $\ord(a) = \{\min k \in \N \mid a^k = 1\}$. А если такого  $k$ нет, то  $\ord(a) = \infty$
@@ -263,7 +263,7 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
     \end{itemize}
 \end{proof}
 \begin{definition}
-    $\langle a \rangle$ называется циклической группой, порожденной  $a$.  $G$ --- циклическая группа  $ \iff \exists a \in G G \cong \langle a \rangle$
+    $\langle a \rangle$ называется циклической группой, порожденной  $a$.  $G$ --- циклическая группа  $ \iff \exists a \in G\!: G \cong \langle a \rangle$
 \end{definition}
 \begin{theorem}
     $\ord a = \infty \Rightarrow \langle a \rangle \cong (\Z, +)$.  $\ord a = k \in \N \Rightarrow \langle a \rangle \cong (\Z / k\Z, +)$

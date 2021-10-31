@@ -14,7 +14,7 @@
 \end{enumerate}
 \Subsection{Основная теорема арифметики}
 \begin{definition}
-    $x \in \Z, x \neq 1$, тогда  $x$ --- простое число, если $x = x_1x_2 \iff \begin{cases} x_1 = \pm 1 \\ x_2 = \pm 1 \end{cases} \; \forall x_1, x_2$
+    $x \in \Z, x \neq 1$, тогда  $x$ --- простое число, если $x = x_1x_2 \iff \left[ \begin{array}{l} x_1 = \pm 1 \\ x_2 = \pm 1 \end{array} \right. \; \forall x_1, x_2$
 \end{definition}
 \begin{property}[*]
     $x$ --- обладает свойством  *, $\iff x \neq \pm 1 \land ab \divby x \Rightarrow \left[ \begin{array}{l} a \divby x \\ b \divby x \end{array} \right.$ 
@@ -23,27 +23,29 @@
     $p$ --- простое  $\iff$ $p$ --- обладает свойством *. \\
 \end{statement}
 \begin{proof}
+    \slashn
      \begin{itemize}
-         \item $\Leftarrow$ Пусть $p$ --- простое и  $p = x_1x_2$. Тогда $x_1x_2 \divby p$ по *, $\left[ \begin{array}{l} x_1 \divby p \\ x_2 \divby p \end{array} \right.$. Пусть $x_1 = py$. $p = x_1x_2 = pyx_2$. $1 = yx_2 \Rightarrow x_2 = \pm 1$.
-             \item $\Rightarrow$. Пусть  $p$ --- простое и  $ab \divby p$.  $d = (a, p)$,  $d = d \cdot d_1$, $p$ --- простое  $\Rightarrow d = p \lor d = 1$.
+         \item $\Leftarrow$ Пусть $p = x_1x_2$. Тогда $x_1x_2 \divby p$ по *: $\left[ \begin{array}{l} x_1 \divby p \\ x_2 \divby p \end{array} \right.$. Пусть $x_1 = py$. $p = x_1x_2 = pyx_2$. $1 = yx_2 \Rightarrow x_2 = \pm 1$. Получили определение простого числа.
+             \item $\Rightarrow$. Пусть  $p$ --- простое и  $ab \divby p$.  $d = (a, p)$, $p$ --- простое  $\Rightarrow d = p \lor d = 1$.
 
                  $d = p \Rightarrow a \divby p$. $d = 1 \land (a, p) = 1$, по лемме  $ab \divby p \land (a,p) = 1 \Rightarrow b \divby p$.
      \end{itemize}
 \end{proof}
-\begin{theorem}[Основная теорема арифмктики]
+\begin{theorem}[Основная теорема арифметики]
     Пусть $n \in \Z, n \neq 0$. Тогда  $n$ единственным образом с точностью до перестановки сомножителей, представимо в виде($p_i$ --- простые)  \[
-        n = \epsilon p_1p_2\ldots p_n, \epsilon \pm 1 = \text{sign}(n), p_1 < p_2 < \ldots < p_n
+        n = \varepsilon p_1p_2\ldots p_n, \varepsilon = \pm 1 = \text{sign}(n), p_1 < p_2 < \ldots < p_n
     .\] 
 \end{theorem}
 \begin{proof}
+    \slashn
 \begin{enumerate}
     \item Существование. От противного. Пусть $\exists$ нераскладываемое число. Рассмотрим минимальное такое число.
         \begin{itemize}
             \item $x = 1$ --- пустое произведение. Противоречие.
             \item  $x = p$ --- произведение из 1 члена. Противоречие.
-            \item  $x = x_1x_2$. $x_1,x_2 = \pm 1 \Rightarrow x_1, x_2 < X \Rightarrow x_1, x_2$ --- раскладываемые. Или $x_1 = p_1 p_2\ldots p_n, x_2 = q_1 q_2 \ldots q_m \Rightarrow x = p_1 p_2 \ldots p_n q_1 q_2 \ldots q_m$.
+            \item  $x = x_1x_2$. $x_1,x_2 = \pm 1 \Rightarrow x_1, x_2 < x \Rightarrow x_1, x_2$ --- раскладываемые. Или $x_1 = p_1 p_2\ldots p_n, x_2 = q_1 q_2 \ldots q_m \Rightarrow x = p_1 p_2 \ldots p_n q_1 q_2 \ldots q_m$.
         \end{itemize}
-    \item Единственность. Пусть есть плохие числа. $X$ --- минимальное из них.  $q_1 q_2 \ldots q_n = X = p_1 p_2 \ldots p_m$. Значит $p_1 p_2 \ldots p_m \divby q_1 \Rightarrow p_1 \divby q_1 \lor p_2\ldots p_m \divby q_1$. Тогда $\exists p_i \divby q_1$. Тогда можно поделить на  $q_1$, но $p_i$ --- простое, тогда  $p_i = $. Рассмотрим  $X' = \frac{X}{q_1}$. $q_2 q_3 \ldots q_n = X' = p_1 p_2 \ldots p_k$. $X' < X$, значит  $q = p$. А значит противоречие. 
+    \item Единственность. Пусть есть плохие числа. $X$ --- минимальное из них.  $q_1 q_2 \ldots q_n = X = p_1 p_2 \ldots p_m$. Значит $p_1 p_2 \ldots p_m \divby q_1 \Rightarrow p_1 \divby q_1 \lor p_2\ldots p_m \divby q_1$. Тогда $\exists p_i \divby q_1$. Тогда можно поделить на  $q_1$, но $p_i$ --- простое, тогда  $p_i = q_1$. Рассмотрим  $X' = \frac{X}{q_1}$. $q_2 q_3 \ldots q_n = X' = p_1 p_2 \ldots p_k$. $X' < X$, значит  $q = p$. А значит противоречие. 
 \end{enumerate}
 \end{proof}
 Контр-примеры для О. Т. А:
@@ -77,7 +79,7 @@
     \item $x = z^k \iff \forall\text{ простого } p \; V_p(x) \divby k$
     \item Количество натуральных делителей  $x = \prod x_i^{a_i}$ равно  $\tau(x) = \prod (a_i + 1)$
         \begin{proof}
-            Делители $X$ однозначно соотносятся с  $\{(b_1, b_2, \ldots, b_n) \mid 0\le b_i \le a_i$ 
+            Делители $X$ однозначно соотносятся с  $\{(b_1, b_2, \ldots, b_n) \mid 0\le b_i \le a_i\}$ 
         \end{proof}
     \item $\sigma(x)$ --- сумма натуральных делителей  $x$. Тогда  $\sigma(x) =  \frac{\prod(p_{i}^{a_i + 1} - 1)}{\prod (p_i - 1)}$.
         \begin{proof}

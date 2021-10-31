@@ -12,20 +12,20 @@
 Простые свойства:
 \begin{enumerate}
     \item             
-            $\forall a: 1 \vert a$.
+            $\forall a\!: 1 \vert a$.
     \item
-            $\forall a: a \vert a$.
+            $\forall a\!: a \vert a$.
     \item
-        $\forall a, b \divby c, k, l \in \mathbb{Z} \Rightarrow (ka + lb) \divby c$.
+        $\forall a, b, c, k, l \in \Z\!: a \divby c \land b \divby c \Rightarrow (ka + lb) \divby c$.
             \begin{proof}
-                $a, b \divby c \Rightarrow \exists d, e: \begin{array}{l} a = c \cdot l \\ b = c \cdot e \end{array}$. Тогда  $ka + lb = k \cdot cd + l \cdot ce = c \cdot (kd + le) \Rightarrow (ka + lb) \divby c$
+                $a, b \divby c \Rightarrow \exists d, e\!: \left\{\begin{array}{l} a = c \cdot d \\ b = c \cdot e \end{array}\right.$. Тогда  $ka + lb = k \cdot cd + l \cdot ce = c \cdot (kd + le) \Rightarrow (ka + lb) \divby c$
             \end{proof}
     \item
-            $\forall k \neq 0, k \in \mathbb{Z}: a \divby b \iff ak \divby bk$.
+            $\forall k \neq 0, k \in \mathbb{Z}\!: a \divby b \iff ak \divby bk$.
     \item
             $a \divby b \iff a^2 \divby b^2$.
     \item
-            $a \divby b \Rightarrow \left[ \begin{array}{l} |a| > |b| \\ a = 0 \end{array} \right.$.
+            $a \divby b \Rightarrow \left[ \begin{array}{l} |a| \ge |b| \\ a = 0 \end{array} \right.$.
     \item
             $a \divby b, b \divby c \Rightarrow a \divby c$.
     \item 
@@ -35,13 +35,14 @@
 \end{enumerate}
 
 \begin{theorem}[О делении с остатком]
-    $a, b \in \mathbb{Z} \exists ! (q,r): \left\{ \begin{array}{l} q, r \in \mathbb{Z} \\ a = b \cdot q + r \\ 0 \le r < |b| \end{array} \right.$
+    $a, b \in \Z, \exists! (q,r)\!: \left\{ \begin{array}{l} q, r \in \Z \\ a = b \cdot q + r \\ 0 \le r < |b| \end{array} \right.$
 \end{theorem}
 \begin{proof}
+    \slashn
     \begin{itemize}
         \item 
-        Единственность. Пусть есть два результата: $a = b \cdot q_1 + r_1$ и $a = b \cdot q_2 + r_2$. Тогда приравняем: $b \cdot q_1 + r_1 = b \cdot q_2 + r_2 \iff b(q_1 - q_2) = r_2 - r_1 \xRightarrow{r_1, r_2 \in \left[0;|b|-1\right]}[|r_1-r_2| < |b|] r_2-r_1 \divby b \Rightarrow r_2-r_1=0 \iff r_1=r_2 \Rightarrow b(q_1-q_2)=0 \iff q_1=q_2$ 
-    \item Существование. 
+            Единственность. Пусть есть два результата: $a = b \cdot q_1 + r_1$ и $a = b \cdot q_2 + r_2$. Тогда приравняем: $b \cdot q_1 + r_1 = b \cdot q_2 + r_2 \iff b(q_1 - q_2) = r_2 - r_1 \xRightarrow[|r_1-r_2| < |b|]{r_1, r_2 \in \left[0;|b|-1\right]} r_2-r_1 \divby b \xRightarrow{\text{Свойство 6}} r_2-r_1=0 \iff r_1=r_2 \Rightarrow b(q_1-q_2)=0 \iff q_1=q_2$ 
+    \item Существование. Здесь мы для конкретного $b$ проверяем, что все  $a$ подходят. 
         \begin{enumerate}[label=\Roman*.,ref=\arabic*]
             \item $a \ge 0, b \ge 0$. 
             \begin{itemize}
@@ -60,7 +61,7 @@
             Из I:  $\exists (q, r): -a = b \cdot q + r$, где $0 \le r < b$. Соответственно $a = -bq - r$.
             \begin{itemize}
                 \item $r = 0$.  $a = b \cdot q + 0 \Rightarrow (-q, 0)$ --- подходит.
-                \item  $r > 0 \Rightarrow r \in \left[1; b - 1\right]$.  $a = -bq -b + b -r = b \cdot (-q -1) + b - r \Rightarrow \left( -q -1, b-r\right) --- подходит$
+                \item  $r > 0 \Rightarrow r \in \left[1; b - 1\right]$.  $a = -bq -b + b -r = b \cdot (-q -1) + b - r \Rightarrow \left( -q -1, b-r\right)$ --- подходит
             \end{itemize}
         \item $b < 0 \iff -b > 0$.  $\exists q, r: a = (-b) \cdot q + r$, где  $0 \le r < |b|$, тогда $a = b(-q) +r \Rightarrow (-q, r)\text{ --- подходит}$
         \end{enumerate}
@@ -78,13 +79,13 @@
 Заметим: 
 \begin{enumerate}
     \item
-        $\forall m, n \in \left<a,b\right> m + n \in\left<a,b\right>$
+        $\forall m, n \in \left<a,b\right>\!: m + n \in\left<a,b\right>$
     \item
-        $m \in <a,b> \Rightarrow km \in <a,b> \forall k$
+        $m \in \langle a,b \rangle \Rightarrow km \in \langle a,b \rangle \forall k$
 \end{enumerate}
 
 \begin{definition}
-    Пусть $I \subset \mathbb{Z}$.  $I$ называется идеалом, если  \[\left\{ \begin{array}{l} m, n \in I \Rightarrow m+n \in I \text{ (замкнутость по сложению)} \\ m \in I \Rightarrow \forall k \in \mathbb{Z} k \cdot m \in I \text{ (замкнутость по домножению)} \\ I \neq \varnothing \end{array} \right.\]
+    Пусть $I \subset \mathbb{Z}$.  $I$ называется идеалом, если  \[\left\{ \begin{array}{l} m, n \in I \Rightarrow m+n \in I \text{ (замкнутость по сложению)} \\ m \in I \Rightarrow \forall k \in \Z\!: k \cdot m \in I \text{ (замкнутость по домножению)} \\ I \neq \varnothing \end{array} \right.\]
 \end{definition}
 \begin{example}
     $\{0\}$ --- идеал.
@@ -106,7 +107,7 @@
     $I=\{0\}$ --- ок. Тогда  пусть $I \neq \{0\}$. Пусть $a \in I \land a < 0 \Rightarrow -a = (-1)a \in I \land -a \in \mathbb{N}$. То есть $I \cap \mathbb{N} \neq \varnothing$. Найдем наименьшее $r \in I \cap \mathbb{N}$. Проверим, что $I = \left<r\right>$ (тогда $I$ --- главный). Надо проверить $\left<r\right> \subset I \land I \subset \left< r \right>$.
      \begin{itemize}
          \item $x \in \left<r\right>$. То есть $x = r \cdot z$. Т.к.  $r \in I$, то $r \cdot z \in I$ (по определению идеала), т.е.  $\left<r\right> \subset I$.
-         \item  Пусть $a \in I$. Поделим с остатком: $a = r \cdot q + r_1$, $0 \le r_1 < r$, то есть $r_1 = a - r \cdot q = a + (-q) \cdot r$. Т.к. $r \in I \Rightarrow (-q) \cdot r \in I \land q \in I \Rightarrow a + (-q) \cdot r \in I$, т.е. $r_1 \in I$. Но! $0 < r_1 < r$, а $r$ --- минимальное натуральное из  $I$. Тогда  $r_1 = 0 \Rightarrow a = r \cdot q$, т.е. $a \in \left<r\right>$, а значит  $I \subset \left<r\right>$.
+         \item  Пусть $a \in I$. Поделим с остатком: $a = r \cdot q + r_1$, $0 \le r_1 < r$, то есть $r_1 = a - r \cdot q = a + (-q) \cdot r$. Т.к. $r \in I \Rightarrow (-q) \cdot r \in I \land a \in I \Rightarrow a + (-q) \cdot r \in I$, т.е. $r_1 \in I$. Но! $0 \le r_1 < r$, а $r$ --- минимальное натуральное из  $I$. Тогда  $r_1 = 0 \Rightarrow a = r \cdot q$, т.е. $a \in \left<r\right>$, а значит  $I \subset \left<r\right>$.
     \end{itemize}
 \end{proof}
 
@@ -129,7 +130,9 @@
         \item
             $d \in \left<d\right> = \left<a, b\right>$. А значит  $\exists x, y: d = ax+by$.\\
             $a = a \cdot 1 + b \cdot 0 \in \left<a, b\right> = \left<d\right>$, значит $a \divby d$. Аналогично  $b \divby d$. \\
-        С другой стороны пусть  $a \divby d, b \divby d$, тогда  $d = \underbrace{ax}_{\divby d} + \underbrace{by}_{\divby d} \divby d$. \\
+        С другой стороны пусть  $a \divby d, b \divby d$, тогда  $d = \underbrace{ax}_{\divby d} + \underbrace{by}_{\divby d} \divby d$. 
+
+        Пусть $\exists d_1\!: a \divby d_1 \land a \divby d_1 \Rightarrow d = ax+by \divby d_1 \Rightarrow d$ --- максимальный общий делитель.
         \item
             $ax + by = c$ имеет решение  $\iff c \in \left<a,b\right> = \left<d\right>$. А  $c \in \left<d\right> \iff c \divby d$.
     \end{itemize}
