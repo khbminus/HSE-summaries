@@ -1,0 +1,213 @@
+\begin{definition}
+    Диофантовым уравнение называется уравнение, которое можно решить в $\mathbb{Z}$.
+\end{definition}
+ \begin{definition}
+     $a$ делится на $b$ ($a \divby b, b \vert a$), если $\exists c \in \mathbb{Z}: a = bc$.
+\end{definition}
+\begin{theorem}[О делении с остатком]
+    $a, b \in \Z, \exists! (q,r)\!: \left\{ \begin{array}{l} q, r \in \Z \\ a = b \cdot q + r \\ 0 \le r < |b| \end{array} \right.$
+\end{theorem}
+\begin{definition}
+    Пусть $I \subset \mathbb{Z}$.  $I$ называется идеалом, если  \[\left\{ \begin{array}{l} m, n \in I \Rightarrow m+n \in I \text{ (замкнутость по сложению)} \\ m \in I \Rightarrow \forall k \in \Z\!: k \cdot m \in I \text{ (замкнутость по домножению)} \\ I \neq \varnothing \end{array} \right.\]
+\end{definition}
+\begin{theorem}
+   В $\mathbb{Z}$ любой идеал главный.
+\end{theorem}
+\begin{definition}
+    Пусть $a, b \in \mathbb{Z}$. Тогда $d$ ---  $\text{НОД}(a,b) = \gcd(a,b) = (a, b)$ 
+\end{definition}
+\begin{theorem}
+   \begin{enumerate}
+       \item $\forall a, b\; \exists d = (a,b)$
+       \item  $\exists x, y \in \mathbb{Z}:\; d = ax +by$
+       \item  $ax + by = c \text{ имеет решение } \iff c \divby d$.
+   \end{enumerate} 
+\end{theorem}
+\begin{definition}
+    $a, b$ --- взаимно просты, если  $(a, b) = 1$, то есть  $\left<a, b\right> = \mathbb{Z}$
+\end{definition}
+\begin{lemma}
+    $\begin{cases} ab \divby c \\ (a,c) = 1 \end{cases} \Rightarrow b \divby c$.
+\end{lemma}
+\begin{definition}
+    $x \in \Z, x \neq \pm 1$, тогда  $x$ --- простое число, если $x = x_1x_2 \iff \left[ \begin{array}{l} x_1 = \pm 1 \\ x_2 = \pm 1 \end{array} \right. \; \forall x_1, x_2$
+\end{definition}
+\begin{property}[*]
+    $x$ --- обладает свойством  *, $\iff x \neq \pm 1 \land ab \divby x \Rightarrow \left[ \begin{array}{l} a \divby x \\ b \divby x \end{array} \right.$ 
+\end{property}
+\begin{statement}
+    $p$ --- простое  $\iff$ $p$ --- обладает свойством *. \\
+\end{statement}
+\begin{theorem}[Основная теорема арифметики]
+    Пусть $n \in \Z, n \neq 0$. Тогда  $n$ единственным образом с точностью до перестановки сомножителей, представимо в виде($p_i$ --- простые, $p_i > 0$)  \[
+        n = \varepsilon p_1p_2\ldots p_k, \varepsilon = \pm 1 = \text{sign}(n)
+    .\] 
+    Или, иными словами, существует единственное каноническое разложение: \[
+	    n = \varepsilon p_1 ^ {a_1} p_2 ^ {a_2} \ldots p_k ^ {a_k}, \varepsilon = \pm 1 = \text{sign}(n), a_i > 0, p_1 < p_2 < \ldots < p_k
+    .\]
+\end{theorem}
+\begin{definition}
+    $n \in \Z, n \neq 0, p$ --- простое, тогда степень вхождения ($V_p(n) = k$)  $p$ в  $n$ ---  $\max\{k \mid n \divby p^k\}$
+
+    В терминах разложения: $n = p_1^{a_1} p_2^{a_2} \ldots p_k^{a_k}$. $V_p(n) = a_i$, а если  $p$ нет в разложении, то  $V_p(n) = 0$.
+\end{definition}
+        \begin{definition}
+            $m$ --- НОК (LCM, $[a, b]$), если $m \divby a, m \divby b$ и  $\forall n\; n \divby a \land n \divby b \Rightarrow n \divby m$
+        \end{definition}
+ \begin{definition}
+     Группой называется пара $(G, \ast)$, где  $G$ --- множество, а  $\ast: G \times G \to G$ --- бинарная операция, так что выполнены свойства:
+     \begin{enumerate}
+         \item $\forall a,b,c \in G:$  $(a \ast b) \ast c = a \ast (b \ast c)$. Ассоциативность.
+         \item $\exists e \in G:$ $\forall a \in G\  a \ast e = e \ast a = a$. Существование нейтрального элемента.
+         \item $\forall a \in G \exists a^{-1}:$  $a \ast a^{-1} = a^{-1} \ast a = e$. Существование обратного элемента.
+     \end{enumerate}
+ \end{definition}
+\begin{definition}
+    Группа $G$ называется абелевой, если  $\forall x, y \in G:$ $x \ast y = y \ast x$.
+\end{definition}
+\begin{definition}
+    Кольцо --- тройка $(R, +, \cdot)$ ($R$ --- множество,  $+, \cdot: R \times R \to R$), такая что:
+     \begin{enumerate}
+         \item[1--4.] $(R, +)$ --- абелева группа. Нейтральный элемент обозначается $0$, обратный к  $a$ ---  $-a$.
+         \item[5.] $a\cdot(b+c) = a \cdot b + a \cdot c$ и  $(b+c) \cdot a = b \cdot a + b \cdot c$. Дистрибутивность.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Кольцо $R$ называется ассоциативным, если выполнено 
+    \begin{itemize}
+        \item[6.] $a \cdot (b \cdot c) = (a \cdot b) \cdot c$.
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Кольцо $R$ называется коммутативным, если
+    \begin{itemize}
+        \item[7.] $a \cdot b = b \cdot a$
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Кольцо $R$ называется кольцом с 1, если  
+    \begin{enumerate}
+        
+        \item[8.] $\exists 1 \in R: 1 \cdot a = a \cdot 1 = a$
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Коммутативное ассоциативное кольцо с 1 называется полем, если выполнена 
+    \begin{enumerate}
+        \item[9.] $\forall a \in R \setminus \{0\}$  $\exists b \in R$  $ab = 1 \land 1 \neq 0$
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+	Пусть $a, b \in \Z$, говорят, что  $a$ сравнимо с  $b$ по модулю  $n$ ($a \equiv b \pmod{n}$), если $(a - b) \divby n$. Эквивалентное определение:  $a$ и  $b$ имеют одинаковые остатки по модулю  $n$.
+\end{definition}
+\begin{definition}
+    Фактор множества по отношению $\equiv$ обозначается  $\Z / n\Z$.
+\end{definition}
+\begin{theorem}
+    Пусть $n \in \N$. Тогда класс $(\Z / n\Z, +, \cdot)$, где $\overline{a}+\overline{b} = \overline{a+b} \land \overline{a} \cdot \overline{b} = \overline{a \cdot b}$ --- ассоциативное коммутативное кольцо с единицей.
+\end{theorem}
+\begin{definition}
+    Пусть $R$ --- коммутативное ассоциативное кольцо с единицей. Тогда  $\forall a \in R: a\text{ --- делитель нуля} \Rightarrow \exists b \neq 0: ab = 0$.
+\end{definition}
+\begin{lemma}
+    $\forall a, b, c \in R\!: ab = ac \land a\text{ --- не делитель нуля} \Rightarrow b = c$. 
+\end{lemma}
+\begin{lemma}
+    $a \in R\!: a$ --- обратим $\Rightarrow a$ --- не делитель нуля.
+\end{lemma}
+\begin{theorem}
+    $\forall a \in Z: \overline{a} \in \Z / n\Z$. Тогда:  
+    \begin{enumerate}
+        \item $\overline{a}$ --- обратим $\iff (a, n) = 1$
+        \item  $\overline{a}$ --- делитель нуля $\iff (a, n) \neq 1$.
+    \end{enumerate}
+\end{theorem}
+\begin{consequence}
+    $n$ --- простое  $\Rightarrow \Z / n\Z$ --- поле.
+\end{consequence}
+\begin{definition}
+    $\forall $ ассоциативного кольца с 1 $R$:  $R$ --- называется кольцом без делителей нуля (область целостности), если делитель нуля только 0.  $ab = 0 \iff a = 0 \lor b = 0$  .
+\end{definition}
+ \begin{definition}
+     Гомоморфизмом колец $f: R_1 \mapsto R_2$ называется такое отображение, что $\forall r_1, r_2 \in R_1: f(r_1 + r_2) = f(r_1) + f(r_2), f(r_1r_2)=f(r_1)\cdot f(r_2), f(1) = 1$.
+\end{definition}
+\begin{definition}
+    Гомоморфизмом группы $f: G_1 \mapsto G_2$ называется такое отображение, что $\forall g_1, g_2 \in G_1: f(g_1g_2) = f(g_1) \cdot f(g_2)$.
+\end{definition}
+\begin{definition}
+	$R_1, R_2$ --- кольца. Рассмотрим  $(R_1 \times R_2, +, \cdot): (r_1, r_2) +_{R_1\times R_2} (r_1'r_2') \coloneqq (r_1+_{R_1}r_2, r_2+_{R_2}r_2')$, где $+_{R_1\times R_2}, +_{R_1}, +_{R_2}$ --- операции сложения для соответствующих множеств. Тоже самое для умножения. Тогда $R_1 \times R_2$ --- тоже кольцо, т.к. соответствующие свойства операций унаследуются, что можно проверить самостоятельно. Но заметка: если $R_1$ и $R_2$ были областями целостности, то их произведение областью целостности почти никогда не будет.
+\end{definition}
+\begin{definition}
+    Биективный гомоморфизм (групп, колец, ...) (называется изоморфизмом, $\cong$) если каждым $a_i$ задано ровно одно  $b_j$ и наоборот.
+\end{definition}
+\begin{theorem}[Китайская теорема об остатках]
+    Пусть $(m, n)=1$, тогда $\Z / mn \Z \cong \Z / m\Z \times \Z / n \Z$.
+\end{theorem}
+\begin{theorem}[КТО 2]
+    $m_1,m_2,m_3,\ldots,m_n \in \Z \land (m_i, m_j) = 1 \Rightarrow \Z / m_1,m_2,\ldots,m_n \Z \mapsto \Z / m_1\Z \times \Z / m_2\Z \ldots$ - изоморфизм колец. 
+\end{theorem}
+\begin{theorem}[КТО без колец]
+	$\forall m_1, \ldots, m_n \in \Z: \forall i, j (m_i, m_j) = 1$, $\forall a_1, \ldots, a_n$ $\Rightarrow \exists x_0 \in Z: x \equiv a_1 \pmod{m_1} \land \ldots \land x \equiv a_n \pmod{m_n} \iff x \equiv x_0 \pmod {\prod_i m_i}$
+\end{theorem}
+\begin{definition}
+    Пусть $C$ --- группа ($a \in C$), тогда порядок элемента $a$:  $\ord(a) = \{\min k \in \N \mid a^k = 1\}$. А если такого  $k$ нет, то  $\ord(a) = \infty$
+\end{definition}
+\begin{lemma}
+    Пусть $G$ --- группа ($a \in G$). $\langle a \rangle = \{a, a^2,\ldots; a^{-1}, (a^{-1})^2, \ldots, e\} = \{a^k \mid k \in \Z\}$.Тогда $(\langle a \rangle, *)$ --- группа.
+\end{lemma}
+\begin{definition}
+    $\langle a \rangle$ называется циклической группой, порожденной  $a$.  $G$ --- циклическая группа  $ \iff \exists a \in G\!: G \cong \langle a \rangle$
+\end{definition}
+\begin{theorem}[О классификации циклических групп]
+    $\ord a = \infty \Rightarrow \langle a \rangle \cong (\Z, +)$.  $\ord a = k \in \N \Rightarrow \langle a \rangle \cong (\Z / k\Z, +)$
+\end{theorem}
+\begin{theorem}[Теорема Лангранжа]
+    Пусть $G$ --- группа.  $\forall G$ ---  $n$-элементная группа, тогда  $\forall a \in G: n \divby \ord a$
+\end{theorem}
+\begin{consequence}
+    $G$ --- конечная группа ($a \in G$) $\Rightarrow a^{|G|} = e$
+\end{consequence}
+\begin{statement}
+    $G$ --- группа ($|G|=n$). $G$ --- циклическая  $\iff \exists a \in G: \ord a = n$.  
+    МТФ: $\overline{a}, \overline{a}^2,\ldots$ --- периодична с периодом $p-1$. Утверждение:  $\exists \overline{a}: p-1$ --- наименьший период этой последовательности.
+\end{statement}
+\begin{definition}
+    $R$ --- ассоциативное кольцо, тогда  $R^* = \{a \in R | \exists a^{-1}\}$ --- группа обратимых элементов.
+\end{definition}
+ \begin{theorem}[Теорема Эйлера]
+     $\forall b \in \left(\Z / n\Z\right)^* = b^{\varphi(n)} = 1$
+\end{theorem}
+\begin{theorem}[Теорема Эйлера]
+    $\forall a \in \Z: (a, n) = 1 \Rightarrow a^{\varphi(n)} \equiv 1 \pmod{n}$ 
+\end{theorem}
+ \begin{theorem}[Теорема о первообразном корне]
+     $p \in \Z$ --- простое  $\Rightarrow (\Z / p\Z)^*$ --- циклическая.
+ \end{theorem}
+ \begin{definition}
+     Подгруппа группы $G$ --- пара  $(H, \ast)$, где  $H \subset G$,  $\ast$ --- замкнуто относительно $H$. Обозначается $\le$.
+ \end{definition}
+ \begin{definition}
+     Подгруппа группы $G$ порожденная множеством  $S$  ($S \subset G$) --- наименьшая по включению подгруппа $G$, содержащая все элементы  $S$.\\
+     $\langle S \rangle = \displaystyle \bigcap_{H \le G, S \subset H} H$.\\
+ \end{definition}
+ \begin{theorem}
+     $\forall S \subset G\!: \langle S \rangle= \{a_1^{\varepsilon_1} \ldots a_k^{\varepsilon_k} \mid \forall i \in I a_i \in S \land \varepsilon_i = \pm 1\}$
+ \end{theorem}
+  \begin{theorem}
+      $(\Z / n\Z)^*$ --- циклическая  $\iff \begin{cases} n=p^k & p>2\text{ --- простое} \\ n = 2 p^k & \text{см. выше} \\ n = 2 \lor n = 4\end{cases}$.
+ \end{theorem}
+\begin{theorem}
+    $a \in (\Z / p \Z)^*$. Тогда  $x^2 = a$ имеет решение  $\iff a^{\frac{p-1}{2}} = 1$
+\end{theorem}
+ \begin{theorem}
+     $\pi(n)$ --- количество простых на  $[1, n]$. Тогда  $\lim_{n \to +\infty} = \frac{\pi(n)}{\frac{n}{\ln n}} = 1$.
+\end{theorem}
+\begin{consequence}
+   Случайное число на $1, n$ --- простое с вероятностью  $\frac{1}{\ln n}$ 
+\end{consequence}
+\begin{theorem}[Тест Люка]
+Пусть  $b \in \Z$, такое что  $b^{n-1}= 1 \pmod{n}$ и  $b^{\frac{n-1}{p_i}} \neq 1 \pmod{n}$. Тогда $b$ --- простое.
+\end{theorem}
+ \begin{definition}
+     Если $n$ --- составное, но  $a^{n-1} \equiv 1 \pmod{n}$, то  $a$ --- свидетель простоты.
+\end{definition}
