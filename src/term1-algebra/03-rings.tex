@@ -332,10 +332,11 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
      \item $a \in R^*: \exists a^{-1} \Rightarrow \exists \left(a^{-1}\right)^{-1} = a$, значит $a^{-1} \in R^*$. 
 \end{itemize}
 \begin{remark}
-    $a^n = 1 \Rightarrow \in R^*$. Т.к. тут записано, что  $a \cdot a^{n-1} = 1$ --- то есть он обратим.
+    $a^n = 1 \Rightarrow a \in R^*$. Т.к. тут записано, что  $a \cdot a^{n-1} = 1$ --- то есть он обратим.
 \end{remark}
-\slashn
+\begin{definition}
 Рассмотрим $R = \Z / n\Z$. Тогда  $R^* = \{ \overline{a} \in \Z / n\Z \mid \exists \overline{b}: \overline{a} \overline{b} = 1\} = \{\overline{a} \in \Z / n\Z \mid (a, n) = 1\}$. Тогда $|R^*| = \varphi(n)$ --- функция Эйлера.
+\end{definition}
  \begin{theorem}[Теорема Эйлера]
      $\forall b \in \left(\Z / n\Z\right)^* = b^{\varphi(n)} = 1$
 \end{theorem}
@@ -415,14 +416,16 @@ $\Z \to \Z / n\Z$.Элементы $\Z / n\Z$ называются класса�
  \slashn
 
     $n = p_1^{\alpha_1} \ldots p_k^{\alpha_k}$. Тогда $(\Z / n \Z)^* = (\Z / p_1^{\alpha_1} \Z)^* \times \ldots \times (\Z / p_k ^{\alpha_k})^*$. 
-
-    Общее утверждение:  $G_1, G_2, G$ --- группы (конечные). 
+    \begin{statement}
+    $G_1, G_2, G$ --- группы (конечные). 
     \begin{enumerate}
         \item $G \cong G_1 \times G_2$. $(|G_1|, |G_2|) \neq 1 \Rightarrow G$ --- не циклическая.
         \item $(|G_1|, |G_2|) = 1$ и $G_1, G_2$ --- циклическая $\Rightarrow G_1 \times G_2$ --- циклическая. (КТО).
     \end{enumerate}
-
+    \end{statement}
+    \begin{proof}
     Тогда $\forall a \in G_1, b \in G_2 a^{|G_1|} = e_{G_1} \land b^{|G_2|} = e_{G_2} \Rightarrow (a, b)^{\lcm(|G_1|, |G_2|)} = (e, e) \Rightarrow \forall x \in G_1 \times G_2: ord(x) \le \lcm(|G_1|, |G_2|) < |G_1| \cdot |G_2| = |G_1\times G_2| \Rightarrow G_1 \times G_2$ --- не циклическая.
+\end{proof}
 \begin{remark}
     $a^{\varphi(n)} = 1$. Точна ли оценка  $\varphi(n)$? Если  $(\Z / n\Z)^*$ --- циклическая (например, $n$ --- простое). Тогда да. Иначе пусть $n = pq$,  $p,q$ --- простые. Тогда  по Эйлеру $a^{(q-1)(p-1)} = 1$, а на самом деле  $a^{\frac{(q-1)(p-1)}{2}} = 1$. 
 \end{remark}
