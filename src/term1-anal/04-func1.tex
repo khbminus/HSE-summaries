@@ -298,4 +298,218 @@
 \begin{theorem}
     $\sin, \cos, \tg, \ctg$ --- непрерывны.
 \end{theorem}
+\begin{proof}
+    А где пруф???
+\end{proof}
 
+\begin{theorem}[Первый замечательный предел]
+    \[
+        \lim_{x\to 0} \frac{\sin x}{x} = 1
+    .\] 
+\end{theorem}
+\begin{proof}
+    Нам известно неравенство $\sin x \le x \le \tg x = \frac{\sin x}{\cos x}$, при $0 < x < \frac{\pi}{2}$. 
+
+    Тогда $\cos x \le \frac{\sin x}{x} \le 1$ при $x \in \left(\frac{\pi}{2}, \frac{\pi}{2}\right) \setminus \{0\}$.
+
+    Тогда применим двух милиционеров: $\cos x \to 1$,  $1 \to 1$ при $x\to 0$, а значит  $\frac{\sin x}{x} \to 1$.
+\end{proof}
+\begin{theorem}[Теорема Вейерштрасса]
+\slashn
+\begin{enumerate}
+    \item Непрерывная на отрезке функция ограничена.
+    \item Непрерывная на отрезке функция принимает наибольшее и наименьшее значение.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    Введем обозначения: $f: [a, b] \to \R$ непрерывна во всех точках.
+    \begin{enumerate}
+        \item От противного. Число $n$ не является верхней границей для  $|f|$. Значит  $\exists x_n \in [a, b]\!: |f(x_n)| > n$.  
+
+            Применим теорему Больцано-Вейерштрасса. Выберем $x_{n_k}$ имеющий предел  $c \in \R$. Причем, так как  $a \le x_{n_k} \le b \Rightarrow a \le c \le b$. А значит, $f$ непрерывна в точке  $c$, тогда  $\displaystyle \lim_{x\to c}|f(x)| = |f(c)| \Rightarrow \lim_{k \to \infty} |f(x_{n_k})| = |f(c)|$, но $|f(x_{n_k}) > n_k \to +\infty$. Получили противоречие.  $+\infty \neq c \in \R$.
+        \item Будем доказывать максимум.  $\displaystyle M \coloneqq \sup_{x \in [a ,b]} f(x) \in \R$. Пусть он не достигается, то есть $f(x) < M\ \forall x \in [a, b]$. 
+
+            Тогда рассмотрим вспомогательную функцию $g(x) \coloneqq \frac{1}{M - f(x)}$ --- непрерывна на $[a, b] \Rightarrow g$ ограничена  $\Rightarrow g(x) \le \widehat{M}\ \forall x \in [a, b]$.
+
+            Тогда $M - f(x) \ge \frac{1}{\widehat{M}} \Rightarrow \le M - \frac{1}{\widehat{M}} < M$. Получили противоречие, так как $M$ --- супремум.
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    Отрезок нельзя менять на интервал или полуинтервал. $f(x) = \frac{1}{x}$ на $(0, 1]$ --- непрерывность есть, ограниченности нет.
+\end{remark}
+\begin{remark}
+    Непрерывность должна быть на всех точках. $f(x) = \begin{cases} \frac{1}{x} & x \in (0, 1] \\ 0 & x = 0\end{cases}$ на $[0, 1]$. Ограниченности нет, непрерывность во всех точках, кроме одной. 
+\end{remark}
+\begin{theorem}[Теорема Больцано-Коши, теорема о промежуточных значениях]
+    \slashn
+    \begin{enumerate}
+        \item $f$ непрерывна на  $[a, b]$ и значение  $f(a)$ и  $f(b)$ разных знаков. Тогда  $\exists c \in (a, b)\!: f(c) = 0$.
+        \item $f$ непрерывна на  $[a, b]$ и  $y$ лежит между  $f(a)$ и $f(b)$. Тогда  $\exists c \in (a, b)\!: f(c) = y$ 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Считаем, что $f(a) < 0 \land f(b) > 0$. Будем делить отрезок на части. $a_0 \coloneqq a, b_0 \coloneqq b$. Тогда: \[
+        [a_{n+1}, b_{n+1}] = \begin{cases} 
+            [\frac{a_n+b_n}{2}, b_n] & \text{если}\ f(\frac{a_n + b_n}{2}) < 0 \\
+            [a_n, \frac{a_n+b_n}{2}] & \text{если}\ f(\frac{a_n + b_n}{2}) > 0
+        \end{cases}
+    .\] 
+    Тогда, если процесс не оборвался, получили $[a, b] = [a_0,b_0] \supset [a_1, b_1] \subset [a_2, b_2] \supset \ldots$. Стягивающиеся отрезки $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда найдется $c$, лежащая во всех отрезках, причем  $\lim a_n = \lim b_n = c$. Функция непрерывна в  $c \Rightarrow \lim \overbrace{f(a_n)}^{<0} = f(c) = \lim \overbrace{f(b_n)}^{>0} \Rightarrow 0 \ge \lim f(a_n) = f(c) \lim f(b_n) \ge 0 \Rightarrow f(c) = 0$.
+\item $g(x) \coloneqq f(x) - y$. Тогда $g(a)$ и $g(b)$ разных знаков  $\Rightarrow \exists c \in [a, b]\!:f(c) - y = g(c) = 0$
+        \end{enumerate}
+\end{proof}
+\begin{remark}
+    Нужна непрерывность во всех точках. $f(x) = \begin{cases} 1 & \text{при}\ x \in [0, 1] \\ -1 & \text{при}\ x \in [-1;0) \end{cases}$ непрерывна на $[-1, 1]$, за исключением 0.
+\end{remark}
+\begin{remark}
+    Бывают разрывные функции, удовлетворяющие теореме о промежуточных значениях. $f(x) = \begin{cases} \sin \frac{1}{x} & \text{при}\ x \in (0; 1] \\ 0 & \text{при}\ x = 0\end{cases}$. Если $a, b \in [0, 1]$, то на  $[a, b]$  $f$ принимает все значения между  $f(a)$ и  $f(b)$. Случай  $0 < a < b$ --- теорема Больцано-Коши. Случай  $a=0 < b$ на  $(0, b)$ принимает все значения. Так как на $[\frac{1}{2\pi(n+1)}; \frac{1}{2\pi n}]$ $\sin \frac{1}{x}$  принимает все значения от $-1$ до  $1$.
+\end{remark}
+\begin{theorem}
+    Непрерывный образ отрезка --- отрезок. То есть $f\!: [a, b] \to \R$ непрерывная $\Rightarrow f([a, b])$ --- отрезок. 
+\end{theorem}
+\begin{proof}
+    $\displaystyle m \coloneqq \min_{x \in [a, b]}f(x) \quad M \coloneqq \max_{x \in [a, b]}f(x)$. По теореме Вейерштрасса $\exists p, q \in [a, b]\!: m = f(p), M = f(q)$. Рассмотрим отрезок с концами в $p$ и  $q$ по теореме Больцано-Коши на  $(p, q)$ функция принимает все значения между  $f(p)$ и  $f(q)$, то есть все значения из $[m, M]$ достигаются  $\Rightarrow f([a, b]) = [m, M]$.
+\end{proof}
+\begin{definition}
+    $\langle a, b \rangle$ означает один из промежутков  $[a, b]; (a, b]; [a, b); (a, b)$.
+\end{definition}
+\begin{theorem}
+    Непрерывный образ промежутка --- промежуток (но, возможно, промежуток другого типа.)
+\end{theorem}
+\begin{proof}
+    $\langle a, b \rangle$ --- промежуток.  $m \coloneqq \inf_{x \in \langle a, b \rangle} f(x)$ (возможно $-\infty$). $M \coloneqq \sup_{x \in \langle a, b \rangle} f(x)$.
+
+    Тогда  $m \le f(x) \le M\ \forall x \in \langle a, b \rangle$. Докажем, что $f(\langle a, b \rangle) \supset (m; M)$, но при этом  $f(\langle a, b \rangle) \subset [m, M]$. 
+
+    Возьмем  $y \in (m, M)$, такой что  $m < y < M$.  
+
+    $m = \inf \Rightarrow$ $y$ ---  не нижняя граница $Rightarrow \exists p \in \langle a, b \rangle\!: f(p) < y$. 
+    $M = \sup \Rightarrow$ $y$ ---  не верхняя граница $Rightarrow \exists p \in \langle a, b \rangle\!: f(q) > y$.
+
+    Применим теорему Больцано-Коши для отрезка с концами $p$ и  $q \Rightarrow \exists c \in (p, q) \subset \langle a, b \rangle\!: f(c)=y$. 
+
+    Тогда $(m, M) \subset f(\langle a, b \rangle) \subset [m, M] \Rightarrow f(\langle a, b \rangle)$ --- промежуток. 
+\end{proof}
+\begin{remark}
+    $f(x) = x^2$ на  $(-1, 1)$, образ  $[0, 1)$.
+
+    $f(x) = \sin x$ на  $(0, 2\pi)$, образ $[-1, 1]$.
+
+    $f(x) = \frac{\sin \frac{1}{x}}{x}$ на $(0, 1]$, образ  $\R$.
+\end{remark}
+
+\begin{definition}
+    Пусть $f\!: \langle a, b \langle \to \R$ и инъективна. Тогда  $g$ --- обратная к  $f$  $\iff g\!: f(\langle a, b\rangle) \to \langle a, b \rangle \land$ и  $f(g(y)) = y \land g(f(x)) = x$.
+
+    $g$ обозначатся как  $f^{-1}$.
+\end{definition}
+\begin{remark}
+    Обратная функция существует, так как $f$ --- биекция между  $\langle a, b \rangle$ и  $f(\langle a, b \rangle)$.
+\end{remark}
+\begin{remark}
+    График непрерывной функции симметричен относительно прямой $y=x$.
+\end{remark}
+\begin{theorem}
+    $f\!: \langle a, b\rangle \to \R$ непрерывна и строго монотонна. $m \coloneqq \inf_{x \in \langle a, b \rangle} f(x)$ (возможно $-\infty$). $M \coloneqq \sup_{x \in \langle a, b \rangle} f(x)$. Тогда:
+    \begin{enumerate}
+        \item $f$ обратима и  $f^{-1}\!: \langle m, M \rangle \to \langle a, b \rangle$
+        \item  $f^{-1}$ строго монотонна.
+        \item  $f^{-1}$ непрерывна на  $\langle m, M \rangle$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Строгая монотонность $\Rightarrow f$ --- инъекция  $\Rightarrow f$ --- обратима.
+        \item  Пусть  $f$ строго возрастает  $\Rightarrow f(x) < f(y) \iff x < y$.  Тогда $x < y \Rightarrow f^{-1}(x) < f^{-1}(y)$.
+        \item Непрерывность. Возьмем  $y_0 \in \langle m, M \rangle$. Докажем непрерывность в точке $y_0$.  $A \coloneqq \sup_{y < y_0} f^{-1}(y) = \lim_{y \to y_0-} f^{-1}(y)$ (функция строго монотонная) $\le f^{-1}(y_0) \le \lim_{y \to y_0+} f^{-1}(y) = \inf_{y > y_0} f^{-1}(y) \eqqcolon B$. Докажем, что $A = B$.
+
+            Пусть $A < B$. Рассмотрим множество значений  $f^{-1}$ : $(-\infty; A] \cup \{f^{-1}(y_0)\} \cup [B; +\infty) \supset f^{-1}(\langle m, M \rangle) = \langle a, b \rangle$. Противоречие. 
+    \end{enumerate}
+\end{proof}
+
+\Subsection{Элементарные функции}
+\textbf{Обратные тригонометрические функции}.
+\begin{itemize}
+    \item $\sin\!: \left[-\frac{\pi}{2};\frac{\pi}{2}\right] \to [-1, 1]$ непрерывна и строго возрастает. По теории у него есть обратная функция.
+
+\item$\arcsin\!:[-1, 1] \to [-\frac{\pi}{2}; \frac{\pi}{2}]$ непрерывна и строго возрастает.
+
+\item$\cos\!:[0;\pi] \to [-1, 1]$ непрерывна и строго убывает.
+
+\item$\arccos\!: [-1, 1] \to [0, \pi]$ непрерывна и строго убывает.
+
+\item$\tg\!: \left(-\frac{\pi}{2};\frac{\pi}{2}\right) \to \R$ непрерывна и строго возрастает. По теории у него есть обратная функция.
+
+\item$\arctg\!:\R \to (-\frac{\pi}{2}; \frac{\pi}{2})$ непрерывна и строго возрастает.
+
+\item$\ctg\!:(0;\pi) \to \R$ непрерывна и строго убывает.
+
+\item$\arcctg\!: \R \to (0, \pi)$ непрерывна и строго убывает.
+\end{itemize}
+\textbf{Логарифм.}
+
+    $\exp\!: \R \to (0; +\infty)$ непрерывна и строго возрастает.
+    Обратная функция $\ln\!:(0, +\infty) \to \R$ непрерывна и строго возрастает.
+     \begin{properties}
+         \begin{itemize}
+             \item $\lim_{x\to 0+} \ln x = -\infty$, $\lim_{x\to +\infty} \ln x = +\infty$ 
+             \item $\ln(ab) = \ln a + \ln b$
+             \item  $\ln(1+x) \le x$, при $x > -1$.
+             \item $\ln(1+x) \ge 1 - \frac{1}{1 + x}$, при $x> -1$.
+         \end{itemize}
+    \end{properties}
+    \begin{proof}
+        \begin{itemize}
+            \item Предел существует из монотонности, они такие, т.е. множество значений у $\ln$ ---  $\R$.
+            \item  $\exp(u+v) = \exp u \cdot \exp v$. Если  $\exp u = a, \exp v = b$, то  $u = \ln a, v = \ln b$, тогда  $\exp(u + v) = a \cdot b \Rightarrow \ln(ab) = u + v = \ln a + \ln b$
+            \item  $\exp u \ge 1 + u \Rightarrow u = \ln(\exp u) \ge \ln(1+u)$
+            \item $y \coloneqq \ln(1+x)$.  $\exp y = 1 + x \Rightarrow 1+x = \exp y \le \frac{1}{1 - y} \Rightarrow 1-y \le \frac{1}{1+x}$.
+        \end{itemize}
+    \end{proof}
+\begin{theorem}
+    \[
+        \lim_{x \to 0} \frac{\ln(1+x)}{x} = 1
+    .\] 
+\end{theorem}
+\begin{proof}
+    $\frac{x}{1+x} = 1 - \frac{1}{1+x} \le \ln(1+x) \le x$, при $-1 < x < 1$.
+
+    При  $x > 0$:  $\underbrace{\frac{1}{1 + x}}_{\to 1} \le \frac{\ln(1+x)}{x} \le 1$.
+
+    При $x < 0$:  $1 \le \frac{\ln(1+x)}{x} \le 1 + \frac{1}{1+x} \to 1$
+\end{proof}
+
+\begin{definition}
+    $a^b \coloneqq \exp(b \ln a)$, при  $a>0, b \in \R$
+\end{definition}
+\slashn
+Если $b \in \N\!: a^n = \exp(\underbrace{\ln a + \ln a + \ldots + \ln a}_{n\ \text{штук}}) = \exp(\ln a) \cdot \ldots \exp(\ln a)$ --- штук.
+
+$a^{-n} = \exp(-n \ln a) = \frac{1}{\exp(n \ln a)} = \frac{1}{a^n}$.
+
+$a^{\frac{m}{n}} = (\sqrt[n]{a})^m$. $\exp(\frac{m}{n} \ln a) = \exp(m \frac{\ln a}{n}) = (\exp(\frac{\ln a}{n}))^m$.
+
+\begin{exerc}
+    Доказать, что $a^b = \lim a^b$, где  $b_n \in \Q$ и  $b_n \to b$.
+\end{exerc}
+
+\begin{consequence}
+    \begin{equation}
+         \lim_{x\to 0} (1+x)^{\frac{1}{x}} = e
+     \end{equation}
+
+    \begin{equation}
+        \lim_{x\to +\infty} (1+\frac{1}{x})^{x} = \lim_{x\to -\infty} (1+\frac{1}{x})^{x} = e
+     \end{equation}
+\end{consequence}
+\begin{proof}
+    \begin{enumerate}
+        \item $(1+x)^{\frac{1}{x}} = \exp(\frac{1}{x} \ln(1+x))$ 
+
+            $\lim_{x\to 0}(1+x)^{\frac{1}{x}} = \lim_{x \to 0} \exp(\frac{\ln(1+x)}{x}) = \exp(\lim \ldots) = \exp 1 = e$ 
+        \item $y = \frac{1}{x}$. $(1+x)^{\frac{1}{x}} = (1 + \frac{1}{y})^y$. При $x \to 0+$  $y \to +\infty$. При  $x \to 0-$  $y \to -\infty$
+    \end{enumerate}
+\end{proof}
