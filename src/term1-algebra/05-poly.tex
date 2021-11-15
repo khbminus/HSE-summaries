@@ -113,10 +113,20 @@
 \begin{theorem}[О делении с остатком]
     $f, g \in K[x]$ $g \neq 0$. Тогда  $\exists! q, r \in K[x]: f = g\cdot q + r, \deg r < \deg g$.
 \end{theorem}
+\begin{proof}
+    \textit{Формальное доказательство будет в конспекте, который должен скинуть Антипов. Здесь только кукареки.}
+
+    Идея: в целых числах операция деления: вычитание, пока это возможно.
+
+    Многочлены: $f=ax^m + \ldots, g = bx^l, m\ge l$. $f \leadsto f - \frac{a}{b}x^{m-l} \cdot g = ax^mf + \ldots$. Получили сумму чего-то кратного $g$ + какой-то остаток. 
+\end{proof}
 \begin{consequence}
     $R$ --- коммутативное, ассоциативное кольцо  $a \in R$. Тогда $\exists$ гомоморфизм колец  $R[x] \to R: a_0 + a_1 x + \ldots + a_n x^n \mapsto a_0 + a_1 \cdot a + \ldots + a_n a^n$ --- гомоморфизм эвалюации. 
 
     С другой стороны $f \in R[x]$ --- полиномиальная функция.  $F_f: R \to R$  $a \mapsto \text{ev}_a(f)$.
+\end{consequence}
+\begin{consequence}
+    $f, g \xrightarrow[\text{Эвклида}]{\text{Алгоритм}} h = (f, g)\ h= u_1f + u_2g$. А значит, у $\gcd$ корнями будут общие корни  $f$ и  $g$.
 \end{consequence}
 \begin{definition}
     $f \in R[x]$.  $a\in R$ --- корень  $f$, если  $F_f(a) = 0$.
@@ -149,3 +159,100 @@
               С другой стороны $b$ --- корень  $f \Rightarrow f(b) = 0$. $(b-a) \widetilde{f}(b) = 0 \xRightarrow{k\text{ --- о. ц. }} b - a = 0 \lor \widetilde{f} = 0 \iff b = a \lor b$ --- корень $\widetilde{f}$. Таких не более $n$, а значит у  $f$ не более  $n+1$ корня.
     \end{itemize}
 \end{proof}
+\slashn
+$f \in K[x]$.  $f \leadsto F_f\!: K \to K$ --- полиномиальная функция. Верно ли  $F_f = F_g \Rightarrow f=g$? 
+\begin{theorem}[Теорема о формальном и функциональном равенстве]
+    Пусть $K$ --- после,  $f, g \in K[x]$,  $|K| > \max(\deg f, \deg g)$, например,  $K$ --- бесконечно. Тогда  $F_p = F_g \Rightarrow f=g$.
+\end{theorem}
+\begin{proof}
+    $F_f = F_g \Rightarrow f(k) = g(k)\ \forall k \in K \Rightarrow (f-g)(k)=0\ \forall k \in K$. По свойствам степени знаем, что  $n \coloneqq \deg(f-g) \le \max(\deg f, \deg g) \\ |K| > \max(\deg f, \deg g) \ge n \Rightarrow f - g = 0 \iff f = g$.  
+\end{proof}
+\begin{remark}
+    $K = \Z / 8 \Z$. Тогда у  $x^2 = 1$ 4 корня:  $\overline{1}, \overline{3}, \overline{5}, \overline{7}$. А у $x^2 - 2x = 0$ корня  $\overline{0}, \overline{2}, \overline{4}, \overline{6}$.$x^2-1)(x^2-2x) = 0 \iff x^4 + 2x = 2x^3 + x^2$ как функции. При этом $\max(\deg) = 4 < 8$. 
+\end{remark}
+\begin{remark}
+    $\Z / p \Z$:  $x^p = x$ --- ???
+\end{remark}
+\begin{remark}
+    Рассмотрим $\Z / p \Z[x]$ --- бесконечное кольцо.  $f \leadsto F_f\!: \Z / p \Z$ --- не более $p^p$ отображений.  $\Z / p\Z[x]_{p-1} = \{f \mid \deg f \le p-1\}$. 
+
+    $\Z / p \Z[x]_{p-1} \leftrightarrow \{\text{отображения} \Z / p\Z \to \Z / p\Z \}$.
+\end{remark}
+\Subsection{Интерполяция}
+\begin{definition}
+    Интерполяционная задача в поле $K$ называется набор данных  $x_1, x_2, \ldots, x_n \in K\ (x_i \neq x_j)$, $y_1, y_2,\ldots,y_n \in K$.
+    
+    Задача заключается в поиске $f \in K[x]\!: f(x_i) = y_i\ \forall 1..n$. 
+
+     $x_i$ --- узлы интерполяции. 
+\end{definition}
+\begin{theorem}
+    Любая интерполяционная задача с $n$ узлами имеет единственное решение  $f_0$ среди множеств степени $<n$.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+    \item Единственность. Пусть $f_0, f_1$ --- два решения.  $\deg(f_i) < n$.  
+
+        $f_0(x_c) = y_c = f_1(x_c)$. Тогда возьмем $g \coloneqq f_0 - f_1$. Заметим, что у него  $n$ корней, но  $\deg < n$. Значит  $f_0=f_1$
+    \item Существование: рассмотрим задачу $\chi_i\!: \chi_i(x_i) = 1, \chi_i(x_j) = 0$, если  $i \neq j$. Её решение:  $L_i = \frac{(x-x_1)(x-x_2)\ldots(x - x_{i-1})(x - x_{i+1})\ldots(x - x_n)}{(x_i - x_1)(x_i - x_2)\ldots}$ --- в числителе условие на 0, в знаменателе на 1.
+
+        Тогда $f_0 \coloneqq y_1 L_1 + y_2 L_2 + \ldots +y_nL_n$. Тогда для $\forall i\!: f_0(x_i) = y_1L_1(x_i) + \ldots$ во всех слагаемых, кроме $y_i \cdot L_i(x_i)$ равно 0, а данное слагаемое равно  $y_i$.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    Интерполяционный полином Лагранжа: $f_0 = \sum_i \frac{y_i \prod_{j \neq i}(x - x_j)}{\prod_{j \neq i}(x_i - x_j)}$, если $\deg f_0 < \max(\deg L_i) = n-1$
+\end{definition}
+
+\Subsection{Закрываем долг}
+\begin{theorem}
+    $(\Z / p \Z)*$ --- циклическая группа, то  есть  $\exists a \in \Z / p \Z\!: \{a, a^2,\ldots,a^{p-1}\} = \{\overline{1}, \overline{2},\ldots, \overline{p-1}\}$, то есть $\ord a = p - 1$,  $a$ --- первообразный корень.
+\end{theorem}
+\begin{lemma}
+    Пусть $a \in G$ --- группа,  $\ord a = d$. Тогда  $\ord(a^k) = \frac{d}{(d, k)}$
+\end{lemma}
+\begin{proof}
+    $(a^k)^l = e \iff a^{kl} = e \iff kl \divby \ord(a) = d$. Тогда, если $k = (d, k) \cdot k'$  и  $d = (d, k) d'$, то  $(d, k) \cdot k' \cdot l \divby (d, k) \cdot d' \iff k' \cdot l \divby d' \xLeftrightarrow{(k', d') = 1} l \divby d' = \frac{d}{(d, k)}$ 
+\end{proof}
+\begin{lemma}
+    $\forall n \in \N\ \sum_{d \mid n} \varphi(d) = n$
+\end{lemma}
+\begin{proof}
+    Пусть $d_1, d_2, \ldots, d_k$ --- все натуральные делители $n$.  $n = |\{1, 2, \ldots, n\}| \eqqcolon |A|$.
+
+    Разобьем множество $A = A_1 \cup A_2 \cup \ldots \cup a_k$, причем $A_i \cap A_j = \varnothing$ и  $|A_i| = \varphi(d_i)$ (тогда докажем лемму).
+
+    $A_i = \{ a \in A \mid (a, n) = \frac{n}{d_i}\}$. Заметим, $d_1, \ldots d_k$ --- все делители $n \Rightarrow \frac{n}{d_1}, \ldots \frac{n}{d_k}$ --- все делители $n$. И понятно, что  $\forall a\ (a, n)$ --- какой-то делитель  $n$. 
+
+     Поэтому $A = A_1 \cup A_2 \cup \ldots \cup A_k\ a_i \cap A_j = \varnothing$.
+
+     $a \in A_i \iff (a, n) = \frac{n}{d_i}$. Значит $a = \frac{n}{d_i}k$, $(\frac{n}{d_i}k, n) = \frac{n}{d_i} \iff (\frac{n}{d_i}k, \frac{n}{d_i}d_i) = \frac{n}{d_i} \iff (k, d_i) = 1$. 
+
+     Тогда $|A_i| = |\{ k \mid k \le d_i \land (k, d_i) = 1\}| = \varnothing(d_i)$.
+\end{proof}
+\begin{lemma}
+    Количество элементов порядка $d$ в  $(\Z / p \Z)*$ равно либо 0, либо  $\varphi(d)$. 
+\end{lemma}
+\begin{proof}
+    Например, $p-1 \centernot \divby d \Rightarrow $ кол-во равно  $0$. 
+
+    Пусть  $\exists a\!: \ord a = d\ a^d = 1$, $a, a^2, \ldots, a^d = 1$ --- различные элементы. Тогда $\forall k=1..d\ (a^k)^d = (a^d)^k = 1$, то есть это  $d$ решений  $x^d = 1$. Других решений нет, так как  $x^d - 1$ имеет  $\le d$ корней.
+
+    Пусть $\ord b = d \Rightarrow b^d = 1 \Rightarrow b = a^k$,  $k = 1..d$. Тогда по предыдущей лемме  $\ord a^k = \frac{d}{(d, k)} \Rightarrow (d, k) = 1$. 
+
+    Тогда $(k, d) ]= 1 \Rightarrow \ord(a^k) = d$. То есть все элементы порядка  $d$ это  $\{a^k \mid 1 \le k \le d \land (k, d) = 1 \}$.
+\end{proof}
+\begin{proof}[Доказательство теоремы] 
+    $B_d \subset (\Z / p\Z)*$, такие что $B_d = \{x \in (\Z / p \Z)* \mid \ord x = d\}$,  $B_0 = \{0\}$. 
+
+    Тогда получится, что  $(\Z / p \Z) = B_0 \cup B_{d_1} \cup \ldots \cup B_{d_k}$, $d_i$ --- делители $p - 1$ (со звездочкой без нуля). 
+
+    $p-1 = |(\Z / p \Z)*| = \sum |B_{d_i}|$ по лемме 3  каждое слагаемое  $0$ или  $\varphi(d_i)$, а по лемме 2 $p - 1 = \sum_{l = 1}^k \varphi(d_i)$. А значит в первой сумме каждое слагаемое  $\varphi(d_i)$. 
+
+    В том числе  $|B_{p-1}| = \varphi(p - 1) \neq 0$, то есть  $\exists $ элементы порядка  $p-1$.
+\end{proof}
+\begin{remark}
+    $K$ --- не область целостности  $\Rightarrow$ не выполняется ОТА для многочленов.
+    
+    $\Z / 8\Z\!: x^2-1 = (x-1)(x+1) = (x-3)(x+3)$
+\end{remark}
