@@ -1,0 +1,144 @@
+\Subsection{Определения}
+\begin{definition}
+    Граф $G$ --- тройка  $(V, E, I)$:
+     \begin{enumerate}
+        \item $V$ --- конечное множество вершин.
+        \item  $E$ --- конечное множество ребер.
+        \item  $I\!: E \to \binom{V}{2}$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Концевые вершины ребра --- вершины, которые соединены этим ребром.
+\end{definition}
+\begin{definition}
+    Если два ребра имеют одинаковые концевые ребра, то такие ребра --- кратные (мультиребра).
+\end{definition}
+\begin{definition}
+    Если ребро соединяет вершину с собой, то ребро --- петля.
+\end{definition}
+\begin{definition}
+    Граф простой --- без петель и мультиребер.
+\end{definition}
+\begin{definition}
+    Степень ребра (валентность) --- количество ребер, исходящих из вершины.
+\end{definition}
+\begin{theorem}
+    Сумма степеней вершин в графе равна удвоенному количеству ребер. То есть $\displaystyle \sum_{u \subset V(G)} \deg u = 2 \cdot |E|$
+\end{theorem}
+\begin{proof}
+    Каждое ребро состоит из двух полуребер. Из каждой вершины <<торчит>> $\deg v$ полуребер (принцип биекции). Тогда получили, что  $\sum \deg v = 2|E|$
+\end{proof}
+\begin{consequence}
+    Количество вершин нечетной степени в графе четно.
+\end{consequence}
+\begin{definition}
+    Ребро $e$ инцидентно вершине $u$, если  $u$ --- концевая вершина ребра. 
+\end{definition}
+
+\begin{definition}
+    Матрица инцидентности???
+\end{definition}
+
+\begin{definition}
+    Полный граф --- полный граф на $n$ вершинах.  $K_n$.
+\end{definition}
+\begin{definition}
+    Дополнением графа $G$ называется граф  $\overline{G}$:  $V(\overline{G}) = V(G)$, а $E(\overline{G}) = \binom{V(G)}{2} \setminus E(G)$ 
+\end{definition}
+
+\begin{definition}
+    Граф называется двудольным $V(G) = V_1 \cup V_2$. И все ребра ведут из $V_1$ в  $V_2$.
+\end{definition}
+\begin{definition}
+    Полный двудольный граф --- двудольный граф со всеми возможными ребрами. $K_{n, m}$, если в одной доле $n$ вершин, а в другой  $m$.
+\end{definition}
+
+\begin{definition}
+    $V$ --- множество бинарных строк длины  $k$.  $E: e = uv \iff$ $u$ и  $v$ отличаются в одном бите. 
+\end{definition}
+\begin{remark}
+    Заметим, что данный граф двудольных: одна доля c четной суммой битов, другая --- с нечетной.
+\end{remark}
+\begin{definition}
+    $P_n$ --- граф <<путь>>.
+\end{definition}
+\begin{definition}
+    $C_n$ --- граф <<цикл>>.
+\end{definition}
+\begin{definition}
+    Регулярные графы --- граф, в котором степень всех вершин равны.
+\end{definition}
+\begin{definition}
+    Оргаф (ориентированный граф) $D = (V, E, I)$, где $I: E \to V \times V$.
+\end{definition}
+\begin{theorem}
+    $\displaystyle \sum_{v \in V(G)} \text{indeg}(v) = \sum_{v \in V(G)} = \text{outdeg}(v) = |E(D)|$
+\end{theorem}
+\begin{proof}
+    Очев.
+\end{proof}
+\begin{definition}
+    ???
+\end{definition}
+\begin{definition}
+    Ориентацией графа $G$  называется граф $G$ полученные ориентацией всех ребер графа  $G$.
+\end{definition}
+\begin{definition}
+    Граф называется турниром, если он является ориентацией полного графа.
+\end{definition}
+\begin{definition}
+    Две вершины называются смежными, если есть ребро между ними.
+\end{definition}
+
+\begin{definition}
+    Матрица смежности --- матрица размера $V$ над $V$. $A_{i, j}$ показывает сколько ребер идет из $i$ в $j$.
+\end{definition}
+\begin{definition}
+    Список смежности --- список списков, где для каждой вершины храним выходящие из нее ребра.
+\end{definition}
+\Subsection{Маршруты, пути, циклы. Связные графы}
+\begin{definition}
+    Маршрут (walk) --- набор вершин и ребер вида: $v_0, e_0, v_1, e_1, \ldots$, где $v_i$ --- вершины графа, $e_i$ --- ребра графа, причем $e_i = v_{i-1}v_i$
+\end{definition}
+\begin{definition}
+    Путь (trail) --- маршрут без повторяющихся ребер.
+\end{definition}
+\begin{definition}
+    Простой путь (path) --- Путь (сложный) без повтора вершин.
+\end{definition}
+\begin{definition}
+    Вершины $x$ и  $y \in V$ называются связанными, если существует путь, соединяющий $x, y$. 
+\end{definition}
+\begin{remark}
+    Заметим, что свзяность --- отношение эквивалентности. $x \to x$ --- очев, $x\to y = y \to x$. $x\to y, y\to z$, тогда $x\to z = x\to y \cup y\to z$.
+
+    Тогда можно разбить на блоки --- компоненты связности.
+\end{remark}
+\begin{definition}
+    Расстояние $d(x, y)$ --- длина кратчайшего пути из  $x$ в  $y$.
+\end{definition}
+\begin{definition}
+    Диаметр графа --- это расстояние между двумя наиболее удаленными точками.
+\end{definition}
+\begin{definition}
+    $x \in V(G)$ эксцентриситет  $\varepsilon(x) = \max d(x, y)$
+\end{definition}
+\begin{definition}
+    Радиус $G\ r(g) = \min_{x \in V(G)} \varepsilon(x)$
+\end{definition}
+\begin{definition}
+    Замкнутый путь --- путь, которого стартовая вершина равна конечной.
+\end{definition}
+\begin{definition}
+    Обхват --- ????
+\end{definition}
+\begin{definition}[Теорема Кенига(Kőnig)]
+    Граф считает двудольным $\iff$ в нем нет циклов нечетной длины.
+\end{definition}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item $\Rightarrow$. Предположим, что есть цикл нечетной длины. Каждое ребро --- переход в другую долю. То есть в стартовую долю мы переходим через четное число ходов. Противоречие.
+        \item 
+    \end{itemize}
+\end{proof}
