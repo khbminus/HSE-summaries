@@ -1,0 +1,85 @@
+\Subsection{Дифференцируемость и производная}
+\begin{definition}
+    $f\!:\langle a, b \rangle \to \R \land x_0 \in \langle a, b \rangle$.
+
+    $f$ --- дифференцируема в точке  $x_0$, если существует такое  $k \in \R\!: f(x) = f(x_0) + k(x-x_0) + o(x-x_0)$ при $x \to x_0$. Можно думать, что $\alpha(x) = o(x-x_0)$, где $\alpha\frac{x}{x - x_0} \xrightarrow{x \to x_0} 0$.
+\end{definition}
+\begin{definition}
+    Производная функции $f$ в точке  $x_0$ ---  $\lim_{x \to x_0} = \frac{f(x) - f(x_0)}{x - x_0} = \lim_{h \to 0} \frac{f(x_0+h) - f(x_0)}{h} \eqqcolon f'(x)$.
+\end{definition}
+
+\begin{theorem}[Критерий дифференцируемости]
+    $f\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle$. Следующие условия равносильны: 
+     \begin{enumerate}
+         \item $f$ дифференцируема в точке  $x_0$.
+         \item  $f$ имеет в точке  $x_0$ конечную производную.
+         \item $\exists \varphi\!: \langle a, b \rangle \to \R: f(x) - f(x_0) = \varphi(x)(x - x_0)$ и $\varphi$ непрерывна в точке  $x_0$.
+    \end{enumerate}
+    Причем, если выполнены эти условия, то $k = f'(x_0) = \varphi(x_0)$
+\end{theorem}
+\begin{proof}
+    \begin{itemize}
+        \item $1. \Rightarrow 2. f(x) = f(x_0) + k(x - x_0) + o(x - x_0) \Rightarrow \frac{f(x) - f(x_0)}{x - x_0} = \frac{k(x - x_0) + o(x - x_0)}{x-x_0} = k + o(1) \Rightarrow \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x-x_0} = k \Rightarrow f'(x_0) = k$ 
+        \item $2. \Rightarrow 3.$  $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x-x_0} = f'(x_0) \in \R$. $\varphi(x) = \begin{cases} \frac{f(x) - f(x_0)}{x - x_0} & x \neq x_0 \\ f'(x_0) & x = x_0 \end{cases} \Rightarrow \varphi$ --- непрерывна в $x_0$. 
+        \item  $3. \Rightarrow 1.$ $f(x) - f(x_0) = \varphi(x)(x - x_0)$, причем $\lim_{x \to x_0} \varphi(x) = \varphi(x_0) \Rightarrow f(x) = f(x_0) + \varphi(x_0)(x - x_0) + (\varphi(x) - \varphi(x_0))???$
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    Бесконечная производная $\lim_{x\to x_0}\frac{f(x) - f(x_0)}{x - x_0} = \pm \infty$
+\end{definition}
+\begin{example}
+    $f(x) = \sqrt[3]{x}$.  $f'(0) = \lim_{h\to 0} \frac{f(h) - f(0)}{h - 0} = \lim_{h \to 0} \frac{\sqrt[3]{h}}{h} = \lim_{h \to 0} \frac{1}{\sqrt[3]{h^2}} = +\infty$
+\end{example}
+\begin{definition}
+    $f_+' \coloneqq = \lim_{x\to x_0+} \frac{f(x)-f(x_0)}{x-x_0}$
+    $f_-' \coloneqq = \lim_{x\to x_0-} \frac{f(x)-f(x_0)}{x-x_0}$
+\end{definition}
+\begin{remark}
+    Существование  $f'(x_0) \iff$ существование $f_{\pm}'(x_0)$ и их равенство.
+\end{remark}
+\begin{example}
+    $f(x) = |x|$.  $f_+'(x) = 1, f_-'(x)=-1$
+\end{example}
+\begin{definition}
+    Касательная --- предельное положение секущей.
+\end{definition}
+\begin{example}
+    Уравнение касательной. Пусть $f$ дифференцируема в точке  $u \in \langle a, b \rangle$.
+
+    $y = f(u) + \frac{f(v) - f(u)}{v - u}(x - u)$. $f'(u) = \lim_{v \to u}\frac{f(v) - f(u)}{v - u}$. То есть $y = f(u) + f'(u)(x-u)$.
+\end{example}
+
+\begin{definition}
+    Дифференциал функции $f(x_0+h) = f(x_0) + k \cdot h + o(h)$ при  $h \to 0$.  $f(x_0)$ --- константа, $k \cdot h$ --- что-то линейное.
+    
+    Дифференциал функции ---  линейное отображение $k \cdot$.
+\end{definition}
+\begin{statement}
+    Если $f$ дифференцируема в  $x_0$, то  $f$ непрерывна в  $x_0$.
+\end{statement}
+\begin{proof}
+    $f(x) = f(x_0)+\underbrace{k(x-x_0)}_{\to 0}+\underbrace{o(x-x_0)}_{\to 0} \xrightarrow{x \to x_0} f(x_0)$
+\end{proof}
+
+\begin{theorem}[Арифметические действия с дифференцируемыми функциями]
+    $f, gg\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle, f, g$ --- дифференцируемые в  $x_0$. Тогда:
+     \begin{enumerate}
+         \item $f \pm g$ дифференцируема в  $x_0$ и $(f \pm g)' = f' \pm g'$
+         \item $f \cdot g$ дифференцируема в  $x_0$ и $(f \cdot g)' = f'g + fg'$
+         \item $cf$ дифференцируема в  $x_0$ и $(cf)' = cf'$
+         \item $\alpha f + \beta g$ дифференцируема в  $x_0$ и $(\alpha f + \beta g)' = \alpha f' + \beta g'$
+         \item если $g(x_0) \neq 0$, то  $\frac{f}{g}$ дифференцируема в $x_0$ и $\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}$
+    \end{enumerate}
+    \begin{proof}
+        \slashn
+        \begin{enumerate}
+            \item $(f+g)'(x_0) = \lim_{x \to x_0} \frac{(f(x) + g(x)) - (f(x_0) + g(x_0))}{x - x_0} = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0} \frac{g(x) - g(x_0)}{x - x_0} = f'(x_0) + g'(x_0)$ 
+            \item $(fg)'(x_0) = \lim_{x \to x_0} \frac{f(x)g(x) - f(x_0)g(x_0)}{x - x_0} = \lim_{x \to x_0} = \frac{f(x)g(x) - f(x)g(x_0) + f(x)g(x_0)-f(x_0)g(x_0)} = \lim_{x \to x_0} f(x) \frac{g(x) - g(x_0)}{x - x_0} + \lim_{x \to x_0} g(x) \frac{f(x) - f(x_0)}{x - x_0} = fg' + f'g$
+            \item $(cf)' = cf' + c'f = cf'$
+            \item  $(\alpha f + \beta g)' = (\alpha f)' + (\beta g)' = \alpha f' + \beta g'$
+            \item $\left(\frac{f}{g}\right)' = (f' \cdot \frac{1}{g}) + f \cdot (\frac{1}{g})'$.
+
+                $(\frac{1}{g})'(x_0) = \lim_{x \to x_0} \frac{\frac{1}{g(x)} - \frac{1}{g(x_0)}}{x - x_0} = \lim_{x\to x_0} \frac{1}{g(x_0)g(x_0)}\frac{g(x_0) - g(x)}{x - x_0} = -\frac{g'(x_0)}{g(x_0)^2}$.
+        \end{enumerate}
+    \end{proof}
+\end{theorem}

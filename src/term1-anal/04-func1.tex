@@ -513,3 +513,126 @@ $a^{\frac{m}{n}} = (\sqrt[n]{a})^m$. $\exp(\frac{m}{n} \ln a) = \exp(m \frac{\ln
         \item $y = \frac{1}{x}$. $(1+x)^{\frac{1}{x}} = (1 + \frac{1}{y})^y$. При $x \to 0+$  $y \to +\infty$. При  $x \to 0-$  $y \to -\infty$
     \end{enumerate}
 \end{proof}
+
+\textbf{Показательная функция}
+\begin{definition}
+    Показательная функция $a^x \coloneqq \exp(x \ln a): \R \to (0, +\infty)$, при $a > 0$.
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item При $a > 1$ строго возрастает. Так как $\ln a > 0$. 
+        \item При $a < 1$ строго убывает.
+        \item  $a^x \ge 1 + x \ln a$ по свойству экспоненты.
+    \end{enumerate}
+\end{properties}
+\begin{theorem}
+     \[
+         \lim_{x \to 0} \frac{a^x - 1}{x} = \ln a
+    .\] 
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        a^x \ge 1 + x \ln a \Rightarrow  a^x - 1 \ge x \ln a \\
+        a^{-x} \ge 1 - x \ln a \Rightarrow a^x = \frac{1}{a^{-x}} \le \frac{1}{1 - x \ln a}\ \text{при малых}\ x \\
+        a^x - 1 \le -1 + \frac{1}{1 - x \ln a} = \frac{x \ln a}{1 - x \ln a}.
+        \end{align*}
+        Тогда $\frac{a^x - 1}{x}$ зажато между $\ln a$ и  $\frac{\ln a}{1 - x \ln a} \xrightarrow[x \to 0]{} \ln a$. 
+\end{proof}
+
+\textbf{Степенная функция}
+\begin{definition}
+    Степенная функция: $x^p \coloneqq \exp(p \ln x)\!: (0, +\infty) \to \R$, когда  $p \in \R$.
+
+    Функция непрерывна и, если  $p \neq 0$, то строго монотонная.
+\end{definition}
+
+\begin{theorem}
+    \[
+        \lim_{x\to 0} \frac{(1+x)^p - 1}{x} = p
+    .\] 
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        (1+x)^p &= \exp(p \ln(1=x))  \ge 1 + p \ln(1+x) \\
+        (1+x)^p &= \frac{1}{(1+x)^{-p}} \le \frac{1}{1 - p \ln (1+x)}, \text{при}\ x\ \text{близких к нулю}\\
+        p \ln (1+x) &= (1+x)^p - 1 = \le \frac{1}{1-p\ln(1+x)} - 1 = \frac{p\ln(1+x)}{1 - p \ln(1+x)}
+    \end{align*}
+    Тогда $\frac{(1+x)^p - 1}{x}$ зажато между $p \cdot \ln\frac{1+x}{x} \xrightarrow{\text{зам. предел}}$ и $p \cdot \frac{\ln(1+x)}{x} \cdot \frac{1}{1 - p \ln (1+x)} \xrightarrow [\text{непрерывность}]{\text{зам. предел}} p$. Дальше два милиционера.
+\end{proof}
+
+\Subsection{Сравнение функций}
+\begin{definition}
+    $f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\exists \varphi\!:E \to \R\!: f = \varphi g$, при $x \in \dot{U_{x_0}} \cap E$ и 
+     \begin{enumerate}
+         \item $\varphi$ --- ограниченная:  $f = \mathcal{O}(g)$. $|f(x)| \le C|g(x)|$ в окрестности $x_0$.
+         \item  $\varphi(x) \xrightarrow{x \to x_0)} 0$:  $f = o(g)$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 0$
+         \item  $\varphi(x) \xrightarrow{x \to x_0} 1$:  $f \sim g$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 1$
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    $f = \mathcal{O}(g)$ на множестве  $E$  $\xLeftrightarrow{\text{def}} \exists C > 0\!: |f(x)| \le C|g(x)|\ \forall x \in E$.
+\end{definition}
+\begin{definition}
+    $f = \mathcal{O}(g) \quad f \prec g \quad g \succ f$. Если  $f = \mathcal{O}(g)$ и  $g = \mathcal{O}(f)$, то  $f \asymp g \iff \exists C_1, C_2 > 0\!: C_1|g(x)| \le |f(x)| \le C_2|g(x)|$.
+\end{definition}
+\begin{remark}
+    $g(x) \neq 0 \Rightarrow \varphi(x) = \frac{f(x)}{g(x)}$ и $g(x) = 0 \Rightarrow f(x) = 0$ (иначе $\varphi(x)$ не существует.)
+\end{remark}
+\begin{properties}
+    \begin{enumerate}
+        \item $\sim$ --- отношение эквивалентности.
+        \item  $f_1 \sim g_1 \land f_2 \sim g_2 \Rightarrow f_1f_2 \sim g_1g_2$.
+        \item $f_2$ и  $g_2$ не обращаются в ноль в  $\dot{U_{x_0}} \Rightarrow f_1 \sim g_1 \land f_2 \sim g_2 \Rightarrow \frac{f_1}{f_2} \sim \frac{g_1}{g_2}$
+        \item $f \sim g \iff f = g + o(g) \iff f = g + o(f)$.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    \begin{enumerate}
+        \item Рефлективность $f \sim f$:  $\varphi = 1$.
+
+            Симметричность $f \sim g \Rightarrow g \sim f \quad f \sim g \Rightarrow f = \varphi g \Rightarrow g = \frac{1}{\varphi} f$, где $\lim_{x \to x_0} \varphi(x) = 1 \Rightarrow \lim_{x \to x_0} \frac{1}{\varphi(x)} = 1$.
+
+            Транзитивность: $f \sim g \land g \sim h \Rightarrow f \sum h$.  $f = \varphi_1 g \land g = \varphi_2 h \Rightarrow = f \varphi_1 \varphi_2 h$. И еще пределы (очевидно).
+        \item $f_i \sim g_i \Rightarrow f_i = \varphi_i g_i$, и  $\lim_{x \to x_0}\varphi_i = 1$. Можно перемножить  $\varphi_i$, все будет ок.
+        \item  $\frac{f_1}{f_2} = \frac{\varphi_1}{\varphi_2} \frac{g_1}{g_2}$.
+        \item $f \sim g \iff f = \varphi g \iff f = g + (\varphi  - 1) g$. Так как  $\varphi \to 1 \Rightarrow \varphi - 1 \to 0$.
+    \end{enumerate}
+\end{proof}
+\begin{properties}
+   \begin{enumerate}
+       \setcounter{enumi}{5}
+   \item $f = o(g) \Rightarrow f = \mathcal{O}(g)$ в точке  $x_0$.
+   \item $f \sim g \Rightarrow f = \mathcal{O}(g)$ в точке $x_0$.
+   \item  $f \cdot o(g) = o(fg)$
+   \item  $o(f) + o(f) = o(f)$ и  $\mathcal{O}(f) + \mathcal{O}(f) = \mathcal{O}(f)$.
+   \item $\lim_{x\to x_0} f(x) = a \iff f(x) = a + o(1)$
+   \end{enumerate} 
+\end{properties}
+\begin{proof}
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+    \item $f = o(g) \Rightarrow f = \varphi g$, где  $\lim_{x \to x_0} \varphi = 0.$
+        Для $\sim\ \lim_{x \to x_0} \varphi = 1 \Rightarrow \varphi$ ограничена в окрестности.
+    \item $h = f \cdot o(g) \iff h = f \varphi g$, где  $\lim_{x \to x_0} \varphi = 0 \iff h = \varphi f g \iff h = o(fg)$.
+    \item  $g = o(f), h = o(f) \Rightarrow g + h = o(f)$.  $g = \varphi f, h = \psi f$, Где  $\lim_{x \to x_0} \varphi = \lim_{x \to x_0} \psi = 0 \Rightarrow g+h = (\varphi + \psi)f$ и предел $=0$.f
+
+        $g = \mathcal{O}(f) \Rightarrow |g| \le C|f| \land h = \mathcal{O}(f) \Rightarrow |h| \le C'|f| \Rightarrow |g+h| \le |g| + |h| \le (C + C') |F|$.
+    \item $f(x) = a + o(1)$, где  $o(1)$ --- что-то, стремящееся к 0.  $\lim_{x \to x_0} (f(x) - a) = 0 \iff \lim_{x \to x_0} f(x) = a$
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    $\sin x \sim x, \ln(1+x) \sim x, \tg x \sim x$ при $x \to 0$.
+\end{example}
+\begin{example}
+    $\sin x = x + o(1)$.
+
+    $\ln(1+x) = x + o(1)$
+    
+    $\tg x = x + o(x)$ 
+
+    $\frac{(1+x)^p - 1}{x} \to p \iff \frac{(1+x)^p - 1}{x} = p+o(1) = (1+x)^p = 1 + px + o(1)$ 
+
+    $\frac{a^x - 1}{x} \to \ln a \iff \frac{a^x - 1}{x} = \ln a + o(1) \iff a^x = 1 + x \ln a + o(x)$.
+
+    $\frac{1-\cos x}{x^2} = \frac{2\sin^2 \frac{x}{2}}{x^2} \sim \frac{2\left(\frac{x}{2}\right)^2}{x^2} = \frac{1}{2}$. Получается, что $\frac{1 - \cos x}{x^2} = \frac{1}{2} + o(1)$. А значит $1-\cos x = \frac{x^2}{2} + o(x^2) \iff \cos x = 1 - \frac{x^2}{2} + o(x^2)$.
+\end{example}
