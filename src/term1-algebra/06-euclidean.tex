@@ -1,5 +1,5 @@
 \begin{definition}
-	$A$ --- область целостности, тогда  $A$ называется евклидовым, если  $\exists \varphi\!: A \setminus \{0\} \to \Z_{\ge 0}$, такой что $\forall a, b \in A, b \neq 0\ \exists q, r\!: a=bq+r$, причем  $\varphi(r) < \varphi(b)$
+	$A$ --- область целостности, тогда  $A$ называется евклидовым, если  $\exists \varphi\!: A \setminus \{0\} \to \Z_{\ge 0}$, такой что $\forall a, b \in A, b \neq 0\ \exists q, r\!: a=bq+r$, причем  $\varphi(r) < \varphi(b) \lor r = 0$
 \end{definition}
 \begin{example}
     $\Z$ --- евклидово.  $\varphi(x) = |x|$.
@@ -10,3 +10,100 @@
 \begin{example}
     $\Z[\sqrt{2}]$ --- евклидово. $\Z[\sqrt{5}]$ --- неевклидово.
 \end{example}
+
+\begin{definition}
+    $A$ --- область главных идеалов, если  $A$ --- кольцо без делителей нуля, в котором все идеалы главные.
+\end{definition}
+\begin{theorem}
+    Любое евклидово кольцо --- область главных идеалов.
+\end{theorem}
+\begin{proof}
+    Пусть $I$ --- идеал в  $A$,  $A$ --- евклидово. Рассмотрим  $\varphi(I) = \{\varphi(x) \mid x\in I\} \subset \Z_{\ge 0}$. Значит в $\varphi(I) \exists$ минимальный элемент $m$ в  $\varphi(I)$.  
+
+    Найдем $a \in I$, такое, что  $\varphi(a) = m$. 
+
+    Заметим, что  $\langle a \rangle \subset I$ --- очевидно (любой идеал порожденный элементов идеала в нем лежит).
+
+    $I \subset \langle a \rangle$: пусть $b \in I, b = a \cdot q + r, \varphi(r) < \varphi(a)$. При этом $\varphi(a)$ --- минимальный, значит  $r = 0$, значит  $r = b - a \cdot q \iff \cdot q = b \Rightarrow b \in I$.
+\end{proof}
+\slashn
+Евклидово $\Rightarrow$ ОГИ  $\Rightarrow$ ОТА.
+\begin{remark}
+    Пример не кольца главных идеалов. $\Z[x] = A$ --- не область главных идеалов. Рассмотрим  $I = \{f \mid f(0) \divby 2\}$ --- не главный.  $I = \langle 2, x \rangle$.    
+\end{remark}
+\begin{definition}
+    $R$ --- кольцо,  $a, b \in R$,  $a$ --- ассоциирован с  $b$ ($a \sim b$), если $a \divby b \divby b \divby a$.
+\end{definition}
+\begin{remark}
+    Ассоциированость --- оношение эквивалентности.
+\end{remark}
+\begin{example}
+    $R= \Z$, тогда  $a \sim b \iff a = \pm b$.
+\end{example}
+\begin{lemma}
+    $a \sim b \iff a = b \cdot \varepsilon$, где  $\varepsilon \in A^*$.
+\end{lemma}
+\begin{proof}
+    \slashn
+    \begin{itemize}
+        \item  $\Rightarrow$.  $a \sim b \Rightarrow a \divby b \land b \divby a \Rightarrow a = b \varepsilon \land b \divby b \varepsilon$. Тогда $b = (b \varepsilon) \cdot \varepsilon_1 = b (\varepsilon \cdot \varepsilon_1)$
+        \item $\Leftarrow$.  $a = b \varepsilon$. То есть  $\exists \varepsilon_1: \varepsilon \varepsilon_1 = 1 \Rightarrow a \varepsilon_1 = b \varepsilon \varepsilon_1 = b$. А значит следует делимость.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    $A$ --- область.  $p \in A$,  $p$ --- неприводимый, если 
+     \begin{enumerate}
+         \item $p \not \in A^*$.
+         \item  $p = p_1 \cdot p_2 \Rightarrow p_i \in A^* \land p_{3-i} \sim p$
+    \end{enumerate}
+\end{definition}
+\begin{theorem}[О. Т. А для произв. областей целостности]
+    $A$ --- область целостности. Любой  $a \in A$,  $a \neq 0$ раскладывается в произведение неприводимых множителей единственным образом, с точностью до перестановки множителей и ассоциативности:  \[
+        p_1p_2\ldots p_n = q_1 \ldots q_m,\ p_i, q_i\ \text{--- неприводимые}
+    .\] Следует, что $n= m\ \exists\ \text{перестановка} i_1, i_2, \ldots, i_n\!: p_k \sim q_{i_k}$.
+\end{theorem}
+\begin{definition}
+    Кольца, для которых выполнена О.Т.А называется факториальными. 
+\end{definition}
+\begin{theorem}
+    Любая область главных идеалов --- факториальна, в том числе любое евклидово кольцо факториально. А вот в обратную сторону не всегда верно.
+\end{theorem}
+\begin{proof}
+    Антипов так сказал!
+\end{proof}
+\slashn
+$K$ --- поле.$K[x]$ --- евклидово (знаем) $\Rightarrow$ ОГИ  $\Rightarrow$ факториально. Что значит  $f \sim g$ в  $K[x]$?
+
+$f \sim g \Rightarrow f = g\varepsilon\ \varepsilon\ (K[x])^*$
+ \begin{lemma}
+     $(K[x])^* = K^* = K \ \{0\}$
+\end{lemma}
+\begin{proof}
+    $a \in K^*\ \exists a^{-1} \in K^*$.  $a a^{-1} = 1$ в  $K[x]$.  $a \in K[x]^*$ $f \in K[x]^* \Rightarrow f \widetilde{f} = 1$.  $\deg (f \widetilde{f}) = \deg(r) = 0$. При этом  $\deg (f) + \deg(\widetilde{f}) \Rightarrow \deg(f) = 0, f \in K^*$.
+
+    Значит $f \widetilde g \iff f = kg, k \in K^*$.
+\end{proof}
+\slashn
+Итого: любой $f \in K[x]$ раскладывается на неприводимые множители однозначно с точностью до перестановки множителей и вынесения констант.
+ \begin{consequence}
+     $f, g \in K[x]$  $f$ и  $g$ имеют общие корни  $\Rightarrow (f, g) \neq 1$. Все общие корни  $f$ и  $g$ делители  $(f, g)$
+\end{consequence}
+\begin{definition}
+    $a, b \in A$ --- область целостности.  $d$ --- НОД $(a, b)$ если
+    \begin{enumerate}
+        \item $a \divby d$
+        \item  $b \divby d$
+        \item  $a \divby d_1, b \divby d_1 \Rightarrow d \divby d_1$.
+    \end{enumerate}
+\end{definition}
+\begin{statement}
+    Если НОД существует, то он единственный с точностью до ассоциированности.
+\end{statement}
+\begin{proof}
+    $d \sim d_1$,  $d$ --- НОД $(a,b)$.  $a \divby d, b \divby d \Rightarrow a \divby d_1, b \divby d_1, d \divby d_1$. $a \divby d_2, b \divby d_2 \Rightarrow d  \divby d_2, d_1 \divby d \Rightarrow d_1 \divby d_2$. 
+
+    А значит $d_1$ --- НОД(a, b).
+
+    Обратно: $d$ и $d_1$ НОДЫ $\Rightarrow a \divby d, b \divby d \Rightarrow d_1 \divby d$, так как  $d_1$ --- НОД. Тоже самое для $d$, получаем, что  $d \sim d_1$.
+\end{proof}
+
