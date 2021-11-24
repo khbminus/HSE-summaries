@@ -1,1 +1,0 @@
-Summaries for 2+ module c++ (AMI HSE Spb) classes. 
