@@ -83,3 +83,194 @@
         \end{enumerate}
     \end{proof}
 \end{theorem}
+
+\begin{theorem}[Дифференцируемость композиции]
+    Пусть $f\!: \langle a, b \rangle \to \R,\ g\!:\langle c, d \rangle \to \langle a, g \rangle$,  $x_0 \in \langle c, d \rangle$, $g$ дифференцируема в точке  $x_0$, $f$ дифференцируема в точке $g(x_0)$. 
+
+    Тогда $f\circ g$ дифференцируема в точке $x_0$, и $(f \circ g)'(x_0) = f'(g(x_0))g'(x_0)$. 
+\end{theorem}
+\begin{proof}
+    $g$ дифференцируема в точке  $x_0 \Rightarrow g(x) - g(x_0) = \psi(x)(x - x_0)$, где $\psi$ --- непрерывна в точке  $x_0$. $f$ дифференцируема в точке  $y_0 = g(x_0) \Rightarrow f(y) - f(y_0) = \varphi(y)(y-y_0)$, где $\varphi$ непрерывна в точке  $y_0$.
+
+    Поставим $y=g(x)$, получим $f(g(x)) - f(g(x_0)) = \varphi(g(x))(g(x) - g(x_0) = \underbrace{\varphi(g(x))}_{\mathclap{\text{непрерывна в точке } x_0 \text{ как композиция}}}\psi(x)(x-x_0) \Rightarrow f \circ g$ дифференцируема в точке $x_0$ и $(f\circ g)'(x_0) = \varphi(g(x_0))\psi(x_0) = f'(g(x_0)) g'(x_0)$
+\end{proof}
+\begin{theorem}[дифференцируемость обратной функции]
+    Пусть $f\!:\langle a, b \rangle \to \R$, строго монотонная, непрерывна, $x_0 \in \langle a, b \rangle$, f дифференцируема в точке $x_0$ и $f'(x_0) \neq 0$.
+
+    Тогда $f^{-1}$ дифференцируема в точке $y_0 = f(x_0)$ и $(f^{-1})' = \frac{1}{f'(x_0)}$.
+\end{theorem}
+\begin{proof}
+    $f$ дифференцируема в $x_0 \Rightarrow f(x) - f(x_0) = \varphi(x)(x - x_0)$, где $\varphi$ --- непрерывна в точке  $x_0$. 
+    Пусть $y = f(x)$. Тогда предыдущее равенство можно написать как  $y - y_0 = \varphi(f^{-1}(y))(f^{-1}(y) - f^{-1}(y_0))$.
+
+    $\varphi(f^{-1}(y))$ непрерывна в точке $y_0$ как композиция непрерывных и $\varphi(f^{-1}(y_0)) = \varphi(x_0) = f'(x_0) \neq 0$. Тогда $\varphi(x) \neq 0$ в окрестности  $x_0$ и  $f^{-1}(y) - f^{-1}(y_0) = \frac{1}{\varphi(f^{-1}(y))}(y - y_0)$ 
+
+    $f^{-1}(y_0) = \frac{1}{\varphi(f^{-1}(y_0))} = \frac{1}{\varphi(x_0)} = \frac{1}{f'(x_0)}$
+\end{proof}
+\begin{consequence}
+    $f^{-1}(y) = \frac{1}{f'(f^{-1}(y))}$
+\end{consequence}
+\slashn
+\Subsection{Таблица производных}
+\begin{enumerate}
+    \item $c' = 0$
+    \item  $(x^p)' = p x^{p-1}, p \in \R, x > 0$
+    \item $(a^x)' = a^x \ln a, a > 0$
+
+        $(e^x)' = e^x$
+    \item  $(\log_a x)' = \frac{1}{x \ln a}, a > 0, a \neq 1$ 
+
+        $(ln x)' = \frac{1}{x}$ 
+    \item $(\sin x)' = \cos x$
+    \item  $(\cos x)' = -\sin x$
+    \item  $(\tg x)' = \frac{1}{\cos^2 x}$
+    \item $(\ctg x)' = -\frac{1}{\sin^2 x}$
+    \item $(\arcsin x)' = \frac{1}{\sqrt{1-x^2}}$ 
+    \item $(\arcsin x)' = -\frac{1}{\sqrt{1-x^2}}$ 
+    \item $(\arctg x)' = \frac{1}{1 + x^2}$ 
+    \item $(\arcctg x)' = -\frac{1}{1+x^2}$
+\end{enumerate}
+\begin{proof}
+    \begin{itemize}
+        \item Очевидно.
+        \item $(x^p)' = \lim_{h \to 0} \frac{(x + h)^p - x^p}{h} = x^p \lim_{h \to 0} \frac{(1 + \frac{h}{x})^p - 1}{\frac{h}{x}} \frac{1}{x} = x^p \frac{p}{x} = px^{p - 1}$.
+        \item $(a^x)' = \lim_{h \to 0} \frac{a^{x+h} - a^x}{h} = a^x \lim_{h \to 0} \frac{a^h - 1}{h} = a^x \ln a$
+        \item $\log_a x$ --- обратная к  $a^x$ функция  $f(x) = a^x$, тогда  $(\log_a y)' = \frac{1}{f'(f^{-1}(y))} = \frac{1}{a^{f^{-1}(y)} \ln a} = \frac{1}{y \ln a}$
+        \item $(\sin x)' = \lim_{h \to 0} \frac{\sin(x+h) - \sin x}{h} = \lim_{h \to 0} \frac{\sin x \cos h + \sin h \cos x - \sin x}{h} = \sin x \lim_{h\to 0} + \cos x \lim_{h \to 0} \frac{\sin h}{h} = \cos x \cdot 1 + \sin x \cdot 0$ 
+        \item Тоже самое.
+        \item $(\tg x)' = (\frac{\sin x}{\cos x})' = \frac{(\sin x)' \cos x - (\cos x)' \sin x}{\cos^2 x} = \frac{\cos x \cos x - (-\sin x) \sin x}{\cos ^ x} = \frac{1}{\cos^2 x}$
+        \item Тоже самое.
+        \item $f(x) = \sin x$.  $\arcsin' (y) = (f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))} = \frac{1}{f'(\arcsin y)} = \frac{1}{\cos(\arcsin y)} = \frac{1}{\sqrt{1 - \sin^2(\arcsin y)}} = \frac{1}{\sqrt{1 - y^2}}$.
+        \item $\arccos x = \frac{\pi}{2} - \arcsin x$.
+        \item $f(x) = \tg x$,  $\arctg\!: \R \to (-\frac{\pi}{2}; \frac{pi}{2})$.
+
+            $(\arctg)'(y) = (f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))} = \frac{1}{f'(\arctg y)} = \frac{1}{\frac{1}{\cos^2(\arctg y)}} = \cos^2(\arctg y) = \frac{1}{1+\tg^2(\arctg y)} = \frac{1}{1+y^2}$, так как  $\frac{1}{\cos^2 x} = 1 + \tg^2 \Rightarrow \cos^2 x = \frac{1}{1 + \tg^2 x}$
+    \end{itemize}
+\end{proof}
+\Subsection{Теоремы о среднем}
+\begin{theorem}[Теорема Ферма]
+    $f\!: \langle a, b \rangle \to \R$,  $x_0 \in (a, b), f$ --- дифференцируема в  точке $x_0$.
+
+    $f(x_0) = \max_{x \in \langle a, b \rangle}f(x) \lor f(x_0) = \min_{x \in \langle a, b \rangle}f(x) \Rightarrow f'(x_0) = 0$
+\end{theorem}
+\begin{proof}
+    Пусть $f(x_0) = \max_{x \in \langle a, b \rangle}f(x)$. Тогда  $f'(x_0) = f_+'(x_0) = \lim_{x \to x_0+} \frac{\overbrace{f(x) - f(x_0)}^{\mathclap{\le 0}}}{\underbrace{x - x_0}_{\mathclap{> 0}}} \le 0$. 
+
+    Посмотрим на $f'(x_0) = f_-'(x_0) = \lim_{x \to x_0-}\frac{\overbrace{f(x) - f(x_0)}^{\mathclap{\le 0}}}{\underbrace{x - x_0}_{\mathclap{< 0}}} \ge 0$.
+    
+    Значит, что $f'(x_0) \le 0$ и $f'(x_0) \ge 0 \Rightarrow f'(x_0) = 0$. 
+\end{proof}
+\begin{example}
+    У $f(x) = x$ на отрезке  $[0, 1]$ максимум в 1, минимум в 0, но производная на концах 1.
+\end{example}
+\begin{theorem}[Теорема Ролля]
+    $f\!: [a, b] \to \R$ непрерывна во всех точках и дифференцируема на $(a, b)$. Если  $f(a) = f(b)$, то $\exists\!: c \in (a, b f'(c) = 0$ 
+\end{theorem}
+\begin{proof}
+    $f$ непрерывна  на $[a, b] \xRightarrow[\text{Вейерштрасса}]{\text{теорема}} f$ достигает наибольшего и наименьшего значения. 
+
+    Пусть $f(p) = \min, f(q) = \max$. Если  $p$ и  $q$ --- концы отрезка, то  $\max = \min \Rightarrow f = \text{const} \Rightarrow f' = 0$ во всех точках. 
+
+    А если же одна из этих точек не является концом отрезка, то по теорема Ферма  $f'$ в этой точке равна 0.
+\end{proof}
+\begin{remark}
+    Геометрический смысл теоремы Ферма: в точках $\min$,  $\max$ касательная горизонтальна.
+
+    Геометрический смысл теоремы Ролля: если значения на концах равны, то можно провести горизонтальную касательную
+\end{remark}
+\begin{theorem}[Лагранжа, Формула конечных приращений]
+    $f\!: [a, b] \to \R$ непрерывна на  $[a, b]$, дифференцируема на  $(a, b)$. Тогда $\exists c \in (a, b)\!: f(b) - f(a) = f'(c)(b-a)$
+\end{theorem}
+\begin{proof}
+    $g(x) = f(x) - kx$. Подберем  $k$ так, что  $g(a) = g(b)$.  $f(a) - ka = g(a) = g(b) = f(b) - kb \Rightarrow k = \frac{f(b) - f(a)}{b - a}$.
+
+    Применим теорему Ролля к функции $g(x)$. $\exists c \in (a, b)\!: g'(c) = 0 \iff 0 = g'(c) = f'(c) = f'(c) - \frac{f(b) - f(a)}{b - a}$ и умножим на $b-a$.
+\end{proof}
+\begin{remark}
+    $\frac{f(b) - f(a)}{b - a}$ --- угловой коэффициент секущей, $f'(c)$ --- угловой коэффициент касательной в точке  $c$. В некоторой точке касательная параллельная секущей. 
+\end{remark}
+\begin{theorem}[Теорема Коши]
+    $f, g\!:[a, b] \to \R$ непрерывны на  $[a, b]$, дифференцируемы на  $(a, b)$,  $g'(x) \neq 0\ \forall x\in(a, b)$. Тогда $\exists c \in (a, b)\!: \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}$
+\end{theorem}
+\begin{proof}
+    $h(x) \coloneqq f(x) - kg(x)$. Подберем $k$ так, что  $h(a) = h(b)$.
+
+    $f(a) - kg(a) = h(a) = h()b = f(b) - kg(b) \Rightarrow k = \frac{f(b) - f(a)}{g(b) - g(a)}$ (по Роллю у нас $g'(x) \neq 0$, а значит в концах значения точно не равны).
+
+    по т. Ролля для $h$ найдем  $c \in (a, b)\!: h'(c) = 0$. Тогда  $h'(c) = f'(c) - kg'(c) \Rightarrow k = \frac{f'(c)}{g'(c)}$.
+\end{proof}
+\begin{remark}
+    Геометрический смысл. $g(t), f(t))$ координаты точки в момент времени  $t$. Тогда  $k$ --- угловой коэффициент секущей. $(f'(t), g'(t))$ --- вектор скорости в момент времени  $t$. Тогда $\frac{f'(t)}{g'(t)}$ --- угловой коэффициент касательной. 
+\end{remark}
+\begin{definition}
+    $f\!:E\to \R$ --- липшивеца функция с константной $M$, если  $\forall x, y \in E\!: |f(x) - f(y)| \le M|x-y|$.
+\end{definition}
+\begin{consequence}[Следствия теоремы Лагранжа]
+    \slashn
+    \begin{enumerate}
+        \item $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$ и  $|f'(x)| \le M\ \forall x \in (a, b)$. 
+
+            Тогда $|f(x) - f(y)| \le M|x-y|\ \forall x, y \in \langle a, b \rangle$ 
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$. Если $f'(x) = 0\ \forall x \in (a, b) \Rightarrow f = \text{const}$. 
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) > 0\ \forall x \in (a, b) \Rightarrow f$ строго возрастает.
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) \ge 0\ \forall x \in (a, b) \Rightarrow f$ нестрого возрастает.
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) < 0\ \forall x \in (a, b) \Rightarrow f$ строго убывает.
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) \le 0\ \forall x \in (a, b) \Rightarrow f$ нестрого убывает.
+    \end{enumerate}
+\end{consequence}
+\begin{proof}
+\slashn
+    \begin{enumerate}
+        \item $[x, y] \subset \langle a, b \rangle$. Применим теорему Лагранжа к  $[x, y]$. Тогда  $\exists c \in (x, y) \subset (a, b)\!: f(y)-f(x) = f'(c)(y-x) \Rightarrow |f(y) - f(x)| = |f'(c)| \cdot |y-x| \le M|y-x|$ 
+        \item Аналогично: $f(y)-f(x) = f'(c)(y - x) = 0$,  $y - x \neq 0$. 
+        \item Напишем Лагранжа для $[x, y] \subset \langle a, b \rangle, (x, y) \subset (a, b)$. 
+            Тогда  $\exists c \in (a, b)\!: f(y) - f(x) = f'(c)(y-c)$, что  $>0 \iff f(y) >f(x).$
+        \item Аналогично.
+        \item Аналогично.
+        \item Аналогично.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[Теорема Дорбу]
+    $f\!:[a, b] \to \R$ дифференцируема во всех точках. Пусть  $C$ лежит между  $f'(a)$ и  $f'(b)$. Тогда найдется  $c \in (a, b)$, такая что  $f'(c) = C$.
+\end{theorem}
+\begin{proof}
+    Пусть $f'(a) < 0 < f'(b)$. Покажем, что $\exists c \in (a, b)\!: f'(c) = 0$, $f$ непрерывна на  $[a, b]$. По теореме Вейерштрасса  $f$ достигает  $\min$ пусть это в точке $c$. Покажем, что  $c \neq a$ и  $c \neq b$. 
+
+    От противного: пусть $f(a) = \min$. Тогда  $f'(a) = f_+'(a) = \lim \frac{f(x) - f(a)}{x-a}$. Заметим, что числитель  $\ge 0$ и знаменатель $> 0$, тогда по предельному переходу предел  $\ge 0$. Противоречие.
+
+    Пусть $f(b) = \min$. Тогда  $f'(b) = f_-'(b) = \lim_{x \to b-} \frac{f(x) - f(b)}{x - b}$. Заметим, что  числитель  $\ge 0$, а знаменатель $<0$. Противоречие.
+    
+    Следовательно,  $c \in (a, b)$. Тогда по теореме Ферма  $f'(c) = 0$. Общий случай  $g(x) \coloneqq f(x) - C(x)$.  $g'(x) = f'(x) - C \Rightarrow g'(a)$ и  $g'(b)$ разных знаков, следовательно  $\exists c \in (a, b)\!: g'(c) f'(c) - C = 0 \Rightarrow f'(c) = C$.
+\end{proof}
+\begin{consequence}
+    $f\!: \langle a, b \rangle \to \R$, дифференцируема на  $\langle a, b \rangle, f'(x) \neq 0\ \forall x \in \langle a, b \rangle $. Тогда  $f$ строго монотонна.
+\end{consequence}
+\begin{proof}
+    Очев. 
+\end{proof}
+\begin{theorem}[Правило Лопиталя]
+    $-\infty \le a < b \le +\infty$, $f,g$ дифференцируемы на  $(a, b)$.  $g'(x) \neq 0\ \forall x \in (a, b)$ и $\lim){x \to a+} f(x) = \lim_{x \to a+} = 0$. 
+
+    Если  $\lim_{x \to a+} \frac{f'(x)}{g'(x)} = l \to \overline{R}$, то $\lim_{x \to a+} \frac{f(x)}{g(x)} = l$. 
+\end{theorem}
+\begin{proof}
+    Проверяем по Гейне. Возьмем $x_n \to a$, причем убывающую.  $\frac{f(x_n)}{g(x_n)} \xrightarrow{?} l$. Посчитаем $\lim_{n \to \infty} \frac{f(x_{n+1}) - f(x_n)}{g(x_{n+1}) - g(x_n)} = \lim_{n \to +infty} \frac{f'(c_n)}{g'(c_n)}$, так как $\frac{f'(c_n)}{g'(c_n)}$, где $c_n \to (x_{n+1}, x_n)$. Последовательность  $c_n$ стремится  к $a$ справа. Тогда по Штольцу $\lim \frac{f(x_n)}{g(x_n)} = l$. Надо было проверить, что $g(x_n)$ строго монотонна. Это из последнего следствия и монотонности $x_n$.
+\end{proof}
+\begin{theorem}[Второе правило Лопиталя]
+    $-\infty \le a < b \le +\infty$. $f, g$ дифференцируемы на  $(a, b)$.  $\forall x\in (a, b)\!: g'(x) \neq 0, \lim_{x \to a+}g(x) = +\infty$.  $\lim_{x \to a+} \frac{f'(x)}{g'(x)} =l \to \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$
+\end{theorem}
+\begin{example}
+    $\lim_{x \to +\infty} \frac{\ln x}{x^P} = 0$ при $p > 0$.
+
+    Подставляем в Лопиталя  $f(x) = \ln x, g(x) = x^p$,  $f'(x) = \frac{1}{x}$, $g'(x) = px^{p - 1}$.  $\lim_{x \to +infty}\frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{\frac{1}{x}}{px^{p-1}} = \lim_{x \to +\infty} \frac{1}{p} \frac{1}{x^p} = 0$
+\end{example}
+\begin{example}
+    $\lim_{x \to +infty} \frac{x^p}{a^x} = a^x$. $f'(x) = px^{-1}, g'(x) = a^x \ln a$.
+
+    $\lim_{x \to +\infty} \frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{px^{p-1}}{a^x \ln a} =  \frac{p}{\ln a} \lim_{x \to +infty} \frac{x^{p-1}}{a^x} = 0$, при $p \le 1$.
+\end{example}
+\begin{example}
+    $\lim_{x \to 0+} x^x = \lim_{x \to 0+} e^{x \ln x} = e^{\lim_{x \to 0+} x \ln x} = e^0 = 1$.
+     
+    $\ln x^x = x \ln x, \lim_{x \to 0+} x \ln x = \lim_{x \to +} \frac{\ln x}{\frac{1}{x}} = \lim_{x \to 0+} \frac{(\ln x)'}{(\frac{1}{x})'} = \lim_{x \to 0+} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = \lim_{x \to 0+}(-x) = 0$
+\end{example}
