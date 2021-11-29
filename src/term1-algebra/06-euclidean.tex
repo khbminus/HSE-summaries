@@ -107,3 +107,75 @@ $f \sim g \Rightarrow f = g\varepsilon\ \varepsilon\ (K[x])^*$
     Обратно: $d$ и $d_1$ НОДЫ $\Rightarrow a \divby d, b \divby d \Rightarrow d_1 \divby d$, так как  $d_1$ --- НОД. Тоже самое для $d$, получаем, что  $d \sim d_1$.
 \end{proof}
 
+Это кусок с лекции 29 ноября.
+\begin{statement}
+    $R$ --- ОГИ.  $\exists d = (a, b) \forall a, b \in R$ и  $\exists x, y \in R\!: d = ax+by$.
+\end{statement}
+\begin{proof}
+    Смотри первую лекцию.
+\end{proof}
+\begin{statement}
+    $ab \divby c\ (a, c) = 1 \Rightarrow b \divby c$.
+\end{statement}
+\begin{proof}
+    Смотри первую лекцию.
+\end{proof}
+\begin{definition}
+    $p \in R$ --- простой элемент ($R$ --- область целостности), если $\forall a,b \in R\ ab \divby p \Rightarrow a \divby p \lor b \divby p$.
+\end{definition}
+\begin{definition}
+    $p \in R$ неприводимый, если  $p=p_1p_2 \Rightarrow p \sim p_1 \lor p \sim p_2$.
+\end{definition}
+\begin{statement}
+    $R$ --- ОГИ,  $a$ --- неприводимый  $a \Rightarrow$  $a$ --- простой.
+
+     $R$ --- область целостности  $a$ --- простое  $\Rightarrow a$ --- неприводим.
+\end{statement}
+\begin{proof}
+    Пусть $a$ --- простой.  $a = p_1 p_2$. Тогда $p_1 - p_2 \divby a \Rightarrow p_1 \divby a \lor p_2 \divby a$.  Не умаляя общности $p_1 \divby a \land a \divby p_1 \Rightarrow a \sim p_1$. 
+
+    Пусть $R$ --- ОГИ,  $a$ --- неприводим. АААААААААААААААААААААААААААААААААААААА
+\end{proof}
+
+\begin{proof}[ОТА для $R$ --- ОГИ]
+    Единственность: $p_1p_2\ldots p_k =q_1 \ldots q_l$, где $p_i$ --- неприводимое,  $q_i$ --- неприводимое. 
+
+    Будем доказывать как в целых числах:  $p_1(p_2\ldots p_k) \divby q_1 \Rightarrow p_1 \vdots q_1 \lor p_2\ldots p_k \divby q_1 \Rightarrow p_1 \divby q_1 \lor p_2 \divby q_2 \ldots$.
+
+     $\exists i\!: p_i \divby q_1$. $p_i$ --- неприводимое $\Rightarrow q_1 \sim 1 \lor q_1 \sim p_1$. $q_1$ --- необратимое.
+
+     $q_1 = p_i \varepsilon, \varepsilon \in R^*$. $p_1p_2\ldots p_i \ldots p_k = \varepsilon q_2 \ldots q_l$, $R$ --- область целостности.
+
+     $p_1p_2\ldots p_{i-1}p{i+1}\ldots = (\varepsilon q_2) \ldots q_k$. Аналогично $\exists j \neq i\!: p_j \sim \varepsilon q_2 \sim q_2$ 
+
+     $p_j \varepsilon_2 q_2$ сократим. Получили однозначное соответствие. 
+
+
+     Существование!
+     \begin{lemma}
+    $R$ --- ОГИ,  $x_1,x_2,\ldots$ $x_i \in R$.  $\forall i\ x_i \divby x_{i+1}$. Тогда существует  $N\!: \forall i > n x_i \sim x_{i+1}$, то есть  $x_{i+1} = x_i \varepsilon_i$. 
+    \end{lemma}
+    \begin{proof}
+        $a \divby b \iff \langle a \rangle \subset \langle b \rangle$. Тогда  $\langle x_1 \rangle \subseteq \langle x_2 \rangle \subseteq \ldots$
+
+        Рассмотрим $I = \bigcup \langle x_i\rangle$.
+
+        $I$ --- идеал. Проверим сумму (домножение аналогично),  $a, b \in I \rangle \exists m\!: a \in \langle x_m \rangle, n\!: b \in \langle x_n \rangle \Rightarrow a, b\ in \langle x_{\max(n, m)} \rangle \Rightarrow a + b \in \langle x_{\max(n, m)} \rangle \Rightarrow a + b \in I$.
+
+        $I$ --- идеал  $R$ --- ОГИ.  $\exists x\!: I = \langle x \rangle$. При этом $x \in \langle x_m \rangle$ для  $m > m_0$.
+
+        $\forall m > m_0: x \divby x_m \land x_m \divby x$, так как $x_m \in I$, а  $\langle x \rangle = I$. Тогда  $x_m \sim x \sim x_n\ \forall m_n > m_0\!: x_m \sim x_n$
+    \end{proof}
+    \begin{consequence}
+        $\forall x \in R, x \not \in R^*,  \exists p$ --- неприводимый:  $x \divby p$.
+    \end{consequence}
+    \begin{proof}
+        Пусть не так:
+        \begin{enumerate}
+            \item $x$ --- не приводимый  $\Rightarrow x = x_1x_2, x_i \not \in R^*$.
+            \item $x_2 = x_3 \cdot x_4$, $x_3, x_4 \not \in R^*$. Тогда получается $x \divby x_2 \divby x_3 \divby \ldots$ никакие два элемента не ассоциированы. Этого не может быть по лемме. 
+        \end{enumerate}
+
+        Окончание доказательства: $x \in R$  $x \neq 0$.  $x = p_1 x_1$, $p_1$ неприводимо, $x_1 = p_2x_2$ \ldots $x \divby x_1 \divby x_2 \divby \ldots$ --- бесконечная цепочка, чего не может быть. А ЕЩЕ Я НЕ МОГУ УСПЕТЬ СЕГОДНЯ НИЧЕГО
+    \end{proof}
+\end{proof}

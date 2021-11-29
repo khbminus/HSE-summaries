@@ -66,3 +66,36 @@
 \begin{proof}
     $x-a = t, x = t+a$. Дальше раскрыть скобки \ldots Хотя хуй знает я банан)
 \end{proof}
+\Subsection{Характеристика поля}
+$K$ --- поле,  $1 \in K$.  $2 \coloneqq 1 + 1, n \coloneqq (n-1)+1 = \underbrace{1+1+1}_{n}$
+\begin{definition}
+Есть две возможные операции: все элементы попарно различны или эта последовательность периодична с периодом  $c$, где  $c = \ord(1)$ относительно  $+$. Тогда $C$ --- характеристика поля.
+\end{definition}
+Если $\ord 1 = \infty$, $\text{char} k = 0$.  Тогда, если $n = 0$ в  $K \iff n \divby \charr K$.
+
+ \begin{lemma}
+    $\charr K = 0$ или  простое число.
+\end{lemma}
+\begin{proof}
+    Пусть $\charr K = m \cdot n$,  $m, n > 1$.  $\underbrace{1+\ldots+1}_{mn} = 0 = \underbrace{(1 + \ldots + 1)}_m + \ldots + \underbrace{(1 + \ldots + 1)}_m$. Получили $(1 + 1 + 1 + \ldots + 1)(1 + 1 + 1 + \ldots + 1) = 0$, где в одной скобке $m$ единиц, а в другой ---  $n$. Тогда  $m = 0 \lor n = 0$. Противоречие.  
+\end{proof}
+\begin{consequence}
+    $\charr K = 0 \Rightarrow K$ содержит копию $\Q$.
+
+     $\charr K = p \Rightarrow K$ содержит копию  $\Z / p \Z$.
+\end{consequence}
+\Subsection{Формула Тейлора}
+$D((x-a)^k) = k (x-a)^{k-1}$, тогда определим  $D^{(l)}(f) = D(D^{(l - 1)}(f))$
+
+Известно, что  $D(kf) = kD(f), k \in K$. Тогда  $D^{(2)}((x-a)^k) = D(k(x-a)^{k-1}) = k(k-1)(x-a)^{k-2}$. Тогда в  $l$-ой производной:  $k(k-1)(k-2)\ldots(k - l + 1)(x-a)^{k-l}$, если $l \le k$. При $l > k$ получаем 0.
+
+Вычислим значение  $l$-ой производной в точке  $a = f = \sum a_k(x-a)^k = \sum a_kD^l((x-a)^k)(a) = a_l D^l((x-a)^l)(a) = a_l \cdot l!$. ??? че-то про нули. 
+
+Предположение, либои  $\charr k = 0 \lor \charr k > \deg f$.
+
+Пусть  $1!, 2!, 3!, \ldots (\deg f)! \neq 0$ в  $K$. Тогда имеем $a_l = \frac{D^{l}(f)(a)}{l!}$. $D^{l}(f) = f^{(l)}$.
+\begin{theorem}[Формула Тейлора]
+    \[
+        f = \sum_{l=0}^{\deg f} \frac{f^{(l)}(a)}{l!}(x-a)^l
+    .\] 
+\end{theorem}

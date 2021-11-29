@@ -1,0 +1,40 @@
+$K$ --- поле, $K[x]$ --- евклидово кольцо. Тогда $f, g \in K[x], h \in K[x]$.  $f \equiv g \pmod{h}$, если  $f - g \divby h$.
+
+ \begin{statement}
+    Это отношение эквивалентности. $f_1 \equiv g_1, f_2 \equiv g_2 \pmod h$, тогда $f_1 + f_2 \equiv g_1 + g_2, f_1f_2\equiv g_1g_2 \pmod h$.
+\end{statement}
+\begin{proof}
+    Как в целых.
+\end{proof}
+
+Из этого следует, что $\exists$ фактормножество  $K[x]/ \equiv_h$ и на это множество переносятся  $+$ и  $\cdot$: получаем ассоциативное коммутативное кольцо с 1.  $K[x] / (h)$ --- кольцо вычетов по модулю $h$. Заметим, что  $\forall f \in K[x] \exists! r \in K[x]\!: f \equiv p \pmod h$ и  $\deg r < \deg h$ по теореме о делении с остатком. Причем $\deg r < \deg h$.
+ \begin{example}
+     $h = x - a$.  $\forall f\!: \overline{f} = \overline{c}$,  $c=$const.  $K[x] / (x - a) \cong K$.
+\end{example}
+ \begin{example}
+     $h = x^2 - 1$,  $\forall f\!: \overline{f} = \overline{ax + b}$
+
+     $K[x] / (x^2-1) \cong K[x] / (x-1) \times K[x] / (x+1)$
+ \end{example}
+
+ \begin{example}
+     $h = x^2 + 1$,  $K = \R$.  $K[x] / (x^2+1) = \CC$ --- поле комплексных чисел.  $\CC = \{ \overline{ax + b} \mid a, b \in \R\}$.  $\overline{ax + b} = \overline{a} \cdot \overline{x} + \overline{b}$  $\overline{x} \coloneqq i$.  $i^2 = \overline{x}^2 = \overline{x^2+1} \overline{-1} = -1$
+ \end{example}
+
+ Ох фак я пропустил.
+
+ Ну там поле кукареку. 
+
+ \begin{definition}
+     
+     $z = a + bi \in \CC$. Число $a - bi$ называется сопряженным к $\overline{z}$. 
+ \end{definition}
+ \begin{definition}
+     $a = \Re(z), b = \Im(z)$, $\Re$ --- вещественная часть,  $\Im$ --- мнимая. 
+ \end{definition}
+
+ Явные формулы для сложения: $(a+bi) + (c+di) = (a+c)+(b+d)i$, для умножения:  $(a + bi)(c + di) = (ac \cdot bd) + (ad \cdot bc)i$.
+
+ $z + \overline{z} = 2\Re(z)$,  $z - \overline{z} = 2 \Im(z) \cdot i$.  $z \cdot \overline{z} = = a^2 + b^2 = |z|^2$.
+
+ Фак)
