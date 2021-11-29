@@ -7,7 +7,7 @@ $K$ --- поле, $K[x]$ --- евклидово кольцо. Тогда $f, g \
     Как в целых.
 \end{proof}
 
-Из этого следует, что $\exists$ фактормножество  $K[x]/ \equiv_h$ и на это множество переносятся  $+$ и  $\cdot$: получаем ассоциативное коммутативное кольцо с 1.  $K[x] / (h)$ --- кольцо вычетов по модулю $h$. Заметим, что  $\forall f \in K[x] \exists! r \in K[x]\!: f \equiv p \pmod h$ и  $\deg r < \deg h$ по теореме о делении с остатком. Причем $\deg r < \deg h$.
+Из этого следует, что $\exists$ фактормножество  $K[x]/ \equiv_h$ и на это множество переносятся  $+$ и  $\cdot$: получаем ассоциативное коммутативное кольцо с 1.  $K[x] / (h)$ --- кольцо вычетов по модулю $h$. Заметим, что  $\forall f \in K[x]\  \exists! \ r \in K[x]\!: f \equiv r \pmod h$ и  $\deg r < \deg h$ по теореме о делении с остатком. Причем $\deg r < \deg h$.
  \begin{example}
      $h = x - a$.  $\forall f\!: \overline{f} = \overline{c}$,  $c=$const.  $K[x] / (x - a) \cong K$.
 \end{example}
@@ -18,23 +18,28 @@ $K$ --- поле, $K[x]$ --- евклидово кольцо. Тогда $f, g \
  \end{example}
 
  \begin{example}
-     $h = x^2 + 1$,  $K = \R$.  $K[x] / (x^2+1) = \CC$ --- поле комплексных чисел.  $\CC = \{ \overline{ax + b} \mid a, b \in \R\}$.  $\overline{ax + b} = \overline{a} \cdot \overline{x} + \overline{b}$  $\overline{x} \coloneqq i$.  $i^2 = \overline{x}^2 = \overline{x^2+1} \overline{-1} = -1$
+     $h = x^2 + 1$,  $K = \R$.  $K[x] / (x^2+1) = \CC$ --- поле комплексных чисел.  $\CC = \{ \overline{ax + b} \mid a, b \in \R\}$.  $\overline{ax + b} = \overline{a} \cdot \overline{x} + \overline{b}$  $\overline{x} \coloneqq i$.  $i^2 = \overline{x}^2 = \overline{x^2+1} + \overline{-1} = -1$
  \end{example}
 
- Ох фак я пропустил.
+ Итоги (на самом деле не итоги, т.к. мы это докажем шагом позже, но хз): 1: $\CC$ --- поле, 2: $\{ \overline{a} | a \in \R \}$ --- подполе, изоморфное $\R$
 
- Ну там поле кукареку. 
+ Кек: $\overline{a + bx} \cdot \overline{a - bx} = \overline{a^2 - b^2(-1)} = \overline{a^2+b^2}$
+
+ Другой кек (пруф): $\overline{a + bx} \neq \overline{0} \to \overline{a + bx} \cdot \frac1{\overline{\frac{a}{a^2 + b^2} - \frac{b}{a^2 + b^2}x}} = 1$, т.е. $\overline{a + bx}$ --- обратим.
 
  \begin{definition}
      
-     $z = a + bi \in \CC$. Число $a - bi$ называется сопряженным к $\overline{z}$. 
+     $z = a + bi \in \CC$. Число $a - bi$ называется сопряженным к $z$ и обозначается $\overline{z}$. 
  \end{definition}
  \begin{definition}
      $a = \Re(z), b = \Im(z)$, $\Re$ --- вещественная часть,  $\Im$ --- мнимая. 
  \end{definition}
 
- Явные формулы для сложения: $(a+bi) + (c+di) = (a+c)+(b+d)i$, для умножения:  $(a + bi)(c + di) = (ac \cdot bd) + (ad \cdot bc)i$.
+ Явные формулы для сложения: $(a+bi) + (c+di) = (a+c)+(b+d)i$, для умножения:  $(a + bi)(c + di) = (ac - bd) + (ad + bc)i$.
 
- $z + \overline{z} = 2\Re(z)$,  $z - \overline{z} = 2 \Im(z) \cdot i$.  $z \cdot \overline{z} = = a^2 + b^2 = |z|^2$.
+ Модуль комплексного числа определим как $|z| = \sqrt{a^2 + b^2}$. Тогда
 
- Фак)
+
+ $z + \overline{z} = 2\Re(z)$,  $z - \overline{z} = 2 \Im(z) \cdot i$.  $z \cdot \overline{z} = a^2 + b^2 = |z|^2$.
+
+ Вроде всё, мб что пропустил
