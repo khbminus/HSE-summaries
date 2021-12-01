@@ -271,6 +271,179 @@
 \end{example}
 \begin{example}
     $\lim_{x \to 0+} x^x = \lim_{x \to 0+} e^{x \ln x} = e^{\lim_{x \to 0+} x \ln x} = e^0 = 1$.
-     
+    
     $\ln x^x = x \ln x, \lim_{x \to 0+} x \ln x = \lim_{x \to +} \frac{\ln x}{\frac{1}{x}} = \lim_{x \to 0+} \frac{(\ln x)'}{(\frac{1}{x})'} = \lim_{x \to 0+} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = \lim_{x \to 0+}(-x) = 0$
 \end{example}
+\Subsection{Производные высших порядков}
+\begin{definition}
+    $f: \langle a, b \rangle \to \R$,  $x_0 \in \langle a, b \rangle$, $f$ -- дифференцируема в окрестности  $x_0$.
+    И если $f'$ дифференцируема в $x_0$, то $f$ дважды дифференцируема в $x_0$.
+
+    То есть $f''(x_0) \coloneqq (f'(x))'\mid_{x=x_0}$
+\end{definition}
+\begin{definition}
+    $f$ дважды дифференцируема в окрестности $x_0$. Если $f''$ дифференцируема в точке  $x_0$, то $f$ трижды дифференцируема в точке  $x_0$. 
+\end{definition}
+\begin{definition}
+    $f \in C(E) \iff f: E \to \R \land$ непрерывна во всех точках.
+\end{definition}
+\begin{definition}
+    $f \in C^1(\langle a, b \rangle)$  $f\!: \langle a, b \rangle \to \R$, дифференцируема во всех точках и  $f'$ не непрерывна.
+
+    Будем называть такое свойство <<непрерывной дифференцируемостью>>.
+\end{definition}
+\begin{definition}
+    $f \in C^n(\langle a, b \rangle)$. $f\!: \langle a, b \rangle \to \R$  $n$ раз дифференцируема и  $f^{(n)}$ непрерывна.
+\end{definition}
+\begin{definition}
+    $f \in C^{\infty}(\langle a, b \rangle)$ означает, что  $f \in C^n(\langle a, b \rangle)\ \forall n \in \N$.
+\end{definition}
+\begin{remark}
+    $C^n(\langle a, b \rangle) \supsetneqq C^{n+1}(\langle a, b \rangle) \supset C^{\infty}(\langle a, b \rangle)$
+\end{remark}
+\begin{example}
+    $f_n(x) \coloneqq x^{n + \frac{1}{3}}$. Покажем, что $f_n \in C^n(\R), f_n \not in C^{n+1}(\R)$.
+
+    Тогда  $f^{(n)}(x) = (n+\frac{1}{3}(n-\frac{2}{3})\ldots \frac{4}{3}) \eqqcolon cx^{\frac{1}{3}}$. Заметим, что $f^{(n+1)}$ в пределе равна  $\frac{1}{\sqrt[3]{x}}$, что в предел бесконечность.
+\end{example}
+
+\begin{theorem}[Арифметические действия с $n$-ми производными]
+    $f, g\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle$, $f, g$  $n$ раз дифференцируема в  $x_0$. Тогда:
+    \begin{enumerate} 
+        \item $\alpha f + \beta g$  $n$ раз дифференцируема в точке $x_0$ и $(\alpha f + \beta g)^{(n)} = \alpha f^{(n)} + \beta g^{(n)}$
+        \item  $fg$  $n$ раз дифференцируема в точке раз и  $(fg)^{(n)} = \sum_{k=0}^n \binom{n}{k}f^{(n)}g^{(n - k)}$.
+        \item $f(\alpha x + \beta)^{(n)} = \alpha f^{(n)}(\alpha x + \beta)$ 
+        \item (Композиция: формула Фаа-Ди Бруно)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Индукция по $n$.
+        \item Индукция по  $n$. База  $n=1$.  $(fg)' = f'g+ fg'$.
+
+            Переход  $n \to n + 1$.  $(fg)^{(n+1)} = ((fg)^{(n)})' = (\sum_{k=0}^n \binom{n}{k}(f^{(k)}g^{(k-i)})' = \sum_{k=0}^n \binom{n}{k}(f^{(k - 1)}g^{(n - k)} + f^{(k)}g^{(n - k +1)}) = \sum_{k=0}^{n} \binom{n}{k}f^{(k+1)}g^{(n - k)} + \sum_{k = 0}^{n}\binom{n}{k} f^{(k)}g^{(n - k + 1)} = \sum_{k=0}^{n+1}\binom{n+1}{k}f^{(k)}g^{(n - k + 1)}$.
+        \item Индукция по  $n$. Очев.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    \begin{enumerate}
+        \item $(x^p)^{(n)} = p(p-1)(p-2)\ldots(p-n+1)x^{p-n}$
+        \item $(\frac{1}{x})^{(n)} = (-1)(-2)\ldots(-n)x^{-1-n} = \frac{(-1)^n n!}{x^{n+1}}$
+        \item $(\ln x)^{(n)} = ((\ln x)')^{(n-1)} = (\frac{1}{x})^{(n-1)} = \frac{(-1)^{n-1} (n-1)!}{x^{n}}$
+        \item $a^x = ((a^x)')^{(n-1)} = (\ln a a^x)^{(n-1)} = \ldots = (\ln a)^n a^x$
+
+            $(e^x)^{(n)} = e^x$
+        \item  $(\sin x)^{(n)} = \sin(x + \frac{\pi n}{2})$
+
+            $(\sin x)^{(n)} = ((\sin x)^{(n-1)})' = (\sin(x + \frac{\pi n}{2}))' = \sin(x + \frac{\pi (n-1)}{2} + \frac{\pi}{2}) = \sin (x + \frac{\pi n}{2})$
+        \item  $(\cos x)^{(n)} = \cos(x + \frac{\pi n}{2})$
+    \end{enumerate}
+\end{example}
+\begin{theorem}[формула Тейлорпа для многочленов]
+    $T$ --- многочлен степени  $n$. Тогда  $T(x) = \sum_{k=0}^n \frac{T^{(n)}(x_0)}{k!}(x - x)^k$
+\end{theorem}
+\begin{lemma}
+    $f(x) = (x-x_0)^k \Rightarrow f^{m}(x_0) = \begin{cases} k! = m! & \text{если, }k=m \\ 0 & \text{иначе} \end{cases}$
+\end{lemma}
+\begin{proof}[Доказательство леммы]
+    $f^{(m)}(x) = k(k-1)\ldots(k - m + 1)(x-x_0)^{k-m}$.
+
+    Если $k > m$, то  $f^{(m)}(x_0) = 0$
+
+    Если $k = m$, то  $f^{(m)}(x_0) = k(k-1)\ldots 1 = k!$
+
+    Если $k < m$, то  $f^{(k)}(x) \equiv k!$ и  $f^{(k + 1)}(x) = \equiv 0$
+\end{proof}
+\begin{proof}[Доказательство теоремы]
+    Напишем разложение $T(x) = \sum_{k=0}^n c_k(x-x_0)^k$. (Пояснение: $T(x) = \sum_{k=0}^n a_k x^k = \sum_{k=0}^n a_k(x_0 + (x-x_0))^k$ и раскроем скобки).
+
+    Поймем, что $c_k = \frac{T^{(k)}(x_0)}{k!}$. Заметим, что $T^{(n)}(x_0) = \sum_{k=0}^{n} (c_k(x-x_0)^k)^{(m)} \mid_{x=x_0} = m!$.
+\end{proof}
+\begin{definition}
+    Пусть $f$  $n$ раз дифференцируема в точке  $x_0$. Многочлен Тейлора степени $n$  $T_{n, x_0} f(x) \coloneqq = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{K!}(x-x_0)^k$.
+
+    $R_{n, x_0}f(x) \coloneqq f(x) - T_{n, x_0}f(x)$
+\end{definition}
+
+\begin{lemma}
+    $g$  $n$ раз дифференцируема в  $x_0$ и  $g(x_0) = g'(x_0) = \ldots = g^{(n)}(x_0) = 0$.
+
+    Тогда $g(x) = o((x-x_0)^n)$ при $x \to x_0$.
+\end{lemma}
+\begin{proof}
+    $\lim_{x \to x_0} \frac{g(x)}{(x-x_0)^n} \stackrel{\text{Лопиталь}}{=} \lim_{x \to x_0}\frac{g'(x)}{n(x-x_0)^{n-1}} = \frac{g''(x)}{n(n-1)(x-x_0)^{n-2}} = \ldots = \lim_{x \to x_0}\frac{g^{(n-1)}(x)}{n! (x-x_0)} = 0$ 
+
+    $g^{(n-1)}$ --- дифференцируема в  $x_0 \Rightarrow g^{(n-1)}(x)= g^{(n-1)}(x_0)+g^{(n)}(x_0)(x - x_0) + o(x-x_0) = o(x-x_0)$ 
+\end{proof}
+\begin{theorem}[Формула Тейлора с остатком в форме Пеано]
+    Пусть $f$  $n$ раз дифференцируема в точке  $x_0$. Тогда $f(x) = T_{n, x_0}f(x) + o((x-x_0)^n) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + o((x-x_0)^n)$.
+\end{theorem}
+\begin{proof}
+    $g(x) \coloneqq f(x) - T_{n,x_0}f(x)$. $g^{(m)}(x_0) = f^{(m)}(x_0) - (T_{n,x_0} f)^{(m)}(x_0) = f^{(m)} - f^{(m)}(x_0)$, смотри теорему выше про Тейлора для многочлена.
+
+    Таким образом, $g(x_0) = g'(x_0) = \ldots = g^{n}(x_0) = 0$.
+
+    По лемме $g(x) = o((x-x_0)^n) \Rightarrow f(x) - T_{n, x_0}f(x) = o((x - x_0)^n)$.
+\end{proof}
+\begin{consequence}
+    $f$  $n$ раз дифференцируема в точке  $x_0$ $f(x) = P(x) + o((x-x_0)^n)$ при $x\to x_0$, где $P$ --- многочлен степени $\le n$. Тогда $P(x) = T_{n,x_0}f(x)$ 
+\end{consequence}
+\begin{proof}
+    $Q(x) \coloneqq P(x) - T_{n, x_0}f(x) = o((x-x_0)^n)$ при $x \to x_0$.
+
+    $Q(x) = \sum_{k=0}^n a_k(x-x_0)^k$ пусть $a_m \neq 0$ --- ненулевой коэффициент с наименьшим индексом  $\Rightarrow \frac{Q(x)}{(x-x_0)^m} = a_m + \sum_{k=m+1}^n a_k(x-x_0)^{k-m}$. Левая часть стремится к нулю, справа второе слагаемое стремится к 0. Но значит и $a_m$ должно быть нулю.
+\end{proof}
+\begin{theorem}[Формула Тейлора с остатком в форме Лагранжа]
+    $f\!: \langle a, b \rangle \to \R$,  $x_0 \in \langle a, b \rangle$, $f$  $(n+1)$ раз дифференцируема на  $\langle a, b \rangle$. Тогда  $\exists c$ между  $x$ и  $x_0$, такой что  $f(x) = T_{n, x_0}f(x) + \frac{f^{n+1}(c)}{(n+1)!}(x-x_0)^{n+1} = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^{n+1}$
+\end{theorem}
+\begin{proof}
+    Зафиксируем $x$ и возьмем  $M \in \R$, такой что  $f(x) = T_{n, x_0}f(x) + M(x-x_0)^{n-1}$. Рассмотрим $g(y) \coloneqq f(t) - T_{n, x_0}f(t) - M(t-x_0)^{n+1}$
+
+    $g^{(n+1)}(t) = f^{(n+1)}(t) - M(n+1)!$, то есть надо доказать, что  $g^{(n+1)}(c) = 0$, в некоторой точке между  $x$ и  $x_0$. Знаем, что $g(x) = 0$, $g(x_0) = g'(x_0) = \ldots = g^{(n)}(x_0) = 0$.
+    $g(x) = g(x_0) = 0 \xRightarrow{\text{Ролль}} \exists x_1$ между $x$ и  $x_0$, такая что $g'(x_1) = 0$.
+
+    $g'(x_1) = g'(x_0) =0 \xRightarrow{\text{Ролль}} \exists x_2$ между $x)$ и  $x_1$, такая что $g''(x_2) = 0$.
+
+    И так далее до $g^{(n)}(x_n) = g^{(n)}(x_0) = 0 \xRightarrow{\text{Ролль}} \exists c$ между $x$ и  $x_0$, такая что $g^{(n+1)}(c) = 0$
+\end{proof}
+\begin{consequence}
+    Если  $|f^{(n+1)}(t)| \ge M\ \forall t \in (x_0, x)$, то $|R_{n, x_0}f(x)| \le \frac{M(x-x_0)^{n+1}}{(n+1)!} = \mathcal{O}((x-x_0)^{n+1})$.
+\end{consequence}
+\begin{consequence}
+    Если $|f^{(n)}(t)| \le M\ \forall n\ \forall t \in (a, b)$, то $T_{n, x_0}f(x) \xrightarrow{n \to \infty} f(x)$
+\end{consequence}
+\begin{proof}
+    $|f(x) - T_{n, x_0}f(x)| = |\frac{f^{n+1}(c)}{(n+1)!} (x-x_0)^{n+1}| \le M \frac{(x-x_0)^{n+1}}{(n+1)!} \to 0$. Так как $x - x_0 = h, M \cdot \frac{h^{n+1}}{(n+1)!} \to 0$.
+\end{proof}
+
+\textbf{Формулы Тейлора для элементарных функций. Везде $x_0=0$}.
+\begin{itemize}
+    \item $e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots + \frac{x^n}{n!} + o(x^n)$
+    \item $\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots + (-1)^n \frac{x^{2n + 1}}{(2n+1)!} + o(x^{2n + 2})$.
+    \item $\cos x = 1 - \frac{x^2}{2!} + \frac{x^5}{4!} - \ldots + (-1)^n \frac{x^{2n}}{(2n)!} + o(x^{2n+1})$.
+    \item $\ln (1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots + (-1)^{n-1} x^\frac{n}{n} + o(x^n)$ 
+    \item $(1+x)^P = 1+px + \frac{p(p-1)}{2!}x^2 + \frac{p(p-1)(p-2)}{3!}x^3 + \ldots + \frac{p(p-1)\ldots(p-n+1)}{n!}x^n + o(x^n)$.
+\end{itemize}
+\begin{proof}
+    \begin{itemize}
+        \item Для $f(x) = \ln(1+x)$.  $f^{(k)}(x) = \frac{(-1)^{k-1}(k-1)!}{(1+x)^k}$ $f^(k)(0) = ()-1)^{k-1}(k-1)!$
+
+            Тогда $f(x) = \sum_{k=0}^n \frac{f^{(k)}(0)}{k!} = \ldots = $.
+        \item ???
+    \end{itemize}
+\end{proof}
+
+\textbf{Ряды Тейлора для $e^x$,  $\sin x$,  $\cos x$}
+\begin{align}
+    e^x &= \sum_{n=0}^\infty \frac{x^n}{n!} \\
+    \sin x &= \sum_{n = 0}^\infty \frac{(-1)^nx^{2n+1}}{(2n+1)!} \\
+    \cos x &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}
+\end{align}
+\begin{proof}
+    $\sin x, \cos x$ удовлетворяют следствию 2. $(\sin x)^{(n)} = \sin(x + \frac{\pi n}{2}) \Rightarrow |\sin^{(n)}(x)| \le 1$. $|\cos^{(n)}(x)| \le 1$  
+
+    Следовательно, $T_{n, 0}f(x) \xrightarrow{n\to\infty}f(x)$. А значит по определению ряда  $\sum_{k=0}^\infty \ldots = \sin x$
+
+    Рассмотрим $f(x)=e^x$ на  $[a, b] \Rightarrow f^{(n)}(x) = e^x \le e^b$, тогда $|f^{(n)}(x)| \le e^b$. Тогда по свойству ряда и соображениям выше, получаем, что сумма данного ряда равна $e^x$.
+\end{proof}
