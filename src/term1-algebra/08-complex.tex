@@ -42,4 +42,134 @@ $K$ --- поле, $K[x]$ --- евклидово кольцо. Тогда $f, g \
 
  $z + \overline{z} = 2\Re(z)$,  $z - \overline{z} = 2 \Im(z) \cdot i$.  $z \cdot \overline{z} = a^2 + b^2 = |z|^2$.
 
- Вроде всё, мб что пропустил
+ $\frac{1}{z} = \frac{\overline{z}}{|z|^2}$ --- формула для $z^{-1}$ ($z \neq 0 \iff |z| \neq 0$)  
+
+\Subsection{Геометрический смысл комплексных чисел}
+Есть биекция $I \to R^2$, то есть  $a+bi \leadsto (a, b)$, то  есть комплексному числу соответствует точка на плоскости (радиус-вектор). Причем это изоморфизм групп по сложению, что следует из правила сложения комплексных чисел. 
+
+С геометрической точки зрения сложение двух комплексных чисел означает сложение двух радиус-векторов.
+
+Немножко сократим область рассматриваемых чисел: $T \coloneqq \{ z \in CC \mid |z| = 1\}$. Тогда получаем, что  $\forall z \in T\ z=a+bi \Rightarrow a^2+b^2=1$. 
+
+Тогда воспользуемся медицинским фактом:  $\forall a, b\!: a^2 + b^2=1 \iff \exists! \alpha\!: a = \cos \alpha, b = \sin \alpha$. Тогда будем такие $z$ записывать как $z_\alpha$.
+
+Тогда посмотрим на умножение двух таких чисел: \begin{align*}
+    z_\alpha\cdot z_\beta &= (\cos \alpha + i\sin \alpha)(\cos \beta + i \sin \beta) =\\
+                          &= (\cos \alpha \cos \beta - \sin \alpha \sin \beta) + i(\cos \alpha \sin \beta + \cos \beta \sin \alpha) = \\
+                          &= \cos(\alpha + \beta) + i\sin(\alpha + \beta) = z_{\alpha+\beta}
+\end{align*}
+
+То есть $z_\alpha \cdot z_\beta = z_{\alpha+\beta}$,  $\alpha$ --- называется аргументом  $z_{\alpha}$. 
+ \begin{remark}
+     $T$ --- группа по умножению:  $|1| = 1, |z_1|=|z_2|=1 \Rightarrow |z_1z_2| = 1, |z_{1}^{-1}|=1$
+\end{remark}
+Рассмотрим $(\R, +) a \equiv \pmod 2\pi$, если  $a-b=2\pi k, k \in \Z$. Это отношение эквивалентности (упражнение). Тогда $(\R / \equiv_\pi, +)$ --- группа углов.
+
+Тогда  $f: (\R / \equiv, +) \to (T, \cdot)$ (причем $I \to \cos \alpha + i \sin \alpha$) --- изоморфизм. 
+
+Вернемся теперь обратно к $z \in \CC, z \neq 0$.  $z = |z| \cdot \frac{z}{|z|}$, причем заметим, что $|\frac{z}{|z|}| = 1$, а значит $\frac{z}{|z|} = z_{\alpha}$, откуда получаем:
+\begin{definition}
+    $z = |z|\cdot z_\alpha = r\cdot(\cos \alpha + i \sin \alpha), r = |z|$ --- тригонометрическая форма $z$.
+\end{definition}
+
+Причем заметим, что $\forall z_1, z_2 \in \CC \setminus \{0\}\!: z_1 \cdot z_2 = (r_1 z_{\alpha_1}) \cdot (r_2 \cdot z_{\alpha_2}) = r_1r_2 \cdot z_{\alpha_1 + \alpha_2}$
+
+Заметим, что тригонометрическая форма числа единственна, так как $z = r z_\alpha, r \in \R_+$. Тогда  $|z| = |r| \cdot |z_\alpha| = r$, то есть  $r = |z|$. Тогда из $\alpha$ --- аргумент  $\frac{z}{|z|}$ следует, что $z = r \cdot z_\alpha$ единственна ($r \in \R_+, \alpha \in \R / 2\pi$). 
+
+Значит существует биекция между $\CC^*$ и $\R_+ \times \R / 2\pi$: $z \leadsto (r, \alpha)$  $\CC^* = \CC \setminus \{0\}$. 
+
+\begin{remark}
+    Формула умножения говорит, что такая биекция --- изоморфизм групп $(\CC^*, \cdot)$ и $(\R_+, \cdot) \times (\R / 2\pi, +)$
+\end{remark}
+\Subsection{О геометрических преобразований плоскости}
+\begin{definition}
+    Пусть  $f\!: \R^2 \to \R^2$ --- биекция.
+    \begin{enumerate}
+        \item $f$ называется движением, если $\forall A, B \in \R^2\!: |f(A)f(B)| = |AB|$
+        \item $f$ --- преобразование подобия, если  $\forall A, B, C, D \in \R^2\!: A \neq B, C \neq D \Rightarrow \frac{|f(C)f(d)|}{|f(A)f(B)|} = \frac{|CD|}{|AB|}$
+        \item $f$ называется аффинным преобразованием, если условие выше верно для случаев  $AB\parallel CD$. (это $\iff \forall$ прямая  $l$  $f(l)$ --- прямая).
+    \end{enumerate}
+\end{definition}
+\begin{statement}
+    Любое преобразование подобия --- композиция гомотетии и движения.
+\end{statement}
+\begin{proof}
+    Возьмем $A \neq B$,  $f$ --- преобразование подобия.  $|f(A)\cdot f(B)| = k|AB| \Rightarrow \forall C, D\!: C \neq D \Rightarrow |f(C)f(D)| = k|CD|$.
+
+    Поэтому  $h \circ f$, где  $h$ --- гомотетия с коэффициентом  $\frac{1}{k}$ --- движение ($A, B \in \R^2$): \[
+        |h\circ f(A) h \circ f(B)| = \frac{1}{k}|f(A)f(B)| = \frac{1}{k} \cdot k |AB| = |AB|
+    .\] 
+    А значит, $h \circ f = g$,  $h^{-1}$ --- гомотетия с коэффициентом  $k$, а значит  $f = h^{-1} \circ g$.
+\end{proof}
+\begin{theorem}[Теорема Шаля]
+    Любое движение плоскости --- параллельный перенос на вектор $\overrightarrow{x}$, поворот вокруг точки $A$ на угол  $\alpha$ или скользящая симметрия относительно прямой на расстоянии $l$.
+\end{theorem}
+\begin{proof}
+    Довольно школьная теорема.
+\end{proof}
+\begin{theorem}
+    Любое преобразование подобия записывается в $\CC$ с помощью  $+, \cdot, \overline{z}$.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $f$ --- преобразование подобия  $\Rightarrow$  $f = h \circ g$,  $g$ --- движение,  $h$ --- гомотетия с фиксированным центром  $\Rightarrow$ достаточно проверить для  $h$ и  $g$. 
+
+        \item $h$ --- с центром в  $O$. $h(x) = k \cdot x, k \in \R, x \in \CC$.
+        \item $g$ --- параллельный перенос на  $\overrightarrow{x} \iff z_x \in \CC$.  $g(z) = z + z_x$.
+        \item  $g$ --- поворот на  $\alpha$ вокруг  $O$. Заметим, что  $\arg(z) = \beta \to \arg(g(z)) = \alpha + \beta$ и  $|g(z)| = |z|$, то есть  $g(z) = z \cdot z_\alpha$.
+
+            Для произвольной точки: надо сначала сдвинуть в начало координат, затем повернуть, а потом восстановить центр обратно.
+        \item Симметрия относительно  $y=0$ ---  $g(z) = \overline{z}$.
+
+            Скользящая симметрия --- навернуть параллельный сдвиг.
+
+            Симметрия относительно другой прямой --- сдвиг + поворот.
+    \end{enumerate}
+\end{proof}
+\begin{consequence}
+    Композиция поворотных гомотетий --- поворотная гомотетия или параллельный перенос.
+\end{consequence}
+\begin{proof}[План доказательства]
+    \slashn
+    \begin{enumerate}
+        \item Любая поворотная гомотетия задается линейной функцией $f(z) = az + b$ (смотри теорему).
+        \item любая $f(z) = az + b$ --- это либо параллельный перенос ($a = 1$, поворотная гомотетия  $a \neq 1$).
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[Формула Муавра]
+    $z = r(\cos \varphi + i \sin \varphi) \Rightarrow z^n = r^n(\cos(n\varphi) + i\sin(n\varphi))\ \forall n \in \Z$.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $n \in \N$ индукция по  $n$,
+        \item  $n = 0$ очевидно,
+        \item  $n < 0$ следует из случая  $n > 0$ и  $z^{-1} = \frac{1}{r}(\cos(-\varphi) + i\sin(-\varphi))$
+    \end{enumerate}
+\end{proof}
+\slashn
+Применения:
+\begin{enumerate}
+    \item $\cos(n\alpha) + i\sin(n\alpha) = (\cos \alpha + i \sin \alpha)^n = \sum_{k=0}^n \binom{n}{k} \cos^k \alpha \cdot (i\sin\alpha)^{n-k}$. Дальше следим за четностью  $n-k$. 
+
+        Далее приравниваниваем  $\Re$ и  $\Im$  у левой и правой части. Получаем  $\cos(n\alpha) = \sum_{j=0}^{\left[\frac{n}{2}\right]} \binom{n}{2j} \cos^{n-2j}(\alpha)(-1)^j\sin^{2j}(\alpha)$, $\sin(n\alpha)$ --- аналогично. 
+
+\end{enumerate}
+\begin{definition}
+    $\cos(n\alpha) = T_n(\cos \alpha)$, где $T_n$ называется многочленом Чебышева.
+\end{definition}
+\Subsection{Извлечение корня}
+$z_0 \in \CC, z_0 \neq 0$. Решим уравнение  $z^n=z_0$.  $z_0 = r_0(\cos \varphi_0 + i \sin(\varphi_0))$, $z = r(\cos \varphi + i \sin \varphi)$.
+
+Тогда  $z^n = z_0 \iff r^n(\cos(n \varphi) + i\sin(n \varphi)) = r)(\cos \varphi_0 + i \sin \varphi_0)$.
+
+Откуда получаем, что  $r = \sqrt[n]{r_0}$, а  $\varphi_k = \frac{\varphi_0}{n} + \frac{2\pi k}{n}$, $k \in \Z$. 
+ \begin{theorem}
+     Любое $z_0 \in \CC^*$ имеет ровно  $n$ корней $n$-ой степени.  
+
+     \[
+         z = \sqrt[n]{r_0}(\cos(\frac{\varphi_0}{n} + \frac{2\pi k}{n}) + i \sin (\frac{\varphi_0}{n}  + \frac{2\pi k}{n})), k = 0,1,2,\ldots,n-1
+     .\] 
+\end{theorem}
+
