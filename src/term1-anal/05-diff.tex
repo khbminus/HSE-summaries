@@ -447,3 +447,186 @@
 
     Рассмотрим $f(x)=e^x$ на  $[a, b] \Rightarrow f^{(n)}(x) = e^x \le e^b$, тогда $|f^{(n)}(x)| \le e^b$. Тогда по свойству ряда и соображениям выше, получаем, что сумма данного ряда равна $e^x$.
 \end{proof}
+\begin{theorem}
+    $e$ --- иррационально.
+\end{theorem}
+\begin{proof}
+    Пусть $e = \frac{m}{n}$, $n \ge 2$ (так как $2 < e < 3$).
+
+    Напишем формулу Тейлора с остатком в форме Лагранжа для функции $e^x$, точки  $x_0 = 0$ и $x=1$:  \begin{align*}
+        e = e^1 = 1 + 1 + \frac{1}{2!} + \ldots + \frac{1}{n!} + \frac{e^c}{(n+1)},\text{ 0 < c < 1} \\
+        \underbrace{m(n-1)!}_{\mathclap{\text{целое число}}} = \underbrace{n! + n! + \frac{n!}{2!} + \ldots + \frac{n!}{n-1!} + \frac{n!}{n!}}_{\text{целое число}} + \frac{e^c}{n+1}
+    \end{align*}
+    Тогда получаем, что $\frac{e^c}{n+1}$ --- целое число. Но $\frac{e^c}{n+1} > 0 \implies  \frac{e^c}{n+1} \ge 1$. А значит $\frac{e^c}{n+1} \le \frac{e}{2+1} = \frac{e}{3} < 1$.
+\end{proof}
+\Subsection{Экстремумы функций}
+\begin{definition}
+    $f\!: E \to \R$ и  $a \in E$. $a$ --- точка локального минимума $\iff \exists U(a)\!: \forall x \in E \cap U\ f(a)\le f(x)$ 
+\end{definition}
+\begin{definition}
+    $a$ --- точка строгого локального минимума  $\iff \exists U(a)\!: \forall x \in E \cap U\ x \neq a \implies f(a) < f(x)$.
+\end{definition}
+\begin{definition}
+    $f\!: E \to \R$ и  $a \in E$. $a$ --- точка локального максимума $\iff \exists U(a)\!: \forall x \in E \cap U\ f(a)\ge f(x)$ 
+\end{definition}
+\begin{definition}
+    $a$ --- точка строгого локального максимума  $\iff \exists U(a)\!: \forall x \in E \cap U\ x \neq a \implies f(a) > f(x)$.
+\end{definition}
+\begin{definition}
+    $a$ --- точка экстремума, если  $a$ --- точка локального минимума/максимума.
+\end{definition}
+\begin{definition}
+    $a$ --- точка строго экстремума, если  $a$ --- точка локального  $max$/$min$.
+\end{definition}
+\begin{theorem}[необходимые условия экстремума]
+    $f\!:\langle a, b \rangle \to \R$ дифференцируема в  $x_0 \in (a, b)$. Тогда  $x_0$ --- точка экстремума  $\implies f'(x_0) = 0$.
+\end{theorem}
+\begin{proof}
+    Возьмем какую-то окрестность $x_0$, $x_0$ --- точка локального минимума. Причем окрестность такая, что $f(x_0) \le f(x)\ \forall x \in U$. 
+
+    Тогда, рассмотрим $f$ на  $U$.  $x_0$ --- точка минимума этой функции, по теореме Ферма  $f'(x_0) = 0$.
+\end{proof}
+\begin{remark}
+    Обратное неверно: $f(x) = x^3$,  $f'(x) = 3x^2$,  $f'(0) = 0$, но  $0$ --- не точка экстремума.
+\end{remark}
+\begin{remark}
+    Экстремум может быть в точке, где нет дифференцируемости. Пример: $f(x) = |x|$.
+\end{remark}
+\begin{remark}
+    Экстремум может быть в концах отрезка. 
+\end{remark}
+\begin{theorem}[Достаточное условия экстремума в терминах первой производной]
+    $x_0 \in (a, b)$,  $f\!:\langle a, b \rangle \to \R$,  $f$ непрерывна в  $x_0$, дифференцируема на  $(x_0 - \delta, x_0) \cap (x_0, x_0 + \delta)$. Тогда: 
+    \begin{enumerate}
+        \item $f'(x) < 0$ на  $(x_0-\delta, x_0)$ и $f'(x) > 0$ на  $(x_0, x_0+\delta)$, то $x_0$ --- строгий минимум.
+        \item $f'(x) > 0$ на  $(x_0-\delta, x_0)$ и $f'(x) < 0$ на  $(x_0, x_0+\delta)$, то $x_0$ --- строгий максимум.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    На $[x_0 - \frac{\delta}{2}, x_0]$ $f$ непрерывна, дифференцируема внутри и  $f' < 0 \xRightarrow{\text{сл. т. Лагранжа}} f$ строго убывает на $[x_0 - \frac{\delta}{2}, x_0] \implies f(x_0) < f(x)\ \forall [x_0-\frac{\delta}{2}, x_0)$.
+
+    На $[x_0, x_0 + \frac{\delta}{2}]$ $f$ непрерывна, дифференцируема внутри и  $f' > 0 \implies$  $f$ строго возрастает на  $[x_0, x_0 + \frac{\delta}{2}] \implies f(x_0) < f(x)\ \forall x \in (x_0, x_0 + \frac{\delta}{2}]$
+\end{proof}
+\begin{theorem}[достаточные условия экстремума в терминах второй производной]
+    $f\!:\langle a, b \rangle \to \R$.  $x_0 \in (a, b), f$ дважды дифференцируема в  $x_0$ и  $f'(x_0) = 0$. Тогда:
+     \begin{enumerate}
+         \item $f''(x_0) > 0$, то  $x_0$ --- строгий минимум.
+         \item  $f''(x_0) < 0$, то  $x_0$ --- строгий максимум.
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}[Достаточные условия экстремума в терминах $n$-ой производной]
+    $f\!: \langle a, b \rangle \to \R$. $x_0 \in (a, b), f$ $n$ раз дифференцируема в  $x_0$ и  $f'(x_0) = f''(x_0) = \ldots = f^{(n-1)}(x_0) = 0$. Тогда:
+    \begin{enumerate}
+        \item $n$ --- четно и  $f^{(n)}(x_0) > 0 \Rightarrow x_0)$ --- строгий минимум.
+        \item $n$ --- четно и  $f^{(n)}(x_0) < 0 \Rightarrow x_0)$ --- строгий максимум.
+        \item $n$ --- нечетно и  $f^{n}(x_0) \neq 0 \Rightarrow x_0$ не точка экстремума.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $f(x) = f(x_0) + \sum_{k=1}^{n-1} \frac{f^{(n)}(x_0)}{k!}(x-x_0)^k + \frac{f^{(n)}(x_0)}{n!} + o((x-x_0)^n)$
+
+    Тогда $f(x) - f(x_0) = (x-x_0)^n(\frac{f^{(n)}(x_0)}{n!} + o(1)$.
+
+    Тогда в 1: $(x-x_0)^n > 0$  при $x \neq 0$.  $\frac{f^{(n)}(x_0)}{n!} > 0 \implies$ по теореме о стабилизации знака скобка $(\ldots) > 0$ при $x$ близких к  $x_0$.
+
+    В 3: наоборот стабилизация знака.
+\end{proof}
+
+\Subsection{Выпуклые функции}
+\begin{definition}
+    $f\!:\langle a, b \rangle \to \R$.  $f$ --- выпуклая, если  $\forall x, y \in \langle a, \rangle \forall \lambda \in (0, 1)\!: f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$. 
+
+    Понятно, что такое строго выпуклая, вогнутая (выпуклая вниз), строго вогнутая.
+\end{definition}
+\begin{example}
+    $x^2$ --- выпуклая функция.  $f(\lambda x + (1-\lambda) y) \le \lambda f(x) + (1- \lambda)f(y) = \lambda x^2 + (1-\lambda) y^2$.
+
+    $(\lambda x + (1-\lambda) y)^2 = \lambda^2 x^2 + 2\lambda(1-\lambda)xy + (1-\lambda)^2 y^2$.
+
+    Откуда получаем  $2xy \le x^2 + y^2$.
+\end{example}
+
+\textbf{Геометрический смысл определения}
+
+Возьмем $z=\lambda x + (1-\lambda)y < \lambda y + (1-\lambda)y = y$ и  $z > \lambda x + (1-\lambda) x = x$. Тогда получаем, что  $\lambda(x-y) = z-y \Rightarrow \frac{y-z}{y-x} > 0$. 
+Теперь посмотрим на прямую через точки $x, y$. Тогда получаем, что точка  $(s, t)$ на прямой удовлетворяет уравнению  $\frac{f(y)-f(x)}{y-x}(s-x) + f(x) = t$. Тогда подставим $s=z$ и получим значение функции из определения.
+
+А значит геом. смысл --- любая хорда выше, чем точка.
+
+ \begin{definition}
+     Пусть $u < v < w; u, v, w \in \langle a, b \rangle$
+     $\lambda = \frac{y-z}{y-x} = \frac{w-v}{w - u}$, тогда $1 - \lambda = \frac{v-u}{w-u}$.
+
+     $f(v) \le \frac{w-v}{w-u}f(u) + \frac{v-u}{w-u}f(w)$. 
+
+     Тогда $(w-u)f(v) \le (w-v)f(u)+(v-u)f(w)$
+\end{definition}
+
+\begin{properties}
+    \begin{enumerate}
+        \item $f,g$ --- выпуклые, то  $f+g$ --- выпуклые.
+        \item  $f$ --- выпуклая, $\alpha > 0$, то $\alpha f$ --- выпуклая.
+        \item  $f$ --- выпуклая,  $-f$ --- вогнутая.
+    \end{enumerate}
+\end{properties}
+\begin{lemma}[О трех хордах]
+    $f\!:\langle a, b\rangle \to \R$ выпуклая, $u < v < w$,  $u, v, w \in \langle a, b \rangle$.
+
+    Тогда  $\frac{f(v)-f(u)}{v - u} \le \frac{f(w) - f(u)}{w - u} \le \frac{f(w) - f(u)}{w - v}$.
+\end{lemma}
+\begin{proof}
+    Докажем первое неравенство: $\frac{f(v) - f(u)}{v - u} \le \frac{f(w) - f(u)}{w - u} \iff (w - u)(f(v)-f(u)) \le (v - u)(f(w)-f(u)) \iff (w-u)f(v) \le \underbrace{((w - u) - (v - u))}_{=w-v}f(u) +(v-u)f(w)$.
+
+    Второе/третье аналогично.
+\end{proof}
+\begin{theorem}
+    $f\!: \langle a, b \rangle \to \R$ выпуклая. Тогда  $\forall x \in (a, b)$ существуют конченые  $f_{\pm}'(x)$ и  $f'_-(x) \le f'_+(x)$
+\end{theorem}
+\begin{proof}
+    Возьмем три точки $x < v < w$. $\frac{f(v) - f(x)}{v-x}$ возрастает по $v$.  $\frac{f(w) - f(x)}{w-x} \ge \frac{f(v) - f(x)}{v-x}$ из леммы о трех хордах. Значит дробь $\frac{f(v) - f(x)}{v - x}$ возрастает по $v$ и ограничена снизу  $\implies$ существует конечный  $\lim_{v \to x+} \frac{f(v)-f(x)}{v-x} \ge \frac{f(u) - f(x)}{u - x}$. 
+
+    $\frac{f(u)-f(x)}{u-x}$ возрастает по $u$ и ограничена сверху  $f'_+(x) \implies f'_-(x) \ lim_{u \to x-} \frac{f(u)-f(x)}{u-x} \le f'_+(x)$
+\end{proof}
+\begin{consequence}
+    $f\!:\langle a, b \rangle \to \R$ выпуклая  $\implies$  $f$ непрерывна  $(a, b)$
+\end{consequence}
+\begin{proof}
+    существует конечная $f'_+(x) \Rightarrow f$ непрерывна в точке  $x$ справа +  $\exists f'_-(x) \implies f$ непрерывна в  $x$ слева  $\implies$  $f$ непрерывна в  $x \in (a,b)$.
+\end{proof}
+\begin{remark}
+    Про концы ничего неизвестно.
+\end{remark}
+\begin{theorem}
+    $f\!: \langle a, b \rangle \to \R$ дифференцируемая. Тогда  $f$ --- выпуклая  $\iff f(x) \ge f(x_0) + f'(x_0)(x - x_0)\ \forall x, x_0 \in \langle a, b \rangle$
+\end{theorem}
+\begin{proof}
+    В сторону $\Leftarrow$:  $u < v < w, x_0=v$. Тогда  $f(u) \ge f(v) + f'(u)(v-u)$, $f(w) \ge f(u) + f'(u)(v-w)$. Первое домножаем на $(w-v)$, второе на  $(v - u)$
+
+    В сторону  $\Rightarrow$. Пусть  $x > x_0$. Надо доказать, что $\frac{f(x) - f(x_0)}{x - x_0} \ge f'(x_0) = \lim_{y \to x_0} \frac{f(y)-f(x_0)}{y-x_0}$ 
+
+    Можно считать, что $x_0 < y < x$. Тогда  $\frac{f(x) - f(x_0)}{x - x_0} \ge \frac{f(y) - f(x_0)}{y - x_0} \to f'(x_0)$.
+\end{proof}
+\begin{theorem}[Критерий выпуклости]
+    \begin{enumerate}
+        \item $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$ и дифференцируема на  $(a, b)$.  $f$ (строго) выпукла $\iff f'$ строго монотонно возрастает на $(a, b)$.
+        \item $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$ и дважды дифференцируема на  $(a, b)$.  $f$ выпукла $\iff f'' \ge 0$ на $(a, b)$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item $\Rightarrow$.  $u < v$:  $f'(u) \le \frac{f(v) - f(u)}{v - u} \le f'(v)$ по предыдущей теореме $f'(x)$ возрастает.
+
+            $\Leftarrow$  $u < v < w$  $\frac{f(v) - f(u)}{v-u} \le \frac{f(w) - f(v)}{w-v}$ по теореме Лагранжа левое равно $f'(\xi)$, правое ---  $f'(\eta)$. Поскольку  $f'$ возрастает, то все верно.
+
+        \item  $f$ --- выпуклая  $\iff$  $f'$ возрастает  $(f')' \ge 0$.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+     \begin{enumerate}
+         \item $a^x$ выпуклая,  $a \neq 1$.  $f(x) = a^x \implies f'(x) = a^x\ln a \implies f''(x) = a^x(\ln a)^2 \implies$ строго выпукла.
+         \item  $\ln x$ строго вогнута.
+
+             $f(x) \ln x \implies f'(x) = \frac{1}{x} \implies f''(x) = -\frac{1}{x^2} < 0 \implies$ строго вогнутая.
+         \item $x^p$, при  $x > 0$.  $p > 1$ --- строгая выпуклость,  $p < 0$ строгая выпуклость, если $0 < p < 1$ строгая вогнутость.
+    \end{enumerate}
+\end{example}
