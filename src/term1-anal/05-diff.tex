@@ -230,7 +230,7 @@
         \item Аналогично.
     \end{enumerate}
 \end{proof}
-\begin{theorem}[Теорема Дорбу]
+\begin{theorem}[Теорема Дарбу]
     $f\!:[a, b] \to \R$ дифференцируема во всех точках. Пусть  $C$ лежит между  $f'(a)$ и  $f'(b)$. Тогда найдется  $c \in (a, b)$, такая что  $f'(c) = C$.
 \end{theorem}
 \begin{proof}
@@ -730,8 +730,21 @@
     Тогда $x_k = \frac{a_k}{b_k^{\frac{1}{p-1}}} \cdot B^{\frac{1}{q(p-1)}} = \frac{a_k}{b_k^{\frac{q}{p}}} \cdot B^{\frac{1}{p}}$. Откуда можно выразить $\lambda$.
 \end{proof}
 \begin{consequence}[Неравенство Коши-Буняковского]
-    \[\left(\sum_{k=1}^n a_kb_k\right)^2\]
+    \[\left(\sum_{k=1}^n a_k b_k\right)^2 \le \left(\sum_{k=1}^n a_k^2\right) \cdot \left(\sum_{k=1}^n b_k^2\right)\]
 \end{consequence}
+\begin{proof}
+    Давайте применим неравенство Гёлдера для чисел $|a_k|$ и $|b_k|$, а $p = q = 2$.
+    
+    Тогда $\left(\sum_{k=1}^n |a_k|^2\right) \cdot \left(\sum_{k=1}^n |b_k|^2\right) \ge \left(\sum_{k=1}^n |a_k| \cdot |b_k|\right)^2$.
+    
+    Это почти то, что нужно с точностью до модулей. 
+    
+    Заметим, что в левой части модули можно отбросить, так как возводится в квадрат. 
+    
+    В правой же части можно заметить, что $\left(\sum_{k=1}^n |a_k|\cdot|b_k|\right)^2 \ge \left(\sum_{k=1}^n a_k b_k\right)^2$.
+    
+    Значит по транзитивности получим то, что нужно.
+\end{proof}
 
 \begin{consequence}[Неравенство Минковского]
     $p \ge 1, a_k, b_k \ge 0$. Тогда \[
