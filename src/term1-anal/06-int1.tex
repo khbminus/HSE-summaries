@@ -12,7 +12,11 @@
     $\text{sign} x = \begin{cases} 1 & \text{ если } x > 0 \\ 0 & \text{ если } x = 0 \\ -1 & \text{ если }  x < 0 \end{cases}$. Не имеет первообразной.
 \end{remark}
 \begin{proof}
-    ???
+    От противного: пусть нашлась $F\!: \langle a, b \rangle \to \R$ и $F'(x) = sign(x)$.
+    
+    Тогда воспользуемся теоремой Дарбу для $F$ на отрезке $[0; 1]$.
+    
+    Пусть $k = \frac{1}{2} \in (sign(0), sign(1))$. Значит $\exists c \in (0, 1) \!: F'(c) = k = \frac{1}{2}$. Противоречие.
 \end{proof}
 \begin{theorem}
     $f, F\!: \langle a, b \rangle \to \R$ и  $F$ --- первообразная для  $f$. Тогда: 
