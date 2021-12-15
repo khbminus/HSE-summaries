@@ -630,3 +630,119 @@
          \item $x^p$, при  $x > 0$.  $p > 1$ --- строгая выпуклость,  $p < 0$ строгая выпуклость, если $0 < p < 1$ строгая вогнутость.
     \end{enumerate}
 \end{example}
+\begin{theorem}[Неравенство Йенсена]
+    Пусть $f\!: \langle a, b \rangle \to \R$ выпуклая функция,  $x_1, x_2,\ldots, x_n \in \langle a, b \rangle$ и $\lambda_1, \lambda_2, \ldots, \lambda_n \ge 0$, причем их сумма равна $1$. Тогда: \[
+        f(\sum_{k=1}^n \lambda_k x_k) \le \sum_{k=1}^n f(x_k)
+    .\] 
+    \textbf{Замечание}. Если $\lambda_k > 0$,  $x_k$ различны и  $f$ строго выпуклая, то знак строгий.
+\end{theorem}
+\begin{proof}
+    Индукция по $n$. База  $n = 2$:  $f(\lambda_1 x_1 + \underbrace{\lambda_2}_{1 - \lambda_1} x_2) \le \lambda_1f(x_1) + \underbrace{\lambda_2}_{1-\lambda_1}f(x_2)$. Это определение индукции.
+
+    Переход от $n$ к  $n+1$:  \[
+\lambda_1 + \lambda_2 + \ldots + \lambda_n = 1 - \lambda_{n+1} \Rightarrow \frac{\lambda_1}{1 - \lambda_{n+1}} + \ldots + \frac{\lambda_n}{1 - \lambda_{n+1}} = 1    
+    .\]
+    Тогда по предположению: \[
+        \sum_{k=1}^n \frac{\lambda_k}{1 - \lambda_{n+1}} \ge f(\sum_{k=1}^n \frac{\lambda_k x_k}{1 - \lambda_{n+1}}) = f(y)
+    .\]
+    \begin{align*}
+        \sum_{k=1}^{n} \lambda_kf(x_k) \ge (1-\lambda_{n+1})f(y) \implies \sum_{k=1}^{n+1} \lambda_k f(x_k) &\ge (1 - \lambda_{n+1})f(y) + \lambda_{n+1}f(x_{n+1}) \ge \\
+                                                                                                            &\ge f(\lambda_{n+1} x_{n+1} + (1 - \lambda_{n+1})y) =\\
+                                                                                                            &=f(\sum_{k=1}^{n+1}\lambda_k x_k)
+     .\end{align*}
+     Второе $\ge$ после $\implies$ следует из определения выпуклости.
+\end{proof}
+\begin{consequence}
+    У вогнутой функции все знаки в другую сторону.
+\end{consequence}
+\begin{theorem}[Неравенство о средних]
+    $x_1, x_2, \ldots, x_n \ge 0$. Тогда $\sqrt[n]{x_1x_2\ldots x_n} \le \frac{x_1 + x_2 + \ldots + x_n}{n}$.
+    
+    Причем из равенства следует равенство чисел.
+\end{theorem}
+\begin{proof}
+    $f(x) = \ln x$ и  $\lambda_1 = \lambda_2 = \ldots = \lambda_n = \frac{1}{n}$. Если $x_k = 0$, то неравенство очевидно.
+
+    Надо доказать, что  $\frac{1}{n}(\ln x_1 + \ln x_2 + \ldots + \ln x_n) \le \ln(x_1 + x_2 + \ldots + x_n)$. А это неравенство Йенсена: \[
+        \ln(\frac{1}{n} x_1 + \frac{1}{n} + x_2 + \ldots + \frac{1}{n}x_n) \ge \frac{1}{n}\ln x_1 + \frac{1}{n} + \ln x_2 + \ldots + \frac{1}{n} \ln x_n
+    .\] 
+\end{proof}
+\begin{definition}
+    Среднее степенное порядка $p$  $M_p \coloneqq \left(\frac{x_1^p + x_2^p + \ldots x_n^p}{n}\right)^{\frac{1}{p}}$.
+\end{definition}
+\begin{definition}
+    Среднее арифметическое $M_1 \coloneqq \frac{x_1 + x_2 + \ldots + x_n}{n}$.
+\end{definition}
+\begin{definition}
+    Среднее квадратическое $M_2 \coloneqq \sqrt{\frac{x_1^2 + x_2^2 + \ldots + x_n^2}{n}}$
+\end{definition}
+\begin{definition}
+    Среднее гармоническое --- $M_{-1}$
+\end{definition}
+\begin{definition}[Доопределение]
+    $M_0$ --- среднее геометрическое,  $M_{+\infty}$ --- максимальное из чисел,  $M_{-\infty}$ --- минимальное из чисел. 
+\end{definition}
+\begin{exerc}
+    Пусть $x_1, x_2, \ldots, x_n > 0$. Доказать, что $\lim_{p \to 0} M_p = M_0$,  $\lim_{p \to +\infty} M_p = M_{+\infty}$,  $\lim_{p \to -\infty} M_p = M_{-\infty}$.
+\end{exerc}
+\begin{theorem}[Неравенство между средними степенными]
+    Пусть $x_1, x_2, \ldots, x_n > 0$ и $p < q$. Тогда:
+     \[
+         \left( \frac{x_1 ^ p + x_2^p + \ldots + x_n^p}{n} \right)^p \le \left( \frac{x_1 ^ q + x_2^q + \ldots + x_n^q}{n} \right)^q
+    .\] 
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Случай 1. $p = 1$.  $f(x) = x^q$ --- выпуклая функция,  $\lambda_1 = \lambda_2 = \ldots = \lambda_n = \frac{1}{n}$. Тогда просто подставляем в неравенство Йенсена:
+            \[\left( \frac{x_1 + x_2 + \ldots + x_n}{n} \right)^q = f\left(\frac{x_1 + x_2 + \ldots + x_n}{n}\right) \le \frac{x_1^q + x_2^q + \ldots + x_n^q}{n}.\]
+
+            А дальше просто извлечь корень степени $q$.
+        \item Случай 2.  $0 < p < q$. Возьмем  $r = \frac{q}{p} > 1$ и подставим $x_k^p$ в случай 1 ($p = 1, q = r$): \[
+                \frac{x_1 ^ p + x_2^p + \ldots + x_n^p}{n} \le \left( \frac{(x_1 ^ p)^r + (x_2^p)^r + \ldots + (x_n^p)^r}{n} \right)^{\frac{1}{r}} = \left( \frac{x_1 ^ q + x_2^q + \ldots + x_n^q}{n} \right)^{\frac{p}{q}}
+        .\] 
+        \item Случай 3. $p < q < 0$. Возьмем  $\frac{p}{q} > 1$ и подставим $x_k^q$ в случай 1.
+        \item Случай 4.  $p < 0 < q$.  $\left( \frac{x_1 ^ p + x_2^p + \ldots + x_n^p}{n} \right)^{\frac{1}{p}} \le \sqrt[n]{x_1x_2\ldots x_n} \le \left( \frac{x_1 ^ q + x_2^q + \ldots + x_n^q}{n} \right)^{\frac{1}{q}}$.
+
+            Подставим $x_1^q, x_2^q,\ldots x_n^q$ в неравенство о средних \[
+                \frac{x_1^q + x_2^q + \ldots + x_n^q}{n} \ge \sqrt[n]{x_1^qx_2^q\ldots x_n^q} = \left(\sqrt[n]{x_1x_2\ldots x_n}\right)^q
+            .\] и корень степени $q > 0$.
+            \[
+                \frac{x_1^p + x_2^p + \ldots + x_n^p}{n} \ge \sqrt[n]{x_1^px_2^p\ldots x_n^p} = \left(\sqrt[n]{x_1x_2\ldots x_n}\right)^p
+            .\] и корень степени $p < 0$, знак поменяется.
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    $M_p \le M_q$, если $p \le q$.
+\end{remark}
+\begin{theorem}[Неравенство Гёлдера]
+    $a_k, b_k \ge 0$, $p, q > 1$ и  $\frac{1}{p} + \frac{1}{q} = 1$. Тогда: \[
+        \sum_{k=1}^{n} a_kb_k \le \left(\sum_{k=1}a_k^p\right)^{\frac{1}{p}} \cdot \left(\sum_{k=1}^n b_k^q\right)^{\frac{1}{q}}.
+    .\] 
+\end{theorem}
+\begin{proof}
+    Берем $f(x) = x^p$. Пусть  $B \coloneqq \sum_{k=1}^n b_k^q$. Тогда возведем неравенство в степень  $p$:  $\left(\sum_{k=1}^n a_k \frac{b_k}{B^{\frac{1}{q}}}\right)^p \le \sum_{k=1}^n a_k^p$. 
+
+    Пытаемся подогнать под вид Йенсена, получаем систему $\lambda_kx_k^p = a_k^p$ и  $\lambda_k x^k = \frac{a_k b_k}{B^{\frac{1}{q}}}$. 
+
+    Получаем, что $x_k^{p-1} = \frac{a_k^{p-1}B^{\frac{1}{q}}}{b_k}$.
+
+    Тогда $x_k = \frac{a_k}{b_k^{\frac{1}{p-1}}} \cdot B^{\frac{1}{q(p-1)}} = \frac{a_k}{b_k^{\frac{q}{p}}} \cdot B^{\frac{1}{p}}$. Откуда можно выразить $\lambda$.
+\end{proof}
+\begin{consequence}[Неравенство Коши-Буняковского]
+    \[\left(\sum_{k=1}^n a_kb_k\right)^2\]
+\end{consequence}
+
+\begin{consequence}[Неравенство Минковского]
+    $p \ge 1, a_k, b_k \ge 0$. Тогда \[
+        \left(\sum_{k=1}^n a_k^p\right)^{\frac{1}{p}} + \left(\sum_{k=1}^n b_k^p \right)^{\frac{1}{p}} \ge \left(\sum_{k=1}^n (a_k + b_k)^p\right)^{\frac{1}{p}}
+    .\] 
+\end{consequence}
+\begin{proof}
+    $p = 1$ очевидно. 
+    \begin{align*}
+        C \coloneqq \sum_{k=1}^n (a_k+b_k)^p = \sum_{k=1}^n (a_k+b_k)(a_k+b_k)^{p-1} = \sum_{k=1}^n a_k(a_k+b_k)^{p-1} + \sum_{k=1}^n b_k(a_k+b_k)^{p-1} \\
+        \sum_{k=1}^n a_k(a_k + b_k)^{p-1} \le (\sum_{k=1}^n a_k^p)^{\frac{1}{p}} (\sum_{k=1}^n((a_k + b_k)^{p-1})^{q})^{\frac{1}{q}} = (\sum_{k=1}^n a_k^p)^{\frac{1}{p}}(\sum_{k=1}^n(a_k+b_k)^p)^{\frac{p-1}{n}} \\
+        C \le (\sum a_k^p)^{\frac{1}{p}} \cdot c^{\frac{p-1}{p}} + (\sum b_k^p)^{\frac{1}{p}} \cdot C^{\frac{p-1}{p}} \Rightarrow C^{\frac{1}{p}} \le (\sum a_k^p)^{\frac{1}{p}} + (\sum b_k^p)^{\frac{1}{p}}
+    \end{align*}
+\end{proof}

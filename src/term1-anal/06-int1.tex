@@ -1,0 +1,109 @@
+\Subsection{Первообразная и неопределенный интеграл}
+\begin{definition}
+    $f\!: \langle a, b \rangle \to \R$. Функция  $F\!: \langle a, b \rangle \to \R$ --- первообразная функции  $f$, если  $F'(x) = f(x) \forall x \in \langle a, b \rangle$
+\end{definition}
+\begin{theorem}
+    Непрерывная на промежутке функция имеет первообразную.
+\end{theorem}
+\begin{proof}
+    Позже.
+\end{proof}
+\begin{remark}
+    $\text{sign} x = \begin{cases} 1 & \text{ если } x > 0 \\ 0 & \text{ если } x = 0 \\ -1 & \text{ если }  x < 0 \end{cases}$. Не имеет первообразной.
+\end{remark}
+\begin{proof}
+    ???
+\end{proof}
+\begin{theorem}
+    $f, F\!: \langle a, b \rangle \to \R$ и  $F$ --- первообразная для  $f$. Тогда: 
+     \begin{enumerate}
+         \item $F+C$ --- первообразная для  $f$.
+         \item  Если  $\Phi\!: \langle a, b \rangle \to \R$ --- первообразная для  $f$, то  $\Phi = F + C$. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slash
+    \begin{enumerate}
+        \item $(F(x) + C)' = F'(x) + C' = f(x)$
+        \item $(\Phi(x) - F(x))' = \Phi'(x) - F'(x) = f(x) - f(x) = 0 \Rightarrow (\Phi - F)' \equiv 0 \implies \Phi -F$ --- константа. 
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    Неопределённый интеграл --- множество всех первообразных.
+
+    $\int f(x)\,dx = \{F\!: F \text{ --- первообразная f}\}$. Но мы будем записывать $\int f(x)\,dx = F(x) + C$
+\end{definition}
+
+\textbf{Табличка интегралов.}
+\begin{enumerate}
+    \item $\int 0\,dx = C$.
+    \item $\int x^p\,dx = \frac{x^{p+1}}{p+1}+C$, при $p \neq -1$.
+    \item  $\int \frac{dx}{x} = \ln |x| + C$.
+    \item $\int a^x\,dx = \frac{a^x}{\ln a} + c$, при $a > 0, a \neq 1$.
+    \item  $\int \sin x\,dx = - \cos x + C$.
+    \item  $\int \cos x\,dx = \sin x + C$.
+    \item $\int \frac{dx}{\cos^2 x} = \tg x + C$.
+    \item $\int \frac{dx}{\sin^2 x} = -\ctg x + C$ 
+    \item $\int \frac{dx}{\sqrt{1-x^2}} = \arcsin x + C$.
+    \item $\int \frac{dx}{1+x^2} = \arctg x + C$.
+    \item $\int \frac{dx}{\sqrt{x^2 \pm 1}} = \ln |x+\sqrt{x^2 \pm 1}| + C$. 
+    \item $\int \frac{dx}{1-x^2} = \frac{1}{2} \ln |\frac{1+x}{1-x}| + C$.
+\end{enumerate}
+\begin{proof}
+    Для 3. Если $x > 0$  $\int \frac{dx}{x} = \ln x + C$ . Если $x < 0$  $\int \frac{dx}{x} = \ln(-x) + C$, то есть $(\ln (-x))' = (\frac{1}{-x}) (-x)' = \frac{-1}{x}$.
+
+    Для 11. $(\ln |x+\sqrt{x^2 \pm 1}|)' = \frac{1}{x + \sqrt{x^2 \pm 1}}(x + \sqrt{x^2 \pm 1})' = \frac{1 + \frac{x}{\sqrt{x^2 \pm 1}}}{x + \sqrt{x^2}} = \frac{\frac{\sqrt{x^2 pm 1} + x}{\sqrt{x^2 \pm 1}}}{\sqrt{x^2 \pm 1} + x} = \frac{1}{\sqrt{x^2 \pm 1}}$
+
+    Для 13. $(\frac{1}{2}(\ln |1+x| - \ln |1-x|))' = \frac{1}{2}(\frac{1}{1+x} + \frac{1}{1-x}) = \frac{1}{1-x^2}$
+\end{proof}
+\begin{remark}
+    $A + B \coloneqq \{a+b\!: a \in A, b \in B\}$,  $cA \coloneqq \{ca\!: a \in A\}$.
+
+    $\int f(x)\,dx + \int g(x)\,dx = \{F+C\} + \{G+\widetilde{C}\} = \{F+G+C\}$.
+\end{remark}
+\begin{theorem}[Арифметические действия с неопределенными интегралами]
+    Пусть $f, g\!: \langle a, b \rangle \to \R$ имеют первообразные. Тогда:
+     \begin{enumerate}
+         \item $f+g$ имеет первообразную и  $\int (f+g)\,dx = \int f\,dx + \int g\,dx$
+         \item $\alpha f$ имеет первообразную и  $\int \alpha f\,dx = \alpha \int f\,dx$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Пусть $F$ и  $G$ первообразные для  $f$ и  $g$. 
+     \begin{enumerate}
+         \item Тогда $F+G$ --- первообразная для  $f+g$. Тогда  $\int(f+g) = F+G+C = \int f + \int g$.
+         \item Тогда  $\alpha F$ --- первообразная для  $\alpha f \implies \int \alpha F = \alpha F + C = \alpha(F + \frac{C}{\alpha}) = \alpha \int f$.
+    \end{enumerate}
+\end{proof}
+\begin{consequence}[Линейность неопрделенного интеграла]
+    $f, g\!:\langle a, b\rangle \to \R$ имеют первообразную $\alpha, \beta \in \R$,  $|\alpha| + |\beta| \neq 0$. Тогда  $\int(\alpha f+ \beta g) = \alpha \int f + \beta \int g$. 
+\end{consequence}
+\begin{proof}
+    Прямое следствие из теоремы выше.
+\end{proof}
+\begin{theorem}[Теорема о замене переменной в непопределенном интеграле]
+    $f\!: \langle a, b \rangle \to \R, \varphi\!:\langle c, d \rangle \to \langle a, b \rangle$,  $f$ имеет первообразную  $F$.  $\varphi$ дифференцируемая. Тогда  $\int f(\varphi(t)) \varphi'(t)\,dt = F(\varphi(t)) + C$.
+\end{theorem}
+\begin{proof}
+    Надо проверить, что $F(\varphi(t))$ --- первообразная для  $f(\varphi(t))\varphi'(t)$.  \[
+        (F(\varphi(t)))' = F'(\varphi(t))\cdot \varphi'(t) = f(\varphi(t))\varphi(t).
+    .\] 
+\end{proof}
+\begin{consequence}
+    $\int f(\alpha x + \beta)\,dx = \frac{1}{\alpha}F(\alpha x + \beta)+C$
+\end{consequence}
+\begin{proof}
+    $\int \alpha f(\alpha x + \beta dx) = F(\alpha x + \beta) + C$. И делим обе части на  $\alpha$.
+\end{proof}
+\begin{theorem}[Форумла интегрирования по частям]
+    $f, g\!: \langle a, b \rangle \to \R$, дифференцируемые,  $f'g$ имеет первообразную.
+
+    Тогда  $fg'$ имеет первообразную и  $\int fg' = fg - \int f'g$
+\end{theorem}
+\begin{proof}
+    $H$ --- первообразная для  $f'g$. Тогда  $H' = f'g$.
+
+    Надо доказать, что  $fg - H$ --- первообразная для $fg'$.
+
+    $(fg - H)' = f'g + gh' - H' = f'g + fg' - f'g = fg'$. 
+\end{proof}
