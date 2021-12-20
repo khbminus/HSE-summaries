@@ -83,7 +83,7 @@
         \item Коши $\Rightarrow$ Гейне. $\forall \varepsilon > 0\, \exists \delta >0: \, \forall x \in E: 0 < |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon$. Пусть  $x_n \in E: \lim x_n = a$. Проверим, что  $\lim(x_n) = A$. Возьмем $\varepsilon > 0$, берем соответствующий  $\delta$ из определения. Найдется $N: \forall n \ge N: 0 < \underbrace{|x_n-a|<\delta}_{\text{предел последовательности}} \Rightarrow |f(x_n) - A| < \varepsilon$. 
         \item Гейне $\Rightarrow$ Коши. От противного: пусть нашелся  $\varepsilon > 0$ для которого ни одна  $\delta > 0$ не подходит. Возьмем $\delta =\frac{1}{n}$. Она не подходит, то есть $\exists x \in E: 0 < |x-a| < \delta$, но  $|f(x) - A| \ge \varepsilon$. Из таких $x$, последовательно меняя $\delta$, получили $x_n$. 
 
-            Посмотрим на последовательность:  $x_n \neq a \in E\; |x_n-a| < \frac{1}{n} \Rightarrow \lim x_n = a \Rightarrow \lim f(x_n) = A \Rightarrow |f(x_n) - A| < \varepsilon$. Противоречие. 
+            Посмотрим на последовательность:  $x_n \neq a \in E\; |x_n-a| < \frac{1}{n} \Rightarrow \lim x_n = a \Rightarrow \lim f(x_n) = A \Rightarrow \exists N \in \N : \forall n \ge N: |f(x_n) - A| < \varepsilon$. Противоречие. 
     \end{itemize}
 \end{proof}
 \slashn
@@ -201,13 +201,14 @@
     $f(x) = x$ --- непрерывна всегда.
 \end{example}
 \begin{example}
-    $f(x) = [x]$. Если  $a \not \in \Z \lim_{x\to a} [x] = n = [a]$. Иначе предела нет.
+	$f(x) = [x]$. Если  $a \not \in \Z \ \lim_{x\to a} [x] = [a]$. Иначе предела нет, значит $f$ не непрерывна (да и вообще получили разрыв первого рода)
 \end{example}
 \begin{example}
     $f(x) = |\{x\} - \frac{1}{2}|$.
 
-    $a \not \in \Z$ --- очевидно.
-    $a = n \in \Z$:  $\lim_{x \to n+} |\{x\} - \frac{1}{2} | = \lim_{x \to n+} = |x-n-\frac{1}{2}| = \frac{1}{2} = f(n)$. $\lim_{x \to n-} |\{x\} - \frac{1}{2}| = \lim_{x\to n-} = |x-(n-1)-\frac{1}{2}| = \frac{1}{2} = f(n)$.
+    Если $a \not \in \Z$, то очевидно непрерывная.
+
+    Если $a = n \in \Z$, то  $\lim_{x \to n+} |\{x\} - \frac{1}{2} | = \lim_{x \to n+} |x-n-\frac{1}{2}| = \frac{1}{2} = f(n)$. $\lim_{x \to n-} |\{x\} - \frac{1}{2}| = \lim_{x\to n-} = |x-(n-1)-\frac{1}{2}| = \frac{1}{2} = f(n)$.
 
     Функция непрерывна!
 \end{example}
@@ -216,7 +217,7 @@
     $\exp x$ непрерывна во всех точках.
 \end{theorem}
 \begin{proof}
-    $\lim_{x\to a} \exp x = \exp a$. Пусть  $h \coloneqq x - a \to 0$.  $\lim_{h \to 0} \exp(a + h) = \exp a$. Тогда надо доказать, что  $\lim_{h \to 0} \exp h = 1$. Заметим, что  $1 + h \le \exp h \le \frac{1}{1- h}$, при $|h| \le 1$. Значит, по 2 милиционерам $\exp h \to 1$.
+    Хотим $\lim_{x\to a} \exp x = \exp a$. Пусть  $h \coloneqq x - a \to 0$. Теперь хотим $\lim_{h \to 0} \exp(a + h) = \exp a$. Тогда надо доказать, что  $\lim_{h \to 0} \exp h = 1$. Заметим, что  $1 + h \le \exp h \le \frac{1}{1- h}$, при $|h| \le 1$. Значит, по 2 милиционерам $\exp h \to 1$.
 \end{proof}
 \begin{theorem}[Теорема об арифметических действиях с непрерывными функциями]
     $f, g: E \to \R, a \in E$,  $f, g$ непрерывны в  $a$.
@@ -251,31 +252,31 @@
 \begin{proof}
     \slashn
     \begin{itemize}
-        \item Точка не предельная. Берем окрестность только из $a$.
-        \item Иначе ссылаемся на соответствующую теорему из условия.
+        \item Точка не предельная. Берем окрестность из одной точки --- $a$.
+        \item Иначе ссылаемся на теорему о стабилизации знака для предела
     \end{itemize}
 \end{proof}
 \begin{theorem}
-    Пусть $f, a$ такие же, как выше.  $g: D \to \R, \lim_{x \to a} f(x) = A$,  $g$ --- непрерывна в  $A$,  $D \supset f(E)$, тогда  $\lim_{x \to a} g(f(x)) = g(A)$.
+	Пусть $f: E \to \R$,  $a \in E$,  $f$ --- непрерывна в  $a$,  $g: D \to \R, \lim_{x \to a} f(x) = A$,  $g$ --- непрерывна в  $A$,  $D \supset f(E)$, тогда  $\lim_{x \to a} g(f(x)) = g(A)$.
 \end{theorem}
 \begin{proof}
-    $g$ непрерывна в точке  $A \Rightarrow \forall \varepsilon > 0 \; \exists \delta > 0 \; \forall y \in D |y-A| < \delta \Rightarrow |g(y) - g(A)| < \varepsilon$. 
+    $g$ непрерывна в точке  $A \Rightarrow \forall \varepsilon > 0 \; \exists \delta > 0 \; \forall y \in D\, |y-A| < \delta \Rightarrow |g(y) - g(A)| < \varepsilon$. 
 
     Зафиксируем  $\varepsilon > 0$ и по нему возьмем  $\delta > 0$ и подставим его вместо  $\varepsilon$ в определение  $\lim_{x \to a} f(x) = A$. 
 
     $\forall \delta > 0 \; \exists \gamma > 0 \; \forall x \in E |x - a| < \gamma \Rightarrow |f(x)  - A| < \delta$. Подставим $y = f(x)$:  $|g(f(x)) - g(A)| < \varepsilon$.
 \end{proof}
 \begin{consequence}[Непрерывность композиции]
-    $f, a, g$ бла-бла-бла.  $g \circ f$ непрерывна в  $a$.
+    Пусть $f: E \to \R$,  $a \in E$,  $f$ --- непрерывна в  $a$,  $g: D \to \R, \lim_{x \to a} f(x) = A$,  $g$ --- непрерывна в  $A$,  $D \supset f(E)$, тогда $g \circ f$ непрерывна в $a$.
 \end{consequence}
 \begin{proof}
-    Если $a$ не предельная, то там неинтересно.
+    Если $a$ не предельная, то всё просто и круто.
 
     Если предельная, то предыдущая теорема.
 \end{proof}
 \begin{remark}
     Без непрерывности $g$ неверно.  $f(x) = x \sin \frac{1}{x}$. $\lim_{x \to 0} f(x) = 0$
-    $g(y) = \begin{cases} 0 & y = 0 \\ 1 & y \neq 0\end{cases}$.  $\lim_{y \to 0} g(y) = 1$.  Но  $\lim g(f(x))$ не существует.  $x_n = \frac{1}{\pi n}$, $f(x_n) = 0$.  $g(f(x_n)) = 0$.  $y_n = \frac{1}{2\pi n + \frac{\pi}{2}}$ $f(y_0) = y_n \neq 0$.
+    $g(y) = \begin{cases} 0 & y = 0 \\ 1 & y \neq 0\end{cases}$.  $\lim_{y \to 0} g(y) = 1$.  Но  $\lim g(f(x))$ не существует, поскольку для $x_n = \frac{1}{\pi n}$, $f(x_n) = 0$.  $g(f(x_n)) = 0$, а для $y_n = \frac{1}{2\pi n + \frac{\pi}{2}}$ $f(y_n) \neq 0, g(f(y_n)) = 1 \neq 0$.
 \end{remark}
 \begin{theorem}
     $0 < x < \frac{\pi}{2} \Rightarrow \sin x < x < \tg x$.
@@ -286,8 +287,8 @@
 \begin{proof}
 \slashn
     \begin{itemize}
-        \item $0 < x < \frac{\pi}{2}$ --- уже было.
-        \item $x > \frac{\pi}{2} \Rightarrow |\sin x| \le 1 < \frac{\i}{2} \le |x|$.
+	    \item $0 < x < \frac{\pi}{2}$ --- уже было, доказывается картинкой: для синуса: дуга больше высоты из этой точки, а для тангенса: площадь сектора ($\frac{x}2$) меньше площади треугольника ($\frac{\tg x}2$)
+        \item $x > \frac{\pi}{2} \Rightarrow |\sin x| \le 1 < \frac{\pi}{2} \le |x|$.
         \item При $x < 0 \Rightarrow |x| = |-x|$ и  $|\sin x| = |sin(-x)|$.
     \end{itemize}
 \end{proof}
@@ -299,7 +300,7 @@
 \end{enumerate}
 \end{consequence}
 \begin{proof}
-    $|\sin x - \sin y = 2|\sin \frac{x-y}{2}||cos \frac{x+y}{2}| \le 2 |sin \frac{x-y}{2}| \le 2 |\frac{x-y}{2}| \le |x-y|$ 
+    $|\sin x - \sin y| = 2|\sin \frac{x-y}{2}||cos \frac{x+y}{2}| \le 2 |sin \frac{x-y}{2}| \le 2 |\frac{x-y}{2}| \le |x-y|$ 
 
     Второй так же.
 \end{proof}
@@ -307,7 +308,7 @@
     $\sin, \cos, \tg, \ctg$ --- непрерывны.
 \end{theorem}
 \begin{proof}
-    А где пруф???
+    Пруф будет в следующем коммите
 \end{proof}
 
 \begin{theorem}[Первый замечательный предел]
