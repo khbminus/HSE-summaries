@@ -308,7 +308,9 @@
     $\sin, \cos, \tg, \ctg$ --- непрерывны.
 \end{theorem}
 \begin{proof}
-    Пруф будет в следующем коммите
+	Хотим доказать, что $\lim_{x \to a} \sin(x) = \sin(a)$, для этого нужно $\lim{x \to a} \sin(x) - \sin(a) = 0$, а, по предыдущим записям, $|\sin(x) - \sin(a)| \le |x - a|$, и тогда по двум милиционерам получаем, что тут предел равен 0, а значит $\sin x$ непрерывен.
+
+	Для косинуса аналогично: $\lim_{x \to a} \cos(x) = \cos(a) \iff \lim_{x \to a} \cos(x) - \cos(a) = 0, |\cos(x) - \cos(a)| \le |x - a| \Rightarrow \lim_{x \to a} \cos(x) - \cos(a) = 0$, т.е. косинус непрерывный.
 \end{proof}
 
 \begin{theorem}[Первый замечательный предел]
@@ -335,9 +337,9 @@
 \begin{proof}
     Введем обозначения: $f: [a, b] \to \R$ непрерывна во всех точках.
     \begin{enumerate}
-        \item От противного. Число $n$ не является верхней границей для  $|f|$. Значит  $\exists x_n \in [a, b]\!: |f(x_n)| > n$.  
+        \item От противного. Пусть число $n$ не является верхней границей для  $|f|$. Значит  $\exists x_n \in [a, b]\!: |f(x_n)| > n$, построим последовательность таких $x_n$.  
 
-            Применим теорему Больцано-Вейерштрасса. Выберем $x_{n_k}$ имеющий предел  $c \in \R$. Причем, так как  $a \le x_{n_k} \le b \Rightarrow a \le c \le b$. А значит, $f$ непрерывна в точке  $c$, тогда  $\displaystyle \lim_{x\to c}|f(x)| = |f(c)| \Rightarrow \lim_{k \to \infty} |f(x_{n_k})| = |f(c)|$, но $|f(x_{n_k}) > n_k \to +\infty$. Получили противоречие.  $+\infty \neq c \in \R$.
+            Применим к ней теорему Больцано-Вейерштрасса. Выберем $x_{n_k}$ имеющий предел  $c \in \R$. Причем, так как  $a \le x_{n_k} \le b \Rightarrow a \le c \le b$. А значит, поскольку $f$ непрерывна в точке $c$, $\displaystyle \lim_{x\to c}|f(x)| = |f(c)| \Rightarrow \lim_{k \to \infty} |f(x_{n_k})| = |f(c)|$, но $|f(x_{n_k})| > n_k \to +\infty$. Получили противоречие.  $+\infty \neq c \in \R$.
         \item Будем доказывать максимум.  $\displaystyle M \coloneqq \sup_{x \in [a ,b]} f(x) \in \R$. Пусть он не достигается, то есть $f(x) < M\ \forall x \in [a, b]$. 
 
             Тогда рассмотрим вспомогательную функцию $g(x) \coloneqq \frac{1}{M - f(x)}$ --- непрерывна на $[a, b] \Rightarrow g$ ограничена  $\Rightarrow g(x) \le \widehat{M}\ \forall x \in [a, b]$.
