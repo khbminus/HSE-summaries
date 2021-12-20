@@ -308,9 +308,11 @@
     $\sin, \cos, \tg, \ctg$ --- непрерывны.
 \end{theorem}
 \begin{proof}
-	Хотим доказать, что $\lim_{x \to a} \sin(x) = \sin(a)$, для этого нужно $\lim{x \to a} \sin(x) - \sin(a) = 0$, а, по предыдущим записям, $|\sin(x) - \sin(a)| \le |x - a|$, и тогда по двум милиционерам получаем, что тут предел равен 0, а значит $\sin x$ непрерывен.
+	Хотим доказать, что $\lim_{x \to a} \sin(x) = \sin(a)$, для этого нужно $\lim_{x \to a} \sin(x) - \sin(a) = 0$, а, по предыдущим записям, $|\sin(x) - \sin(a)| \le |x - a|$, и тогда по двум милиционерам получаем, что тут предел равен 0, а значит $\sin x$ непрерывен.
 
 	Для косинуса аналогично: $\lim_{x \to a} \cos(x) = \cos(a) \iff \lim_{x \to a} \cos(x) - \cos(a) = 0, |\cos(x) - \cos(a)| \le |x - a| \Rightarrow \lim_{x \to a} \cos(x) - \cos(a) = 0$, т.е. косинус непрерывный.
+
+	Непрерывность $\tg$ и $\ctg$ следует из непрерывности частного двух непрерывных.
 \end{proof}
 
 \begin{theorem}[Первый замечательный предел]
@@ -344,7 +346,7 @@
 
             Тогда рассмотрим вспомогательную функцию $g(x) \coloneqq \frac{1}{M - f(x)}$ --- непрерывна на $[a, b] \Rightarrow g$ ограничена  $\Rightarrow g(x) \le \widehat{M}\ \forall x \in [a, b]$.
 
-            Тогда $M - f(x) \ge \frac{1}{\widehat{M}} \Rightarrow f(x) \le M - \frac{1}{\widehat{M}} < M$. Получили противоречие, так как $M$ --- супремум.
+            Тогда $M - f(x) \ge \frac{1}{\widehat{M}} \Rightarrow f(x) \le M - \frac{1}{\widehat{M}} < M$. Получили противоречие, так как $M$ --- супремум, т.е. наименьшая верхняя граница, а тут столкнулись с границей ещё меньше.
     \end{enumerate}
 \end{proof}
 \begin{remark}
@@ -369,7 +371,7 @@
             [a_n, \frac{a_n+b_n}{2}] & \text{если}\ f(\frac{a_n + b_n}{2}) > 0
         \end{cases}
     .\] 
-    Тогда, если процесс не оборвался, получили $[a, b] = [a_0,b_0] \supset [a_1, b_1] \subset [a_2, b_2] \supset \ldots$. Стягивающиеся отрезки $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда найдется $c$, лежащая во всех отрезках, причем  $\lim a_n = \lim b_n = c$. Функция непрерывна в  $c \Rightarrow \lim \overbrace{f(a_n)}^{<0} = f(c) = \lim \overbrace{f(b_n)}^{>0} \Rightarrow 0 \ge \lim f(a_n) = f(c) \land \lim f(b_n) \ge 0 \Rightarrow f(c) = 0$.
+    Тогда, если процесс не оборвался, получили $[a, b] = [a_0,b_0] \supset [a_1, b_1] \supset [a_2, b_2] \supset \ldots$. Стягивающиеся отрезки $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда найдется $c$, лежащая во всех отрезках, причем  $\lim a_n = \lim b_n = c$. Функция непрерывна в  $c \Rightarrow \lim \overbrace{f(a_n)}^{<0} = f(c) = \lim \overbrace{f(b_n)}^{>0} \Rightarrow 0 \ge \lim f(a_n) = f(c) \land \lim f(b_n) \ge 0 \Rightarrow f(c) = 0$.
 \item $g(x) \coloneqq f(x) - y$. Тогда $g(a)$ и $g(b)$ разных знаков  $\Rightarrow \exists c \in [a, b]\!:f(c) - y = g(c) = 0$
         \end{enumerate}
 \end{proof}
@@ -383,7 +385,7 @@
     Непрерывный образ отрезка --- отрезок. То есть $f\!: [a, b] \to \R$ непрерывная $\Rightarrow f([a, b])$ --- отрезок. 
 \end{theorem}
 \begin{proof}
-    $\displaystyle m \coloneqq \min_{x \in [a, b]}f(x) \quad M \coloneqq \max_{x \in [a, b]}f(x)$. По теореме Вейерштрасса $\exists p, q \in [a, b]\!: m = f(p), M = f(q)$. Рассмотрим отрезок с концами в $p$ и  $q$ по теореме Больцано-Коши на  $(p, q)$ функция принимает все значения между  $f(p)$ и  $f(q)$, то есть все значения из $[m, M]$ достигаются  $\Rightarrow f([a, b]) = [m, M]$.
+    $\displaystyle m \coloneqq \min_{x \in [a, b]}f(x) \quad M \coloneqq \max_{x \in [a, b]}f(x)$. По теореме Вейерштрасса $\exists p, q \in [a, b]\!: m = f(p), M = f(q)$. Рассмотрим отрезок с концами в $p$ и  $q$. По теореме Больцано-Коши, на  $(p, q)$ функция принимает все значения между  $f(p)$ и  $f(q)$, то есть все значения из $[m, M]$ достигаются  $\Rightarrow f([a, b]) = [m, M]$.
 \end{proof}
 \begin{definition}
     $\langle a, b \rangle$ означает один из промежутков  $[a, b]; (a, b]; [a, b); (a, b)$.
@@ -394,8 +396,8 @@
 \begin{proof}
     $\langle a, b \rangle$ --- промежуток.  $m \coloneqq \inf_{x \in \langle a, b \rangle} f(x)$ (возможно $-\infty$). $M \coloneqq \sup_{x \in \langle a, b \rangle} f(x)$.
 
-    Тогда  $m \le f(x) \le M\ \forall x \in \langle a, b \rangle$. Докажем, что $f(\langle a, b \rangle) \supset (m; M)$, но при этом  $f(\langle a, b \rangle) \subset [m, M]$. 
-
+    Тогда  $m \le f(x) \le M\ \forall x \in \langle a, b \rangle$, а значит $f(\langle a, b \rangle) \subset [m, M]$. 
+Докажем, что $f(\langle a, b \rangle) \supset (m; M)$:
     Возьмем  $y \in (m, M)$, такой что  $m < y < M$.  
 
     $m = \inf \Rightarrow$ $y$ ---  не нижняя граница $\Rightarrow \exists p \in \langle a, b \rangle\!: f(p) < y$. 
@@ -415,7 +417,7 @@
 \end{remark}
 
 \begin{definition}
-    Пусть $f\!: \langle a, b \rangle \to \R$ и инъективна. Тогда  $g$ --- обратная к  $f$  $\iff g\!: f(\langle a, b\rangle) \to \langle a, b \rangle $ и  $f(g(y)) = y \land g(f(x)) = x$.
+    Пусть $f\!: \langle a, b \rangle \to \R$ и инъективна. Тогда  $g$ --- обратная к  $f$  $\iff g\!:$ переводит из множества значений $f$ --- $f(\langle a, b\rangle)$ в $\langle a, b \rangle$ и $f(g(y)) = y \land g(f(x)) = x$.
 
     $g$ обозначатся как  $f^{-1}$.
 \end{definition}
