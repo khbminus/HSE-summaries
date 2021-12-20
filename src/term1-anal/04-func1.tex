@@ -130,27 +130,27 @@
     Пусть $a$ --- предельная точка  $E$,  $f, g, h: E \to \R$ и  $f(x) \le g(x) \le h(x)$ при всех $x \in E$. Тогда, $\lim_{x\to a} f(x) = \lim_{x \to a} h(x) \eqqcolon A \Rightarrow \lim_{x\to a} g(x) = A$.
 \end{theorem}
 \begin{proof}
-    Проверим определение по Гейне для $\lim_{x \to a} g(x) = A$. Берем любую последовательность  $a \neq x_n \in E: \lim x_n = a$. Тогда  $\lim f(x_n) = A \land \lim h(x_n) = A \land f(x_n) \le g(x_n) \le h(x_n) \xRightarrow[\text{для послед.}]{\text{Th. о 2 мил.}} \lim g(x_n) = A$.
+    Проверим определение по Гейне для $\lim_{x \to a} g(x) = A$. Берем любую последовательность  $x_n \neq a \in E: \lim x_n = a$. Тогда  $\lim f(x_n) = A \land \lim h(x_n) = A \land f(x_n) \le g(x_n) \le h(x_n) \xRightarrow[\text{для послед.}]{\text{Th. о 2 мил.}} \lim g(x_n) = A$.
 \end{proof}
 \begin{theorem}[Критерий Коши для предела функции]
-    $a$ --- предельная точка  $E$,  $f: E \to \R$. Тогда  существует конечный  $\lim_{x\to a} f(x) \iff \forall \varepsilon > 0 \exists \delta > 0 \forall x, y \in E:  \begin{array}{l} |x-a| < \delta \\ |y-a| < \delta\end{array} \Rightarrow |f(x) - f(y)| < \varepsilon$
+    $a$ --- предельная точка  $E$,  $f: E \to \R$. Тогда  существует конечный  $\lim_{x\to a} f(x) \iff \forall \varepsilon > 0 \exists \delta > 0 \forall x, y \in E:  \begin{array}{l} 0 < |x-a| < \delta \\ 0 < |y-a| < \delta\end{array} \Rightarrow |f(x) - f(y)| < \varepsilon$
 \end{theorem}
 \begin{proof}
     \slashn
     \begin{itemize}
-        \item $\Rightarrow$. Пусть  $\lim_{x\to a} f(x) = A$. Тогда $\forall \varepsilon > 0 \exists \delta > 0 \begin{array}{l} \forall a \neq x \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \frac{\varepsilon}{2} \\ \forall a \neq y \in E: |y-a| < \delta \Rightarrow |f(y) - A| < \frac{\varepsilon}{2} \end{array}$. 
+        \item $\Rightarrow$. Пусть  $\lim_{x\to a} f(x) = A$. Тогда $\forall \varepsilon > 0 \exists \delta > 0 \begin{array}{l} \forall x \neq a \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \frac{\varepsilon}{2} \\ \forall y \neq a \in E: |y-a| < \delta \Rightarrow |f(y) - A| < \frac{\varepsilon}{2} \end{array}$. 
 
             Тогда, если сложить получим $|f(x) - f(y)| \le |f(x) - A| + |A - f(y)| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$
-        \item $\Leftarrow$. Докажем, что существует конечный  $\lim_{x \to a} f(x)$ по Гейне. Берем последовательно  $a \neq x_n \in E: \lim x_n = a$. Надо доказать, что $\lim f(x_n)$ существует и конечен. Для этого проверим, что $f(x_n)$ фундаментальная последовательность.
+        \item $\Leftarrow$. Докажем, что существует конечный  $\lim_{x \to a} f(x)$ по Гейне. Берем последовательность $ x_n \neq a \in E: \lim x_n = a$. Надо доказать, что $\lim f(x_n)$ существует и конечен. Для этого проверим, что $f(x_n)$ фундаментальная последовательность.
 
-            Возьмем $\varepsilon > 0$ и соответствующую ему $\delta > 0$.  $\exists N: \forall n \ge N |x_n - a| < \delta$. Берем $m, n \ge N \begin{array}{l} |x_n - a| < \delta \\ |x_m- a| < \delta \end{array} \land a \neq x_n \in E \land a \neq x_m \in E \Rightarrow |f(x_n) - f(x_m)| < \varepsilon$, т.е. $f(x_n)$ --- фундаментальная последовательность  $\Rightarrow$ существует конечный  $\lim f(x)$.
+            Возьмем $\varepsilon > 0$ и соответствующую ему $\delta > 0$.  $\exists N: \forall n \ge N \, |x_n - a| < \delta$. Берем $m, n \ge N \begin{array}{l} |x_n - a| < \delta \\ |x_m- a| < \delta \end{array} \land a \neq x_n \in E \land a \neq x_m \in E \Rightarrow |f(x_n) - f(x_m)| < \varepsilon$, т.е. $f(x_n)$ --- фундаментальная последовательность  $\Rightarrow$ существует конечный  $\lim f(x)$.
     \end{itemize}
 \end{proof}
 \begin{definition}
-    $f: E \to \R$,  $E_1 = (-\infty, a) \cap E$. Пусть  $a$ - предельная точка  $E_1$,  $g \coloneqq f$ на  $E_1$.  $\lim_{x\to a} g(x) = A$, то  $\lim_{x \to a-} f(x)= A$ ($\lim_{x \to a-0} f(x) = A$) --- предел слева в точке $A$.
+    $f: E \to \R$,  $E_1 = (-\infty, a) \cap E$. Пусть  $a$ - предельная точка  $E_1$,  $g \coloneqq$ сужение $f$ на  $E_1$. Тогда $\lim_{x\to a} g(x) = A$ $\iff$ $\lim_{x \to a-} f(x)= A$ --- предел слева в точке $A$.
 \end{definition}
 \begin{definition}
-    $f: E \to \R$,  $E_2 = (a, +\infty) \cap E$. Пусть  $a$ - предельная точка  $E_2$,  $g \coloneqq f$ на  $E_2$.  $\lim_{x\to a} g(x) = A$, то  $\lim_{x \to a+} f(x)= A$ ($\lim_{x \to a+0} f(x) = A$) --- предел справа в точке $A$.
+    $f: E \to \R$,  $E_2 = (a, +\infty) \cap E$. Пусть  $a$ - предельная точка  $E_2$,  $g \coloneqq$ сужение $f$ на  $E_2$. Тогда $\lim_{x\to a} g(x) = A$ $\iff$ $\lim_{x \to a+} f(x)= A$ --- предел справа в точке $A$.
 \end{definition}
 \begin{remark}
     $A = \lim_{x \to a-} f(x) \iff \forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in E: a-\delta < x < a \Rightarrow |f(x) - A| < \varepsilon$
@@ -162,10 +162,10 @@
     $\lim_{x\to a-} f(x) = \lim_{x \to a+} f(x) \eqqcolon A \iff \lim_{x \to a} f(x) = A$
 \end{remark}
 \begin{definition}
-    $f: E \to \R$. Тогда  $f$ --- монотонно возрастает $\Leftarrow \forall x, y \in E: x < y \Rightarrow f(x) \le f(y)$.
-    Дальше бла-бла-бла.
+    $f: E \to \R$. Тогда  $f$ --- монотонно возрастает $\iff \forall x, y \in E: x < y \Rightarrow f(x) \le f(y)$.
+    Аналогично вводится строгое монотонное возрастание, монотонное убывание, строгое монотонное убывание.
 \end{definition}
-\begin{theorem}
+\begin{theorem}[Вейерштрасса, о пределе монотонной функции]
     $f: E \to \R, E_1 \coloneqq (-\infty, a) \cap E$,  $a$ --- предельная точка  $E_1$. Тогда
      \begin{enumerate}
          \item Если $f$ монотонно возрастает и ограничена сверху, то существует конечный предел  $\lim_{x \to a-} f(x)$.
@@ -178,7 +178,7 @@
 \begin{proof}
     \slashn
     \begin{enumerate}
-        \item $A \coloneqq \sup_{x \in E_1} f(x)$. Проверим, что  $\lim_{x \to a-} f(x) = A$. Возьмем  $\varepsilon > 0$. Тогда  $A - \varepsilon$ не верхняя граница $\{f(x): x \in E_1\} \Rightarrow$ найдется $x_0 \in E_1: f(x_0) > A - \varepsilon$. $\delta \coloneqq a - x_0 > 0$. Проверим, что он подходит. Возьмем  $x \in E: a - \delta = x_0 < x < a \Rightarrow f(x_0) \le A-\varepsilon < f(x) \le A < A + \varepsilon \Rightarrow |f(x) - A| < \varepsilon$.
+        \item $A \coloneqq \sup_{x \in E_1} f(x)$. Проверим, что  $\lim_{x \to a-} f(x) = A$. Возьмем  $\varepsilon > 0$. Тогда  $A - \varepsilon$ не верхняя граница множества $\{f(x): x \in E_1\} \Rightarrow$ найдется $x_0 \in E_1: f(x_0) > A - \varepsilon$. $\delta \coloneqq a - x_0 > 0$. Проверим, что он подходит. Возьмем  $x \in E: a - \delta = x_0 < x < a \Rightarrow f(x_0) \le A-\varepsilon < f(x) \le A < A + \varepsilon \Rightarrow |f(x) - A| < \varepsilon$.
     \end{enumerate}
 \end{proof}
 \Subsection{Непрерывные функции}
@@ -186,13 +186,13 @@
     $f: E \to \R$ и  $a \in E$.  $f$ непрерывна в точке  $a$, если  $a$ --- не предельная точка или  $a$ --- предельная точка и  $\lim_{x \to a} f(x) = f(a)$.
 \end{definition}
 \begin{definition}
-    с  $\varepsilon$-- $\delta$. Тогда  $\forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in E |x-a| < \delta \Rightarrow |f(x) = f(a)| < \varepsilon$
+    Расписывая через Коши:  $\forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in E: |x-a| < \delta \Rightarrow |f(x) = f(a)| < \varepsilon$
 \end{definition}
 \begin{definition}
-    С окрестностями. $\forall U_{f(a)} \exists U_a f(U_a \cap E) \subset U_{f(a)}$
+    Расписывая через окрестности: $\forall U_{f(a)} \exists U_a f(U_a \cap E) \subset U_{f(a)}$
 \end{definition}
 \begin{definition}
-    $\forall x_n \in E: \lim x_n = a \Rightarrow \lim f(x_n) = f(a)$.
+    Расписывая через Гейне: $\forall x_n \in E: \lim x_n = a \Rightarrow \lim f(x_n) = f(a)$.
 \end{definition}
 \begin{example}
     $f(x) = c$ --- непрерывна всегда.
