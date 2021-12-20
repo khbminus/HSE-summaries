@@ -19,7 +19,7 @@
 \begin{proof}
     \slashn
     \begin{itemize}
-        \item $2 \Rightarrow 1$. $U_a cap E$ содержит бесконечное число точек  $\Rightarrow$ хотя бы одна из них не  $a$ и тогда  $\dot{U_a} \cap E \neq \varnothing$.
+        \item $2 \Rightarrow 1$. $U_a \cap E$ содержит бесконечное число точек  $\Rightarrow$ хотя бы одна из них не  $a$ и тогда  $\dot{U_a} \cap E \neq \varnothing$.
         \item $3 \Rightarrow 2$. Берем  $x_n \neq a \in E: \lim x_n = a$. Возьмем  $U_a = (a-\varepsilon, a+\varepsilon)$.  $\exists N: \forall n \ge N\; x_n \in (x_n) \in U_a$.
         \item $1 \Rightarrow 3$. Возьмем $\varepsilon_1 = 1$:  $(a-1; a+1)$ содержит точку из $E \setminus \{a\}$. Назовем такую точку $x_i$.
 
@@ -35,7 +35,7 @@
      \begin{enumerate}
          \item По Коши. $\forall \varepsilon > 0\, \exists \delta >0 \, \forall x \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon$.
          \item Окрестности. $\forall U_A \exists U_a: f(\dot{U_a} \cap E) \subset U_A$.
-         \item По Гейне. Для любой последовательности  $a \neq x_n \in E: \lim x_n = a \Rightarrow f(x_n) = A$.
+         \item По Гейне. Для любой последовательности  $a \neq x_n \in E: \lim x_n = a \Rightarrow \lim f(x_n) = A$.
     \end{enumerate}
 \end{definition}
 \begin{proof}[Равносильность 1. и 2.]
@@ -72,7 +72,7 @@
 \begin{proof}
     \slashn
     \begin{itemize}
-        \item $C \Rightarrow H$. $\forall \varepsilon > 0\, \exists \delta >0 \, \forall x \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon$. Пусть  $x_n \in E: \lim x_n = a$. Проверим, что  $\lim(x_n) = A$. Возьмем $\varepsilon > 0$, берем соответствующий  $\delta$ из определения. Найдется $N: \forall n \ge N: 0 \le \underbrace{|x_n-a|<\delta}_{\text{предел последовательности}} \Rightarrow |f(x_n) - A| < \varepsilon$. 
+        \item $C \Rightarrow H$. $\forall \varepsilon > 0\, \exists \delta >0 \, \forall x \in E: |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon$. Пусть  $x_n \in E: \lim x_n = a$. Проверим, что  $\lim(x_n) = A$. Возьмем $\varepsilon > 0$, берем соответствующий  $\delta$ из определения. Найдется $N: \forall n \ge N: 0 \le \underbrace{|x_n-a|<\delta}_{\mathclap{\text{предел последовательности}}} \Rightarrow |f(x_n) - A| < \varepsilon$. 
         \item $H \Rightarrow C$. От противного: нашелся  $\varepsilon > 0$ для которого ни одна  $\delta > 0$ не подходит. Возьмем  $\delta =\frac{1}{n}$. Она не подходит, то есть $\exists x \in E: 0 < |x-a| < \delta$, но  $|f(x) - A| \ge \varepsilon$. Получили $x_n$. 
 
             Посмотрим на последовательность:  $x_n \neq a \in E\; |x_n-a| < \frac{1}{n} \Rightarrow \lim x_n = a \Rightarrow \lim f(x_n) = A \Rightarrow |f(x_n) - A| < \varepsilon$. Противоречие. 
@@ -89,7 +89,7 @@
     \slashn
     \begin{enumerate}
         \item Пусть  $\lim_{x\to a} f(x) = A$ и  $\lim_{x\to a} f(x) = B$. Возьмем  $\lim x_n \in E$, такой, что  $x_n \to a$ (рассматриваем только предельные точки $E$). Тогда $\lim f(x_n) = A$ и  $\lim f(x_n) = B$, но предел последовательности единственен $\Rightarrow A=B$.  
-        \item Возьмем $\varepsilon = 1$ в определении по Коши.  $\exists \delta > 0\, \forall x \in E 0 < |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon = 1$. $U_a = (a - \delta, a + \delta)$, тогда  $f$ ограничена на  $U_a \cap E$.  $|f(x)| \le |A| + |f(x) - A| < A + 1$. Аккуратно рассмотрим еще про $x = a$.
+        \item Возьмем $\varepsilon = 1$ в определении по Коши.  $\exists \delta > 0\, \forall x \in E\!: 0 < |x-a| < \delta \Rightarrow |f(x) - A| < \varepsilon = 1$. $U_a = (a - \delta, a + \delta)$, тогда  $f$ ограничена на  $U_a \cap E$.  $|f(x)| \le |A| + |f(x) - A| < A + 1$. Аккуратно рассмотрим еще про $x = a$.
         \item Пусть $A > 0$. Возьмем  $\varepsilon = A$.  $\exists \delta > 0: 0 < |x-a| < \delta \land x \in E \Rightarrow |f(x) - A| < A \iff 0 < f(x) < 2A$. Берем  $U_a = (a-\delta, a+\delta)$ для нее значения  $>0$.
     \end{enumerate}
 \end{proof}
@@ -125,7 +125,7 @@
     Проверим определение по Гейне для $\lim_{x \to a} g(x) = A$. Берем любую последовательность  $a \neq x_n \in E: \lim x_n = a$. Тогда  $\lim f(x_n) = A \land \lim h(x_n) = A \land f(x_n) \le g(x_n) \le h(x_n) \xRightarrow[\text{для послед.}]{\text{Th. о 2 мил.}} \lim g(x_n) = A$.
 \end{proof}
 \begin{theorem}[Критерий Коши для предела функции]
-    $a$ --- предельная точка  $E$,  $f: E \to \R$. Тогда  существует конечный  $\lim_{x\to a} f(x) \iff \forall \varepsilon > 0 \exists delta > 0 \forall x, y \in E:  \begin{array}{l} |x-a| < \delta \\ |y-a| < \delta\end{array} \Rightarrow |f(x) - f(y)| < \varepsilon$
+    $a$ --- предельная точка  $E$,  $f: E \to \R$. Тогда  существует конечный  $\lim_{x\to a} f(x) \iff \forall \varepsilon > 0 \exists \delta > 0 \forall x, y \in E:  \begin{array}{l} |x-a| < \delta \\ |y-a| < \delta\end{array} \Rightarrow |f(x) - f(y)| < \varepsilon$
 \end{theorem}
 \begin{proof}
     \slashn
@@ -135,7 +135,7 @@
             Тогда, если сложить получим $|f(x) - f(y)| \le |f(x) - A| + |A - f(y)| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$
         \item $\Leftarrow$. Докажем, что существует конечный  $\lim_{x \to a} f(x)$ по Гейне. Берем последовательно  $a \neq x_n \in E: \lim x_n = a$. Надо доказать, что $\lim f(x_n)$ существует и конечен. Для этого проверим, что $f(x_n)$ фундаментальная последовательность.
 
-            Возьмем $\varepsilon > 0$ и соответствующую ему $\delta > 0$.  $\exists N: \forall n \ge N |x_n - a| < \delta$. Берем $m, n \ge N \begin{array}{l} |x_n - a| < \delta \\ |x_m- a| < \delta \end{array} \land a \neq x_n \in E \land a \neq x_m \in E \Rightarrow |f(x_n) - f(x_m)| < \varepsilon$, т.е. $f(x_т)$ --- фундаментальная последовательность  $\Rightarrow$ существует конечный  $\lim f(x)$.
+            Возьмем $\varepsilon > 0$ и соответствующую ему $\delta > 0$.  $\exists N: \forall n \ge N |x_n - a| < \delta$. Берем $m, n \ge N \begin{array}{l} |x_n - a| < \delta \\ |x_m- a| < \delta \end{array} \land a \neq x_n \in E \land a \neq x_m \in E \Rightarrow |f(x_n) - f(x_m)| < \varepsilon$, т.е. $f(x_n)$ --- фундаментальная последовательность  $\Rightarrow$ существует конечный  $\lim f(x)$.
     \end{itemize}
 \end{proof}
 \begin{definition}
@@ -151,7 +151,7 @@
     $B = \lim_{x \to a+} f(x) \iff \forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in E: a < x < a + \delta \Rightarrow |f(x) - B| < \varepsilon$
 \end{remark}
 \begin{remark}
-    $\lim_{x\to a-} f(x) = \lim_{x \to a+} f(x) = \eqqcolon A \iff \lim_{x \to a} f(x) = A$
+    $\lim_{x\to a-} f(x) = \lim_{x \to a+} f(x) \eqqcolon A \iff \lim_{x \to a} f(x) = A$
 \end{remark}
 \begin{definition}
     $f: E \to \R$. Тогда  $f$ --- монотонно возрастает $\Leftarrow \forall x, y \in E: x < y \Rightarrow f(x) \le f(y)$.
@@ -216,7 +216,7 @@
      \begin{enumerate}
          \item $f \pm g$ непрерывна   $a$.
          \item  $f \cdot g$ непрерывна в  $a$.
-         \item  $|f|$ непрерывна в  $a$.
+         \item  $|f|$ непрерывна в  $a$\.
          \item если  $g(a) \neq 0$, то  $\frac{f}{g}$ непрерывна.
     \end{enumerate}
 \end{theorem}
@@ -310,6 +310,8 @@
 \begin{proof}
     Нам известно неравенство $\sin x \le x \le \tg x = \frac{\sin x}{\cos x}$, при $0 < x < \frac{\pi}{2}$. 
 
+    Тогда $\sin x \le x \le \tg x \iff \frac{1}{\tg x} \le \frac{1}{x} \le \frac{1}{\sin x}$
+
     Тогда $\cos x \le \frac{\sin x}{x} \le 1$ при $x \in \left(\frac{\pi}{2}, \frac{\pi}{2}\right) \setminus \{0\}$.
 
     Тогда применим двух милиционеров: $\cos x \to 1$,  $1 \to 1$ при $x\to 0$, а значит  $\frac{\sin x}{x} \to 1$.
@@ -331,7 +333,7 @@
 
             Тогда рассмотрим вспомогательную функцию $g(x) \coloneqq \frac{1}{M - f(x)}$ --- непрерывна на $[a, b] \Rightarrow g$ ограничена  $\Rightarrow g(x) \le \widehat{M}\ \forall x \in [a, b]$.
 
-            Тогда $M - f(x) \ge \frac{1}{\widehat{M}} \Rightarrow \le M - \frac{1}{\widehat{M}} < M$. Получили противоречие, так как $M$ --- супремум.
+            Тогда $M - f(x) \ge \frac{1}{\widehat{M}} \Rightarrow f(x) \le M - \frac{1}{\widehat{M}} < M$. Получили противоречие, так как $M$ --- супремум.
     \end{enumerate}
 \end{proof}
 \begin{remark}
@@ -356,7 +358,7 @@
             [a_n, \frac{a_n+b_n}{2}] & \text{если}\ f(\frac{a_n + b_n}{2}) > 0
         \end{cases}
     .\] 
-    Тогда, если процесс не оборвался, получили $[a, b] = [a_0,b_0] \supset [a_1, b_1] \subset [a_2, b_2] \supset \ldots$. Стягивающиеся отрезки $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда найдется $c$, лежащая во всех отрезках, причем  $\lim a_n = \lim b_n = c$. Функция непрерывна в  $c \Rightarrow \lim \overbrace{f(a_n)}^{<0} = f(c) = \lim \overbrace{f(b_n)}^{>0} \Rightarrow 0 \ge \lim f(a_n) = f(c) \lim f(b_n) \ge 0 \Rightarrow f(c) = 0$.
+    Тогда, если процесс не оборвался, получили $[a, b] = [a_0,b_0] \supset [a_1, b_1] \subset [a_2, b_2] \supset \ldots$. Стягивающиеся отрезки $b_n - a_n = \frac{b-a}{2^n} \to 0$. Тогда найдется $c$, лежащая во всех отрезках, причем  $\lim a_n = \lim b_n = c$. Функция непрерывна в  $c \Rightarrow \lim \overbrace{f(a_n)}^{<0} = f(c) = \lim \overbrace{f(b_n)}^{>0} \Rightarrow 0 \ge \lim f(a_n) = f(c) \land \lim f(b_n) \ge 0 \Rightarrow f(c) = 0$.
 \item $g(x) \coloneqq f(x) - y$. Тогда $g(a)$ и $g(b)$ разных знаков  $\Rightarrow \exists c \in [a, b]\!:f(c) - y = g(c) = 0$
         \end{enumerate}
 \end{proof}
@@ -385,8 +387,9 @@
 
     Возьмем  $y \in (m, M)$, такой что  $m < y < M$.  
 
-    $m = \inf \Rightarrow$ $y$ ---  не нижняя граница $Rightarrow \exists p \in \langle a, b \rangle\!: f(p) < y$. 
-    $M = \sup \Rightarrow$ $y$ ---  не верхняя граница $Rightarrow \exists p \in \langle a, b \rangle\!: f(q) > y$.
+    $m = \inf \Rightarrow$ $y$ ---  не нижняя граница $\Rightarrow \exists p \in \langle a, b \rangle\!: f(p) < y$. 
+
+    $M = \sup \Rightarrow$ $y$ ---  не верхняя граница $\Rightarrow \exists p \in \langle a, b \rangle\!: f(q) > y$.
 
     Применим теорему Больцано-Коши для отрезка с концами $p$ и  $q \Rightarrow \exists c \in (p, q) \subset \langle a, b \rangle\!: f(c)=y$. 
 
@@ -401,7 +404,7 @@
 \end{remark}
 
 \begin{definition}
-    Пусть $f\!: \langle a, b \langle \to \R$ и инъективна. Тогда  $g$ --- обратная к  $f$  $\iff g\!: f(\langle a, b\rangle) \to \langle a, b \rangle \land$ и  $f(g(y)) = y \land g(f(x)) = x$.
+    Пусть $f\!: \langle a, b \rangle \to \R$ и инъективна. Тогда  $g$ --- обратная к  $f$  $\iff g\!: f(\langle a, b\rangle) \to \langle a, b \rangle $ и  $f(g(y)) = y \land g(f(x)) = x$.
 
     $g$ обозначатся как  $f^{-1}$.
 \end{definition}
@@ -479,7 +482,7 @@
 
     При  $x > 0$:  $\underbrace{\frac{1}{1 + x}}_{\to 1} \le \frac{\ln(1+x)}{x} \le 1$.
 
-    При $x < 0$:  $1 \le \frac{\ln(1+x)}{x} \le 1 + \frac{1}{1+x} \to 1$
+    При $x < 0$:  $1 \le \frac{\ln(1+x)}{x} \le \frac{1}{1+x} \to 1$
 \end{proof}
 
 \begin{definition}
@@ -553,19 +556,19 @@ $a^{\frac{m}{n}} = (\sqrt[n]{a})^m$. $\exp(\frac{m}{n} \ln a) = \exp(m \frac{\ln
 \end{theorem}
 \begin{proof}
     \begin{align*}
-        (1+x)^p &= \exp(p \ln(1=x))  \ge 1 + p \ln(1+x) \\
+        (1+x)^p &= \exp(p \ln(1+x))  \ge 1 + p \ln(1+x) \\
         (1+x)^p &= \frac{1}{(1+x)^{-p}} \le \frac{1}{1 - p \ln (1+x)}, \text{при}\ x\ \text{близких к нулю}\\
-        p \ln (1+x) &= (1+x)^p - 1 = \le \frac{1}{1-p\ln(1+x)} - 1 = \frac{p\ln(1+x)}{1 - p \ln(1+x)}
+        p \ln (1+x) &= (1+x)^p - 1 \le \frac{1}{1-p\ln(1+x)} - 1 = \frac{p\ln(1+x)}{1 - p \ln(1+x)}
     \end{align*}
-    Тогда $\frac{(1+x)^p - 1}{x}$ зажато между $p \cdot \ln\frac{1+x}{x} \xrightarrow{\text{зам. предел}}$ и $p \cdot \frac{\ln(1+x)}{x} \cdot \frac{1}{1 - p \ln (1+x)} \xrightarrow [\text{непрерывность}]{\text{зам. предел}} p$. Дальше два милиционера.
+    Тогда $\frac{(1+x)^p - 1}{x}$ зажато между $p \cdot \frac{\ln(1+x)}{x} \xrightarrow{\text{зам. предел}}p$ и $p \cdot \frac{\ln(1+x)}{x} \cdot \frac{1}{1 - p \ln (1+x)} \xrightarrow [\text{непрерывность}]{\text{зам. предел}} p$. Дальше два милиционера.
 \end{proof}
 
 \Subsection{Сравнение функций}
 \begin{definition}
-    $f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\exists \varphi\!:E \to \R\!: f = \varphi g$, при $x \in \dot{U_{x_0}} \cap E$ и 
+$f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\exists \varphi\!:E \to \R\!: f = \varphi g$, при $x \in \dot{U}_{x_0} \cap E$ и 
      \begin{enumerate}
          \item $\varphi$ --- ограниченная:  $f = \mathcal{O}(g)$. $|f(x)| \le C|g(x)|$ в окрестности $x_0$.
-         \item  $\varphi(x) \xrightarrow{x \to x_0)} 0$:  $f = o(g)$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 0$
+         \item  $\varphi(x) \xrightarrow{x \to x_0} 0$:  $f = o(g)$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 0$
          \item  $\varphi(x) \xrightarrow{x \to x_0} 1$:  $f \sim g$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 1$
     \end{enumerate}
 \end{definition}
