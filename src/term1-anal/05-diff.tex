@@ -167,7 +167,7 @@
     У $f(x) = x$ на отрезке  $[0, 1]$ максимум в 1, минимум в 0, но производная на концах 1.
 \end{example}
 \begin{theorem}[Теорема Ролля]
-    $f\!: [a, b] \to \R$ непрерывна во всех точках и дифференцируема на $(a, b)$. Если  $f(a) = f(b)$, то $\exists\!: c \in (a, b f'(c) = 0$ 
+    $f\!: [a, b] \to \R$ непрерывна во всех точках и дифференцируема на $(a, b)$. Если  $f(a) = f(b)$, то $\exists\!: c \in (a, b), f'(c) = 0$ 
 \end{theorem}
 \begin{proof}
     $f$ непрерывна  на $[a, b] \xRightarrow[\text{Вейерштрасса}]{\text{теорема}} f$ достигает наибольшего и наименьшего значения. 
@@ -187,7 +187,7 @@
 \begin{proof}
     $g(x) = f(x) - kx$. Подберем  $k$ так, что  $g(a) = g(b)$.  $f(a) - ka = g(a) = g(b) = f(b) - kb \Rightarrow k = \frac{f(b) - f(a)}{b - a}$.
 
-    Применим теорему Ролля к функции $g(x)$. $\exists c \in (a, b)\!: g'(c) = 0 \iff 0 = g'(c) = f'(c) = f'(c) - \frac{f(b) - f(a)}{b - a}$ и умножим на $b-a$.
+    Применим теорему Ролля к функции $g(x)$. $\exists c \in (a, b)\!: g'(c) = 0 \iff 0 = g'(c) = f'(c) - \frac{f(b) - f(a)}{b - a}$ и умножим на $b-a$.
 \end{proof}
 \begin{remark}
     $\frac{f(b) - f(a)}{b - a}$ --- угловой коэффициент секущей, $f'(c)$ --- угловой коэффициент касательной в точке  $c$. В некоторой точке касательная параллельная секущей. 
@@ -198,15 +198,15 @@
 \begin{proof}
     $h(x) \coloneqq f(x) - kg(x)$. Подберем $k$ так, что  $h(a) = h(b)$.
 
-    $f(a) - kg(a) = h(a) = h()b = f(b) - kg(b) \Rightarrow k = \frac{f(b) - f(a)}{g(b) - g(a)}$ (по Роллю у нас $g'(x) \neq 0$, а значит в концах значения точно не равны).
+    $f(a) - kg(a) = h(a) = h(b) = f(b) - kg(b) \Rightarrow k = \frac{f(b) - f(a)}{g(b) - g(a)}$ (по Роллю у нас $g'(x) \neq 0$, а значит в концах значения точно не равны).
 
     по т. Ролля для $h$ найдем  $c \in (a, b)\!: h'(c) = 0$. Тогда  $h'(c) = f'(c) - kg'(c) \Rightarrow k = \frac{f'(c)}{g'(c)}$.
 \end{proof}
 \begin{remark}
-    Геометрический смысл. $g(t), f(t))$ координаты точки в момент времени  $t$. Тогда  $k$ --- угловой коэффициент секущей. $(f'(t), g'(t))$ --- вектор скорости в момент времени  $t$. Тогда $\frac{f'(t)}{g'(t)}$ --- угловой коэффициент касательной. 
+    Геометрический смысл. $(g(t), f(t))$ координаты точки в момент времени  $t$. Тогда  $k$ --- угловой коэффициент секущей. $(f'(t), g'(t))$ --- вектор скорости в момент времени  $t$. Тогда $\frac{f'(t)}{g'(t)}$ --- угловой коэффициент касательной. 
 \end{remark}
 \begin{definition}
-    $f\!:E\to \R$ --- липшивеца функция с константной $M$, если  $\forall x, y \in E\!: |f(x) - f(y)| \le M|x-y|$.
+    $f\!:E\to \R$ --- липшицева функция с константной $M$, если  $\forall x, y \in E\!: |f(x) - f(y)| \le M|x-y|$.
 \end{definition}
 \begin{consequence}[Следствия теоремы Лагранжа]
     \slashn
@@ -227,7 +227,7 @@
         \item $[x, y] \subset \langle a, b \rangle$. Применим теорему Лагранжа к  $[x, y]$. Тогда  $\exists c \in (x, y) \subset (a, b)\!: f(y)-f(x) = f'(c)(y-x) \Rightarrow |f(y) - f(x)| = |f'(c)| \cdot |y-x| \le M|y-x|$ 
         \item Аналогично: $f(y)-f(x) = f'(c)(y - x) = 0$,  $y - x \neq 0$. 
         \item Напишем Лагранжа для $[x, y] \subset \langle a, b \rangle, (x, y) \subset (a, b)$. 
-            Тогда  $\exists c \in (a, b)\!: f(y) - f(x) = f'(c)(y-c)$, что  $>0 \iff f(y) >f(x).$
+            Тогда  $\exists c \in (a, b)\!: f(y) - f(x) = f'(c)(y-x)$, что  $>0 \iff f(y) >f(x).$
         \item Аналогично.
         \item Аналогично.
         \item Аналогично.
@@ -243,7 +243,7 @@
 
     Пусть $f(b) = \min$. Тогда  $f'(b) = f_-'(b) = \lim_{x \to b-} \frac{f(x) - f(b)}{x - b}$. Заметим, что  числитель  $\ge 0$, а знаменатель $<0$. Противоречие.
     
-    Следовательно,  $c \in (a, b)$. Тогда по теореме Ферма  $f'(c) = 0$. Общий случай  $g(x) \coloneqq f(x) - C(x)$.  $g'(x) = f'(x) - C \Rightarrow g'(a)$ и  $g'(b)$ разных знаков, следовательно  $\exists c \in (a, b)\!: g'(c) f'(c) - C = 0 \Rightarrow f'(c) = C$.
+    Следовательно,  $c \in (a, b)$. Тогда по теореме Ферма  $f'(c) = 0$. Общий случай  $g(x) \coloneqq f(x) - Cx$.  $g'(x) = f'(x) - C \Rightarrow g'(a)$ и  $g'(b)$ разных знаков, следовательно  $\exists c \in (a, b)\!: g'(c) = f'(c) - C = 0 \Rightarrow f'(c) = C$.
 \end{proof}
 \begin{consequence}
     $f\!: \langle a, b \rangle \to \R$, дифференцируема на  $\langle a, b \rangle, f'(x) \neq 0\ \forall x \in \langle a, b \rangle $. Тогда  $f$ строго монотонна.
@@ -252,7 +252,7 @@
     Очев. 
 \end{proof}
 \begin{theorem}[Правило Лопиталя]
-    $-\infty \le a < b \le +\infty$, $f,g$ дифференцируемы на  $(a, b)$.  $g'(x) \neq 0\ \forall x \in (a, b)$ и $\lim_{x \to a+} f(x) = \lim_{x \to a+} = 0$. 
+    $-\infty \le a < b \le +\infty$, $f,g$ дифференцируемы на  $(a, b)$.  $g'(x) \neq 0\ \forall x \in (a, b)$ и $\lim_{x \to a+} f(x) = \lim_{x \to a+} g(x) = 0$. 
 
     $\lim_{x \to a+} \frac{f'(x)}{g'(x)} = l \in \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$. 
 \end{theorem}
@@ -263,14 +263,14 @@
     $-\infty \le a < b \le +\infty$. $f, g$ дифференцируемы на  $(a, b)$.  $\forall x\in (a, b)\!: g'(x) \neq 0, \lim_{x \to a+}g(x) = +\infty$.  $\lim_{x \to a+} \frac{f'(x)}{g'(x)} =l \to \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$
 \end{theorem}
 \begin{example}
-    $\lim_{x \to +\infty} \frac{\ln x}{x^P} = 0$ при $p > 0$.
+    $\lim_{x \to +\infty} \frac{\ln x}{x^p} = 0$ при $p > 0$.
 
-    Подставляем в Лопиталя  $f(x) = \ln x, g(x) = x^p$,  $f'(x) = \frac{1}{x}$, $g'(x) = px^{p - 1}$.  $\lim_{x \to +infty}\frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{\frac{1}{x}}{px^{p-1}} = \lim_{x \to +\infty} \frac{1}{p} \frac{1}{x^p} = 0$
+    Подставляем в Лопиталя  $f(x) = \ln x, g(x) = x^p$,  $f'(x) = \frac{1}{x}$, $g'(x) = px^{p - 1}$.  $\lim_{x \to + \infty}\frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{\frac{1}{x}}{px^{p-1}} = \lim_{x \to +\infty} \frac{1}{p} \frac{1}{x^p} = 0$
 \end{example}
 \begin{example}
-    $\lim_{x \to +infty} \frac{x^p}{a^x} = a^x$. $f'(x) = px^{-1}, g'(x) = a^x \ln a$.
+    $\lim_{x \to +\infty} \frac{x^p}{a^x} = a^x$. $f'(x) = px^{-1}, g'(x) = a^x \ln a$.
 
-    $\lim_{x \to +\infty} \frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{px^{p-1}}{a^x \ln a} =  \frac{p}{\ln a} \lim_{x \to +infty} \frac{x^{p-1}}{a^x} = 0$, при $p \le 1$.
+    $\lim_{x \to +\infty} \frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{px^{p-1}}{a^x \ln a} =  \frac{p}{\ln a} \lim_{x \to +\infty} \frac{x^{p-1}}{a^x} = 0$, при $p \le 1$.
 \end{example}
 \begin{example}
     $\lim_{x \to 0+} x^x = \lim_{x \to 0+} e^{x \ln x} = e^{\lim_{x \to 0+} x \ln x} = e^0 = 1$.
