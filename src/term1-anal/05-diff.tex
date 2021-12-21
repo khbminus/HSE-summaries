@@ -2,10 +2,10 @@
 \begin{definition}
     $f\!:\langle a, b \rangle \to \R \land x_0 \in \langle a, b \rangle$.
 
-    $f$ --- дифференцируема в точке  $x_0$, если существует такое  $k \in \R\!: f(x) = f(x_0) + k(x-x_0) + o(x-x_0)$ при $x \to x_0$. Можно думать, что $\alpha(x) = o(x-x_0)$, где $\alpha\frac{x}{x - x_0} \xrightarrow{x \to x_0} 0$.
+    $f$ --- дифференцируема в точке  $x_0$, если существует такое  $k \in \R\!: f(x) = f(x_0) + k(x-x_0) + o(x-x_0)$ при $x \to x_0$. Можно думать, что $\alpha(x) = o(x-x_0)$, где $\frac{\alpha(x)}{x - x_0} \xrightarrow{x \to x_0} 0$.
 \end{definition}
 \begin{definition}
-    Производная функции $f$ в точке  $x_0$ ---  $\lim_{x \to x_0} = \frac{f(x) - f(x_0)}{x - x_0} = \lim_{h \to 0} \frac{f(x_0+h) - f(x_0)}{h} \eqqcolon f'(x)$.
+    Производная функции $f$ в точке  $x_0$ ---  $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{h \to 0} \frac{f(x_0+h) - f(x_0)}{h} \eqqcolon f'(x)$.
 \end{definition}
 
 \begin{theorem}[Критерий дифференцируемости]
@@ -21,7 +21,7 @@
     \begin{itemize}
         \item $1. \Rightarrow 2. f(x) = f(x_0) + k(x - x_0) + o(x - x_0) \Rightarrow \frac{f(x) - f(x_0)}{x - x_0} = \frac{k(x - x_0) + o(x - x_0)}{x-x_0} = k + o(1) \Rightarrow \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x-x_0} = k \Rightarrow f'(x_0) = k$ 
         \item $2. \Rightarrow 3.$  $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x-x_0} = f'(x_0) \in \R$. $\varphi(x) = \begin{cases} \frac{f(x) - f(x_0)}{x - x_0} & x \neq x_0 \\ f'(x_0) & x = x_0 \end{cases} \Rightarrow \varphi$ --- непрерывна в $x_0$. 
-        \item  $3. \Rightarrow 1.$ $f(x) - f(x_0) = \varphi(x)(x - x_0)$, причем $\lim_{x \to x_0} \varphi(x) = \varphi(x_0) \Rightarrow f(x) = f(x_0) + \varphi(x_0)(x - x_0) + (\varphi(x) - \varphi(x_0))???$
+	\item  $3. \Rightarrow 1.$ $f(x) - f(x_0) = \varphi(x)(x - x_0)$, причем $\lim_{x \to x_0} \varphi(x) = \varphi(x_0) \Rightarrow f(x) = f(x_0) + \varphi(x_0)(x - x_0) + (\varphi(x) - \varphi(x_0))(x - x_0)$, где последний член есть $o(x - x_0)$ при $x \to x_0$.
     \end{itemize}
 \end{proof}
 \begin{definition}
@@ -31,8 +31,9 @@
     $f(x) = \sqrt[3]{x}$.  $f'(0) = \lim_{h\to 0} \frac{f(h) - f(0)}{h - 0} = \lim_{h \to 0} \frac{\sqrt[3]{h}}{h} = \lim_{h \to 0} \frac{1}{\sqrt[3]{h^2}} = +\infty$
 \end{example}
 \begin{definition}
-    $f_+' \coloneqq = \lim_{x\to x_0+} \frac{f(x)-f(x_0)}{x-x_0}$
-    $f_-' \coloneqq = \lim_{x\to x_0-} \frac{f(x)-f(x_0)}{x-x_0}$
+    $f_+' \coloneqq \lim_{x\to x_0+} \frac{f(x)-f(x_0)}{x-x_0}$
+
+    $f_-' \coloneqq \lim_{x\to x_0-} \frac{f(x)-f(x_0)}{x-x_0}$
 \end{definition}
 \begin{remark}
     Существование  $f'(x_0) \iff$ существование $f_{\pm}'(x_0)$ и их равенство.
@@ -49,8 +50,10 @@
     $y = f(u) + \frac{f(v) - f(u)}{v - u}(x - u)$. $f'(u) = \lim_{v \to u}\frac{f(v) - f(u)}{v - u}$. То есть $y = f(u) + f'(u)(x-u)$.
 \end{example}
 
+Геометрический смысл $f'(x_0)$ --- угловой коэффициент к графику функции в точке $(x_0, f(x_0))$
+
 \begin{definition}
-    Дифференциал функции $f(x_0+h) = f(x_0) + k \cdot h + o(h)$ при  $h \to 0$.  $f(x_0)$ --- константа, $k \cdot h$ --- что-то линейное.
+	Дифференциал функции ($d_{x_0}f$) $f(x_0+h) = f(x_0) + k \cdot h + o(h)$ при  $h \to 0$.  $f(x_0)$ --- константа, $k \cdot h$ --- что-то линейное.
     
     Дифференциал функции ---  линейное отображение $k \cdot$.
 \end{definition}
@@ -62,7 +65,7 @@
 \end{proof}
 
 \begin{theorem}[Арифметические действия с дифференцируемыми функциями]
-    $f, gg\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle, f, g$ --- дифференцируемые в  $x_0$. Тогда:
+    $f, g\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle, f, g$ --- дифференцируемые в  $x_0$. Тогда:
      \begin{enumerate}
          \item $f \pm g$ дифференцируема в  $x_0$ и $(f \pm g)' = f' \pm g'$
          \item $f \cdot g$ дифференцируема в  $x_0$ и $(f \cdot g)' = f'g + fg'$
@@ -74,7 +77,7 @@
         \slashn
         \begin{enumerate}
             \item $(f+g)'(x_0) = \lim_{x \to x_0} \frac{(f(x) + g(x)) - (f(x_0) + g(x_0))}{x - x_0} = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0} \frac{g(x) - g(x_0)}{x - x_0} = f'(x_0) + g'(x_0)$ 
-            \item $(fg)'(x_0) = \lim_{x \to x_0} \frac{f(x)g(x) - f(x_0)g(x_0)}{x - x_0} = \lim_{x \to x_0} = \frac{f(x)g(x) - f(x)g(x_0) + f(x)g(x_0)-f(x_0)g(x_0)} = \lim_{x \to x_0} f(x) \frac{g(x) - g(x_0)}{x - x_0} + \lim_{x \to x_0} g(x) \frac{f(x) - f(x_0)}{x - x_0} = fg' + f'g$
+	    \item $(fg)'(x_0) = \lim_{x \to x_0} \frac{f(x)g(x) - f(x_0)g(x_0)}{x - x_0} = \lim_{x \to x_0} \frac{f(x)g(x) - f(x)g(x_0) + f(x)g(x_0)-f(x_0)g(x_0)}{x - x_0} = \lim_{x \to x_0} f(x) \frac{g(x) - g(x_0)}{x - x_0} + \lim_{x \to x_0} g(x) \frac{f(x) - f(x_0)}{x - x_0} = fg' + f'g$
             \item $(cf)' = cf' + c'f = cf'$
             \item  $(\alpha f + \beta g)' = (\alpha f)' + (\beta g)' = \alpha f' + \beta g'$
             \item $\left(\frac{f}{g}\right)' = (f' \cdot \frac{1}{g}) + f \cdot (\frac{1}{g})'$.
@@ -85,7 +88,7 @@
 \end{theorem}
 
 \begin{theorem}[Дифференцируемость композиции]
-    Пусть $f\!: \langle a, b \rangle \to \R,\ g\!:\langle c, d \rangle \to \langle a, g \rangle$,  $x_0 \in \langle c, d \rangle$, $g$ дифференцируема в точке  $x_0$, $f$ дифференцируема в точке $g(x_0)$. 
+    Пусть $f\!: \langle a, b \rangle \to \R,\ g\!:\langle c, d \rangle \to \langle a, b \rangle$,  $x_0 \in \langle c, d \rangle$, $g$ дифференцируема в точке  $x_0$, $f$ дифференцируема в точке $g(x_0)$. 
 
     Тогда $f\circ g$ дифференцируема в точке $x_0$, и $(f \circ g)'(x_0) = f'(g(x_0))g'(x_0)$. 
 \end{theorem}
@@ -95,7 +98,7 @@
     Поставим $y=g(x)$, получим $f(g(x)) - f(g(x_0)) = \varphi(g(x))(g(x) - g(x_0) = \underbrace{\varphi(g(x))}_{\mathclap{\text{непрерывна в точке } x_0 \text{ как композиция}}}\psi(x)(x-x_0) \Rightarrow f \circ g$ дифференцируема в точке $x_0$ и $(f\circ g)'(x_0) = \varphi(g(x_0))\psi(x_0) = f'(g(x_0)) g'(x_0)$
 \end{proof}
 \begin{theorem}[дифференцируемость обратной функции]
-    Пусть $f\!:\langle a, b \rangle \to \R$, строго монотонная, непрерывна, $x_0 \in \langle a, b \rangle$, f дифференцируема в точке $x_0$ и $f'(x_0) \neq 0$.
+    Пусть $f\!:\langle a, b \rangle \to \R$, строго монотонна, непрерывна, $x_0 \in \langle a, b \rangle$, $f$ дифференцируема в точке $x_0$ и $f'(x_0) \neq 0$.
 
     Тогда $f^{-1}$ дифференцируема в точке $y_0 = f(x_0)$ и $(f^{-1})' = \frac{1}{f'(x_0)}$.
 \end{theorem}
@@ -105,10 +108,10 @@
 
     $\varphi(f^{-1}(y))$ непрерывна в точке $y_0$ как композиция непрерывных и $\varphi(f^{-1}(y_0)) = \varphi(x_0) = f'(x_0) \neq 0$. Тогда $\varphi(x) \neq 0$ в окрестности  $x_0$ и  $f^{-1}(y) - f^{-1}(y_0) = \frac{1}{\varphi(f^{-1}(y))}(y - y_0)$ 
 
-    $f^{-1}(y_0) = \frac{1}{\varphi(f^{-1}(y_0))} = \frac{1}{\varphi(x_0)} = \frac{1}{f'(x_0)}$
+    $(f^{-1})'(y_0) = \frac{1}{\varphi(f^{-1}(y_0))} = \frac{1}{\varphi(x_0)} = \frac{1}{f'(x_0)}$
 \end{proof}
 \begin{consequence}
-    $f^{-1}(y) = \frac{1}{f'(f^{-1}(y))}$
+	$(f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))}$
 \end{consequence}
 \slashn
 \Subsection{Таблица производных}
@@ -120,18 +123,18 @@
         $(e^x)' = e^x$
     \item  $(\log_a x)' = \frac{1}{x \ln a}, a > 0, a \neq 1$ 
 
-        $(ln x)' = \frac{1}{x}$ 
+        $(\ln x)' = \frac{1}{x}$ 
     \item $(\sin x)' = \cos x$
     \item  $(\cos x)' = -\sin x$
     \item  $(\tg x)' = \frac{1}{\cos^2 x}$
     \item $(\ctg x)' = -\frac{1}{\sin^2 x}$
     \item $(\arcsin x)' = \frac{1}{\sqrt{1-x^2}}$ 
-    \item $(\arcsin x)' = -\frac{1}{\sqrt{1-x^2}}$ 
+    \item $(\arccos x)' = -\frac{1}{\sqrt{1-x^2}}$ 
     \item $(\arctg x)' = \frac{1}{1 + x^2}$ 
     \item $(\arcctg x)' = -\frac{1}{1+x^2}$
 \end{enumerate}
 \begin{proof}
-    \begin{itemize}
+    \begin{enumerate}
         \item Очевидно.
         \item $(x^p)' = \lim_{h \to 0} \frac{(x + h)^p - x^p}{h} = x^p \lim_{h \to 0} \frac{(1 + \frac{h}{x})^p - 1}{\frac{h}{x}} \frac{1}{x} = x^p \frac{p}{x} = px^{p - 1}$.
         \item $(a^x)' = \lim_{h \to 0} \frac{a^{x+h} - a^x}{h} = a^x \lim_{h \to 0} \frac{a^h - 1}{h} = a^x \ln a$
@@ -145,7 +148,7 @@
         \item $f(x) = \tg x$,  $\arctg\!: \R \to (-\frac{\pi}{2}; \frac{pi}{2})$.
 
             $(\arctg)'(y) = (f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))} = \frac{1}{f'(\arctg y)} = \frac{1}{\frac{1}{\cos^2(\arctg y)}} = \cos^2(\arctg y) = \frac{1}{1+\tg^2(\arctg y)} = \frac{1}{1+y^2}$, так как  $\frac{1}{\cos^2 x} = 1 + \tg^2 \Rightarrow \cos^2 x = \frac{1}{1 + \tg^2 x}$
-    \end{itemize}
+    \end{enumerate}
 \end{proof}
 \Subsection{Теоремы о среднем}
 \begin{theorem}[Теорема Ферма]
