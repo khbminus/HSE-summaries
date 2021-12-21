@@ -534,18 +534,20 @@
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    $f(x) = f(x_0) + \underbrace{\sum_{k=1}^{n-1} \frac{f^{(n)}(x_0)}{k!}(x-x_0)^k}_{=0} + \frac{f^{(n)}(x_0)}{n!} + o((x-x_0)^n)$
+    $f(x) = f(x_0) + \underbrace{\sum_{k=1}^{n-1} \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k}_{=0} + \frac{f^{(n)}(x_0)}{n!} + o((x-x_0)^n)$
 
     Тогда $f(x) - f(x_0) = (x-x_0)^n(\frac{f^{(n)}(x_0)}{n!} + o(1))$.
 
     Тогда в 1: $(x-x_0)^n > 0$  при $x \neq x_0$.  $\frac{f^{(n)}(x_0)}{n!} > 0 \implies$ по теореме о стабилизации знака скобка $(\ldots) > 0$ при $x$ близких к  $x_0 \Rightarrow x_0$ --- строгий минимум (разность $f(x) - f(x_0) > 0$).
 
-    В 3: наоборот стабилизация знака.
+    В 2 аналогично получим строгий максимум, поскольку правая скобка будет $< 0$.
+
+    В 3 $(x-x_0)^n$ меняет знак при прохождении $x_0$, поэтому с одной стороны разность будет одного знака, а с другой --- другого, поэтому не экстремум.
 \end{proof}
 
 \Subsection{Выпуклые функции}
 \begin{definition}
-    $f\!:\langle a, b \rangle \to \R$.  $f$ --- выпуклая, если  $\forall x, y \in \langle a, \rangle \forall \lambda \in (0, 1)\!: f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$. 
+    $f\!:\langle a, b \rangle \to \R$.  $f$ --- выпуклая, если  $\forall x, y \in \langle a, b \rangle \forall \lambda \in (0, 1)\!: f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$. 
 
     Понятно, что такое строго выпуклая, вогнутая (выпуклая вниз), строго вогнутая.
 \end{definition}
@@ -588,21 +590,21 @@
 \begin{proof}
     Докажем первое неравенство: $\frac{f(v) - f(u)}{v - u} \le \frac{f(w) - f(u)}{w - u} \iff (w - u)(f(v)-f(u)) \le (v - u)(f(w)-f(u)) \iff (w-u)f(v) \le \underbrace{((w - u) - (v - u))}_{=w-v}f(u) +(v-u)f(w)$.
 
-    Второе/третье аналогично.
+    Второе  аналогично, третье тоже можно аналогично, но, кажется, транзитивность всё ещё существует.
 \end{proof}
 \begin{theorem}
-    $f\!: \langle a, b \rangle \to \R$ выпуклая. Тогда  $\forall x \in (a, b)$ существуют конченые  $f_{\pm}'(x)$ и  $f'_-(x) \le f'_+(x)$
+    $f\!: \langle a, b \rangle \to \R$ выпуклая. Тогда  $\forall x \in (a, b)$ существуют конечные  $f_{\pm}'(x)$, а ещё $f'_-(x) \le f'_+(x)$
 \end{theorem}
 \begin{proof}
     Возьмем три точки $x < v < w$. $\frac{f(v) - f(x)}{v-x}$ возрастает по $v$.  $\frac{f(w) - f(x)}{w-x} \ge \frac{f(v) - f(x)}{v-x}$ из леммы о трех хордах. Значит дробь $\frac{f(v) - f(x)}{v - x}$ возрастает по $v$ и ограничена снизу  $\implies$ существует конечный  $\lim_{v \to x+} \frac{f(v)-f(x)}{v-x} \ge \frac{f(u) - f(x)}{u - x}$. 
 
-    $\frac{f(u)-f(x)}{u-x}$ возрастает по $u$ и ограничена сверху  $f'_+(x) \implies f'_-(x) \ lim_{u \to x-} \frac{f(u)-f(x)}{u-x} \le f'_+(x)$
+    $\frac{f(u)-f(x)}{u-x}$ возрастает по $u$ и ограничена сверху  $f'_+(x) \implies f'_-(x) = \lim_{u \to x-} \frac{f(u)-f(x)}{u-x} \le f'_+(x)$
 \end{proof}
 \begin{consequence}
-    $f\!:\langle a, b \rangle \to \R$ выпуклая  $\implies$  $f$ непрерывна  $(a, b)$
+    $f\!:\langle a, b \rangle \to \R$ выпуклая  $\implies$  $f$ непрерывна на $(a, b)$
 \end{consequence}
 \begin{proof}
-    существует конечная $f'_+(x) \Rightarrow f$ непрерывна в точке  $x$ справа +  $\exists f'_-(x) \implies f$ непрерывна в  $x$ слева  $\implies$  $f$ непрерывна в  $x \in (a,b)$.
+    Существует конечная $f'_+(x) \Rightarrow f$ непрерывна в точке  $x$ справа +  $\exists f'_-(x) \implies f$ непрерывна в  $x$ слева  $\implies$  $f$ непрерывна в  $x \in (a,b)$.
 \end{proof}
 \begin{remark}
     Про концы ничего неизвестно.
@@ -629,7 +631,7 @@
 
             $\Leftarrow$  $u < v < w$  $\frac{f(v) - f(u)}{v-u} \le \frac{f(w) - f(v)}{w-v}$ по теореме Лагранжа левое равно $f'(\xi)$, правое ---  $f'(\eta)$. Поскольку  $f'$ возрастает, то все верно.
 
-        \item  $f$ --- выпуклая  $\iff$  $f'$ возрастает  $(f')' \ge 0$.
+        \item  $f$ --- выпуклая  $\iff$  $f'$ возрастает, т.е. $(f')' \ge 0$.
     \end{enumerate}
 \end{proof}
 \begin{example}
@@ -643,7 +645,7 @@
 \end{example}
 \begin{theorem}[Неравенство Йенсена]
     Пусть $f\!: \langle a, b \rangle \to \R$ выпуклая функция,  $x_1, x_2,\ldots, x_n \in \langle a, b \rangle$ и $\lambda_1, \lambda_2, \ldots, \lambda_n \ge 0$, причем их сумма равна $1$. Тогда: \[
-        f(\sum_{k=1}^n \lambda_k x_k) \le \sum_{k=1}^n f(x_k)
+        f(\sum_{k=1}^n \lambda_k x_k) \le \sum_{k=1}^n \lambda_k f(x_k)
     .\] 
     \textbf{Замечание}. Если $\lambda_k > 0$,  $x_k$ различны и  $f$ строго выпуклая, то знак строгий.
 \end{theorem}
@@ -654,8 +656,9 @@
 \lambda_1 + \lambda_2 + \ldots + \lambda_n = 1 - \lambda_{n+1} \Rightarrow \frac{\lambda_1}{1 - \lambda_{n+1}} + \ldots + \frac{\lambda_n}{1 - \lambda_{n+1}} = 1    
     .\]
     Тогда по предположению: \[
-        \sum_{k=1}^n \frac{\lambda_k}{1 - \lambda_{n+1}} \ge f(\sum_{k=1}^n \frac{\lambda_k x_k}{1 - \lambda_{n+1}}) = f(y)
+	    \sum_{k=1}^n \frac{\lambda_k}{1 - \lambda_{n+1}} f(x_k) \ge f(\sum_{k=1}^n \frac{\lambda_k x_k}{1 - \lambda_{n+1}}) = f(y)
     .\]
+    $y = \sum_{k=1}^n \frac{\lambda_k x_k}{1 - \lambda_{n+1}}$
     \begin{align*}
         \sum_{k=1}^{n} \lambda_kf(x_k) \ge (1-\lambda_{n+1})f(y) \implies \sum_{k=1}^{n+1} \lambda_k f(x_k) &\ge (1 - \lambda_{n+1})f(y) + \lambda_{n+1}f(x_{n+1}) \ge \\
                                                                                                             &\ge f(\lambda_{n+1} x_{n+1} + (1 - \lambda_{n+1})y) =\\
@@ -688,7 +691,7 @@
     Среднее квадратическое $M_2 \coloneqq \sqrt{\frac{x_1^2 + x_2^2 + \ldots + x_n^2}{n}}$
 \end{definition}
 \begin{definition}
-    Среднее гармоническое --- $M_{-1}$
+	Среднее гармоническое --- $M_{-1} = \frac{n}{\frac1{x_1} + \frac1{x_2} + \cdots + \frac1{x_n}}$
 \end{definition}
 \begin{definition}[Доопределение]
     $M_0$ --- среднее геометрическое,  $M_{+\infty}$ --- максимальное из чисел,  $M_{-\infty}$ --- минимальное из чисел. 
