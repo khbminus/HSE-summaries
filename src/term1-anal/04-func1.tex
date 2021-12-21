@@ -442,7 +442,7 @@
         \item  Пусть  $f$ строго возрастает  $\Rightarrow f(x) < f(y) \iff x < y$.  Тогда $x < y \Rightarrow f^{-1}(x) < f^{-1}(y)$.
         \item Непрерывность. Возьмем  $y_0 \in \langle m, M \rangle$. Докажем непрерывность в точке $y_0$.  $A \coloneqq \sup_{y < y_0} f^{-1}(y) = \lim_{y \to y_0-} f^{-1}(y)$ (функция строго монотонная) $\le f^{-1}(y_0) \le \lim_{y \to y_0+} f^{-1}(y) = \inf_{y > y_0} f^{-1}(y) \eqqcolon B$. Докажем, что $A = B$.
 
-            Пусть $A < B$. Рассмотрим множество значений  $f^{-1}$ : $(-\infty; A] \cup \{f^{-1}(y_0)\} \cup [B; +\infty) \supset f^{-1}(\langle m, M \rangle) = \langle a, b \rangle$. Противоречие. 
+		Пусть $A < B$. Рассмотрим множество значений  $f^{-1}$ : $(-\infty; A] \cup \{f^{-1}(y_0)\} \cup [B; +\infty) \supset f^{-1}(\langle m, M \rangle) = \langle a, b \rangle$. Противоречие (не сможем покрыть $\langle a, b \rangle$, если множество значений не будет единым промежутком, а с разрывами)
     \end{enumerate}
 \end{proof}
 
@@ -479,7 +479,7 @@
     \end{properties}
     \begin{proof}
         \begin{itemize}
-            \item Предел существует из монотонности, они такие, т.е. множество значений у $\ln$ ---  $\R$.
+            \item Предел существует из монотонности, они такие, т.к. множество значений у $\ln$ ---  $\R$.
             \item  $\exp(u+v) = \exp u \cdot \exp v$. Если  $\exp u = a, \exp v = b$, то  $u = \ln a, v = \ln b$, тогда  $\exp(u + v) = a \cdot b \Rightarrow \ln(ab) = u + v = \ln a + \ln b$
             \item  $\exp u \ge 1 + u \Rightarrow u = \ln(\exp u) \ge \ln(1+u)$
             \item $y \coloneqq \ln(1+x)$.  $\exp y = 1 + x \Rightarrow 1+x = \exp y \le \frac{1}{1 - y} \Rightarrow 1-y \le \frac{1}{1+x}$.
@@ -578,11 +578,11 @@ $a^{\frac{m}{n}} = (\sqrt[n]{a})^m$. $\exp(\frac{m}{n} \ln a) = \exp(m \frac{\ln
 
 \Subsection{Сравнение функций}
 \begin{definition}
-$f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\exists \varphi\!:E \to \R\!: f = \varphi g$, при $x \in \dot{U}_{x_0} \cap E$ и 
+	$f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\exists \varphi\!:E \to \R\!: f = \varphi g$, при $x \in \dot{U}_{x_0} \cap E$ и (тут три разных случая):
      \begin{enumerate}
-         \item $\varphi$ --- ограниченная:  $f = \mathcal{O}(g)$. $|f(x)| \le C|g(x)|$ в окрестности $x_0$.
-         \item  $\varphi(x) \xrightarrow{x \to x_0} 0$:  $f = o(g)$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 0$
-         \item  $\varphi(x) \xrightarrow{x \to x_0} 1$:  $f \sim g$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 1$
+         \item Если $\varphi$ --- ограниченная:  $f = \mathcal{O}(g)$. $|f(x)| \le C|g(x)|$ в окрестности $x_0$.
+         \item  Если $\varphi(x) \xrightarrow{x \to x_0} 0$:  $f = o(g)$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 0$
+         \item  Если $\varphi(x) \xrightarrow{x \to x_0} 1$:  $f \sim g$. $\lim_{x \to x_0} \frac{f(x)}{g(x)} = 1$
     \end{enumerate}
 \end{definition}
 \begin{definition}
@@ -598,7 +598,7 @@ $f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\
     \begin{enumerate}
         \item $\sim$ --- отношение эквивалентности.
         \item  $f_1 \sim g_1 \land f_2 \sim g_2 \Rightarrow f_1f_2 \sim g_1g_2$.
-        \item $f_2$ и  $g_2$ не обращаются в ноль в  $\dot{U_{x_0}} \Rightarrow f_1 \sim g_1 \land f_2 \sim g_2 \Rightarrow \frac{f_1}{f_2} \sim \frac{g_1}{g_2}$
+	\item $f_2$ и  $g_2$ не обращаются в ноль в  $\dot{U}_{x_0} \Rightarrow f_1 \sim g_1 \land f_2 \sim g_2 \Rightarrow \frac{f_1}{f_2} \sim \frac{g_1}{g_2}$
         \item $f \sim g \iff f = g + o(g) \iff f = g + o(f)$.
     \end{enumerate}
 \end{properties}
@@ -608,7 +608,7 @@ $f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\
 
             Симметричность $f \sim g \Rightarrow g \sim f \quad f \sim g \Rightarrow f = \varphi g \Rightarrow g = \frac{1}{\varphi} f$, где $\lim_{x \to x_0} \varphi(x) = 1 \Rightarrow \lim_{x \to x_0} \frac{1}{\varphi(x)} = 1$.
 
-            Транзитивность: $f \sim g \land g \sim h \Rightarrow f \sum h$.  $f = \varphi_1 g \land g = \varphi_2 h \Rightarrow = f \varphi_1 \varphi_2 h$. И еще пределы (очевидно).
+            Транзитивность: $f \sim g \land g \sim h \Rightarrow f \sim h$.  $f = \varphi_1 g \land g = \varphi_2 h \Rightarrow f = \varphi_1 \varphi_2 h$. И еще пределы (очевидно).
         \item $f_i \sim g_i \Rightarrow f_i = \varphi_i g_i$, и  $\lim_{x \to x_0}\varphi_i = 1$. Можно перемножить  $\varphi_i$, все будет ок.
         \item  $\frac{f_1}{f_2} = \frac{\varphi_1}{\varphi_2} \frac{g_1}{g_2}$.
         \item $f \sim g \iff f = \varphi g \iff f = g + (\varphi  - 1) g$. Так как  $\varphi \to 1 \Rightarrow \varphi - 1 \to 0$.
@@ -617,8 +617,7 @@ $f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\
 \begin{properties}
    \begin{enumerate}
        \setcounter{enumi}{5}
-   \item $f = o(g) \Rightarrow f = \mathcal{O}(g)$ в точке  $x_0$.
-   \item $f \sim g \Rightarrow f = \mathcal{O}(g)$ в точке $x_0$.
+   \item $f = o(g) \Rightarrow f = \mathcal{O}(g)$ в точке  $x_0$. $f \sim g \Rightarrow f = \mathcal{O}(g)$ в точке $x_0$. Что тут произошло --- непонятно.
    \item  $f \cdot o(g) = o(fg)$
    \item  $o(f) + o(f) = o(f)$ и  $\mathcal{O}(f) + \mathcal{O}(f) = \mathcal{O}(f)$.
    \item $\lim_{x\to x_0} f(x) = a \iff f(x) = a + o(1)$
@@ -630,7 +629,7 @@ $f, g\!: E \to \R$.  $x_0$ --- предельная точка  $E$. Если $\
     \item $f = o(g) \Rightarrow f = \varphi g$, где  $\lim_{x \to x_0} \varphi = 0.$
         Для $\sim\ \lim_{x \to x_0} \varphi = 1 \Rightarrow \varphi$ ограничена в окрестности.
     \item $h = f \cdot o(g) \iff h = f \varphi g$, где  $\lim_{x \to x_0} \varphi = 0 \iff h = \varphi f g \iff h = o(fg)$.
-    \item  $g = o(f), h = o(f) \Rightarrow g + h = o(f)$.  $g = \varphi f, h = \psi f$, Где  $\lim_{x \to x_0} \varphi = \lim_{x \to x_0} \psi = 0 \Rightarrow g+h = (\varphi + \psi)f$ и предел $=0$.f
+    \item  $g = o(f), h = o(f) \Rightarrow g + h = o(f)$.  $g = \varphi f, h = \psi f$, Где  $\lim_{x \to x_0} \varphi = \lim_{x \to x_0} \psi = 0 \Rightarrow g+h = (\varphi + \psi)f$ и предел $=0$.
 
         $g = \mathcal{O}(f) \Rightarrow |g| \le C|f| \land h = \mathcal{O}(f) \Rightarrow |h| \le C'|f| \Rightarrow |g+h| \le |g| + |h| \le (C + C') |F|$.
     \item $f(x) = a + o(1)$, где  $o(1)$ --- что-то, стремящееся к 0.  $\lim_{x \to x_0} (f(x) - a) = 0 \iff \lim_{x \to x_0} f(x) = a$
