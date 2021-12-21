@@ -139,9 +139,9 @@
         \item $(x^p)' = \lim_{h \to 0} \frac{(x + h)^p - x^p}{h} = x^p \lim_{h \to 0} \frac{(1 + \frac{h}{x})^p - 1}{\frac{h}{x}} \frac{1}{x} = x^p \frac{p}{x} = px^{p - 1}$.
         \item $(a^x)' = \lim_{h \to 0} \frac{a^{x+h} - a^x}{h} = a^x \lim_{h \to 0} \frac{a^h - 1}{h} = a^x \ln a$
         \item $\log_a x$ --- обратная к  $a^x$ функция  $f(x) = a^x$, тогда  $(\log_a y)' = \frac{1}{f'(f^{-1}(y))} = \frac{1}{a^{f^{-1}(y)} \ln a} = \frac{1}{y \ln a}$
-        \item $(\sin x)' = \lim_{h \to 0} \frac{\sin(x+h) - \sin x}{h} = \lim_{h \to 0} \frac{\sin x \cos h + \sin h \cos x - \sin x}{h} = \sin x \lim_{h\to 0} + \cos x \lim_{h \to 0} \frac{\sin h}{h} = \cos x \cdot 1 + \sin x \cdot 0$ 
+	\item $(\sin x)' = \lim_{h \to 0} \frac{\sin(x+h) - \sin x}{h} = \lim_{h \to 0} \frac{\sin x \cos h + \sin h \cos x - \sin x}{h} = \sin x \lim_{h\to 0}\frac{\cos h - 1}h + \cos x \lim_{h \to 0} \frac{\sin h}{h} = \cos x \cdot 1 + \sin x \cdot 0$ 
         \item Тоже самое.
-        \item $(\tg x)' = (\frac{\sin x}{\cos x})' = \frac{(\sin x)' \cos x - (\cos x)' \sin x}{\cos^2 x} = \frac{\cos x \cos x - (-\sin x) \sin x}{\cos ^ x} = \frac{1}{\cos^2 x}$
+        \item $(\tg x)' = (\frac{\sin x}{\cos x})' = \frac{(\sin x)' \cos x - (\cos x)' \sin x}{\cos^2 x} = \frac{\cos x \cos x - (-\sin x) \sin x}{\cos ^2 x} = \frac{1}{\cos^2 x}$
         \item Тоже самое.
         \item $f(x) = \sin x$.  $\arcsin' (y) = (f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))} = \frac{1}{f'(\arcsin y)} = \frac{1}{\cos(\arcsin y)} = \frac{1}{\sqrt{1 - \sin^2(\arcsin y)}} = \frac{1}{\sqrt{1 - y^2}}$.
         \item $\arccos x = \frac{\pi}{2} - \arcsin x$.
@@ -164,10 +164,10 @@
     Значит, что $f'(x_0) \le 0$ и $f'(x_0) \ge 0 \Rightarrow f'(x_0) = 0$. 
 \end{proof}
 \begin{example}
-    У $f(x) = x$ на отрезке  $[0, 1]$ максимум в 1, минимум в 0, но производная на концах 1.
+    У $f(x) = x$ на отрезке  $[0, 1]$ максимум в 1, минимум в 0, но производная на концах 1. Поэтому важно, чтобы $x_0$ принадлежало интервалу.
 \end{example}
 \begin{theorem}[Теорема Ролля]
-    $f\!: [a, b] \to \R$ непрерывна во всех точках и дифференцируема на $(a, b)$. Если  $f(a) = f(b)$, то $\exists\!: c \in (a, b), f'(c) = 0$ 
+	$f\!: [a, b] \to \R$ непрерывна во всех точках и дифференцируема на $(a, b)$. Если  $f(a) = f(b)$, то $\exists\, c \in (a, b): f'(c) = 0$ 
 \end{theorem}
 \begin{proof}
     $f$ непрерывна  на $[a, b] \xRightarrow[\text{Вейерштрасса}]{\text{теорема}} f$ достигает наибольшего и наименьшего значения. 
@@ -203,10 +203,10 @@
     по т. Ролля для $h$ найдем  $c \in (a, b)\!: h'(c) = 0$. Тогда  $h'(c) = f'(c) - kg'(c) \Rightarrow k = \frac{f'(c)}{g'(c)}$.
 \end{proof}
 \begin{remark}
-    Геометрический смысл. $(g(t), f(t))$ координаты точки в момент времени  $t$. Тогда  $k$ --- угловой коэффициент секущей. $(f'(t), g'(t))$ --- вектор скорости в момент времени  $t$. Тогда $\frac{f'(t)}{g'(t)}$ --- угловой коэффициент касательной. 
+	Геометрический смысл. Пусть у нас есть кривая, заданная параметрически: обе координаты от параметра. $(g(t), f(t))$ координаты точки в момент времени $t$. Тогда  $k$ --- угловой коэффициент секущей. $(f'(t), g'(t))$ --- вектор скорости в момент времени $t$. Тогда $\frac{f'(t)}{g'(t)}$ --- угловой коэффициент касательной. Иначе говоря, если у нас есть кривая, соединяющая точки $A$ и $B$, заданная параметрически, то существует точка на этой кривой в которой касательная к кривой параллельна секущей --- прямой, соединяющей точки $A$ и $B$.
 \end{remark}
 \begin{definition}
-    $f\!:E\to \R$ --- липшицева функция с константной $M$, если  $\forall x, y \in E\!: |f(x) - f(y)| \le M|x-y|$.
+    $f\!:E\to \R$ --- Липшицева функция с константой $M$, если  $\forall x, y \in E\!: |f(x) - f(y)| \le M|x-y|$.
 \end{definition}
 \begin{consequence}[Следствия теоремы Лагранжа]
     \slashn
@@ -237,13 +237,15 @@
     $f\!:[a, b] \to \R$ дифференцируема во всех точках. Пусть  $C$ лежит между  $f'(a)$ и  $f'(b)$. Тогда найдется  $c \in (a, b)$, такая что  $f'(c) = C$.
 \end{theorem}
 \begin{proof}
-    Пусть $f'(a) < 0 < f'(b)$. Покажем, что $\exists c \in (a, b)\!: f'(c) = 0$, $f$ непрерывна на  $[a, b]$. По теореме Вейерштрасса  $f$ достигает  $\min$ пусть это в точке $c$. Покажем, что  $c \neq a$ и  $c \neq b$. 
+    Пусть $f'(a) < 0 < f'(b)$. Покажем, что $\exists c \in (a, b)\!: f'(c) = 0$, $f$ непрерывна на  $[a, b]$. По теореме Вейерштрасса  $f$ достигает  $\min$. Пусть минимум достигается в точке $c$. Покажем, что  $c \neq a$ и  $c \neq b$. 
 
-    От противного: пусть $f(a) = \min$. Тогда  $f'(a) = f_+'(a) = \lim \frac{f(x) - f(a)}{x-a}$. Заметим, что числитель  $\ge 0$ и знаменатель $> 0$, тогда по предельному переходу предел  $\ge 0$. Противоречие.
+    От противного: пусть $f(a) = \min$. Тогда  $f'(a) = f_+'(a) = \lim \frac{f(x)- f(a)}{x-a}$. Заметим, что числитель  $\ge 0$ и знаменатель $> 0$, тогда по предельному переходу предел  $\ge 0$. Противоречие.
 
     Пусть $f(b) = \min$. Тогда  $f'(b) = f_-'(b) = \lim_{x \to b-} \frac{f(x) - f(b)}{x - b}$. Заметим, что  числитель  $\ge 0$, а знаменатель $<0$. Противоречие.
     
-    Следовательно,  $c \in (a, b)$. Тогда по теореме Ферма  $f'(c) = 0$. Общий случай  $g(x) \coloneqq f(x) - Cx$.  $g'(x) = f'(x) - C \Rightarrow g'(a)$ и  $g'(b)$ разных знаков, следовательно  $\exists c \in (a, b)\!: g'(c) = f'(c) - C = 0 \Rightarrow f'(c) = C$.
+    Следовательно,  $c \in (a, b)$. Тогда по теореме Ферма  $f'(c) = 0$. 
+
+    Перейдём к общему случаю. Введём $g(x) \coloneqq f(x) - C \cdot x$.  $g'(x) = f'(x) - C \Rightarrow g'(a)$ и  $g'(b)$ разных знаков, следовательно  $\exists c \in (a, b)\!: g'(c) = f'(c) - C = 0 \Rightarrow f'(c) = C$.
 \end{proof}
 \begin{consequence}
     $f\!: \langle a, b \rangle \to \R$, дифференцируема на  $\langle a, b \rangle, f'(x) \neq 0\ \forall x \in \langle a, b \rangle $. Тогда  $f$ строго монотонна.
@@ -252,15 +254,15 @@
     Очев. 
 \end{proof}
 \begin{theorem}[Правило Лопиталя]
-    $-\infty \le a < b \le +\infty$, $f,g$ дифференцируемы на  $(a, b)$.  $g'(x) \neq 0\ \forall x \in (a, b)$ и $\lim_{x \to a+} f(x) = \lim_{x \to a+} g(x) = 0$. 
+	$-\infty \le a < b \le +\infty$, $f,g$ дифференцируемы на  $(a, b)$.  $g'(x) \neq 0\ \forall x \in (a, b)$ и $\lim_{x \to a+} f(x) = \lim_{x \to a+} g(x) = 0$. 
 
     $\lim_{x \to a+} \frac{f'(x)}{g'(x)} = l \in \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$. 
 \end{theorem}
 \begin{proof}
-    Проверяем по Гейне. Возьмем $x_n \to a$, причем убывающую.  $\frac{f(x_n)}{g(x_n)} \xrightarrow{?} l$. Посчитаем $\lim_{n \to \infty} \frac{f(x_{n+1}) - f(x_n)}{g(x_{n+1}) - g(x_n)} = \lim_{n \to +\infty} \frac{f'(c_n)}{g'(c_n)}$, так как $\frac{f'(c_n)}{g'(c_n)}$, где $c_n \to (x_{n+1}, x_n)$. Последовательность  $c_n$ стремится  к $a$ справа. Тогда по Штольцу $\lim \frac{f(x_n)}{g(x_n)} = l$. Надо было проверить, что $g(x_n)$ строго монотонна. Это из последнего следствия и монотонности $x_n$.
+    Проверяем по Гейне. Возьмем $x_n \to a$, причем убывающую.  $\frac{f(x_n)}{g(x_n)} \xrightarrow{?} l$. Посчитаем $\lim_{n \to \infty} \frac{f(x_{n+1}) - f(x_n)}{g(x_{n+1}) - g(x_n)} = \lim_{n \to +\infty} \frac{f'(c_n)}{g'(c_n)}$, где $c_n \in (x_{n+1}, x_n)$. Последовательность  $c_n$ стремится  к $a$ справа. Тогда по Штольцу $\lim \frac{f(x_n)}{g(x_n)} = l$. Надо было проверить, что $g(x_n)$ строго монотонна. Это из последнего следствия и монотонности $x_n$.
 \end{proof}
 \begin{theorem}[Второе правило Лопиталя]
-    $-\infty \le a < b \le +\infty$. $f, g$ дифференцируемы на  $(a, b)$.  $\forall x\in (a, b)\!: g'(x) \neq 0, \lim_{x \to a+}g(x) = +\infty$.  $\lim_{x \to a+} \frac{f'(x)}{g'(x)} =l \to \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$
+    $-\infty \le a < b \le +\infty$. $f, g$ дифференцируемы на  $(a, b)$.  $\forall x\in (a, b)\!: g'(x) \neq 0, \lim_{x \to a+}g(x) = +\infty$.  $\lim_{x \to a+} \frac{f'(x)}{g'(x)} =l \in \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$
 \end{theorem}
 \begin{example}
     $\lim_{x \to +\infty} \frac{\ln x}{x^p} = 0$ при $p > 0$.
@@ -288,7 +290,7 @@
     $f$ дважды дифференцируема в окрестности $x_0$. Если $f''$ дифференцируема в точке  $x_0$, то $f$ трижды дифференцируема в точке  $x_0$. 
 \end{definition}
 \begin{definition}
-    $f \in C(E) \iff f: E \to \R \land$ непрерывна во всех точках.
+    $f \in C(E) \iff f: E \to \R$ и непрерывна во всех точках.
 \end{definition}
 \begin{definition}
     $f \in C^1(\langle a, b \rangle)$  $f\!: \langle a, b \rangle \to \R$, дифференцируема во всех точках и  $f'$ непрерывна.
