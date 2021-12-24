@@ -615,6 +615,10 @@
 \begin{proof}
     В сторону $\Leftarrow$:  $u < v < w, x_0=v$. Тогда  $f(u) \ge f(v) + f'(u)(v-u)$, $f(w) \ge f(u) + f'(u)(v-w)$. Первое домножаем на $(w-v)$, второе на  $(v - u)$
 
+    $(\forall u, v, w \in \langle a, b \rangle : u < v < w  \begin{cases}f(u) \ge f(v) - f'(v)(v - u) \\ f(w) \ge f(v) + f'(v)(w - v)\end{cases} \Rightarrow
+    (w - v)f(u) + (v - u)f(w) \ge (w - v + v - u)f(v) + f'((v - u)(w - v) - (v - u)(v - w)) \Rightarrow (w - u)f(v) \le (v - u)f(w) + (w - v)f(u)) \Rightarrow f - \text{выпукла} 
+    $
+
     В сторону  $\Rightarrow$. Пусть  $x > x_0$. Надо доказать, что $\frac{f(x) - f(x_0)}{x - x_0} \ge f'(x_0) = \lim_{y \to x_0} \frac{f(y)-f(x_0)}{y-x_0}$ 
 
     Можно считать, что $x_0 < y < x$. Тогда  $\frac{f(x) - f(x_0)}{x - x_0} \ge \frac{f(y) - f(x_0)}{y - x_0} \to f'(x_0)$.
