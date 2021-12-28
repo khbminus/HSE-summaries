@@ -65,12 +65,12 @@
     $f \divby x$.  $f = (a_i) \land a_0 = 0 \Rightarrow 1 \centernot \divby f$. 
 \end{consequence}
 \begin{theorem}
-	$f = (a_i)$.  $f \in R[[x]] \iff a_0 \in R^*$. В частности: $R$ --- поле  $\Rightarrow f$ --- обратим $\iff f \centernot \divby x$. 
+	$f = (a_i)$.  $f \in R^*[[x]] \iff a_0 \in R^*$. В частности: $R$ --- поле  $\Rightarrow f$ --- обратим $\iff f \centernot \divby x$. 
 \end{theorem}
 \begin{proof}
     \slashn
      \begin{itemize}
-         \item $\Rightarrow$.  $(a_0, a_1, \ldots) \cdot (b_0, b_1, \ldots) = (1, 0, 0,\ldots)$.
+         \item $\Rightarrow$. $(b_n)$ --- обратный к  $(a_n)$. Тогда,  $(a_0, a_1, \ldots) \cdot (b_0, b_1, \ldots) = (1, 0, 0,\ldots)$.
 
              $1 = a_0b_0 \Rightarrow a_0\in R^*$.
          \item $\Leftarrow$: будем вычислять последовательность  $(b_0, b_1,\ldots)$. $a_0 \in R^*$, тогда: 
@@ -86,22 +86,22 @@
     $f = (1, 1, 1, 1, \ldots) = 1+x+x^2+x^3+\ldots$. Тогда $\frac{1}{1+x+x^2+\ldots} = 1-x$. Тогда $1+x+x^2+x^3+\ldots = \frac{1}{1-x}$.
 \end{example}
 \begin{theorem}
-	Подмножество в $R[[x]]$  $R[x] = \{(a_0,a_1,\ldots \mid \exists N \forall n > N\!: a_n=0\}$ --- финитные последовательности, образуют подкольцо с единицей, называемое \textbf{кольцом многочленов} (вот и то самое отличие от формальных степенных рядов)).
+    $R[x]\ (\subset R[[x]]) = \{(a_0,a_1,\ldots \mid \exists N \forall n > N\!: a_n=0\}$ --- финитные последовательности, образуют подкольцо с единицей, называемое \textbf{кольцом многочленов} (вот и то самое отличие от формальных степенных рядов)).
 \end{theorem}
 \begin{proof}
     Замкнутость по $+$:  $a_n = 0$ при  $n > N_1$ и  $b_n = 0$ при $n > N_2$. Тогда при $n > \max(N_1, N_2) a_n+b_n = 0$.
 
     Замкнутость по $\cdot$:  $a_n = 0, n > N_1$ и $b_n = 0, n > N_2$. Тогда при  $n > N_1+N_2:$ $c_n = \sum_{i+j=n} a_ib_j = 0$. Так как при  $i + j = N > N_1+N_2 \Rightarrow i > N_1 \lor j > N_2$.
 
-    $1 \in k[x]$!!!
+    $1 \in K[x]$!!!
 \end{proof}
 \begin{definition}
-    $f \in k[x]$ степенью  $f$ называется  $\deg f = \{\max k: a_k \neq 0\}$. Причем $\deg 0 = -\infty$
+    $f \in K[x]$ степенью  $f$ называется  $\deg f = \{\max k: a_k \neq 0\}$. Причем $\deg 0 = -\infty$
 \end{definition}
 \begin{properties}
     \slashn
     \begin{enumerate}
-        \item $\deg (f+g) \le \max(\deg f, \deg g)$. Причем $\deg f \neq \deg g \to \deg(f+g) = \max(deg f, \deg g)$. 
+        \item $\deg (f+g) \le \max(\deg f, \deg g)$. Причем $\deg f \neq \deg g \to \deg(f+g) = \max(\deg f, \deg g)$. 
         \item $\deg(f\cdot g) \le \deg f + \deg g$, а если $R$ --- область целостности, то  $\deg (fg) = \deg f + \deg g$.
     \end{enumerate}
 \end{properties}
@@ -177,9 +177,9 @@ $f \in K[x]$.  $f \leadsto F_f\!: K \to K$ --- полиномиальная фу
 	$(\Z / p \Z)^*$: $x^p = x$, т.е. $x^{p - 1} = 1$. Всё нормально, т.к. у нас многочлен степени не меньше, чем мощность множества: $p - 1 \nless |(\Z / p \Z)^*| = p - 1$. (На самом деле написанное --- один из вариантов интерпретации исходного текста, который не сохранился. Если у вас есть какая-либо другая информация по данному пункту --- сообщите кому-нибудь из нас)
 \end{remark}
 \begin{remark}
-    Рассмотрим $\Z / p \Z[x]$ --- бесконечное кольцо.  $f \leadsto F_f\!: \Z / p \Z \to \Z / p \Z$ --- не более $p^p$ отображений. Докажем:  $\Z / p\Z[x]_{p-1} = \{f \mid \deg f \le p-1\}$, а таких --- $p^p$
+    Рассмотрим $\Z / p \Z[x]$ --- бесконечное кольцо.  $f \leadsto F_f\!: \Z / p \Z \to \Z / p \Z$ --- не более $p^p$ отображений. Докажем:  $\Z / p\Z[x]_{p-1} \coloneqq \{f \mid \deg f \le p-1\}$, а таких --- $p^p$
 
-    $\Z / p \Z[x]_{p-1} \leftrightarrow \{\text{отображения}\  \Z / p\Z \to \Z / p\Z \}$, а значит и таких отображений тоже не более чем $p^p$.
+    $\Z / p \Z[x]_{p-1} \Leftrightarrow \{\text{отображения}\  \Z / p\Z \to \Z / p\Z \}$, а значит и таких отображений тоже не более чем $p^p$.
 \end{remark}
 \Subsection{Интерполяция}
 \begin{definition}
@@ -204,7 +204,7 @@ $f \in K[x]$.  $f \leadsto F_f\!: K \to K$ --- полиномиальная фу
     \end{itemize}
 \end{proof}
 \begin{definition}
-    Интерполяционный полином Лагранжа: $f_0 = \sum_i \frac{y_i \prod_{j \neq i}(x - x_j)}{\prod_{j \neq i}(x_i - x_j)}$, $\deg f_0 < \max(\deg L_i) = n-1$
+Интерполяционный полином Лагранжа: \[f_0 = \sum_i \frac{y_i \prod_{j \neq i}(x - x_j)}{\prod_{j \neq i}(x_i - x_j)},\ \deg f_0 < \max(\deg L_i) = n-1\]
 \end{definition}
 
 \Subsection{Закрываем долг}
@@ -215,6 +215,8 @@ $f \in K[x]$.  $f \leadsto F_f\!: K \to K$ --- полиномиальная фу
     Пусть $a \in G$ --- группа,  $\ord a = d$. Тогда  $\ord(a^k) = \frac{d}{(d, k)}$
 \end{lemma}
 \begin{proof}
+    Пусть $l = \ord a^k$.
+
 	$(a^k)^l = e \iff a^{kl} = e \iff kl \divby \ord(a) = d$. Тогда, если $k = (d, k) \cdot k'$  и  $d = (d, k) d'$, то  $(d, k) \cdot k' \cdot l \divby (d, k) \cdot d' \iff k' \cdot l \divby d' \xLeftrightarrow{(k', d') = 1} l \divby d' = \frac{d}{(d, k)}, \min l = \frac{d}{(d, k)}$ 
 \end{proof}
 \begin{lemma}
@@ -248,7 +250,7 @@ $f \in K[x]$.  $f \leadsto F_f\!: K \to K$ --- полиномиальная фу
 \begin{proof}[Доказательство теоремы] 
     $B_d \subset (\Z / p\Z)*$, такие что $B_d = \{x \in (\Z / p \Z)* \mid \ord x = d\}$. 
 
-    Тогда получится, что  $(\Z / p \Z)^ = B_{d_1} \cup \ldots \cup B_{d_k}$, $d_i$ --- делители $p - 1$. 
+    Тогда получится, что  $(\Z / p \Z)^* = B_{d_1} \cup \ldots \cup B_{d_k}$, $d_i$ --- делители $p - 1$. 
 
     $p-1 = |(\Z / p \Z)^*| = \sum |B_{d_i}|$ по лемме 3  каждое слагаемое  $0$ или  $\varphi(d_i)$, а по лемме 2 $p - 1 = \sum_{i = 1}^k \varphi(d_i)$. А значит в первой сумме каждое слагаемое  $\varphi(d_i)$. 
 

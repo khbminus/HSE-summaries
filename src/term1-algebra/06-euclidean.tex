@@ -24,7 +24,7 @@
 
     Заметим, что  $\langle a \rangle \subset I$ --- очевидно (любой идеал порожденный элементов идеала в нем лежит).
 
-    $I \subset \langle a \rangle$: пусть $b \in I, b = a \cdot q + r, \varphi(r) < \varphi(a)$. При этом $\varphi(a)$ --- минимальный, значит  $r = 0$, значит  $r = b - a \cdot q \iff \cdot q = b \Rightarrow b \in I$.
+    $I \subset \langle a \rangle$: пусть $b \in I, b = a \cdot q + r, \varphi(r) < \varphi(a)$. При этом $\varphi(a)$ --- минимальный, значит  $r = 0$, значит  $r = b - a \cdot q \iff a \cdot q = b \Rightarrow b \in I$.
 \end{proof}
 \slashn
 Евклидово $\Rightarrow$ ОГИ  $\Rightarrow$ ОТА.
@@ -32,10 +32,10 @@
     Пример не кольца главных идеалов. $\Z[x] = A$ --- не область главных идеалов. Рассмотрим  $I = \{f \mid f(0) \divby 2\}$ --- не главный.  $I = \langle 2, x \rangle$.    
 \end{remark}
 \begin{definition}
-    $R$ --- кольцо,  $a, b \in R$,  $a$ --- ассоциирован с  $b$ ($a \sim b$), если $a \divby b \divby b \divby a$.
+    $R$ --- кольцо,  $a, b \in R$,  $a$ --- ассоциирован с  $b$ ($a \sim b$), если $a \divby b \land b \divby a$.
 \end{definition}
 \begin{remark}
-    Ассоциированость --- оношение эквивалентности.
+    Ассоциированость --- отношение эквивалентности.
 \end{remark}
 \begin{example}
     $R= \Z$, тогда  $a \sim b \iff a = \pm b$.
@@ -74,14 +74,14 @@
 \slashn
 $K$ --- поле.$K[x]$ --- евклидово (знаем) $\Rightarrow$ ОГИ  $\Rightarrow$ факториально. Что значит  $f \sim g$ в  $K[x]$?
 
-$f \sim g \Rightarrow f = g\varepsilon\ \varepsilon\ (K[x])^*$
+$f \sim g \Rightarrow f = g\varepsilon\ \varepsilon\in (K[x])^*$
  \begin{lemma}
-     $(K[x])^* = K^* = K \ \{0\}$
+     $(K[x])^* = K^* = K \setminus \{0\}$
 \end{lemma}
 \begin{proof}
-    $a \in K^*\ \exists a^{-1} \in K^*$.  $a a^{-1} = 1$ в  $K[x]$.  $a \in K[x]^*$ $f \in K[x]^* \Rightarrow f \widetilde{f} = 1$.  $\deg (f \widetilde{f}) = \deg(r) = 0$. При этом  $\deg (f) + \deg(\widetilde{f}) \Rightarrow \deg(f) = 0, f \in K^*$.
+    $a \in K^*\ \exists a^{-1} \in K^*$.  $a a^{-1} = 1$ в  $K[x]$.  $a \in K[x]^*$ $f \in K[x]^* \Rightarrow f \widetilde{f} = 1$.  $\deg (f \widetilde{f}) = \deg(r) = 0$. При этом  $\deg (f\widetilde{f}) = \deg (f) + \deg(\widetilde{f}) \Rightarrow \deg(f) = 0, f \in K^*$.
 
-    Значит $f \widetilde g \iff f = kg, k \in K^*$.
+    Значит $f \sim g \iff f = kg, k \in K^*$.
 \end{proof}
 \slashn
 Итого: любой $f \in K[x]$ раскладывается на неприводимые множители однозначно с точностью до перестановки множителей и вынесения констант.
@@ -137,7 +137,7 @@ $f \sim g \Rightarrow f = g\varepsilon\ \varepsilon\ (K[x])^*$
      $R$ --- Область Главных Идеалов  $a$ --- неприводим  $\Rightarrow a$ --- простое.
 \end{statement}
 \begin{proof}
-	Пусть $R$ --- ОГИ,  $a$ --- неприводим. Пусть $b \cdot c \divby a$, рассмотрим $d = (a, b)$. $a$ --- неприводим, $a \divby d \Rightarrow$ $d \sim a \lor d \sim 1 (d \in R^*)$. Если $d \sim 1$, то $(a, b) = 1 \land b c \divby a \Rightarrow$ $c \divby a$. А если $d \sim a$, то $b \divby d \to b \divby a$
+	Пусть $R$ --- ОГИ,  $a$ --- неприводим. Пусть $b \cdot c \divby a$, рассмотрим $d = (a, b)$. $a$ --- неприводим, $a \divby d \Rightarrow$ $d \sim a \lor d \sim 1 (d \in R^*)$. Если $d \sim 1$, то $(a, b) = 1 \land b c \divby a \Rightarrow$ $c \divby a$. А если $d \sim a$, то $b \divby d \Rightarrow b \divby a$
 \end{proof}
 
 \begin{proof}
@@ -148,7 +148,7 @@ $f \sim g \Rightarrow f = g\varepsilon\ \varepsilon\ (K[x])^*$
 
      $\exists i\!: p_i \divby q_1$. $p_i$ --- неприводимое $\Rightarrow q_1 \sim 1 \lor q_1 \sim p_1$. $q_1$ --- необратимое, а значит первый вариант невозможен.
 
-     $q_1 = p_i \varepsilon, \varepsilon \in R^*$. $p_1p_2\ldots p_i \ldots p_k = \varepsilon q_2 \ldots q_l$, $R$ --- область целостности.
+     $q_1 = p_i \varepsilon, \varepsilon \in R^*$. $p_1p_2\ldots p_i \ldots p_k = p_1\varepsilon q_2 \ldots q_l$, $R$ --- область целостности.
 
      $p_1p_2\ldots p_{i-1}p_{i+1}\ldots = (\varepsilon q_2) \ldots q_k$. Аналогично $\exists j \neq i\!: p_j \sim \varepsilon q_2 \sim q_2$ 
 
@@ -164,7 +164,7 @@ $f \sim g \Rightarrow f = g\varepsilon\ \varepsilon\ (K[x])^*$
 
         Рассмотрим $I = \bigcup \langle x_i\rangle$.
 
-        $I$ --- идеал. Проверим сумму (домножение аналогично),  $a, b \in I \Rightarrow \exists m\!: a \in \langle x_m \rangle, n\!: b \in \langle x_n \rangle \Rightarrow a, b\ in \langle x_{\max(n, m)} \rangle \Rightarrow a + b \in \langle x_{\max(n, m)} \rangle \Rightarrow a + b \in I$.
+        $I$ --- идеал. Проверим сумму (домножение аналогично),  $a, b \in I \Rightarrow \exists m\!: a \in \langle x_m \rangle, n\!: b \in \langle x_n \rangle \Rightarrow a, b\ \in \langle x_{\max(n, m)} \rangle \Rightarrow a + b \in \langle x_{\max(n, m)} \rangle \Rightarrow a + b \in I$.
 
         $I$ --- идеал  $R$ --- ОГИ.  $\exists x\!: I = \langle x \rangle$. При этом $x \in \langle x_m \rangle$ для  $m > m_0$.
 
