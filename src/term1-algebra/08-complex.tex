@@ -153,7 +153,7 @@ $K$ --- поле, $K[x]$ --- евклидово кольцо. Тогда $f, g \
 \begin{enumerate}
     \item $\cos(n\alpha) + i\sin(n\alpha) = (\cos \alpha + i \sin \alpha)^n = \sum_{k=0}^n \binom{n}{k} \cos^k \alpha \cdot (i\sin\alpha)^{n-k}$. Дальше следим за четностью  $n-k$. 
 
-        Далее приравниваниваем  $\Re$ и  $\Im$  у левой и правой части. Получаем  $\cos(n\alpha)$ = $\sum_{j=0}^{\left[\frac{n}{2}\right]} \binom{n}{2j} \cos^{n-2j}(\alpha)(-1)^j\sin^{2j}(\alpha)$, $\sin(n\alpha)$ --- аналогично. 
+        Далее приравниваем  $\Re$ и  $\Im$  у левой и правой части. Получаем  \[\cos(n\alpha) = \sum_{j=0}^{\left[\frac{n}{2}\right]} \binom{n}{2j} \cos^{n-2j}(\alpha)(-1)^j\sin^{2j}(\alpha)\], $\sin(n\alpha)$ --- аналогично. 
 
 \end{enumerate}
 \begin{definition}
@@ -177,7 +177,7 @@ $z_0 \in \CC, z_0 \neq 0$. Решим уравнение  $z^n=z_0$.  $z_0 = r_0
 Заметим, что $x_0 \in \sqrt[n]{z} \Rightarrow x \in \sqrt[n]{z} \iff x^n = x_0^n \iff \frac{x^n}{x_0^n} = 1 \iff \left(\frac{x}{x_0}\right)^n = 1 \iff \frac{x}{x_0} \in \sqrt[n]{1} \iff x = x_0 \varepsilon, \varepsilon \in \sqrt[n]{1}$.
 \Subsection{Корни из 1}.
 Заметим что формула для корней из 1: \[
-    \varepsilon_k = \cos\left(\frac{2\pi k}{n}\right) + i \cdot \sin\left(\frac{2\pi k}{n}\right),\ k=01,\ldots,n-1
+    \varepsilon_k = \cos\left(\frac{2\pi k}{n}\right) + i \cdot \sin\left(\frac{2\pi k}{n}\right),\ k=0,1,\ldots,n-1
 .\] 
 
 Причем заметим, что корни из 1 образуют правильный $n$-угольник. Это легко заметить, если расположить на окружности.
@@ -235,16 +235,20 @@ $b_i = f(\varepsilon_i) = f(\varepsilon^i)$.
 \begin{proof}
     $\forall j = 0, 1, \ldots, n - 1$ $f(\varepsilon^j) = b_j$
 
-    \[\sum_{i = 0}^{n-1} b_i \varepsilon^{j(i-i_0)} = b_j.\] 
-    Фиксируем $i_0$, делим на  $\varepsilon^{ji_0}$:
     \[
-    \sum_{i=0}^{n-1} a_i \varepsilon^{j(i-i_0)} = b_j \varepsilon^{ji_0}
+    \sum_{j=0}^{n-1} \varepsilon^{-ij}b_j = a_i \cdot n
+    .\] 
+    \[
+        \sum_{j = 0}^{n-1} \varepsilon^{-ij}f(\varepsilon^{j}) = \sum_{j=0}^{n-1} \varepsilon^{-ij} \sum_{k=0}^{n-1} a_k \varepsilon^{jk} 
+    .\] 
+    \[
+        \sum_{\mathclap{j = 0, \\ k = 0}}^{n-1} a_k \varepsilon^{jk} \varepsilon^{-ij} = \sum_{\mathclap{j = 0, k = 0}}^{n-1} a_k \varepsilon^{j(k-i)}
+    .\] 
+    Зафиксируем $k$:
+     \[
+         \sum_{\mathclap{j=0, k\ \text{--- fixed}}}^{n - 1} a_k \left(\varepsilon^j\right)^{k - i} \stackrel{\text{Лемма}}{=}a_k \cdot n
     .\] 
 
-    Сложим:
-    \[
-    \sum b_j \varepsilon^{ji_0} = \ldots = \sum_{i=0}^{n-1}a_i\left(\sum_{a \in M_n(1)} a^k = \sum_{i=0}^{n-1} a^k n \right)
-    .\] 
 \end{proof}
 \Subsection{Быстрое умножение многочленов}
 
@@ -302,7 +306,7 @@ $f, g \in \CC[x]$ хотим  $f\cdot g$. По правилу свертки -  
 \end{theorem}
 \begin{proof}
     Индукция по $\deg f$. 
-
+,
     $n \to n+1$:  $\deg f = n + 1$  $f \in \R[x] \subset \CC[x] \xRightarrow[\text{ОТА}]{} \exists z \in \CC\!: f(z) = 0$.
 
     Пусть  $z \in \R$. Тогда просто по Безу получаем  $f=(x-z)\widetilde{f}$.
@@ -314,7 +318,7 @@ $f, g \in \CC[x]$ хотим  $f\cdot g$. По правилу свертки -  
 
     Над  $\R$:  $n$ --- нечетно:  $x^n - 1 = (x-1)\prod_{k=1}^{n-1}(x - \varepsilon_k) = (x-1)\prod_{k=1}^{\frac{n-1}{2}}(x-\varepsilon_k)(x-\varepsilon_{n - k}) = (x-1)(x^2 - \cos\frac{2 \pi i}{n})$
 
-    Над $\Q$: $\displaystyle x^n - 1 = \prod_{d \mid n}(\prod_{\varepsilon \in M_n, \ord(\varepsilon) = d}(x - \varepsilon))$. Под первым сумматором: $\Phi_d(x)$
+    Над $\Q$: $\displaystyle x^n - 1 = \prod_{d \mid n}(\overbrace{\prod_{\mathclap{\substack{\quad\varepsilon \in M_n, \\ \ord(\varepsilon) = d}}}(x - \varepsilon)}^{\Phi_d})$. Под первым сумматором: $\Phi_d(x)$
 \end{example}
 \begin{statement}
     \begin{enumerate}
@@ -352,7 +356,7 @@ $f, g \in \CC[x]$ хотим  $f\cdot g$. По правилу свертки -  
     $p = 4k + 1$ --- простое  $\Rightarrow x, y \in \Z p = x^2+y^2$
 \end{theorem}
 \begin{proof}
-    Рассмотрим $p$ как элемент  $\Z[i]$.  $p = p + 0 \cdot i$.  $\exists i \in \Z: x^2 + 1 \cdot p$. Так как  $a^{p-1} = 1, a^{\frac{p - 1}{2}} = -1, (a^{\frac{p-1}{4}})^2 = -1$. $a^{\frac{p-1}{4}} = ix$.
+    Рассмотрим $p$ как элемент  $\Z[i]$.  $p = p + 0 \cdot i$.  $\exists x \in \Z: x^2 + 1 \divby p$. Так как  $a^{p-1} = 1, a^{\frac{p - 1}{2}} = -1, (a^{\frac{p-1}{4}})^2 = -1$. $a^{\frac{p-1}{4}} = ix$.
 
     Тогда $x^2+1 = (x-i)(x+i) \divby p$ в  $\Z[i]$. Тогда  $p$ --- составное в  $\Z[i]$. Тогда  $p = (a+bi)(c+di)$,  $bc + ad = 0$, откуда получаем  $c = a, d = -b$, тогда  $p = (a+bi)(a-bi) = a^2+b^2$. 
 \end{proof}

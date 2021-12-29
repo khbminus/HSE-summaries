@@ -124,11 +124,11 @@
 
     Докажем единственность (по сути, как в $\Z$): пусть $\exists f, g: f = gq+r$ и $f = gq_1 + r_1, \deg(r), \deg(r_1) < \deg(g)$. Приравняем правые части и перегруппируем: $g(q - q_1) = r_1 - r$. Если обе части равенства не равны 0 в $K[x]$, то $\deg(g(q - q_1)) = \deg(g) + \deg(q - q_1)) \ge \deg(g)$, но $\deg(r_1 - r) \le \max(\deg(r), \deg(r_1)) < \deg(g)$. Противорчение, поскольку $g(q - q_1)$ и $r_1 - r$ --- один и тот же многочлен. Значит $r_1 - r = 0$, значит $r = r_1, q = q_1$, поскольку $K[x]$ --- область целостности.
 \end{proof}
-\begin{consequence}
+\begin{theorem}
     $R$ --- коммутативное, ассоциативное кольцо  $a \in R$. Тогда $\exists$ гомоморфизм колец  $R[x] \to R: a_0 + a_1 x + \ldots + a_n x^n \mapsto a_0 + a_1 \cdot a + \ldots + a_n a^n$ --- гомоморфизм эвалюации. 
 
     С другой стороны $f \in R[x]$ --- полиномиальная функция.  $F_f: R \to R$  $a \mapsto \text{ev}_a(f)$.
-\end{consequence}
+\end{theorem}
 \begin{consequence}
     $f, g \xrightarrow[\text{Евклида}]{\text{Алгоритм}} h = (f, g)\ h= u_1f + u_2g$. А значит, у $\gcd$ корнями будут общие корни  $f$ и  $g$.
 \end{consequence}
