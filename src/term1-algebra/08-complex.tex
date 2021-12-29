@@ -353,10 +353,12 @@ $f, g \in \CC[x]$ хотим  $f\cdot g$. По правилу свертки -  
 \end{proof}
 
 \begin{theorem}[Рождественская теорема Ферма]
-    $p = 4k + 1$ --- простое  $\Rightarrow x, y \in \Z\!:\ p = x^2+y^2$
+    $p = 4k + 1$ --- простое  $\Rightarrow \exists x, y \in \Z\!:\ p = x^2+y^2$
 \end{theorem}
 \begin{proof}
-    Рассмотрим $p$ как элемент  $\Z[i]$.  $p = p + 0 \cdot i$.  $\exists x \in \Z\!:\ x^2 + 1 \divby p$. Так как  $a^{p-1} = 1, a^{\frac{p - 1}{2}} = -1, (a^{\frac{p-1}{4}})^2 = -1$. $a^{\frac{p-1}{4}} = ix$.
+    Рассмотрим $p$ как элемент  $\Z[i]$.  $p = p + 0 \cdot i$.  $\exists x \in \Z\!:\ x^2 + 1 \divby p$. Так как  $a^{p-1} = 1, a^{\frac{p - 1}{2}} = -1, (a^{\frac{p-1}{4}})^2 = -1$. $a^{\frac{p-1}{4}} = \text{const}$ --- такое число точно существует.
 
-    Тогда $x^2+1 = (x-i)(x+i) \divby p$ в  $\Z[i]$. Тогда  $p$ --- составное в  $\Z[i]$. Тогда  $p = (a+bi)(c+di)$,  $bc + ad = 0$, откуда получаем  $c = a, d = -b$, тогда  $p = (a+bi)(a-bi) = a^2+b^2$. 
+    Тогда $x^2+1 = (x-i)(x+i) \divby p$ в  $\Z[i]$, $p$ не делит  $\pm i$. Тогда  $p$ --- составное в  $\Z[i]$. Тогда  $p = (a+bi)(c+di)$,  $bc + ad = 0, ac - bd = p, (a, b) = 1 = (c, d)$. 
+
+    Пусть $a = - \frac{bc}{d} \implies \frac{bc^2}{d} - bd = p$. Так как $(c, d) = 1 \Rightarrow b = kd \implies -kc^2 - kd^2 = p \implies k = -1 \implies b = -d \implies a = c\ (b \neq 0) \implies p = a^2 + b^2$
 \end{proof}
