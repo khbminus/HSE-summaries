@@ -3,47 +3,52 @@
     \begin{cases}
         ax + by = e \\
         cx + dy = f.
-    \end{cases} \iff x + x \cdot\binom{a}{c} + y \cdot \binom{b}{d} = \binom{e}{f}
+    \end{cases} \iff x \cdot\binom{a}{c} + y \cdot \binom{b}{d} = \binom{e}{f}
 \end{align*}
-Выразим $\binom{e}{f}$ через $\binom{a}{c},\ \binom{b}{d}$: так как  $x \cdot \binom{a}{c} = \binom{xa}{xc}$, тогда  $\binom{xa}{xc} + \binom{yb}{yd} = \binom{xa + yb}{xc + yd}$.
+По сути задача: выразить $\binom{e}{f}$ через $\binom{a}{c},\ \binom{b}{d}$: так как  $x \cdot \binom{a}{c} = \binom{xa}{xc}$, тогда  $\binom{xa}{xc} + \binom{yb}{yd} = \binom{xa + yb}{xc + yd}$.
 
 \begin{definition}
-Тогда $x\binom{a}{c} + y\binom{b}{d}$ --- линейная комбинация  $\binom{a}{c}$ и  $\binom{b}{d}$.
+ $x\binom{a}{c} + y\binom{b}{d}$ --- линейная комбинация  $\binom{a}{c}$ и  $\binom{b}{d}$.
 \end{definition}
 \begin{definition}
-    А $\left\{x \binom{a}{c} + y \binom{b}{d}\right\}$ --- линейная оболочка  $\binom{a}{c}$ и  $\binom{b}{d}$. Она обозначается  $\langle \binom{a}{c}, \binom{b}{d} \rangle$.
+    $\left\{x \binom{a}{c} + y \binom{b}{d}\right\}$ --- линейная оболочка  $\binom{a}{c}$ и  $\binom{b}{d}$. Она обозначается  $\langle \binom{a}{c}, \binom{b}{d} \rangle$.
 \end{definition}
 \begin{definition}
     Пусть $R$ --- кольцо. \\
-    Множество $\left\{ \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} \mid a_1, a_2, \ldots, a_n \in R\right\}$ --- называется $n$-мерным арифметическим пространством с координатным пространством над $R$.
+    Множество $\left\{ \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} \mid a_1, a_2, \ldots, a_n \in R\right\}$ --- называется $n$-мерным арифметическим (координатным) пространством (пространством столбцов) над $R$, обозначается $R^n$.
 
-    С операциями:
+    на котором мы ещё определяем операции сложения и умножения на скаляр:
     \begin{itemize}
         \item $\begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} + \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix} = \begin{pmatrix} a_1 + b_1\\ a_2 + b_2 \\ \vdots \\ a_n + b_n \end{pmatrix}$ 
-        \item $r \cdot \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} = \begin{pmatrix} ra_1 \\ ra_2 \\ \vdots \\ ra_n \end{pmatrix}$  
+        \item $r \cdot \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} = \begin{pmatrix} ra_1 \\ ra_2 \\ \vdots \\ ra_n \end{pmatrix} \forall r \in R$  
     \end{itemize}
 \end{definition}
 \begin{definition}
-    Пусть $K$ --- поле. Векторным пространством над $K$ это тройка  $\left( V, +, \cdot \right)$, где  $V$ --- множество,  $+\!: V \times V \to V$,  $\cdot\!: K \times V \to V$. Причем:
+	Аналогично пространству столбцов, можно определить пространство строк. Всё ровно аналогично, но теперь элементы расположены в строку. Обозначается ${}^n K$
+\end{definition}
+\begin{definition}
+    Пусть $K$ --- поле. Векторное пространство над $K$ --- тройка  $\left( V, +, \cdot \right)$, где  $V$ --- множество,  $+\!: V \times V \to V$,  $\cdot\!: K \times V \to V$. Причем:
      \begin{enumerate}
          \item [1--4] $(V, +)$ --- абелева группа.
      \setcounter{enumi}{0}
      \item $a + b = b+a\ \forall a, b \in V$.
-     \item  $(a+b)+c = a+(b+c)$
-     \item  $\exists \overline{0}\!: a + \overline{0} = a$
-     \item  $\forall a \in v\ \exists (-a)\!: a+(-a) = \overline{0}$
-     \item $(k_1k_2)v = k_1(k_2v)$
-     \item $(k_1+k_2)v = k_1v+k_2v$
-     \item $k(v_1 + v_2) = kv_1 + kv_2$
-     \item $1_K \cdot v = v$
+     \item  $(a+b)+c = a+(b+c) \forall a, b, c \in V$
+     \item  $\exists \overline{0}\!: a + \overline{0} = a \forall a \in V$
+     \item  $\forall a \in V\ \exists (-a) \in V \!: a+(-a) = \overline{0}$
+     \item $(k_1k_2)v = k_1(k_2v)$ (ассоциативность умножения на скаляр)
+     \item $(k_1+k_2)v = k_1v+k_2v$ (дистрибутивность умножения вектора на скаляр относительно сложения скаляров)
+     \item $k(v_1 + v_2) = kv_1 + kv_2$ (дистрибутивность умножения вектора на скаляр относительно сложения векторов)
+     \item $1_K \cdot v = v$ (унитарность, единица поля $K$ является единицей и относительно умножения вектора на скаляр)
     \end{enumerate}
+
+    Здесь и далее (и немного ранее) скалярами называются элементы поля $K$, а векторами --- элементы множества $V$.
 \end{definition}
 \begin{remark}
     $V$ --- векторное пространство над  $K$. Тогда: 
      \begin{itemize}
          \item $0 \cdot v = \overline{0}\ \forall v \in V$.
          \item  $k \cdot \overline{0} = \overline{0}\ \forall k \in K$.
-         \item $(-1)\cdot v = -V\ \forall v \in V$.
+         \item $(-1)\cdot v = -v\ \forall v \in V$.
     \end{itemize}
 \end{remark}
 \begin{remark}
@@ -54,24 +59,26 @@
     Тройка  $\left(V, +, \cdot\right)$ с аксиомами 1-8 называется модулем над $R$.
 \end{definition}
 \begin{remark}
-    Абелевы группы $\implies$ модули над  $\Z$.
+	Абелевы группы($V$ --- абелева, а умножение на скаляр выкинули) $\implies$ модули над  $\Z$.
 \end{remark}
 \begin{definition}
     $V$ --- векторное пространство над  $K$. $v_1, v_2, \ldots, v_n \in V$. $a_1, a_2, \ldots, a_n \in K$. Тогда $\sum a_i v_i$ --- линейная комбинация  $v_1, v_2, \ldots, v_n$.
 \end{definition}
 \begin{definition}
-    $M \subset V$.  $\langle M \rangle = \left\{ a_1v_1 + a_2v_2 + \ldots + a_k v_k \mid a_i \in K, v_i \in M\right\}$ называется линейной оболочкой множества $M$.
+    Пусть $M$ --- множесто векторов: $M \subset V$, тогда $\langle M \rangle = \left\{ a_1v_1 + a_2v_2 + \ldots + a_k v_k \mid a_i \in K, v_i \in M\right\}$ называется линейной оболочкой множества $M$.
 \end{definition}
 \begin{definition}
     Подпространство $V$ --- подмножество  $U \subset V$, такое что  $(U, +_V, \cdot_V)$ --- векторное пространство. 
 \end{definition}
 \begin{statement}
-    $U \subset V$ --- подпространство  $\iff$ все операции с элементами  $U$ лежат в $U$.
+    $U \subset V$ --- подпространство  $\iff$ $U$ --- замкнуто, т.е. все операции с элементами  $U$ лежат в $U$.
 \end{statement}
 \begin{example}
-    $\prescript{n}{}{K}$ --- арифметическое пространство.
+    $\prescript{n}{}{K}$ --- арифметическое пространство строк.
 
-    $v_1, v_2, \ldots, v_m \in K^n$. $x_1v_1+x_2v_2+\ldots+x_mv_m = 0 = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ --- однородная система линейных уравнений. Множество решений $(x_1, x_2, \ldots, x_m) \in \prescript{n}{}{K}$ является подпространством в $\prescript{n}{}{K}$. А дальше я не понял)
+    Пусть $v_1, v_2, \ldots, v_m \in K^n$, т.е. векторы в пространстве столбцов. Рассмотрим $x_1v_1+x_2v_2+\ldots+x_mv_m = 0 = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ --- однородную систему линейных уравнений ($x_i$ --- неизвестные). Рассмотрим всё множество решений --- строк $(x_1, x_2, \ldots, x_m) \in \prescript{n}{}{K}$. Утверждение --- оно является подпространством в $\prescript{n}{}{K}$. Для этого нужно просто проверить, что сумма двух решений --- тоже решение, и решение, умноженное на какой-либо скаляр всё ещё остаётся решением. Доказывается просто расписав почленно $x_i v_i + y_i v_i = (x_i + y_i) v_i$ и получив итоговое равенство 0. Домножение на скаляр очевидно. 
+
+    Полученное пространство не является всем пространством строк (${}^n K$), но является его подпространством, как мы только что доказали.
 \end{example}
 \slashn
 
@@ -87,20 +94,20 @@
    Сумма по Минковскому: $A, B \subset V\!: A + V \coloneqq \{a + b \mid a \in A \land b \in B\}$. 
 \end{definition}
 \begin{statement}[Сумма по Минковскому]
-    $V_1, V_2 \le V \implies V_1 + V_2 \implies V$.
+    $V_1, V_2 \le V \implies V_1 + V_2 \le V$.
 \end{statement}
 \begin{proof}
     \slashn
     \begin{itemize}
-        \item $x, y \in V_1 + V_2 \iff x = v_1 + v_2, y = v'_1 + v'_2$, где $v_1, v'_1 \in V_1$, $v_2, v'_2 \in V_2$.
+	    \item $x, y \in V_1 + V_2 \iff x = v_1 + v_2, y = v'_1 + v'_2$, где $v_1, v'_1 \in V_1$, $v_2, v'_2 \in V_2$. Тогда $x + y = (v_1 + v'_1) + (v_2 + v'_2), (v_1 + v'_1) \in V_1, (v_2 + v'_2) \in V_2 \implies x + y \in V_1 + V_2$
         \item $k \cdot x$ --- очевидно.
     \end{itemize}
 \end{proof}
 \begin{remark}
-    $M \subset V$,  $\langle M \rangle = \bigcap\limits_{\mathclap{\substack{U \le V \\ U \supset M}}} U$
+    $M \subset V$,  $\langle M \rangle = \bigcap\limits_{\mathclap{\substack{U \le V \\ U \supset M}}} U$, доказывается как аналогичное утверждение из первого семестра.
 \end{remark}
 \begin{definition}
-    $V_1, V_2$ --- векторные пространствами над $K$. Тогда  $f\!: V_1 \to V_2$ --- гомоморфизм (линейного отображения), если 
+    $V_1, V_2$ --- векторные пространствами над $K$. Тогда  $f\!: V_1 \to V_2$ --- гомоморфизм (линейное отображение), если 
     \begin{enumerate}
         \item $f(v_1+v_2) = f(v_1) + f(v_2)\ \forall v_1, v_2 \in V_1$.
         \item $f(kv) = k f(v)$.
@@ -108,80 +115,91 @@
 
     Если при этом $f$ --- биекция, то  $f$ --- изоморфизм.
 \end{definition}
-\begin{remark}
-    Координизация --- сопоставление элементам векторного пространства координат пространства, являющимся изоморфным этому пространству. 
-\end{remark}
+\begin{definition}
+    Координатизация --- сопоставление элементам векторного пространства координат пространства, являющимся изоморфным этому пространству, ака построение гомоморфизма:
+
+$$
+\forall v \in V, v \to \begin{pmatrix} k_1 \\ k_2 \\ \vdots \\ k_n \end{pmatrix} , k_i \in K
+$$
+\end{definition}
+
+Верно ли, что любое векторное пространство изоморфно какому-то $K^n$? Да, если правильно понимать, что за $n$, и вообще, мы это чуть позже докажем.
+
 \begin{example}[векторных пространств]
 \slashn
 \begin{enumerate}
-    \item $K$ --- векторное пространство над $K$.
-     \item Вектора над плоскостью/пространством.
-     \item $K\left[x\right]_n = \{ x \in K[x] \mid \deg f \le n \}$. Тогда $K[x]_n \cong K^{n+1}$. 
-     \item $M$ --- множество,  $K$ --- поле. Тогда  $V = \{ f\!: M \to K\}$ --- векторное пространство:
+	\item $K$ --- векторное пространство над $K$ (следует из аксиом поля)
+     \item Векторы над плоскостью/пространством.
+     \item $K\left[x\right]_n = \{ f \in K[x] \mid \deg f \le n \}$. Тогда $K[x]_n \cong K^{n+1}$. 
+     \item $M$ --- множество,  $K$ --- поле. Тогда  $V = \{ f\!: M \to K\}$ (множество функций из $M$ в $K$) --- векторное пространство:
          \begin{itemize}
             \item $(f_1 + f_2)(m) \coloneqq f_1(m) + f_2(m)\ \forall m \in M$.
             \item $(kf)(m) = k \cdot f(m)\ \forall k \in K$.
          \end{itemize}
-     \item[4'.] $M=K=\R$,  $C_0(\R)$ --- непрерывные функции  $\R \to \R$.  $C_0(\R) \le (a_0, a_1, \ldots)$. Значения во всех рациональных точках.
+
+	 По сути, каждая такая функция задаётся значениями в каждой точке $M$, и тогда получаем $f$ --- $\{ f(m) \in K | m \in M\}$, что есть, по сути, $K^{|M|}$
+ \item[4'.] $M=K=\R$,  $C_0(\R)$ --- непрерывные функции  $\R \to \R$.  $C_0(\R) \le (a_0, a_1, \ldots)$. Значения во всех рациональных точках. (Любая такая функция задаётся своими значениями во всех рациональных точках, а все рациональные точки можно пронумеровать и составить последовательность, и тогда каждая такая фукнция задаётся последовательностью значений во всех своих рациональных точках)
      \item Последовательность фиббоначиевого типа: $a_n = a_{n-1} + a_{n-2}$. Тогда множество таких последовательностей --- векторное пространство  $\cong \R^2$
-     \item $M$ --- множество.  $V = 2^M$,  $K = \Z / 2 \Z$, $M_1 + M_2 \coloneqq M_1 \bigtriangleup M_2,\ 0 \cdot M = \emptyset, 1 \cdot M = M$. Тогда $V$ --- векторное пространство над  $\Z / 2 \Z$,  $V \cong \prescript{n}{}{(\Z / 2 \Z)}$
+     \item $M$ --- множество.  $V = 2^M$,  $K = \Z / 2 \Z$, $M_1 + M_2 \coloneqq M_1 \bigtriangleup M_2,\ 0 \cdot M = \emptyset, 1 \cdot M = M$. Тогда $V$ --- векторное пространство над  $\Z / 2 \Z$,  $V \cong \prescript{n}{}{(\Z / 2 \Z)}$, а координатизация тут --- битовая строка из 0 и 1.
 \end{enumerate}
 \end{example}
+
+Но в любом ли векторном пространстве есть координатизация? Да, это мы докажем, но чуть позже, смотри дальше.
 \begin{definition}
-    $V$ --- векторное пространство над  $K$.  $\{ v_i \}_{i \in I}$ называется базисом  $V$, если  $\forall v \in V\ \exists! \{a_i\}_{i \in I} \land a_i \in K\!: v = \sum a_i v_i$
+	$V$ --- векторное пространство над  $K$.  $\{ v_i \}_{i \in I}$ (множество векторов) называется базисом  $V$, если  $\forall v \in V\ \exists! \{a_i\}_{i \in I}\text{(множество коэффициентов)}, a_i \in K\!: v = \sum_{i \in I} a_i v_i$, из которых почти все (т.е. все, кроме какого-то конечного числа) $a_i = 0$
 \end{definition}
 \begin{remark}
     В терминах этого определения $I = \{1, 2, \ldots, n\}$ $V \leftrightarrow \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}$, то есть $V \cong K^n$.
 \end{remark}
 \begin{definition}
-    $V$ --- векторное пространство над полем  $K$, тогда  $\{v_i\}_{i \in I}$ называется линейно независимым (ЛНЗ), если выполнено одно из равносильных утверждений:
-     \begin{itemize}
-         \item $\nexists i \in I\!: V_i = \sum\limits_{j \neq i} a_jv_J$ 
+    $V$ --- векторное пространство над полем  $K$, тогда  $\{v_i\}_{i \in I}$ называется линейно независимой системой (ЛНЗ), если выполнено одно из равносильных утверждений:
+     \begin{enumerate}
+         \item $\nexists i \in I\!: v_i = \sum\limits_{j \neq i} a_jv_j$ 
          \item $\forall \{a_i\} \in K\!: \sum a_i v_i = 0 \implies a_i = 0\ \forall i \in I$.
-    \end{itemize}
+    \end{enumerate}
 \end{definition}
 \begin{proof}
-    $2 \implies 1$.  Пусть  $\exists i\!: v_i = \sum a_j v_j \implies \sum a_j v_j - v_i = 0 \xRightarrow{a_i = -1}$ не выполняется второе.
+	$2 \implies 1$.  Пусть  $\exists i\!: v_i = \sum a_j v_j \implies \sum a_j v_j - v_i = 0 \xRightarrow{a_i = -1}$ не выполняется второе (не все коэффициенты равны нулю).
 
-    $1 \implies 2$. Пусть  $a_i v_i = 0$, причем  $\exists a_i \neq 0$. Тогда можно поделить на  $-a_i$ и получить  $v_i = \sum\limits_{i \neq j} b_j v_j$.
+    $1 \implies 2$. Пусть  $a_i v_i = 0$, причем  $\exists a_j \neq 0$. Тогда перенесём $a_j v_j$ в левую часть и разделим на $-a_j$ и получить  $v_j = \sum\limits_{i \neq j} b_i v_i$, т.е. выразили, противоречие с первым пунктом.
 \end{proof}
 \begin{theorem}[Равносильное определение базиса]
     $\{v_i\}_{i \in I}, v_i \in V$,  $V$ --- векторное пространство над $K$.
      \begin{enumerate} 
          \item $\{v_i\}$ --- базис.
-         \item $\{v_i\}$ --- линейно независимая система и  $\langle \{v_i\} \rangle V$.  $\{v_i\}$ --- порождающая система.
-         \item  $\{v_i\}$ --- максимально линейная независимая. $\forall v \in V\!: \{v_i\}_{i \in I} \cup v$ --- линейно зависимая.
-         \item  $\{v_i\}$ --- минимальная порождающая система. То есть выкидывание любого вектора делало систему не порождающей.
+         \item $\{v_i\}$ --- линейно независимая система и  $\langle \{v_i\} \rangle = V$.  $\{v_i\}$ --- порождающая система.
+	 \item  $\{v_i\}$ --- максимальная линейно независимая система, т.е. $\forall v \in V\!: \{v_i\}_{i \in I} \cup \{v\}$ --- линейно зависимая.
+         \item  $\{v_i\}$ --- минимальная порождающая система. То есть выкидывание любого вектора делает систему не порождающей.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     \slashn
      \begin{itemize}
-         \item $1 \implies 2$.  $\{v_i\}$ --- базис  $\implies \{v_i\}$ порождающая по определению. Причем  $\sum a_i v_i = 0$ выполняется при  $a_i = 0$, тогда из независимости следует, что  $a_i = 0$.  
+	     \item $1 \implies 2$.  $\{v_i\}$ --- базис  $\implies \{v_i\}$ порождающая по определению. Причем если $\sum a_i v_i = 0$, то $a_i = 0$, иначе получили два разложения для нуля (всегда есть разложение со всеми нулевыми коэффициентами), тогда получили, что $\{v_i\}$ --- Л.Н.С.
          \item $2 \implies 1$.  $\forall v \in V\!: v = \sum a_i v_i$, так как $\{v_i\}$ --- порождающая. Тогда докажем единственность: пусть существуют $\sum a'_i v_i = v = \sum a_i v_i$. Тогда возьмем разность: $0 = \sum (a_i - a'_i) v_i \iff a_i - a'_i = 0 \iff a_i = a'_i$.
-         \item  $3 \implies 2$. Раз любой новый вектор добавляет зависимость, то по определению  $V = \sum a_i v_i$. Значит система порождающая. 
-         \item $2 \implies 4$. Пусть наша  $\{v_i\}$ --- ЛНЗ. Тогда заметим, что если она не минимальная порождающая, то значит убрав один вектор, мы сможем его получить при помощи других наших векторов  $\Rightarrow$ система линейно зависима.
+	 \item  $3 \implies 2$. Нужно доказать, что $\{v_i\}$ --- порождающая система. Рассмотрим произвольный $v \in V$. Знаем, что ${v_i} \cup {v}$ --- линейно зависимая, значит $\exists a: \sum a_i v_i + av = 0$ и не все $a$ равны нулю. Легко понять, что $a\neq 0$, иначе исходная система линейно зависимая, а тогда можно выразить вектор $v$ --- $v = \sum\frac{a_i}{-a}v_i$, умеем выражать любой вектор --- значит мы порождающая система.
+         \item $2 \implies 4$. Пусть наша  $\{v_i\}$ --- ЛНЗ и порождающая, хотим доказать, что тогда она минимальная порождающая. Пусть это не так, тогда если она не минимальная порождающая, то убрав один вектор, мы сможем его получить при помощи других наших векторов  $\Rightarrow$ исходная система линейно зависима, противоречие.
     \end{itemize}
 \end{proof}
 
 \begin{definition}
     $V$ --- векторное пространство над  $K$.
 
-     $V$ называется конечномерным, если  $\exists$ конечная порождающая система  $\in V$.
+    $V$ называется конечномерным, если  $\exists$ конечная порождающая система, т.е. $V = \langle v_1, v_2, \cdots, v_n \rangle$.
 \end{definition}
 \begin{lemma}
     Из любой конечной порождающей системы $V = \langle v_1, v_2, \ldots, v_n \rangle$ можно выбрать базис.
 \end{lemma}
 \begin{proof}
-    Во-первых, если она линейно независима, то все очевидно.
+    Во-первых, если она линейно независима, то все очевидно, вот и базис.
 
-    Тогда, пусть $\exists v_i = \sum\limits_{j \neq i}a_j b_j$. Тогда заметим, что система никак не пострадает, если убрать $V_i$ из системы: мы все равно можем его получить при помощи остальных векторов. 
+    Иначе, пусть $\exists v_i = \sum\limits_{j \neq i}a_j b_j$. Тогда заметим, что система никак не пострадает, если убрать $V_i$ из системы: мы все равно можем его получить при помощи остальных векторов. 
 
     Теперь можно продолжить этот процесс до момента, когда эта система станет линейно независимой. Так как система была конечной, то этот процесс когда-либо закончится (например, если выкинем все вектора).
 \end{proof}
 
 \begin{remark}
-    Пример пространства с нулевым базисом: у множества $V = \{ 0 \}$ базис равен  $\emptyset$.
+    Пример пространства с пустым базисом: у множества $V = \{ 0 \}$ базис равен  $\emptyset$.
 \end{remark}
 \begin{consequence}
     В любом конечном пространстве есть базис.
@@ -202,19 +220,28 @@
 \begin{definition}
     Размерность пространства $\dim V$ --- количество элементов в базисе.
 \end{definition}
+
+Это хорошо, но непонятно, почему это определение корректное, т.е. почему во всех базисах пространста одинаковое количество элементов.
+
 \begin{theorem}
     Все базисы имеют поровну элементов.
 \end{theorem}
-\begin{lemma}[Лемма о ЛЗЛК]
-    $u_1, \ldots, u_n \in \langle v_1, v_2, \ldots, v_n \rangle$, $m > n$. Тогда  $u_1, \ldots, u_m$ линейно зависима.
+\begin{lemma}[Лемма о линейной зависимости линейных комбинаций]
+    Пусть $u_1, \ldots, u_n \in \langle v_1, v_2, \ldots, v_n \rangle$, $m > n$. Тогда  $u_1, \ldots, u_m$ линейно зависима.
 \end{lemma}
 \begin{proof}
-    \begin{lemma}
-        Лемма о замене: $\langle v_1, v_2, \ldots v_n \rangle = \langle \sum a_i v_i, v_2, \ldots, v_n \rangle$.
+	\begin{lemma}[О замене]
+		$\langle v_1, v_2, \ldots v_n \rangle = \langle \sum a_i v_i, v_2, \ldots, v_n \rangle$, т.е. можно заменить элемент на линейную комбинацию элементов без изменения линейной оболочки, если $v_1 \neq 0$ (?)
     \end{lemma}
     \begin{proof}
-        $\sum a_i v_i, v_2, \ldots, v_n \in \langle v_1, v_2, \ldots, v_n \rangle$. В обратную сторону: ???.
+	    $\sum a_i v_i, v_2, \ldots, v_n \in \langle v_1, v_2, \ldots, v_n \rangle$, это очевидное доказательство в одну сторону. А для другой стороны заметим, что $v_2, v_3, \cdots, v_n \in \lbrace v_1, v_2, \cdots, v_n \rbrace$, а $v_1 = \frac{(\sum a_i v_i) - a_2 v_2 - \cdots - a_n v_n}{a_1}$
     \end{proof}
     
-    Если у нас есть нуль-вектор, то мы сразу проиграли. Иначе представим $\overline{0} = u_1 = \sum a_i v_i$. По лемме произведем замену. И так пока система линейно зависима. А дальше я выпал :(
+    Доказательство ЛЗЛК:
+
+    Рассмотрим $u_1$. Если $u_1 = \overline{0}$, то система сразу линейно зависимая, конец. Иначе можно представить $u_1 = \sum a_i v_i$, и $\exists i : a_i \neq 0$ По лемме произведем замену $u_1$ на сумму. Получили $\lbrace u_1, v_2, \cdots, v_n \rbrace = \lbrace v_1, v_2, \cdots, v_n \rbrace$. Давайте продолжать подобную операцию: на $k$-ом шаге заменяем/выражаем $u_k = \sum_{i \ge k } a_i v_i + \sum_{i < k} b_i u_i$ Если все $a_i = 0$, то мы выражаем $u_k$ через остальные $u$, т.е. получили линейную зависимость. Иначе будем там заменять, и через $n$ шагов получим:
+
+    $u_{n+1}, \cdots, u_m \in \lbrace v_1, v_2, \cdots, v_n \rbrace = \lbrace u_1, u_2, \cdots, u_n, \rbrace$, т.е. умеем выражать остальные $u$ через первые $n$, т.е. система всё же линейно зависимая.
 \end{proof}
+
+Из доказанной леммы очевидно следует теорема о равенстве количеств элементов во всех базисах оного пространства, а значит и корректность определения.
