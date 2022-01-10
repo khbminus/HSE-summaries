@@ -236,18 +236,18 @@ $b_i = f(\varepsilon_i) = f(\varepsilon^i)$.
     $\forall j = 0, 1, \ldots, n - 1$ $f(\varepsilon^j) = b_j$
 
     \[
-    \sum_{j=0}^{n-1} \varepsilon^{-ij}b_j = a_i \cdot n
-    .\] 
+    \sum_{j=0}^{n-1} \varepsilon^{-ij}b_j =
+    \] 
     \[
-        \sum_{j = 0}^{n-1} \varepsilon^{-ij}f(\varepsilon^{j}) = \sum_{j=0}^{n-1} \varepsilon^{-ij} \sum_{k=0}^{n-1} a_k \varepsilon^{jk} 
-    .\] 
+        =\sum_{j = 0}^{n-1} \varepsilon^{-ij}f(\varepsilon^{j}) = \sum_{j=0}^{n-1} \varepsilon^{-ij} \sum_{k=0}^{n-1} a_k \varepsilon^{jk}= 
+    \] 
     \[
-        \sum_{\mathclap{j = 0, \\ k = 0}}^{n-1} a_k \varepsilon^{jk} \varepsilon^{-ij} = \sum_{\mathclap{j = 0, k = 0}}^{n-1} a_k \varepsilon^{j(k-i)}
-    .\] 
+        =\sum_{\mathclap{j = 0, \\ k = 0}}^{n-1} a_k \varepsilon^{jk} \varepsilon^{-ij} = \sum_{\mathclap{j = 0, k = 0}}^{n-1} a_k \varepsilon^{j(k-i)}=
+    \] 
     Зафиксируем $k$:
      \[
-         \sum_{\mathclap{j=0, k\ \text{--- fixed}}}^{n - 1} a_k \left(\varepsilon^j\right)^{k - i} \stackrel{\text{Лемма}}{=}a_k \cdot n
-    .\] 
+         =\sum_{\mathclap{j=0, k\ \text{--- fixed}}}^{n - 1} a_k \left(\varepsilon^j\right)^{k - i} \stackrel{\text{Лемма}}{=}a_i \cdot n
+    \] 
 
 \end{proof}
 \Subsection{Быстрое умножение многочленов}
@@ -360,5 +360,5 @@ $f, g \in \CC[x]$ хотим  $f\cdot g$. По правилу свертки -  
 
     Тогда $x^2+1 = (x-i)(x+i) \divby p$ в  $\Z[i]$, $p$ не делит  $\pm i$. Тогда  $p$ --- составное в  $\Z[i]$. Тогда  $p = (a+bi)(c+di)$,  $bc + ad = 0, ac - bd = p, (a, b) = 1 = (c, d)$. 
 
-    Пусть $a = - \frac{bc}{d} \implies \frac{bc^2}{d} - bd = p$. Так как $(c, d) = 1 \Rightarrow b = kd \implies -kc^2 - kd^2 = p \implies k = -1 \implies b = -d \implies a = c\ (b \neq 0) \implies p = a^2 + b^2$
+    Пусть $a = - \frac{bc}{d} \implies -\frac{bc^2}{d} - bd = p$. Так как $(c, d) = 1 \Rightarrow b = kd \implies -kc^2 - kd^2 = p \implies k = -1 \implies b = -d \implies a = c\ (b \neq 0) \implies p = a^2 + b^2$
 \end{proof}
