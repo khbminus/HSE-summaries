@@ -1,0 +1,325 @@
+\Subsection{Первообразная и неопределенный интеграл}
+\begin{definition}
+    $f\!: \langle a, b \rangle \to \R$. Функция  $F\!: \langle a, b \rangle \to \R$ --- первообразная функции  $f$, если  $F'(x) = f(x) \forall x \in \langle a, b \rangle$
+\end{definition}
+\begin{theorem}
+    Непрерывная на промежутке функция имеет первообразную.
+\end{theorem}
+\begin{proof}
+    Позже.
+\end{proof}
+\begin{remark}
+    $\text{sign}\ x = \begin{cases} 1 & \text{ если } x > 0 \\ 0 & \text{ если } x = 0 \\ -1 & \text{ если }  x < 0 \end{cases}$. Не имеет первообразной.
+\end{remark}
+\begin{proof}
+    От противного: пусть нашлась $F\!: \langle a, b \rangle \to \R$ и $F'(x) = sign(x)$.
+    
+    Тогда воспользуемся теоремой Дарбу для $F$ на отрезке $[0; 1]$.
+    
+    Пусть $k = \frac{1}{2} \in (\text{sign}\ (0), \text{sign}\ (1))$. Значит $\exists c \in (0, 1) \!: F'(c) = k = \frac{1}{2}$. Противоречие.
+\end{proof}
+\begin{theorem}
+    $f, F\!: \langle a, b \rangle \to \R$ и  $F$ --- первообразная для  $f$. Тогда: 
+     \begin{enumerate}
+         \item $F+C$ --- первообразная для  $f$.
+         \item  Если  $\Phi\!: \langle a, b \rangle \to \R$ --- первообразная для  $f$, то  $\Phi = F + C$. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item $(F(x) + C)' = F'(x) + C' = f(x)$
+        \item $(\Phi(x) - F(x))' = \Phi'(x) - F'(x) = f(x) - f(x) = 0 \Rightarrow (\Phi - F)' \equiv 0 \implies \Phi -F$ --- константа. 
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    Неопределённый интеграл --- множество всех первообразных.
+
+    $\int f(x)\,dx = \{F\!: F \text{ --- первообразная f}\}$. Но мы будем записывать $\int f(x)\,dx = F(x) + C$
+\end{definition}
+
+\textbf{Табличка интегралов.}
+\begin{enumerate}
+    \item $\int 0\,dx = C$.
+    \item $\int x^p\,dx = \frac{x^{p+1}}{p+1}+C$, при $p \neq -1$.
+    \item  $\int \frac{dx}{x} = \ln |x| + C$.
+    \item $\int a^x\,dx = \frac{a^x}{\ln a} + c$, при $a > 0, a \neq 1$.
+    \item  $\int \sin x\,dx = - \cos x + C$.
+    \item  $\int \cos x\,dx = \sin x + C$.
+    \item $\int \frac{dx}{\cos^2 x} = \tg x + C$.
+    \item $\int \frac{dx}{\sin^2 x} = -\ctg x + C$ 
+    \item $\int \frac{dx}{\sqrt{1-x^2}} = \arcsin x + C$.
+    \item $\int \frac{dx}{1+x^2} = \arctg x + C$.
+    \item $\int \frac{dx}{\sqrt{x^2 \pm 1}} = \ln |x+\sqrt{x^2 \pm 1}| + C$. 
+    \item $\int \frac{dx}{1-x^2} = \frac{1}{2} \ln |\frac{1+x}{1-x}| + C$.
+\end{enumerate}
+\begin{proof}
+    Для 3. Если $x > 0$  $\int \frac{dx}{x} = \ln x + C$ . Если $x < 0$  $\int \frac{dx}{x} = \ln(-x) + C$, то есть $(\ln (-x))' = (\frac{1}{-x}) (-x)' = \frac{-1}{x}$.
+
+    Для 11. $(\ln |x+\sqrt{x^2 \pm 1}|)' = \frac{1}{x + \sqrt{x^2 \pm 1}}(x + \sqrt{x^2 \pm 1})' = \frac{1 + \frac{x}{\sqrt{x^2 \pm 1}}}{x + \sqrt{x^2}} = \frac{\frac{\sqrt{x^2 pm 1} + x}{\sqrt{x^2 \pm 1}}}{\sqrt{x^2 \pm 1} + x} = \frac{1}{\sqrt{x^2 \pm 1}}$
+
+    Для 13. $(\frac{1}{2}(\ln |1+x| - \ln |1-x|))' = \frac{1}{2}(\frac{1}{1+x} + \frac{1}{1-x}) = \frac{1}{1-x^2}$
+\end{proof}
+\begin{remark}
+    $A + B \coloneqq \{a+b\!: a \in A, b \in B\}$,  $cA \coloneqq \{ca\!: a \in A\}$.
+
+    $\int f(x)\,dx + \int g(x)\,dx = \{F+C\} + \{G+\widetilde{C}\} = \{F+G+C\}$.
+\end{remark}
+\begin{theorem}[Арифметические действия с неопределенными интегралами]
+    Пусть $f, g\!: \langle a, b \rangle \to \R$ имеют первообразные. Тогда:
+     \begin{enumerate}
+         \item $f+g$ имеет первообразную и  $\int (f+g)\,dx = \int f\,dx + \int g\,dx$
+         \item $\alpha f$ имеет первообразную и  $\int \alpha f\,dx = \alpha \int f\,dx$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Пусть $F$ и  $G$ первообразные для  $f$ и  $g$. 
+     \begin{enumerate}
+         \item Тогда $F+G$ --- первообразная для  $f+g$. Тогда  $\int(f+g) = F+G+C = \int f + \int g$.
+         \item Тогда  $\alpha F$ --- первообразная для  $\alpha f \implies \int \alpha F = \alpha F + C = \alpha(F + \frac{C}{\alpha}) = \alpha \int f$.
+    \end{enumerate}
+\end{proof}
+\begin{consequence}[Линейность неопрделенного интеграла]
+    $f, g\!:\langle a, b\rangle \to \R$ имеют первообразную $\alpha, \beta \in \R$,  $|\alpha| + |\beta| \neq 0$. Тогда  $\int(\alpha f+ \beta g) = \alpha \int f + \beta \int g$. 
+\end{consequence}
+\begin{proof}
+    Прямое следствие из теоремы выше.
+\end{proof}
+\begin{theorem}[Теорема о замене переменной в непопределенном интеграле]
+    $f\!: \langle a, b \rangle \to \R, \varphi\!:\langle c, d \rangle \to \langle a, b \rangle$,  $f$ имеет первообразную  $F$.  $\varphi$ дифференцируемая. Тогда  $\int f(\varphi(t)) \varphi'(t)\,dt = F(\varphi(t)) + C$.
+\end{theorem}
+\begin{proof}
+    Надо проверить, что $F(\varphi(t))$ --- первообразная для  $f(\varphi(t))\varphi'(t)$.  \[
+        (F(\varphi(t)))' = F'(\varphi(t))\cdot \varphi'(t) = f(\varphi(t))\varphi(t).
+    .\] 
+\end{proof}
+\begin{consequence}
+    $\int f(\alpha x + \beta)\,dx = \frac{1}{\alpha}F(\alpha x + \beta)+C$
+\end{consequence}
+\begin{proof}
+    $\int \alpha f(\alpha x + \beta dx) = F(\alpha x + \beta) + C$. И делим обе части на  $\alpha$.
+\end{proof}
+\begin{theorem}[Форумла интегрирования по частям]
+    $f, g\!: \langle a, b \rangle \to \R$, дифференцируемые,  $f'g$ имеет первообразную.
+
+    Тогда  $fg'$ имеет первообразную и  $\int fg' = fg - \int f'g$
+\end{theorem}
+\begin{proof}
+    $H$ --- первообразная для  $f'g$. Тогда  $H' = f'g$.
+
+    Надо доказать, что  $fg - H$ --- первообразная для $fg'$.
+
+    $(fg - H)' = f'g + gh' - H' = f'g + fg' - f'g = fg'$. 
+\end{proof}
+\Subsection{Определенный интеграл}
+Пусть $\mathcal{F}$ --- совокупность (множество) ограниченных плоских фигур. 
+\begin{definition}
+    $\sigma\!: \mathcal{F} \to [0; +\infty)$, 
+     \begin{enumerate}
+         \item $\sigma([a; b] \times [c, d]) = (b - a)(d - c)$
+         \item (Аддитивность).  $\forall E_1, E_2 \in \mathcal{F}\!: E_1 \cap E_2 = \emptyset \Rightarrow \sigma(E_1 \cup E_2) = \sigma(E_1) + \sigma(E_2)$
+    \end{enumerate}
+\end{definition}
+\begin{property}[Монотонность площади]
+    $\forall E, \widetilde{E}\!: E \subset \widetilde{E} \Rightarrow \sigma(E) \le \sigma(\widetilde{E})$.
+\end{property}
+\begin{proof}
+    $E = \widetilde{E} \cup (\widetilde{E} \setminus E) \Rightarrow \sigma(\widetilde{E}) = \sigma(E) + \sigma(\widetilde{E} \setminus E)$.
+\end{proof}
+\begin{definition}
+    $\sigma\!: \mathcal{F} \to [0; +\infty]$, причем
+     \begin{enumerate}
+         \item $\sigma([a; b] \times [c, d]) = (b - a)(d - c)$,
+         \item $\forall E, \widetilde{E} \in \mathcal{F}\!: E \subset \widetilde{E} \Rightarrow \sigma(E) \le \sigma(\widetilde{E})$, 
+         \item Разобьем $E$ вертикальной или горизонтальной прямой, в том числе теми прямыми, которые правее или левее $E$. Тогда  $E = E_- \cup E_+, E_- \cap E_+ = \emptyset$ и  $\sigma(E) = \sigma(E_-) + \sigma(E_+)$.
+    \end{enumerate}
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item Подмножество вертикальных или горизонтальных отрезков имеет нулевую площадь.
+        \item В определении $E_-$ и  $E_+$ не важно  куда относить точки из  $l$.
+            \begin{proof}
+                Заметим, что $\sigma(E_- \cup (E \cap l)) = \sigma(E_- \setminus l) + \underbrace{\sigma(E \cap l)}_{=0} \Rightarrow$ вообще не имеет разницы куда относить точки из  $l$.
+            \end{proof}
+    \end{enumerate}
+\end{properties}
+\begin{example}
+    \slashn
+     \begin{enumerate}
+         \item $\sigma_1(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^n \supset E\right\}$.
+         \item $\sigma_2(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^\infty \supset E\right\}$.
+    \end{enumerate}
+\end{example}
+\begin{exerc}
+    \slashn
+    \begin{enumerate}
+        \item Доказать, что $\forall E\ \ \sigma_1(E) \ge \sigma_2(E)$.
+        \item $E = \left([0, 1] \cap \Q\right) \times \left([0, 1] \cap \Q\right)$. Доказать, что  $\sigma_1(E) = 1, \sigma_2(E) = 0$.
+    \end{enumerate}
+\end{exerc}
+\begin{theorem}
+    \slashn
+     \begin{enumerate}
+         \item $\sigma_1$ --- квазиплощадь.
+         \item Если  $E'$ --- сдвиг  $E$, то  $\sigma_1(E) = \sigma_1(E')$.
+     \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item[2.] $E'$ --- сдвиг  $E$ на вектор  $v$. Пусть  $P_k$ --- покрытие  $E \iff P'_k$ --- покрытие  $E'$.
+            $\sigma_1(E) = \inf\{\sum\limits_{k=1}^n|P_k|\} = \inf\{\sum |P'_k|\} = \sigma_1(E')$.
+        \item[1.] $\Rightarrow$ монотонность. Пусть есть  $E \subset \widetilde{E}$. Тогда возьмем покрытие  $P_k$ для  $\widetilde{E}$.  $E \subset \widetilde{E} \subset \bigcup\limits_{k=1}^n P_k$. 
+
+            А теперь заметим, что $\sigma_1$ ---  $\inf$, а значит  $\sigma_1(E) \le \sum |P_k| = \sigma_1(\widetilde{E})$.
+
+        \item[1'.] Докажем теперь аддитивность. 
+
+            <<$\le$>>. $\sigma_1(E) = \sigma_1(E_-) + \sigma_1(E_+)$. Пусть $P_k$ --- покрытие  $E_-$,  $Q_j$ --- покрытие  $E_+$.  $\bigcup\limits_{k=1}^n P_k \cup \bigcup\limits_{j=1}^m Q_j \supset E_i \cup E_+ = E$. А значит  $\sigma_1(E) \le \inf \left\{ \sum\limits_{k=1}^n |P_k| + \sum\limits_{j=1}^n |Q_j|\right\} = \inf\{\sum |P_k|\} + \inf\{\sum |Q_j|\} = \sigma_1(E_-) + \sigma(E_+)$. Заметим, Что переход с разделением инфинумов  возможен, так как $P$ и  $Q$ выбираются независимо.
+
+            <<$\ge$>>. Пусть $P_k$ --- покрытие  $E$. Тогда можно разбить  $|P_k| = |P^-_k| + |P^+_k|$.  $\sum |P_k| = \sum |P^-_k| + \sum |P^+_k|$. Заметим, что сумму  $\ge \sigma \Rightarrow \sum |P_k|  \ge \sigma(E_1) + \sigma(E_2) \Rightarrow \sigma(E) \ge \sigma(E_1) + \sigma(E_2)$.
+
+        \item[1''.] Проверим, что сама площадь прямоугольника не сломалась: $\sigma_1([a, b] \times [c, d]) = (b-a)(d-c)$. Заметим, что  $\sigma_1(P) \le |P|$.
+
+            Тогда посмотрим на $P_k$. Проведем прямые содержащие все стороны прямоугольников из разбиения. Заметим, что получили разбиение с суммой равной  $|P|$. Тогда заметим, что некоторые части разбиения встречаются в  $P_k$ несколько раз. А значит выкинув все лишнее мы как раз получим  $|P|$, а значит  $\sigma_1(P) \ge |P|$.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    Пусть $f\!: [a, b] \to \R$. Тогда  $f_+, f_-\!: [a, b] \to [0; +\inf)$. Причем  $f_+(x) = \max\{f(x), 0\}$,  $f_- = \max\{-f(x), 0\}$.
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item $f = f_+ - f_-$.
+        \item  $|f| = f_+ + f_-$
+        \item  $f_+ = \frac{f + |f|}{2}$, $f_- = \frac{|f| - f}{2}$.
+        \item Если $f \in C([a, b])$ , то  $f_{\pm} \in C([a, b])$.
+    \end{enumerate}
+\end{properties}
+
+\begin{definition}
+    Пусть $f\!: [a, b] \to [0; \inf]$.
+
+    Тогда, подграфик $P_f([a; b]) \coloneqq \{(x, y) \in \R^2 \mid x \in [a, b], 0 \le y \le f(x)\}$.
+\end{definition}
+\begin{definition}
+    $\int\limits_a^b f = \int\limits_a^b f(x) dx = \sigma(P_{f_+}([a; b])) - \sigma(P_{f_-}([a; b]))$.
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item $\int\limits_a^a f = 0$.
+        \item $\int\limits_a^b = c(b-a)$
+            \begin{proof}
+                По графику очевидно :)
+            \end{proof}
+        \item $f \ge 0 \Rightarrow \int\limits_a^b = \sigma(P_f)$.
+        \item $\int\limits_a^b (-f) = -\int\limits_a^b f$.
+             \begin{proof}
+                 $(-f)_+ = \max\{-f, 0\} = f_-$.  $(-f)_- = \max\{f, 0\} = f+$.  Откуда все и следует.
+            \end{proof}
+        \item $f \ge 0 \land \int\limits_a^b = 0 \land a < b \Rightarrow f = 0$.
+            \begin{proof}
+                От противного. $\exists c \in [a, b]\!: f(c) > 0$. Тогда, возьмем $\eps \coloneqq \frac{f(c)}{2}, \delta$ из определения непрерывности в точке $c$. Если  $x \in (c - \delta, c + \delta)$, то  $f(x) \in (f(c) - \eps, f(c) + \eps) = (\frac{f(c)}{2}; \frac{3f(c)}{2}) \Rightarrow f(x) \ge \frac{f(c)}{2}$ при $x \in (c - \delta; c + \delta) \Rightarrow P_f \supset [c-\frac{\delta}{2}; c + \frac{\delta}{2}]\times[0; \frac{f(c)}{2}] \Rightarrow \int\limits_a^b f = \sigma(P_f) \ge \delta \cdot \frac{f(c)}{2} > 0$
+            \end{proof}
+    \end{enumerate}
+\end{properties}
+\Subsection{Свойства интеграла}
+\begin{theorem}[Аддиктивность интеграла]
+    Пусть $f\!: [a, b] \to \R$,  $c \in [a, b]$.
+
+    Тогда  $\int\limits_a^b f = \sum\limits_a^c f + \sum\limits_c^b f$.
+\end{theorem}
+\begin{proof}
+    $\int\limits_a^b f = \sigma(P_{f_+}([a, b])) - \sigma(P_{f_-}([a, b]))$. Разделим наш $[a, b]$  вертикальной прямой $x=c$. Тогда  можно воспользоваться свойством 3 из определения квазиплощади.
+\end{proof}
+\begin{theorem}[Монотонность интеграла]
+    Пусть $f, g\!: [a, b] \to \R$ и  $\forall x \in [a, b]\!: f(x) \le g(x)$.
+
+    Тогда $\int\limits_a^b f \le \int\limits_a^b g$. 
+\end{theorem}
+\begin{proof}
+    $f_+ = \max\{f, 0\} \le \max\{g, 0\} = g_+ \Rightarrow P_{f_+} \subset P_{g_+} \Rightarrow \sigma(P_{f_+}) \le \sigma(P_{g_+})$.
+
+    $f_- = \max\{-f, 0\} \ge \max\{-g, 0\} = g_- \Rightarrow P_{f_-} \supset P_{g_-} \Rightarrow \sigma(P_{f_-}) \ge \sigma(P_{g_-})$.
+\end{proof}
+\begin{consequence}
+    \begin{enumerate}
+        \item $|\int\limits_a^b f| \le \int\limits_a^b |f|$ 
+        \item $(b-a)\min\limits_{x \in [a, b]} f(x) \le \int\limits_a^b f \le (b-a)\max\limits_{x \in [a, b]} f(x)$.
+    \end{enumerate}
+\end{consequence}
+\begin{proof}
+    \begin{enumerate}
+        \item $-|f| \le f \le |f| \Rightarrow \int\limits_a^b -|f| \le \int\limits_a^b f \le \int\limits_a^b |f| \Rightarrow |\int\limits_a^b f| \le \int\limits_a^b |f|$
+        \item $m \coloneqq \min f(x)$,  $M \coloneqq \max f(x)$.  $m \le f(x) \le M \Rightarrow \int\limits_a^b m \le \int\limits_a^b f \le \int\limits_a^b M$.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[Интегральная теорема о среднем]
+    Пусть $f \in C([a, b])$.
+
+    Тогда  $\exists c \in (a, b)\!: \int\limits_a^b f = (b-a)f(c)$.
+\end{theorem}
+\begin{proof}
+    $m \coloneqq \min f = f(p), M \coloneqq \max f = f(q)$ (по теореме Вейерштрасса). Тогда  $f(p) \le \frac{1}{b-a}\int\limits_a^b f \le f(q) \xRightarrow{\text{т. Б-К}} \exists c\!: f(c) = \frac{1}{b - a}\int\limits_a^b f$.
+\end{proof}
+\begin{definition}
+    $I_f \coloneqq \frac{1}{b-a} \int\limits_a^b f$ --- среднее значения $f$ на отрезке  $[a, b]$.
+\end{definition}
+\begin{definition}
+    $f\!: [a, b] \to \R$. Интеграл с переменным верхним пределом  $\Phi(x) \coloneqq \int\limits_a^x f$, где  $x \in [a, b]$.
+\end{definition}
+\begin{definition}
+    $f\!: [a, b] \to \R$. Интеграл с переменным нижним пределом  $\Psi(x) \coloneqq \int\limits_x^b f$, где  $x \in [a, b]$.
+\end{definition}
+\begin{remark}
+    $\Phi(x) + \Psi(x) = \int\limits_a^b f$.
+\end{remark}
+\begin{theorem}[Теорема Барроу]
+    Пусть  $f \in C[a, b]$. Тогда  $\Phi'(x) = f(x)\quad  \forall x \in[a, b]$. То есть  $\Phi$ --- первообразная функции  $f$.
+\end{theorem}
+\begin{proof}
+    Надо доказать, что $\lim\limits_{y \to x} \frac{\Phi(y) - \Phi(x)}{y-x} = f(x)$. Проверим для предела справа. 
+
+    Тогда $\Phi(y) - \Phi(x) = \int\limits_a^y f - \int\limits_a^x f = \int\limits_x^y f$.
+
+    Тогда  $\frac{\Phi(y) - \Phi(x)}{y-x}=\frac{1}{y-x}\int\limits_x^y f = f(c)$ для некоторого $c \in (x, y)$.
+
+    Проверяем определение по Гейне. Берем  $y_n > x$ и  $y_n \to x$. Тогда  $\frac{\Phi(y_n)-\Phi(x)}{y_n - x} = f(c_n)$, где $c_n \in (x, y_n)$,  $x < c_n < y_n \to x \Rightarrow c_n \to x \Rightarrow f(c_n) \to f(x)$.
+\end{proof}
+\begin{consequence}
+    $\Psi'(x) = -f(x)\quad \forall x\in [a, b]$.
+\end{consequence}
+\begin{proof}
+    $\Psi(x) = \int\limits_a^b f - \Phi(x) = C - \Phi(x) \Rightarrow \Psi' = (C - \Phi(x))' = -Phi'(x) = -f(x)$.
+\end{proof}
+\begin{theorem}
+    Непрерывная на промежутке функция имеет первообразную.
+\end{theorem}
+\begin{proof}
+    $f\!: \langle a, b \rangle \to \R$. 
+
+    Рассмотрим  $F(x) \coloneqq \begin{cases} \int\limits_c^x f & \text{при } x \ge c \\ -\int\limits_x^c f & \text{при } x \le c \end{cases}$.
+
+    Если $x > c$, то  $F'(x) = f(x)$. 
+\end{proof}
+
+\begin{theorem}[Формула Ньютона-Лейбница]
+    $f\!: [a, b] \to \R$ и  $F$ -- её первообразная. Тогда  $\int\limits_a^b f = F(b) - F(a)$.
+\end{theorem}
+\begin{proof}
+    $\Phi(x) = \int\limits_a^x f$ --- первообразная и  $F(x) = \Phi(x) + C$.
+
+    Тогда  $F(b) - F(a) = (\Phi(b) + C) - (\Phi(a) + C) = \Phi(b) - \Phi(a) = \int\limits_a^b f$
+\end{proof}
+\begin{definition}
+    $F\mid_a^b \coloneqq F(b) - F(a)$
+\end{definition}
+\begin{theorem}[Линейность интеграла]
+    $\int\limits_a^b(\alpha f + \beta g) = \alpha \int\limits_a^b f + \beta \int\limits_a^b g$.
+\end{theorem}
+\begin{proof}
+    $F, G$ --- первообразные для  $f, g$.
+
+    Тогда  $\alpha F + \beta G$ --- первообразная для  $\alpha f + \beta g$. Тогда воспользуемся формулой Ньютона-Лейбница:  \[
+        \int_a^b \alpha f + \beta g = \alpha F + \beta G \mid_a^b = \alpha F(b) + \beta G(b) - \alpha F(a) - \beta G(a)
+    .\] 
+\end{proof}
