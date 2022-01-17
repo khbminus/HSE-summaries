@@ -1,0 +1,97 @@
+\begin{definition}
+    Пусть $R$ --- кольцо,  $I, J$ --- конечные множества.
+
+    Тогда матрица $A$ над  $R$ --- отображение  $I \times J \to R$.
+
+    Обычно  $I = \{1,\ldots, m\}, J = \{1, \ldots, n\}, (i, j) \mapsto a_{ij} \in R$.
+
+    Тогда матрица $m \times n\!: (a_{ij})_{\substack{i=1..m \\ j = 1..n}}$
+\end{definition}
+\begin{definition}
+    Множество матриц $M_{m, n}(R)$.
+
+    При $I = J$ мы называем квадратными  $M_n(R)$.
+\end{definition}
+
+Рассмотрим матрицу $A \in M_{m, n}$. Её можно разбить на  $n$ столбцов  $(c_1 \mid c_2 \mid \ldots \mid c_n), c_i \in K^m$ и $m$ строчек:  $\begin{pmatrix} r_1 \\ r_2 \\ \ldots \\ r_n \end{pmatrix}, r_i \in \prescript{n}{}{K}$.
+
+Также заметим, что $M_{m, n}(k)$ --- векторное пространство над  $K$. Ясно, что  $M_{m, 1}(K) \cong K^m$ и  $M_{1, m}(K) \cong \prescript{n}{}{K}$.
+
+ \begin{definition}
+     Умножение матриц: $M_{m, n} \times K^n \to K^m$: $(a_{ij}, \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}) \mapsto \begin{pmatrix} y_1 \\ y_2 \vdots \\ y_n \end{pmatrix}$, где $u_i = a_{i 1} x_1 + a_{i 2}x_2 + \ldots + a_{in}x_n = \sum\limits_{k=1}^n a_{ik}x_k$.
+
+     Можно определить умножение строки на столбец:  $\begin{pmatrix} a_1 & a_2 & \ldots & a_m \end{pmatrix} \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{pmatrix} \leadsto \sum a_i x_i$.  Тогда умножение матрицы на столбец можно записать как $\begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \end{pmatrix} \cdot X \leadsto \begin{pmatrix} c_1 \cdot X \\ c_2 \cdot X \\ \vdots \\ c_m \cdot X \end{pmatrix}$.
+
+     Тогда заметим, что умножение матриц: $A \cdot B = \begin{pmatrix} Ac_1 & Ac_2 & \ldots  & A_l \end{pmatrix}$.
+\end{definition}
+\begin{example}[.СЛУ]
+    Системы линейных уравнений можно записывать как матрицу. Дальше я не успел. 
+\end{example}
+\begin{remark}
+    $A \in M_{m, n}(K)$. Рассмотрим  $\mathcal{A}\!: K^n \to K^m$,  $X \mapsto A \cdot X$.
+\end{remark}
+\begin{statement}
+    $\mathcal{A}$ --- линейное отображение. 
+\end{statement}
+\begin{proof}
+    $\mathcal{A}(X+Y) = A \cdot X + A \cdot Y\quad \forall x, y$,  $\mathcal{A}(kX) = kA\cdot X$,  $k \in K$.
+\end{proof}
+
+Однородная СЛУ: $AX = 0$.  $A = \begin{pmatrix} c_1 & c_2 & \ldots & c_n \end{pmatrix}$. Эта система имеет тривиальное решение $x = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0\end{pmatrix} \iff c_1, \ldots, c_n$ --- ЛНЗ. Тогда заметим, что если $n > m$, то  $AX=0$ имеет нетривиальное решение.
+\Subsection{Структура линейных отображений}
+\begin{example}
+   $V=R^2$. Поворот вокруг $O$ --- линейное отображение. Симметрия относительно прямой --- линейное отображение, если  $0 \in l$. Проекция на  $l$ --- линейное отображение.
+\end{example}
+\begin{properties}
+    \begin{enumerate}
+        \item $\mathcal{A}(0) = 0, x = 0 \Rightarrow \mathcal{A}(0) = 0$.
+        \item $\mathcal{A}$ --- инъекция  $\iff AX = 0 \Rightarrow X = 0$.
+        \item $x_1, x_2, \ldots, x_n$ --- ЛЗ $\Rightarrow \mathcal{A}(x_i)$ --- ЛЗ.
+        \item[3'.] $\mathcal{A}$ --- инъекция:  $\{x_i \}$ --- ЛНЗ  $\Rightarrow \{\mathcal{A}(x_i)\}$ --- ЛНЗ.
+        \item  $u_1, u_2, \ldots, u_m$ --- базис $U$.  $v_1, v_2, \ldots, v_n \in V$. Тогда $\exists! A\!: i \to v$ такое что  $\mathcal{A}(u_i) = v_i$.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+     \begin{enumerate}
+         \item $\mathcal{A}(0) = \mathcal{A}(0+0) = \mathcal{A}(0) + \mathcal{A}(0)$ 
+         \item $\Rightarrow\!:$  $\mathcal{A}$ --- инъекция,  $\mathcal{A}(x) = 0, \mathcal{A}(0)=0 \Rightarrow x = 0$. 
+
+             $\Leftarrow\!:$ ???
+         \item  $\sum a_i x_I = 0 \implies \sum a_i \mathcal{A}(x_i) = \sum \mathcal{A}(a_i x_i) = \mathcal{A}(\sum a_i x_i) = \mathcal{A}(0) = 0$.
+         \item[3'.] Пусть $\sum a_i x_i = 0 \Rightarrow \sum a_i \mathcal{A}(x_i) = \mathcal{A}(\sum a_i x_i) = 0 \implies a_i x_i = 0 \rightarrow a_i = 0$.
+         \item Определим $A$: пксть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
+
+             Единственность: пусть  $\mathcal{A}_2(u_i) = v_i$, тогда  по линейности  $\mathcal{A}_2(\sum a_i u_i) = \sum a_i \mathcal{A}_2(u_i) = \sum a_i v_i = \mathcal{A}(\sum a_i u_i)$.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    $\mathcal{A}\!: U \to V$ --- линейное отображение.
+
+    Тогда  $\ker \mathcal{A} = \{ u \in U \mid \mathcal{A}(u) = 0\}$ --- ядро  $\mathcal{A}$.  $\Im A = \{ v \in V \mid \exists u: \mathcal{A}(u) = v\}$.
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item $\ker \mathcal{A} \le U$, $\Im \mathcal{A} \le U$.
+        \item $\Im \mathcal{A} = V \iff \mathcal{A}$ --- суръекция.
+        \item $\ker \mathcal{A} = \{0\} \iff \mathcal{A}$ --- инъекция.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    а где
+\end{proof}
+\begin{theorem}[о ядре и образе]
+    $\mathcal{A}$ --- линейное отображение.
+     \begin{enumerate}
+         \item $\exists$ базис  $u_1, u_2, \ldots, u_k, u_{k+1}, u_m$. Причем $u_1, \ldots, u_k$ --- базис $\ker \mathcal{A}$, а  $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_m)$ --- базис $\Im \mathcal{A}$.
+         \item  $\dim (\ker \mathcal{A}) + \dim (\Im \mathcal{A}) = \dim U$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Рассмотрим базис $u_1, u_2, \ldots, u_k$ --- базис $\ker \mathcal{A}$. По лемме эту систему можно дополнить до базиса  $U$. Рассмотрим $u_{k+1}, \ldots, u_n$ из нового базиса. 
+
+    Хотим доказать, что $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_n)$ --- базис $\Im \mathcal{A}$.
+
+    ЛНЗ-ть: Пусть  $\sum a_{k+i} \mathcal{A}(u_{k+i}) = 0 \Rightarrow \mathcal{A}(\sum a_{k+i} u_{k+i}) = 0 \Rightarrow \sum a_{k+i} u_{k+i} \in \ker A \Rightarrow \sum\limits_{i=0}^n(-a_i)u_i = \sum\limits_{i=0}^n a_i u_i= 0 \Right$.
+
+
+\end{proof}

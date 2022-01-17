@@ -245,3 +245,70 @@ $$
 \end{proof}
 
 Из доказанной леммы очевидно следует теорема о равенстве количеств элементов во всех базисах оного пространства, а значит и корректность определения.
+
+\begin{example}
+    Рассмотрим $\Z / 6 \Z$. Пусть  $R$ --- модуль над  $R$. 
+
+    $\{1\}$ --- минимальная порождающая система. При этом,  $\{2, 3\}$ --- минимальная порождающая система.
+\end{example}
+\begin{lemma}
+    Пусть $V$ --- конечномерное пространство.
+    \begin{enumerate}
+        \item $\forall $ ЛНЗ систему можно дополнить до базиса.
+        \item $V_1 \le V_2 \Rightarrow \dim V_1 \le V_2$, причем $\dim V_1 = \dim V_2 \Rightarrow V_1 = V_2$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+   Пусть $\dim V_1 = n$, $v_1, \ldots, v_k$ --- ЛНЗ система. Тогда заметим, что $k \le n$ по лемме о линейной зависимости.
+
+   Процесс: $\exists v \notin \langle v_1, \ldots, v_k \rangle$. Положим $v_{k+1} = v$. Если  $v$ не существует, то  $v_1, \ldots, v_k$ --- базис. Причем, заметим, что $v_1, \ldots, v_{k+1}$ --- ЛНЗ система. 
+
+   Продолжаем данный процесс. Заметим, что данный процесс будет длиться не более $n-k$ шагов, так как, если размер станет  $n + 1$, то система точно будет ЛЗ.
+
+
+   Докажем второй пункт. Рассмотрим  $v_1, \ldots, v_k$ --- базис $V_1$. Заметим, что $\{v_i\}$ --- ЛНЗ и каждый  $v_i \in V_2$. Тогда $\{v_i\}$ можно дополнить до базиса  $V_2 \Rightarrow k \le \dim V_2$.
+\end{proof}
+
+\begin{remark}[Напоминание]
+    Пусть $V$ --- векторное пространство, причем  $\dim V = n$,  $v_1, \ldots, v_n$ --- базис $V$  $\Rightarrow \exists$ изоморфизм векторных пространств.
+
+    $f\!: K^n \to V$, причем  $f(\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} + \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}) = f(\begin{pmatrix} a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix}) = \sum (a_i + b_i) v_i = \sum a_iv_i + \sum b_iv_i = f(\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}) + f(\begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix})$.
+
+    Плюс есть домножение на скаляр: $f(k\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}) = kf(\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix})$
+\end{remark}
+\begin{definition}
+    $a \in \CC$ называется алгебраическим,  $\exists f \in \Z[x]$, такой что  $f(a) = 0 \land f \not\equiv 0$
+\end{definition}
+ \begin{statement}
+     $a$ --- алгебраическое  $\Rightarrow \langle 1, a, a^2, \ldots \rangle$ --- конечномерное. 
+\end{statement}
+\begin{proof}
+    $\exists P = \sum\limits_{i=0}^n k_i x^i$, такое что  $k_n = 1, P(a) = 0$. Тогда $a^n = -\sum k_i a^i \in \langle 1, a, \ldots, a^{n-1} \langle$, $a^{n+1} = -\sum k_i a^{i+1}$ и так далее для  $\forall N > n$.  $a^N \in \langle 1, a,\ldots, a^{N-1} \rangle$
+\end{proof}
+\begin{statement}
+    $a, b$ --- алгебраические. Тогда  $\langle a^i b^k \rangle$ --- конечномерное. 
+\end{statement}
+\begin{proof}
+    $a$ --- корень  $f$:  $\deg f = m$.  $b$ --- корень  $g$:  $\deg g = n$.
+    
+    Тогда  $a^i \cdot b^k = (\sum\limits_{j=0}^{m-1} k_j a^)(\sum\limits_{s=0}^{n-1} l_s b^s) = \sum \sum (k_j b_s)a^j b^s \Rightarrow \{ a^j b^s\}_{\substack{j = 0..m-1 \\ s = 0..n-1}}$ --- порождает  $\langle \{a^i b^k\} \rangle$.
+\end{proof}
+\begin{theorem}
+    Алгебраические числа образуют кольцо. По факту хочется доказать: $a, b$ --- алгебраические  $\Rightarrow a + b, ab$ --- алгебраические.
+\end{theorem}
+\begin{proof}
+    $\CC$ --- векторное пространство над  $\Q$. 
+
+    Докажем, что $a+b$ --- алгебраическое: рассмотрим  $1, a+b, (a+b)^2, (a+b)^3, \ldots$. $(a+b)^i = \sum \binom{i}{k} a^k b^{i-k} \in V$, причем  $\dim V = N$. Тогда  $1, a+b, \ldots, (a+b)^N$ --- ЛЗ система. $\implies c_i \in \Q\!: \sum c_i(a+b)^i = 0 \Rightarrow (a+b)^i$ --- корень  $\sum c_i x^i = 0$.  $ab$ --- аналогично.
+\end{proof}
+
+\begin{example}
+    $SF$ --- последовательности фиб. типа.  $SF = \{ (a_1, a_2, \ldots) \mid \substack{a_i \in \R \\ a_{i+1} = a_i + a_{i-1}} \} $ --- векторное пространство над $\R$.  $\dim SF = 2$, причем  $(1, 0, 1, 1, 2, 3, 5, 8, \ldots)$ и $(0, 1, 1, 2, 3, 5, \ldots)$ --- Базис $SF$. 
+
+    Координаты  $(1, 1, 2, 3, \ldots)$ в базисе, заданном сверху: $\binom{1}{1}$. 
+
+    При этом есть другой, хороший базис:  $\begin{array}{l} u_1 = (1, \vphi, \vphi^2, \vphi^3, \ldots) \\ u_2 =(1, -\frac{1}{\vphi}, \left(-\frac{1}{\vphi}\right)^2, \ldots ) \end{array}$
+
+    Например, $u = au_1 + bu_2 \iff \begin{cases} 1 = a\cdot 1 + b\cdot1 \\ 1 = a + \vphi  + b \left(-\frac{1}{\vphi}\right) \end{cases} \leadsto \binom{a}{b}$ --- вектор $\Rightarrow u_n = a \vphi^{n-1} + b \left(-\frac{1}{\vphi}\right)^{n-1}$. 
+\end{example}
+
