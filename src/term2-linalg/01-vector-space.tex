@@ -82,7 +82,7 @@
 \end{example}
 \slashn
 
-Обозначение: $U$ --- подмножество  $V$:  $U \le V$.
+Обозначение: $U$ --- подпространство  $V$:  $U \le V$.
 
 \begin{statement}
     $V_1, V_2, \le V \implies V_1 \cap V_2 \le V$.
@@ -91,7 +91,7 @@
     Очевидно!
 \end{proof}
 \begin{definition}
-   Сумма по Минковскому: $A, B \subset V\!: A + V \coloneqq \{a + b \mid a \in A \land b \in B\}$. 
+   Сумма по Минковскому: $A, B \subset V\!: A + B \coloneqq \{a + b \mid a \in A \land b \in B\}$. 
 \end{definition}
 \begin{statement}[Сумма по Минковскому]
     $V_1, V_2 \le V \implies V_1 + V_2 \le V$.
@@ -107,7 +107,7 @@
     $M \subset V$,  $\langle M \rangle = \bigcap\limits_{\mathclap{\substack{U \le V \\ U \supset M}}} U$, доказывается как аналогичное утверждение из первого семестра.
 \end{remark}
 \begin{definition}
-    $V_1, V_2$ --- векторные пространствами над $K$. Тогда  $f\!: V_1 \to V_2$ --- гомоморфизм (линейное отображение), если 
+    $V_1, V_2$ --- векторные пространства над $K$. Тогда  $f\!: V_1 \to V_2$ --- гомоморфизм (линейное отображение), если 
     \begin{enumerate}
         \item $f(v_1+v_2) = f(v_1) + f(v_2)\ \forall v_1, v_2 \in V_1$.
         \item $f(kv) = k f(v)$.
@@ -179,6 +179,7 @@ $$
          \item $2 \implies 1$.  $\forall v \in V\!: v = \sum a_i v_i$, так как $\{v_i\}$ --- порождающая. Тогда докажем единственность: пусть существуют $\sum a'_i v_i = v = \sum a_i v_i$. Тогда возьмем разность: $0 = \sum (a_i - a'_i) v_i \iff a_i - a'_i = 0 \iff a_i = a'_i$.
 	 \item  $3 \implies 2$. Нужно доказать, что $\{v_i\}$ --- порождающая система. Рассмотрим произвольный $v \in V$. Знаем, что ${v_i} \cup {v}$ --- линейно зависимая, значит $\exists a: \sum a_i v_i + av = 0$ и не все $a$ равны нулю. Легко понять, что $a\neq 0$, иначе исходная система линейно зависимая, а тогда можно выразить вектор $v$ --- $v = \sum\frac{a_i}{-a}v_i$, умеем выражать любой вектор --- значит мы порождающая система.
          \item $2 \implies 4$. Пусть наша  $\{v_i\}$ --- ЛНЗ и порождающая, хотим доказать, что тогда она минимальная порождающая. Пусть это не так, тогда если она не минимальная порождающая, то убрав один вектор, мы сможем его получить при помощи других наших векторов  $\Rightarrow$ исходная система линейно зависима, противоречие.
+         \item TODO: wtf, где хоть одно следствие из 4 ($4 \implies 3$)???
     \end{itemize}
 \end{proof}
 
@@ -193,7 +194,7 @@ $$
 \begin{proof}
     Во-первых, если она линейно независима, то все очевидно, вот и базис.
 
-    Иначе, пусть $\exists v_i = \sum\limits_{j \neq i}a_j b_j$. Тогда заметим, что система никак не пострадает, если убрать $V_i$ из системы: мы все равно можем его получить при помощи остальных векторов. 
+    Иначе, пусть $\exists v_i = \sum\limits_{j \neq i}a_j b_j$. Тогда заметим, что система никак не пострадает, если убрать $v_i$ из системы: мы все равно можем его получить при помощи остальных векторов. 
 
     Теперь можно продолжить этот процесс до момента, когда эта система станет линейно независимой. Так как система была конечной, то этот процесс когда-либо закончится (например, если выкинем все вектора).
 \end{proof}
@@ -227,7 +228,7 @@ $$
     Все базисы имеют поровну элементов.
 \end{theorem}
 \begin{lemma}[Лемма о линейной зависимости линейных комбинаций]
-    Пусть $u_1, \ldots, u_n \in \langle v_1, v_2, \ldots, v_n \rangle$, $m > n$. Тогда  $u_1, \ldots, u_m$ линейно зависима.
+    Пусть $u_1, \ldots, u_m \in \langle v_1, v_2, \ldots, v_n \rangle$, $m > n$. Тогда  $u_1, \ldots, u_m$ линейно зависима.
 \end{lemma}
 \begin{proof}
 	\begin{lemma}[О замене]
@@ -283,7 +284,7 @@ $$
      $a$ --- алгебраическое  $\Rightarrow \langle 1, a, a^2, \ldots \rangle$ --- конечномерное. 
 \end{statement}
 \begin{proof}
-    $\exists P = \sum\limits_{i=0}^n k_i x^i$, такое что  $k_n = 1, P(a) = 0$. Тогда $a^n = -\sum k_i a^i \in \langle 1, a, \ldots, a^{n-1} \langle$, $a^{n+1} = -\sum k_i a^{i+1}$ и так далее для  $\forall N > n$.  $a^N \in \langle 1, a,\ldots, a^{N-1} \rangle$
+    $\exists P = \sum\limits_{i=0}^n k_i x^i$, такое что  $k_n = 1, P(a) = 0$. Тогда $a^n = -\sum\limits_{i=0}^{n-1} k_i a^i \in \langle 1, a, \ldots, a^{n-1} \rangle$, $a^{n+1} = -\sum\limits_{i=0}^{n-1} k_i a^{i+1} \in \langle 1, a, \ldots, a^{n-1} \rangle$  ($a^n$ выражается через первые $n$)  и так далее для  $\forall N > n$.  $a^N \in \langle 1, a,\ldots, a^{n-1} \rangle$
 \end{proof}
 \begin{statement}
     $a, b$ --- алгебраические. Тогда  $\langle a^i b^k \rangle$ --- конечномерное. 
@@ -291,7 +292,7 @@ $$
 \begin{proof}
     $a$ --- корень  $f$:  $\deg f = m$.  $b$ --- корень  $g$:  $\deg g = n$.
     
-    Тогда  $a^i \cdot b^k = (\sum\limits_{j=0}^{m-1} k_j a^)(\sum\limits_{s=0}^{n-1} l_s b^s) = \sum \sum (k_j b_s)a^j b^s \Rightarrow \{ a^j b^s\}_{\substack{j = 0..m-1 \\ s = 0..n-1}}$ --- порождает  $\langle \{a^i b^k\} \rangle$.
+    Тогда  $a^i \cdot b^k = (\sum\limits_{j=0}^{m-1} k_j a^j)(\sum\limits_{s=0}^{n-1} l_s b^s) = \sum \sum (k_j b_s)a^j b^s \Rightarrow \{ a^j b^s\}_{\substack{j = 0..m-1 \\ s = 0..n-1}}$ --- порождает  $\langle \{a^i b^k\} \rangle$.
 \end{proof}
 \begin{theorem}
     Алгебраические числа образуют кольцо. По факту хочется доказать: $a, b$ --- алгебраические  $\Rightarrow a + b, ab$ --- алгебраические.
@@ -299,7 +300,7 @@ $$
 \begin{proof}
     $\CC$ --- векторное пространство над  $\Q$. 
 
-    Докажем, что $a+b$ --- алгебраическое: рассмотрим  $1, a+b, (a+b)^2, (a+b)^3, \ldots$. $(a+b)^i = \sum \binom{i}{k} a^k b^{i-k} \in V$, причем  $\dim V = N$. Тогда  $1, a+b, \ldots, (a+b)^N$ --- ЛЗ система. $\implies c_i \in \Q\!: \sum c_i(a+b)^i = 0 \Rightarrow (a+b)^i$ --- корень  $\sum c_i x^i = 0$.  $ab$ --- аналогично.
+    Докажем, что $a+b$ --- алгебраическое: рассмотрим  $1, a+b, (a+b)^2, (a+b)^3, \ldots$. $(a+b)^i = \sum \binom{i}{k} a^k b^{i-k} \in V$, причем  $\dim V = N$. Тогда  $1, a+b, \ldots, (a+b)^N$ --- ЛЗ система. $\implies c_i \in \Q\!: \sum c_i(a+b)^i = 0 \Rightarrow a+b$ --- корень  $\sum c_i x^i = 0$ (ЛЗ система $\implies \sum c_ix^i \not\equiv 0$).  $ab$ --- аналогично.
 \end{proof}
 
 \begin{example}
