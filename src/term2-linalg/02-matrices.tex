@@ -45,7 +45,7 @@
 \begin{properties}
     \begin{enumerate}
         \item $\mathcal{A}(0) = 0, x = 0 \Rightarrow \mathcal{A}(0) = 0$.
-        \item $\mathcal{A}$ --- инъекция  $\iff AX = 0 \Rightarrow X = 0$.
+        \item $\mathcal{A}$ --- инъекция  $\iff \mathcal{A}(x) = 0 \Rightarrow x = 0$.
         \item $x_1, x_2, \ldots, x_n$ --- ЛЗ $\Rightarrow \mathcal{A}(x_i)$ --- ЛЗ.
         \item[3'.] $\mathcal{A}$ --- инъекция:  $\{x_i \}$ --- ЛНЗ  $\Rightarrow \{\mathcal{A}(x_i)\}$ --- ЛНЗ.
         \item  $u_1, u_2, \ldots, u_m$ --- базис $U$.  $v_1, v_2, \ldots, v_n \in V$. Тогда $\exists! A\!: i \to v$ такое что  $\mathcal{A}(u_i) = v_i$.
@@ -56,10 +56,10 @@
          \item $\mathcal{A}(0) = \mathcal{A}(0+0) = \mathcal{A}(0) + \mathcal{A}(0)$ 
          \item $\Rightarrow\!:$  $\mathcal{A}$ --- инъекция,  $\mathcal{A}(x) = 0, \mathcal{A}(0)=0 \Rightarrow x = 0$. 
 
-             $\Leftarrow\!:$ ???
+             $\Leftarrow\!:$ От противного, пусть $x \neq y \in U : \mathcal{A}(x) = \mathcal{A}(y) \Rightarrow \mathcal{A}(x) - \mathcal{A}(y) = \mathcal{A}(x - y) = 0 \Rightarrow x - y = 0$. Противоречие.
          \item  $\sum a_i x_I = 0 \implies \sum a_i \mathcal{A}(x_i) = \sum \mathcal{A}(a_i x_i) = \mathcal{A}(\sum a_i x_i) = \mathcal{A}(0) = 0$.
          \item[3'.] Пусть $\sum a_i x_i = 0 \Rightarrow \sum a_i \mathcal{A}(x_i) = \mathcal{A}(\sum a_i x_i) = 0 \implies a_i x_i = 0 \rightarrow a_i = 0$.
-         \item Определим $A$: пксть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
+         \item Определим $A$: пусть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
 
              Единственность: пусть  $\mathcal{A}_2(u_i) = v_i$, тогда  по линейности  $\mathcal{A}_2(\sum a_i u_i) = \sum a_i \mathcal{A}_2(u_i) = \sum a_i v_i = \mathcal{A}(\sum a_i u_i)$.
     \end{enumerate}
@@ -72,26 +72,36 @@
 \begin{properties}
     \begin{enumerate}
         \item $\ker \mathcal{A} \le U$, $\Im \mathcal{A} \le U$.
-        \item $\Im \mathcal{A} = V \iff \mathcal{A}$ --- суръекция.
+        \item $\Im \mathcal{A} = V \iff \mathcal{A}$ --- сюръекция.
         \item $\ker \mathcal{A} = \{0\} \iff \mathcal{A}$ --- инъекция.
     \end{enumerate}
 \end{properties}
 \begin{proof}
-    а где
+    \begin{enumerate}
+        \item Нам нужно собственно проверить замкнутость $\ker \mathcal{A}$. Пусть $x, y \in \ker \mathcal{A} \Rightarrow \mathcal{A}(x + y) = \mathcal{A}(x) + \mathcal{A}(y) = 0$ по определению ядра. Осталось проверить замкнутость домножения на скаляр. Ну действительно, пусть $x \in \ker \mathcal{A} \Rightarrow \mathcal{A}(kx) = k \cdot \mathcal{A}(x) = 0$.\\
+        $\Im \mathcal{A} \le U$ аналогично. Пусть $X, Y \in \Im \mathcal{A} \Rightarrow \exists x, y \in U : \begin{cases}\mathcal{A}(x) = X\\
+        \mathcal{A}(y) = Y\end{cases} \Rightarrow \mathcal{A}(x + y) = X + Y$. Замкнутость по домножению на скаляр: пусть $x \in \Im \mathcal{A} \Rightarrow \exists x \in U : \mathcal{A}(x) = X \Rightarrow \mathcal{A}(kx) = kX$. 
+        \item Это абсолютно тривиально -- просто перефразирования одного и того же: если достигаются все значения, то у каждого значения хотя бы один достигающий его аргумент и наоборот.
+        \item $\Leftarrow\!:$ Очевидно, так как тогда только $\mathcal{A}(0) = 0$.\\
+        $\Rightarrow\!:$ Предположим от противного: $x \neq y \in U : \mathcal{A}(x) = \mathcal{A}(y) \Rightarrow \mathcal{A}(x - y) = 0 \Rightarrow 0 \neq x - y \in \ker \mathcal{A}$. Противоречие.
+    \end{enumerate}
 \end{proof}
-\begin{theorem}[о ядре и образе]
+\begin{theorem}[О ядре и образе]
     $\mathcal{A}$ --- линейное отображение.
      \begin{enumerate}
-         \item $\exists$ базис  $u_1, u_2, \ldots, u_k, u_{k+1}, u_m$. Причем $u_1, \ldots, u_k$ --- базис $\ker \mathcal{A}$, а  $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_m)$ --- базис $\Im \mathcal{A}$.
+         \item $\exists$ базис  $u_1, u_2, \ldots, u_k, u_{k+1}, u_n$. Причем $u_1, \ldots, u_k$ --- базис $\ker \mathcal{A}$, а  $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_n)$ --- базис $\Im \mathcal{A}$.
          \item  $\dim (\ker \mathcal{A}) + \dim (\Im \mathcal{A}) = \dim U$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     Рассмотрим базис $u_1, u_2, \ldots, u_k$ --- базис $\ker \mathcal{A}$. По лемме эту систему можно дополнить до базиса  $U$. Рассмотрим $u_{k+1}, \ldots, u_n$ из нового базиса. 
 
-    Хотим доказать, что $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_n)$ --- базис $\Im \mathcal{A}$.
+    Хотим доказать, что $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_n)$ --- базис $\Im \mathcal{A}$. Докажем по определению, доказав линейную независимость и порождение всех векторов в пространстве.
 
-    ЛНЗ-ть: Пусть  $\sum a_{k+i} \mathcal{A}(u_{k+i}) = 0 \Rightarrow \mathcal{A}(\sum a_{k+i} u_{k+i}) = 0 \Rightarrow \sum a_{k+i} u_{k+i} \in \ker A \Rightarrow \sum\limits_{i=0}^n(-a_i)u_i = \sum\limits_{i=0}^n a_i u_i= 0 \Right$.
-
+    \begin{itemize}
+        \item ЛНЗ-ть: Пусть  $\sum a_{k + i} \mathcal{A}(u_{k+i}) = 0 \Rightarrow \mathcal{A}(\sum a_{k+i} u_{k+i}) = 0 \Rightarrow \sum a_{k+i} u_{k+i} \in \ker A \Rightarrow \exists a_1, a_2, ..., a_k : \sum a_{k + i} u_{k + i} = \sum\limits_{i=1}^k (-a_i) u_i \Rightarrow \sum\limits_{i=1}^n a_i u_i = 0$. Противоречие, так как $u_1, u_2, ..., u_n$ -- базис в $U$.
+        \item Порождение: Возьмём какой-нибудь $u \in U$. Докажем, что $\mathcal{A}(u)$ выражается через базис. Разложим $u$ через базис: $u = \sum\limits_{i = 1}^n a_i u_i \Rightarrow \mathcal{A}(u) = \mathcal{A}\left(\sum\limits_{i = 1}^n a_i u_i\right) = \mathcal{A}\left(\sum\limits_{i=1}^k a_i u_i\right) + \sum\limits_{i=k+1}^n a_i \mathcal{A}(u_i)$. Но $\mathcal{A}\left(\sum\limits_{i=1}^k a_i u_i\right) = 0$, так как оно лежит в ядре. Значит действительно $\mathcal{A}(u) = \sum\limits_{i=k+1}^n a_i \mathcal{A}(u_i)$.
+    \end{itemize}
+    
 
 \end{proof}
