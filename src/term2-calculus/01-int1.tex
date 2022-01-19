@@ -323,3 +323,132 @@
         \int_a^b \alpha f + \beta g = \alpha F + \beta G \mid_a^b = \alpha F(b) + \beta G(b) - \alpha F(a) - \beta G(a)
     .\] 
 \end{proof}
+\begin{theorem}[Формула интегрирования по частям]
+    Пусть $f, g \in C^{1}[a, b]$.
+
+    Тогда  $\int\limits_a^b fg' = fg \mid_a^b - \int\limits_a^bf'g$.
+\end{theorem}
+\begin{proof}
+    Докажем при помощи формулы Ньютона-Лейбница. Пусть $H$ --- первообразная  $f'g$. Тогда  $fg - H$ --- первообразная для $fg'$.
+
+    Проверим данный факт: $\left(fg - H\right)' = f'g + fg' - f'g = fg'$. А значит нам можно воспользоваться формулой Ньютона-Лейбница.
+
+    $\int\limits_a^b fg' = \left(fg - H\right) \mid_a^b = fg \mid_a^b - H\mid_a^b = fg\mid_a^b - \int_a^b f'g$.
+\end{proof}
+
+\begin{remark}[Соглашение]
+    Если $a>b$, то  $\int\limits_a^b f \coloneqq -\int\limits_b^a f$.
+
+    Мотивация: Если  $F$ --- первообразная, то  $\int\limits_a^b f = F \mid_a^b$.
+\end{remark}
+\begin{theorem}[Формула замены переменной]
+    Пусть $f \in C[a, b]$, $\vphi\!: [c,d] \to [a,b]$, $\vphi \in C^1[c,d], p, q \in [c, d]$.
+
+    Тогда  $\int\limits_a^b f(\vphi(t)) \vphi'(t) \mathrm{d}t = \int\limits_{\vphi{p}}^{\vphi{q}} f(x) \mathrm{d}x$.
+\end{theorem}
+\begin{proof}
+    Пусть $F$ --- первообразная  $f$. Тогда  $\int\limits_{\vphi(p)}^{\vphi(q)}f(x) \mathrm{d}x = F \mid_{\vphi(p)}^{\vphi(q)} = F_0\vphi\mid_p^q$, где $F_0\vphi$ --- первообразная для  $f(\vphi(t))\vphi'(t)$.
+
+    Проверим данные факты:  $\left(F(\vphi(t))\right)' = F'(\vphi(t)) \cdot \vphi'(t) = f(\vphi(t))\vphi'(t)$.
+
+    Тогда интеграл равен $\int\limits_{p}^qf(\vphi(t))\vphi'(t) \mathrm{d}t$
+\end{proof}
+\begin{example}
+\begin{align}
+    \int_0^{\frac{\pi}{2}} \frac{\sin 2t}{1 + \sin^4 t} \mathrm{d}t 
+.\end{align}
+Произведем замену $\vphi(t) = \sin^2 t$,  $f(x) = \frac{1}{1+x^2}$, $\vphi'(t) = 2 \sin t \cos t = \sin 2t$, $\vphi(0) = 0, \vphi(\frac{\pi}{2}) = 1$:
+\begin{align*}
+    (1) = \int_{0}^{\frac{\pi}{2}} \frac{\vphi'(t)}{1 + (\vphi(t))^2} = \int_{\vphi(0)}^{\vphi(\frac{\pi}{2})} f(x)\mathrm{d}x = \int_0^1 \frac{\mathrm{d}x}{1+x^2} = \arctg x \mid_0^1 = \frac{\pi}{4}.
+\end{align*}
+\end{example}
+\Subsection{Приложения формулы интегрирования по частям}
+\begin{example}
+    $W_n \coloneqq \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x = \int\limits_0^{\frac{\pi}{2}}\cos^n t \mathrm{dt} = (1)$
+
+    Где $x = \frac{\pi}{2} - t \eqqcolon \vphi(t)$, $\vphi'(t) = -1$,  $\sin(\frac{\pi}{2} - t) = \cos t$. 
+
+    Тогда $(1) = -\int\limits_0^{\frac{\pi}{2}}\sin^n \vphi(t) \cdot \vphi(t) \mathrm{d}t = -\int\limits_{\frac{\pi}{2}}^0 \sin^n x \mathrm{d}x$
+
+    Частные случаи $W_0 = \frac{\pi}{2}$, $W_1 = \int\limits_0^{\frac{\pi}{2}} \sin x \mathrm{d}x = -\cos \mid_0^{\frac{\pi}{2}} = 1$
+
+    Общее решение: $W_n = \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x = -\int\limits_0^{\frac{\pi}{2}} \sin^{n-1}x \cdot (\cos x)' \mathrm{d}x = $. Воспользовались тем, что $\sin x = -(\cos x)'$, $f'(x) = (n-1)\sin^{n-2} x \cdot \cos x$. 
+
+    Тогда получаем: \begin{align*} &= -\left(\underbrace{\sin^{n-1} x \cdot \cos x \mid_0^{\frac{\pi}{2}}}_{=0} - \int\limits_0^{\frac{\pi}{2}} (n-1)\sin^{n-2} x \underbrace{\cos^2 x}_{=1-\sin^2 x} \mathrm{d} x\right) = \\ & =(n-1)\left(\int\limits_{0}^{\frac{\pi}{2}} \sin^{n-2} x \mathrm{d}x - \int\limits_{0}^{\frac{\pi}{2}} \sin^n x \mathrm{d} x\right) = (n-1)(W_{n-2} - W_n).
+    \end{align*}
+
+    Посчитаем для четных: $W_{2n} = \frac{2n-1}{2n} \cdot W_{2n-2} = \frac{2n-1}{2n} \cdot \frac{2n-3}{2n - 2} W_{2n-4} = \ldots = \frac{(2n-1)!!}{(2n)!!} \frac{\pi}{2}$, где $k!!$  --- произведение натуральных чисел той же четности, что и  $k$ и  $\le k$.
+
+    Для нечетных: $W_{2n + 1} = \frac{2n}{2n+1} W_{2n-1} = \frac{2n}{2n+1} \cdot \frac{2n-2}{2n-1}W_{2n-3} = \ldots = \frac{(2n)!!}{(2n+1)!!}W_1 = \frac{(2n)!!}{(2n+1)!!}$
+\end{example}
+\begin{theorem}[Формула Валлиса]
+    \[
+        \lim_{n\to \inf} \frac{(2n)!!}{(2n-1)!!} \cdot \frac{1}{\sqrt{2n+1}} = \sqrt{\frac{\pi}{2}}
+    .\] 
+\end{theorem}
+\begin{proof}
+    $\sin^n x \ge \sin^{n+1} x$ на $[0, \frac{\pi}{2}]$. Тогда $W_n = \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x \ge \int\limits_0^{\frac{\pi}{2}} \sin^{n+1} x \mathrm{d}x = W_{n+1}$.
+
+    Заметим, что $W_{2n+2} \le W_{2n+1} \le W_{2n} \iff \frac{\pi}{2}\frac{(2n+1)!!}{(2n+2)!!} \le \frac{(2n)!!}{(2n+1)!!} \le \frac{\pi}{2} \frac{(2n-1)!!}{(2n)!!}$. Поделим на $\frac{(2n-1)!!}{(2n)!!}$:  \[
+        \frac{\pi}{2} \frac{2n+1}{2n+2} \le \frac{((2n)!!)^2}{(2n+1)((2n-1)!!)^2} \le \frac{\pi}{2} \implies \lim \left(\frac{(2n)!!}{\sqrt{(2n+1)}(2n-1)!!}\right)^2 = \frac{\pi}{2}
+    .\] 
+\end{proof}
+\begin{consequence}
+    \[
+        \binom{2n}{n} = \frac{(2n)!}{(n!)^2} \sim \frac{4^n}{\sqrt{\pi n}}
+    .\] 
+\end{consequence}
+\begin{proof}
+    Заметим, что $(2n)! = (2n)!! \cdot (2n-1)!!$, а  $(2n)!! = 2 \cdot 4 \cdot 6 \cdot \ldots \cdot (2n) = 2^n \cdot n!$. Тогда подставим в Сшку: \[
+        \binom{2n}{n} = \frac{(2n)!!(2n-1)!!}{\frac{(2n)!!}{2^n}\frac{(2n)!!}{2^n}} = 4^n \cdot \frac{(2n-1)!!}{(2n)!!}
+    .\] 
+    При этом из Валлиса, заметим, что $\frac{(2n)!!}{(2n-1)!!} \sim \sqrt{\frac{\pi}{2}} \sqrt{2n + 1} \sim \sqrt{\frac{\pi}{2}} \sqrt{2n} = \sqrt{\pi n}$. А значит все сойдется.
+\end{proof}
+
+\begin{theorem}[Формула Тейлора (с остатком в интегральной форме)]
+    Пусть $f \in C^n[a, b]$,  $x, x_0 \in [a, b]$. Тогда: \[
+        f(x) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{1}{n!} \int\limits_{x_0}^x (x-t)^n f^{(n+1)}(t) \mathrm{d}t
+    .\] 
+\end{theorem}
+\begin{proof}
+    Индукция по $n$: 
+    \begin{itemize}
+        \item База. $n = 0$, $f(x) = f(x_0) + \int\limits_{x_0}^x f'(t)\mathrm{d}t = f(x_0)+f \mid_{x_0}^x$
+        \item Переход. $n \to n + 1$.
+        \item Доказательство.  $f(x) = T_n(x) + \frac{1}{n!}\int\limits_{x_0}^x \underbrace{(x-t)^n}_{g'} \underbrace{f^{(n+1)}(t)}_{f} \mathrm{d}t$. Проинтегрируем интеграл по частям. $g(t) = \frac{1}{n+1} -(x-t)^{n+1}$. 
+
+            Подставим: $\int\limits_{x_0}^x (x-t)^n f^{(n+1)}(t) \mathrm{d}t = -\frac{(x-t)^{n+1}}{n+1} \cdot f^{(n+1)}(t) \mid_{t=x_0}^{t=x} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t = \underbrace{\frac{1}{n+1}(x-x_0)^{n+1}f^{(n+1)}(x_0)}_{\text{новый член Тейлора!}} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t$
+    \end{itemize}
+\end{proof}
+\begin{example}
+    \begin{align}
+    H_j \coloneqq \frac{1}{j!} \int\limits_0^{\frac{\pi}{2}}\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^j \cos x \mathrm{d}x.
+    \end{align}
+    \textbf{Свойство 1.} $0 < H_j \le \frac{1}{j}\left(\frac{\pi}{2}\right)^{2j} \int\limits_0^{\frac{\pi}{2}} \cos x \mathrm{d}x = \frac{\left(\frac{\pi}{2}\right)^{2j}}{j!}$.\\
+    \textbf{Свойство 2.} $\forall c > 0\!: c^j \cdot H_j \xrightarrow{j \to \inf} 0$.  $0 < c^j H_j \le \frac{\left(\frac{\pi}{2}\right)^{2j} \cdot c^j}{j!} = \frac{\left(\frac{\pi^2}{4}c\right)^j}{j!} \to 0$.\\
+    \textbf{Свойство 3.} $H_0 = 1$,  $H_1 = 2$ (\textit{упражнение}).\\
+    \textbf{Свойство 4.} $H_j = (4j - 2) H_{j-1} - \pi^2 H_{j-2}$, при  $j \ge 2$.
+\end{example}
+\begin{proof}
+\begin{align}
+    j! H_j = \int_0^{\frac{\pi}{2}} \left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^j (\sin x)' \mathrm{d}x
+\end{align}
+Заметим, что $\left(\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^j\right)' = j \left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-1} \cdot (-2x)$. Тогда: \begin{align*}
+    (3) &= \underbrace{\left(\left( \frac{\pi}{2} \right)^2 - x^2\right)^j \sin x \mid_{x = 0}^{x = \frac{\pi}{2}}}_{=0} + 2j \int_{0}^{\frac{\pi}{2}}\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-1} x \underbrace{\sin x}_{=(-\cos x)'} \mathrm{d} x = \\
+        &= 2j \left(\underbrace{\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-1} \cdot x \cdot (- \cos x) \mid_{x=0}^{x=\frac{\pi}{2}}}_{=0} - \int\limits_0^{\frac{n}{2}} \left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-2} x^2 \cos x \mathrm{d} x\right) \\
+        &= 2j\left((j-1)! H_{j-1} - 2(j-1)\left(\frac{\pi}{2}\right)^2 \cdot (j-2)! H_{j-2} + 2(j-1)(j-1)! H_{j-1}\right)
+.\end{align*}
+Откуда с легкостью получаем $j! H_j = 2j! H_{j-1} - \pi^2 j! H_{j-2} + 4(j-1)j! H_{j-1} \iff H_j = (4j-2)H_{j-1} - \pi^2 H_{j-2}$.\\
+\textbf{Свойство 5.} Существует многочлен $P_n$ с целыми коэффициентами степени $\le n$, такой что $H_j = P_j(\pi^2)$.
+\begin{proof}
+    $P_0 \equiv 1, P_1 \equiv 2, P_n(x) = (4n-2)P_{n-1}(x) - xP_{n-2}(x)$.
+\end{proof}
+\end{proof}
+\begin{theorem}[Ламберта, доказательство: Эрмит]
+    Числа $\pi$ и  $\pi^2$ иррациональные.
+\end{theorem}
+\begin{proof}
+    От противного. Пусть $\pi^2$ --- рационально. Тогда пусть  $\pi^2 = \frac{m}{n}$. Тогда $H_j = P_j(\frac{m}{n}) = \frac{\text{целое число}}{n^j} > 0$.\\
+    $n^j H_j = \text{целое число} > 0 \Rightarrow n^j H_j \xrightarrow{j \to +\inf} 0$, но $n^j H_j \ge 1$.
+\end{proof}
+

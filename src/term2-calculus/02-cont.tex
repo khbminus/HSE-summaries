@@ -1,0 +1,82 @@
+\newpage % new page
+%\stepcounter{section}
+\bigskip
+\phantomsection
+\addcontentsline{toc}{section}{Отступление. Равномерная непрерывность}
+\begin{center}
+{\huge \bf Отступление. Равномерная непрерывность}\\
+\end{center}
+\bigskip
+\gdef\SectionName{Равномерная непрерывность}
+\gdef\AuthorName{ХБ}
+
+\lhead{\ShortCourseName}
+\chead{}
+\rhead{\SectionName}
+
+\cfoot{
+%    \topskip0pt\vspace*{\fill}
+\thepage~из~\pageref*{LastPage}
+%    \vspace*{\fill}
+}
+
+\renewcommand{\headrulewidth}{0.15 mm}
+
+\ifx\LaconicFooter\undefined
+\lfoot{
+%    \topskip0pt\vspace*{\fill}
+Отступление
+%    \vspace*{\fill}
+}
+\rfoot{
+%    \topskip0pt\vspace*{\fill}
+Автор: \AuthorName
+%    \vspace*{\fill}
+}
+\renewcommand{\footrulewidth}{0.15 mm}
+\fi
+
+
+\begin{definition}
+    $f\!: E \subset \R \to \R$ равномерно непрерывна на  $E$, если  $\forall \eps > 0 \exists \delta > 0 \forall x, y \in E\!: |x-y| < \delta \Rightarrow |f(x)-f(y)| < \eps$
+\end{definition}
+\begin{definition}
+    $f$ непрерывна во всех точках из  $E$:\\
+    $\forall x \in E \forall \eps > 0 \exists \delta > 0 \forall y \in E\!: |x-y| < \delta \Rightarrow |f(x)-f(y)| < \eps$
+\end{definition}
+\begin{example}
+    $\sin x$ и  $\cos x$ равномерно непрерывны на  $\R$.
+
+     $|\sin x - \sin y| \le |x-y| \Rightarrow \delta = \eps$ подходит. $|\cos x - \cos y| \le |x-y|$.
+\end{example}
+\begin{example}
+    $f(x) = x^2$ не является равномерно непрерывной на $\R$. Рассмотрим  $\eps = 1$, никакое  $\delta > 0$ не подходит.  $x$ и  $x + \frac{\delta}{2}$. $f(x + \frac{\delta}{2}) - f(x)  = (x+\frac{\delta}{2})^2 - x^2 = \ldots = \delta x + \frac{\delta^2}{4} > \delta x$.
+    При $x = \frac{1}{\delta}$ противоречие. 
+\end{example}
+\begin{theorem}[Теорема Кантора]
+    Пусть $f \in C[a, b]$, тогда $f$ равномерно непрерывна на  $[a, b]$.
+\end{theorem}
+\begin{proof}
+    Берем $\eps > 0$ и предположим, что  $\delta = \frac{1}{n}$ не подходит, то есть $\exists x_n, y_n \in [a, b]\!: |x_n - y_n| < \frac{1}{n}$ и по теореме Больцано-Вейерштрасса у последовательности $x_n$ есть сходящаяся последовательность  $x_{n_k} \to c$, то есть  $\lim x_{n_k} = c \in [a, b]$.
+
+    $\underbrace{x_{n_k} - \frac{1}{n_k}}_{\to c} < y_{n_k} < \underbrace{x_{n_k} + \frac{1}{n_k}}_{\to c} \implies \lim y_{n_k} = c$. Но $f$ непрерывна в точке  $c$  $\implies f(x_{n_k}) = f(c) = \lim f(y_{n_k}) \implies \lim (f(x_{n_k}) - f(y_{n_k})) = 0$, но $|f(x_{n_k}) - f(y_{n_k})| \ge \eps$. 
+\end{proof}
+\begin{remark}
+    Для интервала или полуинтервала неверно. $f(x) = \frac{1}{x}$ на $(0; 1]$. Докажем, что нет равномерной непрерывностью на  $(0; 1]$. 
+
+    Пусть  $\eps = 1$ и  $\delta > 0$. Пусть  $0 < x < \delta$,  $y = \frac{x}{2}$, $|x-y| = \frac{x}{2} < \delta$. Тогда $f(y) - f(x) = \frac{2}{x} - \frac{1}{x} = \frac{1}{x} > 1$.
+\end{remark}
+
+\begin{definition}
+    Пусть $f\!: E \subset \R \to \R$.
+
+    Тогда $\omega_f(\delta) \coloneqq \sup \{|f(x) - f(y)|\mid \forall x, y \in E, |x-y| \le \delta\}$ --- модуль непрерывности $f$.
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item $\omega_f(0) = 0$,
+        \item $|f(x) - f(y)| \le \omega_f(|x-y|)$.
+        \item $\omega_f \uparrow$.
+        \item Если  $f$ --- липшицева функция с константой $L$, то  $\omega_f(\delta) \le L \delta$.
+    \end{enumerate}
+\end{properties}
