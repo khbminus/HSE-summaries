@@ -102,6 +102,192 @@
         \item ЛНЗ-ть: Пусть  $\sum a_{k + i} \mathcal{A}(u_{k+i}) = 0 \Rightarrow \mathcal{A}(\sum a_{k+i} u_{k+i}) = 0 \Rightarrow \sum a_{k+i} u_{k+i} \in \ker A \Rightarrow \exists a_1, a_2, ..., a_k : \sum a_{k + i} u_{k + i} = \sum\limits_{i=1}^k (-a_i) u_i \Rightarrow \sum\limits_{i=1}^n a_i u_i = 0$. Противоречие, так как $u_1, u_2, ..., u_n$ -- базис в $U$.
         \item Порождение: Возьмём какой-нибудь $u \in U$. Докажем, что $\mathcal{A}(u)$ выражается через базис. Разложим $u$ через базис: $u = \sum\limits_{i = 1}^n a_i u_i \Rightarrow \mathcal{A}(u) = \mathcal{A}\left(\sum\limits_{i = 1}^n a_i u_i\right) = \mathcal{A}\left(\sum\limits_{i=1}^k a_i u_i\right) + \sum\limits_{i=k+1}^n a_i \mathcal{A}(u_i)$. Но $\mathcal{A}\left(\sum\limits_{i=1}^k a_i u_i\right) = 0$, так как оно лежит в ядре. Значит действительно $\mathcal{A}(u) = \sum\limits_{i=k+1}^n a_i \mathcal{A}(u_i)$.
     \end{itemize}
-    
-
 \end{proof}
+
+\begin{definition}
+    Пусть $U, V$ --- векторные пространства над полем $K$. 
+
+    Тогда  $U \oplus V \coloneqq U \times V$ как множества. То есть  $(u_1, v_1) + (u_2,v_2) = (u_1+u_2, v_1 + v_2)$, $k(u, v) \coloneqq (ku, kv)$.
+\end{definition}
+\begin{remark}
+    Пусть $\small \begin{array}{cc} u_1,\ldots, u_n &\text{--- Базис } U \\ v_1,\ldots, v_m &\text{--- Базис } V \end{array}$, $\widetilde{v_i} = (0, v_i), \widetilde{u_i} = (0, u_i)$,
+
+    Тогда $\{\widetilde{u_i}\} \cup \{\widetilde{v_i}\}$ --- Базис $U \oplus V$.
+\end{remark}
+\begin{proof}
+    $\forall (u, v) \in U \oplus V\!: \exists!(a_i) \exists!(b_i)\ (u, v) = (\sum a_i u_i, \sum b_i v_i)$. 
+
+    $(u, 0) = (\sum a_i u_i)$,  $(0, v) = (\sum b_i v_i)$.
+\end{proof}
+\begin{remark}
+    $i_u\!: U \to U \oplus V$, $u \mapsto (u, 0)$, $i_v$ --- аналогично. Инъективный гомоморфизм векторных пространств. 
+
+    $P_u\!: U \oplus V \to U, (u, v) \mapsto u$ --- проекция.  $\Im P_u = U, \ker P_u = \Im i_v$.
+
+    Диаграмма прямой суммы:  $U \xleftrightarrow[i_u]{P_u} U \oplus V \xleftrightarrow[i_v]{P_v} V$.  $P_ui_u = \id_u$, $P_vi_v = \id_v$,  $P_vi_u= 0_u$,  $p_u i_v = 0_v$,  $i_uP_u + i_v p_v = ???$
+\end{remark}
+
+\begin{theorem}[Формулаа Грассмана]
+   Пусть $U, V \le W$, $U, V$ --- конечномерные.
+
+   $\dim(U + V) = \dim U + \dim V - \dim(U \cap V)$
+\end{theorem}
+\begin{proof}
+    Построим линейное $f\!: U \oplus V \to W, (u, v) \mapsto u + v$. $f$ --- линейное (очев/упражнение).
+
+    Заметим, что $\Im f = U+V$,  $\ker f = \{(u, -u) \mid \begin{array}{r} u \in U \\ -u \in V \end{array} \} = \{ (u, -u) \mid u \in U \cap V \}$.
+
+    Очевидно, что $\ker f \cong U \cap V \implies \dim (\ker f) = \dim (U \cap V)$. А по теореме о размерности ядра и образа:  $\dim V + \dim U = \dim(U \oplus V) = \dim(U + V) + \dim(U \cap V)$
+\end{proof}
+\begin{example}
+    $K^n$, $U = \left\{ \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \mid a_1 x_1 + \ldots + a_n + x_n = 0\right\}$ --- гиперплоскость $\dim U = n - 1$. 
+
+    СЛУ ---  $m$ уравнений,  $m$ гиперплоскостей  $--- u_1, u_2, \ldots, u_m$. Ответ --- $\bigcap\limits_{i=1}^n u_i$.
+
+    $\dim u_1 = n - 1$. $\dim (u_1 \cap u_2) = \dim u_1 + \dim u_2 - \dim (u_1 + u_2) \ge n - 1 + n - 1 - n \ge n - 2$. Можно продолжить процесс.
+\end{example}
+\begin{consequence}
+    Множество решений однородной СЛУ ($n$ неизвестных,  $m$ уравнений) --- пространство размерности $\ge n - m$.
+\end{consequence}
+\begin{remark}
+    Аналогия $(+, \cap)$ c  $(\cup, \cap)$ --- неполная:  $(V_1 + V_2) \cap V_3 \neq (V_1 \cap V_3) + (V_2 \cap V_3)$, пример: три прямые на плоскости.
+\end{remark}
+
+Пусть $A \in M_{m, n}(K), A = (a_{ij})_{\substack{i = 1..m \\ j = 1..n}}$,  $\mathcal{A}\!: \begin{array}{c} K^n \to K^m \\ x \to A \cdot x \end{array}$ --- линейное отображение.
+
+$K^n - \langle e_1, \ldots, e_n \rangle, K^m = \langle \widetilde{e_1}, \ldots \widetilde{e_n} \rangle$, где $e_i$ --- вектор нулей с 1 на  $i$ строчке. Тогда 
+$A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$. 
+Тогда можно сказать, что $A = \left(\begin{array}{c|c|c|c} \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots & \mathcal{A}(e_n) \end{array} \right)$ 
+
+\begin{consequence}
+    $A, B \in M_{m, n}(K)$.  $\mathcal{A}, \mathcal{B}$ --- линейные отображения,  $\mathcal{A} = \mathcal{B} \implies A = B$.
+\end{consequence}
+\begin{statement}
+    $A \in M_{m, n}(K)$,  $\mathcal{A}$ --- соответствующее отображение.
+
+    $\ker \mathcal{A}$ --- множество решений однородной СЛУ с матрицей  $A$\\
+    $\Im \mathcal{A}$ --- линейная оболочка столбцов $A$.
+\end{statement}
+\begin{proof}
+    $A = \left( \begin{array}{c|c|c} & &  \\ C_1 & C_2 & \ldots C_n \\ & & \end{array} \right) = \left(\begin{array}{c|c|c} & &  \\ \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots \mathcal{A}(e_3) \\ & & \end{array} \right)$ 
+
+    $\langle C_1, C_2, \ldots, C_n \rangle = \langle \{A e_i \} \rangle = \Im \mathcal{A}. \sum a_i \mathcal{A}(e_i) = \mathcal{A}(\sum a_i e_i) = \mathcal{A}(V)$. $V$ --- вектор  $\in K^n$.
+\end{proof}
+\begin{definition}
+    $A = \left( \begin{array}{c|c|c} & &  \\ C_1 & C_2 & \ldots C_n \\ & & \end{array} \right)$.
+
+    $\dim \langle C_1, \ldots, C_n \rangle$ --- называется рангом матрицы.
+
+    Обозначение $\rank A, \rk A, \rg A$.
+    
+    При $n=m$  $n-\rk A$ называется  дефектом матрицы. Дефект $\dim \ker A$.
+\end{definition}
+\begin{theorem}[Принцип Дирихле для векторных пространств]
+    $\mathcal{A}\!: V \to V$ --- линейное множество.  $V$ --- конечномерное.
+
+    Тогда  $\mathcal{A}$ --- инъекция  $\iff \mathcal{A}$ --- сюръекция.
+\end{theorem}
+\begin{proof}
+    $\dim V = n$,  $\mathcal{A}$ --- инъекция  $\iff \ker \mathcal{A} = 0 \iff \dim \ker A = 0 \iff \dim \Im A = n - 0 = n \iff \Im A = V \iff \mathcal{A}$ --- сюръекция.
+\end{proof}
+
+\begin{definition}
+    Неоднородная система: $AX=B$,  $A \in M_{m, n}(K), B \in K^m$.
+\end{definition}
+\begin{theorem}
+    Решение неоднородной и соответствующей ей однородной системы связаны:
+
+\end{theorem}
+\begin{proof}
+    Пусть $X_0$ --- решение $AX=B$, тогда  $AX=B \land AX_0=B \iff A(X-X_0) = 0 \iff x - x_0 \in \ker \mathcal{A}$ --- решения соответствующей однородной $A$.
+    
+    $x = x_0 + v, v \in \ker \mathcal{A} $. Множество решений $x_0 + \ker \mathcal{A} = x_0 + \ker A = x_9 + \mathcal{A}^{-1}\{0\}$. 
+
+    $\mathcal{A}^{-1}(\{\mathcal{A} X_0\}) = X_0 + \mathcal{A}^-1{0}$.
+\end{proof}
+
+\begin{theorem}[Альтернатива Фредгольма]
+    $\forall n = m$. СЛУ: $n$ уравнений, $n$ неизвестных,  $AX=B$. Пусть  $A$ --- фиксировано,  $B$ --- нефиксировано.
+
+    Тогда верно одно из двух: 
+     \begin{enumerate}
+         \item однородное СЛУ имеет только тривиальное решение и неоднородное СЛУ имеет единственное решение.
+         \item $AX=0$ имеет бесконечно много решений, тогда 0 или бесконечное множество решений.
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}
+    $A \in M_{n, m}(K), B \in M_{l, n}(K)$. Причем  $K^m \xrightarrow[\mathcal{B}]{} B K^n \xrightarrow[\mathcal{A}]{} K^l$.
+
+    Рассмотрим  $C = A \cdot B$,  $\mathcal{C}\!: K^m \to K^l$.  $C \coloneqq A \cdot B$, тогда  $\mathcal{C}$ --- отображения домножения  $C$.
+\end{theorem}
+\begin{proof}
+    Докажем, что $C_1(X) = (A \cdot B) \cdot X$,  $C(X) = A \cdot (B \cdot X)$. Достаточно проверить для какого-то базиса  $K^m$.
+
+    $e_i$ --- все нули, но на  $i$-ой строчке единица,  без волны в $K^m$, с --- в  $K^n$.  Тогда  $Be_i = \begin{pmatrix} B_{1i} \\ B_{2i} \\ \vdots \\ B_{ni} \end{pmatrix} = \sum_i b_{ki} \widetilde{e_k}$. 
+
+    Тогда $A(Be_i) = A(\sum b_{ki} \widetilde{e_i}) = \sum b_{ki}(A\widetilde{e_k}) = \sum b_{ki} \begin{pmatrix} a_{1k} \\ a_{2k} \\ \vdots \\ a_{lk} \end{pmatrix} = \begin{pmatrix} \sum_k a_{1k} b_{ki} \\ \sum a_{2k} b_{ki} \\ \vdots \\ \sum a_{lk} b_{ki} \end{pmatrix}$, где $i$ --- фиксированный столбец. 
+\end{proof}
+
+\begin{consequence}
+    Умножение матриц ассоциативно:
+
+    $A \in M_{k, l}(K), B \in M_{l, m}(K), C \in M_{m, n}(K)$.
+
+    Тогда $(AB)C = A(BC)$.
+\end{consequence}
+\begin{definition}
+    При $m = n$,
+
+    $M_n(K)$ --- кольцо квадратных матриц. Ассоциативное, но не коммутативное кольцо.
+\end{definition}
+\begin{example}
+    $\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$\\
+    $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \cdot \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 & 0 & 0 \end{pmatrix}$.
+\end{example}
+\Subsection{Матрица линейного отображения}
+
+$U, V$ --- векторные пространства над  $K$.  $\mathcal{A}\!: U \to V$ --- линейное.  $u_1, \ldots, u_n$ --- базис $U$,  $v_1, \ldots, v_n$ --- базис $V$. 
+
+$\mathcal{A}(u_i) \in V \Rightarrow \mathcal{A}(u_i)$ --- линейная комбинация  $\{ v_i \}$.
+
+Тогда  $(a_{ij})$ --- матрица линейного отображения  $\mathcal{A}$ в базисах  $\{u_i\}, \{v_i\}$.  $A = [ \mathcal{A}]_{\{u_i\}, \{v_i\}}$. Столбцы  $A$ --- столбцы координат  $\mathcal{A}(u_i)$ в базисе  $\{v_i\}$.
+
+\begin{statement}
+    $u \in U$,  $u$ --- столбец координат в базисе  $\{u_i\}$.
+
+    Тогда  $A \cdot u$ --- столбец координат  $\mathcal{A}(u)$ в базисе  $\{v_i\}$.
+\end{statement}
+\begin{proof}
+    Для $u_i$ это так по определению, а для остальных векторов по дистрибутивности/линейности. 
+\end{proof}
+\begin{remark}
+    $\{u_i\}$ задает изоморфизм  $u \xrightarrow[f_u]{} K^n$,  $v \xrightarrow[f_v] K^m$.
+
+    \[
+    \begin{matrix}
+        U & \xrightarrow[\mathcal{A}]{} & V \\
+        f_u \downarrow & & \downarrow f_v \\
+        K^n & \xrightarrow[\cdot A]{} & K^m
+    \end{matrix}
+    .\] 
+\end{remark}
+\Subsection{Матрица перехода и формулы пересчета}
+
+$V$ --- векторное пространство.  $\id_v$ --- линейное.  $\id_v\!: V \to V$,  $\{v_i\}$ --- базис.  $[\id]_{\{v_i\}, \{u_i\}} = \begin{pmatrix} 1 & \ldots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \ldots & 1 \end{pmatrix} = E_n$. Причем  $E_n$ --- единица в кольце матриц.
+
+
+Пусть теперь $\{u_i\}, \{v_i\}$ --- базисы  $V$. Тогда  $[\id]_{\{v_i\}, \{u_i\}} = C = (c_{ij})$. $u_i = \sum_j c_{ji} v_{ji}$.  $\begin{pmatrix} u_1, \ldots, u_n\end{pmatrix} = \begin{pmatrix}v_1, \ldots, v_j \end{pmatrix} \cdot C$.
+
+$x\in V$,  $x = \sum a_i u_i$,  $x = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} = (x)_{u_i}$.
+
+$\chi \coloneqq \begin{pmatrix} u_1 & \ldots & u_n \end{pmatrix} \cdot X= ???$
+
+$C$ --- матрица перехода.
+ \begin{remark}
+\begin{itemize}
+    \item $C_{\{u_i\}, \{v_i\}} = E$
+    \item $\{u_i\}, \{v_i\}, \{w_i\}$ --- базисы. Тогда $C_{\{u_i\}\{w_i\}} = C_{\{u_i\}\{v_i\}} \cdot C_{\{v_i\}\{w_i\}}$.
+    \item  $C_1 = C_{\{u_i\}, \{v_i\}}, C_2 = C_{\{v_i\}, \{u_i\}}$. \\
+        $C_1 \cdot C_2 = C_2 \cdot C_1 = E$. $C_1, C_2$ --- взаимообратные.
+\end{itemize}
+\end{remark}
