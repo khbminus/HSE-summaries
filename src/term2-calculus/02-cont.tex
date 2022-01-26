@@ -78,5 +78,20 @@
         \item $|f(x) - f(y)| \le \omega_f(|x-y|)$.
         \item $\omega_f \uparrow$.
         \item Если  $f$ --- липшицева функция с константой $L$, то  $\omega_f(\delta) \le L \delta$.
+
+            В частности, если $|f'(x)| \le L\quad \forall x \in \langle a, b \rangle$.
+        \item $f$ равномерно непрерывна на $E \iff \omega_f$ непрерывна в нуле  $\iff \lim\limits_{\delta \to 0+} \omega_f(\delta) = 0$.
+            \begin{proof}
+                 \begin{itemize}
+                     \item $1 \to 2$.  $\forall \eps > 0 \gamma > 0 \forall x, y \in E\!: |x-y| < \gamma \implies |f(x) - f(y)| < \eps$. 
+
+                         Возьмем  $\delta < \gamma$. Тогда $|x-y| \le \delta \implies |x-y| < \gamma \implies |f(x) - f(y)| < \eps \implies \sup \le \eps$.
+                     \item $2 \to 1$. Из $\lim\limits_{\delta \to 0+} \omega_f(\delta) = 0$. Возьмем  $\gamma > 0$:  $|f(x) - f(y)| \le \omega_f(\delta) < \eps\ \forall \delta \gamma$, $\forall x, y \in E\!: |x-y| \le \delta$.
+                \end{itemize}
+            \end{proof}
+        \item $f \in C[a, b] \iff \omega_f$ непрерывен в нуле $\iff \lim \omega_f(\delta)= 0$. 
+             \begin{proof}
+                 Для функции на отрезке равномерная непрерывность $\iff $ непрерывность.
+             \end{proof}
     \end{enumerate}
 \end{properties}
