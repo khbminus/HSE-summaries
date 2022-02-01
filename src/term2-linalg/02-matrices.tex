@@ -291,3 +291,204 @@ $C$ --- матрица перехода.
         $C_1 \cdot C_2 = C_2 \cdot C_1 = E$. $C_1, C_2$ --- взаимообратные.
 \end{itemize}
 \end{remark}
+
+Пусть $\mathcal{A}\!: U \to V$,  $U, V$ --- векторное пространства над  $K$. 
+
+Пусть  $e_i$,  $f_i$ --- базисы $U$ и  $V$, тогда существует матрица  $A = [\mathcal{A}]_{\{e_i\}, \{f_i\}}$
+
+Причем важный момент, что если бы было два отображения:  $U \xrightarrow{\mathcal{A}} V \xrightarrow{\mathcal{B}} W$, причем  $\{e_i\}, \{f_i\}, \{g_i\}$ --- базисы  $U, V, W$ соответственно.  Тогда  $[\mathcal{B}\mathcal{A}]_{\{e_i\}, \{g_i\}} = [\mathcal{B}]_{\{f_i\} \{g_i\} } \cdot [\mathcal{A}]_{\{e_i\}, \{f_i\}}$.
+
+Тогда пусть $V$ --- векторное пространство, тогда  $[\id_V]_{\{e_i\}, \{f_i\}} = C$ --- матрица перехода от $e_i$ к  $f_i$,
+
+$x \in V$  $X$ --- координаты относительно  $\{e_i\} \implies $  $C \cdot X$ --- координаты  $x$ относительно   $\{f_i\}$.
+
+$[\id]_{\{e_i\}, \{e_i\}} = E = \begin{pmatrix} 1 & \ldots & 0 \\ 0 & 1 & \ldots \\ 0 & \ldots & 1 \end{pmatrix}$. $EA = A, AE = A$.
+
+$[\id]_{\{f_i\}, \{e_i\}} = C^{-1}$,  $CC^{-1} = C^{-1}C = E$. Матрица перехода --- обратимы. 
+
+\begin{definition}
+    $V$ --- векторное пространство над  $K$.
+
+    $\mathcal{A}\!: V \to V$ называется линейным оператором.
+\end{definition}
+
+Множество операторов на $V$ --- кольцо относительно  $(+, \circ)$.  $(\mathcal{A} + \mathcal{B})(V) \coloneqq \mathcal{A}(V) + \mathcal{B}(V) \quad \forall v \in V$.
+
+$C \circ (\mathcal{A} + \mathcal{B}) = C \circ \mathcal{A} + C \circ \mathcal{B}$ --- из линейности $C$.
+
+ \begin{definition}
+     $\text{End}(V)$ --- эндоморфизм,  $\dim V = b \implies \text{End } V \cong M_n(K)$.
+\end{definition}
+
+Так как $[\mathcal{A} + \mathcal{B}]_{\{e_i\}} = [\mathcal{A}]_{\{e_i\}} + [\mathcal{B}]_{\{e_i\}}$.
+
+$[\mathcal{A} \circ \mathcal{B}]_{\{e_i\}} = [\mathcal{A}]_{\{e_i\}} \circ [\mathcal{B}]_{\{e_i\}}$. Говоря об операторах, будем писать  $[\mathcal{A}]_{\{e_i\}}$.
+
+$\left(M_n(K)\right)^*$ --- группа обратимых матриц, обозначение  $GL_n(k), GL(b, k)$.
+
+\begin{example}
+    $GL_1(K) = K^* = K \setminus \{0\}$.
+\end{example}
+
+$\begin{array}{llll} \mathcal{A}\!: & U & \to & V\text{ --- линейно} \\ & \{e_i\} && \{f_i\} \\ & \{e'_i\} && \{f'_i\} \end{array}$
+
+Пусть  $A = [\mathcal{A}]_{\{e_i\}, \{f_i]\}}$. Чему тогда равно  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = ?$
+
+$U (\{e'\}) \xrightarrow{\id} U(\{e_i\}) \xrightarrow{\mathcal{A}} V (\{f_i\}) \xrightarrow{\id} V(\{f'_i\})$.
+
+Тогда  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = [\id_v \circ \mathcal{A} \circ \id_u]_{\{e'_i\}, \{f'_i\}} = [\id_v]_{\{f_i\}, \{f'_i\}} \cdot [\mathcal{A}]_{\{e_i\}, \{f_i\}} \cdot [\id_v]_{\{e'_i\}, \{e_i\}} = C A \cdot D^{-1}$m где  $C$ --- матрица перехода от  $f_i$ к  $f'_i$,  $D$ --- матрица перехода  от $e_i$ к  $e'_i$.
+
+Тогда:  \[
+    A_{new} = C A C^{-1}
+.\]
+
+$A, B$ --- квадратные обратимые матрицы, тогда  $B = B A A^{-1}$.
+
+\begin{theorem}[Канонический вид линейного отображения]
+    $\mathcal{A}\!: V \to U$ --- линейное,  $V$ --- векторное пространство над  $K$. 
+
+    Тогда $\exists$ базис $\{e_i\}$ в  $V$, базис  $\{f_i\}$ в  $U$,  $r \in \Z_{\ge 0}$, такие что $[\mathcal{A}]_{\{e_i\}, \{f_i\}} = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$, где $E_r$ --- едининичная матрица размера  $r$.
+\end{theorem}
+\begin{proof}
+    Выберем базис из теоремы о ядре и образа. $v_1, \ldots, v_k, v_{k+1}, \ldots v_n$ --- базис $V$, причем  $v_1, \ldots, v_k$ --- базис $\ker \mathcal{A} \le V$,  $\mathcal{A}(v_{k+1}), \ldots \mathcal{A}(v_n)$ --- Базис $\Im \mathcal{A} \le U$.
+
+    На самом деле рассмотрим базис $v_{k+1}, \ldots v_n, v_1, v_2, \ldots, v_k$. Теперь $\forall i = 1..n - k$ положим $\mathcal{A}(v_k + i) = u_i$.  $u_1, u_2, \ldots, u_{n-k}$ --- базис $\Im \mathcal{A} \le U$ --- ЛНЗ.
+
+    $u_1, u_2, \ldots u_{n-k}, \ldots, u_,$ --- базис $U$ (дополнили до базиса). 
+
+    Тогда для  $\mathcal{A}(v_{k+i}) = u_i = 0 u_1 + 0 u_2 + \ldots + 1 \cdot u_i + 0 \ldots + 0 \cdot u_m\quad \forall i = 1..(n-k)$.
+
+    $\mathcal(v_l) = 0 \quad \forall l=1..k$.
+
+    Значит столбцы  $[\mathcal{A}]_{\{v_{k+1}, \ldots, v_n, v_1,\ldots, v_k\} \{u_i\}} =  \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$
+\end{proof}
+
+\begin{remark}
+    $A \in M_{m, n}(K)$,  $\rk A = r$,  $\exists $ обратимые матрицы  $C, D$:  $\begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$, $\rk(A) = \rk(A') = r \implies A' = \widetilde{C} A \widetilde{D}$
+\end{remark}
+\begin{definition}
+    $A \in M_{m, n}(K)$, транспонированная матрица  $A^T \in M_{n, m}(K) (A^T)_{i, j} = (A)_{j, i} \quad \substack{\forall i=1..n \\ \forall j=1..m}$
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item $(A^T)^T = A$.
+        \item  $(A+B)^T = A^T + B^T$
+        \item  $(AB)^T = B^T \cdot A^T$
+        \item  $(A^{-1})^T = (A^T)^{-1}$
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    $1, 2$ --- очевидно.
+     \begin{enumerate}
+         \addtocounter{enumi}{2}
+     \item $((AB)^T)_{i, j} = (AB)_{ji} = \sum\limits_{k=1}^l a_{jk}b_{ki}$.
+
+         $(B^T\cdot A^T)_{ij} = \sum\limits_{k=1}^l (B^T)_{ik} (A^T)_{kj} = \sum\limits_{k=1}^{l} b_{ki} \cdot a_{jk}$ --- тоже самое.
+     \item следует из  $3$ и  $E^R =E$.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    $A \in M_{m, n}(K)$. Строчный ранг  $A$ --- это  $\dim \langle r_1, r_2, \ldots, r_m\rangle$, где $A = \left(\begin{array} r_1 \\ \hline r_2 \\ \hline \vdots \\ \hline r_m \end{array}\right)$. 
+
+        Обозначение $\rk_r(A)$.
+\end{definition}
+\begin{theorem}[Свойства ранга]
+    \begin{enumerate}
+        \item $\rk A = \rk_A A, \rk A = \rk A^T, A \in M_{n, n}(K)$.
+        \item  $\rk (AB) \le \min(\rk A, \rk B)$.
+        \item $\rk (A+B) \le \rk (A) + \rk(B)$
+        \item[2')] $A$ --- обратима $\implies \rk AB = \rk B, \rk BA = B$.
+        \item $A \in M_n(K)$  $A$ --- обратима  $\iff \rk A = n$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+     \begin{enumerate}
+         \item [4)] $A$ --- обратима $\iff$ соответственно $\mathcal{A}$  --- инъективно и сюръективно $\iff \mathcal{A}$ --- сюръекция  $\iff \Im \mathcal{A} = K^n \iff \rk \mathcal{A} = n, \dim (\Im \mathcal{A}) = n$.
+         \item $\rk A = r \implies \exists C, D$ --- обратимые, такие, что  $CAD =\begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$. 
+             Тогда $(CAD)^T = D^TA^TC^T = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array} \implies \rk A^T = r$.
+
+             То есть  $\rk A = \rk A^T = \rk A$, то есть строчки $A$ $\leftrightarrow$ столбцы $A^T$.
+         \item  $\rk AB = \dim(\Im(AB)) = \dim \{ AB \cdot x \mid x \in K^n \} \le \dim \{AY \mid Y \in K^m \}$.
+
+             $\rk AB = \dim (\Im AB) = \dim (\Im A \mid_{\Im B}) \le \dim (\Im B)$
+         \item[2')] $A$ -- обратимый  $\exists A^{-1}$.  $\rk (AB) \le \rk B$ по 2.
+
+             $\rk B = rk(A^{-1}(AB)) \le \rk AB$ по 2. $\implies \rk AB = \rk B$.
+         \item $\rk(A+B) = \dim \{(A+B)X \mid X \in U\} = \dim \{AX + BX \mid x \in U \} \le \dim \{Ax + By \mid x, y \in y\} = \dim(\Im A + \Im B) \stackrel{\text{Грасс.}}{\le} \dim \Im A + \dim \Im B = \rk A + \rk B$.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    $\mathcal{A}\!: K^n \to K^n$ --- линейные оператор.
+
+    $\mathcal{A}$ называется элементарным, если  $\mathcal{A}$ --- обратим и $\exists i_0, j_0\!: (\mathcal{A}(x))_i = x_i, i \neq i_0$. А $(\mathcal{A}(x))_{i_0} = x_{i_0} + kx_{j_0}$,
+
+    Соответствующая матрица --- матрица элементарного преобразования.
+\end{definition}
+
+Разберем случаи:
+\begin{enumerate}
+    \item $i_0 \neq j_0 \quad \forall k \in K$ формула задает обратное преобразование. 
+
+        $t_{i_0, j_0}(k)$ --- трансвекция: $\begin{pmatrix} x_1 \\ \vdots \\ v_{i_0} \\ \vdots  \\ x_n \end{pmatrix} \to \begin{pmatrix} x_1 \\ \vdots \\ v_{i_0} + x_{j_0} \\ \vdots  \\ x_n \end{pmatrix}$
+
+        Матрица трансвекции --- единичка, на позиции $(a)_{i_0j_0}$ стоит 1.
+    \item $i_0 = j_0$. $(Ax)_{i=0} = (k+1)x_{i_0} = k \cdot x_{i_0}$ --- обратимо, если $e \neq 0$ (в общем случае $e \not \in K^*$). $m_{i_0}(l)$ --- дилатация, $m_{i_0}^-1(l) = m_{i_0}(\frac{1}{k})$. 
+
+        Матрица --- единичная, но на $(a)_{i_0 j_0} = l$.
+\end{enumerate}
+
+\begin{statement}
+    \begin{enumerate}
+        \item $T_{ij}(a) \cdot A$ получится из  $A$ прибавлением к  $i$-ой строке  $j$-ой строки, умноженной на  $a$.
+        \item $M_i(a)\cdot A$ тоже самое, но умножением  $i$-ой строки на  $a$.
+        \item  $A \cdot M_i(a)$ тоже самое, но со столбцом.
+        \item  $A \cdot T_{ij}(a)$, прибавлением к  $j$-му столбцу  $i$-го столбца, умноженного на  $a$.
+    \end{enumerate}
+\end{statement}
+\begin{proof}
+$1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c|c} c_1 & c_2 & \ldots & c_n \end{array} \right) = \left(\begin{array}{c|c|c|c} T_{ij}(a)c_1 & T_{ij}(a)c_2 & \ldots & T_{ij}c_n \end{array} \right)$ и тоже для $m_i$.
+
+А для столбцов  $1,2$ --- это определения элементарного преобразования  $3, 4$. Ну там можно транспонировать. 
+\end{proof}
+\begin{remark}
+    $E$ --- элементарная матрица  $\implies \rk(EA) = \rk(A) = \rk(AE)$, по свойству  $2'$ ранга, так как  $E$ --- обратима  $\iff$ элементарные преобразования матрицы не меняют их ранга.
+\end{remark}
+\begin{consequence}
+    Алгоритмическое определение ранга: приведем $A$ элементарными преобразованиями к виду трапеции (результат Гаусса). Тогда количество ненулевых строчек --- ранг матрицы.
+\end{consequence}
+\begin{remark}
+    Элементарное преобразование 3-го типа.
+    $S_{ij}\!: \begin{pmatrix} x_1 \\ \vdots \\ x_i \\ \vdots \\ x_j \\ \vdots \\x_n \end{pmatrix} = \begin{pmatrix} x_1 \\ \vdots \\ x_j \\ \vdots \\ x_i \\ \vdots \\x_n \end{pmatrix}$
+    Матрица $E$, где вместо единицы на  $s_{ii}$ стоят единицы на  $s_{ij}$ и  $s_{ji}$.
+
+    $s_{ij} = m_{j}(-1)t_{ij}(1)t_{ji}(-1)t_{ij}(1)$.
+\end{remark}
+\begin{theorem}
+    $A$ --- матрица:
+     \begin{enumerate}
+         \item $\exists e_1, \ldots, e_k$ --- элементарные, такие что $e_1 \cdot \ldots \cdot e_k \cdot A$ --- имеет трапециевидный вид. 
+         \item $A \in GL_n(K) \implies \exists e_1, \ldots, e_k$ --- элементарные, такие, что $e_1 \cdot \ldots \cdot e_k \cdot A = E$.
+         \item[2')] $A \in GL_n(K), \exists e_1, \ldots, e_k \quad A=e_1 \cdot \ldots \cdot e_k$.
+         \item $\exists e_1, \ldots, e_k$ --- элементарные $\exists f_1,\ldots, f_l$ --- элементарные, такие что $e_1 \ldots e_k \cdot A \cdot f_1 \ldots f_l = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $2 \to 2'$:  $A \in GL_n(K) \exists A^{-1} \in GL(n, K)$ по пункту 2  $\exists e_1, \ldots, e_k\!: e_1 \cdot c_2 \ldots \cdot e_k A^{-1} = E$.
+
+    $2 \implies 3$: Знаем, что  $\exists$ обратимые  $C, D$:  $CAD = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$. По пункту 2  $C, D$ представимы элементарными преобразованиями. 
+
+    1. $A \in M_{m, n}(K)$. Индукция по  $n$.
+
+    База:  $n = 1$. Упражнение или смотри дальше.\\
+    Переход:  $n \to n+1$.  $A = (a_ij)_{\substack{i = 1..m \\ j=1..{n+1}}}$
+
+    1 случай. $a_{11} \neq 0$, применим $t_{21}(-\frac{a_{21}}{a_{11}}), t_{31}(-\frac{a_{31}}{a_{11}}),\ldots, t_{m_1}(-\frac{a_{m_1}}{a_{11}})$. После домножения получим: первую строчку, в последующих в первом столбце ноль, а дальше получилась матрица с размерностью метшей на 1.
+
+    По индукционному переходу $\exists e_1, \ldots, e_k$ --- элементарные, $e_1 \ldots e_k A = $ матрица трапеционного вида. $e_i$ можно дополнить до нашей матрицы:  $\begin{array}{c|c} 1 & 0 \\ \hline 0 & e_i \end{array}$.
+
+    Второй случай:  $a_{11} = 0$, но $\exists k\!: a_{k_1} \neq 0$. Поменяем две строчки местами.
+
+    Третий случай: весь первый столбец --- нули. Забъем на него и делаем шаг индукции как в п.1.
+\end{proof}
