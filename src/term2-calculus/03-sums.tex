@@ -1,3 +1,41 @@
+\newpage % new page
+%\stepcounter{section}
+\bigskip
+\phantomsection
+\addcontentsline{toc}{section}{Продолжение главы 1}
+\begin{center}
+{\huge \bf Продолжение главы 1}\\
+\end{center}
+\bigskip
+\gdef\SectionName{Глава \#1}
+\gdef\AuthorName{ХБ}
+
+\lhead{\ShortCourseName}
+\chead{}
+\rhead{\SectionName}
+
+\cfoot{
+%    \topskip0pt\vspace*{\fill}
+\thepage~из~\pageref*{LastPage}
+%    \vspace*{\fill}
+}
+
+\renewcommand{\headrulewidth}{0.15 mm}
+
+\ifx\LaconicFooter\undefined
+\lfoot{
+%    \topskip0pt\vspace*{\fill}
+Глава \#1
+%    \vspace*{\fill}
+}
+\rfoot{
+%    \topskip0pt\vspace*{\fill}
+Автор: \AuthorName
+%    \vspace*{\fill}
+}
+\renewcommand{\footrulewidth}{0.15 mm}
+\fi
+\Subsection{Интегральные суммы}
 \begin{definition}
     Пусть есть $[a, b]$. Тогда дробление (разбиение, пунктир) отрезка: набор точек:  $x_0 = a < x_1 < x_2 < \ldots < x_n = b$.
 \end{definition}
