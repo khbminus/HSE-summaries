@@ -15,14 +15,14 @@
 
 Рассмотрим матрицу $A \in M_{m, n}$. Её можно разбить на  $n$ столбцов  $(c_1 \mid c_2 \mid \ldots \mid c_n), c_i \in K^m$ и $m$ строчек:  $\begin{pmatrix} r_1 \\ r_2 \\ \ldots \\ r_n \end{pmatrix}, r_i \in \prescript{n}{}{K}$.
 
-Также заметим, что $M_{m, n}(k)$ --- векторное пространство над  $K$. Ясно, что  $M_{m, 1}(K) \cong K^m$ и  $M_{1, m}(K) \cong \prescript{n}{}{K}$.
+Также заметим, что $M_{m, n}(K)$ --- векторное пространство над  $K$. Ясно, что  $M_{m, 1}(K) \cong K^m$ и  $M_{1, m}(K) \cong \prescript{n}{}{K}$.
 
  \begin{definition}
-     Умножение матриц: $M_{m, n} \times K^n \to K^m$: $(a_{ij}, \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}) \mapsto \begin{pmatrix} y_1 \\ y_2 \vdots \\ y_n \end{pmatrix}$, где $u_i = a_{i 1} x_1 + a_{i 2}x_2 + \ldots + a_{in}x_n = \sum\limits_{k=1}^n a_{ik}x_k$.
+     Умножение матриц: $M_{m, n} \times K^n \to K^m$: $(a_{ij}, \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}) \mapsto \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix}$, где $y_i = a_{i 1} x_1 + a_{i 2}x_2 + \ldots + a_{in}x_n = \sum\limits_{k=1}^n a_{ik}x_k$.
 
-     Можно определить умножение строки на столбец:  $\begin{pmatrix} a_1 & a_2 & \ldots & a_m \end{pmatrix} \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{pmatrix} \leadsto \sum a_i x_i$.  Тогда умножение матрицы на столбец можно записать как $\begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \end{pmatrix} \cdot X \leadsto \begin{pmatrix} c_1 \cdot X \\ c_2 \cdot X \\ \vdots \\ c_m \cdot X \end{pmatrix}$.
+     Можно определить умножение строки на столбец:  $\begin{pmatrix} a_1 & a_2 & \ldots & a_m \end{pmatrix} \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{pmatrix} \leadsto \sum a_i x_i$.  Тогда умножение матрицы на столбец можно записать как $\begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_m \end{pmatrix} \cdot X \leadsto \begin{pmatrix} r_1 \cdot X \\ r_2 \cdot X \\ \vdots \\ r_m \cdot X \end{pmatrix}$, где $r_i$ --- строчки.
 
-     Тогда заметим, что умножение матриц: $A \cdot B = \begin{pmatrix} Ac_1 & Ac_2 & \ldots  & A_l \end{pmatrix}$.
+     Тогда заметим, что умножение матриц: $A \cdot B = \begin{pmatrix} Ac_1 & Ac_2 & \ldots  & Ac_l \end{pmatrix}$.
 \end{definition}
 \begin{example}[.СЛУ]
     Системы линейных уравнений можно записывать как матрицу. Дальше я не успел. 
@@ -37,7 +37,7 @@
     $\mathcal{A}(X+Y) = A \cdot X + A \cdot Y\quad \forall x, y$,  $\mathcal{A}(kX) = kA\cdot X$,  $k \in K$.
 \end{proof}
 
-Однородная СЛУ: $AX = 0$.  $A = \begin{pmatrix} c_1 & c_2 & \ldots & c_n \end{pmatrix}$. Эта система имеет тривиальное решение $x = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0\end{pmatrix} \iff c_1, \ldots, c_n$ --- ЛНЗ. Тогда заметим, что если $n > m$, то  $AX=0$ имеет нетривиальное решение.
+Однородная СЛУ: $AX = 0$.  $A = \begin{pmatrix} c_1 & c_2 & \ldots & c_n \end{pmatrix}$. Эта система имеет только  тривиальное решение $x = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0\end{pmatrix} \iff c_1, \ldots, c_n$ --- ЛНЗ. Тогда заметим, что если $n > m$, то  $AX=0$ имеет нетривиальное решение.
 \Subsection{Структура линейных отображений}
 \begin{example}
    $V=R^2$. Поворот вокруг $O$ --- линейное отображение. Симметрия относительно прямой --- линейное отображение, если  $0 \in l$. Проекция на  $l$ --- линейное отображение.
@@ -48,7 +48,7 @@
         \item $\mathcal{A}$ --- инъекция  $\iff \mathcal{A}(x) = 0 \Rightarrow x = 0$.
         \item $x_1, x_2, \ldots, x_n$ --- ЛЗ $\Rightarrow \mathcal{A}(x_i)$ --- ЛЗ.
         \item[3'.] $\mathcal{A}$ --- инъекция:  $\{x_i \}$ --- ЛНЗ  $\Rightarrow \{\mathcal{A}(x_i)\}$ --- ЛНЗ.
-        \item  $u_1, u_2, \ldots, u_m$ --- базис $U$.  $v_1, v_2, \ldots, v_n \in V$. Тогда $\exists! A\!: i \to v$ такое что  $\mathcal{A}(u_i) = v_i$.
+        \item  $u_1, u_2, \ldots, u_n$ --- базис $U$.  $v_1, v_2, \ldots, v_n \in V$. Тогда $\exists! \mathcal{A}\!: U \to V$ такое что  $\mathcal{A}(u_i) = v_i$.
     \end{enumerate}
 \end{properties}
 \begin{proof}
@@ -58,7 +58,7 @@
 
              $\Leftarrow\!:$ От противного, пусть $x \neq y \in U : \mathcal{A}(x) = \mathcal{A}(y) \Rightarrow \mathcal{A}(x) - \mathcal{A}(y) = \mathcal{A}(x - y) = 0 \Rightarrow x - y = 0$. Противоречие.
          \item  $\sum a_i x_I = 0 \implies \sum a_i \mathcal{A}(x_i) = \sum \mathcal{A}(a_i x_i) = \mathcal{A}(\sum a_i x_i) = \mathcal{A}(0) = 0$.
-         \item[3'.] Пусть $\sum a_i x_i = 0 \Rightarrow \sum a_i \mathcal{A}(x_i) = \mathcal{A}(\sum a_i x_i) = 0 \implies a_i x_i = 0 \rightarrow a_i = 0$.
+         \item[3'.] Пусть $0 = \sum a_i \mathcal{A}(x_i) = \mathcal{A}(\sum a_i x_i) \implies \sum a_i x_i = 0 \Rightarrow a_i = 0$.
          \item Определим $A$: пусть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
 
              Единственность: пусть  $\mathcal{A}_2(u_i) = v_i$, тогда  по линейности  $\mathcal{A}_2(\sum a_i u_i) = \sum a_i \mathcal{A}_2(u_i) = \sum a_i v_i = \mathcal{A}(\sum a_i u_i)$.
@@ -124,7 +124,7 @@
 
     $P_u\!: U \oplus V \to U, (u, v) \mapsto u$ --- проекция.  $\Im P_u = U, \ker P_u = \Im i_v$.
 
-    Диаграмма прямой суммы:  $U \xleftrightarrow[i_u]{P_u} U \oplus V \xleftrightarrow[i_v]{P_v} V$.  $P_ui_u = \id_u$, $P_vi_v = \id_v$,  $P_vi_u= 0_u$,  $p_u i_v = 0_v$,  $i_uP_u + i_v p_v = ???$
+    Диаграмма прямой суммы:  $U \xleftrightarrow[i_u]{P_u} U \oplus V \xleftrightarrow[i_v]{P_v} V$.  $P_ui_u = \id_u$, $P_vi_v = \id_v$,  $P_vi_u= 0_v$,  $P_u i_v = 0_u$,  $i_uP_u + i_v P_v = ???$
 \end{remark}
 
 \begin{theorem}[Формулаа Грассмана]
@@ -140,9 +140,9 @@
     Очевидно, что $\ker f \cong U \cap V \implies \dim (\ker f) = \dim (U \cap V)$. А по теореме о размерности ядра и образа:  $\dim V + \dim U = \dim(U \oplus V) = \dim(U + V) + \dim(U \cap V)$
 \end{proof}
 \begin{example}
-    $K^n$, $U = \left\{ \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \mid a_1 x_1 + \ldots + a_n + x_n = 0\right\}$ --- гиперплоскость $\dim U = n - 1$. 
+    $K^n$, $U = \left\{ \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \mid a_1 x_1 + \ldots + a_n x_n = 0\right\}$ --- гиперплоскость $\dim U = n - 1$. 
 
-    СЛУ ---  $m$ уравнений,  $m$ гиперплоскостей  $--- u_1, u_2, \ldots, u_m$. Ответ --- $\bigcap\limits_{i=1}^n u_i$.
+    СЛУ ---  $m$ уравнений,  $m$ гиперплоскостей --- $u_1, u_2, \ldots, u_m$. Ответ --- $\bigcap\limits_{i=1}^n u_i$.
 
     $\dim u_1 = n - 1$. $\dim (u_1 \cap u_2) = \dim u_1 + \dim u_2 - \dim (u_1 + u_2) \ge n - 1 + n - 1 - n \ge n - 2$. Можно продолжить процесс.
 \end{example}
@@ -155,7 +155,7 @@
 
 Пусть $A \in M_{m, n}(K), A = (a_{ij})_{\substack{i = 1..m \\ j = 1..n}}$,  $\mathcal{A}\!: \begin{array}{c} K^n \to K^m \\ x \to A \cdot x \end{array}$ --- линейное отображение.
 
-$K^n - \langle e_1, \ldots, e_n \rangle, K^m = \langle \widetilde{e_1}, \ldots \widetilde{e_n} \rangle$, где $e_i$ --- вектор нулей с 1 на  $i$ строчке. Тогда 
+$K^n - \langle e_1, \ldots, e_n \rangle, K^m = \langle \widetilde{e_1}, \ldots \widetilde{e_m} \rangle$, где $e_i$ --- вектор нулей с 1 на  $i$ строчке. Тогда 
 $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$. 
 Тогда можно сказать, что $A = \left(\begin{array}{c|c|c|c} \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots & \mathcal{A}(e_n) \end{array} \right)$ 
 
@@ -169,7 +169,7 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
     $\Im \mathcal{A}$ --- линейная оболочка столбцов $A$.
 \end{statement}
 \begin{proof}
-    $A = \left( \begin{array}{c|c|c} & &  \\ C_1 & C_2 & \ldots C_n \\ & & \end{array} \right) = \left(\begin{array}{c|c|c} & &  \\ \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots \mathcal{A}(e_3) \\ & & \end{array} \right)$ 
+    $A = \left( \begin{array}{c|c|c} & &  \\ C_1 & C_2 & \ldots C_n \\ & & \end{array} \right) = \left(\begin{array}{c|c|c} & &  \\ \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots \mathcal{A}(e_n) \\ & & \end{array} \right)$ 
 
     $\langle C_1, C_2, \ldots, C_n \rangle = \langle \{A e_i \} \rangle = \Im \mathcal{A}. \sum a_i \mathcal{A}(e_i) = \mathcal{A}(\sum a_i e_i) = \mathcal{A}(V)$. $V$ --- вектор  $\in K^n$.
 \end{proof}
@@ -183,7 +183,7 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
     При $n=m$  $n-\rk A$ называется  дефектом матрицы. Дефект $\dim \ker A$.
 \end{definition}
 \begin{theorem}[Принцип Дирихле для векторных пространств]
-    $\mathcal{A}\!: V \to V$ --- линейное множество.  $V$ --- конечномерное.
+    $\mathcal{A}\!: V \to V$ --- линейное отображение.  $V$ --- конечномерное.
 
     Тогда  $\mathcal{A}$ --- инъекция  $\iff \mathcal{A}$ --- сюръекция.
 \end{theorem}
@@ -201,9 +201,9 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
 \begin{proof}
     Пусть $X_0$ --- решение $AX=B$, тогда  $AX=B \land AX_0=B \iff A(X-X_0) = 0 \iff x - x_0 \in \ker \mathcal{A}$ --- решения соответствующей однородной $A$.
     
-    $x = x_0 + v, v \in \ker \mathcal{A} $. Множество решений $x_0 + \ker \mathcal{A} = x_0 + \ker A = x_9 + \mathcal{A}^{-1}\{0\}$. 
+    $x = x_0 + v, v \in \ker \mathcal{A} $. Множество решений $x_0 + \ker \mathcal{A} = x_0 + \ker A = x_0 + \mathcal{A}^{-1}\{0\}$. 
 
-    $\mathcal{A}^{-1}(\{\mathcal{A} X_0\}) = X_0 + \mathcal{A}^-1{0}$.
+    $\mathcal{A}^{-1}(\{A X_0\}) = X_0 + \mathcal{A}^{-1}\{0\}$.
 \end{proof}
 
 \begin{theorem}[Альтернатива Фредгольма]
@@ -242,7 +242,7 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
 \end{definition}
 \begin{example}
     $\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$\\
-    $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \cdot \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 & 0 & 0 \end{pmatrix}$.
+    $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \cdot \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$.
 \end{example}
 \Subsection{Матрица линейного отображения}
 
