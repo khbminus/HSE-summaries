@@ -490,5 +490,76 @@ $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c
 
     Второй случай:  $a_{11} = 0$, но $\exists k\!: a_{k_1} \neq 0$. Поменяем две строчки местами.
 
-    Третий случай: весь первый столбец --- нули. Забъем на него и делаем шаг индукции как в п.1.
+    Третий случай: весь первый столбец --- нули. Забьем на него и делаем шаг индукции как в п.1.
+
+    Теперь докажем второй пункт. Понятно, что $e_1, e_2, \ldots, e_k$ --- обратимы. Тогда $A$ --- обратимы  $\iff$  $e_1e_2e_3\ldots e_k A = $ треугольная матрица.
+
+    \begin{statement}
+        Треугольная матрица обратима $\implies$ все  $a_i \neq 0$.
+    \end{statement}
+    \begin{proof}
+        Пусть не так. Рассмотрим такой минимальный $i$, что  $a_i = 0$. Посмотрим на столбцы. Тогда  $c_1, c_2, \ldots, c_i \in \langle e_1, \ldots, e_{i-1} \rangle \implies c_1, c_2, \ldots, c_i$ --- ЛЗ. $c_1,\ldots,c_n$ --- ЛЗ, $\rank < n \implies$ A --- необратима. Где $e_i$ --- столбец с  $1$ на  $i$-той позиции. 
+    \end{proof}
+    Итого, пусть у нас есть треугольная матрица. Применим $t_{1, n}(-\frac{a_{1n}}{a_{nn}})t_{2n}(-\frac{a_{2n}}{a_{nn}})\ldots t_{n-1,n}(-\frac{a_{n-1,n}}{a_{n,n}})$. Теперь у нас в последнем столбце везде нули, кроме последней строчки. После этого мы получаем диагональ с какими-то элементами.
 \end{proof}
+\begin{statement}[Алгоритм поиска обратной матрицы]
+    Для того, чтобы найти обратную матрицу нужно взять матрицу $\left(\begin{array}{c|c} A & E \end{array}\right)$ и привести левую матрицу к единичной. Тогда справа будет обратная.
+\end{statement}
+\begin{definition}
+    $A = (a_{ij}) \in M_n(K)$ называется верхнетреугольной, если  $a_{ij} = 0 \quad \forall i > j$.
+
+     $A = (a_{ij}) \in M_n(K)$ называется нижнетреугольной, если  $a_{ij} = 0 \quad \forall j > i$.
+\end{definition}
+\begin{statement}
+    \begin{enumerate}
+        \item $LT_n(K)$,  $UT_n(K)$ (множество нижне/верхнетреугольных) --- подкольца в  $M_n(K)$.
+        \item $LT_n \cap UT_n$ --- кольцо диагональных матриц  $\cong \underbrace{K \times K \times \ldots \times K}_{n\ text{раз}}$
+    \end{enumerate}
+\end{statement}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item[2.] Сложение --- очев. Умножение --- очев (записать руками и удостовериться).
+        \item [1.] Очев/упражнение (очев). 
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    $A \in UT_n(K) \iff \forall i \in 1:n\quad \mathcal{A}(e_i) \in \langle e_1, \ldots, e_i \rangle$. $\langle e_1 \rangle \le \langle e_1, e_2 \rangle \le \ldots \le \langle e_1, \ldots, e_n \rangle$. 
+\end{remark}
+\begin{definition}
+    $A$ --- нильподентна, елси $\exists k\!: A^k = 0$. 
+\end{definition}
+\begin{statement}
+    $A \in UT_n(K)$.  $A$ --- нильп.  $\iff a_{ii} = 0$.
+\end{statement}
+\begin{proof}
+    $\begin{pmatrix} a_{11} & & * \\ & \ddots & \\ 0 & & a_{nn} \end{pmatrix}^n = \begin{pmatrix} a_{11}^n & & * \\ & \ddots & \\ 0 & & a_{nn}^n \end{pmatrix}$
+
+    Тогда $\implies$ очев.
+
+    В обратную сторону:  $\mathcal{A}(e_i) \in \langle a_1, \ldots, e_i \rangle, a_{ii} = 0$. Откуда получаем $Ae_i = b_1e_1 + b_2e_2 + \ldots + b_{i-1}e_{i-1}$.
+
+    Значит $\mathcal{A}(e_i) \in \langle e_1, \ldots, e_{i-1} \rangle \quad \forall i$.  Тогда $\mathcal{A}^2(e_i) \in \langle e_1,\ldots, e_{i-2} \rangle$. Это значит, что $\mathcal{A}^i(e_i) = 0$.
+\end{proof}
+\begin{remark}
+    $A^k = 0 \iff \exists $ замена базиса  такая, что $A \in M_n(K)$ перейдет в верхнетреугольный вид.
+
+\end{remark}
+В методе Гаусса у нас есть набор преобразований $e_1e_2\ldots e_kA$. Вспомним, что $e_i$ либо перестановка строк, либо  $t_{ij}(a)$, где  $i > j$.
+
+Пусть перестановок нет. Тогда  $e_k = t_{i_k j_k}(a) \in LT_n(K) \implies e_1 \ldots e_k \in LT_n(K)$, где $i_k > j_k$.
+
+Тогда  $LA = U$,  $L \in LT_n, U \in UT_n$, то есть  $A = L^{-1}U$,  $L^{-1} \in LT_n$,  $U \in UT_n$. Получили  $LU$ разложение.
+
+В общем случае сделаем все перестановки в начале. То есть пусть мы свели задачу к $PA = LU \implies A = P^{-1}LU$.
+\begin{theorem}
+    Следующие условия равносильны ($A \in M_n(K)$): 
+    \begin{enumerate}
+        \item $\exists A^{-1} (A \in GL(K) = M_n(K)^*)$.
+        \item  $A = e_1 \ldots e_k$, $e_i$ --- элементарные матрицы. 
+        \item $\rk A = n$.
+        \item  $\mathcal{A}\!: X \mapsto A \cdot X$ --- инъективный линейный оператор: $K^n \to K^n$ .
+        \item Тоже самое, но сюръективна.
+        \item Если рассмотреть матрицу как систему, то для любого вектора правой части есть единственное решение  $AX = B \iff A^{-1}B = X$.
+    \end{enumerate}
+\end{theorem}

@@ -1,0 +1,61 @@
+Мотивация: Решим систему $\begin{cases} ax+by=e \\ cx+dy=f \end{cases}$. Получим решения  $\begin{cases} x = \frac{cd - bf}{ad - bc} \\ y = \frac{af - ec}{ad - bc} \end{cases}$. 
+
+В чем смысл $ad - bc$. Возьмем вектора  $\begin{pmatrix} a \\ c \end{pmatrix}$ и $\begin{pmatrix} b \\ d \end{pmatrix}$. Тогда площадь параллелограмма, натянутого на эти вектора $S = |ad-bc|$ и $ad - bc$.
+
+Пусть $\widehat{S}(\Phi)$ --- ориентированная площадь,  $|\widehat{S}(\Phi)| = S(\Phi)$.  $\widehat{S}(\Phi) > 0$, если поворот от первого вектора ко второму против часовой стрелки.
+
+\begin{properties}
+    \begin{enumerate}
+        \item $\widehat{S}(V_1, V_2) = -\widehat{S}(V_2, V_1)$.
+        \item $\widehat{S}(kv_1, kv_2) = k \widehat{S}(v_1, v_2)$.
+        \item $S(v_1, v'_2 + v''_2) = S(v1, v'_2) + S(v_1, v''_2)$
+    \end{enumerate}
+\end{properties}
+
+\textbf{\huge Общий случай.}
+
+\begin{definition}
+    $V_1, V_2, \ldots, V_n$, $V$ ---  векторные пространства над $K$.
+
+    Отображение  $\mathcal{A}\!: V_1 \times V_2 \times \ldots \times V_n \to V$ называется полилинейным, если $\forall i \forall v_i \in V_i \mathcal{A}_{v_1, \ldots, v_n}\!: V_i \to V$ --- линейно. То есть, если закрепить все переменные, кроме одной, то отображение будет линейно.
+\end{definition}
+
+Будем изучать $V = K^n, \omega\!: (K^n)^m \to K$.
+ \begin{lemma}
+    $e_1, \ldots, e_n$ --- базис $K^n$.  $\omega\!: (K^n)^m \to K$ --- полилинейно, тогда $\omega(v_1, v_2, \ldots, v_m) = \sum\limits_{\mathclap{\{i_1, \ldots, i_m\} \in \{1..n\}^n}} a_{i_1 1}\cdot a_{i_2 2}\ldots a_{i_m m} \omega(e_{i_1}, e_{i_2},\ldots, e_{i_m})$.
+\end{lemma}
+\begin{proof}
+    $\omega(v_1, v_2, \ldots, v_m) = \omega(\sum a_{j_1} e_j, \sum a_{j_2} e_j, \ldots) = \sum\limits_{j=1}^n a_{j_1} \cdot \omega(e_j, \sum \ldots)$ и дальше по линейности.
+\end{proof}
+
+\begin{definition}
+    Кососимметрической $n$-формой называется полилинейное отображение  $\omega\!: (K^n)^n \to K$, такое что  $(\exists i, j\!: v_i = v_j \implies \omega(v_1, \ldots, v_n) = 0)$.
+\end{definition}
+\begin{statement}
+    \begin{enumerate}
+        \item $\omega$ --- кососимметрична  $\implies$  $\forall i \neq j\!: \omega(v_1, v_2, \ldots, v_i, \ldots, v_j, \ldots, v_n) = - \omega(v_1,\ldots, v_j, \ldots, v_i, \ldots v_n)$.
+        \item $\charr k \neq 2 \implies $ верно и обратное. То есть, если выполняется равенство то и  $\omega$ --- кососимметричная. 
+    \end{enumerate}
+\end{statement}
+\begin{proof}
+    \begin{enumerate}
+        \item фиксируем все, кроме $v_i$. Тогда  $f(x, y) = \omega(v_1, .., v_{i-1}, x, v_{i+1}, \ldots, y, \ldots, v_n)$. $f$ --- полилинейно. Надо доказать?? 
+    \end{enumerate}
+\end{proof}
+\begin{statement}
+    $\exists$ не более одной кососимметричной  $n$-формы с точностью до линейного множества. 
+\end{statement}
+\begin{proof}
+    $\omega$ определено однозначено значениями
+     \begin{enumerate}
+         \item На базисе: $\omega(e_{i_1}, e_{i_2}, \ldots, e_{e_n}) = \widetilde{\omega}(e_{i_1}, e_{i_2}, \ldots, e_{i_n})$. Из леммы известно, что тогда $\omega = \widetilde{\omega}$. 
+         \item $\omega$ --- кососимметрична, среди  $i_1, \ldots, i_n$ есть одинаковые. Тогда $\omega(e_{i_1},\ldots) = 0$.
+         \item Осталось изучить перестановки $e$. Пусть $\pi$ перестановка. Тогда  $e_{\pi(1)}, e_{\pi(2)}, \ldots$ --- правильный порядок. Каждая перестановка двух элементов меняет знак у $\omega$. То есть  $\omega(e_{\pi(1)}, e_{\pi(2)}, \ldots) = (-1)^k \omega(e_1, e_2, \ldots, e_n)$, где $k$ --- количество сделанных ходов.
+    \end{enumerate}
+    Из 1,2,3 следует, что  $\omega(e_1, e_2, \ldots, e_n) = \widetilde{\omega}(e_1, \ldots, e_n)$ и они кососимметричны, то они равны. 
+
+    Тогда потребуем, чтобы $\omega$ была кососимметричной  $n$-формой,  $\omega(e_1, e_2,\ldots, e_n) = 1$, где $e_1, e_2, \ldots, e_n$ базис в $K^n$. Тогда таких функция  $\le 1$.
+\end{proof}
+\begin{definition}
+    Такие функции называются определителем порядка $n$.
+\end{definition}
