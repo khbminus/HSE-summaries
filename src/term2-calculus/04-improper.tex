@@ -191,3 +191,57 @@
 
     Докажем, что он абсолютно сходится.  $\int\limits_a^{+\infty} |F(x)| |g'(x)| \mathrm{d}x$, $|F(x)||g'(x)| \le K|g'(x)| = Kg'(x)$. $\int_a^{+\infty} g'(x) \mathrm{d}x = g \mid_a^{+\infty} = \lim\limits_{y \to +\infty} g(y) - g(a) = -g(a) \implies$ сходящийся.
 \end{proof}
+\begin{theorem}[Признае Абеля]
+    $f, g \in C[a, +\infty]$, Если 
+     \begin{enumerate}
+         \item $\int\limits_a^{+\infty} f(x) \mathrm{dx}$ сходится,
+         \item  $g$ монотонна,
+         \item  $g$ ограничена
+    \end{enumerate}
+    Тогда $\int\limits_a^{+\infty} f(x)g(x) \mathrm{d}x$ сходится.
+\end{theorem}
+\begin{proof}
+    $2)+3) \implies \exists l \in \R \coloneqq \lim\limits_{x \to +\infty} g(x)$.
+
+    Пусть $\widetilde{g}(x) \coloneqq g(x) - l \implies \lim\limits_{x \to +\infty}\widetilde{g}(x) = 0$ и  $\widetilde{g}$ монотонна.
+
+    Пусть  $F(x) \coloneqq \int\limits_a^x f(t) \mathrm{d}t$.  $1) \iff$ существует конечный предел  $\lim\limits_{x \to +\infty} F(x)$.
+
+    Тогда  $f$ и  $\widetilde{g}$ удовлетворяют условиям признака Дирихле $\implies \int\limits_a^{+\infty} f(x) \widetilde{g}(x) \mathrm{d}x$ --- сходится. Тогда: \[
+    \int\limits_a^{+\infty} = \int\limits_a^{+\infty} f(\widetilde{g}+l) = \int\limits_a^{+\infty} f\widetilde{g} + l \int\limits_a^{+\infty} f
+    .\] 
+    Где $\int\limits_a^{+\infty} f\widetilde{g}$ сходится по доказанному, а  $\int\limits_a^{+\infty} f$ --- по условию.
+\end{proof}
+\begin{statement}
+    $f$ --- периодическая функция с периодом  $T$. Тогда  $\int\limits_a^{a+T} f = \int\limits_b^{b+T}f$ 
+\end{statement}
+\begin{proof}
+    Картинка:\\
+    \colorbox{red}{Добавить картинку. Альтернатива: посмотреть доски Храброва/пнуть меня.}
+    
+    $\int\limits_a^{a+kT}f = \int_{b-(k-1)T}^{a+T}f$.  $\int\limits_{a+kT}^{b+T} f = \int\limits_{a+T}^{b-(k-1)T} f$
+\end{proof}
+\begin{consequence}
+   $f, g\in C[a;+\infty)$,  $f$ --- периодическая с периодом  $T$,  $g$ монотонная и  $\int\limits_a^{+\infty} g(x) \mathrm{d}x$ расходится. 
+
+   Тогда $\int\limits_a^{+\infty} fg$ сходится  $\iff \int\limits_a^{a+T} f = 0$.
+\end{consequence}
+\begin{proof}
+    $\Leftarrow$.  $F(x) = \int\limits_a^x f$ --- периодична с периодом  $T$:  $F(x+T) = \int\limits_a^{x+T} f = \int\limits_a^x f + \int\limits_x^{x+T}f = F(x)$.  $F$ --- непрерывна и периодична  $\implies$ ограничена  $\implies$  $\int\limits_a^{+\infty} fg$ сходится по признаку Дирихле.
+
+    $\Rightarrow$. Пусть  $\int\limits_a^{a+T} f \eqqcolon K \neq 0$.  $\widetilde{f}(x) \eqqcolon f(x) - \frac{K}{T}$ --- периодична с периодом $T$. Тогда  $\int\limits_a^{a+T} \widetilde{f} = \int\limits_a^{a+T}(f-\frac{K}{T}) = K - T \cdot \frac{K}{T} = 0 \implies \int\limits_a^{+\infty} \widetilde{f}g$ сходится.
+
+    Тогда $\int\limits_a^{+\infty} fg = \int\limits_a^{+\infty}(\widetilde{f} + \frac{K}{T})g = \int\limits_a^{+\infty} \widetilde{f}g + \frac{K}{T}\int\limits_a^{+\infty} g \implies \int\limits_a^{+\infty} fg$ расходится как сумма сходящегося и расходящегося. 
+\end{proof}
+\begin{example}
+    Рассмотрим $\int\limits_a^{+\infty} \frac{\sin x}{x^p} \mathrm{d}x$.
+    \begin{enumerate}
+    \item $p > 1$ интеграл сходится абсолютно:  $|\sin x| \le 1 \implies \left| \frac{\sin x}{x^p} \right| \le \frac{1}{x^p}$, а значит $\int\limits_a^{+\infty} \frac{\mathrm{d}x}{x^p}$ сходящийся.
+    \item $0 < p \le 1$ интеграл сходящийся, но не абсолютно. $\int\limits_a^{+\infty} \frac{\mathrm{d}x}{x^p}$ --- расходится, $\frac{1}{x^p} \searrow 0$. $g(x) \coloneqq \frac{1}{x^p}, f(x) = \sin x$. $\int\limits_0^{2\pi} \sin x \mathrm{d}x = 0 \implies \int_1^{+\infty} \frac{\sin x}{x^p} \mathrm{d}x$ сходящийся.
+
+        Если взять $f(x) = |\sin x|$, то интеграл по периоду равен  $4$. Значит исходный интеграл расходится.
+    \item $p \le 0$ интеграл расходится. 
+
+        $a_n \coloneqq \frac{\pi}{6} + 2\pi n, b_n \coloneqq \frac{5\pi}{6} + 2\pi n$. Тогда $\int\limits_{a_n}^{b_n} \frac{\sin x}{x^p} \mathrm{d}x \ge \frac{1}{2} \int\limits_{a_n}^{b_n} \frac{\mathrm{d}x}{x^p} \ge \frac{1}{2} \int\limits_{a_n}^{b_n} = \frac{b_n - a_n}{2} = \frac{\pi}{3}$.
+    \end{enumerate}
+\end{example}

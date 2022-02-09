@@ -3,11 +3,13 @@
 \usepackage{systeme}
 \usepackage{centernot}
 \usepackage{mathtools}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 %\usepackage{ulem}
 %\usepackage{enumitem}
 %\usepackage{ansmath}
 \enablemath
-
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Cl}{Cl}
 \begin{document}
 \gdef\CourseName{Математический анализ}
 \author{Харитонцев-Беглов Сергей}
@@ -19,4 +21,6 @@
 %\Section{Интегральные суммы}{Харитонцев-Беглов Сергей}
 \input{03-sums}
 \input{04-improper}
+\Section{Анализ в метрических пространствах}{Харитонцев-Беглов Сергей}
+\input{05-metrics-and-normal}
 \end{document}

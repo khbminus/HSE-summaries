@@ -1,0 +1,172 @@
+\Subsection{Метрические и нормированные пространства}
+\begin{definition}
+    Метрика (расстояние) $\rho\!: X \times X \to [0;+\infty)$, если выполняются следующие условия:
+     \begin{enumerate}
+         \item $\rho(x, y) = 0 \iff x = y$,
+         \item $\rho(x, y) = \rho(y, x)$,
+         \item  (неравенство треугольника) $\rho(x, z) \le \rho(x, y) + \rho(y, z)$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Метрическое пространство --- пара $(X, \rho)$.
+\end{definition}
+\begin{example}
+    Дискретная метрика (метрика Лентяя) $\rho(x, y) = \begin{cases} 0, & x = y \\ 1 & x \neq y\end{cases}$
+\end{example}
+\begin{example}
+    На $\R$:  $\rho(x, y) = |x-y|$.
+\end{example}
+\begin{example}
+    На $\R^d$:  $\rho(x, y) = \sqrt{\sum\limits_{k=1}^d (x_k - y_k)^2}$. Неравенство треугольника здесь --- неравенство Минковского.
+\end{example}
+\begin{example}
+    $C[a, b]$.  $\rho(f, g) = \int\limits_a^b |f-g|$.
+
+    Неравенство треугольника:  \[
+    \rho(f, h) = \int\limits_a^b |f-h| \le \int_a^b(|f-g|+|g-h|) = \rho(f, g) + \rho(g, h).
+    .\] 
+\end{example}
+\begin{example}
+    Манхэтеннская метрика: $\R^2$  $\rho((x_1, y_1), (x_2, y_2)) = |x_1 - x_2| + |y_1 + y_2|$.
+\end{example}
+\begin{example}
+    Французская железнодорожная метрика. $\R^2$. Есть точка  $P$ (Париж), тогда  $\rho(A, B) = AB$, если  $A, B,P$ на одной прямой, иначе  $\rho(A, B) = |AP|+|PB|$. 
+\end{example}
+\begin{definition}
+    $(X, \rho)$ --- метрическое пространство.  $B_r(x) \coloneqq \{y \in X \mid \rho(x, y) < r\}$ --- открытый шар радиуса  $r$ с центром в точке  $x$. 
+\end{definition}
+\begin{definition}
+    $(X, \rho)$ --- метрическое пространство.  $\overline{B}_r(x) \coloneqq \{y \in X \mid \rho(x, y) \le r\}$ --- закрытый шар радиуса  $r$ с центром в точке  $x$. 
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item $B_{r_1}(a) \cap B_(r_2)(a) = B_{\min\{r_1, r_2\}}(a)$.
+        \item $x \neq y \implies \exists r > 0\!: B_r(x) \cap B_r(y) = \emptyset \land \overline{B}_r(x) \cap \overline{B}_r(y) = \emptyset$.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    \begin{enumerate}
+        \item $x \in B_{r_1}(a) \cap B_{r_2}(a) \iff \begin{cases} \rho(x, a) < r_1 \\ \rho(x, a) < r_2 \end{cases} \iff \rho(x, a) < \min\{r_1, r_2\} \implies x \in B_{\min\{r_1, r_2\}}(a)$.
+        \item $r \coloneqq \frac{1}{3} \rho(x, y) > 0$. Пусть $\overline{B}_r(x) \cap \overline{B}_r(y) \neq \emptyset$. 
+
+            Тогда  $\exists z \in \overline{B}_r(x) \cap \overline{B}_r(y) \implies \rho(x, z) \le r \land \rho(y, z) \le \rho \implies \rho(x, y) \le \rho(x, z) + \rho(z, y) \le 2r = \frac{2}{3} \rho(x, y)$.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    $A \subset X$.  $A$ --- открытое множество, если  $\forall a \in A \exists B_r(a) \subset A$ ($r > 0$).
+\end{definition}
+\begin{theorem}[О свойствах открытых множеств]
+    \begin{enumerate}
+        \item $\emptyset, X$ --- открытые.
+        \item Объединение любого числа открытых множеств --- открытое.
+        \item Пересечение конечного числа открытых множеств --- открытое.
+        \item $B_r(a)$ --- открытое.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[2.] $A_{\alpha}$ --- открытые,  $\alpha \in I$.  $B \eqqcolon \bigcup\limits_{\alpha \in I}A_{\alpha}$. Берем  $b \in B \implies b \in A_\beta$ для некоторого  $\beta$. Но  $A_\beta$ --- открытое  $\implies \exists r > 0\quad B_r(b) \subset A_\beta \subset B$.
+        \item[3.] $A_1, A_2, \ldots, A_n$ --- открытые. $B \coloneqq \bigcap\limits_{k=1}^n A_k$. Берем  $b \in B \implies b \in A_k \forall k=1,2,\ldots,n$. Но $A_k$ --- открытое  $\exists r_k > 0 B_{r_k} \subset A_k$.  $\forall k \implies B_r(b) \subset \bigcap\limits_{k=1}^n A_k = B$.
+
+             $r \coloneqq \min\{r_1, \ldots, r_n\} > 0 \implies B_r(b) \subset B_{r_k}(b) \subset A_k \quad \forall \implies B_r(b) \subset \bigcap\limits_{k=1}^n A_k = B$.
+         \item[4.] Картинка :( $\rho(a, x) < R$,  $r \coloneqq R = \rho(a, x) > 0$. Докажем, что  $B_r(x) \subset B_R(a)$. Возьмем  $y \in B_r(x)$, то есть  $\rho(x, y) < r \implies \rho(y, a) \le \rho(y, x) + \rho(x, a) < r + \rho(x, a) = R \implies y \in B_R(a)$.
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    Существенна конечность. $\R$.  $\bigcap\limits_{n=1}^{\infty}(-\frac{1}{n}, 1) = [0, 1)$.
+\end{remark}
+\begin{definition}
+    $A \subset X$,  $a \in A$.  $a$ --- внутренняя точка множества  $A$, если $\exists r > 0\!: B_r(a) \subset A$.
+\end{definition}
+\begin{remark}
+    $A$ --- открытое  $\iff$ все его точки внутренние.
+\end{remark}
+\begin{definition}
+    Внутренность множества $\Int a \coloneqq \{ a \in A\mid a\text{ --- внутренняя точка}\}$.
+\end{definition}
+\begin{example}
+    $A = [0, 1] \subset \R$. Тогда  $\Int A = (0, 1)$.
+\end{example}
+\begin{properties}[внутренности]
+    \begin{enumerate}
+        \item $\Int A \subset A$.
+        \item  $\Int A$ ---  $\bigcup$ всех открытых множеств, которые содержатся в  $A$.
+        \item $\Int A$ --- открытое множество. 
+        \item  $A$ ---  открытое $\iff A = \Int A$.
+        \item Если $A \subset B$, то $\Int A \subset \Int B$.
+        \item $\Int(A \cap B) = \Int A \cap \Int B$
+        \item $\Int(\Int A) = \Int A$.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    $B \coloneqq \bigcup_{\alpha \in I} A_{\alpha}, A_\alpha \subset A$ открытые. 
+
+     $B \subset \Int A$. Берем  $b \in B \implies \exists \beta \in I\!: B \in A_\beta$ --- открытое  $\implies \exists r > 0\!: B_r(b) \subset A_\beta \subset A \implies b$ --- внутренняя точка  $A$  $\implies b \in \Int A$.
+
+      $\Int A \subset B$. Берем  $b \in \Int A \implies \exists r > 0 B_r(b) \subset A$, но  $B_r(b)$ --- открытое множество $\implies $ оно участвует в объединении  $\bigcup\limits_\alpha A_\alpha \implies B_r(b) \subset B \implies b \in B$.
+
+      Докажем пункт 4. $\Rightarrow$: пункт 3.  $\Leftarrow$ всего его точки внутренние  $\implies A = \Int A$.
+      Пункт 6. $\subset$:  $A \cap B \subset A, \subset B \implies \Int(A \cap B) \subset \Int A \land \Int(A \cap B) \subset \Int B$.
+
+       $\supset$. Пусть $x \in \Int A \cap \Int B \implies \begin{cases} \exists r_1 > 0 \quad B_{r_1}(x) \subset A \\ \exists r_2 > 0 \quad B_{r_2}(x) \subset B \end{cases} \implies$ если $r = \min \{r_1, r_2 \} \implies B_r(x) \subset A \land B_r(x) \subset B \implies B_r(x) \subset A \cap B \implies x \in \Int(A \cap B)$.
+
+       Пункт 7. $B \coloneqq \Int A$ --- открытое $\implies B = \int B$.
+\end{proof}
+\begin{definition}
+    $A \subset X$.  $A$ --- замкнутое, если  $X \setminus A$ --- открытое.
+\end{definition}
+\begin{theorem}[о свойствах замкнутых множеств]
+    \begin{enumerate}
+        \item $\emptyset, X$ --- замкнуты.
+        \item Пересечение любого числа замкнутых множеств --- замкнуто. 
+        \item Объединение конечного числа замкнутых множеств --- замкнуто.
+        \item  $\overline{B}_R(a)$ --- замкнуто.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[2.] $A_\alpha$ --- замкнуты  $\implies X \setminus A_\alpha$ --- открытые  $\implies \bigcup\limits_{\alpha \in I} X \setminus A_\alpha$ --- открыто  $\implies X \setminus \setminus \bigcup\limits_{\alpha \in I} (X \setminus A_{\alpha}) = \bigcap\limits_{\alpha \in I} A_\alpha$ --- замкнутое.
+        \item[4.] $X \in \overline{B}_r(a)$ --- открытое. Берем  $x \notin \overline{B}_R(a)$. Возьмем $r \coloneqq \rho(a, x) - R > 0$. Покажем, что  $B_r(x) \subset x \setminus \overline{B_R}(a)$.
+
+            От противного. Пусть $B_r(x) \cap \overline{B}_R(a) \neq \emptyset$. Берем  $y \in B_r(x) \cap \overline{B}_R(a) \implies \rho(x, y) < r \land \rho(a, y) \le R \implies \rho(a, x) \le \rho(a, y) + \rho(y, x) < R + r = \rho(a, x)$. Противоречие.
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    В 3 важна конечность. $\R$.  $\bigcup\limits_{n=1}^{\infty} [\frac{1}{n}, 1] = (0, 1]$ --- не является замкнутой.
+\end{remark}
+\begin{definition}
+    Замыкание множества $\Cl A$ --- пересечение всех замкнутых множеств, содержащих  $A$.
+\end{definition}
+\begin{theorem}
+    $X \setminus \Cl A = \Int(X \setminus A)$ и  $X \setminus \Int A = \Cl(X \setminus A)$.
+\end{theorem}
+\begin{proof}
+    $\Int(X \setminus A) = \bigcup B_{\alpha}$.  $B_\alpha$ --- открытые,  $B_\alpha \subset X \setminus A \iff X \setminus B_\alpha$ --- замкнутое. $X \setminus B_\alpha \supset A$.
+
+    $\bigcap(X \setminus B_\alpha) = \Cl A \implies X \setminus \bigcap (X \setminus B_\alpha) = X \setminus \Cl A \iff \bigcup(B_\alpha) = \Int(X \setminus A)$.
+\end{proof}
+\begin{consequence}
+    $\Int A = X \setminus Cl(x \setminus A)$ и  $\Cl A = X \setminus \Int(X \setminus A)$.
+\end{consequence}
+\begin{properties}
+    \begin{enumerate}
+        \item $\Cl A \supset A$.
+        \item  $\Cl A$ --- замкнутое множество. 
+        \item $A$ --- замкнуто  $\iff A = \Cl A$.
+            \begin{proof}
+                $\Leftarrow$ --- пункт 2.  $\Rightarrow A$ --- замкнутое  $\Rightarrow$ оно участвует в пересечении из определения  $\implies \Cl A \subset A \implies \Cl A = A$.
+            \end{proof}
+        \item $A \subset B \implies \Cl A \subset \Cl B$.
+             \begin{proof}
+                $X \setminus A \supset X \setminus B \implies \Int(X \setminus A) \supset \Int(C \setminus B) \implies X \setminus \Int(X \setminus A) \subset X \setminus \int(X \setminus B)$
+            \end{proof}
+        \item $\Cl(A \cup B) = \Cl A \cup B$.
+        \item  $\Cl(\Cl A) = \Cl A$.
+             \begin{proof}
+                $B \coloneqq \Cl A$ --- замкнуто  $\implies \Cl B = B$.
+            \end{proof}
+    \end{enumerate}
+\end{properties}
+\begin{exerc}
+    $\Cl \Int \Cl \Int \ldots A$. Какое наибольшее количество различных множеств может получиться.
+\end{exerc}
