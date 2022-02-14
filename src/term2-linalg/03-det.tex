@@ -59,3 +59,176 @@
 \begin{definition}
     Такие функции называются определителем порядка $n$.
 \end{definition}
+
+\begin{definition}
+    $S_n$ --- группа перестановок:  $S_n = \{ f\! :\{1, 2,\ldots, n\} \to \{1, 2,\ldots, n\} \mid f\text{ --- биекция}\}$. С операцией $\cdot$ --- композиция.
+\end{definition}
+\begin{definition}
+    $t_{ij} \in S_n$ --- транспозиция.  $t_{ij}(i) = j, t_{ij}(j) = i, t_{ij}(k) = k$, при $i \neq j$. 
+\end{definition}
+\begin{statement}
+    $\langle\{t_{ij}\}_{\substack{i=1..n\\j=1..n}}\rangle = S_n$.
+\end{statement}
+\begin{proof}
+    Индукция по $n$.
+\begin{itemize}
+    
+    \item База $n=2$:  $S_2 = \langle id, t_{12}\rangle$. 
+    \item Переход. $n \to n +1$.  Пусть $\pi \in S_{n+1}$.  $\exists i = n + 1$. Рассмотрим  $t_{i, n+1}$, то есть $t_{i, n + 1}(i) = n + 1$ и $t_{i, n + 1}(n+1) = i$. $\pi \circ t_{i, n + 1}(n+1) = \pi(i) = n + 1$. 
+
+        Тогда сузим  $\pi$ до  $n$. Получим  $\widetilde{\pi}=\{1\ldots n\} \to \{1 \ldots n\}$. Тогда заметим, что \[\pi = \underbrace{t_{i_1, j_1} \circ t_{i_2, j_2} \circ \ldots}_{\text{образующие для} \widetilde{\pi}} \circ (t_{i, n+1})^{-1}.\]
+\end{itemize}
+\end{proof}
+\begin{definition}
+    Перестановка $\pi$ называется четной (нечетной), если выполнено одно из равносильных условий:
+    \begin{enumerate}
+        \item $\pi = t_{i_1, j_1} \ldots t_{i_{2k}, j_{2k}}$ (соответственно $2k+1$).
+        \item $\#\{(i, j) \mid \substack{i \in \{1..n\} \\ j \in \{1..n\}} \land \begin{cases} i < j \\ \pi(i) > \pi(j) \end{cases} \}$ --- четно/нечетно соответственно.
+        \item  $\prod\limits_{i<j} \frac{\pi(i) - \pi(j)}{i-j} = 1$ (соответственно -1).
+    \end{enumerate}
+
+\end{definition}
+\begin{consequence}
+    1. корректно (то есть четность чила множителей не зависит от разложения).
+\end{consequence}
+\begin{proof}
+    Докажем, что $1 \iff 2$.
+
+    Количество из определения 2 называется число инверсий. Надо доказать, что $\pi = \prod\limits_{l = 1}^k t_{i_l, j_l} \implies$ количество инверсий $\equiv k \pmod 2$. 
+
+     Индукция по $k$:
+      \begin{itemize}
+          \item База. $k = 0, \pi = \id$. 0 инверсий.
+          \item Переход: надо доказать, что  $\pi \in S_n \forall i, j$ четности числа инверсий для  $\pi$ и  $t_{ij} \pi$ --- разные.
+            
+              Какие пары поменяли статус при применении $t_{ij}$:  $(\pi(i), t_l), (\pi(j), t_l), (\pi(i), \pi(j))$. Первого типа --- $k$, второго --- $k$, третьего ---  $1$. А значит четность изменилась.
+      \end{itemize}
+\end{proof}
+\begin{definition}
+    $A \in M_n(K)$. Определителем  $A$ называется число  \[det A = |A| = \sum\limits_{\pi \in S_n} \eps(\pi) a_{1\pi(1)}a_{2\pi(2)}\ldots a_{n \pi(n)}\], где $\eps(\pi) = 1$ --- $\pi$ четна,  $-1$ иначе. 
+\end{definition}
+\begin{remark}
+    $t_{12}$.  $\pi \leftrightarrow t_{12} \circ \pi$ --- биекция между четными и нечетными.
+\end{remark}
+\begin{statement}
+    Функция $\omega\!: (K^n)^n \to K$, $\omega(c_1, \ldots, c_n) = \det(C_1 \mid C_2 \mid\ldots\mid C_n)$ --- полилинейная кососимметрическая форма.
+\end{statement}
+\begin{proof}
+    Полилинейность --- очев. 
+
+    Кососимметричность: $\omega(c_1, \ldots, c_i, \ldots,c_j, \ldots) = 0$, если $c_i = c_j$. Докажем, что все слагаемые в формуле разбиваются на пары вида  $(x, -x)$ для  $\det$.
+
+    Рассмотрим $\eps(\pi) a_{1\pi(1)} a_{2\pi(2)}\ldots a_{n\pi(n)}$. Здесь $a_{ki}$ и  $a_{lj}$.
+
+    Тогда пусть $\pi(k) = i, \pi(l) = j$.
+
+    Рассмотрим  $\eps(t_{ij}\pi)$. Здесь все будет так же, за исключением $a_{ki} = a_{kj}, a_{li} = a_{lj}, \eps(t_{ij}\pi) = -\eps(\pi) \implies A+B=0$.
+\end{proof}
+\begin{theorem}
+    $\det(A) = \det(A^T)$.
+\end{theorem}
+\begin{consequence}
+    Любое свойство $\det$ про столбцы  $\leadsto$ такое же свойство про строки.
+\end{consequence}
+\begin{proof}
+    \begin{align*}
+    \det A &= \sum\limits_{\pi \in S_n} a_{1\pi(1)}\ldots a_{n\pi(n)} \cdot \eps(\pi).\\
+    \det A^T &= \sum\limits_{\pi \in S_n} a_{\pi(1)1} a_{\pi(2)2}\ldots a_{\pi(n)n} \cdot \eps(\pi) = \\
+             &= \sum\limits_{\pi \in S_n} a_{\pi(1), \pi^{-1}(\pi(1))} a_{\pi(2), \pi^{-1}(\pi(2))} \ldots a_{\pi(n), \pi^{-1}(\pi(n))} \eps(\pi)\\
+             &\stackrel{(*)}{=} \sum\limits_{\sigma \in S_n} a_{1\sigma(1)}\ldots a_{n, \sigma(n)} \eps(\sigma) = \det A
+    \end{align*}
+    Здесь $\sigma = \pi^{-1}$.  $\eps(\pi) = \eps(\sigma)$ так как количество транспозиций у них равно.
+\end{proof}
+\begin{theorem}
+    $A \in M_n(K)$. 
+     \begin{enumerate}
+         \item $\det (t_{ij}(a)A) = \det(A t_{ij}(a)) = \det A$.
+         \item $\det(m_i(a)A) = \det(A \cdot m_i(a)) = a \det A$
+         \item  $\det(s_{ij} A) = \det(A s_{ij}) = -\det A$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[3.] кососимметричность. (Второе определение).
+        \item[2.] Линейность по $i$-ой строке (столбцу).
+        \item[1.]  $\det(t_{ij}A) = \det(A)$.  Пусть $r_i$ ---  $i$-ая строка.
+
+            Тогда  $\det \left( \begin{array}{c} A_1 \\\hline r_i + r_j \cdot a \\\hline B_1 \end{array}\right) = \det \left( \begin{array}{c} A_1 \\\hline r_i \\\hline B_1 \end{array}\right) + \det \left( \begin{array}{c} A_1 \\\hline r_j \cdot a \\\hline B_1 \end{array}\right) = \det \left( \begin{array}{c} A_1 \\\hline r_i\\\hline B_1 \end{array}\right) + a \cdot \det \left( \begin{array}{c} A_1 \\\hline r_j\\\hline \vdots \\ r_j \\\hline \vdots \end{array}\right) = \det A$. Последний переход за счет определения кососимметрической формы.
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    Определитель --- сумма произведения элементов $A$ по ладейной расстановке.
+\end{remark}
+
+Умеем приводить матрицу к треугольному виду. Тогда заметим, что единственная ненулевая перестановка --- $\id$. А значит  $\det$ треугольной матрицы --- произведение элементов матрицы на диагонали. А дальше надо домножить на  $-1$ в степени количества перестановок. 
+
+\begin{theorem}
+    $A$ --- обратима  $\iff \det A \neq 0$.
+\end{theorem}
+\begin{proof}
+    $A$ --- обратима  $\iff e_1\ldots e_kA =$ треугольная матрица $B$ --- обратима.
+
+    $\det B \neq 0 \iff $ все $a_i \neq 0$.
+
+     $B$ --- обратима  $\iff a_i \neq 0$ (доказывали).
+\end{proof}
+\begin{theorem}
+    $A, B \in M_n(K)$. Тогда 
+     \begin{enumerate}
+         \item $\det(AB) = \det(A) \cdot \det(B)$
+         \item если  $\exists A^{-1}$, то  $\det(A^{-1}) = \frac{1}{\det A}$.
+         \item $\det E = 1$.
+    \end{enumerate}
+    То есть $\det\!: GL(n, k) \to K^*$ --- гомоморфизм групп (единственный нетривиальный).
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[3.] $E$ --- частный случай треугольной. Очев
+        \item[2.] Следует из $1$ и 3:  $1 = \det E = \det(A \cdot A^{-1}) = \det(A) \cdot \det(A^{-1})$.
+        \item[1.] Представим  $B$ как набор столбцов $c_1$ --- переменная, а $A = \text{const}$.
+
+             $A \cdot B = \left(A \cdot C_1 \mid A \cdot C_2 \mid \ldots \mid A \cdot C_n\right)$. $B \mapsto \det(AB)$ --- кососимметрическая полилинейная форма от  $C_1, C_2, \ldots, C_n$. Воспользуемся кососимметричностью: $C_i = C_j \implies A C_i = A\cdot C_j$ --- два одинаковых столбца в  $AB \implies \det AB = 0$.
+
+              $B' = (C_1' \mid C_2 \mid \ldots \mid C_n), B'' = (C_1'' \mid C_2 \mid \ldots \mid C_n)$. Тогда $AB=(A(C_1' + C_1'') \mid C_2 \mid \ldots) = (AC_1' + AC_2'' \mid \ldots)$.
+
+              $(AB') = ()$
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[Определитель блочной матрицы]
+    \begin{enumerate}
+        \item $A = \left( \begin{array}{c|c} A_1 & \ast\\ \hline 0 & A_2\end{array}\right) \implies \det A = \det(A_1)\det(A_2)$.
+        \item Если блоков  $k$, то  $\det A = \prod \det(A_i)$. ($A_i$ --- квадратные блоки).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Второй пункт из первого по индукции (упражнение).
+
+    \begin{enumerate}
+        \item $\det \left( \begin{array}{c|c} E_x & \ast \\ \hline 0 & E_y \end{array}\right) = 1$. Так как треугольная матрица.
+        \item Зафиксируем  $B$.  $\det \left( \begin{array}{c|c} A_1 & B \\ \hline 0 & E\end{array} \right)$ --- полилинейная и кососимметричная относительно столбцов  $A_1$.
+
+            Поставим $A_1 = E \implies \text{const} = 1$ по пункту 1.
+        \item fix $B, A_1$  $\det\left(\begin{array}{c|c} a_1 & b \\ \hline 0 & a_2 \end{array} \right) = c_{A_1, B} \cdot \det(A_2)$. Подставляем  $A_2 = E$:  $\det A_1 = \det\left(\begin{array}{c|c} A_1 & B \\ \hline 0 & E \end{array} \right) = c_{A_1, B} \cdot 1 \implies c_{A_1, B} = \det A_1$. А значит $\det\left(\begin{array}{c|c} a_1 & b \\ \hline 0 & a_2 \end{array} \right) = \det A_1 \det A_2$.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[Разложение по строкам/столбцам]
+    $A = (a_{ij})$.  $A_{ij} = \det$ матрицы, полученной удалением  $i$-ой строки и  $j$-го столбца.
+
+    Тогда  $\forall i \det A = \sum{j=1}^n (-1)^{i+j} a_{ij} A_{ij}$ --- разложение по строке.
+
+
+    Сила в том, что определитель  $n$-го порядка можно свести к  $\det$  $(n-1)$-го порядка.
+\end{theorem}
+\begin{proof}
+    Для строк. Пусть $r_i = (a_{i1}, a_{i 2}, \ldots, a_{in}) = \sum a_{ik}f_k$, где $f_k$ --- строка с  $1$ на  $k$ строке.
+
+    По полилинейности  $\det A = \sum a_{ik} \det A_k$.  $A_k = \begin{pmatrix} r_1 \\ r_2 \\ r_{i-1} \\ 0\ \ldots\ 1\ 0\ \ldots\ 0 \\ \vdots \\ r_n \end{pmatrix}$.
+
+        Тогда $\det A_k = (-1)^{i+k} \cdot \det B$. Где  $B$ мы просто перенесли  $i$-ой строки и  $k$-го столбца на первые места. Тогда получилась блочная матрица.  $= A_{ik} \cdot (-1)^{i+k}$.
+\end{proof}
+\begin{consequence}
+    $\sum_{i=1}^n (-1)^{i+j} a_{ij} \cdot A_{kj} = 0$ ($k \neq i$).
+\end{consequence}
+\begin{proof}
+    Эта сумма по предыдущей теореме равна $\pm \det$ матрицы вида  $k \begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_n \end{pmatrix}$ (разложение по $k$-ой) строке, а он равен 0.
+\end{proof}
