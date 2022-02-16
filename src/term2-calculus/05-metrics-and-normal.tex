@@ -170,3 +170,243 @@
 \begin{exerc}
     $\Cl \Int \Cl \Int \ldots A$. Какое наибольшее количество различных множеств может получиться.
 \end{exerc}
+\begin{theorem}
+    $x \in \Cl A \iff \forall r > 0\quad B_r(x) \cap A \neq \emptyset$.
+\end{theorem}
+\begin{proof}
+    $x \notin \Cl A \iff \exists r > 0 B_r(x) \cap A = \emptyset$. Что означает, что  $x \notin A$? Это значит, что  $x\in X \setminus \Cl A = \Int(X \setminus A) \iff x \in \Int(X \setminus A) \iff x\text{ --- внутренняя точка }X \setminus A \iff \exists r > 0\!: B_r(x) \cap A = \emptyset \iff \exists r > 0\!: B_r(x) \subset X \setminus A$.
+\end{proof}
+\begin{consequence}
+    $U$ --- открытое,  $U \cap A = \emptyset \implies U \cap \Cl A = \emptyset$.
+\end{consequence}
+\begin{proof}
+    Возьмем $x \in U \implies \exists r > 0\!: B_r(x) \subset U \implies B_r(x) \cap A = \emptyset \implies x \notin \Cl A \implies U \cap \Cl A = \emptyset$.
+\end{proof}
+\begin{definition}
+    Окрестностью точки $x$ будем называть шар  $B_r(x)$ для некоторого  $r > 0$. Обозначать будем $U_x$
+\end{definition}
+\begin{definition}
+    Проколотой окрестностью точки $x$ ---  $B_r(x) \setminus \{x\}$. $\dot{U}_x$.
+\end{definition}
+
+\begin{definition}
+    $x$ --- предельная точка множества  $A$, если  $\forall \dot{U_x}\!: \dot{U_x} \cap A \neq \emptyset$.
+
+    Обозначим через  $A'$ --- множество предельных точек для  $A$.
+\end{definition}
+\begin{properties}
+    \slashn
+    \begin{enumerate}
+        \item $\Cl A = A \cup A'$.
+            \begin{proof}
+                $x \in \Cl A \iff \forall U_x \cap A \neq \emptyset \iff \left[ \begin{array}{l} x \in A \\ \forall \dot{U_x} \cap A \neq \emptyset \iff x \in A' \end{array} \right.$
+            \end{proof}
+        \item $A \subset B \implies A' \subset B'$. Очевидно.
+        \item  $A$ --- замкнуто  $\iff A \supset A'$. 
+             \begin{proof}
+                $A$ --- замкнуто  $\iff = \Cl A \iff A = A \cup A' \iff A \supset A'$.
+            \end{proof}
+        \item $(A \cup B)' = A' \cup B'$.
+             \begin{proof}
+                Докажем "$\subset$". Возьмем $x \in (A \cup B)'\!: x \notin A' \implies \exists \dot{U_x}\!: \dot{U_x} \cap A = \emptyset$, но $\dot{U_x} \cap (A \cup B) \neq \emptyset \implies \dot{U_x} \cap B \neq \emptyset \implies x \in B'$.
+
+                Докажем "$\supset$". $A \cup B \supset A \implies (A \cup B)' \supset A'$. Провернем тот же фокус для  $B$, получим  $(A \cup B)' \supset A' \cup B'$.
+           \end{proof}
+    \end{enumerate}
+\end{properties}
+\begin{theorem}
+    $x \in A' \iff \forall r > 0$  $B_r(x)$ содержит бесконечное количество точек из  $A$.
+\end{theorem}
+\begin{proof}
+    Докажем "$\Leftarrow$". $B_r(x) \cap A$ содержит бесконечное количество точек  $\implies \dot{B_r}(x) \cap A$ содержит бесконечное число точек  $\implies \dot{B_r}(x) \cap A \neq \emptyset \Rightarrow x \in A'$.
+
+     "$\Rightarrow$". Возьмем радиус  $r$. Тогда  $\dot{B_r}(x) \cap A \neq \emptyset \implies \exists x_1 \in A\!: 0 < \rho(x, x_1) < r$. Возьмем $r = \rho(x, x_1)$ $\dot{B_r}(x) \cap A \neq \emptyset \implies \exists x_2 \in A\!: 0 < \rho(x, x_2) < \rho(x, x_1)$. Тогда можно взять $r = \rho(x, x_2)$, и так далее. 
+
+     В итоге получили, что $r > \rho(x, x_1) > \rho(x, x_2) > \rho(x, x_3) > \ldots > 0 \implies$ все $x_n$ различны.
+\end{proof}
+\begin{consequence}
+     Конечно множество не имеет предельных точек.
+\end{consequence}
+\begin{proof}
+     Предположим конечная точка существует $\iff \exists r > 0\!: B_r(x) \cap A$ содержит бесконечное количество точек. Но это невозможно, так как в $A$ конечное число точек. 
+\end{proof}
+
+\begin{definition}
+     $(X, \rho)$ --- метрическое пространство  $Y \subset X$.
+
+     Тогда  $(Y, \rho \mid_{Y \times Y})$ --- подпространство метрического пространства  $(X, \rho)$.
+\end{definition}
+\begin{example}
+     $(\R, |x-y|)$.  $Y=[a, b] \subset \R$.
+
+      $B_1(1) = (0, 1], B_2(0) = [0, 1]$.  $B_r^Y(a) = Y \cap B_r^X(a)$.
+\end{example}
+\begin{theorem}[об открытых и замкнутых множества в пространстве и подпространстве]
+     $(X, \rho)$ --- метрическое пространство,  $(Y, \rho)$ --- его подпространство,  $A \subset Y$. Тогда
+      \begin{enumerate}
+          \item $A$ --- открыто в  $Y \iff \exists G$ --- открытое в  $X\!: A = G \cap Y$. 
+          \item $A$ --- замкнуто в  $Y \iff \exists F$ --- замкнутое в  $X\!: A = F \cap Y$.
+     \end{enumerate}
+\end{theorem}
+\begin{proof}
+     \slashn
+     \begin{enumerate}
+         \item "$\Rightarrow$" $A$ --- открыто в  $Y \implies \forall x \in A \exists r_x > 0 \!: B_{r_x}^Y(x) \subset A \implies A = \bigcup\limits_{x \in A}B_{r_x}^Y(x)$.
+
+             То есть наше множество будет объединением большего числа шариков (возможно бесконечного). Найдем теперь  $G$:  $G \coloneqq \bigcup\limits_{x \in A} B_{r_x}^X(x)$ --- открыто. Посмотрим теперь на  $G \cap Y = \bigcup\limits_{x \in A}(B_{r_x}^X(x) \cap Y) = \bigcup\limits_{x \in A}B_{r_x}^Y(x) = A$.
+
+         В обратную сторону. Пусть $A = G \cap Y$, где  $G$ открыто в  $X$. Возьмем  $x \in G \cap Y$.  $G$ --- открыто в  $X \implies \forall x \in G \cap Y \exists r > 0\!: B_r^X(x) \subset G \implies B_r^X(x) \cap Y \subset G \cap Y = A \implies B_r^Y(x) \subset A \implies x$ --- внутренняя точка $A \implies A$ --- открыто в  $Y$. 
+
+         \item $A$ --- замкнуто в $Y \iff Y \setminus A$ --- открыто в  $Y \iff \exists G$ --- открытое в  $X$, такое что  $Y \setminus A = Y \cap G \iff A = Y \setminus (Y \cap G) = Y \cap (X \setminus G) \iff \exists G$ --- открытое в  $X$, такое что  $A = Y \cap (X \setminus G) \iff \exists F$ --- замкнуто в  $X$, такое что  $A = Y \cap F$.
+     \end{enumerate}
+\end{proof}
+\begin{example}
+     $(\R, |x-y|)$.  $Y = [0, 3)$.  $[0, 1)$ --- открыто в  $[0, 3)$:  $[0, 1) = [0, 3) \cap (-1, -1)$.  $[2, 3)$ --- замкнуто в  $[0, 3)$:  $[2, 3) = [0, 3) \cap [2, 3]$.
+\end{example}
+ 
+\begin{definition}
+     $X$ --- векторное пространство над  $\R$.
+
+      $||.||\!: X \to \R$ --- норма, если
+       \begin{enumerate}
+           \item $||x|| \ge 0\quad \forall x \in X$ и $||x|| = 0 \iff x = \overrightarrow{0}$.
+           \item  $||\lambda x|| = |\lambda| \cdot ||x||\quad \forall x \in X\ \forall \lambda \in \R$. 
+           \item (неравенство треугольник)
+      \end{enumerate}
+\end{definition}
+\begin{example}
+     \begin{enumerate}
+         \item $|x| \in \R$,
+         \item  $||x||_1 = |x_1| + |x_2| + \ldots + |x_d|$ в $\R^d$.
+         \item  $||x||_{\infty} = \max\limits_{k=1,2,\ldots, d} |x_k|$. $||x+y||_{\infty} = \max\{|x_k|+|y_k|\} \le \max\{|x_k|\} + \max\{|y_k|\} = ||x||_{\infty} + ||y||_{\infty}$
+         \item $||x||_2 = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}$.
+         \item $||x||_p = \left(\sum\limits_{k=1}^d |x_k|^p\right)^{\frac{1}{p}}$ в $\R^d$ при  $p \ge 1$. Неравенство треугольника --- неравенство Минковского.
+         \item $C[a, b]$.  $||f|| = \max\limits_{t \in [a, b]} |f(t)|$. 
+     \end{enumerate}
+\end{example}
+\begin{definition}
+    $X$ векторное пространство над  $\R$.  $\langle .,.\rangle\!: X \times X \to \R$ скалярное произведение, если
+     \begin{enumerate}
+         \item $\langle x, x \rangle \ge 0$ и $\langle x, x \rangle = 0 \iff x = \overrightarrow{0}$.
+         \item  $\langle x+y, z\rangle = \langle x, z \rangle + \langle y, z \rangle$
+         \item  $\langle x, y \rangle = \langle y, x \rangle$.
+         \item  $\langle \lambda x, y \rangle = \lambda \langle x, y \rangle \quad \lambda \in \R$.
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    \begin{enumerate}
+        \item $\R^d$.  $\langle x, y\rangle = \sum x_iy_i$.
+        \item Возьмем $w_1, \ldots, w_d > 0$. Тогда $\langle x, y \rangle = \sum w_i x_i y_i$.
+        \item $C[a, b]$.  $\langle f, g \rangle = \int\limits_a^b f(x)g(x) \mathrm{d}x$.
+    \end{enumerate}
+\end{example}
+\begin{properties}
+    \begin{enumerate}
+        \item Неравенство Коши-Буняковского. $\langle x, y \rangle^2 \le \langle x, x \rangle \cdot \langle y, y\rangle$.
+            \begin{proof}
+                $f(t) \coloneqq \langle x+ty, x +ty \rangle \ge 0$. $f(t) = \langle x, x \rangle> + t\langle x, y \rangle + t\langle x, y \rangle + t^2 \langle y, y \rangle = t^2 \langle y, y\rangle + 2t\langle x, y \rangle + \langle x, y \rangle$ --- квадратный трехчлен (если $\langle y, y \rangle = 0 \implies y = 0 \implies$ везде нули). Тогда $0 \ge D= (\langle x, y \rangle)^2 - 4 \langle x, x\rangle \cdot \langle y, y \rangle = 4(\langle x, y \rangle^2 - \langle x, x\rangle \cdot \langle y, y \rangle)$. Потому что иначе есть значения меньше нуля.
+            \end{proof}
+        \item $||x|| \coloneqq \sqrt{\langle x, x \rangle}$ --- норма.
+             \begin{proof}
+                $||\lambda x|| = \sqrt{\langle \lambda x, \lambda x\rangle} = \sqrt{\lambda^2\langle x, x \rangle} = |\lambda| \sqrt{\langle x, \rangle} = |\lambda| \cdot ||x||$.
+
+                Неравенство треугольника: $\lVert x+y \rVert \le \lVert x \rVert + \lVert y \rVert$. Возведем в квадрат\ldots 
+
+                Я проиграл.
+            \end{proof}
+        \item $\rho(x, y) = \lVert x - y \rVert$ --- метрика.
+            \begin{proof}
+                $\rho(x, y) \ge 0$. $\rho(x, y) = 0 \iff \lVert x - y \rVert = 0 \iff x - y = \overrightarrow{0} \iff x = y$.
+
+                 $\rho(y, x) = \lVert y-x \rVert = \lVert (-1)(x-y) \rVert = |-1| \lVert x - y \rVert = \rho(x, y)$.
+
+                  $\rho(x, z) \le \rho(x, y) + \rho(y, z)$: $\lVert (x-y) + (y-z) \rVert = \lVert x-z\rVert \le \lVert x - y \rVert + \lVert y-z \rVert$.
+            \end{proof}
+        \item $\lVert x - y \rVert \ge |\lVert x \rVert - \lVert y \rVert |$.
+            \begin{proof}
+                Надо доказать, что $-\lVert x - y \rVert \le \lVert x \rVert - \lVert y \rVert \le \lVert x - y \rVert$.
+
+                $\lVert (y-x) + x \rVert = \lVert y \rVert \le \lVert x \rVert + \lVert x-y \rVert = \lVert x \rVert + \lVert y -x \rVert$.
+            \end{proof}
+        \item Упражненение. Если норма порождается скалярным произведением $\iff \lVert x+y\rVert^2 + \lVert x-y\rVert^2 = 2\lVert x\rVert^2 + 2\lVert y \rVert^2$. Тождество параллелограмма.
+    \end{enumerate}
+\end{properties}
+\begin{definition}
+    $(X, \rho)$ --- метрическое пространство.  $x_1, x_2, \ldots \in X, a \in X$.
+
+    $\lim x_n = a$, если
+     \begin{enumerate}
+         \item Вне любого открытого шара с центром в точке  $a$ содержится лишь конечное число членов последовательности.
+         \item  $\forall \eps > 0 \exists N \forall n \ge N\quad \rho(x_n, a) < \eps \iff x_n \in B_\eps(a)$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    $A \subset X$. 
+
+    Тогда  $A$ --- ограничено, если оно содержится в некотором шаре.
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item $a = \lim x \iff \rho(x_n, a) \to 0$.
+\begin{proof}
+             $\forall \eps > 0 \exists n > N\quad |\rho(x_n, a)| < \eps$ --- предел равен 0.
+\end{proof}
+        \item Предел единственный. 
+            \begin{proof}
+                Пусть $\exists a = \lim x_n = b$. Тогда мы, что  $B_r(a) \cap B_r(b) = \emptyset \implies \exists N_1, N_2, \forall n \ge \max\{N_1, N_2\} x_n \in B_r(a) \land x_n \in B_r(b)$.
+            \end{proof}
+        \item Если $a = \lim x_n, a = \lim y_n$. То для перемешанной последовательности $x_n$ и  $y_n$ предел такой же.
+        \item  $a = \lim x_n \implies $ для последовательности, в которой $x_n$ взяты с конечной кратностью, то  $a$ будет пределом. 
+        \item Если $a = \lim x_n$, то  $\lim x_{n_k} = a$.
+        \item Последовательность имеет предел $\implies$ она ограничена
+             \begin{proof}
+                $\eps = 1 \exists N \forall n \ge N \rho(x_n, a) < 1$. Тогда $R = \max\{\rho(x_1, a), \ldots, \rho(x_{N-1}, a)\} + 1 \implies x_n \in B_R(a)$.
+            \end{proof}
+        \item Если $a = \lim x_n$, то последовательность, полученная из  $\{x_n\}$ перестановкой членов имеет тот же предел.
+        \item $a$ --- предельная точка  $A \iff \exists a \neq \{x_n\} \in A\!: \lim x_n = a$.
+
+            Более того,  $x_n$ можно выбирать так, что  $\rho(x_n, a)$ строго убывает.
+            \begin{proof}
+                "$\Rightarrow$" Пусть  $\lim x_n = a$. Возьмем  $B_r(a) \implies \exists N \forall n \ge N x_n \in B_r(a) \implies x_n \dot{B_r(a)} \implies \dot{B_r}(a) \cap A \neq \emptyset \implies$ a --- предельная точка.
+
+                "$\Leftarrow$" Берем  $r_1 = 1$. $\dot{B_{r_1}}(a) \cap A \neq \emptyset$. Берем оттуда точку, называем  $x_1 \neq a$. $r_2 = \frac{\rho(x_1,a)}{2}$. $\dot{B_{r_2}}(a) \cap A \neq \emptyset$. Берем оттуда точку $x_3 \neq a$. $r_3 = \frac{\rho(x_2, a)}{2}$. И так далее.
+
+                Получили: $x_n \neq a$ и  $\rho(x_n, a) < \frac{\rho(x_{n-1}, a)}{2} < \rho(x_{n-1}, a)$. $\rho(x_n, a) < \frac{1}{2^n} \to 0 \implies x_n = a$.
+            \end{proof}
+    \end{enumerate}
+\end{properties}
+\begin{theorem}[об арифметических действиях с пределами]
+    $X$ --- нормированное пространство,  $x_n, y_n \in X$,  $\lambda_n \in \R$.  $\lim x_n = a, \lim y_n = b, \lim \lambda_n = \mu$. Тогда:
+     \begin{enumerate}
+         \item $\lim (x_n + y_n) = a+b$.
+         \item  $\lim(x_n - y_n) = a-b$.
+         \item  $\lim \lambda_nx_n = \mu a$.
+         \item  $\lim \lVert x_n\rVert = \lVert a \rVert$.
+         \item  Если в  $X$ есть скалярное произведение, то  $\lim \langle x_n, t_n \rangle = \langle a, b \rangle$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item $\rho(x_n+y_n, a+b) = \lVert (x_n+y_n - (a+b)) \rVert = \lVert (x_n-a) + (y_n-b) \rVert \le \lVert x_n - a \rVert + \lVert y_n - n \rVert = \rho(x_n, a) + \rho(y_n, b) \to 0$.
+        \item Аналогично.
+        \item $\rho(\lambda_nx_n, \mu a) = \lVert \lambda_n x_n - \mu a\rVert = \lVert \lambda_n x_n - \lambda_n a + \lambda_n a - \mu a \rVert \le \lVert \lambda_n x_n - \lambda_n a \rVert + \lVert \lambda_n a - \mu a \rVert = |\lambda_n| \lVert x_n - a \rVert + |\lambda_n -\mu| \lVert a \rVert \to 0$, так как $|\lambda_n|$ --- ограниченная, $\lVert x_n - a \rVert = \rho(x_n - a) \to 0$,  $|\lambda_n -\mu| \to 0$, $\lVert a \rVert$ --- константа.  
+        \item $| \lVert x_n \rVert - \lVert a \rVert| \le \lVert x_n - a \rVert = \rho(x_n, a) \to 0 \implies \lim \lVert x_n \rVert = \lVert a \rVert$
+        \item $\langle x, y \rangle = \frac{1}{4}(\lVert x+y \rVert^2 - \lVert x-y \rVert^2) = \frac{1}{4}(\langle x+y, x+y\rangle - \langle x-y, x-y\rangle)$. Тогда получаем $4 \langle x_n, y_n \rangle = \lVert x_n + y_n \rVert^2 - \lVert x_n - y_n \rVert^2 \to \lVert a + b \rVert^2 - \lVert a - b \rVert^2 = 4 \langle a, b \rangle$.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    $\R^d$ --- пространство с нормой  $\sqrt{x_1^2 + x_2^2 + \ldots + x_d^2}$.
+\end{definition}
+\begin{definition}
+    Покоординатная сходимость в $R^d$:
+
+    $x_n \in \R^d$.  $x_n = (x_n^{(1)}, x_n^{(2)}, \ldots, x_n^{(d)}) \xrightarrow{\text{покоординатно}} a = (a^{(1)}, a^{()2}, \ldots)$.
+\end{definition}
+\begin{theorem}
+    в $\R^d$ сходимость по метрике и покоординатная сходимость совпадает.
+\end{theorem}
+\begin{proof}
+    Метрика $\implies$ покоординатная.  $\rho(x_n, a) \to 0 \implies 0 \le (x_n^{(1)} - a^{(1)})^2 + \ldots + (x_n^{(d)} - a^{(d)}) = \rho(x_n, a)^2 \to 0 \implies \lim (x_n^{(k)} - a^{(k)})^2 = 0 \implies \lim x_n^{(k)} = a^{(k)} \implies$ покоординатная сходимость.
+
+    Покоординатная $\implies$ метрика. Пусть  $|x_n^{(k)} - a^{(k)}| \to 0 \quad \forall k \implies (x_n^{(k)} - a^{(k)})^2 \to 0 \implies \sum\limits_{k=1}^d (x_n^{(k)} - a^{(k)})^2 \to 0$. А так как $(\ldots)^2 = \rho(x_n, a)^2 \implies \rho(x_n, a) \to 0$.
+\end{proof}
