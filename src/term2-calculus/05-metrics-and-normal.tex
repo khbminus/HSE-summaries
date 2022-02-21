@@ -310,9 +310,9 @@
              \begin{proof}
                 $||\lambda x|| = \sqrt{\langle \lambda x, \lambda x\rangle} = \sqrt{\lambda^2\langle x, x \rangle} = |\lambda| \sqrt{\langle x, \rangle} = |\lambda| \cdot ||x||$.
 
-                Неравенство треугольника: $\lVert x+y \rVert \le \lVert x \rVert + \lVert y \rVert$. Возведем в квадрат\ldots 
-
-                Я проиграл.
+                Неравенство треугольника: $\lVert x+y \rVert \le \lVert x \rVert + \lVert y \rVert$.
+                Возведем в квадрат, получим $\langle x + y, x + y\rangle \le \langle x, x\rangle + \langle y, y\rangle + 2\sqrt{\langle x, x\rangle\langle y, y\rangle}$, но теперь вспомним, что $\langle x + y, x + y\rangle = \langle x, x\rangle + \langle y, y\rangle + 2\langle x, y\rangle$.
+                А, сократив общие слагаемые, получим доказанное неравенство Коши-Буняковского.
             \end{proof}
         \item $\rho(x, y) = \lVert x - y \rVert$ --- метрика.
             \begin{proof}
