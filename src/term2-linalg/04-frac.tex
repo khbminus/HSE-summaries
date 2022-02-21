@@ -1,0 +1,115 @@
+В $\Z$ --- почти все элементы необратимы. Но можно перейти к  $\Q$ --- все ненулевые элементы  $\Z$ стали обратимы.
+
+А мы хотим обобщить данную операцию на большое количество колец. То есть, пусть  $R$ --- кольцо,  $M \subset R$. Вопрос: можно ли сделать  $S$ --- кольцо, такое что  $R \subset S$ --- подкольцо в  $S$, причем любой элемент из  $M$ из  $S$ обратим.  
+
+Заметим, что если $0 \in M$, то это плохо. Или в  $\Z / 4\Z$ если сделать $2$ обратимым, то  $2 \cdot 2 = 0$ --- обратим. 
+
+\begin{definition}
+    $R$ --- коммутативное кольцо.  $M \subset R$ называется мультипликативной системой, если:
+     \begin{enumerate}
+         \item $m_1, m_2 \in M \implies m_1m_2 \in M$.
+         \item $0 \notin M$.
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    $R$ --- область целостности.  $M = R \setminus \{0\}$ --- мультипликативная система.
+\end{example}
+\begin{definition}
+    $M = R \setminus \{ 0\}$,  $R$ --- область целостности,  $R_m$ --- поле частных кольца  $R$ (и это будет поле).
+\end{definition}
+\begin{theorem}
+    $M$ --- пуцльтпликативная система в коммутативном кольце  $R$. Тогда  $\exists$ Колько  $R_M$ и инъективный гомоморфизм колец  $i\!L R \to R_M$ (вложение), такие что:
+     \begin{enumerate}
+         \item $i(x) \in R^*_M \quad \forall x \in M$,
+         \item  Универсальное свойство:  $\forall \text{кольцо } S, \forall \text{гомоморфизм} f\!: R \to S$, такой что  $f(x) \in S^* \quad x \in M$  $\exists! g\!: R_m \to S$, такой что  $f = g \circ i$
+    \end{enumerate}
+\end{theorem}
+\begin{remark}
+    $R$ --- коммутативное кольцо. Тогда  $\exists K\!: R$ --- подкольцо  $K \iff R$ ---  область целостности.
+\end{remark}
+\begin{proof}[Доказательство теоремы]
+    Будем считать, что $R$ --- область целостности,  $M = R \setminus \{0\}$.
+
+    Будем вводить дроби. Для начала рассмотрим  $\widetilde{K} = R \times (R \setminus \{0\})$. Зададим на нем отношение эквивалентности:  $(a, b) \sim (c, d) \iff ad = bc$. Проверим данное утверждение:
+     \begin{itemize}
+         \item $(a, b) \sim (a, b) \Leftarrow ab = ab$.
+         \item  $(a, b) \sim (c,d) \implies (c, d) \sim (a, b)$ по коммутативности.
+         \item  $(a, b) \sim (c, d) \sim (e, f)$. Так как  $ad = bc \land cf = ed \implies a \cdot cf = ade = bce \iff acf = bce \xRightarrow{R\text{ --- о.ц.} af = be \iff (a, b) \sim (e, f)}$.
+    \end{itemize}
+
+    Обозначим $K = \widetilde{K} / \sim$.
+    Зададим  $+, \cdot\!: K \times K \to K$:  $(a, b) + (c,d) = (ad + bc, bd), (a, b) \cdot (c, d) = (ac, bd)$.
+
+    Тогда  $i\!: \begin{array}{l} R \to K \\ a \mapsto (a, 1) \end{array}$,  $a = \frac{a}{1}$. Надо проверить: определение и корректность, $(K, +, \cdot)$ --- поле,  $u$ --- инъективный гомоморфизм колец, универсальное свойство.
+
+    Проверим определение: $(a, b) \sim (a_1, b_1)$. Тогда проверим, что $(a_1d + b_1c, b_1d) \sim (ad + bc, bd) \iff (a_1d + b_1c)bd = b_1d(ad+bc) \iff a_1 bd^2 + babcd = ab_1d^2+b_1cd \iff a_1b = ab_1$.
+
+    Умножение --- определение.
+
+    Проверим свойства сложения: ассоциативность $(\overline{(a, b)} + \overline{(c, d)}) + \overline{e, f} = \overline{(ad + bc, bd)} + \overline{(e, f)} = \overline{(adf + bcf + bde, bdf)}$. При этом  $\overline{(a, b)} + (\overline{(c, d)} + \overline{(e, f)}) = \overline{(a, b)} + \overline{(df+de, df)} = \overline{(adf + bcf + bde, bdf)}$
+
+    $0_K \coloneqq (0, 1), (0, 1) + (a, b) = (0 \cdot b + a \cdot 1, 1 \cdot b) = (a, b)$.
+
+    $-(a, b) = (-a, b)$ --- упражнение. 
+
+    Ассоциативность умножение --- очевидно.
+
+    Коммутативность умножения тоже.
+
+    $1_K = \overline{(1, 1)}$  $(1, 1) \cdot (a, b) = (1 \cdot a, 1 \cdot b) = (a, b)$. 
+    $(a+b)c = ac+bc$:  $(\overline{(a, d)} + \overline{(b, e)}) \overline{(c, f)} = \overline{(ae + bd, cd)} \cdot \overline{(c, f)} = \overline{(aec + bdc, edf)}$. В другое сторону лень.
+
+     $\overline{(a, b)} \cdot \overline{(b, a)} = \overline{(ab, ab)} = \overline{(1, 1)} = 1$. Если  $a, b \neq 0, a \neq 0 \implies \overline{(a, b)}$ --- обратим.  $a = 0 \implies \overline{(0, b)} = \overline{(0, 1)} = 0$. Значит $K$ --- поле.
+
+     Проверим, что  $i$ --- гомоморфизм:  $i(a) = \overline{(a, 1)}, i(b) = \overline{(b, 1)}, i(a+b) = \overline{(a+b, 1)}$.
+
+     Будем обозначить  $\overline{(a, b)} \eqqcolon \frac{a}{b} = i(a) \cdot i(b)^{-1}$.
+
+     Проверим универсальное свойство. $f\!: R \to S$ --- гомоморфизм.  $f(r) \in S^* \quad \forall r \neq 0$.  $f(r) = g \circ i(r) \iff f(r) = g(\frac{r}{1})$.
+
+     $g(r) \cdot g(\frac{1}{r}) = g(1) = 1 = f(r) \cdot f(r)^{-1} \implies g(\frac{1}{r}) = f(r)^{-1} \implies g(\frac{r_1}{r}) \cdot g(\frac{1}{r}) = f(r) \cdot f(r_1)^{-1}$. 
+
+     $g$ --- определено однозначно:  $g(\frac{a}{b}) = f(a) \cdot f(b)^{-1}$. 
+
+     Корректность $\frac{a'}{b'} = \frac{a}{b} \iff a'b = b'a \implies f(a'b) = f(b'a) \iff f(a') \cdot f(b) = f(b') \cdot f(a) \iff f(a) f(b)^{-1} = f(a') \cdot f(b')^{-1}$--- $g$ не зависит от выбора представителя.
+\end{proof}
+\begin{example}
+    Поле частных --- полная локализация.  $R$ --- ОГИ.  $p \in R$ --- простое.  $M = \{ x \in R \mid x \centernot \divby p\}$ --- мультипликативная система.  $R_M$ --- локальное кольцо (остался один просто элемент).
+\end{example}
+\begin{example}
+    $R = \Z$: поле частных ---  $\Q$. 
+
+    $R = K[X]$,  $K$ --- Поле частных называется  $K(x)$, поле дробнорациональных  функций.
+\end{example}
+\begin{remark}
+    $Q \in K(x)$,  $\exists!\text{(с точностью до ассоциированности)} f,g\!: Q = \frac{f}{g}, (f, g) = 1$.
+\end{remark}
+\begin{proof}
+    $Q = \frac{\widetilde{f}}{\widetilde{g}} \exists(\widetilde{f}, \widetilde{f}) = d, \widetilde{f} = df, \widetilde{g} = dg$, $(df, dg) \sim (f, g)$.
+
+    Пусть  $\frac{f}{g} = \frac{f_1}{g_1}, (f_1, g_1) = 1 \implies fg_1 = gf_1, dg_1 \divby g \land (f, g) = 1 \implies g_1 \divby g$. Аналогично $g \divby g_1, f \divby f_1, f_1 \divby f$. $f = cf_1, g = cg_1, \deg(c) = 0$.
+\end{proof}
+
+$K(x)^*$ устроена понятно:  $\frac{f}{g} = \frac{\prod p_i^{a_i}}{\prod q_i^{b_o}} = a \prod \vphi_i^{c_i}$. где $\vphi_i$ --- унитальные неприводимые  $\in K[x], c_i \in \Z$.
+
+Что со сложением: найдем БАЗИС  $K(x)$ над  $K$:  $P \cup F$.  $P = \{1, x, x^2, \ldots\}$ --- базис $K[x]$.  $F = \{ \frac{p}{q^l} \mid p, q\text{ --- унитальные} \land l\text{---неприводисммый} \land \deg p < \deg q\}$ --- простейшие дроби.
+
+\begin{theorem}
+    $P\cup F$ --- базис.
+\end{theorem}
+\begin{proof}
+    Шаг 1. $Q \in K(x) \implies \exists! R \in K[x]\!: Q = R + \frac{f}{g}, f, g \in K[x], \deg f < \deg g$. $Q \eqqcolon R + \frac{f}{g},Q = \frac{R}{1} + \frac{f}{g} = \frac{Rg+f}{g}$ правильная дробь.
+
+    Пусть $Q_0 = \frac{f_0}{g_0}$. Положим $g = g_0$, $f_0 = R \cdot g_0 +f$ (теорема о делении с остатком). Откуда и получаем $Q = R + \frac{f}{g}$. 
+
+    Единственность: $R + \frac{f}{g} = R' + \frac{f'}{g'}$. $R - R' = \frac{f'}{g'} - \frac{f}{g} = \frac{f'g - g'f}{gg'}$.
+
+    $(R-R')gg' = f'g - g'f$. Если  $R - R' \neq 0 \implies \deg (R-R')gg' \ge \deg gg' = \deg g + \deg g'$, но $\deg f'g = \deg f' + \deg g < \deg g' + \deg g$. Для  $\deg fg'$ --- тоже самое.
+
+    То есть  $\deg (f'g + fg') < \deg g + \deg'$. Противоречие.
+
+    Осталось доказать:  $\forall$ правильная дробь однозначно представляется как сумма простейших. 
+     \begin{definition}
+        Правильная дробь назыается примарной, если она представима в виде $\frac{f}{p^k}$, $p$ --- неприводимая,  $\deg f < \deg p^k$.
+    \end{definition}
+\end{proof}

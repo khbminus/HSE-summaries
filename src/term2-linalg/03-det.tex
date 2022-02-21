@@ -214,7 +214,7 @@
 \begin{theorem}[Разложение по строкам/столбцам]
     $A = (a_{ij})$.  $A_{ij} = \det$ матрицы, полученной удалением  $i$-ой строки и  $j$-го столбца.
 
-    Тогда  $\forall i \det A = \sum{j=1}^n (-1)^{i+j} a_{ij} A_{ij}$ --- разложение по строке.
+    Тогда  $\forall i \det A = \sum\limits_{j=1}^n (-1)^{i+j} a_{ij} A_{ij}$ --- разложение по строке.
 
 
     Сила в том, что определитель  $n$-го порядка можно свести к  $\det$  $(n-1)$-го порядка.
@@ -231,4 +231,75 @@
 \end{consequence}
 \begin{proof}
     Эта сумма по предыдущей теореме равна $\pm \det$ матрицы вида  $k \begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_n \end{pmatrix}$ (разложение по $k$-ой) строке, а он равен 0.
+\end{proof}
+\begin{definition}
+    $(-1)^{i+j}A_{ij}$ --- алгебраическое дополнение элемента  $a_{ij}$
+\end{definition}
+\begin{definition}
+    Пусть $A \in M_n(K)$
+
+    $\Adj A = ((-1)^{i+j}A_{ji})$ --- присоединенная матрица/ 
+\end{definition}
+\begin{theorem}
+    $A \cdot \Adj(A) = \Adj(A) \cdot A = (\det A) \cdot E$.
+
+    В частности, $A$ --- обратима ($\det A \neq 0$), $A^{-1} = \frac{1}{\det A} \Adj A$.
+\end{theorem}
+\begin{proof}
+    $\Adj(A) = (b_{ij})$,  $A \cdot \Adj(A) = (c_{ij})$.
+
+    $c_{ij} = \sum\limits_{k=1}^n a_{ik} b_{kj} = \sum\limits_{k=1}^n a_{ik} \cdot (-1)^{k+j} A_{jk} = \sum\limits_{k=1}^n (-1)^{k+j} a_{ik}A_jk = \left[ \begin{array}{ll} 0, & i \neq k \\ \det A, & i = k\end{array} \right.$.
+
+    Итого: $c_{ij} = \delta_{ij} \det A \implies (c_{ij}) = \det A \cdot E$.
+\end{proof}
+\begin{remark}
+    Теперь СЛУ $AX = B$,  $A$ --- обратима, тогда  $X = A^{-1}B = \frac{\Adj A}{\det A} \cdot B$
+\end{remark}
+\begin{theorem}
+    Формула Крамера. Пусть дана СЛУ $A \cdot X = B$,  $A \in M_n(K), B = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$, $\det A = \Delta \neq 0$.
+
+     $\Delta_i = -\det$ матрицы, полученной из  $A$ заменой  $i$-го столбца на  $B$. 
+
+     Тогда решение:  $x_i = \frac{\Delta_i}{\Delta} \quad \forall i=1..n$.
+\end{theorem}
+\begin{proof}
+    $\det A \neq 0 \iff A$ --- обратима  $\iff \forall B \exists! X\!: AX = B, X = A^{-1}B$.
+
+    $A^{-1} = (b_{ij})$.  $A^{-1} \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix} = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} $.
+
+    Тогда $x_i = \sum\limits_{k=1}^n b_{ik}b_k = \sum\limits_{k=1}^n \frac{1}{\det A}(-1)^{i+k} A_{ki} b_k = \frac{1}{\Delta}\sum\limits_{k=1}^n (-1)^{i+k} A_{ki} b_k = \frac{1}{\Delta} \det (c_1 \mid c_2 \mid \ldots \mid B \mid c_n) = \frac{\Delta_i}{\Delta}$ 
+\end{proof}
+
+\begin{definition}
+    $A \in M_{m, n}(K)$: отображение  $I \times J \to K$,  $|I| = m, |J| = n$.
+
+    Минором порядка  $S$ называется  $\det (A\Big|_{I' \times J'})$, где  $I' \subset I, J' \subset J, |I'| = |J'| = S$.
+
+    У матрица  $A$ есть  $\binom{m}{S} \cdot \binom{n}{S}$ миноров порядка  $S$.
+\end{definition}
+\begin{definition}
+    Минорный ранг $A$ --- наибольший порядок ненулевого минора в  $A$.
+\end{definition}
+\begin{remark}
+    Из разложения по строке следует: все миноры порядка $S+1$ нулевые ранга  $\le S$.
+\end{remark}
+\begin{consequence}
+    Множество матриц $\in M_{m, n}(K)$ ранга  $\le S$ --- поверхность в $(m-n)$---мерном пространстве, заданная системой полиномиальных уравнений.
+\end{consequence}
+\begin{exerc}
+    Сколько миноров надо протестировать, чтобы убедиться, что все $=0$? А чтобы убедиться, что все  $> 0$?
+\end{exerc}
+\begin{theorem}
+    $A \in M_{n, m}(K) \rk A = k$. Докажем, что минорный тоже  $K$.
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Рассмотрим любой минор порядка $>k$. Выберем столбцы  $c_{i_1}, \ldots, c_{i_S}$ --- соответствующие столбцы $\implies$ они ЛЗ.  Пусть $c'_{i_1}, c'_{i_S}$ --- столбцы подматрицы $\implies$ они ЛЗ.
+
+            Тогда по определению  $\det $ подматрицы равен нулю.
+        \item $\exists c_{i_1}, \ldots, c_{i_k}$ --- ЛНЗ столбцы размера $k$,  $\rk \widetilde{A} = k, m \ge k$. И ЛНЗ строки $r_{j_1}, \ldots, r_{j_k}$ в $\widetilde{A}$, где $\widetilde{A}$ --- матрица из выбранных столбцов. 
+
+            Тогда получили квадратную матрицу размера и ранга  $k$  $\implies \rk A \neq 0$.
+    \end{enumerate}
 \end{proof}
