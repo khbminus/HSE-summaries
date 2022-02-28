@@ -92,7 +92,7 @@
 
 $K(x)^*$ устроена понятно:  $\frac{f}{g} = \frac{\prod p_i^{a_i}}{\prod q_i^{b_o}} = a \prod \vphi_i^{c_i}$. где $\vphi_i$ --- унитальные неприводимые  $\in K[x], c_i \in \Z$.
 
-Что со сложением: найдем БАЗИС  $K(x)$ над  $K$:  $P \cup F$.  $P = \{1, x, x^2, \ldots\}$ --- базис $K[x]$.  $F = \{ \frac{p}{q^l} \mid p, q\text{ --- унитальные} \land l\text{---неприводисммый} \land \deg p < \deg q\}$ --- простейшие дроби.
+Что со сложением: найдем БАЗИС  $K(x)$ над  $K$:  $P \cup F$.  $P = \{1, x, x^2, \ldots\}$ --- базис $K[x]$.  $F = \{ \frac{p}{q^l} \mid p, q\text{ --- унитальные} \land l\text{---неприводимый} \land \deg p < \deg q\}$ --- простейшие дроби.
 
 \begin{theorem}
     $P\cup F$ --- базис.
@@ -110,6 +110,26 @@ $K(x)^*$ устроена понятно:  $\frac{f}{g} = \frac{\prod p_i^{a_i}}
 
     Осталось доказать:  $\forall$ правильная дробь однозначно представляется как сумма простейших. 
      \begin{definition}
-        Правильная дробь назыается примарной, если она представима в виде $\frac{f}{p^k}$, $p$ --- неприводимая,  $\deg f < \deg p^k$.
+        Правильная дробь называется примарной, если она представима в виде $\frac{f}{p^k}$, $p$ --- неприводимая,  $\deg f < \deg p^k$.
     \end{definition}
+    
+    Шаг 2. Я проиграл.
+
+    Шаг 3. Любая примарная дробь --- сумма многочлена и простейших дробей.
+
+    Пусть $\frac{f}{p^k}$ --- примарная, $p$ --- неразложимая.  $\frac{f}{p^k} = F + \frac{h}{p^k}, F \in K[x], \frac{h}{p^k}$ --- правильная примарная. 
+
+    $\exists h_0, h_1, h_2,\ldots, h_{k-1} \in K[x]\!: \deg h_i < \deg p$ и $f = h_0 + h_1 + h_2p^2 + \ldots + h_{k_1} p^{k-1}$. Обозначим это утверждение звездочкой.
+
+    Тогда $\frac{h}{p^k} = \frac{h_0}{p^k} + \frac{h_1}{p^{k-1}} + \ldots + \frac{h_{k-1}}{p}$. Так как $\deg h_i < \deg P$, то данные дроби простейшие.
+
+    Доказательство звездочки: индукция по  $k$.
+     \begin{itemize}
+         \item База. $k=1$:  $h = h_0$.
+         \item Переход: $k \to k + 1$: Поделим с остатком  $h = p \cdot q + r, \deg r < \deg p$. Положим  $h_0 = r$.  $h = h_0 + p \cdot q$ и  $\deg q = \deg h - \deg p < \deg p^{k+1} - \deg p = \deg p^k$. Тогда по индукции  $q = h_1 + h_2 \cdot p + \ldots + h_k \cdot p^{k+1}$.
+    \end{itemize}
 \end{proof}
+
+Давайте найдем явную формулу для $Q = \frac{f}{g}$, где $g=(x-a_1)\cdot \ldots \cdot (x-a_n)$ и $\deg f  < \deg g$.
+
+Напишем Лагранжа для задачи  $(a_1, f(a_1)), \ldots, (a_n, f(a_n))$. $f = \sum\limits_{i=1}^n \frac{f(a_i)\prod\limits_{i \neq j} (x-a_j)}{\prod\limits_{j \neq i} (a_i - a_j)} = \sum\limits_{i=1}^n f(a_i) \frac{\frac{g}{x-a_i}}{g'(a_i)}$. Откуда получаем, что $\frac{f}{g} = \sum \frac{f(a_i)}{g'(a_i)} \cdot \frac{1}{x-a_i}$

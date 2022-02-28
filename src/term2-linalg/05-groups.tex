@@ -1,0 +1,152 @@
+Теория групп = теория неабелевых групп, теория абелевых групп $\approx$ линейная алгебра.
+
+Например,  $G=\langle x_1, x_2, \ldots, x_n \rangle$. Тогда $G \cong$ произведению циклических групп. 
+
+Или $G = \langle a, b \rangle$,  $G$ --- абелева, тогда  $G = \{ a^k b^l \mid k, l \in \Z\}$. 
+
+\begin{definition}
+    $V$ --- конечное множество,  $|V| = n$.  $S(V) = \{f\!: V \to V (f\text{ --- биекция})\}$.
+
+    Если $V = 1..n \implies S(V) = S_n$.
+\end{definition}
+\begin{definition}
+    $K$ --- поле,  $n \in \N$, тогда  $GL(n, K)$ --- обратимые матрицы порядка  $n$ $= \{A\!: V \to V \mid \small \begin{array}{l} A\text{ --- биективное отображение}\\V\text{ --- }n\text{-мерное пространство}\end{array}\}$
+\end{definition}
+\begin{remark}
+    $S_n$ вкладывается в  $GL(n, k)$.
+\end{remark}
+\begin{proof}
+    $\pi$ --- перестановка,  $V = \langle e_1, e_2, \ldots, e_n \rangle$. $A_\pi(e_i) = e_\pi(i)$. Тогда  $\pi A_\pi$ --- инъективный гомоморфизм.
+\end{proof}
+\begin{theorem}[Теорема Кэли]
+    Любая конечная группа изоморфна подгруппе в $S_n$ при некотором  $n$.
+\end{theorem}
+\begin{proof}
+    Положим $n = |G|$.  $G$ --- конечная группа, то есть  $G = \{ g_1, \ldots, g_n\}$. Тогда $g \in G\quad m_g\!: G \to G m_g(g_i) = gg_i$ --- биекция. 
+
+    То есть  $g \cdot g_i = g_{\pi_g}(i), \pi_g \in S_n$ --- перестановка.
+
+    Теперь зададим гомоморфизм:  $i\!: \begin{array}{l} G \to S_n \\ g \to \pi_g \end{array}$.  $i$ --- инъективно:  $\pi_g = \pi_{g'} \implies g \cdot e_G = g' \cdot e_G \implies g = g'$. 
+
+    Покажем, что $i$ --- гомоморфизм: надо проверить  $\pi_{g_1g_2} = \pi_{g_1} \cdot \pi_{g_2}$.
+
+    $\pi_{hf} = \pi_h \cdot \pi_f$.  $h \cdot g_{\pi(f)(i)} = h(fg_i) = (hf)g_i = g_{\pi_{h,f}(i)}$.
+\end{proof}
+\begin{remark}
+    Заметим, что в доказательстве теоремы Кэли мы находило не обязательно минимальное регулярное представление. Например, для $S_4$ минимальное представление равно  $S_4$, а у нас  $S_{24}$.
+\end{remark}
+\Subsection{Смежные классы и теорема Лагранжа}
+Пусть есть группа $G$ и  $H \le G$ --- подгруппа.
+
+\begin{definition}
+    Левый смежный класс по подгруппе $H$, это  $gH = \{g\cdot h \mid h \in H\}$.
+\end{definition}
+\begin{definition}
+    Правый смежный класс по подгруппе $H$ ---  $H \cdot g = \{ h \cdot g \mid h \in H\}$
+\end{definition}
+Вообще говоря $gH \neq Hg$ (если $H$ --- неабелева).
+\begin{example}
+    Пусть $g \in H \implies gH = Hg=H$.
+\end{example}
+\begin{properties}[смежных классов]
+    \begin{enumerate}
+        \item $g_1H = g_2H \iff g_2^{-1}g_1 \in H \iff g_1^{-1}g_2 \in H$.
+        \item $\forall 2$ смежных класса не пересекаются или совпадают.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    \begin{enumerate}
+        \item $g_1H = g_2H \iff \{g_1h\} = \{g_2h\} \iff \{g_2^{-1}g_1h\} = \{h\} = H$.
+
+            Тогда если $g_2^{-1}g_1 \in H \implies \{g_2 g_1h\} = H$. Тогда рассмотрим $h=e$.
+
+            Аналогично для  $g_1g_2^{-1}$. Получили классы эквивалентности: $g_1 \underset{\sim}{H} g_2 \iff g_1\in g_2H$.
+        \item Докажем отношение эквивалентности: $g_1 \underset{\sim}{J}h_2 \iff g_1 \in g_2H$.
+
+            $\Rightarrow$.  $g_1H=g_2H$. Подставим $h=e$.
+
+             $\Leftarrow$.  $g_1 = g_2 \cdot h_0, h_0 \in H$. $\{ g_1h \mid h \in H\} = \{(g_2h_0)h\mid h\in H\} = \{g_2(h_0h) \mid h\in H\} = \{g_2 \widetilde{h} \mid \widetilde{h} \in H\} = g_2H$.
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    Схожие утверждения верны и для правых классов.
+\end{remark}
+Итого: $\forall$ подгруппа  $H$ задает 2 разбиения  $G$ на смежные классы.
+\begin{example}
+    $G=(\Z, +), H = \langle a \rangle = \{ ka \mid k \in \Z\}$
+
+    $e = \{e + ka \mid k \in \Z\} = \overline{e_a}$ ---  $a$ классов вычетов.
+\end{example}
+\begin{definition}
+    $G$ --- группа,  $H$ --- подгруппа, такая что  $\exists k$ левых смежных классов,  $k$ называется индексом  $H$ в  $G$.
+\end{definition}
+\begin{exerc}
+    $Gh \iff Hg^{-1}$ --- биекция между левыми и правыми смежными классами.
+\end{exerc}
+\begin{theorem}[Теорема Лагранжа]
+    $|G| = n, |H| = k$,  $H \le G$.
+
+    Тогда $|G:H| = \frac{n}{k}$. В частности $|G| \divby |H|$. Порядок группы делится на порядок подгруппы.
+\end{theorem}
+\begin{definition}
+    $G / H$ --- множество левых смежных классов.
+
+    $H \setminus G$ --- множество правых смежных классов.
+\end{definition}
+\Subsection{Группа перестановок}
+\begin{definition}
+    $\pi \in S_n$ называется циклом, если  $\exists i_1, \ldots, i_k \in \{1..n\}$, такое что $\pi(i_l) = i_{l+1}$и  $\pi(i_k) = i_1$ и  $\pi(j) = j$ для остальных.
+\end{definition}
+\begin{definition}
+    Циклы называются независимыми, если их множества подвижных точек не пересекаются.
+\end{definition}
+\begin{remark}
+    $\pi_1, \pi_2, \ldots, \pi_n$ --- попарно независимые циклы $\implies$ их произведение не зависит от порядка множителей.
+\end{remark}
+\begin{theorem}
+    $\pi \in S_n$.  $\pi$ --- единственным образом (с точностью до порядка) представима как произведение независимых циклов.
+\end{theorem}
+\begin{proof}
+    Будем доказывать для $S_n \cong S(M)$.
+
+     \begin{itemize}
+         \item База, $n = 1$. 
+         \item Переход: $1,\ldots, n-1 \to n$.
+
+             Рассмотрим $\pi \in S(M), a \in M$. Рассмотрим  $\pi(a), \pi(\pi(a)), \ldots$. Рассмотрим минимальное $k$, такое что  $\pi^k(a) = \pi^l(a)$ для какого-то  $0 \le l < k$./
+
+             Если $l \neq 0$, так как  $\pi$ --- биекция, то  $\pi^{k-1}(a) = \pi^{l-1}(a)$. Противоречие.
+
+             Если  $l = 0$, то получили цикл.  $N = \{ \pi^{i}(a) \mid i < k \}$. Пусть  $\pi_0(x) = \pi(x)$, если  $x \in N$ или  $x$ иначе. По индукционному предположению существуют циклы.
+    \end{itemize}
+
+    Единственность: ему лень :(
+\end{proof}
+
+\begin{definition}
+    $\pi$ --- цикл на  $i_1, i_2, \ldots, i_k$. $\pi = (i_1 i_2..i_k)$
+    
+    Тогда $\pi \in S_n$ --- произвольная перестановка,  $\pi = (i_1 \ldots i_k)(j_1 \ldots j_l) (s_1 \ldots s_m)$
+\end{definition}
+
+\begin{theorem}
+    $\langle (ij) \rangle$ --- транспозиция. $\langle (ij) \rangle = S_n$. 
+\end{theorem}
+\begin{proof}
+    Очев.
+\end{proof}
+\begin{theorem}
+    $\langle (ijk) \rangle = A_n$ --- группа четных перестановок. 
+\end{theorem}
+\begin{proof}
+    $(ijk) = (ij)(jk) \implies (ijk) \in A_n \implies \langle (ijk) \rangle \le A_n$.
+
+    Обратно: пусть $\pi \in A_n$.  $\pi = t_1t_2\ldots t_{2k}$, $t_i$ --- транспозиции. Достаточно доказать, что  $\forall $ транспозиция  $t_i, t_j$  $t_i \cdot t_j \in \langle (ijk)\rangle$.
+
+    Пусть  $t_i = (ab), t_j = (cd)$. Тогда рассмотрим 3 случая:
+     \begin{enumerate}
+         \item $t_i = t_j \implies t_i \circ t_j = t_i^2 = \mathrm{id} \in \langle (ijk) \rangle$.
+         \item  $b = c$,  $a \neq d$. Очев.
+         \item Легко показать, что  $(ab)(cd) = (cad)(abc) \in \langle (ijk) \rangle$. 
+    \end{enumerate}
+\end{proof}
