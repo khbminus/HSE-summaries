@@ -608,3 +608,222 @@
             Воспользуемся диагональным методом Кантора. Пусть $a_n \coloneqq x_{nn}$. Заметим, что  $a_n, a_{n+1}, a_{n+2}$ --- последовательность  $x_{n1}, x_{n 2}, x_{n 3},\ldots \implies$ все лежат в $B_{\frac{1}{n}}(z_n) \implies \rho(a_i, a_j) \le \rho(a_i, z_n) + \rho(a_j, z_n) < \frac{2}{n}$, при $i, j \ge n \implies a_i$ --- фундаментальная $\implies$ у нее есть предел  $\implies a = \lim a_n \in K$,  так как $K$ --- замкнуто. Следовательно,  $K$ --- секвенциально компактно.
     \end{enumerate}
 \end{proof}
+\begin{consequence}[Характеристика компактов в $\R^d$]
+    $K$ --- компакт  $\iff$  $K$ --- замкнуто и ограничено. 
+\end{consequence}
+\begin{proof}
+    $\Rightarrow$ верна всегда и доказано выше.
+
+    А вот  $\Leftarrow$ верна не всегда. Поэтому докажем эту штуку для  $\R^d$. Мы знаем, что  $\R^d$ --- полное. А еще мы знаем, что в  $\R^d$ ограниченность  $\implies$ вполне ограниченность, а значит понятно, что  $K$ --- компакт.
+\end{proof}
+\begin{exerc}
+    $(K, \rho)$ --- метрическое пространство,  $K$ --- компакт. Доказать, что  $(K, \rho)$ --- полное.
+\end{exerc}
+
+\begin{consequence}[теорема Больцано-Вейерштрасса в $\R^d$]
+    Из любой ограниченной последовательности в $\R^d$ можно выбрать сходящуюся подпоследовательность.
+\end{consequence}
+\begin{proof}
+    $\{x_n\} \implies \exists R\quad x_n \in B_R(a) \subset \overline{B}_R(a)$ --- замкнуто и ограниченно $\implies$ компактно  $\implies$ секвенциально компактно $\implies x_n$ --- последовательность точек секвенциального компакта  $\implies$ у нее есть сходящаяся последовательность.
+\end{proof}
+\Subsection{Непрерывные отображения}
+
+\begin{definition}
+    $(X, \rho_X)$ и  $(Y, \rho_Y)$ --- метрические пространства, $E \subset X$.  $f\!: E \to Y$,  $a$ --- предельная точка  $E$,  $b \in Y$.
+
+     $b = \lim\limits_{x \to a} f(x)$ означает, что
+
+     По Коши:  $\forall \eps > 0 \exists \delta > 0 \forall x\!: \rho_x(x,a) < \delta \land a \neq x \in E \implies \rho_Y(f(x), b) < \eps$.
+
+     В терминах окрестностей: $\forall \eps > 0 \exists \delta > 0\!: f(\dot{B}_{\delta}(a) \cap E) \subset B_\eps(b)$
+
+     По Гейне: $\forall$ последовательности  $a \neq x_n \in E\!: \lim x_n = a \implies \lim f(x_n) = b$
+\end{definition}
+\begin{theorem}
+    Все определения равносильны. 
+\end{theorem}
+\begin{proof}
+    Упражнение (смотри доказательство для последовательностей).
+\end{proof}
+\begin{theorem}[Критерий Коши]
+    $f\!:E \subset X \to Y$,  $Y$ --- полное,  $a$ --- предельная точка  $E$. Тогда
+
+     $\exists \lim\limits_{x \to a} f(x) \iff \forall \eps > 0 \exists \delta > 0 \forall x, y \in \dot{B}_{\delta}(a) \cap E \implies \rho_Y(f(x), f(y)) < \eps$.
+\end{theorem}
+\begin{proof}
+    $\Rightarrow$. Упражнение: взять доказательство и заменить модуль на  $\rho$.
+
+     $\Leftarrow$. Проверим определение по Гейне. Надо доказать, что  $a \neq x_n \in E \land \lim x_n = a \implies \lim f(x_n)$ существует.
+
+      $f(x_n)$ --- последовательность в  $Y$ --- полное. Поэтому достаточно проверить, что  $f(x_n)$ --- фундаментальная последовательность. Возьмем  $\eps > 0$, по нему  $\delta > 0$ из условия. По  $\delta > 0$ берем  $N$, такое что  $\forall n \ge N\!: \rho_X(x_n, a) < \delta \implies x_n \in \dot{B}_\delta(a)\cap E$ при $n \ge N \implies \forall m, n \ge N\!: \rho(f(x_n), f(x_m)) < \eps f(x_n)$ фундаментальная $\implies f(x_n)$ имеет предел.
+\end{proof}
+
+\begin{theorem}[об арифметических действиях с пределами]
+    $f, g\!: E \subset X \to Y$,  $Y$ --- нормированное пространство,  $a$ --- предельная точка  $E$.\\
+    Пусть  $\lim\limits_{x \to a} f(x) = b, \lim\limits_{x\to a} g(x) = c \land \alpha, \beta \in \R$. Тогда
+
+     \begin{enumerate}
+         \item $\lim\limits_{x \to a} \alpha f(x) + \beta g(x) = \alpha b + \beta c$.
+         \item Если  $\lambda\!: E \to \R$, такое что  $\lim\limits_{x \to a} \lambda(x) = \mu \in \R$, то  $\lim\limits_{x \to a} \lambda(x) f(x) = \mu b$.
+         \item  $\lim\limits_{x \to a} \lVert f(x) \rVert = \lVert b \rVert$
+         \item Если  $Y$ --- пространство со скалярным произведением, то  $\lim\limits_{x \to a} \langle f(x), g(x) \rangle = \langle b, c \rangle$.
+         \item Если $Y = \R$ и  $c \neq 0$, то  $\lim\limits_{x \to a} \frac{f(x)}{g(x)} = \frac{b}{c}$. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Проверка по Гейне. Берем $x_n \to a$,, тогда  $f(x_n) \to b, g(x_n) \to c$ и теорема про пределы последовательности.
+\end{proof}
+\begin{definition}
+    $(X, \rho_X)$ и  $(Y,\rho_Y)$ --- метрические пространства, $E \subset X$,  $a \in E$.\\
+     $f\!: E \to Y$,  $f$ непрерывна в точке  $a$, если
+      \begin{enumerate}
+          \item $a$ не предельная точка или  $a$ --- предельная и  $\lim\limits_{x \to a} f(x) = f(a)$.
+          \item По Коши.  $\forall \eps > 0 \exists \delta > 0 \forall x \in E\!: \rho_X(x, a) < \delta \Rightarrow \rho_Y(f(x), f(a)) < \eps$.
+          \item С окрестностями.  $\forall B_\eps(f(a)) \exists B_\delta(a)\!: f(B_\delta(a)) \subset B_\eps(f(a))$.
+          \item По Гейне:  $\forall x_n \in E\!: \lim x_n = a \implies \lim f(x_n) = f(a)$.
+     \end{enumerate}
+\end{definition}
+\begin{proof}
+    Упражнение!
+\end{proof}
+\begin{theorem}[о непрерывности композиции]
+    $(X, \rho_X), (Y, \rho_Y), (Z, \rho_Z)$ ---  $D \subset X, E \subset Y, a \in D, f\!: D \to E, g\!: E \to Z$.
+    Если  $f$ непрерывна в точке  $a$, а  $g$ непрерывна в точке  $f(a)$, то $g \circ f$ непрерывна в точке  $a$. 
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        &\left. \begin{array}{l}
+                \forall B_\eps(g(f(a))) \exists B_\delta(f(a))\!: g(B_\delta(f(a)) \cap E) \subset B_\eps(g(f(a)))\\
+                \forall B_\delta(f(a)) \exists B_\gamma(a)\!: f(B_\gamma(a) \cap D) \subset B_\delta(f(a)) \cap E
+        \end{array} \right\} \\
+        &\implies g(f(B_\gamma(a) \cap D)) \subset g(B_\delta(f(a)) \cap E) \subset B_\eps(g(f(a))) \implies g \circ f\ \text{непрерывна в точке}\ a
+    \end{align*} 
+\end{proof}
+\begin{theorem}[Характеристика непрерывности в терминах открытых множеств]
+    $f\!: X \to Y$. Тогда
+
+     $f$ непрерывна во всех точках  $\iff \forall U$ --- открытого в $Y$:  $f^{-1}(U) \coloneqq \{ x \in X \mid f(x) \in U\}$ --- открыто в $X$. 
+\end{theorem}
+\begin{proof}
+    $\Rightarrow$. Берем  $a \in f^{-1}(U) \implies f(a) \in U$ -- открыто  $\implies \exists \eps > 0\quad B_\eps(f(a)) \subset U$.
+
+    $f$ непрерывно в точке  $a \implies \exists \delta > 0\!: f(B_\delta(a)) \subset B_\eps(f(a)) \subset U \implies B_\delta(a) \subset f{-1}^(U) \implies a$ --- внутренняя точка  $f^{-1}(U) \implies f^{-1}(U)$ --- открыто.
+
+     $\Leftarrow$.  $U \coloneqq B_\eps(f(a))$ --- открыто  $\implies f^{-1}(B_\eps(f(a)))$ --- открыто и  $a \in f^{-1}(B_\eps(f(a))) \implies \exists \delta > 0\quad B_\delta(a) \subset f^{-1}(B_\eps(f(a))) \implies f(B_\delta(a)) \subset B_\eps(f(a)) \implies f$ непрерывна в точке  $a$.
+\end{proof}
+
+\begin{theorem}[Непрерывный образ компакта --- компакт]
+    $(X, \rho_X), (Y, \rho_Y)$ --- метрические пространства, $K \subset X$,  $K$ --- компакт.
+
+    $f\!: K \to Y$ непрерывна во всех точка. Тогда  $f(K)$ --- компакт.
+\end{theorem}
+\begin{proof}
+    Рассмотрим открытое покрытие $f(K) \subset \bigcup\limits_{\alpha \in I} U_\alpha$ --- открытые $\implies K \subset f^{-1}(\bigcup\limits_{\alpha \in I} U_\alpha) = \bigcup\limits_{\alpha \in I} f^{-1}(U_\alpha)$ по непрерывности $f$  $f^{-1}(U_\alpha)$ --- открыто  $\implies$ это открытое покрытие  $K$, но  $K$ --- компакт  $\implies$ выбираем конечное подпокрытие  $K \bigcup\limits_{j=1}^n f^{-1}(U_{\alpha_j}) = f^{-1}(\bigcup\limits_{j=1}^n U_{\alpha_j}) \implies f(K) \subset \bigcup\limits_{j=1}^n U_{\alpha_j}$. Нашли конечное подпокрытие  $\implies f(K)$ --- компакт.
+\end{proof}
+
+\begin{definition}
+    $f\!: E \subset X \to Y$ --- ограниченное отображение, если  $f(E)$ --- ограниченное множество.
+\end{definition}
+\begin{consequence}
+    Непрерывный образ компакта замкнут и ограничен.
+\end{consequence}
+\begin{proof}
+    Знаем, что непрерывный образ компакта --- компакт. А следовательно, образ замкнут и ограниченю
+\end{proof}
+\begin{consequence}
+    Если $K$ --- компакт и  $f$ непрерывна на  $K$, то $f$ --- ограниченное отображение.
+\end{consequence}
+\begin{consequence}[Теорема Вейерштрасса]
+    $f\!: K \to \R$,  $K$ --- компакт,  $f$ непрерывна на  $K$.
+
+    Тогда  $\exists a,b \in K\!: f(a) \le f(x) \le f(b) \quad \forall x \in K$.
+\end{consequence}
+\begin{proof}
+    $f(K)$ --- ограниченное множество в  $\R \implies B \coloneqq \sup\limits_{x \to K} f(x) \in \R \implies \exists x_n \in K\!: \lim f(x_m) = N$. При этом  $x_n \in K$ --- секвенциальный компакт  $\implies$ существует сходящаяся подпоследовательность $x_{n_k}$.
+
+    Тогда  $\lim x_{n_k} \eqqcolon b \in K \implies \lim f(x_{n_k}) = f(b) \implies f(b) = \sup\limits_{x \to K} f(x) = B \implies f(x) \le f(b) \quad \forall x \in K$.
+\end{proof}
+\begin{theorem}
+    $f\!: X \to Y$ непрерывна во всех точках, биекция и  $X$ --- компакт. Тогда  $f^{-1}$ непрерывна во всех точках.
+\end{theorem}
+\begin{proof}
+    Проверяем непрерывность $f^{-1}$ в терминах открытых множеств. Надо для  $f^{-1}$ проверить , что прообраз открытого --- открыт, то  есть для  $f$ проверить, что образ открытого открыт.
+
+     $U$ --- открыто в  $X \implies X \setminus U$ --- замкнуто  $\subset X$ --- компакт  $\implies X \setminus U$ --- компакт  $\implies f(X \setminus U) = Y \setminus f(U)$ --- компакт  $\implies Y \setminus f(U)$ --- замкнуто  $\implies f(U)$ --- открыто.
+\end{proof}
+\begin{definition}
+    $f\!: E \subset X \to Y$ равномерно непрерывна, если  $\forall \eps > 0 \exists \delta > 0 \forall x, y \in E\!: \rho_X(x, y) < \delta \implies \rho_Y(f(x), f(y)) < \eps$.
+\end{definition}
+\begin{theorem}[Теорема Кантора]
+    $f\!: K \to Y$ непрерывна,  $K$ --- компакт. Тогда  $f$ равномерно непрерывна. 
+\end{theorem}
+\begin{proof}
+    Берем $x \in K$,  $f$ непрерывна в точке  $x \implies \exists r_x > 0\!: f(B_{r_x}(x)) \subset B_{\frac{\eps}{2}}(f(x))$. 
+
+    Тогда $K \subset \bigcup\limits_{x \to K} B_{r_x}(x)$ --- открытое покрытие $K$. Возьмем  $\delta > 0$ из леммы Лебега, то есть  $\forall x \in K B_\delta(x)$ целиком попал в какой-то элемент покрытия. 
+
+    Проверим, что это  $\delta > 0$ подходит в определение равномерной непрерывности.
+
+     $x, y \in K \rho_X(x, y) < \delta \implies y \in B_\delta(x) \implies \exists a \in K\!: B_\delta(x) \subset B_{r_x}(a) \implies x, y \in B_{r_a}(a) \implies f(x), f(y) \in B_{\frac{\eps}{2}}(f(a)) \implies \rho_Y(f(x), f(a)) < \frac{\eps}{2} \land \rho_Y(f(y), f(a)) < \frac{\eps}{2} \implies \rho_Y(f(x), f(y)) < \eps$
+\end{proof}
+\begin{definition}
+    $X$ --- векторное пространство и  $\| . \|$ и  $\|| . \||$ --- норм в  $X$. 
+    Нормы эквиваленты, если $\exists C_1, C_2 > 0$\!: 
+    \[
+    C_1 \| x\| \le |\| x |\| \le C_2 \| x \| \quad \forall x \in X
+    .\] 
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item Это отношение эквивалентности.
+        \item Пределы последовательности для эквивалентных норм совпадают.
+    \end{enumerate}
+\end{remark}
+\begin{theorem}
+   В $\R^d$ все нормы эквивалентны. 
+\end{theorem}
+\begin{proof}
+    $\| x \| \sqrt{x_1^2+ x_2^2 + \ldots + x_d^2}$. Достаточно доказать, что остальные норма эквиваленты.
+
+    Пусть $p(x)$ --- другая норма в $\R^d$.  $e_k $ --- вектор с нулями и единицей на  $k$-ой позиции.
+
+    $x=(x_1,x_2,\ldots,x_d) = \sum\limits_{k=1}^d x_ke_k$.
+     $p(x - y) = p(\sum\limits_{k=1}^d(x_k-y_k)e_k) \le \sum\limits_{k=1}^d p((x_k - y_k)e_k) = \sum\limits_{k=1}^d |x_k - y_k| p(e_k) \le \text{(Коши-Буняковский)} \left(\sum\limits_{k=1}^d (x_k - y_k)^2\right)^{\frac{1}{2}} \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} = \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} \|x - y \|\ \implies p(x) \le \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} \| x \|$.
+
+     $S \coloneqq \{ x \in \R^d\!: x_1^2 + x_2^2 + \ldots + x_d^2 = 1\}$ --- компакт $\implies \exists a \in S\!: 0 < p(a) \le p(x) \quad \forall x \in S$.
+
+     $p(x) = p(\frac{x}{\|x\|}\cdot \|x\|) = \|x\| p(\frac{x}{\|x\|}) \ge \|x\| p(a)$.
+
+     Тогда $p(a) \|x\| \le p(x) \le M \|x\| \quad \forall x \in \R^d$.
+\end{proof}
+
+\Subsection{Длина кривой}
+
+\begin{definition}
+    $(X, \rho)$ --- метрическое пространство.  ($\R^d$ --- ключевой случай).
+
+    $\gamma\!: [a,b] \to X$ непрерывное --- путь.
+
+     $\gamma(a)$ --- начало пути,  $\gamma(b)$ --- конец пути.  $\gamma([a, b])$ носитель пути.
+
+     Замкнутый путь  $\gamma(a) = \gamma(b)$. Простой (самонепересекающийся) путь:  $\gamma(u) \neq \gamma(v) \quad \forall u, v \in [a, b]$. Возможно, за исключением равенства  $\gamma(a) = \gamma(b)$.
+\end{definition}
+\begin{definition}
+    Эквивалентные пути: $\gamma_1\!:[a, b] \in X$, $\gamma_2\!: [c,d] \to X$. Если  $\exists u\!:[a, b] \to [c, d]$,  $u$ --- непрерывна,  $u$ --- строго монотонно возрастает,  $u(a) = c, u(b) = d$, такой, что  $\gamma_1 = \gamma \circ u$.
+\end{definition}
+\begin{definition}
+    Класс эквивалентных путей --- кривая.
+
+    Конкретный представитель класса --- параметризация кривой.
+\end{definition}
+\begin{definition}
+    $\gamma\!: [a,b] \to \R^d$.  $r$-гладкий путь, если  $\gamma = \begin{pmatrix} \gamma_1 \\ \gamma_2 \\ \vdots \\ \gamma_d \end{pmatrix}, \gamma_j\!:[a,b] \to \R$ --- $r$-гладкие функции, то есть  $\gamma_j \in C^r[a,b]$.
+
+    Кривая гладкая, если у нее есть гладкая параметризация. Если  $r$ опущено, то  $r=1$.
+\end{definition}
+\begin{definition}
+    Длина пути $l(\gamma) = \sup \sum\limits_{k=1}^n \rho(\gamma(t_k), \gamma(t_{k-1}))$, где  $t_k$ --- дробление отрезка.
+\end{definition}
+\begin{remark}
+    Длины эквивалентных путей равны.
+\end{remark}
