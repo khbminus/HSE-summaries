@@ -827,3 +827,228 @@
 \begin{remark}
     Длины эквивалентных путей равны.
 \end{remark}
+\begin{properties}
+    \begin{enumerate}
+        \item $l(\gamma) \ge \rho(\gamma(a), \gamma(b))$. Можно просто взять дробление состоящее из двух точек.
+        \item $l(\gamma) \ge$ длина вписанной в нее ломаной.
+    \end{enumerate}
+\end{properties}
+\begin{theorem}
+    Пусть есть $\gamma\!: [a, b] \to X$.  $c \in [a, b]$. 
+
+    $l(\gamma) = l(\gamma \Big|_{[a, c]}) + l(\gamma \Big|_{[c, b]})$.
+
+    Обозначим куски за  $\gamma_1, \gamma_2$.
+\end{theorem}
+\begin{proof}
+    Нам нужно доказать какое-то равенство, поэтому докажем два неравенства!
+    \begin{itemize}
+        \item $\ge$. Давайте вписывать ломанные. Впишем какую-то ломанную в $\gamma_1$ и еще какую-то в $\gamma_2$. Пусть получились дробления $a = t_0 < t_1 < t_2 < \ldots < t_n = u_0 < \ldots < u_m = b$ --- получилось дробление $[a, b]$.
+
+            Тогда посчитаем сумму:  $\sum\limits_{k=1}^n \rho(\gamma(t_{k-1}), \gamma(t_k)) + \sum\limits_{k=1}^n \rho(\gamma(u_{k-1}), \gamma(u_k)) \le l(\gamma)$. Заменим первое слагаемое на $\sup$: $\sup \ldots + \sum\limits_{k=1}^n \rho(\gamma(u_{k-1}), u_k) \le l(\gamma)$. А этот $\sup$ --- длина  $\gamma_1$. Встает вопрос почему можно переходить. Мы знаем, что все числа меньше, то и супремум меньше, поэтому переход корректный. Дальше заменяем правый $\sup$. В итоге получаем  $l(\gamma_1) + l(\gamma_2) \le l(\gamma)$.
+        \item Возьмем дробление $\gamma$  $t_i$. Посмотрим на сумму  $S = \sum\limits_{j=1}^n\rho(\gamma(t_{j-1}), \gamma(t_j))$. 
+
+            Возьмем дробление $t_i$ и добавим в него точку  $c$. Получаем: 
+             \begin{align*}
+                S \le \sum_{j=1}^k \rho(\gamma(t_{j-1}), \gamma(t_j)) + \rho(\gamma(t_k), \gamma(c)) + \rho(\gamma(c), \gamma(t_{k+1})) + \sum_{j = k + 2}^n \rho(\gamma(t_{j-1}), \gamma(t_j))
+            \end{align*}
+            
+            А теперь увидим, что первые два слагаемых $\le l(\gamma_1)$, а вторые два $\le l(\gamma_2)$.
+    \end{itemize}
+\end{proof}
+\begin{theorem}
+    $\gamma\!: [a,b] \to \R^d$ --- гладкий путь. $\gamma = \begin{pmatrix} \gamma_1 \\ \gamma_2 \\ \vdots \\ \gamma_d \end{pmatrix}$. Тогда: 
+\begin{align*}
+    l(\gamma) = \int\limits_a^b \| \gamma'(t) \| \mathrm{d}t
+\end{align*}
+\end{theorem}
+\begin{lemma}
+    $\Delta \subset [a, b]$ --- отрезок, $\gamma\!: [a, b] \to \R^d$.  $m_\Delta^{(i)} \coloneqq \min\limits_{t \in \Delta}|\delta'_i(t)|, M_\Delta^{(i)} \coloneqq \max\limits_{t \in \Delta}|\delta'_i(t)|$, $m_\Delta \coloneqq \sqrt{\sum\limits_{i=1}^d (m_\Delta^{(i)})^2}, M_\Delta \coloneqq \sqrt{\sum\limits_{i=1}^d (M_\Delta^{(i)})^2}$
+
+    Тогда $m_\Delta l(\Delta) \le l(\gamma \Big|_\Delta) \le M_\Delta l(\Delta)$.
+\end{lemma}
+\begin{proof}
+    Впишем в $\gamma \Big|_\Delta$ ломаную. Пусть  $a_k$ --- длина  $k$-го звена.
+
+    По теореме Лагранжа:  $\gamma_i(t_k) - \gamma_i(t_{k-1}) = \underbrace{\gamma'_i(\xi_{ik})(t_k - t_{k-1})}_{\le m_\Delta^{(i)}(t_k - t_{k-1})} \le M_\Delta^{(i)} (t_k - t_{k-1})$
+
+    Тогда $m_\Delta (t_k - t_{k-1}) \le a_k \le M_\Delta(t_k - t_{k-1})$. Просуммируя все такие неравенства получим исходное.
+\end{proof}
+\begin{proof}[Доказательство теоремы]
+   \begin{align*}
+       m_k(x_k - x_{k-1}) \le l(\gamma \Big|_{[x_{k-1}, x_k]}) \le M_k(x_k - x_{k-1}) \\
+       \sum_{k=1}^n m_k (x_k - x_{k-1}) \le l(\gamma) \le \sum_{k=1}^n M_k(x_k - x_{k-1}) \\
+       m_k(x_k - x_{k-1}) \le \int\limits \sqrt{\gamma'_1(t)^2 + \ldots + \gamma'_d(t)^2}\mathrm{d}t \le M_k(x_{k} - x_{k-1})
+   \end{align*}
+   Докажем, что $\square$(штука с $M_k$) минус $\bigcirc$ стремится к нулю. По факту хотим доказать, что $\sum\limits_{k=1}^n (M_k - m_k)(x_k - x_{k-1}) \to 0$. 
+
+    \begin{align*}
+        M_k - m_k &= \sqrt{\sum_{i=1}^d (M_{[x_{k-1}, x_k]}^{(i)})^2} - \sqrt{\sum_{i=1}^d (m_{[x_{k-1}, x_k]}^{(i)})^2}  \le\text{(Минковский)} \sqrt{\sum_{i=1}^d (M_{[x_{k-1}, x_k]}^{(i)} - m_{[x_{k-1}, x_k]}^{(i)})^2} \le \\ 
+                  &\le \sum_{i=1}^d (M_{[x_{k-1}, x_k]}^{(i)} - m_{[x_{k-1}, x_k]}^{(i)}) = \sum_{i=1}^d (\gamma_i(\xi_k) - \gamma_i(\eta_k)) \le \sum_{l=1}^d \omega_k(|\tau|)\\
+        0 &\le \sum_{k=1}^n (M_k - m_k)(x_k - x_{k-1}) \le \sum_{i=1}^d \omega_k(|\tau|) \cdot \sum_{k=1}^n (x_k - x_{k-1})
+   \end{align*}
+\end{proof}
+\begin{consequence}
+    \begin{enumerate}
+        \item $\| \gamma' \| \le C \implies l(\gamma) \le C(b-a)$
+        \item Длина графика функции $f\!: [a, b] \to \R$  $l = \int\limits_a^b \sqrt{1 + f'(x)^2} \mathrm{d}x$.
+        \item Длина в полярных координатах. $r\!: [\alpha, \beta] \to \R$. Тогда  $l = \int\limits_\alpha^\beta \sqrt{r(\vphi)^2 + r'(\vphi)^2} \mathrm{d}\vphi$. 
+    \end{enumerate}
+\end{consequence}
+\begin{proof}
+    \begin{enumerate}
+        \addtocounter{enumi}{1}
+        \item $\gamma(x) = \begin{pmatrix} x \\ f(x) \end{pmatrix}, \gamma'_1(x) = 1, \gamma'_2(x) = f'(x)$, а дальше применить функцию.
+        \item $\gamma(\vphi) = \begin{pmatrix} r(\vphi)\cos \vphi \\ r(\vphi) \sin \vphi \end{pmatrix} $
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    $A$ --- связное множество, если  $\forall$ покрытие  $A \subset U \cup V, U \cap V = \emptyset \implies $ либо  $A \subset U$, либо  $A \subset V$, где $U, V$ --- открытые.
+\end{definition}
+\begin{example}
+    \begin{enumerate}
+        \item $[a, b]$ --- связное множество в  $\R$.
+        \item  $\Q$ --- несвязное множество в  $\R$. Пример  $\Q \subset (-\infty; \sqrt{2}) \cup (\sqrt{2}; +\infty)$.
+    \end{enumerate}
+\end{example}
+\begin{theorem}
+    Непрерывный образ связного множества --- связное множество.
+\end{theorem}
+\begin{proof}
+    $A$ --- связное,  $f\!: A \subset X \to Y$ непрерывное.  $f(a) \subset U \cup V$ --- открытые в  $Y$ и  $U \cap V = \emptyset$.  $A \subset f^{-1}(U) \cup f^{-1}(V)$.  $f^{-1}(U) \cap f^{-1}(V) = \emptyset$.  $A$ --- связное  $\implies A \subset f^{-1}(U)$ или  $A \subset f^{-1}(V) \implies f(A) \subset U$ или  $f(a) \subset V \implies f(A)$ --- связно.
+\end{proof}
+\begin{consequence}[Теорема Больцано-Коши]
+    Пусть $A$ --- связное, $a, b \in A$. $f\!: A \to \R$ непрерывная. 
+
+    Тогда  $f$ принимает все промежуточные значения, лежащие между  $f(a)$ и  $f(b)$.
+\end{consequence}
+\begin{proof}
+    От противного. Пусть $f(a) < C < f(b)$ и $C$ --- не значение. Тогда  $f(A) \subset (-\infty, C) \cup (C, +\infty)$. Заметим, что данные множества открытые и не пересекаются. Тогда получили противоречие со связностью  $f(A)$.
+\end{proof}
+\begin{theorem}
+    $\langle a, b \rangle$ --- связное подмножество  $\R$,  $a, b \in \overline{\R}$.
+\end{theorem}
+\begin{proof}
+    От противного. Пусть $\langle a, b \rangle \subset U \cap V$,  $U \cap V = \emptyset$. 
+
+    Пусть  $f\!: \langle a, b \rangle \to \R = f(x) = \begin{cases} 0 & x \in \langle a, b \rangle \cap U \neq \emptyset \\ 1 & x \in \langle a, b \rangle \cap V \neq \emptyset \end{cases}$ --- непрерывная функция. Её прообраз:  $\emptyset, \langle a, b \rangle, \langle a, b \rangle \cap U, \langle a, b \rangle \cap V$ --- открытые в  $\langle a, b \rangle$ множества, но значения  $\frac{1}{2}$ не принимаются.
+\end{proof}
+\begin{definition}
+    $A$ --- линейно связно, если  $\forall u, v \in A \exists \gamma\!: [a, b] \to A\!: \gamma(a) = u, \gamma(b) = v$.
+\end{definition}
+\begin{theorem}
+    Линейно связное множество связно.
+\end{theorem}
+\begin{proof}
+    $A$ --- линейно связно, пусть оно не связно $\implies A \subset U \cup V\quad U \cap V = \emptyset$.  $A \cap U \neq \emptyset$ и  $A \cap V \neq \emptyset$. 
+
+    Возьмем  $u \in A \cap U, v \in A \cap V$ и соединим их путем  $\gamma$.  $\gamma[a,b]$ --- связное (как образ отрезка),  $\gamma[a, b] \subset A \subset U \cup V \implies \gamma[a, b] \subset U$ или $\gamma[a, b] \subset V$. Противоречие. 
+\end{proof}
+\begin{definition}
+    Область --- открытое, линейно связное множество.
+\end{definition}
+\begin{remark}
+    Если $A$ открыто, то  $A$ --- связно  $\iff A$ --- линейно связное.
+\end{remark}
+\Subsection{Линейные операторы}
+\begin{definition}
+    $X, Y$ --- векторные пространства,  
+
+    $A\!: X \to Y$ --- линейный оператор, если $\forall x, y \in X, \forall \alpha, \beta \in \R A(\alpha x + \beta y) = \alpha A(x) + \beta A(y)$.
+\end{definition}
+\begin{properties}
+\begin{enumerate}
+    \item $A 0_X = 0_Y$. Доказательство: $\alpha = 0, \beta = 0$.
+    \item $A (\sum\limits_{k=1}^n x_k) = \sum\limits_{k=1}^n \lambda_k A(x_k)$. Доказательство: индукция.
+\end{enumerate}
+\end{properties}
+\begin{definition}
+    $A, B$ --- линейный оператор:  $X \to Y$.
+
+     $(A+B)(x) \coloneqq A(x) + B(x)$.
+
+      $(\lambda A)(x) = \lambda A(x)$. 
+
+      То есть получили векторное пространство линейных операторов.
+\end{definition}
+\begin{definition}
+    $A\!: X \to Y, B\!: Y \to Z$ --- линейные операторы  $B \circ A\!: X \to Z$.  $(B \circ A)(x) \coloneqq B(A(x))$.
+\end{definition}
+\begin{remark}
+    Это линейный оператор.
+\end{remark}
+\begin{definition}
+    Обратный оператор: $A\!: X \to Y$,  $B\!: Y \to X$ обратный к  $A$, если  $A \circ B = Id_Y$ и  $B \circ A = Id_x$.
+\end{definition}
+\begin{properties}
+    \begin{enumerate}
+        \item Если обратный оператор $\exists$, то он единственный.
+        \item  $(\lambda A)^{-1} = \frac{1}{\lambda} A^{-1}$.
+        \item $A\!: X \to X$ --- обратимые операторы образуют группу по операции композиция.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    \begin{enumerate}
+        \item $B \circ A = Id_X \implies$ A --- инъекция. Если  $A(x) = A(y) \implies x = B(A(x)) = B(A(y)) = y$.
+
+             $A \circ B = Id_Y \implies$  $A$ --- суръекция.  $A(B(y)) = y$. 
+
+             Пусть  $B, C$ --- обратные к  $A$.  $B(A(x)) = B \circ A(x) = x = C \circ A(x) = C(A(x))$.
+         \item $((\frac{1}{\lambda}A^{-1}) \circ (\lambda A))(x) = \frac{1}{\lambda}A^{-1}(\lambda A(x)) = x$.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    $X = \R^n, Y = R^m$. Можно рассматривать линейные операторы как матрицы бла-бла-бла.
+\end{example}
+
+\begin{definition}
+    $A\!: R^n \to R^m$. Возьмем базисный вектор  $e_k$ --- везде, кроме  $k$-ой позиции нули.
+
+    Пусть  $x = \sum\limits_{i=1}^n x_i$. Тогда  $Ax = A(\sum\limits_{k=1}^n x_k e_k) = \sum\limits_{k=1}^n x_k A_{x_k}$. 
+
+    То есть получили набор столбцов. Из которого можно получить матрицу. 
+\end{definition}
+\begin{definition}
+    $X$ и  $Y$ --- нормированные пространства.  $A\!: X \to Y$ --- линейный оператор.
+
+     $\| A \| \coloneqq \sup\limits_{\|x\|_X \le 1} \|A_x \|_Y$.
+
+     Оператор ограниченный, если его норма конечна.
+\end{definition}
+\begin{remark}
+    Ограниченные оператор $\neq$ ограниченное отображение. 
+
+    Линейное отображение + ограниченность  $\implies = 0$.
+
+\end{remark}
+\begin{proof}
+    Пусть $Ax \neq 0$, тогда  $A(\lambda x) = \lambda Ax$, а это уже не ограничено.
+\end{proof}
+\begin{properties}
+    \begin{enumerate}
+        \item $\| A + B \| \le \| A \| + \| B \|$
+        \item $\| \lambda A \| = \|\lambda\| \|A \|$.
+        \item  $\|A\| = 0 \iff A \equiv 0$.
+    \end{enumerate}
+\end{properties}
+\begin{proof}
+    \begin{enumerate}
+        \item $\|(A+B)x\|_Y = \|Ax + Bx\|_Y \le \|Ax\|_Y + \|Bx\|_T \iff \sup\limits_{\| x\|_x \le 1} \|(A+B)x\| = \|A+B\| \le \sup\limits_{\| x\|_x \le 1} \|Ax\|_Y + \sup\limits_{\| x\|_x \le 1} \|Bx\|_Y$.
+        \item $\| \lambda Ax \| = |\lambda| \cdot \|Ax \|$.  $\sup\limits_{\| x\|_x \le 1} \|\lambda A x \| = |\lambda| \sup\limits_{\| x\|_x \le 1} \| Ax\| = |\lambda| \| A\|$.
+        \item $\Rightarrow$  $\|A\| = 0 \implies \|Ax\| = 0 \implies Ax = 0 \implies Ax = A(\frac{x}{\| x\|} \cdot \|x \|) = \|x\| A(\frac{x}{\|x\|}) = 0$.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}
+    $A\!: X \to Y$ --- линейный оператор. Тогда
+
+     $\|A\| = \sup\limits_{\| x\|_x \le 1} \|Ax\|_Y = \sup\limits_{\| x\|_x = 1} \|Ax\|_Y = \sup\limits_{x \neq 0} \frac{\|Ax\|_Y}{\|x\|_x} = \inf\{ c > 0 \mid \|A_x\|_Y \le C \|x\|_X\}$.
+\end{theorem}
+\begin{proof}
+    Обозначим за $N_i$  $i$-ый элемент этой цепочки. 
+
+     $N_1 \ge N_2$ и $N_1 \le N_3$,  так как $N_2, N_3 \subset N_1$. 
+
+     $N_3 \ge N_4$. $\frac{\|Ax\|_Y}{\|x\|_X} = \frac{1}{\|x\|}\|Ax\|_Y = \|A \frac{x}{\|x\|}\|_X \le N_3$.
+
+     $N_4 = N_5$. $N_5 = \inf \{ c>0 \mid \frac{\|Ax\|_Y}{\|x\|_X} < c\}$
+\end{proof}
