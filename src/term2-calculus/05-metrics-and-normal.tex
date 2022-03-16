@@ -1053,4 +1053,54 @@
      $N_3 \ge N_4$. $\frac{\|Ax\|_Y}{\|x\|_X} = \frac{1}{\|x\|}\|Ax\|_Y = \|A \frac{x}{\|x\|}\|_X \le N_3$.
 
      $N_4 = N_5$. $N_5 = \inf \{ c>0 \mid \frac{\|Ax\|_Y}{\|x\|_X} < c\}$
+
+     Теперь докажем, что $N_1 \le N_2$. Пусть $\| x \| \le 1 \implies \| (1-\eps) x \| \le 1 \implies \| A((1-\eps)x) \| \le N_2$. Воспользуемся линейностью $A$: вытащим  $(1-\eps)$ за скобку. После этого устремим  $\eps$ к 0. Тогда  $\| Ax \| \le N_2 \implies N_1 = \sup\limits_{\| x \| \le 1} \| A x\| \le 1$.
+
+     Теперь докажем, что $N_1 \le N_4$. $\| x \| \le 1$. Тогда $y \coloneqq \frac{x}{\| x \|}$, $\|y\| = 1 \implies \| A_y \| \le N_4 \implies \| Ax \| \le \frac{1}{\|x \ | \cdot \| Ax \|} = \| A(\frac{x}{\| x \|}) \|  \le N_4 \implies N_1 = \sup\limits_{\|x \| \le 1} \|Ax\| \le N_4$.
 \end{proof}
+
+\begin{theorem}
+   $A\!: X \to Y$ --- линейный оператор. Следующие условия равносильны:
+   \begin{enumerate}
+       \item $A$ --- ограниченный оператор.
+       \item  $A$ --- непрерывна в нуле.
+       \item  $A$ --- непрерывна во всех точках.
+       \item $A$ --- равномерно непрерывна.
+   \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $4 \implies 3 \implies 2$ --- очевидно.
+
+    $1 \implies 4$  $\|Ax - Ay\|_Y = \|A(x-y)\|_Y \le \|A\| \cdot \|x-y\|_X$. Если $\|x-y\|_X < \frac{\eps}{\|A\|}$, то $\|Ax - Ay\| < \eps$.
+
+    $2 \implies 1$. Возьмем  $\eps = 1$ и  $\delta > 0$ из определения непрерывности.  $\forall x \in X\!: \|x \| < \delta \implies \|Ax\| < 1$.
+
+    Пусть $\|y\| < 1$. Тогда  $\|\delta y\| < \delta \implies \|A(\delta y)\| < 1 \implies \|Ay\| < \frac{1}{\delta} \implies \sum\limits_{\| y \| < 1} \| Ay\| \le \frac{1}{\delta}$.
+\end{proof}
+\begin{consequence}
+    \begin{enumerate}
+        \item $\|Ax\|_Y \le \| A \| \|x\|_X \quad \forall x\in X$.
+        \item $\| A B \| \le \|A \| \cdot \|B\|$.
+    \end{enumerate}
+\end{consequence}
+\begin{proof}
+    \begin{enumerate}
+        \item[2.] $\|A(Bx)\| \le \|A\| \cdot \|Bx\| \le \| A \| \|B\| \|x \|$.
+
+        $\|AB\| = \inf \{c > 0 \mid \|A(Bx)\| \le C\|x\|\} \implies \| AB\| \le \|A\|\|B\|$.
+
+    \item[1.] а где
+    \end{enumerate}
+\end{proof}
+\begin{theorem}
+    $A\!: \R^n \to \R^m$.  $A = \begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{m1} & \ldots & a_{mn} \end{pmatrix}$.
+
+    Тогда $\|A\|^2 \le \sum\limits_{k=1}^n \sum\limits_{j=1}^m a_{jk}^2$. В частности, все такие операторы ограничены.
+\end{theorem}
+\begin{proof}
+    $\|Ax\|^2 = \sum\limits_{j=1}^m \left(\sum\limits_{k=1}^n a_{jk} x_k \right)^2 \le\ \text{(Коши-Буняковский)}\ \sum\limits_{j=1}^m \sum\limits_{k=1}^n a_{jk}^2 \underbrace{\sum\limits_{k=1}^n x_k^2}_{=\|x\|^2}$. Следовательно, $\|Ax\| \le \|x\| \sqrt{\sum\limits_{k=1}^m \sum\limits_{j=1}^n a_{jk}^2}$ /
+\end{proof}
+\begin{remark}
+    В бесконечномерном случае бывают неограниченные операторы.
+\end{remark}
+

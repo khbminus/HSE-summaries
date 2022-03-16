@@ -150,3 +150,145 @@
          \item Легко показать, что  $(ab)(cd) = (cad)(abc) \in \langle (ijk) \rangle$. 
     \end{enumerate}
 \end{proof}
+
+\begin{definition}
+    $a \underset{H}{\equiv} b \Leftarrow a \in bH$.
+\end{definition}
+\begin{example}
+   $H = \{ n\Z \mid x\in \Z\}$ --- подгруппа.  
+
+   $b \cdot H = b + H$ --- класс вычетов по модулю  $n$. $a \in bH$  $a = b\cdot h, h \in H \iff b^{-1}a \in H$.
+
+   $a \underset{H}{\equiv}b$, если  $a \in Hb$ ($ab^{-1} \in H$).
+\end{example}
+\Subsection{Факторгруппа}
+\begin{definition}
+    $H \le G$ называется нормальной ($H \trianglelefteq G$), если выполнено любое из трех равносильных утверждений:
+    \begin{enumerate}
+        \item $a \underset{H}{\equiv} b, c \underset{H}{\equiv} d \implies ac = bd \quad \forall a,b,c,d \in G$.
+        \item $\forall a \in G\!: aH=Ha$.
+        \item  $\forall h \in H, g \in G\!: g^{-1}hg \in H$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    $g^{-1}hg$ и  $h$ называются сопряженными по средством  $h$.
+\end{definition}
+\begin{proof}
+    Направления доказательства $3 \implies 1$.
+
+     $a \equiv b \implies a = bh_1, c \equiv d \implies c = dh_2$, где $h_1, h_2 \in H$ $\implies ac = bh_1dh_2 = bdd^{-1}h_1dh_2 = bd \cdot h_3 \cdot h_2$, $h_3, h_2 \in H \implies \in bdH$.
+\end{proof}
+\begin{remark}
+    Сопряженность --- отношение эквивалентности.
+    $G = \bigsqcup\limits_i C_i$,  $C_i$ --- класс сопряженности.
+\end{remark}
+\begin{definition}
+    $H \trianglelefteq G$. Факторгруппой  $G / H$ называется множество классов смежности со следующей операцией $(a\cdot H)(b\cdot H) = ab \cdot H$.
+
+    Обозначение: $\overline{a_H}$,  $\overline{a_H} \cdot \overline{b_H} \coloneqq \overline{ab}_H$. Заметим, что первое определение нормальности показывает корректность данной операции.
+\end{definition}
+\begin{example}
+    $G = S_n$.  $H \trianglelefteq S_n \implies \left[ \begin{array}{l} H = \{e\} \\ H = S_n \\ H = A_n \end{array} \right.$
+
+     $G / G = \{ \overline{e} \}$,  $G / \{e\} \cong G$. 
+
+     $S_n / A_n$:  $e \cdot A_n = A_n$,  $(12) \cdot A_n = S_n \setminus A_n$.
+\end{example}
+
+Напоминание: ($K$ --- поле) $GL_n(K)$ --- обратимые матрицы размера  $n$,  $SL_n(K) = \{ A \in M_n(K) \mid \det A = 1\}$. 
+
+\begin{statement}
+    $SL_n(K) \trianglelefteq Gl_n(K)$. 
+
+     $GL_n(K) / SL_n(K)$.  $A \cdot SL_n(K) = \{B \mid \det B = \det A \}$.
+
+     Поэтому  $GL_n(K) / SL_n(K) \cong K^*$.
+\end{statement}
+
+\begin{statement}
+    $T$ --- множество диагональных матриц, причем  $a^n = 1$. Тогда  $T \trianglelefteq SL_n(K), SL_n(K) / T = PSL_n(K)$ --- projective special group.
+\end{statement}
+\begin{example}
+    $f = \{ \begin{array}{l} ax + b \\ cx + d \end{array} \mid ad - bc \neq 0 \}$ --- группа дробно-линейных преобразований над $K$. $f \leadsto = \begin{pmatrix} a & b \\ c & d \end{pmatrix} = A$,  $f_1 \leadsto \begin{pmatrix} a_1 & b_1 \\ c_1 & d_1 \end{pmatrix} = A_1$, $f \circ f_1 \leadsto A \cdot A_1$. То есть группа дробно-линейных преобразований ---   $PGL_2(n)$.
+\end{example}
+\Subsection{Теорема о гомоморфизме}
+Пусть $G_1, G_2$ --- группы. $f\!: G_1 \to G_2$ --- гомоморфизм, если $f(g_1g_2) = f(g_1)f(g_2)$. Изоморфизм $\iff$ гомоморфизм + биекция.  $f$ --- автоморфизм  $\iff$ изоморфизм и  $G_1 = G_2$.
+\begin{remark}
+    $G$ --- абелева,  $f(g) = g^{-1}$ --- автоморфизм.
+
+     $g_0 \in G$ --- фиксированно, $f_2(g) = g_0^{-1}gg_0$ --- автоморфизм сопряжения.
+\end{remark}
+
+$\ker f = \{g \in G \mid f(g) = e_{G_2}\}$ --- ядро гомоморфизма.  $\Im f = \{ f(g) \mid g \in G \}$ --- образ гомоморфизма.
+
+\begin{lemma}
+    $f\!: G_1 \to G_2$, $\Im f \le G_2, \ker f \trianglelefteq G_1$.
+\end{lemma}
+\begin{proof}
+    $f(g_1) = e, f(g_2) = e$. $f(g_1g_2) = f(g_1)f(g_2) = e$.
+    $f(e_{G_1}) = e_{G_2}, f(e) = f(e \cdot e) = f(e) \cdot f(e)$.
+
+    $h \in \ker f(g^{-1}hg) = (f(g))^{-1} f(h)f(g) = (f(g))^{-1} f(g) = e$.
+\end{proof}
+\begin{theorem}
+    $f\!: G_1 \to G_2 \implies G_1 / \ker f \cong \Im f$.
+\end{theorem}
+\begin{proof}
+    Возьмем $a \in \Im f$. Рассмотрим  $f^{-1}(a) = \{b \mid f(b) = a\}$. Возьмем $b_0 \in f^{-1}(a)$, тогда  $b \in f^{-1}(a) \iff f(b) = f(b_0) \iff f(bb_0^{-1}) = e \iff bb_0^{-1} \in \ker f \iff b \in b_0 \cdot \ker f$.
+
+    $f^{-1}(a) = b_0 \ker f$.
+
+    Построим  $\widetilde{f}\!: G_1 / \ker f  \to \Im f$. $\widetilde{f}(G \ker f) = f(b)$.
+    \begin{enumerate}
+         \item $\widetilde{f}$ корректно.  $c \in b \ker f \implies f(c) = f(bh) = f(b) f(h) = f(b)$.
+         \item $\widetilde{f}$ --- гомоморфизм:  $\widetilde{f}(\overline{a} \cdot \overline{b}) = \widetilde{f}(\overline{ab}) = f(ab) = f(a)f(b) = \widetilde{f}(\overline{a}) \widetilde{f}(\overline{b})$.
+         \item  $\widetilde{f}$ --- суръективно.  $a \in \Im f \implies a = f(b) \implies a = \widetilde{f}(\overline{b})$.
+         \item  $\widetilde{f}$ --- инъективно.  $\widetilde{f}(\overline{b}) = e \implies f(b) = e \iff b \in \ker f \iff \overline{b} = e$.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    $G = \R^*, H = \R_+^*$.  $G / H \cong \{1, -1\} \cong \Z / 2\Z$.
+     $f\!: G \to G$,  $f(x) = \frac{x}{|x|} = \text{sgn}(x)$.
+\end{example}
+\begin{example}
+    $G = D_4$ --- группа самосовмещений квадрата. $|D_4| = 8$. Есть $1$, 3 поворота и 4 оси симетрии. 
+
+     $|G / H| = 4, G / G = F_2^2$. Первый бит --- поворот на $\frac{\pi}{2}$ и зеркаливание. 
+\end{example}
+\begin{example}
+    $G_1 / G_2$ --- группы. $G = G_1 \times G_2$, $\widetilde{G_1} = \{ (g_1, 3) \mid g_1 \in G_1 \} \cong G_1$.
+
+    $G / G_1 \cong G_2$. $f\!: G_1 \times G_2 \to G_2$, $(g_1, g_2) \to g_2$, $\ker f = \widetilde{G_1}, \Im f = G_2 \implies G / G_1 = G_2$.
+\end{example}
+
+Пусть $G$ --- большая группа. Возьмем  $H \trianglelefteq G$, заменим  $G$ на  $(H, G / H)$. Например, может оказаться, что  $G \cong H \times G / H$.
+
+Пример, $H \cong \Z / 2 \Z, G / H \cong \Z / 2 \Z$, то тогда либо  $G \cong \Z / 2 \Z \times \Z / 2 \Z$ и  $G \cong \Z / 4 \Z$.
+\begin{definition}
+    $G$ --- называется простой, если у нее нет нетривиальных нормальных подгрупп.    
+\end{definition}
+\begin{theorem}
+    $A_n$ --- проста ($n \ge 5$).
+\end{theorem}
+\begin{theorem}
+    $PSL_n(K)$ проста для большинства  $n$.
+\end{theorem}
+\begin{theorem}
+    \slashn
+    $G$ --- конечная простая  $\implies \left[\begin{array}{ll} G \cong \Z / p \Z & p\text{ --- простое} \\ G \cong A_n & n \ge 5 \\ G \cong PSL_n(K) & K\text{ --- конечное поле} \\ \text{еще несколько матричных групп}&\\\text{еще 26 исключительных простых групп}&\end{array}\right.$
+\end{theorem}
+\Subsection{Действие групп}
+\begin{definition}
+    $G$ --- группа,  $M$ --- множество.
+
+    Действие  $G$ на $M$ --- отображение из  $G \times M \to M$.  $(g, m) \to g \cdot m$, такая что
+     \begin{enumerate}
+         \item $(g_1g_2) m = g_1(g_2m)$ и $em = m$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}[Альтернаивное определение]
+    $G$ действует на  $M$, если задан гомоморфизм  $f\!: G \to S(M)$.
+\end{definition}
+\begin{remark}
+    Построим $f_g\!: M \to M, m \mapsto g \cdot m$. Это биекция.
+\end{remark}
