@@ -20,6 +20,8 @@ jobs:
           glob_root_file: true
           latexmk_use_xelatex: true
           work_in_root_file_dir: true
+         extra_fonts: |
+           ./otf-cm-unicode/*.otf
       - name: Make release
         uses: softprops/action-gh-release@v1
         with:
