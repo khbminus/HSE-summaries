@@ -12,7 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Compile latex to pdf
         uses: xu-cheng/latex-action@v2
         with:
