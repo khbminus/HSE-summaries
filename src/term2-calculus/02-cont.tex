@@ -85,10 +85,10 @@
         \item $f$ равномерно непрерывна на $E \iff \omega_f$ непрерывна в нуле  $\iff \lim\limits_{\delta \to 0+} \omega_f(\delta) = 0$.
             \begin{proof}
                  \begin{itemize}
-                     \item $1 \to 2$.  $\forall \eps > 0 \gamma > 0 \forall x, y \in E\!: |x-y| < \gamma \implies |f(x) - f(y)| < \eps$. 
+                     \item $1 \to 2$.  $\forall \eps > 0 \exists \gamma > 0 \forall x, y \in E\!: |x-y| < \gamma \implies |f(x) - f(y)| < \eps$. 
 
-                         Возьмем  $\delta < \gamma$. Тогда $|x-y| \le \delta \implies |x-y| < \gamma \implies |f(x) - f(y)| < \eps \implies \sup \le \eps$.
-                     \item $2 \to 1$. Из $\lim\limits_{\delta \to 0+} \omega_f(\delta) = 0$. Возьмем  $\gamma > 0$:  $|f(x) - f(y)| \le \omega_f(\delta) < \eps\ \forall \delta \gamma$, $\forall x, y \in E\!: |x-y| \le \delta$.
+                         Возьмем  $\delta < \gamma$. Тогда $|x-y| \le \delta \implies |x-y| < \gamma \implies |f(x) - f(y)| < \eps \implies \sup \le \eps$. Тогда с одной стороны $\omega_f \ge 0$, а с другой ограничена $\eps$. Следовательно предел $\omega_f$ равен  $0$.
+                     \item $2 \to 1$. Из $\lim\limits_{\delta \to 0+} \omega_f(\delta) = 0$. Возьмем  $\delta > 0$ для $\omega_f(\delta) < \eps$:  $|f(x) - f(y)| \le \omega_f(\delta) < \eps\ \forall \eps$, $\forall x, y \in E\!: |x-y| \le \delta$.
                 \end{itemize}
             \end{proof}
         \item $f \in C[a, b] \iff \omega_f$ непрерывен в нуле $\iff \lim \omega_f(\delta)= 0$. 

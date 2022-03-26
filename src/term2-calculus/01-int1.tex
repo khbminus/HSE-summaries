@@ -235,7 +235,7 @@
 \begin{theorem}[Аддиктивность интеграла]
     Пусть $f\!: [a, b] \to \R$,  $c \in [a, b]$.
 
-    Тогда  $\int\limits_a^b f = \sum\limits_a^c f + \sum\limits_c^b f$.
+    Тогда  $\int\limits_a^b f = \int\limits_a^c f + \int\limits_c^b f$.
 \end{theorem}
 \begin{proof}
     $\int\limits_a^b f = \sigma(P_{f_+}([a, b])) - \sigma(P_{f_-}([a, b]))$. Разделим наш $[a, b]$  вертикальной прямой $x=c$. Тогда  можно воспользоваться свойством 3 из определения квазиплощади.
@@ -357,7 +357,7 @@
 \begin{theorem}[Формула замены переменной]
     Пусть $f \in C[a, b]$, $\vphi\!: [c,d] \to [a,b]$, $\vphi \in C^1[c,d], p, q \in [c, d]$.
 
-    Тогда  $\int\limits_a^b f(\vphi(t)) \vphi'(t) \mathrm{d}t = \int\limits_{\vphi{p}}^{\vphi{q}} f(x) \mathrm{d}x$.
+    Тогда  $\int\limits_p^q f(\vphi(t)) \vphi'(t) \mathrm{d}t = \int\limits_{\vphi(p)}^{\vphi(q)} f(x) \mathrm{d}x$.
 \end{theorem}
 \begin{proof}
     Пусть $F$ --- первообразная  $f$. Тогда  $\int\limits_{\vphi(p)}^{\vphi(q)}f(x) \mathrm{d}x = F \mid_{\vphi(p)}^{\vphi(q)} = F_0\vphi\mid_p^q$, где $F_0\vphi$ --- первообразная для  $f(\vphi(t))\vphi'(t)$.
@@ -425,7 +425,7 @@
 %END TICKET 09
 %BEGIN TICKET 10
 \begin{theorem}[Формула Тейлора (с остатком в интегральной форме)]
-    Пусть $f \in C^n[a, b]$,  $x, x_0 \in [a, b]$. Тогда: \[
+    Пусть $f \in C^{n+1}[a, b]$,  $x, x_0 \in [a, b]$. Тогда: \[
         f(x) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{1}{n!} \int\limits_{x_0}^x (x-t)^n f^{(n+1)}(t) \mathrm{d}t
     .\] 
 \end{theorem}
@@ -445,8 +445,8 @@
     \begin{align}
     H_j \coloneqq \frac{1}{j!} \int\limits_0^{\frac{\pi}{2}}\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^j \cos x \mathrm{d}x.
     \end{align}
-    \textbf{Свойство 1.} $0 < H_j \le \frac{1}{j}\left(\frac{\pi}{2}\right)^{2j} \int\limits_0^{\frac{\pi}{2}} \cos x \mathrm{d}x = \frac{\left(\frac{\pi}{2}\right)^{2j}}{j!}$.\\
-    \textbf{Свойство 2.} $\forall c > 0\!: c^j \cdot H_j \xrightarrow{j \to \inf} 0$.  $0 < c^j H_j \le \frac{\left(\frac{\pi}{2}\right)^{2j} \cdot c^j}{j!} = \frac{\left(\frac{\pi^2}{4}c\right)^j}{j!} \to 0$.\\
+    \textbf{Свойство 1.} $0 < H_j \le \frac{1}{j!}\left(\frac{\pi}{2}\right)^{2j} \int\limits_0^{\frac{\pi}{2}} \cos x \mathrm{d}x = \frac{\left(\frac{\pi}{2}\right)^{2j}}{j!}$.\\
+    \textbf{Свойство 2.} $\forall c > 0\!: c^j \cdot H_j \xrightarrow{j \to \infty} 0$.  $0 < c^j H_j \le \frac{\left(\frac{\pi}{2}\right)^{2j} \cdot c^j}{j!} = \frac{\left(\frac{\pi^2}{4}c\right)^j}{j!} \to 0$.\\
     \textbf{Свойство 3.} $H_0 = 1$,  $H_1 = 2$ (\textit{упражнение}).\\
     \textbf{Свойство 4.} $H_j = (4j - 2) H_{j-1} - \pi^2 H_{j-2}$, при  $j \ge 2$.
 \end{example}
