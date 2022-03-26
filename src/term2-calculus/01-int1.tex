@@ -115,7 +115,7 @@
 %BEGIN TICKET 01
 Пусть $\mathcal{F}$ --- совокупность (множество) ограниченных плоских фигур. 
 \begin{definition}
-    $\sigma\!: \mathcal{F} \to [0; +\infty)$, 
+    Площадь: $\sigma\!: \mathcal{F} \to [0; +\infty)$, причём 
      \begin{enumerate}
          \item $\sigma([a; b] \times [c, d]) = (b - a)(d - c)$
          \item (Аддитивность).  $\forall E_1, E_2 \in \mathcal{F}\!: E_1 \cap E_2 = \emptyset \Rightarrow \sigma(E_1 \cup E_2) = \sigma(E_1) + \sigma(E_2)$
@@ -128,7 +128,7 @@
     $E = \widetilde{E} \cup (\widetilde{E} \setminus E) \Rightarrow \sigma(\widetilde{E}) = \sigma(E) + \sigma(\widetilde{E} \setminus E)$.
 \end{proof}
 \begin{definition}
-    $\sigma\!: \mathcal{F} \to [0; +\infty]$, причем
+    Псевдоплощадь: $\sigma\!: \mathcal{F} \to [0; +\infty]$, причём
      \begin{enumerate}
          \item $\sigma([a; b] \times [c, d]) = (b - a)(d - c)$,
          \item $\forall E, \widetilde{E} \in \mathcal{F}\!: E \subset \widetilde{E} \Rightarrow \sigma(E) \le \sigma(\widetilde{E})$, 
@@ -137,7 +137,7 @@
 \end{definition}
 \begin{properties}
     \begin{enumerate}
-        \item Подмножество вертикальных или горизонтальных отрезков имеет нулевую площадь.
+        \item Подмножество вертикального или горизонтального отрезка имеет нулевую площадь.
         \item В определении $E_-$ и  $E_+$ не важно  куда относить точки из  $l$.
             \begin{proof}
                 Заметим, что $\sigma(E_- \cup (E \cap l)) = \sigma(E_- \setminus l) + \underbrace{\sigma(E \cap l)}_{=0} \Rightarrow$ вообще не имеет разницы куда относить точки из  $l$.
