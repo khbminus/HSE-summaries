@@ -207,27 +207,31 @@
 	Пусть $f\!: [a, b] \to [0; +\infty)$.
 
     Тогда подграфик $P_f([a; b]) \coloneqq \{(x, y) \in \R^2 \mid x \in [a, b], 0 \le y \le f(x)\}$.
+    Подграфик может быть взят и от какого-то подотрезка области определения функции!
 \end{definition}
 %END TICKET 03
 %BEGIN TICKET 04
 \begin{definition}
-    $\int\limits_a^b f = \int\limits_a^b f(x) dx = \sigma(P_{f_+}([a; b])) - \sigma(P_{f_-}([a; b]))$.
+    Пусть $f \in C([a, b])$. Зафиксируем произвольную квазиплощадь $\sigma$. Тогда
+    Определённый интеграл: $\int\limits_a^b f = \int\limits_a^b f(x) dx = \sigma(P_{f_+}([a; b])) - \sigma(P_{f_-}([a; b]))$.
+
+    Определение корректно, поскольку, раз функция непрерывна, то и составляющие непрерывны на отрезке, значит ограничены, значит под $\sigma$ ограниченные множества, на которых $\sigma$ определена. А позже проверим, что результат не зависит и от выбора $\sigma$.
 \end{definition}
 \begin{properties}
     \begin{enumerate}
         \item $\int\limits_a^a f = 0$.
-        \item $\int\limits_a^b = c(b-a)$
+	\item $\int\limits_a^b c = c(b-a), c \ge 0$ (для отрицательных будет следовать из пунктов ниже)
             \begin{proof}
                 По графику очевидно :)
             \end{proof}
         \item $f \ge 0 \Rightarrow \int\limits_a^b = \sigma(P_f)$.
         \item $\int\limits_a^b (-f) = -\int\limits_a^b f$.
              \begin{proof}
-                 $(-f)_+ = \max\{-f, 0\} = f_-$.  $(-f)_- = \max\{f, 0\} = f+$.  Откуда все и следует.
+		     $(-f)_+ = \max\{-f, 0\} = f_-$.  $(-f)_- = \max\{f, 0\} = f+$, откуда $\int_a^b (-f) = \sigma(P_{(-f)_+}) - \sigma(P_{(-f)_-}) = \sigma(P_{f_-}) - \sigma(P_{f_+}) = -\int_a^b f$
             \end{proof}
         \item $f \ge 0 \land \int\limits_a^b = 0 \land a < b \Rightarrow f = 0$.
             \begin{proof}
-                От противного. $\exists c \in [a, b]\!: f(c) > 0$. Тогда, возьмем $\eps \coloneqq \frac{f(c)}{2}, \delta$ из определения непрерывности в точке $c$. Если  $x \in (c - \delta, c + \delta)$, то  $f(x) \in (f(c) - \eps, f(c) + \eps) = (\frac{f(c)}{2}; \frac{3f(c)}{2}) \Rightarrow f(x) \ge \frac{f(c)}{2}$ при $x \in (c - \delta; c + \delta) \Rightarrow P_f \supset [c-\frac{\delta}{2}; c + \frac{\delta}{2}]\times[0; \frac{f(c)}{2}] \Rightarrow \int\limits_a^b f = \sigma(P_f) \ge \delta \cdot \frac{f(c)}{2} > 0$
+                От противного. $\exists c \in [a, b]\!: f(c) > 0$. Тогда, возьмем $\eps \coloneqq \frac{f(c)}{2}, \delta$ из определения непрерывности в точке $c$. Если  $x \in (c - \delta, c + \delta)$, то  $f(x) \in (f(c) - \eps, f(c) + \eps) = (\frac{f(c)}{2}; \frac{3f(c)}{2}) \Rightarrow f(x) \ge \frac{f(c)}{2}$ при $x \in (c - \delta; c + \delta) \Rightarrow P_f \supset [c-\frac{\delta}{2}; c + \frac{\delta}{2}]\times[0; \frac{f(c)}{2}] \Rightarrow \int\limits_a^b f = \sigma(P_f) \ge \delta \cdot \frac{f(c)}{2} > 0$, противоречие.
             \end{proof}
     \end{enumerate}
 \end{properties}
