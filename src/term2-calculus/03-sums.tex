@@ -36,7 +36,7 @@
 \renewcommand{\footrulewidth}{0.15 mm}
 \fi
 \Subsection{Интегральные суммы}
-%BEGIN TICKET 15
+%BEGIN TICKET 14
 \begin{definition}
     Пусть есть $[a, b]$. Тогда дробление (разбиение, пунктир) отрезка: набор точек:  $x_0 = a < x_1 < x_2 < \ldots < x_n = b$.
 \end{definition}
@@ -52,8 +52,8 @@
 
     \textit{По факту просто сумма прямоугольников под графиком рисунок принял ислам очень жаль.}
 \end{definition}
-%END TICKET 15
-%BEGIN TICKET 16
+%END TICKET 14
+%BEGIN TICKET 15
 \begin{theorem}[Теорема об интегральных суммах]
     Пусть $f \in C[a, b]$,
 
@@ -69,7 +69,7 @@
     .\] 
 \end{proof}
 \begin{consequence}
-    $\forall \eps > 0 \exists \delta > 0 \forall$ дробления ранга  $\le \delta$ $\forall$ оснащения  $|\int\limits_a^b - S(f, \tau, \xi) < \eps|$
+    $\forall \eps > 0 \exists \delta > 0 \forall$ дробления ранга  $\le \delta$ $\forall$ оснащения  $|\int\limits_a^b - S(f, \tau, \xi)| < \eps$
 \end{consequence}
 \begin{consequence}
     Если $\tau_n$ последовательность дроблений, ранг которых  $\to 0$, то $S(f, \tau_n, \xi_n) \to \int\limits_a^b f$.  
@@ -77,7 +77,7 @@
 \begin{example}
     $S_p(n) \coloneqq 1^p + 2^p + \ldots + n^p$. Посчитаем $\lim\limits_{n \to \infty} \frac{S_p(n)}{n^{p+1}}$.
 
-    Возьмем $f\!L [0,1 ] \to \R\quad f(t) = t^p$
+    Возьмем $f\!: [0,1] \to \R\quad f(t) = t^p$
     $\frac{S_p(n)}{n^{p+1}} = \frac{1}{n} \cdot \sum\limits_{k=1}^n \left(\frac{k}{n}\right)^p = S(f, \tau, \xi)$, где $x_k = \xi_k = \frac{k}{n}$.
 
     Тогда $\lim \frac{S_p(n)}{n^{p+1}} = \int\limits_0^1 t^p \mathrm{d}t = \frac{t^{p+1}}{p+1} \mid_{t=0}^{t=1} = \frac{1}{p+1}$
@@ -88,8 +88,8 @@
 
      $I$ --- интеграл по Риману  $\int\limits_a^b f$.
 \end{definition}
-%END TICKET 16
-%BEGIN TICKET 17
+%END TICKET 15
+%BEGIN TICKET 16
 \begin{lemma}
     $f \in C^2[\alpha, \beta]$. Тогда  \[\int\limits_a^b f(t)\mathrm{d}t - \frac{f(\alpha) + f(\beta)}{2}(\beta - \alpha) = -\frac{1}{2} \int\limits_\alpha^\beta f''(t)(t-\alpha)(\beta-t)\mathrm{d}t.\]
 \end{lemma}
@@ -117,9 +117,9 @@
 \begin{proof}
     $\Delta \coloneqq \int\limits_a^b - \sum \ldots = \sum\limits_{k=1}^n \int\limits_{x_{k-1}}^{x_k} - \sum\limits_{k=1}^n \frac{f(x_{k-1}) + f(x_k)}{2}(x_k - x_{k-1})$
 
-    \[
-        |\Delta| \le  \sum\limits_{k=1}^n |\int\limits_{x_{k-1}}^{x_k} - \frac{f(x_{k-1}) + f(x_k)}{2}(x_k - x_{k-1})| = \frac{1}{2} \sum\limits_{k=1}^n \left| \int_{x_{k-1}}^{x_k} f''(t)(t-x_{k-1})(x_k - t)\mathrm{d}t\right|
-    .\] Тогда вспомним, что $(t-x_{k-1})(x_k - t) \le \left( \frac{x_k - x_{k-1}}{2}\right)^2 \le \frac{|\tau|^2}{4} \le \frac{1}{2} \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k}|f''(t)| \cdot \frac{|\tau|^2}{4} \mathrm{d}t = \frac{|\tau|^2}{8} \sum \int\limits_{x_{k-1}}^{x_k} |f''| = \frac{|\tau|^2}{8} \cdot \int\limits_a^b |f''|$
+    \begin{align}
+        |\Delta| \le  \sum\limits_{k=1}^n |\int\limits_{x_{k-1}}^{x_k} f\mathrm{d}t - \frac{f(x_{k-1}) + f(x_k)}{2}(x_k - x_{k-1})| = \frac{1}{2} \sum\limits_{k=1}^n \left| \int_{x_{k-1}}^{x_k} f''(t)(t-x_{k-1})(x_k - t)\mathrm{d}t\right|
+    .\end{align} Тогда вспомним, что $(t-x_{k-1})(x_k - t) \le \left( \frac{x_k - x_{k-1}}{2}\right)^2 \le \frac{|\tau|^2}{4} \implies (4) \le \frac{1}{2} \sum\limits_{k=1}^n\ \int\limits_{x_{k-1}}^{x_k}|f''(t)| \cdot \frac{|\tau|^2}{4} \mathrm{d}t = \frac{|\tau|^2}{8} \sum \int\limits_{x_{k-1}}^{x_k} |f''| = \frac{|\tau|^2}{8} \cdot \int\limits_a^b |f''|$
 \end{proof}
 \begin{remark}
     Пусть разбиение на $n$ равных отрезков  $x_k - x_{k-1} = \frac{b-a}{n} = |\tau|$:
