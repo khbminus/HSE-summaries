@@ -112,6 +112,7 @@
     $(fg - H)' = f'g + gh' - H' = f'g + fg' - f'g = fg'$. 
 \end{proof}
 \Subsection{Определенный интеграл}
+%BEGIN TICKET 01
 Пусть $\mathcal{F}$ --- совокупность (множество) ограниченных плоских фигур. 
 \begin{definition}
     $\sigma\!: \mathcal{F} \to [0; +\infty)$, 
@@ -143,6 +144,8 @@
             \end{proof}
     \end{enumerate}
 \end{properties}
+%END TICKET 01
+%BEGIN TICKET 02
 \begin{example}
     \slashn
      \begin{enumerate}
@@ -184,6 +187,8 @@
             Тогда посмотрим на $P_k$. Проведем прямые содержащие все стороны прямоугольников из разбиения. Заметим, что получили разбиение с суммой равной  $|P|$. Тогда заметим, что некоторые части разбиения встречаются в  $P_k$ несколько раз. А значит выкинув все лишнее мы как раз получим  $|P|$, а значит  $\sigma_1(P) \ge |P|$.
     \end{enumerate}
 \end{proof}
+%END TICKET 02
+%BEGIN TICKET 03
 \begin{definition}
     Пусть $f\!: [a, b] \to \R$. Тогда  $f_+, f_-\!: [a, b] \to [0; +\inf)$. Причем  $f_+(x) = \max\{f(x), 0\}$,  $f_- = \max\{-f(x), 0\}$.
 \end{definition}
@@ -201,6 +206,8 @@
 
     Тогда, подграфик $P_f([a; b]) \coloneqq \{(x, y) \in \R^2 \mid x \in [a, b], 0 \le y \le f(x)\}$.
 \end{definition}
+%END TICKET 03
+%BEGIN TICKET 04
 \begin{definition}
     $\int\limits_a^b f = \int\limits_a^b f(x) dx = \sigma(P_{f_+}([a; b])) - \sigma(P_{f_-}([a; b]))$.
 \end{definition}
@@ -222,7 +229,9 @@
             \end{proof}
     \end{enumerate}
 \end{properties}
+%END TICKET 04
 \Subsection{Свойства интеграла}
+%BEGIN TICKET 05
 \begin{theorem}[Аддиктивность интеграла]
     Пусть $f\!: [a, b] \to \R$,  $c \in [a, b]$.
 
@@ -264,6 +273,8 @@
 \begin{definition}
     $I_f \coloneqq \frac{1}{b-a} \int\limits_a^b f$ --- среднее значения $f$ на отрезке  $[a, b]$.
 \end{definition}
+%END TICKET 05
+%BEGIN TICKET 06
 \begin{definition}
     $f\!: [a, b] \to \R$. Интеграл с переменным верхним пределом  $\Phi(x) \coloneqq \int\limits_a^x f$, где  $x \in [a, b]$.
 \end{definition}
@@ -313,6 +324,8 @@
 \begin{definition}
     $F\mid_a^b \coloneqq F(b) - F(a)$
 \end{definition}
+%END TICKET 06
+%BEGIN TICKET 07
 \begin{theorem}[Линейность интеграла]
     $\int\limits_a^b(\alpha f + \beta g) = \alpha \int\limits_a^b f + \beta \int\limits_a^b g$.
 \end{theorem}
@@ -362,7 +375,9 @@
     (1) = \int_{0}^{\frac{\pi}{2}} \frac{\vphi'(t)}{1 + (\vphi(t))^2} = \int_{\vphi(0)}^{\vphi(\frac{\pi}{2})} f(x)\mathrm{d}x = \int_0^1 \frac{\mathrm{d}x}{1+x^2} = \arctg x \mid_0^1 = \frac{\pi}{4}.
 \end{align*}
 \end{example}
+%END TICKET 07
 \Subsection{Приложения формулы интегрирования по частям}
+%BEGIN TICKET 08
 \begin{example}
     $W_n \coloneqq \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x = \int\limits_0^{\frac{\pi}{2}}\cos^n t \mathrm{dt} = (1)$
 
@@ -381,6 +396,8 @@
 
     Для нечетных: $W_{2n + 1} = \frac{2n}{2n+1} W_{2n-1} = \frac{2n}{2n+1} \cdot \frac{2n-2}{2n-1}W_{2n-3} = \ldots = \frac{(2n)!!}{(2n+1)!!}W_1 = \frac{(2n)!!}{(2n+1)!!}$
 \end{example}
+%END TICKET 08
+%BEGIN TICKET 09
 \begin{theorem}[Формула Валлиса]
     \[
         \lim_{n\to \inf} \frac{(2n)!!}{(2n-1)!!} \cdot \frac{1}{\sqrt{2n+1}} = \sqrt{\frac{\pi}{2}}
@@ -405,6 +422,8 @@
     При этом из Валлиса, заметим, что $\frac{(2n)!!}{(2n-1)!!} \sim \sqrt{\frac{\pi}{2}} \sqrt{2n + 1} \sim \sqrt{\frac{\pi}{2}} \sqrt{2n} = \sqrt{\pi n}$. А значит все сойдется.
 \end{proof}
 
+%END TICKET 09
+%BEGIN TICKET 10
 \begin{theorem}[Формула Тейлора (с остатком в интегральной форме)]
     Пусть $f \in C^n[a, b]$,  $x, x_0 \in [a, b]$. Тогда: \[
         f(x) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{1}{n!} \int\limits_{x_0}^x (x-t)^n f^{(n+1)}(t) \mathrm{d}t
@@ -420,6 +439,8 @@
             Подставим: $\int\limits_{x_0}^x (x-t)^n f^{(n+1)}(t) \mathrm{d}t = -\frac{(x-t)^{n+1}}{n+1} \cdot f^{(n+1)}(t) \mid_{t=x_0}^{t=x} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t = \underbrace{\frac{1}{n+1}(x-x_0)^{n+1}f^{(n+1)}(x_0)}_{\text{новый член Тейлора!}} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t$
     \end{itemize}
 \end{proof}
+%END TICKET 10
+%BEGIN TICKET 11
 \begin{example}
     \begin{align}
     H_j \coloneqq \frac{1}{j!} \int\limits_0^{\frac{\pi}{2}}\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^j \cos x \mathrm{d}x.
@@ -451,4 +472,4 @@
     От противного. Пусть $\pi^2$ --- рационально. Тогда пусть  $\pi^2 = \frac{m}{n}$. Тогда $H_j = P_j(\frac{m}{n}) = \frac{\text{целое число}}{n^j} > 0$.\\
     $n^j H_j = \text{целое число} > 0 \Rightarrow n^j H_j \xrightarrow{j \to +\inf} 0$, но $n^j H_j \ge 1$.
 \end{proof}
-
+%END TICKET 11

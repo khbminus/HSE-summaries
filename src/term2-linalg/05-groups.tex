@@ -292,3 +292,132 @@ $\ker f = \{g \in G \mid f(g) = e_{G_2}\}$ --- ядро гомоморфизма
 \begin{remark}
     Построим $f_g\!: M \to M, m \mapsto g \cdot m$. Это биекция.
 \end{remark}
+
+Говорят $g$ действует на  $M$.  $M$ ---  $G$-множество.  $G \acts M$.
+\begin{example}
+    \begin{enumerate}
+        \item $I_n = \{1..n\}$,  $G = S_n$.  $G \acts I_n$. 
+        \item  $I_n \times I_n \quad S_n \acts I_n \times I_n \quad \pi(x, y) = (\pi(x), \pi(y))$
+        \item  $M=2^{I_n}$.  $S_n \acts 2^{I_n}$.  $\pi \cdot \{x_1, \ldots, x_n\} = \{\pi(x_1),\ldots, \pi(x_n)\}$.
+        \item $K$ --- поле.  $K^*$ действует на  $K$ гомоморфизмами.
+            
+            ВАЖНО!!!!!!!  $a\cdot b = ab$.
+        \item  $(\langle g \rangle)C_n \acts \CC$  $g \cdot z = e^{\frac{2\pi i}{n}} \cdot z$ --- поворот на $\frac{2\pi}{n}$. $g^{k}z = e^{\frac{2\pi i k}{n}z}.$
+        \item $S_3 \acts \CC$.  $(123)$ --- умножение на  $-\frac{1}{2} + \frac{\sqrt{3}}{2}i$. $(12) \cdot z = \overline{z}$.
+    \end{enumerate} 
+\end{example}
+\begin{definition}
+    $G$ точно действует на  $M$, если  $G \to S(M)$ --- инъективно. 
+
+    Неточное действие: $G \acts M$  $g \cdot m \coloneqq m$ --- тривиальное действие.
+\end{definition}
+
+$S_3 \acts M$ изометриями (точно).  Не $\exists$ точного действия на  $S_4 \acts M$.
+\begin{example}[Примеры из теории групп]
+Действие сдвигами $G \acts G\!: a \cdot b = a \cdot b$.
+
+ $H \le G$. $G \acts G / H$,  $g_1 (g_2H) = (g_1g_2)H$.
+ $\forall $ действие на чтобы то не было сводится к тому, что выше.
+
+  $G \acts G$ сопряжениями:  $a \cdot b = aba^{-1}$. Действие автоморфизмами  $g_1(b) = aba^{-1}$.
+\end{example}
+
+\Subsection{Орбиты и стабилизаторы}
+\begin{definition}
+    $G \acts M$.  $m_1 \sim m_2 \Leftarrow \exists g\!: gm_1 = m_2$.
+\end{definition}
+\begin{statement}
+    $\sim$ --- отношение эквивалентности.
+\end{statement}
+\begin{definition}
+    Класс эквивалентности $\sim$ называется орбитой действия.
+\end{definition}
+\begin{definition}
+    Орбита элемента --- $G \cdot m = \{g \cdot m \mid g \in G\}$.
+\end{definition}
+ \begin{remark}
+    $M$ --- дизъюнктное объединение орбит.
+    $M = \bigcup\limits_{i \in I} O_i$ --- орбиты. 
+
+    тогда $O_i$ ---  $G$-множества.  $x \in O_i, g \in G \implies gx \in O_i$ --- транзитивные множества.
+\end{remark}
+\begin{definition}
+    Множество называется транзитивным, если $\forall m_1, m_2 \in M \exists g \in G\!: gm_1 = m_2$.
+\end{definition}
+\begin{definition}
+    $I_{so}(2)$ --- группа изометрий плоскости. Транизитивно: на точки/прямые, не транзитивно на отрезки.
+\end{definition}
+\begin{definition}
+    $G \acts M$,  $m \in M$. Стабилизатор  $G_m = \{g \in G \mid gm = m\}$.
+\end{definition}
+\begin{example}
+    $S_4 \acts 2^{I_4}$.  $m = \{1,2\}, G \cdot m = \{ \{1,2\}, \{1,3\}, \{1,4\}, \{2,3\},\{2,4\},\{3,4\}\}, G_m = \langle (34), (12) \rangle$.
+\end{example}
+\begin{theorem}
+    \begin{enumerate}
+        \item $G_m \le G$.
+        \item $m \in M, n \in Gm$.  Тогда $\exists$ биекция  $n = g_0m, m=g_1n$. Причем $\{g \mid gm = n\} = g_0 G_m$, $\{g \mid gbn = m \} = G_mg_1$.
+        \item $|Gm| \cdot |G_m| = |G|$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Очев.
+        \item $g_0G_m \subset \{g \mid gm = n\}$ --- ясно. $\supset$: пусть  $gm = n$.  $g_0^{-1}gn = g_0^{-1}n = m \implies g_0^{-1}g \in Gm \implies g \in g_0m$.
+        \item из $2)$ биекция: элементы орбиты $M \leftrightarrow $ смежные классы  $\implies |Gm| = |G : G_m| \implies |Gm|\cdot |G_m| = |G:G_m||G_m| = |G|$.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    $Iso(2)$ --- движения плоскости.  $S(K) = \{g \in Iso(2) \mid g(k) = k\}$,  $k$ --- квадрат.
+
+    $g \in S(k)$ --- переставляет  $A, B, C, D$. Такая перестановка однозначно задает  $g$.
+    $G \cdot A = \{A, B, C, D\}, |GA| = 4$.  $|G| = |G \cdot A| \cdot |G_A| = 4 \cdot |G_A| = 4 \cdot |(G_A)_B| = 8$.
+
+     $G_A \acts \{B,C,D\}$.  $G_A \cdot B = \{B, D\}$.
+\end{example}
+\Subsection{Лемма Бернсайда}
+\begin{definition}
+    $Fix(g) = \{m \in M \mid gm = m\}$ --- фиксатор (множество неподвижных точек).
+\end{definition}
+\begin{theorem}[Лемма Бернсайда]
+    $G$ --- конечная,  $G \acts M$. Тогда количества орбит действия равно среднему арифметическому размера фиксатора.
+     \[
+    \frac{\sum_{g \in G} |Fix(G)|}{|G|} = \text{количество орбит}
+    .\] 
+\end{theorem}
+\begin{proof}
+    Рассмотрим $NotMove = \{(g, m) \mid g \in G, m \in M, gm = m\}$. Тогда  $\sum\limits_{m \in M}|G_m| = |NotMove| = \sum_{g \in G}|Fix(g)|$. Тогда: \[
+    \frac{\sum_{g \in G}|Fox(g)|}{G} = \frac{\sum_{m \in M}|G_m|}{|G|} = \sum_{m \in M} \frac{|G_m|}{|G|} = \sum_{m \in M} \frac{1}{|Gm|}
+    .\] 
+    Тогда, если рассмотреть орбиту длины $k$, то она дает вклад  $\underbrace{\frac{1}{k} + \frac{1}{k} + \ldots + \frac{1}{k}}_{k} = 1 \implies$ сумма количества орбит.
+\end{proof}
+\begin{example}
+    Подсчет числа структур с точностью до изоморфизма. 
+
+    Закрепленное ожерелье: $F\!: \Z / 17\Z \to \{B, W\}$. Таких  $2^{12}$.
+     $F_1 \sim F_2 \Leftarrow F_1(x) = F_2(x + x_0)$ при некотором $x_0$.
+
+     Пусть  $O$ --- множество закрепленных ожерелий.  $\Z / 17\Z \acts O$. Каково число орбит?  Оно равно  $\frac{|Fix(0)| + |Fix(1)| + \ldots}{12} = $.
+
+     $|Fix(0)| = 2^{12}$,  $|Fix(1)| = |Fix(11)| = |Fix(5)| = Fix(7) = 1$,  $|Fix(2)| = |Fix(10)| = 2^2, |Fix(3)| = |Fix(9)| = 2^3, |Fix(4)| = 2^4 = |Fix(8)|, |Fix(6)| = 2^6$.
+\end{example}
+\Subsection{Применения теории конечных групп действий}
+$|G| = n$. Верно ли, что в  $G$ есть элемент порядка  $d$, $n \divby d$? Нет, иначе  бы в группе всегда был элемент порядка $n$, а значит группа циклическая. Но если $d = p$, то ок.
+
+Верно ли, что в  $G$ есть подгруппа порядка  $d$? Нет, например,  $A_4$, подгруппа  порядка $6$. Но если $d = p^k$, то ок.
+ 
+\begin{theorem}[Теорема Коши]
+   $M = \{(g_1, \ldots, g_n) \mid g_i \in G, g_1g_2\ldots g_p = e \}$. $|M| = |G|^{p-1} \divby p$.  $C_p \acts M\!: t(g_1, g_2, \ldots, g_p) = (g_2, \ldots, g_p, g_1)$. 
+
+   $|C_p \cdot x| = \frac{|C_p|}{|(C_p)_x|} = \left[ \begin{array}{l} 1 \\ p \end{array} \right.$. $|M| = \sum \text{длина орбиты} = 1+1+\ldots+1 + p + \ldots + p \divby p$. 
+\end{theorem}
+\begin{theorem}[Первая теорема Силова]
+    Пусть $|G| = p^n \cdot d, d \centernot p$.
+
+    Тогда  $\exists H \le G\!: |H| = p^n$.
+\end{theorem}
+\begin{proof}
+    $M = \{X \subset G \mid |X| = p^n \}$.  $G \acts M$ (сдвигами). $|M| = \binom{p^nd}{p^n} = \frac{(p^nd)!}{(p^n)!(p^n(d-1))!} \centernot \divby p \implies$ хотя бы одна орбита не делится на $p \implies \exists O\!: |O| \centernot \divby p$. $O = Gx$,  $|O| = \frac{|G|}{|G_x|} = \frac{p^nd}{|G_x|} \centernot \divby p \implies |G_x| \divby p^n$, но $|G_x| \le p^n \implies |G_x| = p^n$.
+
+    $X = \{a_1, \ldots, a_{p^n}\}$. $g \in G_x, g a_1 = a_i$. Выбор: однозначно определяет $g_1 = a_i a_1^{-1} \implies$ всего $\le p^n$ вариантов.
+\end{proof}

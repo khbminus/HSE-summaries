@@ -1,4 +1,5 @@
 \Subsection{Несобственные интегралы}
+%BEGIN TICKET 20
 \begin{definition}
     Пусть $-\infty < a < b \le +\infty$ и $f \in C[a, b)$.
 
@@ -67,6 +68,8 @@
 \begin{proof}
     Возьмем $A_{n_k}$ и  $B_{n_k}\!: |\int\limits_{A_{n_k}}^{B_{n_k}} f| \to C > 0 \implies |\int\limits_{A_{n_k}}^{B_{n_k}} f| > \frac{C}{2}$ при больших $k$. Но это противоречит критерию Коши.
 \end{proof}
+%END TICKET 20
+%BEGIN TICKET 21
 \begin{properties}[несобственных интегралов]
     \begin{enumerate}
         \item Аддитивность. Пусть $f \in C[a, b)$,  $c \in (a, b)$. Если  $\int\limits_a^b f$ сходятся, то  $\int\limits_a^b f$ сходятся и  $\int\limits_a^b f = \int\limits_a^c f + \int\limits_c^b f$.
@@ -116,8 +119,9 @@
 
     $\int\limits_a^b f$ сходится, если сходятся интегралы по все маленьким отрезкам (содержащих только одну выколотую точку).
 \end{definition}
+%END TICKET 21
 \subsection*{Несобственные интегралы от неотрицательных функций}
-
+%BEGIN TICKET 22
 \begin{theorem}
     Пусть  $f \in C[a, b)$ и  $f \ge 0$. 
 
@@ -160,7 +164,8 @@
 \begin{proof}
     $f \sim g \implies f = \vphi \cdot g$, где  $\vphi(x) \xrightarrow{x \to b-} 1 \implies$ в окрестности $b$  $\frac{1}{2} \le \vphi \le 2 \implies f \le 2g \land g \le 2f$ в окрестности $b$  $\implies$ из сходимости интеграла  $g$ следует сходимость $f \land$ наоборот. 
 \end{proof}
-
+%END TICKET 22
+%BEGIN TICKET 23
 \begin{definition}
     $f \in C[a, b)$. $\int\limits_a^b f$ абсолютно сходится, если  $\int\limits_a^b |f|$ сходится.
 \end{definition}
@@ -212,6 +217,8 @@
     .\] 
     Где $\int\limits_a^{+\infty} f\widetilde{g}$ сходится по доказанному, а  $\int\limits_a^{+\infty} f$ --- по условию.
 \end{proof}
+%END TICKET 23
+%BEGIN TICKET 24
 \begin{statement}
     $f$ --- периодическая функция с периодом  $T$. Тогда  $\int\limits_a^{a+T} f = \int\limits_b^{b+T}f$ 
 \end{statement}
@@ -245,3 +252,4 @@
         $a_n \coloneqq \frac{\pi}{6} + 2\pi n, b_n \coloneqq \frac{5\pi}{6} + 2\pi n$. Тогда $\int\limits_{a_n}^{b_n} \frac{\sin x}{x^p} \mathrm{d}x \ge \frac{1}{2} \int\limits_{a_n}^{b_n} \frac{\mathrm{d}x}{x^p} \ge \frac{1}{2} \int\limits_{a_n}^{b_n} = \frac{b_n - a_n}{2} = \frac{\pi}{3}$.
     \end{enumerate}
 \end{example}
+%END TICKET 24

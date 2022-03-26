@@ -36,6 +36,7 @@
 \renewcommand{\footrulewidth}{0.15 mm}
 \fi
 \Subsection{Интегральные суммы}
+%BEGIN TICKET 15
 \begin{definition}
     Пусть есть $[a, b]$. Тогда дробление (разбиение, пунктир) отрезка: набор точек:  $x_0 = a < x_1 < x_2 < \ldots < x_n = b$.
 \end{definition}
@@ -51,7 +52,8 @@
 
     \textit{По факту просто сумма прямоугольников под графиком рисунок принял ислам очень жаль.}
 \end{definition}
-
+%END TICKET 15
+%BEGIN TICKET 16
 \begin{theorem}[Теорема об интегральных суммах]
     Пусть $f \in C[a, b]$,
 
@@ -86,7 +88,8 @@
 
      $I$ --- интеграл по Риману  $\int\limits_a^b f$.
 \end{definition}
-
+%END TICKET 16
+%BEGIN TICKET 17
 \begin{lemma}
     $f \in C^2[\alpha, \beta]$. Тогда  \[\int\limits_a^b f(t)\mathrm{d}t - \frac{f(\alpha) + f(\beta)}{2}(\beta - \alpha) = -\frac{1}{2} \int\limits_\alpha^\beta f''(t)(t-\alpha)(\beta-t)\mathrm{d}t.\]
 \end{lemma}
@@ -130,6 +133,8 @@
          S(f, \tau, \xi) = \sum_{k=1}^n f(\xi_k)(x_k - x_{k-1}) = \frac{b-a}{n} \sum_{k=1}^n f(x_k)
     .\] 
 \end{remark}
+%END TICKET 16
+%BEGIN TICKET 17
 \begin{theorem}[формула Эйлера-Маклорена]
     Пусть $f \in C^2[m, n]$, тогда
      \[
@@ -147,6 +152,8 @@
     \sum_{k=m}^n f(k) = \frac{f(m) + f(n)}{2} + \int_m^n f(t)\mathrm{d}t + \frac{1}{2} \int_m^n f''(t)\{t\}(1-\{t\})\mathrm{d}t
 .\] 
 \end{proof}
+%END TICKET 17
+%BEGIN TICKET 18
 \begin{example}
     $S_p(n) = 1^p + 2^p + \ldots + n^p$, $f(t) = t^p$,  $m = 1$,  $f''(t) = p(p-1)t^{p-2}$.
 
@@ -173,6 +180,8 @@ H_n = \ln n + \frac{1}{2} + \frac{1}{2n} + a_n
 \begin{remark}
     $H_n = \ln n + \gamma + \frac{1}{2n} + \mathcal{O}(\frac{1}{n^2})$.
 \end{remark}
+%END TICKET 18
+%BEGIN TICKET 19
 \begin{example}[Формула Стирлинга]
     $m = 1, f(t) = \ln t, f''(t) = -\frac{1}{t^2}$.
 
@@ -198,3 +207,4 @@ H_n = \ln n + \frac{1}{2} + \frac{1}{2n} + a_n
 \begin{remark}
     $\ln n! = n \ln n - n + \frac{1}{2} \ln(2 \pi n) + \mathcal{O}(\frac{1}{n})$.
 \end{remark}
+%END TICKET 19
