@@ -291,22 +291,22 @@
     $\Phi(x) + \Psi(x) = \int\limits_a^b f$.
 \end{remark}
 \begin{theorem}[Теорема Барроу]
-    Пусть  $f \in C[a, b]$. Тогда  $\Phi'(x) = f(x)\quad  \forall x \in[a, b]$. То есть  $\Phi$ --- первообразная функции  $f$.
+	Пусть  $f \in C([a, b])$. Тогда  $\Phi'(x) = f(x)\quad  \forall x \in[a, b]$. То есть  $\Phi$ --- первообразная функции  $f$.
 \end{theorem}
 \begin{proof}
-    Надо доказать, что $\lim\limits_{y \to x} \frac{\Phi(y) - \Phi(x)}{y-x} = f(x)$. Проверим для предела справа. 
+	Надо доказать, что $\lim\limits_{y \to x} \frac{\Phi(y) - \Phi(x)}{y-x} = f(x)$. Проверим для предела справа (слева аналогично, но, возможно, с чуть другим порядком точек).
 
     Тогда $\Phi(y) - \Phi(x) = \int\limits_a^y f - \int\limits_a^x f = \int\limits_x^y f$.
 
-    Тогда  $\frac{\Phi(y) - \Phi(x)}{y-x}=\frac{1}{y-x}\int\limits_x^y f = f(c)$ для некоторого $c \in (x, y)$.
+    Тогда  $\frac{\Phi(y) - \Phi(x)}{y-x}=\frac{1}{y-x}\int\limits_x^y f = f(c)$ для некоторого $c \in (x, y)$ по интегральной теореме о среднем.
 
-    Проверяем определение по Гейне. Берем  $y_n > x$ и  $y_n \to x$. Тогда  $\frac{\Phi(y_n)-\Phi(x)}{y_n - x} = f(c_n)$, где $c_n \in (x, y_n)$,  $x < c_n < y_n \to x \Rightarrow c_n \to x \Rightarrow f(c_n) \to f(x)$.
+    Проверяем определение по Гейне. Берем  $y_n > x$ и  $y_n \to x$. Тогда  $\frac{\Phi(y_n)-\Phi(x)}{y_n - x} = f(c_n)$, где $c_n \in (x, y_n)$,  $x < c_n < y_n \to x \Rightarrow c_n \to x \Rightarrow$ в силу непрерывности $f$  $f(c_n) \to f(x)$.
 \end{proof}
 \begin{consequence}
     $\Psi'(x) = -f(x)\quad \forall x\in [a, b]$.
 \end{consequence}
 \begin{proof}
-    $\Psi(x) = \int\limits_a^b f - \Phi(x) = C - \Phi(x) \Rightarrow \Psi' = (C - \Phi(x))' = -Phi'(x) = -f(x)$.
+    $\Psi(x) = \int\limits_a^b f - \Phi(x) = C - \Phi(x) \Rightarrow \Psi' = (C - \Phi(x))' = -\Phi'(x) = -f(x)$.
 \end{proof}
 \begin{theorem}
     Непрерывная на промежутке функция имеет первообразную.
@@ -314,19 +314,26 @@
 \begin{proof}
     $f\!: \langle a, b \rangle \to \R$. 
 
+    Возьмём $c \in (a, b)$
     Рассмотрим  $F(x) \coloneqq \begin{cases} \int\limits_c^x f & \text{при } x \ge c \\ -\int\limits_x^c f & \text{при } x \le c \end{cases}$.
 
+    Утверждаем, что $F(x)$ --- первообразная $f(x)$.
     Если $x > c$, то  $F'(x) = f(x)$. 
+    Если $x < c$, то $F'(x) = -(-f(x)) = f(x)$
+    Если $x = c$, то, так как производные слева и справа считаются правильно и равны, то и в этой точке производная есть $f(x)$.
 \end{proof}
 
 \begin{theorem}[Формула Ньютона-Лейбница]
     $f\!: [a, b] \to \R$ и  $F$ -- её первообразная. Тогда  $\int\limits_a^b f = F(b) - F(a)$.
 \end{theorem}
 \begin{proof}
-    $\Phi(x) = \int\limits_a^x f$ --- первообразная и  $F(x) = \Phi(x) + C$.
+	$\Phi(x) = \int\limits_a^x f$ --- первообразная и  $F(x) = \Phi(x) + C$ (знаем, что две первообразные отличаются на константу)
 
     Тогда  $F(b) - F(a) = (\Phi(b) + C) - (\Phi(a) + C) = \Phi(b) - \Phi(a) = \int\limits_a^b f$
 \end{proof}
+
+И ровно в этот момент мы поняли, что от выбора псевдоплощади не зависим, поскольку первообразные от них не зависят (отсылка к первому билету/началу конспекта про псевдоплощади)
+
 \begin{definition}
     $F\mid_a^b \coloneqq F(b) - F(a)$
 \end{definition}
