@@ -238,13 +238,13 @@
 %END TICKET 04
 \Subsection{Свойства интеграла}
 %BEGIN TICKET 05
-\begin{theorem}[Аддиктивность интеграла]
+\begin{theorem}[Аддитивность интеграла]
     Пусть $f\!: [a, b] \to \R$,  $c \in [a, b]$.
 
     Тогда  $\int\limits_a^b f = \int\limits_a^c f + \int\limits_c^b f$.
 \end{theorem}
 \begin{proof}
-    $\int\limits_a^b f = \sigma(P_{f_+}([a, b])) - \sigma(P_{f_-}([a, b]))$. Разделим наш $[a, b]$  вертикальной прямой $x=c$. Тогда  можно воспользоваться свойством 3 из определения квазиплощади.
+	$\int\limits_a^b f = \sigma(P_{f_+}([a, b])) - \sigma(P_{f_-}([a, b]))$. Разделим наш $[a, b]$ и соответствующие множества вертикальной прямой $x=c$. Тогда $\sigma(P_{f_+}[a, b]) - \sigma(P_{f_-}[a, b]) = \sigma_{P_{f_+}[a, c]} + \sigma_{P_{f_+}[c, b]} - \sigma(P_{f_-}[a, c]) - \sigma(P_{f_-}[c, b]) = \int_a^c f + \int_c^b f$
 \end{proof}
 \begin{theorem}[Монотонность интеграла]
     Пусть $f, g\!: [a, b] \to \R$ и  $\forall x \in [a, b]\!: f(x) \le g(x)$.
@@ -265,7 +265,7 @@
 \begin{proof}
     \begin{enumerate}
         \item $-|f| \le f \le |f| \Rightarrow \int\limits_a^b -|f| \le \int\limits_a^b f \le \int\limits_a^b |f| \Rightarrow |\int\limits_a^b f| \le \int\limits_a^b |f|$
-        \item $m \coloneqq \min f(x)$,  $M \coloneqq \max f(x)$.  $m \le f(x) \le M \Rightarrow \int\limits_a^b m \le \int\limits_a^b f \le \int\limits_a^b M$.
+	\item $m \coloneqq \min\limits_{x \in [a, b]} f(x)$,  $M \coloneqq \max\limits_{x \in [a, b]} f(x)$.  $m \le f(x) \le M \Rightarrow \int\limits_a^b m \le \int\limits_a^b f \le \int\limits_a^b M$.
     \end{enumerate}
 \end{proof}
 \begin{theorem}[Интегральная теорема о среднем]
@@ -274,10 +274,10 @@
     Тогда  $\exists c \in (a, b)\!: \int\limits_a^b f = (b-a)f(c)$.
 \end{theorem}
 \begin{proof}
-    $m \coloneqq \min f = f(p), M \coloneqq \max f = f(q)$ (по теореме Вейерштрасса). Тогда  $f(p) \le \frac{1}{b-a}\int\limits_a^b f \le f(q) \xRightarrow{\text{т. Б-К}} \exists c\!: f(c) = \frac{1}{b - a}\int\limits_a^b f$.
+	$m \coloneqq \min f = f(p), M \coloneqq \max f = f(q)$ (по теореме Вейерштрасса). Тогда  $f(p) \le \frac{1}{b-a}\int\limits_a^b f \le f(q) \xRightarrow{\text{т. Б-К}} \exists c \in (p, q)  \text{или $(q, p)$}\!: f(c) = \frac{1}{b - a}\int\limits_a^b f$.
 \end{proof}
 \begin{definition}
-    $I_f \coloneqq \frac{1}{b-a} \int\limits_a^b f$ --- среднее значения $f$ на отрезке  $[a, b]$.
+    $I_f \coloneqq \frac{1}{b-a} \int\limits_a^b f$ --- среднее значение $f$ на отрезке  $[a, b]$.
 \end{definition}
 %END TICKET 05
 %BEGIN TICKET 06
