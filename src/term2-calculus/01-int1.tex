@@ -149,8 +149,8 @@
 \begin{example}
     \slashn
      \begin{enumerate}
-         \item $\sigma_1(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^n \supset E\right\}$.
-         \item $\sigma_2(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^\infty \supset E\right\}$.
+         \item $\sigma_1(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^n P_k \supset E\right\}$.
+         \item $\sigma_2(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^\infty P_k  \supset E\right\}$.
     \end{enumerate}
 \end{example}
 \begin{exerc}
@@ -170,21 +170,23 @@
 \begin{proof}
     \slashn
     \begin{enumerate}
-        \item[2.] $E'$ --- сдвиг  $E$ на вектор  $v$. Пусть  $P_k$ --- покрытие  $E \iff P'_k$ --- покрытие  $E'$.
+        \item[2.] $E'$ --- сдвиг  $E$ на вектор  $v$. Пусть  $P_k$ --- покрытие  $E \iff P'_k$ --- покрытие  $E'$. Знаем, что площади прямоугольников не меняются при сдвиге, а значит:
             $\sigma_1(E) = \inf\{\sum\limits_{k=1}^n|P_k|\} = \inf\{\sum |P'_k|\} = \sigma_1(E')$.
         \item[1.] $\Rightarrow$ монотонность. Пусть есть  $E \subset \widetilde{E}$. Тогда возьмем покрытие  $P_k$ для  $\widetilde{E}$.  $E \subset \widetilde{E} \subset \bigcup\limits_{k=1}^n P_k$. 
 
-            А теперь заметим, что $\sigma_1$ ---  $\inf$, а значит  $\sigma_1(E) \le \sum |P_k| = \sigma_1(\widetilde{E})$.
+		А теперь заметим, что $\sigma_1$ ---  $\inf$, и любое покрытие для $\widetilde{E}$ является покрытием и для $E$, т.е. все суммы из $\sigma_1(\widetilde{E})$ есть в $\sigma_1(E)$, а значит $\sigma_1(E) \le \sigma_1(\widetilde{E})$ как инфинум по более широкому множеству. 
 
         \item[1'.] Докажем теперь аддитивность. 
 
-            <<$\le$>>. $\sigma_1(E) = \sigma_1(E_-) + \sigma_1(E_+)$. Пусть $P_k$ --- покрытие  $E_-$,  $Q_j$ --- покрытие  $E_+$.  $\bigcup\limits_{k=1}^n P_k \cup \bigcup\limits_{j=1}^m Q_j \supset E_i \cup E_+ = E$. А значит  $\sigma_1(E) \le \inf \left\{ \sum\limits_{k=1}^n |P_k| + \sum\limits_{j=1}^n |Q_j|\right\} = \inf\{\sum |P_k|\} + \inf\{\sum |Q_j|\} = \sigma_1(E_-) + \sigma(E_+)$. Заметим, Что переход с разделением инфинумов  возможен, так как $P$ и  $Q$ выбираются независимо.
+            <<$\le$>>. $\sigma_1(E) = \sigma_1(E_-) + \sigma_1(E_+)$. Пусть $P_k$ --- покрытие  $E_-$,  $Q_j$ --- покрытие  $E_+$.  $\bigcup\limits_{k=1}^n P_k \cup \bigcup\limits_{j=1}^m Q_j \supset E_- \cup E_+ = E$. А значит  $\sigma_1(E) \le \inf \left\{ \sum\limits_{k=1}^n |P_k| + \sum\limits_{j=1}^n |Q_j|\right\} = \inf\{\sum |P_k|\} + \inf\{\sum |Q_j|\} = \sigma_1(E_-) + \sigma(E_+)$. Заметим, Что переход с разделением инфинумов  возможен, так как $P$ и  $Q$ выбираются независимо.
 
-            <<$\ge$>>. Пусть $P_k$ --- покрытие  $E$. Тогда можно разбить  $|P_k| = |P^-_k| + |P^+_k|$.  $\sum |P_k| = \sum |P^-_k| + \sum |P^+_k|$. Заметим, что сумму  $\ge \sigma \Rightarrow \sum |P_k|  \ge \sigma(E_1) + \sigma(E_2) \Rightarrow \sigma(E) \ge \sigma(E_1) + \sigma(E_2)$.
+	    <<$\ge$>>. Пусть $P_k$ --- покрытие  $E$. Тогда можно пересечь прямой (покрытие и само $E$) и разбить $P_k$ на $P_k^-$ и $P_k^+$, а тогда: $|P_k| = |P^-_k| + |P^+_k|$,  $\sum |P_k| = \sum |P^-_k| + \sum |P^+_k|$. $\sum |P_k^-| \ge \sigma_1(E_-), \sum |P_k^+| \ge \sigma_1(E^+) \Rightarrow \sum |P_k| \ge \sigma_1(E_-) + \sigma_1(E_+)$ для любого покрытия $P_k$, а значит и $\sigma_1(E) \ge \sigma_1(E_-) + \sigma_1(E_+)$
 
-        \item[1''.] Проверим, что сама площадь прямоугольника не сломалась: $\sigma_1([a, b] \times [c, d]) = (b-a)(d-c)$. Заметим, что  $\sigma_1(P) \le |P|$.
+	    Таким образом $\sigma_1(E) = \sigma_1(E_-) + \sigma_1(E_+)$
+        \item[1''.] Проверим, что сама площадь прямоугольника не сломалась: $\sigma_1([a, b] \times [c, d]) = (b-a)(d-c)$. Заметим, что  $\sigma_1(P) \le |P|$, т.к. прямоугольник можно покрыть им самим.
 
-            Тогда посмотрим на $P_k$. Проведем прямые содержащие все стороны прямоугольников из разбиения. Заметим, что получили разбиение с суммой равной  $|P|$. Тогда заметим, что некоторые части разбиения встречаются в  $P_k$ несколько раз. А значит выкинув все лишнее мы как раз получим  $|P|$, а значит  $\sigma_1(P) \ge |P|$.
+		Тогда посмотрим на $P_k$. Проведем прямые содержащие все стороны прямоугольников из покрытия (и $P$). Заметим, что такими прямыми каждый прямоугольник разбивается на подпрямоугольники, сумма площадей которых равна площади исходного прямоугольника. Тогда заметим, что и площадь $P$ это сумма <<кусочков из нарезки>> $P$, и некоторые части разбиения встречаются в  $P_k$ несколько раз. А значит выкинув все лишнее мы как раз получим  $|P|$, а значит  $\sigma_1(P) \ge |P|$.
+		Таким образом $\sigma_1(P) = |P|$
     \end{enumerate}
 \end{proof}
 %END TICKET 02
