@@ -252,7 +252,8 @@
         Если взять $f(x) = |\sin x|$, то интеграл по периоду равен  $4$. Значит исходный интеграл расходится.
     \item $p \le 0$ интеграл расходится. 
 
-        $a_n \coloneqq \frac{\pi}{6} + 2\pi n, b_n \coloneqq \frac{5\pi}{6} + 2\pi n$. Тогда $\int\limits_{a_n}^{b_n} \frac{\sin x}{x^p} \mathrm{d}x \ge \frac{1}{2} \int\limits_{a_n}^{b_n} \frac{\mathrm{d}x}{x^p} \ge \frac{1}{2} \int\limits_{a_n}^{b_n} = \frac{b_n - a_n}{2} = \frac{\pi}{3}$.
+        $a_n \coloneqq \frac{\pi}{6} + 2\pi n, b_n \coloneqq \frac{5\pi}{6} + 2\pi n$. Тогда $\int\limits_{a_n}^{b_n} \frac{\sin x}{x^p} \mathrm{d}x \ge \frac{1}{2} \int\limits_{a_n}^{b_n} \frac{\mathrm{d}x}{x^p} \ge \frac{1}{2} \int\limits_{a_n}^{b_n} = \frac{b_n - a_n}{2} = \frac{\pi}{3}$. \\
+        (предъявили сколь угодно далеко такие отрезки, что интеграл по ним превосходит $\frac{\pi}{3}$ - это отрицание критерия Коши)
     \end{enumerate}
 \end{example}
 %END TICKET 24
