@@ -10,7 +10,7 @@
 \begin{remark}
     Если $b < +\infty$ и  $f \in C[a, b]$, то определение не дает ничего нового:  \begin{align*}
         \int_a^b f &= \lim_{B \to b}f \\
-        \left|\int_a^b f - \int_a^B f\right| &\le M(b-B) \to 0
+        \left|\int_a^b f - \int_a^B f\right| &= \left| \int_B^b f \right| \le M(b-B) \to 0, M = \max\limits_{x \in [a, b]} f(x)
     .\end{align*}
 \end{remark}
 \begin{example}
@@ -31,11 +31,11 @@
     Очевидно по формуле Ньютона-Лейбница.
 \end{proof}
 \begin{definition}
-    $F \mid_a^b \coloneqq \lim\limits_{B \to b-} F(B) - F(a)$.
+    $F \Big|_a^b \coloneqq \lim\limits_{B \to b-} F(B) - F(a)$.
 \end{definition}
 
 \begin{definition}
-    $\int\limits_a^{\to b} f$ сходится, если  $\lim B$ его определении существует и конечен.
+    $\int\limits_a^{\to b} f$ сходится, если  $\lim B$ в его определении существует и конечен.
 \end{definition}
 
 \begin{theorem}[Критерий Коши]
@@ -52,11 +52,11 @@
 \begin{proof}
     Для $b < +\infty$. 
       \begin{itemize}
-          \item "$\Rightarrow$" $\int\limits_a^b f$ сходится  $\implies \exists$ конечный  $\lim\limits_{B \to b-} \int\limits_a^B f \eqqcolon g(B)$.
+          \item "$\Rightarrow$" $\int\limits_a^b f$ сходится  $\implies \exists$ конечный  $I \coloneqq \lim\limits_{B \to b-} \int\limits_a^B f$, обозначим $\int\limits_a^B f$ за  $g(B)$. Воспользуемся критерием Коши для функций:
 
-              $\forall \eps > 0 \exists \delta > 0 \begin{array}{lc} 
+              \[\forall \eps > 0 \exists \delta > 0 \begin{array}{lc} 
               \forall B \in (b - \delta, b) & |g(B) - I| < \frac{\eps}{2}\\ 
-          \forall A \in(b - \delta, b) & |g(A) - I| < \frac{\eps}{2}\end{array} \implies |g(B) - g(A)| \le |g(B) - I| + |I - g(A)| < \eps$
+          \forall A \in(b - \delta, b) & |g(A) - I| < \frac{\eps}{2}\end{array} \implies |g(B) - g(A)| \le |g(B) - I| + |I - g(A)| < \eps\]
       \item "$\Leftarrow$" $\int\limits_a^B f \eqqcolon g(B)$.
 
           $\forall \eps > 0 \exists \delta > 0 \forall A, B \in (b-\delta, b)\!: |g(B)- g(A)| < \eps$ это условие из критерия Коши для $\lim\limits_{B \to b-} g(B)$.
@@ -76,7 +76,7 @@
         \item Если $\int\limits_a^b f$ сходится, то  $\lim\limits_{c \to b-} \int\limits_c^b f = 0$
         \item Линейность $\alpha, \beta \in \R$ и $\int\limits_a^b f$ и  $\int\limits_a^b g$ сходятся. Тогда  $\int\limits_a^b(\alpha f + \beta g)$ сходится и $\int\limits_a^b (\alpha f + \beta g) = \alpha \int\limits_a^b f + \beta\int\limits_a^b g$.
         \item Монотонность. Пусть $\int\limits_a^b f$ и $\int\limits_a^b g$ существует в  $\overline{R}$ и  $f \le g$ на $[a, b)$. Тогда  $\int\limits_a^b f \le \int\limits_a^b g$.
-        \item Интегрирование по частям. $f, g \in C^1[a; b) \implies \int\limits_a^b fg' = fg \mid_a^b - \int\limits_a^b f'g$.
+        \item Интегрирование по частям. $f, g \in C^1[a; b) \implies \int\limits_a^b fg' = fg \Big|_a^b - \int\limits_a^b f'g$.
         \item Замена переменных. $\vphi\!: [\alpha, \beta) \to [a, b)$,  $\vphi \in C^1[\alpha, \beta)$ и $\exists \lim\limits_{\gamma \to \beta-} \vphi(\gamma) \eqqcolon \vphi(\beta-)$ и $f \in C[a, b)$.
 
             Тогда  $\int\limits_\alpha^\beta f(\vphi(t)) \vphi'(t)\mathrm{d}t = \int\limits_{\vphi(\alpha)}^{\vphi(\beta-)} f(x) \mathrm{d}x$. <<Если существует один из  $\int$, то существует второй и они равны>>
@@ -86,14 +86,14 @@
     \begin{enumerate}
         \item $\int\limits_a^b f = \lim\limits_{B \to b-} F(B) - F(a) \implies \lim_{B \to b-}F(B)$ существует и конечный  $\implies \int\limits_c^b = \lim\limits_{B \to b-} F(b) - F(c)$ --- сходится.
 
-            $\int\limits_a^b = \lim F(B) - F(a) = \lim F(B) - F(c) + F(c) - F(a) = \int\limits_c^b f + \int_a^c f$.
+            $\int\limits_a^b = \lim F(B) - F(a) = \lim F(B) - F(c) + F(c) - F(a) = \int\limits_c^b f + \int\limits_a^c f$.
         \item $\int\limits_c^b f = \int\limits_a^b f- \int\limits_a^c f \to \int\limits_a^b f - \int\limits_a^b f = 0$
         \item $\int\limits_a^b (\alpha f + \beta g) = \lim\limits_{B \to b-} \int\limits_a^B(\alpha f + \beta g) = \lim\limits_{B \to b-}(\alpha \int\limits_a^B f + \beta \int\limits_a^B g) = \alpha \lim\limits_{B \to b-} \int\limits_a^B f + \beta\lim\limits_{B \to b-} \int\limits_a^B g = \alpha \int\limits_a^b f + \beta \int\limits_a^b g$.
         \item $\int\limits_a^B f \le \int\limits_a^B g$ (монотонность интеграла), а дальше предельный переход.
-        \item $a < B < b$. $\int\limits_a^B fg' = fg \mid_a^B - \int_a^B f'g$ и переход к пределу.
+        \item $a < B < b$. $\int\limits_a^B fg' = fg \Big|_a^B - \int\limits_a^B f'g$ и переход к пределу. Так как $f, g$ --- непрерывные функции, то  $\lim\limits_{B \to b-} fg\Big|_a^B = fg \Big|_a^b$, а интеграл по определению.
         \item $F(y) \coloneqq \int\limits_{\vphi(\alpha)}^y f(x) \mathrm{d}x$,  $\Phi(\gamma) \coloneqq \int_{\alpha}^{\gamma} f(\vphi(t)) \vphi'(t) \mathrm{d}t$. Знаем, что $F(\vphi(\gamma)) = \Phi(\gamma)$ при  $\alpha < \gamma < \beta$.
 
-            Пусть существует правый  $\int$, то есть  $\exists \lim\limits_{y \to \vphi{\beta-}} F(y)$. Возьмем  $\gamma_n \nearrow \beta \implies \vphi(\gamma_n) \to \vphi(\beta-) \implies \Phi(\gamma_n) = F(\vphi(\gamma_n)) \to \int\limits_{\vphi(\alpha)}^{\vphi(\beta-)} f(x) \mathrm{d}x$. При этом $\Phi(\gamma_n) \to \int\limits_{\alpha}^{\beta} f(\vphi(t))\vphi'(t)\mathrm{d}t$.
+            Пусть существует правый  $\int$, то есть  $\exists \lim\limits_{y \to \vphi(\beta-)} F(y)$. Возьмем  $\gamma_n \nearrow \beta \implies \vphi(\gamma_n) \to \vphi(\beta-) \implies \Phi(\gamma_n) = F(\vphi(\gamma_n)) \to \int\limits_{\vphi(\alpha)}^{\vphi(\beta-)} f(x) \mathrm{d}x$. При этом $\Phi(\gamma_n) \to \int\limits_{\alpha}^{\beta} f(\vphi(t))\vphi'(t)\mathrm{d}t$.
 
             Пусть существует левый $\int$, то есть  $\exists \lim\limits_{\gamma \to \beta-} \Phi(\gamma)$. Докажем, что  $\exists$ правый  $\int$. При  $\vphi(\beta-) < b$ нечего доказывать. 
 
