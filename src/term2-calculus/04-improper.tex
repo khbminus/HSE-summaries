@@ -190,13 +190,16 @@
     \begin{align*}
         \int\limits_a^y f(x)g(x)\mathrm{d}x = \int\limits_a^y F'(x)g(x) \mathrm{d}x = F(x)g(x) \mid_a^y - \int_a^y F(x) g'(x) \mathrm{d}x = F(y)g(y) - \int_a^y F(x)g'(x) \mathrm{d}x
     \end{align*}
+
+    Чтобы доказать существование предела у разности каких-то штук, нужно доказать, что он существует у них по отдельности.
+
     $\lim\limits_{y \to +\infty} F(y)g(y) = 0$ --- произведение бесконечно малой и ограниченной функции.
 
-    $\int\limits_a^y F(x)g'(x)\mathrm{d}x$ имеет конечный  $\lim$, то есть  $\int\limits_a^{+\infty} F(x)g'(x) \mathrm{d}x$ сходится. 
+    Хотим показать, что $\int\limits_a^y F(x)g'(x)\mathrm{d}x$ имеет конечный  $\lim$, то есть  $\int\limits_a^{+\infty} F(x)g'(x) \mathrm{d}x$ сходится.
 
-    Докажем, что он абсолютно сходится.  $\int\limits_a^{+\infty} |F(x)| |g'(x)| \mathrm{d}x$, $|F(x)||g'(x)| \le K|g'(x)| = Kg'(x)$. $\int_a^{+\infty} g'(x) \mathrm{d}x = g \mid_a^{+\infty} = \lim\limits_{y \to +\infty} g(y) - g(a) = -g(a) \implies$ сходящийся.
+    Тогда докажем, что он абсолютно сходится.  $\int\limits_a^{+\infty} |F(x)| |g'(x)| \mathrm{d}x$, $|F(x)||g'(x)| \le K|g'(x)| = Kg'(x)$. $\int_a^{+\infty} g'(x) \mathrm{d}x = g \mid_a^{+\infty} = \lim\limits_{y \to +\infty} g(y) - g(a) = -g(a) \implies$ сходящийся.
 \end{proof}
-\begin{theorem}[Признае Абеля]
+\begin{theorem}[Признак Абеля]
     $f, g \in C[a, +\infty]$, Если 
      \begin{enumerate}
          \item $\int\limits_a^{+\infty} f(x) \mathrm{dx}$ сходится,
