@@ -72,7 +72,7 @@
 %BEGIN TICKET 21
 \begin{properties}[несобственных интегралов]
     \begin{enumerate}
-        \item Аддитивность. Пусть $f \in C[a, b)$,  $c \in (a, b)$. Если  $\int\limits_a^b f$ сходятся, то  $\int\limits_a^b f$ сходятся и  $\int\limits_a^b f = \int\limits_a^c f + \int\limits_c^b f$.
+        \item Аддитивность. Пусть $f \in C[a, b)$,  $c \in (a, b)$. Если  $\int\limits_a^b f$ сходится, то  $\int\limits_c^b f$ сходится и  $\int\limits_a^b f = \int\limits_a^c f + \int\limits_c^b f$.
         \item Если $\int\limits_a^b f$ сходится, то  $\lim\limits_{c \to b-} \int\limits_c^b f = 0$
         \item Линейность $\alpha, \beta \in \R$ и $\int\limits_a^b f$ и  $\int\limits_a^b g$ сходятся. Тогда  $\int\limits_a^b(\alpha f + \beta g)$ сходится и $\int\limits_a^b (\alpha f + \beta g) = \alpha \int\limits_a^b f + \beta\int\limits_a^b g$.
         \item Монотонность. Пусть $\int\limits_a^b f$ и $\int\limits_a^b g$ существует в  $\overline{R}$ и  $f \le g$ на $[a, b)$. Тогда  $\int\limits_a^b f \le \int\limits_a^b g$.
@@ -170,7 +170,7 @@
     $f \in C[a, b)$. $\int\limits_a^b f$ абсолютно сходится, если  $\int\limits_a^b |f|$ сходится.
 \end{definition}
 \begin{theorem}
-    $\int_a^b f$ сходится абсолютно  $\int\limits_a^b f$ сходится.
+    $\int_a^b f$ сходится абсолютно  $\implies \int\limits_a^b f$ сходится.
 \end{theorem}
 \begin{proof}
     $f = f_+ - f_-$,  $|f| = f_+ + f_-$.  $|f| \ge f_\pm \ge 0$. Если $\int\limits_a^b f$ сходится абсолютно  $\implies \int\limits_a^b$ сходится  $\int\limits_a^b f_{\pm}$ сходится  $\implies \int\limits_a^b f = \int\limits_a^b f_+ - \int\limits_a^b f_-$ сходящийся.
@@ -190,13 +190,16 @@
     \begin{align*}
         \int\limits_a^y f(x)g(x)\mathrm{d}x = \int\limits_a^y F'(x)g(x) \mathrm{d}x = F(x)g(x) \mid_a^y - \int_a^y F(x) g'(x) \mathrm{d}x = F(y)g(y) - \int_a^y F(x)g'(x) \mathrm{d}x
     \end{align*}
+
+    Чтобы доказать существование предела у разности каких-то штук, нужно доказать, что он существует у них по отдельности.
+
     $\lim\limits_{y \to +\infty} F(y)g(y) = 0$ --- произведение бесконечно малой и ограниченной функции.
 
-    $\int\limits_a^y F(x)g'(x)\mathrm{d}x$ имеет конечный  $\lim$, то есть  $\int\limits_a^{+\infty} F(x)g'(x) \mathrm{d}x$ сходится. 
+    Хотим показать, что $\int\limits_a^y F(x)g'(x)\mathrm{d}x$ имеет конечный  $\lim$, то есть  $\int\limits_a^{+\infty} F(x)g'(x) \mathrm{d}x$ сходится.
 
-    Докажем, что он абсолютно сходится.  $\int\limits_a^{+\infty} |F(x)| |g'(x)| \mathrm{d}x$, $|F(x)||g'(x)| \le K|g'(x)| = Kg'(x)$. $\int_a^{+\infty} g'(x) \mathrm{d}x = g \mid_a^{+\infty} = \lim\limits_{y \to +\infty} g(y) - g(a) = -g(a) \implies$ сходящийся.
+    Тогда докажем, что он абсолютно сходится.  $\int\limits_a^{+\infty} |F(x)| |g'(x)| \mathrm{d}x$, $|F(x)||g'(x)| \le K|g'(x)| = Kg'(x)$. (считаем, что $g(x)$ возрастает) $\int_a^{+\infty} g'(x) \mathrm{d}x = g \mid_a^{+\infty} = \lim\limits_{y \to +\infty} g(y) - g(a) = -g(a) \implies$ сходящийся.
 \end{proof}
-\begin{theorem}[Признае Абеля]
+\begin{theorem}[Признак Абеля]
     $f, g \in C[a, +\infty]$, Если 
      \begin{enumerate}
          \item $\int\limits_a^{+\infty} f(x) \mathrm{dx}$ сходится,
@@ -249,7 +252,8 @@
         Если взять $f(x) = |\sin x|$, то интеграл по периоду равен  $4$. Значит исходный интеграл расходится.
     \item $p \le 0$ интеграл расходится. 
 
-        $a_n \coloneqq \frac{\pi}{6} + 2\pi n, b_n \coloneqq \frac{5\pi}{6} + 2\pi n$. Тогда $\int\limits_{a_n}^{b_n} \frac{\sin x}{x^p} \mathrm{d}x \ge \frac{1}{2} \int\limits_{a_n}^{b_n} \frac{\mathrm{d}x}{x^p} \ge \frac{1}{2} \int\limits_{a_n}^{b_n} = \frac{b_n - a_n}{2} = \frac{\pi}{3}$.
+        $a_n \coloneqq \frac{\pi}{6} + 2\pi n, b_n \coloneqq \frac{5\pi}{6} + 2\pi n$. Тогда $\int\limits_{a_n}^{b_n} \frac{\sin x}{x^p} \mathrm{d}x \ge \frac{1}{2} \int\limits_{a_n}^{b_n} \frac{\mathrm{d}x}{x^p} \ge \frac{1}{2} \int\limits_{a_n}^{b_n} = \frac{b_n - a_n}{2} = \frac{\pi}{3}$. \\
+        (предъявили сколь угодно далеко такие отрезки, что интеграл по ним превосходит $\frac{\pi}{3}$ - это отрицание критерия Коши)
     \end{enumerate}
 \end{example}
 %END TICKET 24
