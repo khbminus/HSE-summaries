@@ -393,19 +393,20 @@
 %BEGIN TICKET 08
 \begin{example}
     $W_n \coloneqq \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x = \int\limits_0^{\frac{\pi}{2}}\cos^n t \mathrm{dt} = (1)$
+    Докажем этот момент:
 
-    Где $x = \frac{\pi}{2} - t \eqqcolon \vphi(t)$, $\vphi'(t) = -1$,  $\sin(\frac{\pi}{2} - t) = \cos t$. 
+    Положим $x = \frac{\pi}{2} - t \eqqcolon \vphi(t)$, $\vphi'(t) = -1$,  $\sin(\frac{\pi}{2} - t) = \cos t$. 
 
-    Тогда $(1) = -\int\limits_0^{\frac{\pi}{2}}\sin^n \vphi(t) \cdot \vphi(t) \mathrm{d}t = -\int\limits_{\frac{\pi}{2}}^0 \sin^n x \mathrm{d}x$
+    Тогда $(1) = -\int\limits_0^{\frac{\pi}{2}}\sin^n \vphi(t) \cdot \vphi(t) \mathrm{d}t = -\int\limits_{\frac{\pi}{2}}^0 \sin^n x \mathrm{d}x = \int_0^{\frac{\pi}2} \sin^n x \mathrm{d}x$
 
     Частные случаи $W_0 = \frac{\pi}{2}$, $W_1 = \int\limits_0^{\frac{\pi}{2}} \sin x \mathrm{d}x = -\cos \mid_0^{\frac{\pi}{2}} = 1$
 
     Общее решение: $W_n = \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x = -\int\limits_0^{\frac{\pi}{2}} \sin^{n-1}x \cdot (\cos x)' \mathrm{d}x = $. Воспользовались тем, что $\sin x = -(\cos x)'$, $f'(x) = (n-1)\sin^{n-2} x \cdot \cos x$. 
 
-    Тогда получаем: \begin{align*} &= -\left(\underbrace{\sin^{n-1} x \cdot \cos x \mid_0^{\frac{\pi}{2}}}_{=0} - \int\limits_0^{\frac{\pi}{2}} (n-1)\sin^{n-2} x \underbrace{\cos^2 x}_{=1-\sin^2 x} \mathrm{d} x\right) = \\ & =(n-1)\left(\int\limits_{0}^{\frac{\pi}{2}} \sin^{n-2} x \mathrm{d}x - \int\limits_{0}^{\frac{\pi}{2}} \sin^n x \mathrm{d} x\right) = (n-1)(W_{n-2} - W_n).
+    Тогда получаем: \begin{align*} W_n &= -\left(\underbrace{\sin^{n-1} x \cdot \cos x \mid_0^{\frac{\pi}{2}}}_{=0} - \int\limits_0^{\frac{\pi}{2}} (n-1)\sin^{n-2} x \underbrace{\cos^2 x}_{=1-\sin^2 x} \mathrm{d} x\right) = \\ & =(n-1)\left(\int\limits_{0}^{\frac{\pi}{2}} \sin^{n-2} x \mathrm{d}x - \int\limits_{0}^{\frac{\pi}{2}} \sin^n x \mathrm{d} x\right) = (n-1)(W_{n-2} - W_n).
     \end{align*}
 
-    Посчитаем для четных: $W_{2n} = \frac{2n-1}{2n} \cdot W_{2n-2} = \frac{2n-1}{2n} \cdot \frac{2n-3}{2n - 2} W_{2n-4} = \ldots = \frac{(2n-1)!!}{(2n)!!} \frac{\pi}{2}$, где $k!!$  --- произведение натуральных чисел той же четности, что и  $k$ и  $\le k$.
+    Посчитаем для четных: $W_{2n} = \frac{2n-1}{2n} \cdot W_{2n-2} = \frac{2n-1}{2n} \cdot \frac{2n-3}{2n - 2} W_{2n-4} = \ldots = \frac{(2n-1)!!}{(2n)!!} \frac{\pi}{2}$, где $k!!$  --- произведение натуральных чисел   $\le k$ той же четности, что и  $k$ .
 
     Для нечетных: $W_{2n + 1} = \frac{2n}{2n+1} W_{2n-1} = \frac{2n}{2n+1} \cdot \frac{2n-2}{2n-1}W_{2n-3} = \ldots = \frac{(2n)!!}{(2n+1)!!}W_1 = \frac{(2n)!!}{(2n+1)!!}$
 \end{example}
