@@ -373,11 +373,11 @@
     Тогда  $\int\limits_p^q f(\vphi(t)) \vphi'(t) \mathrm{d}t = \int\limits_{\vphi(p)}^{\vphi(q)} f(x) \mathrm{d}x$.
 \end{theorem}
 \begin{proof}
-    Пусть $F$ --- первообразная  $f$. Тогда  $\int\limits_{\vphi(p)}^{\vphi(q)}f(x) \mathrm{d}x = F \mid_{\vphi(p)}^{\vphi(q)} = F_0\vphi\mid_p^q$, где $F_0\vphi$ --- первообразная для  $f(\vphi(t))\vphi'(t)$.
+    Пусть $F$ --- первообразная  $f$. Тогда  $\int\limits_{\vphi(p)}^{\vphi(q)}f(x) \mathrm{d}x = F \mid_{\vphi(p)}^{\vphi(q)} = F \circ \vphi\mid_p^q$. Заметим, что  $F \circ \vphi$ --- первообразная для  $f(\vphi(t))\vphi'(t)$.
 
-    Проверим данные факты:  $\left(F(\vphi(t))\right)' = F'(\vphi(t)) \cdot \vphi'(t) = f(\vphi(t))\vphi'(t)$.
+    Проверим это:  $\left(F(\vphi(t))\right)' = F'(\vphi(t)) \cdot \vphi'(t) = f(\vphi(t))\vphi'(t)$.
 
-    Тогда интеграл равен $\int\limits_{p}^qf(\vphi(t))\vphi'(t) \mathrm{d}t$
+    Тогда: $\int\limits_{\vphi(p)}^{\vphi(q)}f(x)\mathrm{d}x = \left.F \circ \vphi\right|_{\vphi(p)}^{\vphi(q)} =  \int\limits_{p}^qf(\vphi(t))\vphi'(t) \mathrm{d}t$
 \end{proof}
 \begin{example}
 \begin{align}
@@ -385,7 +385,7 @@
 .\end{align}
 Произведем замену $\vphi(t) = \sin^2 t$,  $f(x) = \frac{1}{1+x^2}$, $\vphi'(t) = 2 \sin t \cos t = \sin 2t$, $\vphi(0) = 0, \vphi(\frac{\pi}{2}) = 1$:
 \begin{align*}
-    (1) = \int_{0}^{\frac{\pi}{2}} \frac{\vphi'(t)}{1 + (\vphi(t))^2} = \int_{\vphi(0)}^{\vphi(\frac{\pi}{2})} f(x)\mathrm{d}x = \int_0^1 \frac{\mathrm{d}x}{1+x^2} = \arctg x \mid_0^1 = \frac{\pi}{4}.
+	(1) = \int_{0}^{\frac{\pi}{2}} \frac{\vphi'(t)}{1 + (\vphi(t))^2} =  \int_0^{\frac{\pi}2} f(\vphi(t))\vphi'(t)\mathrm{d}t = \int_{\vphi(0)}^{\vphi(\frac{\pi}{2})} f(x)\mathrm{d}x = \int_0^1 \frac{\mathrm{d}x}{1+x^2} = \arctg x \mid_0^1 = \frac{\pi}{4}.
 \end{align*}
 \end{example}
 %END TICKET 07
