@@ -21,7 +21,7 @@
 \begin{proof}
     Берем $\eps > 0$ и предположим, что  $\delta = \frac{1}{n}$ не подходит, то есть $\exists x_n, y_n \in [a, b]\!: |x_n - y_n| < \frac{1}{n}$ и $|f(x_n) - f(y_n)| \geq \eps$. По теореме Больцано-Вейерштрасса у последовательности $x_n$ есть сходящаяся последовательность  $x_{n_k} \to c$, то есть  $\lim x_{n_k} = c \in [a, b]$.
 
-    $\underbrace{x_{n_k} - \frac{1}{n_k}}_{\to c} < y_{n_k} < \underbrace{x_{n_k} + \frac{1}{n_k}}_{\to c} \implies \lim y_{n_k} = c$. Но $f$ непрерывна в точке  $c$  $\implies f(x_{n_k}) = f(c) = \lim f(y_{n_k}) \implies \lim (f(x_{n_k}) - f(y_{n_k})) = 0$, но $|f(x_{n_k}) - f(y_{n_k})| \ge \eps$.
+    $\underbrace{x_{n_k} - \frac{1}{n_k}}_{\to c} < y_{n_k} < \underbrace{x_{n_k} + \frac{1}{n_k}}_{\to c} \implies \lim y_{n_k} = c$. Но $f$ непрерывна в точке  $c$  $\implies \lim f(x_{n_k}) = f(c) = \lim f(y_{n_k}) \implies \lim (f(x_{n_k}) - f(y_{n_k})) = 0$, но $|f(x_{n_k}) - f(y_{n_k})| \ge \eps$.
 \end{proof}
 \begin{remark}
     Для интервала или полуинтервала неверно. $f(x) = \frac{1}{x}$ на $(0; 1]$. Докажем, что нет равномерной непрерывностью на  $(0; 1]$.
