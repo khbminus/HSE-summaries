@@ -414,7 +414,7 @@
 %BEGIN TICKET 09
 \begin{theorem}[Формула Валлиса]
     \[
-        \lim_{n\to \inf} \frac{(2n)!!}{(2n-1)!!} \cdot \frac{1}{\sqrt{2n+1}} = \sqrt{\frac{\pi}{2}}
+        \lim_{n\to +\infty} \frac{(2n)!!}{(2n-1)!!} \cdot \frac{1}{\sqrt{2n+1}} = \sqrt{\frac{\pi}{2}}
     .\] 
 \end{theorem}
 \begin{proof}
@@ -423,6 +423,8 @@
     Заметим, что $W_{2n+2} \le W_{2n+1} \le W_{2n} \iff \frac{\pi}{2}\frac{(2n+1)!!}{(2n+2)!!} \le \frac{(2n)!!}{(2n+1)!!} \le \frac{\pi}{2} \frac{(2n-1)!!}{(2n)!!}$. Поделим на $\frac{(2n-1)!!}{(2n)!!}$:  \[
         \frac{\pi}{2} \frac{2n+1}{2n+2} \le \frac{((2n)!!)^2}{(2n+1)((2n-1)!!)^2} \le \frac{\pi}{2} \implies \lim \left(\frac{(2n)!!}{\sqrt{(2n+1)}(2n-1)!!}\right)^2 = \frac{\pi}{2}
     .\] 
+
+    Последний переход --- по двум милиционерам, т.к. при $n \to +\infty\ \  \frac{2n+1}{2n + 2} \to 1$
 \end{proof}
 \begin{consequence}
     \[
