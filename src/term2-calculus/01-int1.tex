@@ -450,9 +450,11 @@
     \begin{itemize}
         \item База. $n = 0$, $f(x) = f(x_0) + \int\limits_{x_0}^x f'(t)\mathrm{d}t = f(x_0)+f \mid_{x_0}^x$
         \item Переход. $n \to n + 1$.
-        \item Доказательство.  $f(x) = T_n(x) + \frac{1}{n!}\int\limits_{x_0}^x \underbrace{(x-t)^n}_{g'} \underbrace{f^{(n+1)}(t)}_{f} \mathrm{d}t$. Проинтегрируем интеграл по частям. $g(t) = \frac{1}{n+1} -(x-t)^{n+1}$. 
+	\item Доказательство.  $f(x) = T_n(x) + \frac{1}{n!}\int\limits_{x_0}^x \underbrace{(x-t)^n}_{g'} \underbrace{f^{(n+1)}(t)}_{f} \mathrm{d}t$. Проинтегрируем интеграл по частям. $g(t) = -\frac{(x-t)^{n+1}}{n+1}$. 
 
             Подставим: $\int\limits_{x_0}^x (x-t)^n f^{(n+1)}(t) \mathrm{d}t = -\frac{(x-t)^{n+1}}{n+1} \cdot f^{(n+1)}(t) \mid_{t=x_0}^{t=x} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t = \underbrace{\frac{1}{n+1}(x-x_0)^{n+1}f^{(n+1)}(x_0)}_{\text{новый член Тейлора!}} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t$
+
+	    Вспомнив, что у нас там ещё был $\frac1{n!}$ перед исходным интегралом заметим, что мы действительно получили новый член суммы и новый интеграл с $\frac1{(n+1)!}$, что доказывает индукционный переход.
     \end{itemize}
 \end{proof}
 %END TICKET 10
