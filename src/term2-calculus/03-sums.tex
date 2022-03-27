@@ -192,8 +192,8 @@ H_n = \ln n + \frac{1}{2} + \frac{1}{2n} + a_n
         b_n \le \frac{1}{2} \int_1^n \frac{\mathrm{d}t}{t^2} = \frac{1}{2} (-\frac{1}{t}) \mid_1^n = \frac{1}{2} (1-\frac{1}{n}) < \frac{1}{2} \implies b_n = b + o(1).
     .\] 
 
-    А значит $\ln n! = n \ln n - n + \frac{1}{2} \ln n + (1-b) + o(1)$.
-    $n! = n^n e^{-n} \sqrt{n} e^{1-b} e^{o(1)} \sim n^n e^{-n} \sqrt{n} C$.
+    А значит $\ln n! = n \ln n - n + \frac{1}{2} \ln n + (1-b) + o(1)$. \\
+    Можем найти $b$, для этого представим обе части как экспоненты: $n! = n^n e^{-n} \sqrt{n} e^{1-b} e^{o(1)} \sim n^n e^{-n} \sqrt{n} C$.
 
     Вспомним (из следствия формулы Валлиса): $\binom{2n}{n} \sim \frac{4^n}{\sqrt{\pi n}}$. А еще знаем, что $\binom{2n}{n} = \frac{(2n)!}{(n!)^2} \sim \frac{(2n)^{2n}e^{-2n}\sqrt{2n}C}{(n^n e^{-n}\sqrt{n}C)^2} = \frac{4^n \sqrt{2}}{\sqrt{n}C}$.
 
