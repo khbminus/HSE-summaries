@@ -125,10 +125,10 @@
     $\forall E, \widetilde{E}\!: E \subset \widetilde{E} \Rightarrow \sigma(E) \le \sigma(\widetilde{E})$.
 \end{property}
 \begin{proof}
-    $E = \widetilde{E} \cup (\widetilde{E} \setminus E) \Rightarrow \sigma(\widetilde{E}) = \sigma(E) + \sigma(\widetilde{E} \setminus E)$.
+    $\widetilde{E} = E \cup (\widetilde{E} \setminus E) \Rightarrow \sigma(\widetilde{E}) = \sigma(E) + \sigma(\widetilde{E} \setminus E)$.
 \end{proof}
 \begin{definition}
-    Псевдоплощадь: $\sigma\!: \mathcal{F} \to [0; +\infty]$, причём
+    Псевдоплощадь: $\sigma\!: \mathcal{F} \to [0; +\infty)$, причём
      \begin{enumerate}
          \item $\sigma([a; b] \times [c, d]) = (b - a)(d - c)$,
          \item $\forall E, \widetilde{E} \in \mathcal{F}\!: E \subset \widetilde{E} \Rightarrow \sigma(E) \le \sigma(\widetilde{E})$, 
@@ -138,9 +138,11 @@
 \begin{properties}
     \begin{enumerate}
         \item Подмножество вертикального или горизонтального отрезка имеет нулевую площадь.
-        \item В определении $E_-$ и  $E_+$ не важно  куда относить точки из  $l$.
+        \item В определении $E_-$ и  $E_+$ неважно  куда относить точки из  $l$.
             \begin{proof}
-                Заметим, что $\sigma(E_- \cup (E \cap l)) = \sigma(E_- \setminus l) + \underbrace{\sigma(E \cap l)}_{=0} \Rightarrow$ вообще не имеет разницы куда относить точки из  $l$.
+            	Пусть $\widetilde{E} = E_- \cup (E \cap l) = (E_- \setminus l) \cup (E \cap l)$.
+            	
+            	Тогда $ \sigma(\widetilde{E}) = \sigma(E_- \cup (E \cap l)) = \sigma(E_- \setminus l) + \underbrace{\sigma(E \cap l)}_{=0} \Rightarrow$ вообще не имеет разницы куда относить точки из $l$.
             \end{proof}
     \end{enumerate}
 \end{properties}
@@ -150,7 +152,7 @@
     \slashn
      \begin{enumerate}
          \item $\sigma_1(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^n P_k \supset E\right\}$.
-         \item $\sigma_2(E) = \inf \left\{\sum\limits_{k=1}^n |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^\infty P_k  \supset E\right\}$.
+         \item $\sigma_2(E) = \inf \left\{\sum\limits_{k=1}^\infty |P_k|\!: P_k\text{ --- прямоугольник}, \bigcup\limits_{k=1}^\infty P_k  \supset E\right\}$.
     \end{enumerate}
 \end{example}
 \begin{exerc}
@@ -171,6 +173,7 @@
     \slashn
     \begin{enumerate}
         \item[2.] $E'$ --- сдвиг  $E$ на вектор  $v$. Пусть  $P_k$ --- покрытие  $E \iff P'_k$ --- покрытие  $E'$. Знаем, что площади прямоугольников не меняются при сдвиге, а значит:
+            
             $\sigma_1(E) = \inf\{\sum\limits_{k=1}^n|P_k|\} = \inf\{\sum |P'_k|\} = \sigma_1(E')$.
         \item[1.] $\Rightarrow$ монотонность. Пусть есть  $E \subset \widetilde{E}$. Тогда возьмем покрытие  $P_k$ для  $\widetilde{E}$.  $E \subset \widetilde{E} \subset \bigcup\limits_{k=1}^n P_k$. 
 
@@ -178,15 +181,24 @@
 
         \item[1'.] Докажем теперь аддитивность. 
 
-            <<$\le$>>. $\sigma_1(E) = \sigma_1(E_-) + \sigma_1(E_+)$. Пусть $P_k$ --- покрытие  $E_-$,  $Q_j$ --- покрытие  $E_+$.  $\bigcup\limits_{k=1}^n P_k \cup \bigcup\limits_{j=1}^m Q_j \supset E_- \cup E_+ = E$. А значит  $\sigma_1(E) \le \inf \left\{ \sum\limits_{k=1}^n |P_k| + \sum\limits_{j=1}^n |Q_j|\right\} = \inf\{\sum |P_k|\} + \inf\{\sum |Q_j|\} = \sigma_1(E_-) + \sigma(E_+)$. Заметим, Что переход с разделением инфинумов  возможен, так как $P$ и  $Q$ выбираются независимо.
+            <<$\le$>>: $\sigma_1(E) = \sigma_1(E_-) + \sigma_1(E_+)$. Пусть $P_k$ --- покрытие  $E_-$,  $Q_j$ --- покрытие  $E_+$.
+            
+            Тогда $\bigcup\limits_{k=1}^n P_k \cup \bigcup\limits_{j=1}^n Q_j \supset E_- \cup E_+ = E$.
+            
+            А значит  $\sigma_1(E) \le \inf \left\{ \sum\limits_{k=1}^n |P_k| + \sum\limits_{j=1}^n |Q_j|\right\} = \inf\{\sum |P_k|\} + \inf\{\sum |Q_j|\} = \sigma_1(E_-) + \sigma(E_+)$. Заметим, Что переход с разделением инфинумов  возможен, так как $P$ и  $Q$ выбираются независимо.
 
-	    <<$\ge$>>. Пусть $P_k$ --- покрытие  $E$. Тогда можно пересечь прямой (покрытие и само $E$) и разбить $P_k$ на $P_k^-$ и $P_k^+$, а тогда: $|P_k| = |P^-_k| + |P^+_k|$,  $\sum |P_k| = \sum |P^-_k| + \sum |P^+_k|$. $\sum |P_k^-| \ge \sigma_1(E_-), \sum |P_k^+| \ge \sigma_1(E^+) \Rightarrow \sum |P_k| \ge \sigma_1(E_-) + \sigma_1(E_+)$ для любого покрытия $P_k$, а значит и $\sigma_1(E) \ge \sigma_1(E_-) + \sigma_1(E_+)$
+	    <<$\ge$>>: Пусть $P_k$ --- покрытие  $E$. Тогда можно пересечь прямой (покрытие и само $E$) и разбить $P_k$ на $P_k^-$ и $P_k^+$, а тогда: $|P_k| = |P^-_k| + |P^+_k|$,  $\sum |P_k| = \sum |P^-_k| + \sum |P^+_k|$.
+	    
+	    $\sum |P_k^-| \ge \sigma_1(E_-), \sum |P_k^+| \ge \sigma_1(E^+) \Rightarrow \sum |P_k| \ge \sigma_1(E_-) + \sigma_1(E_+)$ для любого покрытия $P_k$, а значит и $\sigma_1(E) \ge \sigma_1(E_-) + \sigma_1(E_+)$
 
 	    Таким образом $\sigma_1(E) = \sigma_1(E_-) + \sigma_1(E_+)$
         \item[1''.] Проверим, что сама площадь прямоугольника не сломалась: $\sigma_1([a, b] \times [c, d]) = (b-a)(d-c)$. Заметим, что  $\sigma_1(P) \le |P|$, т.к. прямоугольник можно покрыть им самим.
 
-		Тогда посмотрим на $P_k$. Проведем прямые содержащие все стороны прямоугольников из покрытия (и $P$). Заметим, что такими прямыми каждый прямоугольник разбивается на подпрямоугольники, сумма площадей которых равна площади исходного прямоугольника. Тогда заметим, что и площадь $P$ это сумма <<кусочков из нарезки>> $P$, и некоторые части разбиения встречаются в  $P_k$ несколько раз. А значит выкинув все лишнее мы как раз получим  $|P|$, а значит  $\sigma_1(P) \ge |P|$.
-		Таким образом $\sigma_1(P) = |P|$
+		Чтобы доказать $\sigma_1(P) \ge |P|$, посмотрим на $P_k$. Проведем прямые содержащие все стороны прямоугольников из покрытия (и $P$). Заметим, что такими прямыми каждый прямоугольник разбивается на подпрямоугольники, сумма площадей которых равна площади исходного прямоугольника. Тогда заметим, что и площадь $P$ это сумма <<кусочков из нарезки>> $P$, и некоторые части разбиения встречаются в  $P_k$ несколько раз. А значит выкинув все лишнее мы как раз получим  $|P|$, а значит  $\sigma_1(P) \ge |P|$.
+		
+		Формально: Если $\bigcup\limits_{k=1}^n P_k \supset P$, то $\sum\limits_{k=1}^n |P_k| \ge P \Rightarrow \inf \left\{\sum\limits_{k=1}^n |P_k|\right\} \ge |P|$.
+		
+		Таким образом $\sigma_1(P) = |P|$.
     \end{enumerate}
 \end{proof}
 %END TICKET 02
@@ -198,8 +210,8 @@
     \begin{enumerate}
         \item $f = f_+ - f_-$.
         \item  $|f| = f_+ + f_-$
-        \item  $f_+ = \frac{f + |f|}{2}$, $f_- = \frac{|f| - f}{2}$.
-        \item Если $f \in C([a, b])$ , то  $f_{\pm} \in C([a, b])$.
+        \item  $f_+ = \frac{f + |f|}{2}$, $f_- = \frac{|f| - f}{2}$. (Сложили и вычли первые два свойства)
+        \item Если $f \in C([a, b])$ , то  $f_{\pm} \in C([a, b])$. (Видно из 3-го пункта)
     \end{enumerate}
 \end{properties}
 
@@ -219,7 +231,7 @@
 \end{definition}
 \begin{properties}
     \begin{enumerate}
-        \item $\int\limits_a^a f = 0$.
+    \item $\int\limits_a^a f = 0$. (Площадь отрезка = 0)
 	\item $\int\limits_a^b c = c(b-a), c \ge 0$ (для отрицательных будет следовать из пунктов ниже)
             \begin{proof}
                 По графику очевидно :)
@@ -229,9 +241,9 @@
              \begin{proof}
 		     $(-f)_+ = \max\{-f, 0\} = f_-$.  $(-f)_- = \max\{f, 0\} = f+$, откуда $\int_a^b (-f) = \sigma(P_{(-f)_+}) - \sigma(P_{(-f)_-}) = \sigma(P_{f_-}) - \sigma(P_{f_+}) = -\int_a^b f$
             \end{proof}
-        \item $f \ge 0 \land \int\limits_a^b = 0 \land a < b \Rightarrow f = 0$.
+        \item $f \ge 0 \land \int\limits_a^b f = 0 \land a < b \Rightarrow f = 0$.
             \begin{proof}
-                От противного. $\exists c \in [a, b]\!: f(c) > 0$. Тогда, возьмем $\eps \coloneqq \frac{f(c)}{2}, \delta$ из определения непрерывности в точке $c$. Если  $x \in (c - \delta, c + \delta)$, то  $f(x) \in (f(c) - \eps, f(c) + \eps) = (\frac{f(c)}{2}; \frac{3f(c)}{2}) \Rightarrow f(x) \ge \frac{f(c)}{2}$ при $x \in (c - \delta; c + \delta) \Rightarrow P_f \supset [c-\frac{\delta}{2}; c + \frac{\delta}{2}]\times[0; \frac{f(c)}{2}] \Rightarrow \int\limits_a^b f = \sigma(P_f) \ge \delta \cdot \frac{f(c)}{2} > 0$, противоречие.
+                От противного. Пусть $\exists c \in [a, b]\!: f(c) > 0$. Тогда, возьмем $\eps \coloneqq \frac{f(c)}{2}, \delta$ из определения непрерывности в точке $c$. Если  $x \in (c - \delta, c + \delta)$, то  $f(x) \in (f(c) - \eps, f(c) + \eps) = (\frac{f(c)}{2}; \frac{3f(c)}{2}) \Rightarrow f(x) \ge \frac{f(c)}{2}$ при $x \in (c - \delta; c + \delta) \Rightarrow P_f \supset [c-\frac{\delta}{2}; c + \frac{\delta}{2}]\times[0; \frac{f(c)}{2}] \Rightarrow \int\limits_a^b f = \sigma(P_f) \ge \delta \cdot \frac{f(c)}{2} > 0$, противоречие.
             \end{proof}
     \end{enumerate}
 \end{properties}
@@ -255,17 +267,23 @@
     $f_+ = \max\{f, 0\} \le \max\{g, 0\} = g_+ \Rightarrow P_{f_+} \subset P_{g_+} \Rightarrow \sigma(P_{f_+}) \le \sigma(P_{g_+})$.
 
     $f_- = \max\{-f, 0\} \ge \max\{-g, 0\} = g_- \Rightarrow P_{f_-} \supset P_{g_-} \Rightarrow \sigma(P_{f_-}) \ge \sigma(P_{g_-})$.
+    
+    $\int\limits_a^b f = \sigma(P_{f_+}) - \sigma(P_{f_-}) \le \sigma(P_{g_+}) - \sigma(P_{g_-}) = \int\limits_a^b g$.
 \end{proof}
 \begin{consequence}
     \begin{enumerate}
-        \item $|\int\limits_a^b f| \le \int\limits_a^b |f|$ 
+        \item $|\int\limits_a^b f| \le \int\limits_a^b |f|$.
         \item $(b-a)\min\limits_{x \in [a, b]} f(x) \le \int\limits_a^b f \le (b-a)\max\limits_{x \in [a, b]} f(x)$.
     \end{enumerate}
 \end{consequence}
 \begin{proof}
     \begin{enumerate}
-        \item $-|f| \le f \le |f| \Rightarrow \int\limits_a^b -|f| \le \int\limits_a^b f \le \int\limits_a^b |f| \Rightarrow |\int\limits_a^b f| \le \int\limits_a^b |f|$
-	\item $m \coloneqq \min\limits_{x \in [a, b]} f(x)$,  $M \coloneqq \max\limits_{x \in [a, b]} f(x)$.  $m \le f(x) \le M \Rightarrow \int\limits_a^b m \le \int\limits_a^b f \le \int\limits_a^b M$.
+        \item $-|f| \le f \le |f| \Rightarrow$ (Применим теорему к двум неравенствам)
+        
+        $\int\limits_a^b -|f| \le \int\limits_a^b f \le \int\limits_a^b |f| \Rightarrow |\int\limits_a^b f| \le \int\limits_a^b |f|$.
+	\item $m \coloneqq \min\limits_{x \in [a, b]} f(x)$,  $M \coloneqq \max\limits_{x \in [a, b]} f(x)$.  $m \le f(x) \le M \Rightarrow \int\limits_a^b m \le \int\limits_a^b f \le \int\limits_a^b M \Rightarrow$
+	
+	$m(b - a) \le \int\limits_a^b f \le M(b - a)$.
     \end{enumerate}
 \end{proof}
 \begin{theorem}[Интегральная теорема о среднем]
@@ -274,7 +292,7 @@
     Тогда  $\exists c \in (a, b)\!: \int\limits_a^b f = (b-a)f(c)$.
 \end{theorem}
 \begin{proof}
-	$m \coloneqq \min f = f(p), M \coloneqq \max f = f(q)$ (по теореме Вейерштрасса). Тогда  $f(p) \le \frac{1}{b-a}\int\limits_a^b f \le f(q) \xRightarrow{\text{т. Б-К}} \exists c \in (p, q)  \text{или $(q, p)$}\!: f(c) = \frac{1}{b - a}\int\limits_a^b f$.
+	$m \coloneqq \min f = f(p), M \coloneqq \max f = f(q)$ (по теореме Вейерштрасса). Тогда  $\frac{1}{b - a}\int\limits_a^b f = f(c) \Rightarrow f(p) \le \frac{1}{b-a}\int\limits_a^b f \le f(q) \xRightarrow{\text{т. Б-К}} \exists c \in (p, q)  \text{или $(q, p)$}\!: f(c) = \frac{1}{b - a}\int\limits_a^b f$.
 \end{proof}
 \begin{definition}
     $I_f \coloneqq \frac{1}{b-a} \int\limits_a^b f$ --- среднее значение $f$ на отрезке  $[a, b]$.
@@ -343,7 +361,7 @@
     $\int\limits_a^b(\alpha f + \beta g) = \alpha \int\limits_a^b f + \beta \int\limits_a^b g$.
 \end{theorem}
 \begin{proof}
-    $F, G$ --- первообразные для  $f, g$.
+    Пусть $F, G$ --- первообразные для  $f, g$.
 
     Тогда  $\alpha F + \beta G$ --- первообразная для  $\alpha f + \beta g$. Тогда воспользуемся формулой Ньютона-Лейбница:  \[
 	    \int_a^b \alpha f + \beta g = \left.\left(\alpha F + \beta G\right)\right|_a^b = \alpha F(b) + \beta G(b) - \alpha F(a) - \beta G(a) = \alpha \int_a^b f + \beta \int_a^b g
@@ -385,7 +403,7 @@
 .\end{align}
 Произведем замену $\vphi(t) = \sin^2 t$,  $f(x) = \frac{1}{1+x^2}$, $\vphi'(t) = 2 \sin t \cos t = \sin 2t$, $\vphi(0) = 0, \vphi(\frac{\pi}{2}) = 1$:
 \begin{align*}
-	(1) = \int_{0}^{\frac{\pi}{2}} \frac{\vphi'(t)}{1 + (\vphi(t))^2} =  \int_0^{\frac{\pi}2} f(\vphi(t))\vphi'(t)\mathrm{d}t = \int_{\vphi(0)}^{\vphi(\frac{\pi}{2})} f(x)\mathrm{d}x = \int_0^1 \frac{\mathrm{d}x}{1+x^2} = \arctg x \mid_0^1 = \frac{\pi}{4}.
+    (1) = \int_{0}^{\frac{\pi}{2}} \frac{\vphi'(t)}{1 + (\vphi(t))^2} = \int_{0}^{\frac{\pi}{2}}f(\vphi(t))\vphi'(t) \mathrm{d}t = \int_{\vphi(0)}^{\vphi(\frac{\pi}{2})} f(x)\mathrm{d}x = \int_{0}^{1}f(x)\mathrm{d}x = \int_0^1 \frac{\mathrm{d}x}{1+x^2} = \arctg x \mid_0^1 = \frac{\pi}{4}.
 \end{align*}
 \end{example}
 %END TICKET 07
@@ -397,13 +415,13 @@
 
     Положим $x = \frac{\pi}{2} - t \eqqcolon \vphi(t)$, $\vphi'(t) = -1$,  $\sin(\frac{\pi}{2} - t) = \cos t$. 
 
-    Тогда $(1) = -\int\limits_0^{\frac{\pi}{2}}\sin^n \vphi(t) \cdot \vphi(t) \mathrm{d}t = -\int\limits_{\frac{\pi}{2}}^0 \sin^n x \mathrm{d}x = \int_0^{\frac{\pi}2} \sin^n x \mathrm{d}x$
+    Тогда $(1) = -\int\limits_0^{\frac{\pi}{2}}\sin^n \vphi(t) \cdot \vphi'(t) \mathrm{d}t = \int\limits_{\frac{\pi}{2}}^0 \sin^n x \mathrm{d}x$
 
     Частные случаи $W_0 = \frac{\pi}{2}$, $W_1 = \int\limits_0^{\frac{\pi}{2}} \sin x \mathrm{d}x = -\cos \mid_0^{\frac{\pi}{2}} = 1$
 
-    Общее решение: $W_n = \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x = -\int\limits_0^{\frac{\pi}{2}} \sin^{n-1}x \cdot (\cos x)' \mathrm{d}x = $. Воспользовались тем, что $\sin x = -(\cos x)'$, $f'(x) = (n-1)\sin^{n-2} x \cdot \cos x$. 
+    Общее решение: $W_n = \int\limits_0^{\frac{\pi}{2}} \sin^n x \mathrm{d}x = -\int\limits_0^{\frac{\pi}{2}} \sin^{n-1}x \cdot (\cos x)' \mathrm{d}x = (*)$. Воспользовались тем, что $\sin x = -(\cos x)'$, $f'(x) = (n-1)\sin^{n-2} x \cdot \cos x$. 
 
-    Тогда получаем: \begin{align*} W_n &= -\left(\underbrace{\sin^{n-1} x \cdot \cos x \mid_0^{\frac{\pi}{2}}}_{=0} - \int\limits_0^{\frac{\pi}{2}} (n-1)\sin^{n-2} x \underbrace{\cos^2 x}_{=1-\sin^2 x} \mathrm{d} x\right) = \\ & =(n-1)\left(\int\limits_{0}^{\frac{\pi}{2}} \sin^{n-2} x \mathrm{d}x - \int\limits_{0}^{\frac{\pi}{2}} \sin^n x \mathrm{d} x\right) = (n-1)(W_{n-2} - W_n).
+    Тогда получаем: \begin{align*} &(*) = -\left(\underbrace{\sin^{n-1} x \cdot \cos x \mid_0^{\frac{\pi}{2}}}_{=0} - \int\limits_0^{\frac{\pi}{2}} (n-1)\sin^{n-2} x \underbrace{\cos^2 x}_{=1-\sin^2 x} \mathrm{d} x\right) = \\ & =(n-1)\left(\int\limits_{0}^{\frac{\pi}{2}} \sin^{n-2} x \mathrm{d}x - \int\limits_{0}^{\frac{\pi}{2}} \sin^n x \mathrm{d} x\right) = (n-1)(W_{n-2} - W_n).
     \end{align*}
 
     Посчитаем для четных: $W_{2n} = \frac{2n-1}{2n} \cdot W_{2n-2} = \frac{2n-1}{2n} \cdot \frac{2n-3}{2n - 2} W_{2n-4} = \ldots = \frac{(2n-1)!!}{(2n)!!} \frac{\pi}{2}$, где $k!!$  --- произведение натуральных чисел   $\le k$ той же четности, что и  $k$ .
@@ -450,7 +468,7 @@
     \begin{itemize}
         \item База. $n = 0$, $f(x) = f(x_0) + \int\limits_{x_0}^x f'(t)\mathrm{d}t = f(x_0)+f \mid_{x_0}^x$
         \item Переход. $n \to n + 1$.
-	\item Доказательство.  $f(x) = T_n(x) + \frac{1}{n!}\int\limits_{x_0}^x \underbrace{(x-t)^n}_{g'} \underbrace{f^{(n+1)}(t)}_{f} \mathrm{d}t$. Проинтегрируем интеграл по частям. $g(t) = -\frac{(x-t)^{n+1}}{n+1}$. 
+        \item Доказательство.  $f(x) = T_n(x) + \frac{1}{n!}\int\limits_{x_0}^x \underbrace{(x-t)^n}_{g'} \underbrace{f^{(n+1)}(t)}_{f} \mathrm{d}t$. Проинтегрируем интеграл по частям. $g(t) = -\frac{(x-t)^{n+1}}{n+1}$. 
 
             Подставим: $\int\limits_{x_0}^x (x-t)^n f^{(n+1)}(t) \mathrm{d}t = -\frac{(x-t)^{n+1}}{n+1} \cdot f^{(n+1)}(t) \mid_{t=x_0}^{t=x} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t = \underbrace{\frac{1}{n+1}(x-x_0)^{n+1}f^{(n+1)}(x_0)}_{\text{новый член Тейлора!}} + \int_{x_0}^x \frac{1}{n+1} (x-t)^{n+1} \cdot f^{(n+2)}(t) \mathrm{d} t$
 
