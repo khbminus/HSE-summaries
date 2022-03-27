@@ -170,7 +170,7 @@
     $f \in C[a, b)$. $\int\limits_a^b f$ абсолютно сходится, если  $\int\limits_a^b |f|$ сходится.
 \end{definition}
 \begin{theorem}
-    $\int_a^b f$ сходится абсолютно  $\implies \int\limits_a^b f$ сходится.
+    $\int\limits_a^b f$ сходится абсолютно  $\implies \int\limits_a^b f$ сходится.
 \end{theorem}
 \begin{proof}
     $f = f_+ - f_-$,  $|f| = f_+ + f_-$.  $|f| \ge f_\pm \ge 0$. Если $\int\limits_a^b f$ сходится абсолютно  $\implies \int\limits_a^b$ сходится  $\int\limits_a^b f_{\pm}$ сходится  $\implies \int\limits_a^b f = \int\limits_a^b f_+ - \int\limits_a^b f_-$ сходящийся.
@@ -180,7 +180,7 @@
     \begin{enumerate}
         \item $f$ имеет ограниченную на  $[a, +\infty]$ первообразную, то есть  $\left| \int\limits_a^y f(x) \mathrm{d}x \right| \le K \quad \forall y$.
         \item $g$ монотонна.
-        \item  $\lim_{x \to +\infty} g(x) = 0$
+        \item  $\lim\limits_{x \to +\infty} g(x) = 0$
     \end{enumerate}, то $\int\limits_a^{+\infty} f(x)g(x) \mathrm{d}x$ сходится.
 \end{theorem}
 \begin{proof}
@@ -188,7 +188,7 @@
 
     Надо доказать, что  $\exists$ конечный  $\lim\limits_{y \to +\infty} \int\limits_a^y f(x)g(x) \mathrm{d}x$,  $F(y) \coloneqq \int\limits_a^y f(x)\mathrm{d}x$. 
     \begin{align*}
-        \int\limits_a^y f(x)g(x)\mathrm{d}x = \int\limits_a^y F'(x)g(x) \mathrm{d}x = F(x)g(x) \mid_a^y - \int_a^y F(x) g'(x) \mathrm{d}x = F(y)g(y) - \int_a^y F(x)g'(x) \mathrm{d}x
+        \int\limits_a^y f(x)g(x)\mathrm{d}x = \int\limits_a^y F'(x)g(x) \mathrm{d}x = F(x)g(x) \Big|_a^y - \int_a^y F(x) g'(x) \mathrm{d}x = F(y)g(y) - \int_a^y F(x)g'(x) \mathrm{d}x
     \end{align*}
 
     Чтобы доказать существование предела у разности каких-то штук, нужно доказать, что он существует у них по отдельности.
@@ -227,12 +227,14 @@
 \end{statement}
 \begin{proof}
     Картинка:\\
-    \colorbox{red}{Добавить картинку. Альтернатива: посмотреть доски Храброва/пнуть меня.}
+    \begin{figure}[h!]
+        \includegraphics[scale=0.6]{abels_consequence}
+    \end{figure}
     
-    $\int\limits_a^{a+kT}f = \int_{b-(k-1)T}^{a+T}f$.  $\int\limits_{a+kT}^{b+T} f = \int\limits_{a+T}^{b-(k-1)T} f$
+    %$\int\limits_a^{a+kT}f = \int_{b-(k-1)T}^{a+T}f$.  $\int\limits_{a+kT}^{b+T} f = \int\limits_{a+T}^{b-(k-1)T} f$
 \end{proof}
 \begin{consequence}
-   $f, g\in C[a;+\infty)$,  $f$ --- периодическая с периодом  $T$,  $g$ монотонная и  $\int\limits_a^{+\infty} g(x) \mathrm{d}x$ расходится. 
+   $f, g\in C[a;+\infty)$,  $f$ --- периодическая с периодом  $T$,  $g$ монотонная и $g \xrightarrow{x \to +\infty} 0$  $\int\limits_a^{+\infty} g(x) \mathrm{d}x$ расходится. 
 
    Тогда $\int\limits_a^{+\infty} fg$ сходится  $\iff \int\limits_a^{a+T} f = 0$.
 \end{consequence}
