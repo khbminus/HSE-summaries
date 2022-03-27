@@ -173,7 +173,7 @@
     H_n = \frac{1 + \frac{1}{n}}{2} + \int_1^n \frac{\mathrm{d}t}{t} + \frac{1}{2} \int_1^n \frac{2}{t^3}\{t\}(1-\{t\})\mathrm{d}t
     \] Откуда получаем ($a_n \coloneqq \int\limits_1^n \frac{\{t\}(1-\{t\})}{t^3} $): \[
 H_n = \ln n + \frac{1}{2} + \frac{1}{2n} + a_n
-.\] Заметим, что $a_{n+1} = a_n + \int\limits_n^{n+1}\frac{\{t\}(1-\{t\})}{t^3} \mathrm{d}t > a_n$. То есть $a_n\uparrow$. Причем $a_b \le \int\limits_1^n \frac{\mathrm{d}t}{t^3} = -\frac{1}{2^2} \mid_1^n = \frac{1}{2} - \frac{1}{2n^2} < \frac{1}{2}$. А значит $a_n$ имеет предел, а значит  $a_n = a + o(1)$. 
+.\] Заметим, что $a_{n+1} = a_n + \int\limits_n^{n+1}\frac{\{t\}(1-\{t\})}{t^3} \mathrm{d}t > a_n$. То есть $a_n\uparrow$. Причем $a_b \le \int\limits_1^n \frac{\mathrm{d}t}{t^3} = -\frac{1}{2t^2} \mid_1^n = \frac{1}{2} - \frac{1}{2n^2} < \frac{1}{2}$. А значит $a_n$ имеет предел, а значит  $a_n = a + o(1)$.
 \\
 Вывод:  $H_n = \ln n + \gamma + o(1)$, где  $\gamma \approx 0.5772156649$ --- постоянная Эйлера.
 \end{example}
