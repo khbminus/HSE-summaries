@@ -425,11 +425,11 @@
 \end{theorem}
 \begin{proof}
     \begin{enumerate}
-        \item $\rho(x_n+y_n, a+b) = \lVert (x_n+y_n - (a+b)) \rVert = \lVert (x_n-a) + (y_n-b) \rVert \le \lVert x_n - a \rVert + \lVert y_n - b \rVert = \rho(x_n, a) + \rho(y_n, b) \to 0$.
+        \item $\rho(x_n+y_n, a+b) = \lVert (x_n+y_n) - (a+b) \rVert = \lVert (x_n-a) + (y_n-b) \rVert \le \lVert x_n - a \rVert + \lVert y_n - b \rVert = \rho(x_n, a) + \rho(y_n, b) \to 0$.
         \item Аналогично.
         \item $\rho(\lambda_nx_n, \mu a) = \lVert \lambda_n x_n - \mu a\rVert = \lVert \lambda_n x_n - \lambda_n a + \lambda_n a - \mu a \rVert \le \lVert \lambda_n x_n - \lambda_n a \rVert + \lVert \lambda_n a - \mu a \rVert = |\lambda_n| \lVert x_n - a \rVert + |\lambda_n -\mu| \lVert a \rVert \to 0$, так как $|\lambda_n|$ --- ограниченная, $\lVert x_n - a \rVert = \rho(x_n - a) \to 0$,  $|\lambda_n -\mu| \to 0$, $\lVert a \rVert$ --- константа.  
         \item $| \lVert x_n \rVert - \lVert a \rVert| \le \lVert x_n - a \rVert = \rho(x_n, a) \to 0 \implies \lim \lVert x_n \rVert = \lVert a \rVert$
-        \item $\langle x, y \rangle = \frac{1}{4}(\lVert x+y \rVert^2 - \lVert x-y \rVert^2) = \frac{1}{4}(\langle x+y, x+y\rangle - \langle x-y, x-y\rangle)$. Тогда получаем $4 \langle x_n, y_n \rangle = \lVert x_n + y_n \rVert^2 - \lVert x_n - y_n \rVert^2 \to \lVert a + b \rVert^2 - \lVert a - b \rVert^2 = 4 \langle a, b \rangle$.
+        \item $\langle x, y \rangle = \frac{1}{4}(\lVert x+y \rVert^2 - \lVert x-y \rVert^2) = \frac{1}{4}(\langle x+y, x+y\rangle - \langle x-y, x-y\rangle) = \frac{1}{4}(\langle x, x\rangle + 2\langle x, y\rangle + \langle y, y\rangle - (\langle x, x\rangle - 2\langle x, y\rangle + \langle y, y\rangle)) = \frac{1}{4} \cdot 4\langle x, y\rangle$. Тогда получаем $4 \langle x_n, y_n \rangle = \lVert x_n + y_n \rVert^2 - \lVert x_n - y_n \rVert^2 \to \lVert a + b \rVert^2 - \lVert a - b \rVert^2 = 4 \langle a, b \rangle$.
     \end{enumerate}
 \end{proof}
 \begin{definition}
@@ -438,10 +438,10 @@
 \begin{definition}
     Покоординатная сходимость в $\R^d$:
 
-    $x_n \in \R^d$.  $x_n = (x_n^{(1)}, x_n^{(2)}, \ldots, x_n^{(d)}) \xrightarrow{\text{покоординатно}} a = (a^{(1)}, a^{(2)}, \ldots, a^{(d)})$.
+    $x_n \in \R^d$.  $x_n = (x_n^{(1)}, x_n^{(2)}, \ldots, x_n^{(d)}) \xrightarrow{\text{покоординатно}} a = (a^{(1)}, a^{(2)}, \ldots, a^{(d)})$, если $\lim x_n^{(k)} = a^{(k)}\\ \forall k = 1, 2, ..., d$.
 \end{definition}
 \begin{theorem}
-    в $\R^d$ сходимость по метрике и покоординатная сходимость совпадает.
+    в $\R^d$ сходимость по метрике и покоординатная сходимость совпадают.
 \end{theorem}
 \begin{proof}
     Метрика $\implies$ покоординатная.  $\rho(x_n, a) \to 0 \implies 0 \le (x_n^{(1)} - a^{(1)})^2 + \ldots + (x_n^{(d)} - a^{(d)})^2 = \rho(x_n, a)^2 \to 0 \implies \lim (x_n^{(k)} - a^{(k)})^2 = 0 \implies \lim x_n^{(k)} = a^{(k)} \implies$ покоординатная сходимость.
@@ -475,9 +475,9 @@
 \begin{exerc}
     $(X, \rho)$ --- полное метрическое пространство  $X \supset Y$ замкнуто. Доказать, что  $(Y, \rho)$ --- полное.
 \end{exerc}
-\begin{exerc}
+\begin{example}
     $(0, 1)$ не полное.  $x_n = \frac{1}{n}$ --- фундаментальная, но $\lim \frac{1}{n} = 0 \notin (0; 1)$.
-\end{exerc}
+\end{example}
 \begin{theorem}
     $\R^d$ --- полное.
 \end{theorem}
@@ -507,9 +507,7 @@
 
     $K$ --- компакт, если из любого его открытого покрытия можно выделить конечное подпокрытие. 
 \end{definition}
-\begin{definition}
     То есть для любого покрытия можно выбрать $\alpha_1, \alpha_2, \ldots, \alpha_n \in I\!: K \subset\bigcup \limits_{i=1}^n U_{\alpha_i}$
-\end{definition}
 \begin{theorem}[Теорема о свойствах компактных множеств]
     \begin{enumerate}
         \item $K \subset Y \subset X$. Тогда  $K$ --- компакт в  $(X, \rho) \iff K$ --- компакт в  $(Y, \rho)$.
@@ -524,14 +522,14 @@
              $U_\alpha$ --- открытое покрытие в  $(Y, \rho) \implies$ можно выделить конечное подпокрытие  $\alpha_1, \ldots, \alpha_n$, такое что $K \subset \bigcup\limits_{i=1}^n U_{\alpha_i} \subset \bigcup\limits_{i=1}^n G_{\alpha_i}$ --- конечное подпокрытие $G_\alpha \implies K$ компакт в  $(X, \rho)$.
 
               $\Rightarrow$. Воспользуемся тем же наблюдением: $U_\alpha = G_\alpha \cap Y$. Следовательно можно выбрать  $\alpha_1, \alpha_2, \ldots, \alpha_n$ в $X$ и они же подойдут и в  $Y$. 
-          \item Ограниченность. Возьмем $a \in X$. Тогда  $K \subset \bigcup\limits_{n=1}^\infty B_n(a) = X$ --- открытое покрытие  $K$. Выделим конечное подпокрытие  $K \subset \bigcup\limits_{n=1}^N B_n(a) \implies K \subset B_N(a) \implies K$ --- ограничено. 
+          \item \textbf{Ограниченность}. Возьмем $a \in X$. Тогда  $K \subset \bigcup\limits_{n=1}^\infty B_n(a) = X$ --- открытое покрытие  $K$. Выделим конечное подпокрытие  $K \subset \bigcup\limits_{n=1}^N B_n(a) \implies K \subset B_N(a) \implies K$ --- ограничено (то есть объединили в один большой шар). 
 
-              Замкнутость. Надо доказать, что $X \setminus K$ --- открытое. Возьмем  $a \in X \setminus K$ и $x \in K$ и докажем, что  $a$ лежит в  $X \setminus K$ вместе с некоторым шариком.
+              \textbf{Замкнутость}. Надо доказать, что $X \setminus K$ --- открытое. Возьмем  $a \in X \setminus K$ и $x \in K$ и докажем, что  $a$ лежит в  $X \setminus K$ вместе с некоторым шариком.
 
-              Пусть  $U_x = B_{\frac{\rho(x, a)}{2}}(x)$. Причем он не пересекается с $B_x = B_{\frac{\rho(x, a)}{2}}(a)$. Возьмем тогда $K \subset \bigcup_{x \in K} U_x$ --- открытое покрытие (поскольку каждый шарик точно покрывает свой центр и ещё что-то). Выделим конечное подпокрытие  $K \in \bigcup\limits_{i=1}^n U_{x_i}$,  $r = \min\{\frac{\rho(x_i, a)}{2} \}$. Тогда $B_r(a) = \bigcap\limits_{i=1}^n B_{x_i}$.  $B_r(a) \cap \bigcup\limits_{i=1}^n U_{x_i} = \emptyset \implies B_r(a) \cap K = \emptyset \implies B_r(a) \subset X \setminus K \implies a$ --- внутренняя $X \cap K$.
+              Пусть  $U_x = B_{\frac{\rho(x, a)}{2}}(x)$. Причем он не пересекается с $B_x = B_{\frac{\rho(x, a)}{2}}(a)$. Возьмем тогда $K \subset \bigcup_{x \in K} U_x$ --- открытое покрытие (поскольку каждый шарик точно покрывает свой центр и ещё что-то). Выделим конечное подпокрытие  $K \in \bigcup\limits_{i=1}^n U_{x_i}$,  $r = \min\{\frac{\rho(x_i, a)}{2} \}$. Тогда $B_r(a) = \bigcap\limits_{i=1}^n B_{x_i}$.  $B_r(a) \cap \bigcup\limits_{i=1}^n U_{x_i} = \emptyset \implies B_r(a) \cap K = \emptyset \implies B_r(a) \subset X \setminus K \implies a$ --- внутренняя точка $X \cap K$.
           \item Пусть $\widetilde{K}$ --- компакт,  $K$ --- замкнуто и  $K \subset \widetilde{K}$.
 
-              Рассмотрим открытое покрытие  $K$  $U_\alpha$. Тогда  $\widetilde{K}$ покрыто  $(X \setminus K) \cup \bigcup\limits_{\alpha \in I} U_\alpha$ -- открытое покрытие  $\widetilde{K}$. Выделим конечное подпокрытие  $X \setminus K, U_{\alpha_1}, \ldots, U_{\alpha_n}$. $K \subset X \setminus K \cup \bigcup\limits_{i=1}^n U_{\alpha_i} \implies K \subset \bigcup\limits_{i=1}^n U_{\alpha_i}$ --- открытое множество, а значит  $K$ --- компакт.
+              Рассмотрим открытое покрытие  $K$  $U_\alpha$. Тогда  $\widetilde{K}$ покрыто  $(X \setminus K) \cup \bigcup\limits_{\alpha \in I} U_\alpha$ -- открытое покрытие  $\widetilde{K}$. Выделим конечное подпокрытие  $X \setminus K, U_{\alpha_1}, \ldots, U_{\alpha_n}$. $K \subset \underbrace{X \setminus K}_{\cap K = \emptyset} \cup \bigcup\limits_{i=1}^n U_{\alpha_i} \implies K \subset \bigcup\limits_{i=1}^n U_{\alpha_i}$ --- конечное подпокрытие $K$, а значит  $K$ --- компакт.
     \end{enumerate}
 \end{proof}
 %END TICKET 35
@@ -540,7 +538,7 @@
     $K_\alpha$ --- семейство компактов, такое что пересечение любого конечного числа из них непусто. Тогда  $\bigcap_{\alpha \in I} K_\alpha \neq \emptyset$.
 \end{theorem}
 \begin{consequence}
-    $K_1 \subset K_2 \subset K_3 \subset \ldots$ непустые компакты. Тогда $\bigcap\limits_{n=1}^\infty K_n \neq \emptyset$.
+    $K_1 \supset K_2 \supset K_3 \supset \ldots$ непустые компакты. Тогда $\bigcap\limits_{n=1}^\infty K_n \neq \emptyset$.
 \end{consequence}
 \begin{proof}[Доказательство теоремы.]
     От противного. Пусть $\bigcap\limits_{\alpha \in I} K_\alpha = \emptyset$. Зафиксируем компакт  $K_0 \implies K_0 \cap \bigcap\limits_{\alpha \in I} K_\alpha = \emptyset \implies K_0 \subset X \setminus \bigcap\limits_{\alpha \in I} K_\alpha = \bigcup_{\alpha \in I} X \setminus K_\alpha$ --- открытое покрытие  $K_0$. Выделим конечное подпокрытие  $K_0 \subset \bigcup\limits_{i=1}^n X \setminus K_{\alpha_i} = X \setminus \bigcap\limits_{i=1}^n K_{\alpha_i} \implies K_0 \cap \bigcap\limits_{i=1}^n K_{\alpha_i} = \emptyset$.??!
@@ -559,7 +557,7 @@
     Бесконечное подмножество компакта имеет предельную точку.
 \end{theorem}
 \begin{proof}
-    $K$ --- компакт.  $A \subset K$. Пусть  $A' = \emptyset$. Тогда  $A$ --- замкнуто  $\implies A$ --- компакт и ни одна из его точек не является предельной.  $a \in A$ не предельная  $\implies \exists r_a > 0\ \dot{B_{r_a}}(a) \cap A = \emptyset \implies B_{r_a}(a) \cap A = \{a\}$. Рассмотрим открытое покрытие  $A \subset \bigcup_{a \in A} B_{r_a}(a)$, но их этого покрытия нельзя убрать ни одного множества, так как мы выбрали радиусы так, что каждый шар в пересечении с $A$ дает только одну точку $\implies$ нет конечного подпокрытия  $\implies$ противоречие.
+    $K$ --- компакт.  $A \subset K$. Пусть  $A'$ (предельные точки) $= \emptyset$. Тогда  $A$ --- замкнуто  $\implies A$ --- компакт и ни одна из его точек не является предельной.  $a \in A$ не предельная  $\implies \exists r_a > 0\ \dot{B_{r_a}}(a) \cap A = \emptyset \implies B_{r_a}(a) \cap A = \{a\}$. Рассмотрим открытое покрытие  $A \subset \bigcup_{a \in A} B_{r_a}(a)$, но из этого покрытия нельзя убрать ни одного множества, так как мы выбрали радиусы так, что каждый шар в пересечении с $A$ дает только одну точку $\implies$ нет конечного подпокрытия  $\implies$ противоречие.
 \end{proof}
 \begin{consequence}
     Компактность $\implies$ секвенциальная компактность. 
@@ -573,7 +571,7 @@
 
             Пусть  $a$ --- предельная точка  $D \implies$ найдутся различные $y_1, y_2, \ldots \in D$, такие что $\lim y_n = a$. 
 
-            Но $y_i$ --- это какой-то  $x_{n_i} \lim x_{n_i} = a$. Осталось переставить  $x_{n_i}$ так, что получится последовательность. Ну, а так как  $K$ --- замкнуто, то  $a \in K$.
+            Но $y_i$ --- это какой-то  $x_{n_i}$ и $\lim x_{n_i} = a$. Осталось переставить  $x_{n_i}$ так, что получится подпоследовательность. Ну, а так как  $K$ --- замкнуто, то  $a \in K$.
     \end{enumerate}
 \end{proof}
 %END TICKET 37
@@ -600,7 +598,7 @@
 
     Достаточно из него выделить конечное подпокрытие. Возьмем  $x_1 \in K$. Если $B_r(x_1) \supset K$, то выбрали конечное покрытие. Иначе берем $x_2 \in K \setminus B_r(x_1)$. Если объединение шариков $\supset K$, то выбрали конечное подпокрытие. Иначе продолжаем процесс:  $x_n \in K \setminus \bigcup_{i=1}^{n-1}B_r(x_i)$. Если процесс оборвался, то выделили конечное подпокрытие.
 
-    Если он не оборвался, то мы построили последовательность $x_1, x_2,\ldots$. Причем  $\rho(x_n, x_k) \ge r \forall n > k \implies \rho(x_i, x_j) \ge r \forall i \ne j$. Из такой последовательности не выбрать сходящуюся подпоследовательность, так как любая подпоследовательность не фундаментальная, - противоречие секвенциальной компактности.
+    Если он не оборвался, то мы построили подпоследовательность $x_1, x_2,\ldots$. Причем  $\rho(x_n, x_k) \ge r \forall n > k \implies \rho(x_i, x_j) \ge r \forall i \ne j$. Из такой последовательности не выбрать сходящуюся подпоследовательность, так как любая подпоследовательность не фундаментальная, --- противоречие с секвенциальной компактностью.
 \end{proof}
 %END TICKET 38
 %BEGIN TICKET 39
@@ -609,7 +607,7 @@
 
      $E \subset A$,  $\eps$-сеть множества  $A$, если  $\forall a \in A \exists x \in E\!: \rho(x, a) < \eps$.
 
-     Конечная  $\eps$-сеть ---  $E$ --- конечное множество.
+     Конечная  $\eps$-сеть ---  $E$-конечное множество.
 
      То есть $\{x_1, x_2,.., x_n\} \subset A$ --- $\eps$-сеть, если  $\forall a \in A \exists k\quad \rho(a, x_k) < \eps$.
 \end{definition}
@@ -621,13 +619,13 @@
     \begin{enumerate}
         \item Вполне ограниченность $\implies$ ограниченность.
              \begin{proof}
-                $\eps = 1$ и конечная  $1$-сеть  $x_1, x_2,\ldots,x_n$. $A \subset \bigcup\limits_{k=1}^n B_1(x_k) \subseteq B_{r+1}(x_1)$, где $r = \max\limits_{i \neq j} \rho(x_i, x_j)$.
+                $\eps = 1$ и конечная  $1$-сеть  $x_1, x_2,\ldots,x_n$. $A \subset \bigcup\limits_{k=1}^n B_1(x_k) \subset B_{r+1}(x_1)$, где $r = \max\limits_{i \neq j} \rho(x_i, x_j)$.
             \end{proof}
         \item В $\R^d$ ограниченность  $\implies$ вполне ограниченность. 
              \begin{proof}
                 $A \subset \R^d$ --- ограниченное.  $A \subset B_R(O) \subset [-R, R]^d$.
 
-                Зафиксируем $\eps > 0$ и возьмем  $n \in \N$.  $\rho(x_i, a) \le$ главная диагональ $=\sqrt{d}\frac{2R}{n} < \eps$ при $n > \frac{\sqrt{d} 2R}{\eps}$ получается $\eps$-сеть.
+                Зафиксируем $\eps > 0$ и возьмем  $n \in \N$.  $\rho(x_i, a) \le$ главная диагональ $=\sqrt{d}\frac{2R}{n} < \eps$ при $n > \frac{\sqrt{d} 2R}{\eps}$ получается $\eps$-сеть ($\sqrt{d}$ --- диагональ в $d$-мерном кубе).
                 \begin{figure}[h!]
                     \includegraphics[scale=0.5]{delone_set}
                 \end{figure}
@@ -659,14 +657,14 @@
                 x_{31} & x_{32} & x_{33} & x_{34} & \ldots & B_{\frac{1}{3}}(z_3)\\
                 x_{41} & x_{42} & x_{43} & x_{44} & \ldots & B_{\frac{1}{4}}(z_4)\\
             \end{array}            \] 
-            Воспользуемся диагональным методом Кантора. Пусть $a_n \coloneqq x_{nn}$. Заметим, что  $a_n, a_{n+1}, a_{n+2},\ldots$ --- подпоследовательность  $x_{n1}, x_{n 2}, x_{n 3},\ldots \implies$ все лежат в $B_{\frac{1}{n}}(z_n) \implies \rho(a_i, a_j) \le \rho(a_i, z_n) + \rho(a_j, z_n) < \frac{2}{n}$, при $i, j \ge n \implies a_i$ --- фундаментальная $\implies$ у нее есть предел  $\implies a = \lim a_n \in K$,  так как $K$ --- замкнуто. Следовательно,  $K$ --- секвенциально компактно.
+            Воспользуемся диагональным методом Кантора. Пусть $a_n \coloneqq x_{nn}$. Заметим, что  $a_n, a_{n+1}, a_{n+2},\ldots$ --- подпоследовательность  $x_{n1}, x_{n 2}, x_{n 3},\ldots \implies$ все лежат в $B_{\frac{1}{n}}(z_n) \implies \rho(a_i, a_j) \le \rho(a_i, z_n) + \rho(a_j, z_n) < \frac{1}{n} + \frac{1}{n} = \frac{2}{n}$, при $i, j \ge n \implies a_i$ --- фундаментальная $\implies$ у нее есть предел  $\implies a = \lim a_n \in K$,  так как $K$ --- замкнуто $\implies K$ --- секвенциально компактно.
     \end{enumerate}
 \end{proof}
 \begin{consequence}[Характеристика компактов в $\R^d$]
-    $K$ --- компакт  $\iff$  $K$ --- замкнуто и ограничено. 
+    $K \subset \R^d. K$ --- компакт  $\iff$  $K$ --- замкнуто и ограничено. 
 \end{consequence}
 \begin{proof}
-    $\Rightarrow$ верна всегда и доказано выше.
+    $\Rightarrow$ верна всегда и доказана выше.
 
     А вот  $\Leftarrow$ верна не всегда. Поэтому докажем эту штуку для  $\R^d$. Мы знаем, что  $\R^d$ --- полное. А еще мы знаем, что в  $\R^d$ ограниченность  $\implies$ вполне ограниченность, а значит понятно, что  $K$ --- компакт.
 \end{proof}
@@ -678,7 +676,7 @@
     Из любой ограниченной последовательности в $\R^d$ можно выбрать сходящуюся подпоследовательность.
 \end{theorem}
 \begin{proof}
-    $\{x_n\}$ --- ограничено $\implies \exists R\quad x_n \in B_R(a) \subset \overline{B}_R(a)$ --- замкнуто и ограничено $\implies$ компактно  $\implies$ секвенциально компактно $\implies x_n$ --- последовательность точек секвенциального компакта  $\implies$ у нее есть сходящаяся последовательность.
+    $\{x_n\}$ --- ограничено $\implies \exists R\quad x_n \in B_R(a) \subset \overline{B}_R(a)$ --- замкнуто и ограничено $\implies$ компактно  $\implies$ секвенциально компактно $\implies x_n$ --- последовательность точек секвенциального компакта  $\implies$ у нее есть сходящаяся подпоследовательность.
 \end{proof}
 %END TICKET 40
 \Subsection{Непрерывные отображения}
