@@ -1004,7 +1004,9 @@
     Непрерывный образ связного множества --- связное множество.
 \end{theorem}
 \begin{proof}
-    $A$ --- связное,  $f\!: A \subset X \to Y$ непрерывное.  $f(a) \subset U \cup V$ --- открытые в  $Y$ и  $U \cap V = \emptyset$.  $A \subset f^{-1}(U) \cup f^{-1}(V)$.  $f^{-1}(U) \cap f^{-1}(V) = \emptyset$.  $A$ --- связное  $\implies A \subset f^{-1}(U)$ или  $A \subset f^{-1}(V) \implies f(A) \subset U$ или  $f(a) \subset V \implies f(A)$ --- связно.
+    $A$ --- связное,  $f\!: A \subset X \to Y$ непрерывное. Хотим показать, что $f(A) \subset U, V$ --- открытых множеств в $Y$, причем  $U \cap V = \emptyset$, то тогда образ лежит либо в $U$, либо в  $V$. Так как множества открытые, то и $f^{-1}(U), f^{-1}(V)$ будут открытыми, причем  $A \subset f^{-1}(U) \cup f^{-1}(V)$ и пересечения прообразов будет пустым.
+
+    Так как $A$ связно, то оно будет лежать ровно в одном из прообразов, а значит и образ будет лежать ровно в одном множестве.
 \end{proof}
 \begin{consequence}[Теорема Больцано-Коши]
     Пусть $A$ --- связное, $a, b \in A$. $f\!: A \to \R$ непрерывная. 
@@ -1020,7 +1022,7 @@
 \begin{proof}
     От противного. Пусть $\langle a, b \rangle \subset U \cap V$,  $U \cap V = \emptyset$. 
 
-    Пусть  $f\!: \langle a, b \rangle \to \R = f(x) = \begin{cases} 0 & x \in \langle a, b \rangle \cap U \neq \emptyset \\ 1 & x \in \langle a, b \rangle \cap V \neq \emptyset \end{cases}$ --- непрерывная функция. Её прообраз:  $\emptyset, \langle a, b \rangle, \langle a, b \rangle \cap U, \langle a, b \rangle \cap V$ --- открытые в  $\langle a, b \rangle$ множества, но значения  $\frac{1}{2}$ не принимаются.
+    Пусть  $f\!: \langle a, b \rangle \to \R = f(x) = \begin{cases} 0 & x \in \langle a, b \rangle \cap U \neq \emptyset \\ 1 & x \in \langle a, b \rangle \cap V \neq \emptyset \end{cases}$ --- непрерывная функция. Её прообраз:  $\emptyset, \langle a, b \rangle, \langle a, b \rangle \cap U, \langle a, b \rangle \cap V$ --- открытые в  $\langle a, b \rangle$ множества, но значения  $\frac{1}{2}$ не принимаются, а значения 0 и 1 точно принимаются, так как иначе бы $\langle a, b \rangle$ лежал бы ровно в 1 множестве. 
 \end{proof}
 \begin{definition}
     $A$ --- линейно связно, если  $\forall u, v \in A \exists \gamma\!: [a, b] \to A\!: \gamma(a) = u, \gamma(b) = v$.
