@@ -293,21 +293,21 @@
 \begin{definition}
      $X$ --- векторное пространство над  $\R$.
 
-      $||.||\!: X \to \R$ --- норма, если
+      $\|.\|\!: X \to \R$ --- норма, если
        \begin{enumerate}
-           \item $||x|| \ge 0\quad \forall x \in X$ и $||x|| = 0 \iff x = \overrightarrow{0}$.
-           \item  $||\lambda x|| = |\lambda| \cdot ||x||\quad \forall x \in X\ \forall \lambda \in \R$. 
-           \item (неравенство треугольника)
+           \item $\|x\| \ge 0\quad \forall x \in X$ и $\|x\| = 0 \iff x = \overrightarrow{0}$.
+           \item  $\|\lambda x\| = |\lambda| \cdot \|x\|\quad \forall x \in X\ \forall \lambda \in \R$. 
+           \item (неравенство треугольника): $\forall x, y\!: \|x + y\| \le \|x\| + \|y\|$.
       \end{enumerate}
 \end{definition}
 \begin{example}
      \begin{enumerate}
-         \item $|x| \in \R$,
-         \item  $||x||_1 = |x_1| + |x_2| + \ldots + |x_d|$ в $\R^d$.
-         \item  $||x||_{\infty} = \max\limits_{k=1,2,\ldots, d} |x_k|$. $||x+y||_{\infty} = \max\{|x_k|+|y_k|\} \le \max\{|x_k|\} + \max\{|y_k|\} = ||x||_{\infty} + ||y||_{\infty}$
-         \item $||x||_2 = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}$.
-         \item $||x||_p = \left(\sum\limits_{k=1}^d |x_k|^p\right)^{\frac{1}{p}}$ в $\R^d$ при  $p \ge 1$. Неравенство треугольника --- неравенство Минковского.
-         \item $C[a, b]$.  $||f|| = \max\limits_{t \in [a, b]} |f(t)|$. 
+         \item $|x|$ в $\R$,
+         \item  $\|x\|_1 = |x_1| + |x_2| + \ldots + |x_d|$ в $\R^d$.
+         \item  $\|x\|_{\infty} = \max\limits_{k=1,2,\ldots, d} |x_k|$. \\ Неравенство треугольника: $\|x+y\|_{\infty} = \max\{|x_k|+|y_k|\} \le \max\{|x_k|\} + \max\{|y_k|\} = \|x\|_{\infty} + \|y\|_{\infty}$
+         \item $\|x\|_2 = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}$.
+         \item $\|x\|_p = \left(\sum\limits_{k=1}^d |x_k|^p\right)^{\frac{1}{p}}$ в $\R^d$ при  $p \ge 1$. Неравенство треугольника --- неравенство Минковского.
+         \item $C[a, b]$.  $\|f\| = \max\limits_{t \in [a, b]} |f(t)|$. 
      \end{enumerate}
 \end{example}
 \begin{definition}
@@ -332,9 +332,9 @@
             \begin{proof}
                 $f(t) \coloneqq \langle x+ty, x +ty \rangle \ge 0$. $f(t) = \langle x, x \rangle + t\langle x, y \rangle + t\langle x, y \rangle + t^2 \langle y, y \rangle = t^2 \langle y, y\rangle + 2t\langle x, y \rangle + \langle x, y \rangle$ --- квадратный трехчлен (если $\langle y, y \rangle = 0 \implies y = 0 \implies$ везде нули). Тогда $0 \ge D= (\langle x, y \rangle)^2 - 4 \langle x, x\rangle \cdot \langle y, y \rangle = 4(\langle x, y \rangle^2 - \langle x, x\rangle \cdot \langle y, y \rangle)$. Потому что иначе есть два корня и где-то есть отрицательное значение, а $f(t) \geq 0$.
             \end{proof}
-        \item $||x|| \coloneqq \sqrt{\langle x, x \rangle}$ --- норма.
+        \item $\|x\| \coloneqq \sqrt{\langle x, x \rangle}$ --- норма.
              \begin{proof}
-                $||\lambda x|| = \sqrt{\langle \lambda x, \lambda x\rangle} = \sqrt{\lambda^2\langle x, x \rangle} = |\lambda| \sqrt{\langle x, x \rangle} = |\lambda| \cdot ||x||$.
+                $\|\lambda x\| = \sqrt{\langle \lambda x, \lambda x\rangle} = \sqrt{\lambda^2\langle x, x \rangle} = |\lambda| \sqrt{\langle x, x \rangle} = |\lambda| \cdot \|x\|$.
 
                 Неравенство треугольника: $\lVert x+y \rVert \le \lVert x \rVert + \lVert y \rVert$.
                 Возведем в квадрат, получим $\langle x + y, x + y\rangle \le \langle x, x\rangle + \langle y, y\rangle + 2\sqrt{\langle x, x\rangle\langle y, y\rangle}$, но теперь вспомним, что $\langle x + y, x + y\rangle = \langle x, x\rangle + \langle y, y\rangle + 2\langle x, y\rangle$.
@@ -360,6 +360,8 @@
         \item Упражненение. Если норма порождается скалярным произведением $\iff \lVert x+y\rVert^2 + \lVert x-y\rVert^2 = 2\lVert x\rVert^2 + 2\lVert y \rVert^2$. Тождество параллелограмма.
     \end{enumerate}
 \end{properties}
+%END TICKET 31
+%BEGIN TICKET 32
 \begin{definition}
     $(X, \rho)$ --- метрическое пространство.  $x_1, x_2, \ldots \in X, a \in X$.
 
@@ -382,7 +384,7 @@
 \end{proof}
         \item Предел единственный. 
             \begin{proof}
-                Пусть $a = \lim x_n$ и $b = \lim x_n$. Тогда возьмем шарики такие, что  $B_r(a) \cap B_r(b) = \emptyset \implies \exists N_1, N_2, \forall n \ge \max\{N_1, N_2\} x_n \in B_r(a) \land x_n \in B_r(b)$ --- противоречие.
+                Пусть $a = \lim x_n$ и $b = \lim x_n$. Тогда возьмем шарики такие, что  $B_r(a) \cap B_r(b) = \emptyset \implies \exists N_1, N_2, \forall n \ge \max\{N_1, N_2\}\ x_n \in B_r(a) \land x_n \in B_r(b)$ --- противоречие.
             \end{proof}
         \item Если $a = \lim x_n, a = \lim y_n$. То для перемешанной последовательности $x_n$ и  $y_n$ предел такой же.
         \item  $a = \lim x_n \implies $ для последовательности, в которой $x_n$ взяты с конечной кратностью, $a$ будет пределом.
@@ -396,14 +398,16 @@
 
             Более того,  $x_n$ можно выбирать так, что  $\rho(x_n, a)$ строго убывает.
             \begin{proof}
-                "$\Rightarrow$" Пусть  $\lim x_n = a$. Возьмем  $B_r(a) \implies \exists N \forall n \ge N x_n \in B_r(a) \implies x_n \in \dot{B_r}(a) \implies \dot{B_r}(a) \cap A \neq \emptyset \implies$ a --- предельная точка.
+                "$\Leftarrow$" Пусть  $\lim x_n = a$. Возьмем  $B_r(a) \implies \exists N \forall n \ge N x_n \in B_r(a) \implies \exists x_n \in \dot{B_r}(a) \implies \dot{B_r}(a) \cap A \neq \emptyset \implies a$ --- предельная точка.
 
-                "$\Leftarrow$" Берем  $r_1 = 1$. $\dot{B_{r_1}}(a) \cap A \neq \emptyset$. Берем оттуда точку, называем  $x_1 \neq a$. $r_2 = \frac{\rho(x_1,a)}{2}$. $\dot{B_{r_2}}(a) \cap A \neq \emptyset$. Берем оттуда точку $x_3 \neq a$. $r_3 = \frac{\rho(x_2, a)}{2}$. И так далее.
+                "$\Rightarrow$" Берем  $r_1 = 1$. $\dot{B_{r_1}}(a) \cap A \neq \emptyset$. Берем оттуда точку, называем  $x_1 \neq a$. $r_2 = \frac{\rho(x_1,a)}{2}$. $\dot{B_{r_2}}(a) \cap A \neq \emptyset$. Берем оттуда точку $x_3 \neq a$. $r_3 = \frac{\rho(x_2, a)}{2}$. И так далее.
 
                 Получили: $x_n \neq a$ и  $\rho(x_n, a) < \frac{\rho(x_{n-1}, a)}{2} < \rho(x_{n-1}, a)$. $\rho(x_n, a) < \frac{1}{2^n} \to 0 \implies x_n = a$.
             \end{proof}
     \end{enumerate}
 \end{properties}
+%END TICKET 32
+%BEGIN TICKET 33
 \begin{theorem}[об арифметических действиях с пределами]
     $X$ --- нормированное пространство,  $x_n, y_n \in X$,  $\lambda_n \in \R$.  $\lim x_n = a, \lim y_n = b, \lim \lambda_n = \mu$. Тогда:
      \begin{enumerate}
@@ -411,12 +415,12 @@
          \item  $\lim(x_n - y_n) = a-b$.
          \item  $\lim \lambda_nx_n = \mu a$.
          \item  $\lim \lVert x_n\rVert = \lVert a \rVert$.
-         \item  Если в  $X$ есть скалярное произведение, то  $\lim \langle x_n, t_n \rangle = \langle a, b \rangle$.
+         \item  Если в  $X$ есть скалярное произведение, то  $\lim \langle x_n, y_n \rangle = \langle a, b \rangle$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     \begin{enumerate}
-        \item $\rho(x_n+y_n, a+b) = \lVert (x_n+y_n - (a+b)) \rVert = \lVert (x_n-a) + (y_n-b) \rVert \le \lVert x_n - a \rVert + \lVert y_n - n \rVert = \rho(x_n, a) + \rho(y_n, b) \to 0$.
+        \item $\rho(x_n+y_n, a+b) = \lVert (x_n+y_n - (a+b)) \rVert = \lVert (x_n-a) + (y_n-b) \rVert \le \lVert x_n - a \rVert + \lVert y_n - b \rVert = \rho(x_n, a) + \rho(y_n, b) \to 0$.
         \item Аналогично.
         \item $\rho(\lambda_nx_n, \mu a) = \lVert \lambda_n x_n - \mu a\rVert = \lVert \lambda_n x_n - \lambda_n a + \lambda_n a - \mu a \rVert \le \lVert \lambda_n x_n - \lambda_n a \rVert + \lVert \lambda_n a - \mu a \rVert = |\lambda_n| \lVert x_n - a \rVert + |\lambda_n -\mu| \lVert a \rVert \to 0$, так как $|\lambda_n|$ --- ограниченная, $\lVert x_n - a \rVert = \rho(x_n - a) \to 0$,  $|\lambda_n -\mu| \to 0$, $\lVert a \rVert$ --- константа.  
         \item $| \lVert x_n \rVert - \lVert a \rVert| \le \lVert x_n - a \rVert = \rho(x_n, a) \to 0 \implies \lim \lVert x_n \rVert = \lVert a \rVert$
@@ -427,7 +431,7 @@
     $\R^d$ --- пространство с нормой  $\sqrt{x_1^2 + x_2^2 + \ldots + x_d^2}$.
 \end{definition}
 \begin{definition}
-    Покоординатная сходимость в $R^d$:
+    Покоординатная сходимость в $\R^d$:
 
     $x_n \in \R^d$.  $x_n = (x_n^{(1)}, x_n^{(2)}, \ldots, x_n^{(d)}) \xrightarrow{\text{покоординатно}} a = (a^{(1)}, a^{(2)}, \ldots, a^{(d)})$.
 \end{definition}
@@ -439,7 +443,8 @@
 
     Покоординатная $\implies$ метрика. Пусть  $|x_n^{(k)} - a^{(k)}| \to 0 \quad \forall k \implies (x_n^{(k)} - a^{(k)})^2 \to 0 \implies \sum\limits_{k=1}^d (x_n^{(k)} - a^{(k)})^2 \to 0$. А так как $(\ldots)^2 = \rho(x_n, a)^2 \implies \rho(x_n, a) \to 0$.
 \end{proof}
-
+%END TICKET 33
+%BEGIN TICKET 34
 \begin{definition}
     $x_n \in X$ --- фундаментальная последовательность, если
      \[
@@ -477,9 +482,13 @@
     \forall \eps > 0 \exists N \forall m,n \ge N\!: \rho(x_n, x_m) = \sqrt{(x_n^{(1)}-x_m^{(1)})^2 + \ldots + (x_n^{(d)}-x_m^{(d)})^2} < \eps
     .\] 
 
-    Но мы знаем, что $\rho(x_n, x_m) \ge |x_n^{(k)} - x_m^{(k)}|$. Тогда заметим, что $x_n^{(k)}$ --- фундаментальная  $\implies \exists a^{(k)} = \lim\limits_{n \to \infty} x_n^{(k)}$. Значит и  $x_n$ сходится к  $a$ покоординатно  $\implies \rho(x_n, a) \to 0 \implies x_n$ сходится к  $a$ по метрике.
+    Но мы знаем, что $\rho(x_n, x_m) \ge |x_n^{(k)} - x_m^{(k)}|$, так как, могут быть еще координаты, а значит еще неотрицательные слагаемые. 
+
+    Тогда заметим, что $x_n^{(k)}$ --- фундаментальная  $\implies \exists a^{(k)} = \lim\limits_{n \to \infty} x_n^{(k)}$. Значит и  $x_n$ сходится к  $a$ покоординатно  $\implies \rho(x_n, a) \to 0 \implies x_n$ сходится к  $a$ по метрике.
 \end{proof}
+%END TICKET 34
 \Subsection{Компактность}
+%BEGIN TICKET 35
 \begin{definition}
     $A, U_\alpha, \alpha \in I$.
 
@@ -520,16 +529,19 @@
               Рассмотрим открытое покрытие  $K$  $U_\alpha$. Тогда  $\widetilde{K}$ покрыто  $(X \setminus K) \cup \bigcup\limits_{\alpha \in I} U_\alpha$ -- открытое покрытие  $\widetilde{K}$. Выделим конечное подпокрытие  $X \setminus K, U_{\alpha_1}, \ldots, U_{\alpha_n}$. $K \subset X \setminus K \cup \bigcup\limits_{i=1}^n U_{\alpha_i} \implies K \subset \bigcup\limits_{i=1}^n U_{\alpha_i}$ --- открытое множество, а значит  $K$ --- компакт.
     \end{enumerate}
 \end{proof}
+%END TICKET 35
+%BEGIN TICKET 36
 \begin{theorem}
     $K_\alpha$ --- семейство компактов, такое что пересечение любого конечного числа из них непусто. Тогда  $\bigcap_{\alpha \in I} K_\alpha \neq \emptyset$.
 \end{theorem}
 \begin{consequence}
     $K_1 \subset K_2 \subset K_3 \subset \ldots$ непустые компакты. Тогда $\bigcap\limits_{n=1}^\infty K_n \neq \emptyset$.
 \end{consequence}
-\begin{proof}
+\begin{proof}[Доказательство теоремы.]
     От противного. Пусть $\bigcap\limits_{\alpha \in I} K_\alpha = \emptyset$. Зафиксируем компакт  $K_0 \implies K_0 \cap \bigcap\limits_{\alpha \in I} K_\alpha = \emptyset \implies K_0 \subset X \setminus \bigcap\limits_{\alpha \in I} K_\alpha = \bigcup_{\alpha \in I} X \setminus K_\alpha$ --- открытое покрытие  $K_0$. Выделим конечное подпокрытие  $K_0 \subset \bigcup\limits_{i=1}^n X \setminus K_{\alpha_i} = X \setminus \bigcap\limits_{i=1}^n K_{\alpha_i} \implies K_0 \cap \bigcap\limits_{i=1}^n K_{\alpha_i} = \emptyset$.??!
 \end{proof}
-
+%END TICKET 36
+%BEGIN TICKET 37
 \begin{definition}
     $K$ --- секвенциально компактное множество, если из любой последовательности точек из $K$ можно выделить подпоследовательность, которая сходится к какой-то точке из  $K$.
 \end{definition}
@@ -542,7 +554,7 @@
     Бесконечное подмножество компакта имеет предельную точку.
 \end{theorem}
 \begin{proof}
-    $K$ --- компакт.  $A \subset K$. Пусть  $A' = \emptyset$. Тогда  $A$ --- замкнуто  $\implies A$ --- компакт и ни одна из его точек не является предельной.  $a \in A$ не предельная  $\implies \exists r_a > 0\ \dot{B_{r_a}}(a) \cap A = \emptyset \implies B_{r_a}(a) \cap A = \{a\}$. Рассмотрим открытое покрытие  $A \subset \bigcup_{a \in A} B_{r_a}(a)$, но их этого покрытия нельзя убрать ни одного множества $\implies$ нет конечного подпокрытия  $\implies$ противоречие.
+    $K$ --- компакт.  $A \subset K$. Пусть  $A' = \emptyset$. Тогда  $A$ --- замкнуто  $\implies A$ --- компакт и ни одна из его точек не является предельной.  $a \in A$ не предельная  $\implies \exists r_a > 0\ \dot{B_{r_a}}(a) \cap A = \emptyset \implies B_{r_a}(a) \cap A = \{a\}$. Рассмотрим открытое покрытие  $A \subset \bigcup_{a \in A} B_{r_a}(a)$, но их этого покрытия нельзя убрать ни одного множества, так как мы выбрали радиусы так, что каждый шар в пересечении с $A$ дает только одну точку $\implies$ нет конечного подпокрытия  $\implies$ противоречие.
 \end{proof}
 \begin{consequence}
     Компактность $\implies$ секвенциальная компактность. 
@@ -559,6 +571,8 @@
             Но $y_i$ --- это какой-то  $x_{n_i} \lim x_{n_i} = a$. Осталось переставить  $x_{n_i}$ так, что получится последовательность. Ну, а так как  $K$ --- замкнуто, то  $a \in K$.
     \end{enumerate}
 \end{proof}
+%END TICKET 37
+%BEGIN TICKET 38
 \begin{lemma}[Лемма Лебега]
     $K$ --- секвенциальный компакт,  $K \subset \bigcup\limits_{\alpha \in I} U_\alpha$ --- открытое покрытие.
 
@@ -569,9 +583,9 @@
 
     Выберем подпоследовательность $x_{n_k}$, такую что  $\lim x_{n_k} = a \in K$.
 
-    Тогда  $a \in U_\beta$ для некоторого  $\beta \in I \implies \exists B_\eps(a) \subset U_\beta$. Возьмем  $N_1\!: \forall k \ge N_1\quad \rho(x_{n_k}, a) < \frac{\eps}{2}$. А еще можно взять $N_2\!: \forall k \ge N_2\quad \frac{1}{n_k} < \frac{\eps}{2}$. А значит $B_{\frac{1}{n_{k}}} \subset B_\eps(a) \subset U_\beta$ при $k \ge \max\{N_1, N_2\}$?!!
+    Тогда  $a \in U_\beta$ для некоторого  $\beta \in I \implies \exists B_\eps(a) \subset U_\beta$. Возьмем  $N_1\!: \forall k \ge N_1\quad \rho(x_{n_k}, a) < \frac{\eps}{2}$. А еще можно взять $N_2\!: \forall k \ge N_2\quad \frac{1}{n_k} < \frac{\eps}{2}$. А значит $B_{\frac{1}{n_{k}}}(x_{n_k}) \subset B_\eps(a) \subset U_\beta$ при $k \ge \max\{N_1, N_2\}$?!!
 
-    Докажем $B_{\frac{1}{n_{k}}} \subset B_\eps(a)$: Если $x \in B_{\frac{1}{n_k}}(x_{n_k})$  $\rho(x_{n_k}, x) < \frac{1}{n_k} < \frac{\eps}{2} \land \rho(x_{n_k}, a) < \frac{\eps}{2} \implies \rho(x, a) \le \rho(x_{n_k}, x) + \rho(a, x_{n_k}) < \eps$ 
+    Докажем $B_{\frac{1}{n_{k}}}(x_{n_k}) \subset B_\eps(a)$: Если $x \in B_{\frac{1}{n_k}}(x_{n_k})$  $\rho(x_{n_k}, x) < \frac{1}{n_k} < \frac{\eps}{2} \land \rho(x_{n_k}, a) < \frac{\eps}{2} \implies \rho(x, a) \le \rho(x_{n_k}, x) + \rho(a, x_{n_k}) < \eps$ 
 \end{proof}
 \begin{theorem}
     Компактность = секвенциальная компактность.
@@ -583,6 +597,8 @@
 
     Если он не оборвался, то мы построили последовательность $x_1, x_2,\ldots$. Причем  $\rho(x_n, x_k) \ge r \forall n > k \implies \rho(x_i, x_j) \ge r \forall i \ne j$. Из такой последовательности не выбрать сходящуюся подпоследовательность, так как любая подпоследовательность не фундаментальная, - противоречие секвенциальной компактности.
 \end{proof}
+%END TICKET 38
+%BEGIN TICKET 39
 \begin{definition}
     $A \subset X$.  $(X, \rho)$ --- метрическая пространство.
 
@@ -600,21 +616,25 @@
     \begin{enumerate}
         \item Вполне ограниченность $\implies$ ограниченность.
              \begin{proof}
-                $\eps = 1$ и конечная  $1$-сеть  $x_1, x_2,\ldots,x_n$. $A \subset \bigcup\limits_{k=1}^n B_r(x_k) \subseteq B_{r+1}(x_1)$, где $r = \max\limits_{i \neq j} \rho(x_i, x_j)$.
+                $\eps = 1$ и конечная  $1$-сеть  $x_1, x_2,\ldots,x_n$. $A \subset \bigcup\limits_{k=1}^n B_1(x_k) \subseteq B_{r+1}(x_1)$, где $r = \max\limits_{i \neq j} \rho(x_i, x_j)$.
             \end{proof}
         \item В $\R^d$ ограниченность  $\implies$ вполне ограниченность. 
              \begin{proof}
                 $A \subset \R^d$ --- ограниченное.  $A \subset B_R(O) \subset [-R, R]^d$.
 
-                Зафиксируем $\eps > 0$ и возьмем  $n \in \N$.  $\rho(x_i, a) \le 2n$ диагональ $=\sqrt{d}\frac{2R}{n} < \eps$ при $n > \frac{\sqrt{d} 2R}{\eps}$ получается $\eps$-сеть.
+                Зафиксируем $\eps > 0$ и возьмем  $n \in \N$.  $\rho(x_i, a) \le$ главная диагональ $=\sqrt{d}\frac{2R}{n} < \eps$ при $n > \frac{\sqrt{d} 2R}{\eps}$ получается $\eps$-сеть.
+                \begin{figure}[h!]
+                    \includegraphics[scale=0.5]{delone_set}
+                \end{figure}
             \end{proof}
     \end{enumerate}
 \end{properties}
-
+%END TICKET 39
+%BEGIN TICKET 40
 \begin{theorem}[Хаусдорфа]
     \begin{enumerate}
         \item Компактное множество вполне ограничено.
-        \item Если $(X, \rho)$ --- полное метрическое пространство, то замкнуто вполне ограниченное подмножество  $X$ --- компактно.
+        \item Если $(X, \rho)$ --- полное метрическое пространство, то замкнутое вполне ограниченное подмножество  $X$ --- компактно.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -622,7 +642,7 @@
         \item Берем $\eps > 0$  $K \subset \bigcup_{x \in K} B_\eps(x)$ --- открытое покрытие. Выделим конечное подпокрытие  $\implies K \subset \bigcup\limits_{i=1}^n B_\eps(x_i) \implies x_1, \ldots, x_n$  --- $\eps$-сеть.
         \item Проверим секвенциальную компактность. Берем  $x_1, x_2, \ldots \in K$. Возьмем $1$-сеть  $K \subset \bigcup_{i=1}^{n_1} B_1(y_{1i})$.
 
-            В каком-то шарике бесконечное число членов последовательности. Выкинем все, кроме них  $x_{11}, x_{12}, x_{13},\ldots$. Возьмем $\frac{1}{2}$-сеть. $K \subset \bigcup\limits_{i=1}^{n_2} B_{\frac{1}{2}}(y_{2i})$. В каком-то шарике бесконечное число членов последовательности\dots
+            В каком-то шарике $B_1(z_1)$ бесконечное число членов последовательности. Выкинем все, кроме них, останутся  $x_{11}, x_{12}, x_{13},\ldots$. Возьмем $\frac{1}{2}$-сеть. $K \subset \bigcup\limits_{i=1}^{n_2} B_{\frac{1}{2}}(y_{2i})$. В каком-то шарике $B_{\frac{1}{2}(z_2)}$ бесконечное число членов последовательности\dots
 
             На $j$-ом шаге  $K \subset B_{\frac{1}{j}}(y_{ji})$. Пусть на каждом шаге выбирали шарик $B_{\frac{1}{i}}(z_i)$.
 
@@ -634,7 +654,7 @@
                 x_{31} & x_{32} & x_{33} & x_{34} & \ldots & B_{\frac{1}{3}}(z_3)\\
                 x_{41} & x_{42} & x_{43} & x_{44} & \ldots & B_{\frac{1}{4}}(z_4)\\
             \end{array}            \] 
-            Воспользуемся диагональным методом Кантора. Пусть $a_n \coloneqq x_{nn}$. Заметим, что  $a_n, a_{n+1}, a_{n+2}$ --- последовательность  $x_{n1}, x_{n 2}, x_{n 3},\ldots \implies$ все лежат в $B_{\frac{1}{n}}(z_n) \implies \rho(a_i, a_j) \le \rho(a_i, z_n) + \rho(a_j, z_n) < \frac{2}{n}$, при $i, j \ge n \implies a_i$ --- фундаментальная $\implies$ у нее есть предел  $\implies a = \lim a_n \in K$,  так как $K$ --- замкнуто. Следовательно,  $K$ --- секвенциально компактно.
+            Воспользуемся диагональным методом Кантора. Пусть $a_n \coloneqq x_{nn}$. Заметим, что  $a_n, a_{n+1}, a_{n+2},\ldots$ --- подпоследовательность  $x_{n1}, x_{n 2}, x_{n 3},\ldots \implies$ все лежат в $B_{\frac{1}{n}}(z_n) \implies \rho(a_i, a_j) \le \rho(a_i, z_n) + \rho(a_j, z_n) < \frac{2}{n}$, при $i, j \ge n \implies a_i$ --- фундаментальная $\implies$ у нее есть предел  $\implies a = \lim a_n \in K$,  так как $K$ --- замкнуто. Следовательно,  $K$ --- секвенциально компактно.
     \end{enumerate}
 \end{proof}
 \begin{consequence}[Характеристика компактов в $\R^d$]
@@ -649,14 +669,15 @@
     $(K, \rho)$ --- метрическое пространство,  $K$ --- компакт. Доказать, что  $(K, \rho)$ --- полное.
 \end{exerc}
 
-\begin{consequence}[теорема Больцано-Вейерштрасса в $\R^d$]
+\begin{theorem}[Теорема Больцано-Вейерштрасса в $\R^d$]
     Из любой ограниченной последовательности в $\R^d$ можно выбрать сходящуюся подпоследовательность.
-\end{consequence}
+\end{theorem}
 \begin{proof}
-    $\{x_n\} \implies \exists R\quad x_n \in B_R(a) \subset \overline{B}_R(a)$ --- замкнуто и ограниченно $\implies$ компактно  $\implies$ секвенциально компактно $\implies x_n$ --- последовательность точек секвенциального компакта  $\implies$ у нее есть сходящаяся последовательность.
+    $\{x_n\}$ --- ограничено $\implies \exists R\quad x_n \in B_R(a) \subset \overline{B}_R(a)$ --- замкнуто и ограничено $\implies$ компактно  $\implies$ секвенциально компактно $\implies x_n$ --- последовательность точек секвенциального компакта  $\implies$ у нее есть сходящаяся последовательность.
 \end{proof}
+%END TICKET 40
 \Subsection{Непрерывные отображения}
-
+%BEGIN TICKET 41
 \begin{definition}
     $(X, \rho_X)$ и  $(Y, \rho_Y)$ --- метрические пространства, $E \subset X$.  $f\!: E \to Y$,  $a$ --- предельная точка  $E$,  $b \in Y$.
 
@@ -796,7 +817,7 @@
      $x, y \in K \rho_X(x, y) < \delta \implies y \in B_\delta(x) \implies \exists a \in K\!: B_\delta(x) \subset B_{r_x}(a) \implies x, y \in B_{r_a}(a) \implies f(x), f(y) \in B_{\frac{\eps}{2}}(f(a)) \implies \rho_Y(f(x), f(a)) < \frac{\eps}{2} \land \rho_Y(f(y), f(a)) < \frac{\eps}{2} \implies \rho_Y(f(x), f(y)) < \eps$
 \end{proof}
 \begin{definition}
-    $X$ --- векторное пространство и  $\| . \|$ и  $\|| . \||$ --- норм в  $X$. 
+    $X$ --- векторное пространство и  $\| . \|$ и  $\\| . \\|$ --- норм в  $X$. 
     Нормы эквиваленты, если $\exists C_1, C_2 > 0$\!: 
     \[
     C_1 \| x\| \le |\| x |\| \le C_2 \| x \| \quad \forall x \in X
@@ -806,7 +827,7 @@
     \begin{enumerate}
         \item Это отношение эквивалентности. (упражнение)
         \item Пределы последовательности для эквивалентных норм совпадают. Док-во:
-        Пусть $\lim x_n = a$ по норме $||.||$, т.е. $\lim ||x_n - a|| = 0$. А $0 \le |||x_n - a||| \le C_2 ||x_n - a|| \rightarrow 0$, значит $\lim x_n = a$ и по норме $|||.|||$.
+        Пусть $\lim x_n = a$ по норме $\|.\|$, т.е. $\lim \|x_n - a\| = 0$. А $0 \le \||x_n - a\|| \le C_2 \|x_n - a\| \rightarrow 0$, значит $\lim x_n = a$ и по норме $\||.\||$.
         \item Непрерывность отображений для эквивалентных норм совпадают (записываем по Гейне, а для последовательностей мы всё знаем).
     \end{enumerate}
 \end{remark}
