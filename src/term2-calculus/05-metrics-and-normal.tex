@@ -18,7 +18,7 @@
     На $\R$:  $\rho(x, y) = |x-y|$.
 \end{example}
 \begin{example}
-    На $\R^d$:  $\rho(x, y) = \sqrt{\sum\limits_{k=1}^d (x_k - y_k)^2}$. Неравенство треугольника здесь --- неравенство Минковского.
+    На $\R^d$ (пространство столбцов = векторов):  $\rho(x, y) = \sqrt{\sum\limits_{k=1}^d (x_k - y_k)^2}$. Неравенство треугольника здесь --- неравенство Минковского.
 \end{example}
 \begin{example}
     $C[a, b]$.  $\rho(f, g) = \int\limits_a^b |f-g|$.
@@ -29,7 +29,7 @@
     .\end{align*}
 \end{example}
 \begin{example}
-    Манхэтеннская метрика: $\R^2$,  $\rho((x_1, y_1), (x_2, y_2)) = |x_1 - x_2| + |y_1 - y_2|$.
+    Манхэтеннская метрика: $\R^2$,  $\rho((x_1, y_1), (x_2, y_2)) = |x_1 - x_2| + |y_1 - y_2|$ (с точки зрения пешехода расстояние равно такой штуке).
 \end{example}
 \begin{example}
     Французская железнодорожная метрика. $\R^2$. Есть точка  $P$ (Париж), тогда  $\rho(A, B) = AB$, если  $A, B,P$ на одной прямой, иначе  $\rho(A, B) = |AP|+|PB|$. 
@@ -38,7 +38,9 @@
     $(X, \rho)$ --- метрическое пространство.  $B_r(x) \coloneqq \{y \in X \mid \rho(x, y) < r\}$ --- открытый шар радиуса  $r$ с центром в точке  $x$. 
 \end{definition}
 \begin{definition}
-    $(X, \rho)$ --- метрическое пространство.  $\overline{B}_r(x) \coloneqq \{y \in X \mid \rho(x, y) \le r\}$ --- закрытый шар радиуса  $r$ с центром в точке  $x$. 
+    $(X, \rho)$ --- метрическое пространство.  $\overline{B}_r(x) \coloneqq \{y \in X \mid \rho(x, y) \le r\}$ --- закрытый шар радиуса  $r$ с центром в точке  $x$.
+    
+    То есть если берём контур --- это замкнутый шар.
 \end{definition}
 \begin{properties}
     \begin{enumerate}
@@ -53,13 +55,13 @@
 
             Тогда  $\exists z \in \overline{B}_r(x) \cap \overline{B}_r(y) \implies \rho(x, z) \le r \land \rho(y, z) \le r \implies \rho(x, y) \le \rho(x, z) + \rho(z, y) \le 2r = \frac{2}{3} \rho(x, y) \implies 1 \le \frac{2}{3}$. Противоречие.
 
-            При этом, $B_r(x) \subset \overline{B}_r(x) \implies \exists r\!: B_r(x) \cap B_r(y) = \emptyset$.
+            При этом, $B_r(x) \subset \overline{B}_r(x) \implies \exists r\!: B_r(x) \cap B_r(y) = \emptyset$. То есть если замкнутый шар не пересекает, то и открытый --- тем более.
     \end{enumerate}
 \end{proof}
 %END TICKET 25
 %BEGIN TICKET 26
 \begin{definition}
-    $A \subset X$.  $A$ --- открытое множество, если  $\forall a \in A \exists B_r(a) \subset A$ ($r > 0$).
+    $A \subset X$.  $A$ --- открытое множество, если  $\forall a \in A \exists B_r(a) \subset A$ ($r > 0$). То есть для любой точки-центра из $A$ находится шарик, который целиком тоже лежит в $A$.
 \end{definition}
 \begin{theorem}[О свойствах открытых множеств]
     \begin{enumerate}
@@ -71,8 +73,8 @@
 \end{theorem}
 \begin{proof}
     \begin{enumerate}
-        \item[2.] $A_{\alpha}$ --- открытые,  $\alpha \in I$.  $B \eqqcolon \bigcup\limits_{\alpha \in I}A_{\alpha}$. Берем  $b \in B \implies b \in A_\beta$ для некоторого  $\beta$. Но  $A_\beta$ --- открытое  $\implies \exists r > 0\quad B_r(b) \subset A_\beta \subset B$.
-        \item[3.] $A_1, A_2, \ldots, A_n$ --- открытые. $B \coloneqq \bigcap\limits_{k=1}^n A_k$. Берем  $b \in B \implies b \in A_k \forall k=1,2,\ldots,n$. Но $A_k$ --- открытое  $\implies \exists r_k > 0 B_{r_k} \subset A_k$. $\forall k\ B_{r_k}(b) \subset \bigcap\limits_{k=1}^n A_k = B \implies \exists r = \min\limits_{i = 1..k} r_k\!: B_r(b) \subset B\ \forall b \in B \implies B$ --- открытое.
+        \item[2.] Пусть $A_{\alpha}$ --- открытые,  $\alpha \in I$.  $B \eqqcolon \bigcup\limits_{\alpha \in I}A_{\alpha}$. Берем  $b \in B \implies b \in A_\beta$ для некоторого  $\beta$. Но  $A_\beta$ --- открытое  $\implies \exists r > 0\quad B_r(b) \subset A_\beta \subset B$.
+        \item[3.] Пусть $A_1, A_2, \ldots, A_n$ --- открытые. $B \coloneqq \bigcap\limits_{k=1}^n A_k$. Берем  $b \in B \implies b \in A_k \forall k=1,2,\ldots,n$. Но $A_k$ --- открытое  $\implies \exists r_k > 0 B_{r_k} \subset A_k$. $r \coloneqq \min\{r_1, r_2, ..., r_n\} > 0 \implies B_r(b) \subset B_{r_k}(b) \subset A_k \forall k \implies B_r(b) \subset \bigcap\limits_{k=1}^n A_k = B \implies B$ --- открытое.
 
          \item[4.] $\rho(a, x) < R$,  $r \coloneqq R - \rho(a, x) > 0$. Докажем, что  $B_r(x) \subset B_R(a)$. Возьмем  $y \in B_r(x)$, то есть  $\rho(x, y) < r \implies \rho(y, a) \le \rho(y, x) + \rho(x, a) < r + \rho(x, a) = R \implies y \in B_R(a)$.
     \end{enumerate}
@@ -81,7 +83,7 @@
              \end{figure}
 \end{proof}
 \begin{remark}
-    Существенна конечность. $\R$.  $\bigcap\limits_{n=1}^{\infty}(-\frac{1}{n}, 1) = [0, 1)$. А для нуля любой открытый шарик плохой.
+    В 3 существенна конечность. $\R$.  $\bigcap\limits_{n=1}^{\infty}(-\frac{1}{n}, 1) = [0, 1)$. А для нуля любой открытый шарик плохой.
 \end{remark}
 %END TICKET 26
 %BEGIN TICKET 27
@@ -101,7 +103,7 @@
     \begin{enumerate}
         \item $\Int A \subset A$.
         \item  $\Int A$ ---  $\bigcup$ всех открытых множеств, которые содержатся в  $A$.
-        \item $\Int A$ --- открытое множество. 
+        \item $\Int A$ --- открытое множество. (Следствие из предыдущего)
         \item  $A$ ---  открытое $\iff A = \Int A$.
         \item Если $A \subset B$, то $\Int A \subset \Int B$.
         \item $\Int(A \cap B) = \Int A \cap \Int B$
@@ -113,17 +115,17 @@
     \begin{enumerate}
         \item[2.] $B \coloneqq \bigcup_{\alpha \in I} A_{\alpha}, A_\alpha \subset A$, $A_\alpha$ открытые.
 
-      $B \subset \Int A$. Берем  $b \in B \implies \exists \beta \in I\!: b \in A_\beta$ --- открытое  $\implies \exists r > 0\!: B_r(b) \subset A_\beta \subset A \implies b$ --- внутренняя точка  $A$  $\implies b \in \Int A$.
+      $B \subset \Int A$. (Потому что:) Берем  $b \in B \implies \exists \beta \in I\!: b \in A_\beta$ --- открытое  $\implies \exists r > 0\!: B_r(b) \subset A_\beta \subset A \implies b$ --- внутренняя точка  $A$  $\implies b \in \Int A$.
 
       $\Int A \subset B$. Берем  $b \in \Int A \implies \exists r > 0 B_r(b) \subset A$, но  $B_r(b)$ --- открытое множество $\implies $ оно участвует в объединении  $\bigcup\limits_\alpha A_\alpha \implies B_r(b) \subset B \implies b \in B$.
 
-      \item[4.] $\Leftarrow$: пользуемся пунктом 3.  \\$\Rightarrow:$ всего его точки внутренние  $\implies A = \Int A$.
+      \item[4.] $\Leftarrow$: пользуемся пунктом 3.  \\$\Rightarrow:$ Если $A$ --- открытое, то все его точки внутренние  $\implies$ все из внутренности $\implies A = \Int A$.
 
       \item[6.] $\subset$:  $A \cap B \subset A, \subset B \implies \Int(A \cap B) \subset \Int A \land \Int(A \cap B) \subset \Int B$.
 
       $\supset$. Пусть $x \in \Int A \cap \Int B \implies \begin{cases} \exists r_1 > 0 \quad B_{r_1}(x) \subset A \\ \exists r_2 > 0 \quad B_{r_2}(x) \subset B \end{cases} \implies$ если $r = \min \{r_1, r_2 \} \implies B_r(x) \subset A \land B_r(x) \subset B \implies B_r(x) \subset A \cap B \implies x \in \Int(A \cap B)$.
 
-      \item[7.] $B \coloneqq \Int A$ --- открытое $\implies B = \Int B$.
+      \item[7.] Пусть $B \coloneqq \Int A$ --- открытое $\implies B = \Int B$.
     \end{enumerate}
 \end{proof}
 %END TICKET 27
@@ -133,25 +135,26 @@
 \end{definition}
 \begin{theorem}[о свойствах замкнутых множеств]
     \begin{enumerate}
-        \item $\emptyset, X$ --- замкнуты.
+        \item $\emptyset$и $X$ --- замкнуты.
         \item Пересечение любого числа замкнутых множеств --- замкнуто. 
         \item Объединение конечного числа замкнутых множеств --- замкнуто.
-        \item  $\overline{B}_R(a)$ --- замкнуто.
+        \item  $\overline{B}_R(a)$ --- замкнуто. ($\iff$ замкнутый шар --- замкнутое множество)
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     \begin{enumerate}
         \item[2.] $A_\alpha$ --- замкнуты  $\implies X \setminus A_\alpha$ --- открытые  $\implies \bigcup\limits_{\alpha \in I} X \setminus A_\alpha$ --- открыто  $\implies X \setminus  \bigcup\limits_{\alpha \in I} (X \setminus A_{\alpha}) = \bigcap\limits_{\alpha \in I} A_\alpha$ --- замкнутое.
-        \item[4.] $X \setminus \overline{B}_R(a)$ --- открытое. Берем  $x \notin \overline{B}_R(a)$. Возьмем $r \coloneqq \rho(a, x) - R > 0$. Покажем, что  $B_r(x) \subset X \setminus \overline{B_R}(a)$.
+        \item[3.] Аналогично.
+        \item[4.] $X \setminus \overline{B}_R(a)$ --- открытое. Берем  $x \notin \overline{B}_R(a)$ (то есть берём точку из дополнения $\iff$ она не лежит в шарике). Возьмем $r \coloneqq \rho(a, x) - R > 0$. Покажем, что  $B_r(x) \subset X \setminus \overline{B_R}(a)$.
 
-            От противного. Пусть $B_r(x) \cap \overline{B}_R(a) \neq \emptyset$. Берем  $y \in B_r(x) \cap \overline{B}_R(a) \implies \rho(x, y) < r \land \rho(a, y) \le R \implies \rho(a, x) \le \rho(a, y) + \rho(y, x) < R + r = \rho(a, x)$. Противоречие.
+            От противного. Пусть $B_r(x) \cap \overline{B}_R(a) \neq \emptyset$. Берем  $y \in B_r(x) \cap \overline{B}_R(a) \implies \rho(x, y) < r \land \rho(a, y) \le R \implies {\color{red}{\rho(a, x)}} \le \rho(a, y) + \rho(y, x) {\color{red}{<}} R + r = {\color{red}{\rho(a, x)}}$. Противоречие.
     \end{enumerate}
 \end{proof}
 \begin{remark}
-    В 3 важна конечность. $\R$.  $\bigcup\limits_{n=1}^{\infty} [\frac{1}{n}, 1] = (0, 1]$ --- не является замкнутой.
+    В 3 важна конечность. $\R$.  $\bigcup\limits_{n=1}^{\infty} [\frac{1}{n}, 1] = (0, 1]$ --- не является замкнутым.
 \end{remark}
 \begin{definition}
-    Замыкание множества $\Cl A$ --- пересечение всех замкнутых множеств, содержащих  $A$.
+    Замыкание множества $\Cl A$ (Closure A) --- пересечение всех замкнутых множеств, содержащих  $A$.
 \end{definition}
 \begin{theorem}
     $X \setminus \Cl A = \Int(X \setminus A)$ и  $X \setminus \Int A = \Cl(X \setminus A)$.
@@ -159,7 +162,7 @@
 \begin{proof}
     $\Int(X \setminus A) = \bigcup B_{\alpha}$.  $B_\alpha$ --- открытые,  $B_\alpha \subset X \setminus A \iff X \setminus B_\alpha$ --- замкнутое. $X \setminus B_\alpha \supset A$.
 
-    $\bigcap(X \setminus B_\alpha) = \Cl A \implies X \setminus \bigcap (X \setminus B_\alpha) = X \setminus \Cl A \iff \bigcup(B_\alpha) = \Int(X \setminus A)$.
+    $\bigcap(X \setminus B_\alpha) = \Cl A \implies \underbrace{X \setminus \bigcap (X \setminus B_\alpha)}_{=\bigcup B_{\alpha}} = X \setminus \Cl A \iff \bigcup(B_\alpha) = \Int(X \setminus A)$.
 \end{proof}
 \begin{consequence}
     $\Int A = X \setminus Cl(X \setminus A)$ и  $\Cl A = X \setminus \Int(X \setminus A)$.
@@ -174,7 +177,7 @@
             \end{proof}
         \item $A \subset B \implies \Cl A \subset \Cl B$.
              \begin{proof}
-                $X \setminus A \supset X \setminus B \implies \Int(X \setminus A) \supset \Int(C \setminus B) \implies X \setminus \Int(X \setminus A) \subset X \setminus \Int(X \setminus B)$
+                $X \setminus A \supset X \setminus B \implies \Int(X \setminus A) \supset \Int(X \setminus B) \implies \underbrace{X \setminus \Int(X \setminus A)}_{=\Cl A} \subset \underbrace{X \setminus \Int(X \setminus B)}_{=\Cl B}$
             \end{proof}
         \item $\Cl(A \cup B) = \Cl A \cup \Cl B$.
         \item  $\Cl(\Cl A) = \Cl A$.
@@ -192,7 +195,7 @@
 \begin{proof}
     Запишем отрицание условия теоремы: $x \notin \Cl A \iff \exists r > 0 B_r(x) \cap A = \emptyset$.
 
-    Что означает, что  $x \notin A$? Это значит, что  $x\in X \setminus \Cl A = \Int(X \setminus A) \iff x \in \Int(X \setminus A) \iff x\text{ --- внутренняя точка }X \setminus A \iff \exists r > 0\!: B_r(x) \cap A = \emptyset \iff \exists r > 0\!: B_r(x) \subset X \setminus A$.
+    Что означает, что  $x \notin A$? Это значит, что  $x\in X \setminus \Cl A = \Int(X \setminus A) \iff x \in \Int(X \setminus A) \iff x\text{ --- внутренняя точка }X \setminus A \iff \exists r > 0\!: B_r(x) \subset X \setminus A \iff \exists r > 0\!: B_r(x) \cap A  = \emptyset$.
 \end{proof}
 \begin{consequence}
     $U$ --- открытое,  $U \cap A = \emptyset \implies U \cap \Cl A = \emptyset$.
@@ -240,12 +243,12 @@
 \begin{proof}
     Докажем "$\Leftarrow$". $B_r(x) \cap A$ содержит бесконечное количество точек  $\implies \dot{B_r}(x) \cap A$ содержит бесконечное число точек  $\implies \dot{B_r}(x) \cap A \neq \emptyset \Rightarrow x \in A'$.
 
-     "$\Rightarrow$". Возьмем радиус  $r$. Тогда  $\dot{B_r}(x) \cap A \neq \emptyset \implies \exists x_1 \in A\!: 0 < \rho(x, x_1) < r$. Возьмем $r = \rho(x, x_1)$ $\dot{B_r}(x) \cap A \neq \emptyset \implies \exists x_2 \in A\!: 0 < \rho(x, x_2) < \rho(x, x_1)$. Тогда можно взять $r = \rho(x, x_2)$, и так далее. 
+     "$\Rightarrow$". Возьмем радиус  $r = 1$. Тогда  $\dot{B_r}(x) \cap A \neq \emptyset \implies \exists x_1 \in A\!: 0 < \rho(x, x_1) < 1$. Возьмем $r = \rho(x, x_1)$ $\dot{B_r}(x) \cap A \neq \emptyset \implies \exists x_2 \in A\!: 0 < \rho(x, x_2) < \rho(x, x_1)$. Тогда можно взять $r = \rho(x, x_2)$, и так далее. 
 
      В итоге получили, что $r > \rho(x, x_1) > \rho(x, x_2) > \rho(x, x_3) > \ldots > 0 \implies$ все $x_n$ различны.
 \end{proof}
 \begin{consequence}
-     Конечное множество не имеет предельных точек.
+     Конечное множество не имеет предельных точек. (Потому что их должно быть $\infty$)
 \end{consequence}
 \begin{proof}
      Предположим предельная точка существует $\iff \exists r > 0\!: B_r(x) \cap A$ содержит бесконечное количество точек. Но это невозможно, так как в $A$ конечное число точек.
@@ -263,7 +266,7 @@
 
       $B_1(1) = (0, 1], B_2(0) = [0, 1]$.  $B_r^Y(a) = Y \cap B_r^X(a)$. ($B^A_r -$ шарик радиуса $r$ на множестве $A$)
 \end{example}
-\begin{theorem}[об открытых и замкнутых множества в пространстве и подпространстве]
+\begin{theorem}[об открытых и замкнутых множествах в пространстве и подпространстве]
      $(X, \rho)$ --- метрическое пространство,  $(Y, \rho)$ --- его подпространство,  $A \subset Y$. Тогда
       \begin{enumerate}
           \item $A$ --- открыто в  $Y \iff \exists G$ --- открытое в  $X\!: A = G \cap Y$. 
@@ -275,17 +278,18 @@
      \begin{enumerate}
          \item "$\Rightarrow$" $A$ --- открыто в  $Y \implies \forall x \in A \exists r_x > 0 \!: B_{r_x}^Y(x) \subset A \implies A = \bigcup\limits_{x \in A}B_{r_x}^Y(x)$.
 
-             То есть наше множество будет объединением большего числа шариков (возможно бесконечного). Найдем теперь  $G$:  $G \coloneqq \bigcup\limits_{x \in A} B_{r_x}^X(x)$ --- открыто. Посмотрим теперь на  $G \cap Y = \bigcup\limits_{x \in A}(B_{r_x}^X(x) \cap Y) = \bigcup\limits_{x \in A}B_{r_x}^Y(x) = A$.
+             То есть наше множество будет объединением большего числа шариков (возможно бесконечного). Найдем теперь  $G$:  $G \coloneqq \bigcup\limits_{x \in A} B_{r_x}^X(x)$ --- открыто в $X$. Посмотрим теперь на  $G \cap Y = \bigcup\limits_{x \in A}(B_{r_x}^X(x) \cap Y) = \bigcup\limits_{x \in A}B_{r_x}^Y(x) = A$.
 
          В обратную сторону. Пусть $A = G \cap Y$, где  $G$ открыто в  $X$. Возьмем  $x \in G \cap Y$.  $G$ --- открыто в  $X \implies \forall x \in G \cap Y \exists r > 0\!: B_r^X(x) \subset G \implies B_r^X(x) \cap Y \subset G \cap Y = A \implies B_r^Y(x) \subset A \implies x$ --- внутренняя точка $A \implies A$ --- открыто в  $Y$. 
 
-         \item $A$ --- замкнуто в $Y \iff Y \setminus A$ --- открыто в  $Y \iff \exists G$ --- открытое в  $X$, такое что  $Y \setminus A = Y \cap G \iff A = Y \setminus (Y \cap G) \overset{(1)}{=} Y \setminus G \overset{(2)}{=} Y \cap (X \setminus G) \iff \exists G$ --- открытое в  $X$, такое что  $A = Y \cap (X \setminus G) \iff \exists F$ --- замкнуто в  $X$, такое что  $A = Y \cap F$.
+         \item $A$ --- замкнутое в $Y \iff Y \setminus A$ --- открыто в  $Y \iff \exists G$ --- открытое в  $X$, такое что  $Y \setminus A = Y \cap G \iff A = Y \setminus (Y \cap G) \overset{(1)}{=} Y \setminus G \overset{(2)}{=} Y \cap (X \setminus G) \iff \exists G$ --- открытое в  $X$, такое что  $A = Y \cap (X \setminus G) \iff \exists F$ --- замкнуто в  $X$, такое что  $A = Y \cap F$.
 
              $(1)$ --- Можно забить на пересечение с  $Y$, потому что, если элемент  $G$ не лежит в $Y$, то и в $Y \setminus G$ он участия не принимает.  $(2)$ --- Помним, что  $Y \subset X$, а значит такая операция корректна.
      \end{enumerate}
 \end{proof}
 \begin{example}
-     $(\R, |x-y|)$.  $Y = [0, 3)$.  $[0, 1)$ --- открыто в  $[0, 3)$:  $[0, 1) = [0, 3) \cap (-1, -1)$.  $[2, 3)$ --- замкнуто в  $[0, 3)$:  $[2, 3) = [0, 3) \cap [2, 3]$.
+     $(\R, |x-y|)$.  $Y = [0, 3)$.  $[0, 1)$ --- открыто в  $[0, 3)$:  $[0, 1) = \underbrace{[0, 3)}_{Y} \cap \underbrace{(-1, 1)}_{G}$.\\
+     $[2, 3)$ --- замкнуто в  $[0, 3)$:  $[2, 3) = \underbrace{[0, 3)}_{Y} \cap \underbrace{[2, 3]}_{F}$.
 \end{example}
  
 %END TICKET 30
@@ -293,7 +297,7 @@
 \begin{definition}
      $X$ --- векторное пространство над  $\R$.
 
-      $\|.\|\!: X \to \R$ --- норма, если
+      $\|.\|\!: X \to \R$ --- норма, если (. --- аргумент)
        \begin{enumerate}
            \item $\|x\| \ge 0\quad \forall x \in X$ и $\|x\| = 0 \iff x = \overrightarrow{0}$.
            \item  $\|\lambda x\| = |\lambda| \cdot \|x\|\quad \forall x \in X\ \forall \lambda \in \R$. 
@@ -304,14 +308,14 @@
      \begin{enumerate}
          \item $|x|$ в $\R$,
          \item  $\|x\|_1 = |x_1| + |x_2| + \ldots + |x_d|$ в $\R^d$.
-         \item  $\|x\|_{\infty} = \max\limits_{k=1,2,\ldots, d} |x_k|$. \\ Неравенство треугольника: $\|x+y\|_{\infty} = \max\{|x_k|+|y_k|\} \le \max\{|x_k|\} + \max\{|y_k|\} = \|x\|_{\infty} + \|y\|_{\infty}$
+         \item  $\|x\|_{\infty} = \max\limits_{k=1,2,\ldots, d} |x_k|$. \\ Неравенство треугольника: $\|x+y\|_{\infty} = \max\{|x_k+y_k|\} \le \max\{|x_k|+|y_k|\} \le \max\{|x_k|\} + \max\{|y_k|\} = \|x\|_{\infty} + \|y\|_{\infty}$
          \item $\|x\|_2 = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}$.
          \item $\|x\|_p = \left(\sum\limits_{k=1}^d |x_k|^p\right)^{\frac{1}{p}}$ в $\R^d$ при  $p \ge 1$. Неравенство треугольника --- неравенство Минковского.
          \item $C[a, b]$.  $\|f\| = \max\limits_{t \in [a, b]} |f(t)|$. 
      \end{enumerate}
 \end{example}
 \begin{definition}
-    $X$ векторное пространство над  $\R$.  $\langle .,.\rangle\!: X \times X \to \R$ скалярное произведение, если
+    $X$ --- векторное пространство над  $\R$.  $\langle .,.\rangle\!: X \times X \to \R$ скалярное произведение, если
      \begin{enumerate}
          \item $\langle x, x \rangle \ge 0$ и $\langle x, x \rangle = 0 \iff x = \overrightarrow{0}$.
          \item  $\langle x+y, z\rangle = \langle x, z \rangle + \langle y, z \rangle$
@@ -330,7 +334,8 @@
     \begin{enumerate}
         \item Неравенство Коши-Буняковского. $\langle x, y \rangle^2 \le \langle x, x \rangle \cdot \langle y, y\rangle$.
             \begin{proof}
-                $f(t) \coloneqq \langle x+ty, x +ty \rangle \ge 0$. $f(t) = \langle x, x \rangle + t\langle x, y \rangle + t\langle x, y \rangle + t^2 \langle y, y \rangle = t^2 \langle y, y\rangle + 2t\langle x, y \rangle + \langle x, y \rangle$ --- квадратный трехчлен (если $\langle y, y \rangle = 0 \implies y = 0 \implies$ везде нули). Тогда $0 \ge D= (\langle x, y \rangle)^2 - 4 \langle x, x\rangle \cdot \langle y, y \rangle = 4(\langle x, y \rangle^2 - \langle x, x\rangle \cdot \langle y, y \rangle)$. Потому что иначе есть два корня и где-то есть отрицательное значение, а $f(t) \geq 0$.
+                $f(t) \coloneqq \langle x+ty, x +ty \rangle \ge 0$. $f(t) = \langle x, x \rangle + t\langle x, y \rangle + t\langle x, y \rangle + t^2 \langle y, y \rangle = t^2 \langle y, y\rangle + 2t\langle x, y \rangle + \langle x, x \rangle$ --- квадратный трехчлен (если $\langle y, y \rangle = 0 \implies y = 0 \implies$ везде нули). Тогда $0 \ge D= (2\langle x, y \rangle)^2 - 4 \langle x, x\rangle \cdot \langle y, y \rangle = 4(\langle x, y \rangle^2 - \langle x, x\rangle \cdot \langle y, y \rangle)$. Потому что иначе есть два корня и где-то есть отрицательное значение, а $f(t) \geq 0$.\\
+                $\langle x, \overrightarrow{0} \rangle = \langle x, 0 \cdot y \rangle = 0 \cdot \langle x, y \rangle = 0$.
             \end{proof}
         \item $\|x\| \coloneqq \sqrt{\langle x, x \rangle}$ --- норма.
              \begin{proof}
@@ -374,13 +379,13 @@
 \begin{definition}
     $A \subset X$. 
 
-    Тогда  $A$ --- ограничено, если оно содержится в некотором шаре.
+    Тогда  $A$ --- ограничено, если оно содержится в некотором шаре ($\iff$ его можно запихать в шар).
 \end{definition}
 \begin{properties}
     \begin{enumerate}
         \item $a = \lim x \iff \rho(x_n, a) \to 0$.
 \begin{proof}
-             $\forall \eps > 0 \exists n > N\quad |\rho(x_n, a)| < \eps$ --- предел равен 0.
+             $\forall \eps > 0 \exists n \ge N\quad |\rho(x_n, a)| < \eps$ --- предел равен 0.
 \end{proof}
         \item Предел единственный. 
             \begin{proof}
@@ -393,16 +398,16 @@
              \begin{proof}
                 $\eps = 1 \exists N \forall n \ge N \rho(x_n, a) < 1$. Тогда $R = \max\{\rho(x_1, a), \ldots, \rho(x_{N-1}, a)\} + 1 \implies x_n \in B_R(a)$.
             \end{proof}
-        \item Если $a = \lim x_n$, то последовательность, полученная из  $\{x_n\}$ перестановкой членов имеет тот же предел.
+        \item Если $a = \lim x_n$, то последовательность, полученная из  $\{x_n\}$ перестановкой членов имеет тот же предел (было конечное $\to$ стало конечное).
         \item $a$ --- предельная точка  $A \iff \exists \{x_n\} \neq a \in A\!: \lim x_n = a$.
 
             Более того,  $x_n$ можно выбирать так, что  $\rho(x_n, a)$ строго убывает.
             \begin{proof}
                 "$\Leftarrow$" Пусть  $\lim x_n = a$. Возьмем  $B_r(a) \implies \exists N \forall n \ge N x_n \in B_r(a) \implies \exists x_n \in \dot{B_r}(a) \implies \dot{B_r}(a) \cap A \neq \emptyset \implies a$ --- предельная точка.
 
-                "$\Rightarrow$" Берем  $r_1 = 1$. $\dot{B_{r_1}}(a) \cap A \neq \emptyset$. Берем оттуда точку, называем  $x_1 \neq a$. $r_2 = \frac{\rho(x_1,a)}{2}$. $\dot{B_{r_2}}(a) \cap A \neq \emptyset$. Берем оттуда точку $x_3 \neq a$. $r_3 = \frac{\rho(x_2, a)}{2}$. И так далее.
+                "$\Rightarrow$" (строим последовательность) Берем  $r_1 = 1$. $\dot{B_{r_1}}(a) \cap A \neq \emptyset$. Берем оттуда точку, называем  $x_1 \neq a$. $r_2 = \frac{\rho(x_1,a)}{2}$ (для надежности поделили на $2$). $\dot{B_{r_2}}(a) \cap A \neq \emptyset$. Берем оттуда точку $x_2 \neq a$. $r_3 = \frac{\rho(x_2, a)}{2}$. И так далее.
 
-                Получили: $x_n \neq a$ и  $\rho(x_n, a) < \frac{\rho(x_{n-1}, a)}{2} < \rho(x_{n-1}, a)$. $\rho(x_n, a) < \frac{1}{2^n} \to 0 \implies x_n = a$.
+                Получили: $x_n \neq a$ и  $\rho(x_n, a) < \frac{\rho(x_{n-1}, a)}{2} < \rho(x_{n-1}, a)$. $\rho(x_n, a) < \frac{1}{2^n} \to 0 \implies \lim x_n = a$.
             \end{proof}
     \end{enumerate}
 \end{properties}
