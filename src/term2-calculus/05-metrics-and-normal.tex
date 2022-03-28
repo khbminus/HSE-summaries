@@ -683,7 +683,7 @@
 
      $b = \lim\limits_{x \to a} f(x)$ означает, что
 
-     По Коши:  $\forall \eps > 0 \exists \delta > 0 \forall x\!: \rho_x(x,a) < \delta \land a \neq x \in E \implies \rho_Y(f(x), b) < \eps$.
+     По Коши:  $\forall \eps > 0 \exists \delta > 0 \forall x\!: \rho_X(x,a) < \delta \land a \neq x \in E \implies \rho_Y(f(x), b) < \eps$.
 
      В терминах окрестностей: $\forall \eps > 0 \exists \delta > 0\!: f(\dot{B}_{\delta}(a) \cap E) \subset B_\eps(b)$
 
@@ -693,7 +693,7 @@
     Все определения равносильны. 
 \end{theorem}
 \begin{proof}
-    Упражнение (смотри доказательство для последовательностей).
+    Упражнение (смотри доказательство для функций).
 \end{proof}
 \begin{theorem}[Критерий Коши]
     $f\!:E \subset X \to Y$,  $Y$ --- полное,  $a$ --- предельная точка  $E$. Тогда
@@ -705,7 +705,7 @@
 
      $\Leftarrow$. Проверим определение по Гейне. Надо доказать, что  $a \neq x_n \in E \land \lim x_n = a \implies \lim f(x_n)$ существует.
 
-      $f(x_n)$ --- последовательность в  $Y$ --- полное. Поэтому достаточно проверить, что  $f(x_n)$ --- фундаментальная последовательность. Возьмем  $\eps > 0$, по нему  $\delta > 0$ из условия. По  $\delta > 0$ берем  $N$, такое что  $\forall n \ge N\!: \rho_X(x_n, a) < \delta \implies x_n \in \dot{B}_\delta(a)\cap E$ при $n \ge N \implies \forall m, n \ge N\!: \rho(f(x_n), f(x_m)) < \eps f(x_n)$ фундаментальная $\implies f(x_n)$ имеет предел.
+      $f(x_n)$ --- последовательность в  $Y$ --- полное. Поэтому достаточно проверить, что  $f(x_n)$ --- фундаментальная последовательность. Возьмем  $\eps > 0$, по нему  $\delta > 0$ из условия. По  $\delta > 0$ берем  $N$, такое что  $\forall n \ge N\!: \rho_X(x_n, a) < \delta \implies x_n \in \dot{B}_\delta(a)\cap E$ при $n \ge N \implies \forall m, n \ge N\!: \rho_Y(f(x_n), f(x_m)) < \eps \implies f(x_n)$ фундаментальная $\implies f(x_n)$ имеет предел.
 \end{proof}
 
 \begin{theorem}[об арифметических действиях с пределами]
@@ -723,6 +723,8 @@
 \begin{proof}
     Проверка по Гейне. Берем $x_n \to a$,, тогда  $f(x_n) \to b, g(x_n) \to c$ и теорема про пределы последовательности.
 \end{proof}
+%END TICKET 41
+%BEGIN TICKET 42
 \begin{definition}
     $(X, \rho_X)$ и  $(Y,\rho_Y)$ --- метрические пространства, $E \subset X$,  $a \in E$.\\
      $f\!: E \to Y$,  $f$ непрерывна в точке  $a$, если
@@ -741,11 +743,13 @@
     Если  $f$ непрерывна в точке  $a$, а  $g$ непрерывна в точке  $f(a)$, то $g \circ f$ непрерывна в точке  $a$. 
 \end{theorem}
 \begin{proof}
+    Запишем определения непрерывности для $g$ и  $f$ в терминах окрестностей (в определении для $f$ мы дописали  $\cap E$, но заметим, что это никак не повлияет по определению  $E$):
     \begin{align*}
         &\left. \begin{array}{l}
-                \forall B_\eps(g(f(a))) \exists B_\delta(f(a))\!: g(B_\delta(f(a)) \cap E) \subset B_\eps(g(f(a)))\\
-                \forall B_\delta(f(a)) \exists B_\gamma(a)\!: f(B_\gamma(a) \cap D) \subset B_\delta(f(a)) \cap E
-        \end{array} \right\} \\
+                \forall B_\eps(g(f(a)))\ \exists B_\delta(f(a))\text{ такой, что }g(B_\delta(f(a)) \cap E) \subset B_\eps(g(f(a)))\\
+                \forall B_\delta(f(a))\ \exists B_\gamma(a)\text{ такой, что }f(B_\gamma(a) \cap D) \subset B_\delta(f(a)) \cap E
+        \end{array} \right\}\quad
+        \\
         &\implies g(f(B_\gamma(a) \cap D)) \subset g(B_\delta(f(a)) \cap E) \subset B_\eps(g(f(a))) \implies g \circ f\ \text{непрерывна в точке}\ a
     \end{align*} 
 \end{proof}
@@ -757,11 +761,12 @@
 \begin{proof}
     $\Rightarrow$. Берем  $a \in f^{-1}(U) \implies f(a) \in U$ -- открыто  $\implies \exists \eps > 0\quad B_\eps(f(a)) \subset U$.
 
-    $f$ непрерывно в точке  $a \implies \exists \delta > 0\!: f(B_\delta(a)) \subset B_\eps(f(a)) \subset U \implies B_\delta(a) \subset f{-1}^(U) \implies a$ --- внутренняя точка  $f^{-1}(U) \implies f^{-1}(U)$ --- открыто.
+    $f$ непрерывно в точке  $a \implies \exists \delta > 0\!: f(B_\delta(a)) \subset B_\eps(f(a)) \subset U \implies B_\delta(a) \subset f^{-1}(U) \implies a$ --- внутренняя точка  $f^{-1}(U) \implies f^{-1}(U)$ --- открыто.
 
      $\Leftarrow$.  $U \coloneqq B_\eps(f(a))$ --- открыто  $\implies f^{-1}(B_\eps(f(a)))$ --- открыто и  $a \in f^{-1}(B_\eps(f(a))) \implies \exists \delta > 0\quad B_\delta(a) \subset f^{-1}(B_\eps(f(a))) \implies f(B_\delta(a)) \subset B_\eps(f(a)) \implies f$ непрерывна в точке  $a$.
 \end{proof}
-
+%END TICKET 42
+%BEGIN TICKET 43
 \begin{theorem}[Непрерывный образ компакта --- компакт]
     $(X, \rho_X), (Y, \rho_Y)$ --- метрические пространства, $K \subset X$,  $K$ --- компакт.
 
@@ -789,10 +794,12 @@
     Тогда  $\exists a,b \in K\!: f(a) \le f(x) \le f(b) \quad \forall x \in K$.
 \end{consequence}
 \begin{proof}
-    $f(K)$ --- ограниченное множество в  $\R \implies B \coloneqq \sup\limits_{x \to K} f(x) \in \R \implies \exists x_n \in K\!: \lim f(x_m) = N$. При этом  $x_n \in K$ --- секвенциальный компакт  $\implies$ существует сходящаяся подпоследовательность $x_{n_k}$.
+    $f(K)$ --- ограниченное множество в  $\R \implies B \coloneqq \sup\limits_{x \to K} f(x) \in \R \implies \exists x_n \in K\!: \lim f(x_m) = B$. При этом  $x_n \in K$ --- секвенциальный компакт  $\implies$ существует сходящаяся подпоследовательность $x_{n_k}$.
 
     Тогда  $\lim x_{n_k} \eqqcolon b \in K \implies \lim f(x_{n_k}) = f(b) \implies f(b) = \sup\limits_{x \to K} f(x) = B \implies f(x) \le f(b) \quad \forall x \in K$.
 \end{proof}
+%END TICKET 43
+%BEGIN TICKET 44
 \begin{theorem}
     $f\!: X \to Y$ непрерывна во всех точках, биекция и  $X$ --- компакт. Тогда  $f^{-1}$ непрерывна во всех точках.
 \end{theorem}
@@ -810,17 +817,20 @@
 \begin{proof}
     Берем $x \in K$,  $f$ непрерывна в точке  $x \implies \exists r_x > 0\!: f(B_{r_x}(x)) \subset B_{\frac{\eps}{2}}(f(x))$. 
 
-    Тогда $K \subset \bigcup\limits_{x \to K} B_{r_x}(x)$ --- открытое покрытие $K$. Возьмем  $\delta > 0$ из леммы Лебега, то есть  $\forall x \in K B_\delta(x)$ целиком попал в какой-то элемент покрытия. 
+    Тогда $K \subset \bigcup\limits_{x \in K} B_{r_x}(x)$ --- открытое покрытие $K$. Возьмем  $\delta > 0$ из леммы Лебега, то есть  $\forall x \in K\ B_\delta(x)$ целиком попал в какой-то элемент покрытия. 
 
     Проверим, что это  $\delta > 0$ подходит в определение равномерной непрерывности.
 
-     $x, y \in K \rho_X(x, y) < \delta \implies y \in B_\delta(x) \implies \exists a \in K\!: B_\delta(x) \subset B_{r_x}(a) \implies x, y \in B_{r_a}(a) \implies f(x), f(y) \in B_{\frac{\eps}{2}}(f(a)) \implies \rho_Y(f(x), f(a)) < \frac{\eps}{2} \land \rho_Y(f(y), f(a)) < \frac{\eps}{2} \implies \rho_Y(f(x), f(y)) < \eps$
+     $\forall x, y \in K\ \rho_X(x, y) < \delta \implies y \in B_\delta(x) \implies \exists a \in K\!: B_\delta(x) \subset B_{r_x}(a) \implies x, y \in B_{r_a}(a) \implies f(x), f(y) \in B_{\frac{\eps}{2}}(f(a)) \implies \rho_Y(f(x), f(a)) < \frac{\eps}{2} \land \rho_Y(f(y), f(a)) < \frac{\eps}{2} \implies \rho_Y(f(x), f(y)) < \eps$
 \end{proof}
+%END TICKET 44
+%BEGIN TICKET 45
 \begin{definition}
-    $X$ --- векторное пространство и  $\| . \|$ и  $\\| . \\|$ --- норм в  $X$. 
+    $X$ --- векторное пространство и  $\| . \|$ и  $\|| . |\|$ --- нормы в  $X$. 
+
     Нормы эквиваленты, если $\exists C_1, C_2 > 0$\!: 
     \[
-    C_1 \| x\| \le |\| x |\| \le C_2 \| x \| \quad \forall x \in X
+    C_1 \| x\| \le \|| x |\| \le C_2 \| x \| \quad \forall x \in X
     .\] 
 \end{definition}
 \begin{remark}
@@ -835,26 +845,34 @@
    В $\R^d$ все нормы эквивалентны. 
 \end{theorem}
 \begin{proof}
-    $\| x \| \sqrt{x_1^2+ x_2^2 + \ldots + x_d^2}$. Достаточно доказать, что остальные норма эквиваленты.
+    $\| x \| = \sqrt{x_1^2+ x_2^2 + \ldots + x_d^2}$. Достаточно доказать, что остальные норма эквиваленты.
 
     Пусть $p(x)$ --- другая норма в $\R^d$.  $e_k $ --- вектор с нулями и единицей на  $k$-ой позиции.
 
     $x=(x_1,x_2,\ldots,x_d) = \sum\limits_{k=1}^d x_ke_k$.
-     $p(x - y) = p(\sum\limits_{k=1}^d(x_k-y_k)e_k) \le \sum\limits_{k=1}^d p((x_k - y_k)e_k) = \sum\limits_{k=1}^d |x_k - y_k| p(e_k) \le \text{(Коши-Буняковский)} \left(\sum\limits_{k=1}^d (x_k - y_k)^2\right)^{\frac{1}{2}} \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} = \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} \|x - y \|\ \implies p(x) \le \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} \| x \|$.
+     \begin{align*}
+         p(x - y) &= p(\sum\limits_{k=1}^d(x_k-y_k)e_k) \overset{(1)}{\le} \sum\limits_{k=1}^d p((x_k - y_k)e_k) = \\ 
+                  &= \sum\limits_{k=1}^d |x_k - y_k| p(e_k) \le \text{(Коши-Буняковский)} \left(\sum\limits_{k=1}^d (x_k - y_k)^2\right)^{\frac{1}{2}} \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} = \\
+                  &= \left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}} \|x - y \|\ \xRightarrow{(2)} p(x) \le \underbrace{\left(\sum\limits_{k=1}^d p(e_k)^2\right)^{\frac{1}{2}}}_{\coloneqq M} \| x \|.
+        \end{align*}
+     
+     $(1) \iff \|a+b\| \le \|a\| + \|b\|$ и $p(a+b) \le p(a) + p(b)$
+
+     $(2) \iff p(x)$ --- непрерывная функция.
 
      $S \coloneqq \{ x \in \R^d\!: x_1^2 + x_2^2 + \ldots + x_d^2 = 1\}$ --- компакт $\implies \exists a \in S\!: 0 < p(a) \le p(x) \quad \forall x \in S$.
 
-     $p(x) = p(\frac{x}{\|x\|}\cdot \|x\|) = \|x\| p(\frac{x}{\|x\|}) \ge \|x\| p(a)$.
+     $p(x) = p(\frac{x}{\|x\|}\cdot \|x\|) = \|x\| p(\frac{x}{\|x\|}) \ge \|x\| p(a)$, так как норма $\frac{x}{\|x\|}$ будет равна 1.
 
      Тогда $p(a) \|x\| \le p(x) \le M \|x\| \quad \forall x \in \R^d$.
 \end{proof}
-
+%END TICKET 45
 \Subsection{Длина кривой}
-
+%BEGIN TICKET 46
 \begin{definition}
     $(X, \rho)$ --- метрическое пространство.  ($\R^d$ --- ключевой случай).
 
-    $\gamma\!: [a,b] \to X$ непрерывное --- путь.
+    Непрерывное $\gamma\!: [a,b] \to X$ --- путь.
 
      $\gamma(a)$ --- начало пути,  $\gamma(b)$ --- конец пути.  $\gamma([a, b])$ носитель пути.
 
@@ -862,6 +880,8 @@
 \end{definition}
 \begin{definition}
     Эквивалентные пути: $\gamma_1\!:[a, b] \in X$, $\gamma_2\!: [c,d] \to X$. Если  $\exists u\!:[a, b] \to [c, d]$,  $u$ --- непрерывна,  $u$ --- строго монотонно возрастает,  $u(a) = c, u(b) = d$, такой, что  $\gamma_1 = \gamma \circ u$.
+
+    Неформально говоря, мы считаем, что пути эквивалентны, если у них отличается только время прохождения.
 \end{definition}
 \begin{definition}
     Класс эквивалентных путей --- кривая.
@@ -873,8 +893,13 @@
 
     Кривая гладкая, если у нее есть гладкая параметризация. Если  $r$ опущено, то  $r=1$.
 \end{definition}
+%END TICKET 46
+%BEGIN TICKET 47
 \begin{definition}
     Длина пути $l(\gamma) = \sup \sum\limits_{k=1}^n \rho(\gamma(t_k), \gamma(t_{k-1}))$, где  $t_k$ --- дробление отрезка.
+    \begin{figure}[h!]
+        \includegraphics[width=\textwidth]{curve_length}
+    \end{figure}
 \end{definition}
 \begin{remark}
     Длины эквивалентных путей равны.
@@ -908,6 +933,8 @@
             А теперь увидим, что первые два слагаемых $\le l(\gamma_1)$, а вторые два $\le l(\gamma_2)$.
     \end{itemize}
 \end{proof}
+%END TICKET 47
+%BEGIN TICKET 48
 \begin{theorem}
     $\gamma\!: [a,b] \to \R^d$ --- гладкий путь. $\gamma = \begin{pmatrix} \gamma_1 \\ \gamma_2 \\ \vdots \\ \gamma_d \end{pmatrix}$. Тогда: 
 \begin{align*}
@@ -915,24 +942,29 @@
 \end{align*}
 \end{theorem}
 \begin{lemma}
-    $\Delta \subset [a, b]$ --- отрезок, $\gamma\!: [a, b] \to \R^d$.  $m_\Delta^{(i)} \coloneqq \min\limits_{t \in \Delta}|\delta'_i(t)|, M_\Delta^{(i)} \coloneqq \max\limits_{t \in \Delta}|\delta'_i(t)|$, $m_\Delta \coloneqq \sqrt{\sum\limits_{i=1}^d (m_\Delta^{(i)})^2}, M_\Delta \coloneqq \sqrt{\sum\limits_{i=1}^d (M_\Delta^{(i)})^2}$
+    $\Delta \subset [a, b]$ --- отрезок, $\gamma\!: [a, b] \to \R^d$.  $m_\Delta^{(i)} \coloneqq \min\limits_{t \in \Delta}|\gamma'_i(t)|, M_\Delta^{(i)} \coloneqq \max\limits_{t \in \Delta}|\gamma'_i(t)|$, $m_\Delta \coloneqq \sqrt{\sum\limits_{i=1}^d (m_\Delta^{(i)})^2}, M_\Delta \coloneqq \sqrt{\sum\limits_{i=1}^d (M_\Delta^{(i)})^2}$
 
     Тогда $m_\Delta l(\Delta) \le l(\gamma \Big|_\Delta) \le M_\Delta l(\Delta)$.
 \end{lemma}
 \begin{proof}
     Впишем в $\gamma \Big|_\Delta$ ломаную. Пусть  $a_k$ --- длина  $k$-го звена.
 
-    По теореме Лагранжа:  $\gamma_i(t_k) - \gamma_i(t_{k-1}) = \underbrace{\gamma'_i(\xi_{ik})(t_k - t_{k-1})}_{\le m_\Delta^{(i)}(t_k - t_{k-1})} \le M_\Delta^{(i)} (t_k - t_{k-1})$
+    По теореме Лагранжа:  $\gamma_i(t_k) - \gamma_i(t_{k-1}) = \underbrace{\gamma'_i(\xi_{ik})(t_k - t_{k-1})}_{\ge m_\Delta^{(i)}(t_k - t_{k-1})} \le M_\Delta^{(i)} (t_k - t_{k-1})$
 
     Тогда $m_\Delta (t_k - t_{k-1}) \le a_k \le M_\Delta(t_k - t_{k-1})$. Просуммируя все такие неравенства получим исходное.
 \end{proof}
 \begin{proof}[Доказательство теоремы]
+   По лемме длина звена:
    \begin{align*}
        m_k(x_k - x_{k-1}) \le l(\gamma \Big|_{[x_{k-1}, x_k]}) \le M_k(x_k - x_{k-1}) \\
        \sum_{k=1}^n m_k (x_k - x_{k-1}) \le l(\gamma) \le \sum_{k=1}^n M_k(x_k - x_{k-1}) \\
-       m_k(x_k - x_{k-1}) \le \int\limits \sqrt{\gamma'_1(t)^2 + \ldots + \gamma'_d(t)^2}\mathrm{d}t \le M_k(x_{k} - x_{k-1})
+       m_k(x_k - x_{k-1}) \le \int\limits_{x_{k-1}}^{x_k} \sqrt{\gamma'_1(t)^2 + \ldots + \gamma'_d(t)^2}\mathrm{d}t \le M_k(x_{k} - x_{k-1})\tag{*}\\
+       \sum\limits_{k=1}^n m_k(x_k - x_{k-1}) \le \int\limits_{x_{k-1}}^{x_k} \|\gamma'(t)\| dt \le \sum\limits_{k=1}^n M_k(x_k - x_{k-1})
    \end{align*}
-   Докажем, что $\square$(штука с $M_k$) минус $\bigcirc$ стремится к нулю. По факту хотим доказать, что $\sum\limits_{k=1}^n (M_k - m_k)(x_k - x_{k-1}) \to 0$. 
+   
+   Заметим, что $(*)$ получается просто из того, что $m_k$ --- минимум, а  $M_k$ --- максимум. Также заметим, что суммы в первой и четвертой строчки равны. 
+   
+   Докажем, что сумма с $M_k$ минус сумма с $m_k$ стремится к нулю. По факту хотим доказать, что $\sum\limits_{k=1}^n (M_k - m_k)(x_k - x_{k-1}) \to 0$. 
 
     \begin{align*}
         M_k - m_k &= \sqrt{\sum_{i=1}^d (M_{[x_{k-1}, x_k]}^{(i)})^2} - \sqrt{\sum_{i=1}^d (m_{[x_{k-1}, x_k]}^{(i)})^2}  \le\text{(Минковский)} \sqrt{\sum_{i=1}^d (M_{[x_{k-1}, x_k]}^{(i)} - m_{[x_{k-1}, x_k]}^{(i)})^2} \le \\ 
@@ -954,8 +986,10 @@
         \item $\gamma(\vphi) = \begin{pmatrix} r(\vphi)\cos \vphi \\ r(\vphi) \sin \vphi \end{pmatrix} $
     \end{enumerate}
 \end{proof}
+%END TICKET 48
+%BEGIN TICKET 49
 \begin{definition}
-    $A$ --- связное множество, если  $\forall$ покрытие  $A \subset U \cup V, U \cap V = \emptyset \implies $ либо  $A \subset U$, либо  $A \subset V$, где $U, V$ --- открытые.
+    $A$ --- связное множество, если  $\forall$ покрытие из $U, V$  $A \subset U \cup V, U \cap V = \emptyset \implies $ либо  $A \subset U$, либо  $A \subset V$, где $U, V$ --- открытые.
 \end{definition}
 \begin{example}
     \begin{enumerate}
@@ -1002,7 +1036,9 @@
 \begin{remark}
     Если $A$ открыто, то  $A$ --- связно  $\iff A$ --- линейно связное.
 \end{remark}
+%END TICKET 49
 \Subsection{Линейные операторы}
+%BEGIN TICKET 50
 \begin{definition}
     $X, Y$ --- векторные пространства,  
 
