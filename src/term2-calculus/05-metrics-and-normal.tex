@@ -500,7 +500,7 @@
     \begin{enumerate}
         \item $K \subset Y \subset X$. Тогда  $K$ --- компакт в  $(X, \rho) \iff K$ --- компакт в  $(Y, \rho)$.
         \item  $K$ --- компакт  $\implies K$ замкнуто и ограничено.
-        \item  Замкнутое подмножество компакта --- компакта.
+        \item  Замкнутое подмножество компакта --- компакт.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -512,12 +512,12 @@
               $\Rightarrow$. Воспользуемся тем же наблюдением: $U_\alpha = G_\alpha \cap Y$. Следовательно можно выбрать  $\alpha_1, \alpha_2, \ldots, \alpha_n$ в $X$ и они же подойдут и в  $Y$. 
           \item Ограниченность. Возьмем $a \in X$. Тогда  $K \subset \bigcup\limits_{n=1}^\infty B_n(a) = X$ --- открытое покрытие  $K$. Выделим конечное подпокрытие  $K \subset \bigcup\limits_{n=1}^N B_n(a) \implies K \subset B_N(a) \implies K$ --- ограничено. 
 
-              Замкнутость. Надо доказать, что $X \setminus K$ --- открытое. Возьмем  $a \in X \setminus K$ и докажем, что  $a$ лежит в  $X \setminus K$ вместе с некоторым шариком. 
+              Замкнутость. Надо доказать, что $X \setminus K$ --- открытое. Возьмем  $a \in X \setminus K$ и $x \in K$ и докажем, что  $a$ лежит в  $X \setminus K$ вместе с некоторым шариком.
 
-              Пусть  $U_x = B_{\frac{\rho(x, a)}{2}}(x)$. Причем он не пересекается с $B_x = B_{\frac{\rho(x, a)}{2}}(a)$. Возьмем тогда $K \subset \bigcup_{x \in K} U_x$ --- открытое покрытие. Выделим конечное подпокрытие  $K \in \bigcup\limits_{i=1}^n U_{x_i}$,  $r = \min\{\frac{\rho(x_i, a)}{2} \}$. Тогда $B_r(a) = \bigcap\limits_{i=1}^n B_{x_i}$.  $B_r(a) \cap \bigcup\limits_{i=1}^n U_{x_i} = \emptyset \implies B_r(a) \cap K = \emptyset \implies B_r(a) \subset X \setminus K \implies a$ --- внутренняя $X \cap K$.
+              Пусть  $U_x = B_{\frac{\rho(x, a)}{2}}(x)$. Причем он не пересекается с $B_x = B_{\frac{\rho(x, a)}{2}}(a)$. Возьмем тогда $K \subset \bigcup_{x \in K} U_x$ --- открытое покрытие (поскольку каждый шарик точно покрывает свой центр и ещё что-то). Выделим конечное подпокрытие  $K \in \bigcup\limits_{i=1}^n U_{x_i}$,  $r = \min\{\frac{\rho(x_i, a)}{2} \}$. Тогда $B_r(a) = \bigcap\limits_{i=1}^n B_{x_i}$.  $B_r(a) \cap \bigcup\limits_{i=1}^n U_{x_i} = \emptyset \implies B_r(a) \cap K = \emptyset \implies B_r(a) \subset X \setminus K \implies a$ --- внутренняя $X \cap K$.
           \item Пусть $\widetilde{K}$ --- компакт,  $K$ --- замкнуто и  $K \subset \widetilde{K}$.
 
-              Рассмотрим открытое покрытие  $K$  $U_\alpha$. Тогда  $\widetilde{K}$ покрыто  $(X \subset K) \cup \bigcup\limits_{\alpha \in I} U_\alpha$ -- открытое покрытие  $\widetilde{K}$. Выделим конечное покрытие  $X \cap K, U_{\alpha_1}, \ldots, U_{\alpha_n}$. $K \subset X \setminus K \cup \bigcup\limits_{i=1}^n U_{\alpha_i} \implies K \subset \bigcup\limits_{i=1}^n U_{\alpha_i}$ --- открытое множество, а значит  $K$ --- компакт.
+              Рассмотрим открытое покрытие  $K$  $U_\alpha$. Тогда  $\widetilde{K}$ покрыто  $(X \setminus K) \cup \bigcup\limits_{\alpha \in I} U_\alpha$ -- открытое покрытие  $\widetilde{K}$. Выделим конечное подпокрытие  $X \setminus K, U_{\alpha_1}, \ldots, U_{\alpha_n}$. $K \subset X \setminus K \cup \bigcup\limits_{i=1}^n U_{\alpha_i} \implies K \subset \bigcup\limits_{i=1}^n U_{\alpha_i}$ --- открытое множество, а значит  $K$ --- компакт.
     \end{enumerate}
 \end{proof}
 \begin{theorem}
