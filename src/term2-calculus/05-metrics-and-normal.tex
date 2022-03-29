@@ -1141,20 +1141,20 @@
 \begin{theorem}
     $A\!: X \to Y$ --- линейный оператор. Тогда
 
-     $\|A\| = \sup\limits_{\| x\|_x \le 1} \|Ax\|_Y = \sup\limits_{\| x\|_x = 1} \|Ax\|_Y = \sup\limits_{x \neq 0} \frac{\|Ax\|_Y}{\|x\|_x} = \inf\{ c > 0 \mid \|A_x\|_Y \le C \|x\|_X\}$.
+     $\|A\| = \sup\limits_{\| x\|_x < 1} \|Ax\|_Y = \sup\limits_{\| x\|_x = 1} \|Ax\|_Y = \sup\limits_{x \neq 0} \frac{\|Ax\|_Y}{\|x\|_x} = \inf\{ c > 0 \mid \|A_x\|_Y \le C \|x\|_X\}$.
 \end{theorem}
 \begin{proof}
     Обозначим за $N_i$  $i$-ый элемент этой цепочки. 
 
-     $N_1 \ge N_2$ и $N_1 \le N_3$,  так как $N_2, N_3 \subset N_1$. 
+     $N_1 \ge N_2$ и $N_1 \ge N_3$,  так как $N_2, N_3 \subset N_1$. 
 
      $N_3 \ge N_4$. $\frac{\|Ax\|_Y}{\|x\|_X} = \frac{1}{\|x\|}\|Ax\|_Y = \|A \frac{x}{\|x\|}\|_X \le N_3$.
 
      $N_4 = N_5$. $N_5 = \inf \{ c>0 \mid \frac{\|Ax\|_Y}{\|x\|_X} < c\}$
 
-     Теперь докажем, что $N_1 \le N_2$. Пусть $\| x \| \le 1 \implies \| (1-\eps) x \| \le 1 \implies \| A((1-\eps)x) \| \le N_2$. Воспользуемся линейностью $A$: вытащим  $(1-\eps)$ за скобку. После этого устремим  $\eps$ к 0. Тогда  $\| Ax \| \le N_2 \implies N_1 = \sup\limits_{\| x \| \le 1} \| A x\| \le 1$.
+     Теперь докажем, что $N_1 \le N_2$. Пусть $\| x \| \le 1 \implies \| (1-\eps) x \| < 1 \implies \| A((1-\eps)x) \| \le N_2$. Воспользуемся линейностью $A$: вытащим  $(1-\eps)$ за скобку. После этого устремим  $\eps$ к 0. Тогда  $\| Ax \| \le N_2 \implies N_1 = \sup\limits_{\| x \| \le 1} \| A x\| \le N_2$.
 
-     Теперь докажем, что $N_1 \le N_4$. $\| x \| \le 1$. Тогда $y \coloneqq \frac{x}{\| x \|}$, $\|y\| = 1 \implies \| A_y \| \le N_4 \implies \| Ax \| \le \frac{1}{\|x\|} \cdot \| Ax \| = \| A(\frac{x}{\| x \|}) \|  \le N_4 \implies N_1 = \sup\limits_{\|x \| \le 1} \|Ax\| \le N_4$.
+     Теперь докажем, что $N_1 \le N_4$. $\| x \| \le 1$. Тогда $y \coloneqq \frac{x}{\| x \|}$, $\|y\| = 1 \implies \| A_y \| \le N_4 \implies \| Ax \| \le \frac{1}{\|x\|} \cdot \| Ax \| \le N_4 \implies \| A_x \| \le N_4 \implies N_1 = \sup\limits_{\|x \| \le 1} \|Ax\| \le N_4$.
 \end{proof}
 %END TICKET 52
 %BEGIN TICKET 53
@@ -1174,7 +1174,7 @@
 
     $2 \implies 1$. Возьмем  $\eps = 1$ и  $\delta > 0$ из определения непрерывности.  $\forall x \in X\!: \|x \| < \delta \implies \|Ax\| < 1$.
 
-    Пусть $\|y\| < 1$. Тогда  $\|\delta y\| < \delta \implies \|A(\delta y)\| < 1 \implies \|Ay\| < \frac{1}{\delta} \implies \sum\limits_{\| y \| < 1} \| Ay\| \le \frac{1}{\delta}$.
+    Пусть $\|y\| < 1$. Тогда  $\|\delta y\| < \delta \implies \|A(\delta y)\| < 1 \implies \|Ay\| < \frac{1}{\delta} \implies \sup\limits_{\| y \| < 1} \| Ay\| \le \frac{1}{\delta}$.
 \end{proof}
 \begin{consequence}
     \begin{enumerate}
