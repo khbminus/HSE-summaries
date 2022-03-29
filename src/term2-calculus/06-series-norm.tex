@@ -169,11 +169,13 @@
     .\] 
 \end{theorem}
 \begin{proof}
-    Картинка :(
+     $\sum\limits_{k=a}^{b-1} f(k) \ge \int\limits_a^b f(x)\mathrm{d}x \ge \sum\limits_{k=a+1}^b f(k)$. Не поняли? Рисуем картинку!
+     \begin{figure}[!h]
+         \includegraphics[scale=0.3]{integrals_and_sums}
+     \end{figure}
     
-     $\sum\limits_{k=a}^{b-1} f(k) \ge \int\limits_a^b f(x)\mathrm{d}x \ge \sum\limits_{k=a+1}^b f(k)$.
+    $\sum\limits_{k=a}^b f(k) - \int\limits_a^b \le \sum\limits_{k=a}^b - \sum\limits_{k=a-1}^b = f(a)$ (аналогично $f(b) = \sum\limits_{k=a}^b - \sum\limits_{k=a}^{b-1}$)
 
-     TODO.
 \end{proof}
 \begin{theorem}[интегральный признак сходимости ряда]
     Пусть $f\!:[1, +\infty) \to \R$ неотрицательная, монотонно убывающая. 
