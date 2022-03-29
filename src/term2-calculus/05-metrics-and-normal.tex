@@ -1102,7 +1102,9 @@
 
     Пусть  $x = \sum\limits_{i=1}^n x_ie_i$. Тогда  $Ax = A(\sum\limits_{k=1}^n x_k e_k) = \sum\limits_{k=1}^n x_k \underbrace{A_{e_k}}_{\coloneqq A_k \in \R^m}$. 
 
-    То есть получили набор столбцов. Из которого можно получить матрицу. 
+    То есть получили набор столбцов. Из которого можно получить матрицу.
+%END TICKET 50
+%BEGIN TICKET 51
 \end{definition}
 \begin{definition}
     $X$ и  $Y$ --- нормированные пространства.  $A\!: X \to Y$ --- линейный оператор.
@@ -1134,6 +1136,8 @@
         \item $\Rightarrow$  $\|A\| = 0 \implies \|Ax\| = 0 \implies Ax = 0 \implies Ax = A(\frac{x}{\| x\|} \cdot \|x \|) = \|x\| A(\frac{x}{\|x\|}) = 0$.
     \end{enumerate}
 \end{proof}
+%END TICKET 51
+%BEGIN TICKET 52
 \begin{theorem}
     $A\!: X \to Y$ --- линейный оператор. Тогда
 
@@ -1152,7 +1156,8 @@
 
      Теперь докажем, что $N_1 \le N_4$. $\| x \| \le 1$. Тогда $y \coloneqq \frac{x}{\| x \|}$, $\|y\| = 1 \implies \| A_y \| \le N_4 \implies \| Ax \| \le \frac{1}{\|x\|} \cdot \| Ax \| = \| A(\frac{x}{\| x \|}) \|  \le N_4 \implies N_1 = \sup\limits_{\|x \| \le 1} \|Ax\| \le N_4$.
 \end{proof}
-
+%END TICKET 52
+%BEGIN TICKET 53
 \begin{theorem}
    $A\!: X \to Y$ --- линейный оператор. Следующие условия равносильны:
    \begin{enumerate}
@@ -1197,4 +1202,5 @@
 \begin{remark}
     В бесконечномерном случае бывают неограниченные операторы.
 \end{remark}
+%END TICKET 53
 
