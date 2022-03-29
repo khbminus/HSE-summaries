@@ -1048,12 +1048,12 @@
 \begin{definition}
     $X, Y$ --- векторные пространства,  
 
-    $A\!: X \to Y$ --- линейный оператор, если $\forall x, y \in X, \forall \alpha, \beta \in \R A(\alpha x + \beta y) = \alpha A(x) + \beta A(y)$.
+    $A\!: X \to Y$ --- линейный оператор, если $\forall x, y \in X, \forall \alpha, \beta \in \R\ A(\alpha x + \beta y) = \alpha A(x) + \beta A(y)$.
 \end{definition}
 \begin{properties}
 \begin{enumerate}
     \item $A 0_X = 0_Y$. Доказательство: $\alpha = 0, \beta = 0$.
-    \item $A (\sum\limits_{k=1}^n x_k) = \sum\limits_{k=1}^n \lambda_k A(x_k)$. Доказательство: индукция.
+    \item $A (\sum\limits_{k=1}^n x_k) = \sum\limits_{k=1}^n \lambda_k A(x_k)$. Доказательство: индукция по количеству суммируемых элементов.
 \end{enumerate}
 \end{properties}
 \begin{definition}
@@ -1102,6 +1102,8 @@
 
     То есть получили набор столбцов. Из которого можно получить матрицу. 
 \end{definition}
+%END TICKET 50
+%BEGIN TICKET 51
 \begin{definition}
     $X$ и  $Y$ --- нормированные пространства.  $A\!: X \to Y$ --- линейный оператор.
 
@@ -1121,36 +1123,39 @@
 \begin{properties}
     \begin{enumerate}
         \item $\| A + B \| \le \| A \| + \| B \|$
-        \item $\| \lambda A \| = \|\lambda\| \|A \|$.
+        \item $\| \lambda A \| = |\lambda| \|A \|$.
         \item  $\|A\| = 0 \iff A \equiv 0$.
     \end{enumerate}
 \end{properties}
 \begin{proof}
     \begin{enumerate}
-        \item $\|(A+B)x\|_Y = \|Ax + Bx\|_Y \le \|Ax\|_Y + \|Bx\|_T \iff \sup\limits_{\| x\|_x \le 1} \|(A+B)x\| = \|A+B\| \le \sup\limits_{\| x\|_x \le 1} \|Ax\|_Y + \sup\limits_{\| x\|_x \le 1} \|Bx\|_Y$.
+        \item $\|(A+B)x\|_Y = \|Ax + Bx\|_Y \le \|Ax\|_Y + \|Bx\|_Y \iff \sup\limits_{\| x\|_x \le 1} \|(A+B)x\| = \|A+B\| \le \sup\limits_{\| x\|_x \le 1} \|Ax\|_Y + \sup\limits_{\| x\|_x \le 1} \|Bx\|_Y = \|A\| + \|B\|$.
         \item $\| \lambda Ax \| = |\lambda| \cdot \|Ax \|$.  $\sup\limits_{\| x\|_x \le 1} \|\lambda A x \| = |\lambda| \sup\limits_{\| x\|_x \le 1} \| Ax\| = |\lambda| \| A\|$.
         \item $\Rightarrow$  $\|A\| = 0 \implies \|Ax\| = 0 \implies Ax = 0 \implies Ax = A(\frac{x}{\| x\|} \cdot \|x \|) = \|x\| A(\frac{x}{\|x\|}) = 0$.
     \end{enumerate}
 \end{proof}
+%END TICKET 51
+%BEGIN TICKET 52
 \begin{theorem}
     $A\!: X \to Y$ --- линейный оператор. Тогда
 
-     $\|A\| = \sup\limits_{\| x\|_x \le 1} \|Ax\|_Y = \sup\limits_{\| x\|_x = 1} \|Ax\|_Y = \sup\limits_{x \neq 0} \frac{\|Ax\|_Y}{\|x\|_x} = \inf\{ c > 0 \mid \|A_x\|_Y \le C \|x\|_X\}$.
+     $\underbrace{\|A\|}_{N_1} = \underbrace{\sup\limits_{\| x\|_x < 1} \|Ax\|_Y}_{N_2} = \underbrace{\sup\limits_{\| x\|_x = 1} \|Ax\|_Y}_{N_3} = \underbrace{\sup\limits_{x \neq 0} \frac{\|Ax\|_Y}{\|x\|_x}}_{N_4} = \underbrace{\inf\{ c > 0 \mid \|A_x\|_Y \le C \|x\|_X\}}_{N_5}$.
 \end{theorem}
 \begin{proof}
     Обозначим за $N_i$  $i$-ый элемент этой цепочки. 
 
-     $N_1 \ge N_2$ и $N_1 \le N_3$,  так как $N_2, N_3 \subset N_1$. 
+     $N_1 \ge N_2$ и $N_1 \ge N_3$,  так как $N_2, N_3 \subset N_1$. 
 
      $N_3 \ge N_4$. $\frac{\|Ax\|_Y}{\|x\|_X} = \frac{1}{\|x\|}\|Ax\|_Y = \|A \frac{x}{\|x\|}\|_X \le N_3$.
 
      $N_4 = N_5$. $N_5 = \inf \{ c>0 \mid \frac{\|Ax\|_Y}{\|x\|_X} < c\}$
 
-     Теперь докажем, что $N_1 \le N_2$. Пусть $\| x \| \le 1 \implies \| (1-\eps) x \| \le 1 \implies \| A((1-\eps)x) \| \le N_2$. Воспользуемся линейностью $A$: вытащим  $(1-\eps)$ за скобку. После этого устремим  $\eps$ к 0. Тогда  $\| Ax \| \le N_2 \implies N_1 = \sup\limits_{\| x \| \le 1} \| A x\| \le 1$.
+     Теперь докажем, что $N_1 \le N_2$. Пусть $\| x \| \le 1 \implies \forall \eps > 0\ \| (1-\eps) x \| < 1 \implies \| A((1-\eps)x) \| < N_2$. Воспользуемся линейностью $A$: вытащим  $(1-\eps)$ за скобку. После этого устремим  $\eps$ к 0. Тогда  $\| Ax \| \le N_2\text{ (предельный переход в неравенстве) }\implies \sup\limits_{\| x \| \le 1} \| A x\| = N_1 \le N_2$.
 
-     Теперь докажем, что $N_1 \le N_4$. $\| x \| \le 1$. Тогда $y \coloneqq \frac{x}{\| x \|}$, $\|y\| = 1 \implies \| A_y \| \le N_4 \implies \| Ax \| \le \frac{1}{\|x \ | \cdot \| Ax \|} = \| A(\frac{x}{\| x \|}) \|  \le N_4 \implies N_1 = \sup\limits_{\|x \| \le 1} \|Ax\| \le N_4$.
+     Теперь докажем, что $N_1 \le N_4$. $\| x \| \le 1$. Тогда $y \coloneqq \frac{x}{\| x \|}$, $\|y\| = 1 \implies \| A_y \| \le N_4 \implies \| Ax \| \le \frac{1}{\|x \|} \cdot \| Ax \| \le N_4 \implies \| Ax \|  \le N_4 \implies N_1 = \sup\limits_{\|x \| \le 1} \|Ax\| \le N_4$.
 \end{proof}
-
+%END TICKET 52
+%BEGIN TICKET 53
 \begin{theorem}
    $A\!: X \to Y$ --- линейный оператор. Следующие условия равносильны:
    \begin{enumerate}
@@ -1167,7 +1172,7 @@
 
     $2 \implies 1$. Возьмем  $\eps = 1$ и  $\delta > 0$ из определения непрерывности.  $\forall x \in X\!: \|x \| < \delta \implies \|Ax\| < 1$.
 
-    Пусть $\|y\| < 1$. Тогда  $\|\delta y\| < \delta \implies \|A(\delta y)\| < 1 \implies \|Ay\| < \frac{1}{\delta} \implies \sum\limits_{\| y \| < 1} \| Ay\| \le \frac{1}{\delta}$.
+    Пусть $\|y\| < 1$. Тогда  $\|\delta y\| < \delta \implies \|A(\delta y)\| < 1 \implies \|Ay\| < \frac{1}{\delta} \implies \sup\limits_{\| y \| < 1} \| Ay\| \le \frac{1}{\delta}$.
 \end{proof}
 \begin{consequence}
     \begin{enumerate}
@@ -1190,9 +1195,9 @@
     Тогда $\|A\|^2 \le \sum\limits_{k=1}^n \sum\limits_{j=1}^m a_{jk}^2$. В частности, все такие операторы ограничены.
 \end{theorem}
 \begin{proof}
-    $\|Ax\|^2 = \sum\limits_{j=1}^m \left(\sum\limits_{k=1}^n a_{jk} x_k \right)^2 \le\ \text{(Коши-Буняковский)}\ \sum\limits_{j=1}^m \sum\limits_{k=1}^n a_{jk}^2 \underbrace{\sum\limits_{k=1}^n x_k^2}_{=\|x\|^2}$. Следовательно, $\|Ax\| \le \|x\| \sqrt{\sum\limits_{k=1}^m \sum\limits_{j=1}^n a_{jk}^2}$ /
+    $\|Ax\|^2 = \sum\limits_{j=1}^m \left(\sum\limits_{k=1}^n a_{jk} x_k \right)^2 \le\ \text{(Коши-Буняковский)}\ \sum\limits_{j=1}^m \sum\limits_{k=1}^n a_{jk}^2 \underbrace{\sum\limits_{k=1}^n x_k^2}_{=\|x\|^2}$. Следовательно, $\|Ax\| \le \|x\| \sqrt{\sum\limits_{k=1}^m \sum\limits_{j=1}^n a_{jk}^2}$.
 \end{proof}
 \begin{remark}
     В бесконечномерном случае бывают неограниченные операторы.
 \end{remark}
-
+%END TICKET 53
