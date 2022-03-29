@@ -1,5 +1,5 @@
 \Subsection{Ряды в нормированных пространствах}
-
+%BEGIN TICKET 54
 \begin{definition}
     $X$ --- пространство с нормой,  $x_n \in X$.
 
@@ -32,16 +32,18 @@
 \begin{proof}
     $S_n \coloneqq \sum\limits_{k=1}^n x_k$. Последовательность  $S_n$ сходится  $\iff S_n$ --- фундаментальная  $\iff \forall \eps > 0 \exists N \forall m, n > N\!: \|S_n-S_m\| < \eps \iff \| \sum\limits_{k=m+1}^n x_k \| < \eps$.
 \end{proof}
+%END TICKET 54
+%BEGIN TICKET 55
 \begin{definition}
     Ряд $\sum\limits_{n=1}^\infty x_n$ сходится абсолютно, если  $\sum\limits_{n=1}^\infty \|x_n\|$ сходится.
 \end{definition}
 \begin{remark}
-    В частности, в $\R$ абсолютная сходимость --- сходимость ряда  $\sum\limits_{n=1}^\infty \|x_n\|$.
+    В частности, в $\R$ абсолютная сходимость --- сходимость ряда  $\sum\limits_{n=1}^\infty |x_n|$.
 \end{remark}
 \begin{theorem}
     $X$ --- полное нормированное пространство.
 
-    Если  $\sum\limits_{n=1}^\infty x_n$ абсолютно сходится, то он абсолютно сходится.
+    Если  $\sum\limits_{n=1}^\infty x_n$ абсолютно сходится, то он сходится.
 \end{theorem}
 \begin{proof}
     Пусть $\sum\limits_{n=1}^\infty \|x_n\|$ --- сходится. Тогда  $\forall \eps > 0 \exists N \forall m, n \ge N\!: \sum\limits_{k=m+1}^n \|x_k\| < \eps$. Воспользуемся свойством о том, что сумма норм не меньше, чем норма суммы. А значит получили $\forall \eps > 0 \exists N \forall m, n \ge N\!: \| \sum\limits_{k=m+1}^n x_k\| < \eps$, что является критерием Коши для исходной последовательности.
@@ -57,11 +59,13 @@
      \begin{enumerate}
          \item Возьмем $n$:  $n_k \le n < n_{k+1}$. $S_n = S_{n_k} + x_{n_k} + x_{n_k + 1} + x_{n_k  + 2} + \ldots + x_n$. $\|S_n - S\| \le \|S_{n_k} - S\| + \|x_{n_k + 1}\| + \ldots + \|x_n\|$. Мы знаем, что $S_{n_k} \to S \implies \exists K \forall k \ge K\!: \|S_{n_k} - S\| < \eps$.
 
-             $\lim x_j = 0 \implies \exists J \forall j \ge J \|x_j\| < \eps$. Следовательно исходная сумма не более $(M+1)S$.
+             $\lim x_j = 0 \implies \exists J \forall j \ge J \|x_j\| < \eps$. Следовательно исходная сумма не более $(M+1)\eps$.
          \item  $n_k \le n < n_{k+1}$. Пусть в этом блоке неотрицательные слагаемые. $S_n = S_{n_k} + x_{n_k + 1} + x_{n_k + 2} + \ldots + x_n \ge S_{n_k}$. А еще знаем, что $S_n = S_{n_{k+1}} - x_{n_{k+1}} - x_{n_{k+1} - 1} - \ldots - x_{n+1} \le S_{n_{k+1}}$. Откуда получаем, что $S_{n_k} \le S_n \le S_{n_{k+1}}$.
     \end{enumerate}
 \end{proof}
+%END TICKET 55
 \Subsection{Знакопостоянные ряды}
+%BEGIN TICKET 56
 \begin{theorem}
     Пусть $a_n \ge 0$.
 
@@ -74,7 +78,7 @@
     Пусть $0 \le a_n \le b_n$. Тогда 
     \begin{enumerate}
         \item Если $\sum\limits_{n=1}^\infty b_n$ сходится, то  $\sum\limits_{n=1}^\infty a_n$ --- сходится.
-        \item  Если $\sum\limits_{n=1}^\infty a_n$ --- расходится.
+        \item  Если $\sum\limits_{n=1}^\infty a_n$ --- расходится, то $\sum\limits_{n=1}^\infty b_n$ расходится.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -97,6 +101,8 @@
         \item $a_n = b_nc_n$, где  $\lim c_n = 1 \implies \frac{1}{2} \le c_n \le 2$ при $n\ge N$. Тогда $a_n = \mathcal{O}(b_n)$ и  $b_n = \mathcal{O}(a_n)$.
     \end{enumerate}
 \end{proof}
+%END TICKET 56
+%BEGIN TICKET 57
 \begin{theorem}[Признак Коши]
     Пусть $a_n \ge 0$.
     \begin{enumerate}
@@ -114,11 +120,13 @@
     \begin{enumerate}
         \item $\sqrt[n]{a_n} \le q < 1 \implies a_n \le q^n$. По признаку сравнения с геометрической прогрессией $\sum\limits_{n=1}^\infty q^n$ --- сходится.
         \item  $\sqrt[n]{a_n} \ge 1 \implies a_n \centernot \to 0 \implies $ расходится.
-        \item Если $q^* > 1$. Найдется  $n_k\!: \sqrt[n_k]{a_{n_k}} \to q^*  > 1$ (по определению верхнего предела)  $\implies$ начиная с некоторого номера $\sqrt[n_k]{a_{n_k}} > 1 \implies a_{n_k} > 1 \implies a_n \centernot 0$ и ряд расходится.
+        \item Если $q^* > 1$. Найдется  $n_k\!: \sqrt[n_k]{a_{n_k}} \to q^*  > 1$ (по определению верхнего предела)  $\implies$ начиная с некоторого номера $\sqrt[n_k]{a_{n_k}} > 1 \implies a_{n_k} > 1 \implies a_n \centernot \to 0$ и ряд расходится.
 
             Если $q^* < 1$,  $q^* = \lim\limits_{n \to \infty} \sup\limits_{k \ge n} \sqrt[k]{a_k} \implies$ для больших $n$  $\sup_{k \ge n} \sqrt[k]{a_k} < q < 1$. Но при этом $\sqrt[n]{a_n} \le \sup\limits_{k \ge n}\sqrt[k]{a_k}$, а значит $\sqrt[n]{a_n} < q$ при больших  $n \implies$ ряд сходится.
     \end{enumerate}
 \end{proof}
+%END TICKET 57
+%BEGIN TICKET 58
 \begin{theorem}[Признак Даламбера]
     Пусть $a_n > 0$. Тогда
      \begin{enumerate}
@@ -152,6 +160,8 @@
 \begin{proof}
     $\lim \frac{a_{n+1}}{a_n} = d^* \implies \lim \frac{\ln a_{n+1} - \ln a_n}{(n+1) - n} = \ln d^* \xRightarrow{\text{т. Штольца}} \lim \frac{\ln a_n}{n} = \ln d^* \implies \sqrt[n]{a_n} = d^*$.
 \end{proof}
+%END TICKET 58
+%BEGIN TICKET 59
 \begin{theorem}
     Пусть $f$ неотрицательная монотонная  $\!: [1, +\infty) \to \R$. Тогда:
      \[
@@ -171,9 +181,9 @@
     Тогда  $\sum\limits_{n=1}^\infty f(n)$ и  $\int\limits_1^\infty f(x) \mathrm{d}x$ ведут себя одинаково.
 \end{theorem}
 \begin{proof}
-    По предыдущей теореме $S_n \coloneqq = \sum\limits_{k=1}^n f(k) \ge \int\limits_1^n f(x)\mathrm{d}x \ge \sum\limits_{k=2}^n f(k) = S_n - f(1)$.
+    По предыдущей теореме $S_n \coloneqq \sum\limits_{k=1}^n f(k) \ge \int\limits_1^n f(x)\mathrm{d}x \ge \sum\limits_{k=2}^n f(k) = S_n - f(1)$.
 
-    Если ряд сходится, то $S_n$ --- ограничена  $\implies \int\limits_1^n f(x)\mathrm{d}x \implies F(x) = \lim\limits_1^x f$ --- ограничена.
+    Если ряд сходится, то $S_n$ --- ограничена  $\implies \int\limits_1^n f(x)\mathrm{d}x \implies F(x) = \int\limits_1^x f$ --- ограничена.
 
     Если  $\int$ сходится $\implies \int\limits_1^n f$ --- ограничена  $\implies S_n$ --- ограничена  $\implies$ ряд расходится.
 \end{proof}
@@ -192,3 +202,4 @@
         \item Если  $a_n > 0$ и  $a_n \sim \frac{c}{n^p}$, то при $p > 1$ ряд  $\sum a_n$ --- сходится, а иначе расходится.
     \end{enumerate}
 \end{consequence}
+%END TICKET 59
