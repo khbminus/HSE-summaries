@@ -487,12 +487,14 @@
     \textbf{Свойство 4.} $H_j = (4j - 2) H_{j-1} - \pi^2 H_{j-2}$, при  $j \ge 2$.
 \end{example}
 \begin{proof}
+
 \begin{align}
     j! H_j = \int_0^{\frac{\pi}{2}} \left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^j (\sin x)' \mathrm{d}x
 \end{align}
 Заметим, что $\left(\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^j\right)' = j \left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-1} \cdot (-2x)$. Тогда: {\small \begin{align*}
     (3) &= \underbrace{\left(\left( \frac{\pi}{2} \right)^2 - x^2\right)^j \sin x \mid_{x = 0}^{x = \frac{\pi}{2}}}_{=0} + 2j \int_{0}^{\frac{\pi}{2}}\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-1} x \underbrace{\sin x}_{=(-\cos x)'} \mathrm{d} x = \\
-	&= 2j \left(\underbrace{\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-1} \cdot x \cdot (- \cos x) \mid_{x=0}^{x=\frac{\pi}{2}}}_{=0} - \int\limits_0^{\frac{n}{2}} \left( (j-1)\left( \left(\frac{\pi}2 \right)^2 - x^2  \right)^{j-2}(-2x)x + \left( \left(\frac{\pi}2 \right)^2 - x^2  \right)^{j-1}  \right)(-\cos x)  \mathrm{d} x\right) \\
+	&= 2j \left(\underbrace{\left(\left(\frac{\pi}{2}\right)^2 - x^2\right)^{j-1} \cdot x \cdot (- \cos x) \mid_{x=0}^{x=\frac{\pi}{2}}}_{=0}\right. - \\ 
+    &- \left.\int\limits_0^{\frac{n}{2}} \left( (j-1)\left( \left(\frac{\pi}2 \right)^2 - x^2  \right)^{j-2}(-2x)x + \left( \left(\frac{\pi}2 \right)^2 - x^2  \right)^{j-1}  \right)(-\cos x)  \mathrm{d}x \right) \\
 	&= 2j\left( (j-1)!H_{j-1} - 2(j-1)\int_0^{\frac{\pi}2} \left( \left( \frac{\pi}2\right)^2 - x^2  \right)^{j-2}x^2 \cos x dx \right)
 .\end{align*} }
 В процессе мы дважды интегрировали по частям, а теперь нужно избавиться во втором слагаемом от $x^2$. Для этого заметим, что $x^2 = \left( \frac{\pi}2 \right)^2 - \left( \left( \frac{\pi}2 \right)^2 - x^2  \right)$, подставим и разобьём интеграл на два, которые есть $H_{j-2}$ и $H_{j-1}$ с нужными коэффициентами:
