@@ -80,7 +80,7 @@
     \item База $n=2$:  $S_2 = \langle id, t_{12}\rangle$. 
     \item Переход. $n \to n +1$.  Пусть $\pi \in S_{n+1}$.  $\exists i: \pi(i) = n + 1$. Рассмотрим  $t_{i, n+1}$, то есть $t_{i, n + 1}(i) = n + 1$ и $t_{i, n + 1}(n+1) = i$. $\pi \circ t_{i, n + 1}(n+1) = \pi(i) = n + 1$.
 
-        Тогда сузим  $\pi$ до  $n$. Получим  $\widetilde{\pi}=\{1\ldots n\} \to \{1 \ldots n\}, \widetilde{\pi} \in S_n$. По и.п. $\widetilde{\pi} = t_{i_1,j_1} \circ t_{i_2, j_2} \circ \cdots \circ t_{i_{k}, j_k} = \pi \circt t_{i, n+1}$ Тогда заметим, что \[\pi = \underbrace{t_{i_1, j_1} \circ t_{i_2, j_2} \circ \ldots}_{\text{образующие для} \widetilde{\pi}} \circ (t_{i, n+1})^{-1}.\]
+        Тогда сузим  $\pi$ до  $n$. Получим  $\widetilde{\pi}=\{1\ldots n\} \to \{1 \ldots n\}, \widetilde{\pi} \in S_n$. По и.п. $\widetilde{\pi} = t_{i_1,j_1} \circ t_{i_2, j_2} \circ \cdots \circ t_{i_{k}, j_k} = \pi \circ t_{i, n+1}$ Тогда заметим, что \[\pi = \underbrace{t_{i_1, j_1} \circ t_{i_2, j_2} \circ \ldots}_{\text{образующие для} \widetilde{\pi}} \circ (t_{i, n+1})^{-1}.\]
 \end{itemize}
 \end{proof}
 \begin{definition}
