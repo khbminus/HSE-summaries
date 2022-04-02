@@ -7,7 +7,7 @@
 \begin{properties}
     \begin{enumerate}
         \item $\widehat{S}(V_1, V_2) = -\widehat{S}(V_2, V_1)$.
-        \item $\widehat{S}(kv_1, kv_2) = k \widehat{S}(v_1, v_2)$.
+        \item $\widehat{S}(kv_1, v_2) = k \widehat{S}(v_1, v_2)$.
         \item $S(v_1, v'_2 + v''_2) = S(v1, v'_2) + S(v_1, v''_2)$
     \end{enumerate}
 \end{properties}
@@ -17,7 +17,7 @@
 \begin{definition}
     $V_1, V_2, \ldots, V_n$, $V$ ---  векторные пространства над $K$.
 
-    Отображение  $\mathcal{A}\!: V_1 \times V_2 \times \ldots \times V_n \to V$ называется полилинейным, если $\forall i \forall v_i \in V_i \mathcal{A}_{v_1, \ldots, v_n}\!: V_i \to V$ --- линейно. То есть, если закрепить все переменные, кроме одной, то отображение будет линейно.
+    Отображение  $\mathcal{A}\!: V_1 \times V_2 \times \ldots \times V_n \to V$ называется полилинейным, если $\forall i \forall v_i \in V_i \mathcal{A}_{v_1, \ldots, v_n}\!: V_i \to V (v_i \mapsto \mathcal{A}(v_1, v_2, \cdots, v_{i-1}, v_i, \cdots, v_n))$ (на всех позициях, кроме $i-$й, стоят зафиксированные переменные) --- линейно. То есть, если закрепить все переменные, кроме одной, то отображение будет линейно.
 \end{definition}
 
 Будем изучать $V = K^n, \omega\!: (K^n)^m \to K$.
@@ -39,11 +39,15 @@
 \end{statement}
 \begin{proof}
     \begin{enumerate}
-        \item фиксируем все, кроме $v_i$. Тогда  $f(x, y) = \omega(v_1, .., v_{i-1}, x, v_{i+1}, \ldots, y, \ldots, v_n)$. $f$ --- полилинейно. Надо доказать?? 
+        \item фиксируем все, кроме $v_i$. Тогда  $f(x, y) = \omega(v_1, .., v_{i-1}, x, v_{i+1}, \ldots, y, \ldots, v_n)$. $f$ --- полилинейно. Надо доказать, что $f(x, y) = 0 \iff f(x, y) = -f(y, x) \forall x, y$. $\Leftarrow - \charr k \not = 2, \Rightarrow$ всегда.
+
+        $\Rightarrow f(x + y, x + y) = 0 \implies f(x, x) + f(x, y) + f(y, x) + f(y, y) = 0 \implies f(x, y) = - f(y, x)$
+
+        $\Leftarrow \charr k \not = 2, f(x, x) = -f(x, x) \implies 2f(x, x) = 0 \implies f(x, x) = 0$
     \end{enumerate}
 \end{proof}
 \begin{statement}
-    $\exists$ не более одной кососимметричной  $n$-формы с точностью до линейного множества. 
+    $\exists$ не более одной кососимметричной  $n$-формы с точностью до линейного множителя.
 \end{statement}
 \begin{proof}
     $\omega$ определено однозначено значениями
@@ -74,9 +78,9 @@
 \begin{itemize}
     
     \item База $n=2$:  $S_2 = \langle id, t_{12}\rangle$. 
-    \item Переход. $n \to n +1$.  Пусть $\pi \in S_{n+1}$.  $\exists i = n + 1$. Рассмотрим  $t_{i, n+1}$, то есть $t_{i, n + 1}(i) = n + 1$ и $t_{i, n + 1}(n+1) = i$. $\pi \circ t_{i, n + 1}(n+1) = \pi(i) = n + 1$. 
+    \item Переход. $n \to n +1$.  Пусть $\pi \in S_{n+1}$.  $\exists i: \pi(i) = n + 1$. Рассмотрим  $t_{i, n+1}$, то есть $t_{i, n + 1}(i) = n + 1$ и $t_{i, n + 1}(n+1) = i$. $\pi \circ t_{i, n + 1}(n+1) = \pi(i) = n + 1$.
 
-        Тогда сузим  $\pi$ до  $n$. Получим  $\widetilde{\pi}=\{1\ldots n\} \to \{1 \ldots n\}$. Тогда заметим, что \[\pi = \underbrace{t_{i_1, j_1} \circ t_{i_2, j_2} \circ \ldots}_{\text{образующие для} \widetilde{\pi}} \circ (t_{i, n+1})^{-1}.\]
+        Тогда сузим  $\pi$ до  $n$. Получим  $\widetilde{\pi}=\{1\ldots n\} \to \{1 \ldots n\}, \widetilde{\pi} \in S_n$. По и.п. $\widetilde{\pi} = t_{i_1,j_1} \circ t_{i_2, j_2} \circ \cdots \circ t_{i_{k}, j_k} = \pi \circt t_{i, n+1}$ Тогда заметим, что \[\pi = \underbrace{t_{i_1, j_1} \circ t_{i_2, j_2} \circ \ldots}_{\text{образующие для} \widetilde{\pi}} \circ (t_{i, n+1})^{-1}.\]
 \end{itemize}
 \end{proof}
 \begin{definition}
@@ -191,7 +195,9 @@
 
               $B' = (C_1' \mid C_2 \mid \ldots \mid C_n), B'' = (C_1'' \mid C_2 \mid \ldots \mid C_n)$. Тогда $AB=(A(C_1' + C_1'') \mid C_2 \mid \ldots) = (AC_1' + AC_2'' \mid \ldots)$.
 
-              $(AB') = ()$
+              $AB' = (AC_1' \mid AC_2' \mid \dots \mid AC_n'), AB'' = (AC_1'' \mid AC_2'' \mid \dots \mid AC_n''). B \mapsto \det(AB), B \mapsto \det(B)$ - полилинейные кососимметрические $\implies$ по единственности $\exists c: \det(AB) = c \cdot \det(B) \forall B$
+
+              Подставим $B = E: \det(A) = c \cdot \det(E) = c$. Итого $\det(AB) = \det(A)\cdot \det(B)$
     \end{enumerate}
 \end{proof}
 \begin{theorem}[Определитель блочной матрицы]
@@ -205,10 +211,10 @@
 
     \begin{enumerate}
         \item $\det \left( \begin{array}{c|c} E_x & \ast \\ \hline 0 & E_y \end{array}\right) = 1$. Так как треугольная матрица.
-        \item Зафиксируем  $B$.  $\det \left( \begin{array}{c|c} A_1 & B \\ \hline 0 & E\end{array} \right)$ --- полилинейная и кососимметричная относительно столбцов  $A_1$.
+        \item Зафиксируем  $B$.  $\det \left( \begin{array}{c|c} A_1 & B \\ \hline 0 & E\end{array} \right) = c_b \det(A_1)$ --- полилинейная и кососимметричная относительно столбцов  $A_1$.
 
-            Поставим $A_1 = E \implies \text{const} = 1$ по пункту 1.
-        \item fix $B, A_1$  $\det\left(\begin{array}{c|c} a_1 & b \\ \hline 0 & a_2 \end{array} \right) = c_{A_1, B} \cdot \det(A_2)$. Подставляем  $A_2 = E$:  $\det A_1 = \det\left(\begin{array}{c|c} A_1 & B \\ \hline 0 & E \end{array} \right) = c_{A_1, B} \cdot 1 \implies c_{A_1, B} = \det A_1$. А значит $\det\left(\begin{array}{c|c} a_1 & b \\ \hline 0 & a_2 \end{array} \right) = \det A_1 \det A_2$.
+            Поставим $A_1 = E \implies c_b = 1$ по пункту 1.
+        \item fix $B, A_1$  $\det\left(\begin{array}{c|c} A_1 & b \\ \hline 0 & A_2 \end{array} \right) = c_{A_1, B} \cdot \det(A_2)$. Подставляем  $A_2 = E$:  $\det A_1 = \det\left(\begin{array}{c|c} A_1 & B \\ \hline 0 & E \end{array} \right) = c_{A_1, B} \cdot 1 \implies c_{A_1, B} = \det A_1$. А значит $\det\left(\begin{array}{c|c} A_1 & b \\ \hline 0 & A_2 \end{array} \right) = \det A_1 \det A_2$.
     \end{enumerate}
 \end{proof}
 \begin{theorem}[Разложение по строкам/столбцам]
@@ -220,17 +226,17 @@
     Сила в том, что определитель  $n$-го порядка можно свести к  $\det$  $(n-1)$-го порядка.
 \end{theorem}
 \begin{proof}
-    Для строк. Пусть $r_i = (a_{i1}, a_{i 2}, \ldots, a_{in}) = \sum a_{ik}f_k$, где $f_k$ --- строка с  $1$ на  $k$ строке.
+    Для строк. Пусть $r_i = (a_{i1}, a_{i 2}, \ldots, a_{in}) = \sum a_{ik}f_k$, где $f_k$ --- строка с  $1$ на  $k$-й позиции.
 
     По полилинейности  $\det A = \sum a_{ik} \det A_k$.  $A_k = \begin{pmatrix} r_1 \\ r_2 \\ r_{i-1} \\ 0\ \ldots\ 1\ 0\ \ldots\ 0 \\ \vdots \\ r_n \end{pmatrix}$.
 
-        Тогда $\det A_k = (-1)^{i+k} \cdot \det B$. Где  $B$ мы просто перенесли  $i$-ой строки и  $k$-го столбца на первые места. Тогда получилась блочная матрица.  $= A_{ik} \cdot (-1)^{i+k}$.
+        Тогда $\det A_k = (-1)^{i+k} \cdot \det B$. Где  $B$ мы просто перенесли  $i$-ую строку и $k$-й столбец на первые места. Тогда получилась блочная матрица.  $= A_{ik} \cdot (-1)^{i+k}$.
 \end{proof}
 \begin{consequence}
     $\sum_{i=1}^n (-1)^{i+j} a_{ij} \cdot A_{kj} = 0$ ($k \neq i$).
 \end{consequence}
 \begin{proof}
-    Эта сумма по предыдущей теореме равна $\pm \det$ матрицы вида  $k \begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_n \end{pmatrix}$ (разложение по $k$-ой) строке, а он равен 0.
+    Эта сумма по предыдущей теореме равна $\pm \det$ матрицы вида  $k \begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_n \end{pmatrix}$ (как наша матрица $A$, но на $k$-й строке опять стоит какая-то $r_i$). Если распишем разложеие по $k-$й строке определителя такой матрицы, то получим 0.
 \end{proof}
 \begin{definition}
     $(-1)^{i+j}A_{ij}$ --- алгебраическое дополнение элемента  $a_{ij}$
@@ -243,14 +249,14 @@
 \begin{theorem}
     $A \cdot \Adj(A) = \Adj(A) \cdot A = (\det A) \cdot E$.
 
-    В частности, $A$ --- обратима ($\det A \neq 0$), $A^{-1} = \frac{1}{\det A} \Adj A$.
+    В частности, если $A$ --- обратима ($\det A \neq 0$), $A^{-1} = \frac{1}{\det A} \Adj A$.
 \end{theorem}
 \begin{proof}
     $\Adj(A) = (b_{ij})$,  $A \cdot \Adj(A) = (c_{ij})$.
 
     $c_{ij} = \sum\limits_{k=1}^n a_{ik} b_{kj} = \sum\limits_{k=1}^n a_{ik} \cdot (-1)^{k+j} A_{jk} = \sum\limits_{k=1}^n (-1)^{k+j} a_{ik}A_jk = \left[ \begin{array}{ll} 0, & i \neq k \\ \det A, & i = k\end{array} \right.$.
 
-    Итого: $c_{ij} = \delta_{ij} \det A \implies (c_{ij}) = \det A \cdot E$.
+    Итого: $c_{ij} = \delta_{ij} \det A \implies (c_{ij}) = \det A \cdot E$, где $\delta{ij} = \begin{array}{ll} 0, i \not = j \\ 1, i = j \end{array}$.
 \end{proof}
 \begin{remark}
     Теперь СЛУ $AX = B$,  $A$ --- обратима, тогда  $X = A^{-1}B = \frac{\Adj A}{\det A} \cdot B$
