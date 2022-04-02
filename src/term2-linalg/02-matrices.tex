@@ -17,15 +17,17 @@
 
 Также заметим, что $M_{m, n}(K)$ --- векторное пространство над  $K$. Ясно, что  $M_{m, 1}(K) \cong K^m$ и  $M_{1, m}(K) \cong \prescript{n}{}{K}$.
 
- \begin{definition}
-     Умножение матриц: $M_{m, n} \times K^n \to K^m$: $(a_{ij}, \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}) \mapsto \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix}$, где $y_i = a_{i 1} x_1 + a_{i 2}x_2 + \ldots + a_{in}x_n = \sum\limits_{k=1}^n a_{ik}x_k$.
+\begin{definition}
+    Умножение матрицы на столбец: $M_{m, n}(K) \times K^n \to K^m$: $(a_{ij}, \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}) \mapsto \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix}$, где $y_i = a_{i 1} x_1 + a_{i 2}x_2 + \ldots + a_{in}x_n = \sum\limits_{k=1}^n a_{ik}x_k$.
 
-     Можно определить умножение строки на столбец:  $\begin{pmatrix} a_1 & a_2 & \ldots & a_m \end{pmatrix} \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{pmatrix} \leadsto \sum a_i x_i$.  Тогда умножение матрицы на столбец можно записать как $\begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_m \end{pmatrix} \cdot X \leadsto \begin{pmatrix} r_1 \cdot X \\ r_2 \cdot X \\ \vdots \\ r_m \cdot X \end{pmatrix}$, где $r_i$ --- строчки.
+    Можно определить умножение строки на столбец:  $\begin{pmatrix} a_1 & a_2 & \ldots & a_m \end{pmatrix} \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{pmatrix} \leadsto \sum a_i x_i$.  Тогда умножение матрицы на столбец можно записать как $\begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_m \end{pmatrix} \cdot X \leadsto \begin{pmatrix} r_1 \cdot X \\ r_2 \cdot X \\ \vdots \\ r_m \cdot X \end{pmatrix}$, где $r_i$ --- строчки, а $X$ - столбец.
 
      Тогда заметим, что умножение матриц: $A \cdot B = \begin{pmatrix} Ac_1 & Ac_2 & \ldots  & Ac_l \end{pmatrix}$.
 \end{definition}
-\begin{example}[.СЛУ]
-    Системы линейных уравнений можно записывать как матрицу. Дальше я не успел. 
+\begin{example}[СЛУ]
+    Системы линейных уравнений можно записывать как матрицу.
+
+    $\begin{cases} a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1 \\ a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_1 \\ \dots \\ a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n = b_1 \end{cases}$ Тогда $(a_{ij}) = A, \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} = X, \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix} = B$ и матричная запись СЛУ - $AX = B$
 \end{example}
 \begin{remark}
     $A \in M_{m, n}(K)$. Рассмотрим  $\mathcal{A}\!: K^n \to K^m$,  $X \mapsto A \cdot X$.
@@ -37,14 +39,14 @@
     $\mathcal{A}(X+Y) = A \cdot X + A \cdot Y\quad \forall x, y$,  $\mathcal{A}(kX) = kA\cdot X$,  $k \in K$.
 \end{proof}
 
-Однородная СЛУ: $AX = 0$.  $A = \begin{pmatrix} c_1 & c_2 & \ldots & c_n \end{pmatrix}$. Эта система имеет только  тривиальное решение $x = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0\end{pmatrix} \iff c_1, \ldots, c_n$ --- ЛНЗ. Тогда заметим, что если $n > m$, то  $AX=0$ имеет нетривиальное решение.
+Однородная СЛУ: $AX = 0$.  $A = \begin{pmatrix} c_1 & c_2 & \ldots & c_n \end{pmatrix}$. Эта система имеет только  тривиальное решение $x = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0\end{pmatrix} \iff c_1, \ldots, c_n$ --- ЛНЗ. $c_i \in K^m, \dim K^m = m$, тогда по ЛЗЛК заметим, что если $n > m$, то  $AX=0$ имеет нетривиальное решение (т.к. уравнений $>$ неизвестных).
 \Subsection{Структура линейных отображений}
 \begin{example}
    $V=R^2$. Поворот вокруг $O$ --- линейное отображение. Симметрия относительно прямой --- линейное отображение, если  $0 \in l$. Проекция на  $l$ --- линейное отображение.
 \end{example}
 \begin{properties}
     \begin{enumerate}
-        \item $\mathcal{A}(0) = 0, x = 0 \Rightarrow \mathcal{A}(0) = 0$.
+        \item $\mathcal{A}(0) = 0 (x = 0 \Rightarrow \mathcal{A}(0) = 0)$.
         \item $\mathcal{A}$ --- инъекция  $\iff \mathcal{A}(x) = 0 \Rightarrow x = 0$.
         \item $x_1, x_2, \ldots, x_n$ --- ЛЗ $\Rightarrow \mathcal{A}(x_i)$ --- ЛЗ.
         \item[3'.] $\mathcal{A}$ --- инъекция:  $\{x_i \}$ --- ЛНЗ  $\Rightarrow \{\mathcal{A}(x_i)\}$ --- ЛНЗ.
@@ -56,10 +58,10 @@
          \item $\mathcal{A}(0) = \mathcal{A}(0+0) = \mathcal{A}(0) + \mathcal{A}(0)$ 
          \item $\Rightarrow\!:$  $\mathcal{A}$ --- инъекция,  $\mathcal{A}(x) = 0, \mathcal{A}(0)=0 \Rightarrow x = 0$. 
 
-             $\Leftarrow\!:$ От противного, пусть $x \neq y \in U : \mathcal{A}(x) = \mathcal{A}(y) \Rightarrow \mathcal{A}(x) - \mathcal{A}(y) = \mathcal{A}(x - y) = 0 \Rightarrow x - y = 0$. Противоречие.
-         \item  $\sum a_i x_I = 0 \implies \sum a_i \mathcal{A}(x_i) = \sum \mathcal{A}(a_i x_i) = \mathcal{A}(\sum a_i x_i) = \mathcal{A}(0) = 0$.
-         \item[3'.] Пусть $0 = \sum a_i \mathcal{A}(x_i) = \mathcal{A}(\sum a_i x_i) \implies \sum a_i x_i = 0 \Rightarrow a_i = 0$.
-         \item Определим $A$: пусть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
+        $\Leftarrow\!:$ От противного, пусть $x \neq y \in U : \mathcal{A}(x) = \mathcal{A}(y) \Rightarrow \mathcal{A}(x) - \mathcal{A}(y) = \mathcal{A}(x - y) = 0 \Rightarrow x - y = 0$. Противоречие.
+        \item  $\sum a_i x_i = 0 \implies \sum a_i \mathcal{A}(x_i) = \sum \mathcal{A}(a_i x_i) = \mathcal{A}(\sum a_i x_i) = \mathcal{A}(0) = 0$.
+        \item[3'.] Пусть $0 = \sum a_i \mathcal{A}(x_i) = \mathcal{A}(\sum a_i x_i) \implies \sum a_i x_i = 0 \Rightarrow a_i = 0$.
+        \item Определим $A$: пусть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
 
              Единственность: пусть  $\mathcal{A}_2(u_i) = v_i$, тогда  по линейности  $\mathcal{A}_2(\sum a_i u_i) = \sum a_i \mathcal{A}_2(u_i) = \sum a_i v_i = \mathcal{A}(\sum a_i u_i)$.
     \end{enumerate}
@@ -88,9 +90,9 @@
 \end{proof}
 \begin{theorem}[О ядре и образе]
     $\mathcal{A}$ --- линейное отображение.
-     \begin{enumerate}
-         \item $\exists$ базис  $u_1, u_2, \ldots, u_k, u_{k+1}, u_n$. Причем $u_1, \ldots, u_k$ --- базис $\ker \mathcal{A}$, а  $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_n)$ --- базис $\Im \mathcal{A}$.
-         \item  $\dim (\ker \mathcal{A}) + \dim (\Im \mathcal{A}) = \dim U$.
+    \begin{enumerate}
+        \item $\exists$ базис  $u_1, u_2, \ldots, u_k, u_{k+1}, \ldots u_n$. Причем $u_1, \ldots, u_k$ --- базис $\ker \mathcal{A}$, а  $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_n)$ --- базис $\Im \mathcal{A}$.
+        \item  $\dim (\ker \mathcal{A}) + \dim (\Im \mathcal{A}) = \dim U$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -127,8 +129,8 @@
     Диаграмма прямой суммы:  $U \xleftrightarrow[i_u]{P_u} U \oplus V \xleftrightarrow[i_v]{P_v} V$.  $P_ui_u = \id_u$, $P_vi_v = \id_v$,  $P_vi_u= 0_v$,  $P_u i_v = 0_u$,  $i_uP_u + i_v P_v = ???$
 \end{remark}
 
-\begin{theorem}[Формулаа Грассмана]
-   Пусть $U, V \le W$, $U, V$ --- конечномерные.
+\begin{theorem}[Формула Грассмана]
+    Пусть $U, V \le W$, $U, V$ --- конечномерные.
 
    $\dim(U + V) = \dim U + \dim V - \dim(U \cap V)$
 \end{theorem}
@@ -153,7 +155,7 @@
     Аналогия $(+, \cap)$ c  $(\cup, \cap)$ --- неполная:  $(V_1 + V_2) \cap V_3 \neq (V_1 \cap V_3) + (V_2 \cap V_3)$, пример: три прямые на плоскости.
 \end{remark}
 
-Пусть $A \in M_{m, n}(K), A = (a_{ij})_{\substack{i = 1..m \\ j = 1..n}}$,  $\mathcal{A}\!: \begin{array}{c} K^n \to K^m \\ x \to A \cdot x \end{array}$ --- линейное отображение.
+Пусть $A \in M_{m, n}(K), A = (a_{ij})_{\substack{i = 1..m \\ j = 1..n}}$,  $\mathcal{A}\!: \begin{array}{c} K^n \to K^m \\ x \mapsto A \cdot x \end{array}$ --- линейное отображение.
 
 $K^n - \langle e_1, \ldots, e_n \rangle, K^m = \langle \widetilde{e_1}, \ldots \widetilde{e_m} \rangle$, где $e_i$ --- вектор нулей с 1 на  $i$ строчке. Тогда 
 $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$. 
@@ -169,12 +171,12 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
     $\Im \mathcal{A}$ --- линейная оболочка столбцов $A$.
 \end{statement}
 \begin{proof}
-    $A = \left( \begin{array}{c|c|c} & &  \\ C_1 & C_2 & \ldots C_n \\ & & \end{array} \right) = \left(\begin{array}{c|c|c} & &  \\ \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots \mathcal{A}(e_n) \\ & & \end{array} \right)$ 
+    $A = \left( \begin{array}{c|c|c|c} & &  \\ C_1 & C_2 & \ldots & C_n \\ & & \end{array} \right) = \left(\begin{array}{c|c|c} & &  \\ \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots \mathcal{A}(e_n) \\ & & \end{array} \right)$
 
     $\langle C_1, C_2, \ldots, C_n \rangle = \langle \{A e_i \} \rangle = \Im \mathcal{A}. \sum a_i \mathcal{A}(e_i) = \mathcal{A}(\sum a_i e_i) = \mathcal{A}(V)$. $V$ --- вектор  $\in K^n$.
 \end{proof}
 \begin{definition}
-    $A = \left( \begin{array}{c|c|c} & &  \\ C_1 & C_2 & \ldots C_n \\ & & \end{array} \right)$.
+    $A = \left( \begin{array}{c|c|c|c} & &  \\ C_1 & C_2 & \ldots & C_n \\ & & \end{array} \right)$.
 
     $\dim \langle C_1, \ldots, C_n \rangle$ --- называется рангом матрицы.
 
@@ -332,11 +334,11 @@ $\left(M_n(K)\right)^*$ --- группа обратимых матриц, обо
 
 $\begin{array}{llll} \mathcal{A}\!: & U & \to & V\text{ --- линейно} \\ & \{e_i\} && \{f_i\} \\ & \{e'_i\} && \{f'_i\} \end{array}$
 
-Пусть  $A = [\mathcal{A}]_{\{e_i\}, \{f_i]\}}$. Чему тогда равно  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = ?$
+Пусть  $A = [\mathcal{A}]_{\{e_i\}, \{f_i\}}$. Чему тогда равно  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = ?$
 
 $U (\{e'\}) \xrightarrow{\id} U(\{e_i\}) \xrightarrow{\mathcal{A}} V (\{f_i\}) \xrightarrow{\id} V(\{f'_i\})$.
 
-Тогда  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = [\id_v \circ \mathcal{A} \circ \id_u]_{\{e'_i\}, \{f'_i\}} = [\id_v]_{\{f_i\}, \{f'_i\}} \cdot [\mathcal{A}]_{\{e_i\}, \{f_i\}} \cdot [\id_v]_{\{e'_i\}, \{e_i\}} = C A \cdot D^{-1}$m где  $C$ --- матрица перехода от  $f_i$ к  $f'_i$,  $D$ --- матрица перехода  от $e_i$ к  $e'_i$.
+Тогда  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = [\id_v \circ \mathcal{A} \circ \id_u]_{\{e'_i\}, \{f'_i\}} = [\id_v]_{\{f_i\}, \{f'_i\}} \cdot [\mathcal{A}]_{\{e_i\}, \{f_i\}} \cdot [\id_v]_{\{e'_i\}, \{e_i\}} = C A \cdot D^{-1}$, где  $C$ --- матрица перехода от  $f_i$ к  $f'_i$,  $D$ --- матрица перехода  от $e_i$ к  $e'_i$.
 
 Тогда:  \[
     A_{new} = C A C^{-1}
@@ -395,7 +397,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \end{definition}
 \begin{theorem}[Свойства ранга]
     \begin{enumerate}
-        \item $\rk A = \rk_A A, \rk A = \rk A^T, A \in M_{n, n}(K)$.
+        \item $\rk A = \rk_r A, \rk A = \rk A^T, A \in M_{n, n}(K)$.
         \item  $\rk (AB) \le \min(\rk A, \rk B)$.
         \item $\rk (A+B) \le \rk (A) + \rk(B)$
         \item[2')] $A$ --- обратима $\implies \rk AB = \rk B, \rk BA = B$.
@@ -420,7 +422,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \end{proof}
 
 \begin{definition}
-    $\mathcal{A}\!: K^n \to K^n$ --- линейные оператор.
+    $\mathcal{A}\!: K^n \to K^n$ --- линейный оператор.
 
     $\mathcal{A}$ называется элементарным, если  $\mathcal{A}$ --- обратим и $\exists i_0, j_0\!: (\mathcal{A}(x))_i = x_i, i \neq i_0$. А $(\mathcal{A}(x))_{i_0} = x_{i_0} + kx_{j_0}$,
 
@@ -430,17 +432,17 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 
 Разберем случаи:
 \begin{enumerate}
-    \item $i_0 \neq j_0: \quad \forall k \in K$ формула задает обратное преобразование. 
+    \item $i_0 \neq j_0: \quad \forall k \in K$ формула задает обратимое преобразование.
 
-        $t_{i_0, j_0}(k)$ --- трансвекция: $\begin{pmatrix} x_1 \\ \vdots \\ v_{i_0} \\ \vdots  \\ x_n \end{pmatrix} \to \begin{pmatrix} x_1 \\ \vdots \\ v_{i_0} + k \cdot x_{j_0} \\ \vdots  \\ x_n \end{pmatrix}$
+    $t_{i_0, j_0}(k)$ --- трансвекция: $\begin{pmatrix} x_1 \\ \vdots \\ x_{i_0} \\ \vdots  \\ x_n \end{pmatrix} \to \begin{pmatrix} x_1 \\ \vdots \\ x_{i_0} + k \cdot x_{j_0} \\ \vdots  \\ x_n \end{pmatrix}$
 
-        Обратная матрица к трансвекции $t_{i_0, j_0}(k)$: \ $t^{-1}_{i_0, j_0}(k) = t_{i_0, j_0}(-1 \cdot k)$
+    Обратная матрица к трансвекции $t_{i_0, j_0}(k)$: \ $t^{-1}_{i_0, j_0}(k) = t_{i_0, j_0}(-1 \cdot k)$
 
-        Матрица трансвекции --- единичная матрица, но на позиции $(a)_{i_0, j_0}$ стоит $k$.
-    
-	\item $i_0 = j_0: \quad (Ax)_{i=0} = (k+1) \cdot x_{i_0} = l \cdot x_{i_0} \quad (l := k+1)$ --- обратимо, если $l \neq 0$ (в общем случае $l \in K^*$). $m_{i_0}(l)$ --- дилатация, $m_{i_0}^{-1}(l) = m_{i_0}(\frac{1}{l})=m_{i_0}(\frac{1}{k+1})$. 
+    Матрица трансвекции --- единичная матрица, но на позиции $(a)_{i_0, j_0}$ стоит $k$.
 
-        Матрица дилатации --- единичная матрица, но на $(a)_{i_0 j_0} = l = k + 1$.
+    \item $i_0 = j_0: \quad (Ax)_{i=0} = (k+1) \cdot x_{i_0} = l \cdot x_{i_0} \quad (l := k+1)$ --- обратимо, если $l \neq 0$ (в общем случае $l \in K^*$). $m_{i_0}(l)$ --- дилатация, $m_{i_0}^{-1}(l) = m_{i_0}(\frac{1}{l})=m_{i_0}(\frac{1}{k+1})$.
+
+    Матрица дилатации --- единичная матрица, но на $(a)_{i_0 j_0} = l = k + 1$.
 \end{enumerate}
 
 
@@ -453,9 +455,9 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
     \end{enumerate}
 \end{statement}
 \begin{proof}
-$1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c|c} c_1 & c_2 & \ldots & c_n \end{array} \right) = \left(\begin{array}{c|c|c|c} T_{ij}(a)c_1 & T_{ij}(a)c_2 & \ldots & T_{ij}c_n \end{array} \right)$ и тоже для $m_i$.
+    $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c|c} c_1 & c_2 & \ldots & c_n \end{array} \right) = \left(\begin{array}{c|c|c|c} T_{ij}(a)c_1 & T_{ij}(a)c_2 & \ldots & T_{ij}c_n \end{array} \right)$ и тоже для $m_i$.
 
-А для столбцов  $1,2$ --- это определения элементарного преобразования  $3, 4$. Ну там можно транспонировать. 
+    А для столбцов  $1,2$ --- это определения элементарного преобразования  $3, 4$. Ну там можно транспонировать.
 \end{proof}
 \begin{remark}
     $E$ --- элементарная матрица  $\implies \rk(EA) = \rk(A) = \rk(AE)$, по свойству  $2'$ ранга, так как  $E$ --- обратима  $\iff$ элементарные преобразования матрицы не меняют их ранга.
@@ -472,40 +474,41 @@ $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c
 \end{remark}
 \begin{theorem}
     $A$ --- матрица:
-     \begin{enumerate}
-         \item $\exists e_1, \ldots, e_k$ --- элементарные, такие что $e_1 \cdot \ldots \cdot e_k \cdot A$ --- имеет трапециевидный вид. 
-         \item $A \in GL_n(K) \implies \exists e_1, \ldots, e_k$ --- элементарные, такие, что $e_1 \cdot \ldots \cdot e_k \cdot A = E$.
-         \item[2')] $A \in GL_n(K), \exists e_1, \ldots, e_k \quad A=e_1 \cdot \ldots \cdot e_k$.
-         \item $\exists e_1, \ldots, e_k$ --- элементарные $\exists f_1,\ldots, f_l$ --- элементарные, такие что $e_1 \ldots e_k \cdot A \cdot f_1 \ldots f_l = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$.
+    \begin{enumerate}
+        \item $\exists e_1, \ldots, e_k$ --- элементарные, такие что $e_1 \cdot \ldots \cdot e_k \cdot A$ --- трапециевидная.
+        \item $A \in GL_n(K) \implies \exists e_1, \ldots, e_k$ --- элементарные, такие, что $e_1 \cdot \ldots \cdot e_k \cdot A = E$.
+        \item[2')] $A \in GL_n(K), \exists e_1, \ldots, e_k \quad A=e_1 \cdot \ldots \cdot e_k$.
+        \item $\exists e_1, \ldots, e_k$ --- элементарные $\exists f_1,\ldots, f_l$ --- элементарные, такие что $e_1 \ldots e_k \cdot A \cdot f_1 \ldots f_l = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    $2 \to 2'$:  $A \in GL_n(K) \exists A^{-1} \in GL(n, K)$ по пункту 2  $\exists e_1, \ldots, e_k\!: e_1 \cdot c_2 \ldots \cdot e_k A^{-1} = E$.
+    $2^\circ$ Понятно, что $e_1, e_2, \ldots, e_k$ --- обратимы. Тогда $A$ --- обратима  $\iff$  $e_1e_2e_3\ldots e_k A = $ треугольная матрица.
 
-    $2 \implies 3$: Знаем, что  $\exists$ обратимые  $C, D$:  $CAD = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$. По пункту 2  $C, D$ представимы элементарными преобразованиями. 
+    $2^\circ \to 2'^\circ$:  $A \in GL_n(K) \exists A^{-1} \in GL_n(K)$ по пункту 2  $\exists e_1, \ldots, e_k\!: e_1 \cdot e_2 \ldots \cdot e_k A^{-1} = E$.
 
-    1. $A \in M_{m, n}(K)$. Индукция по  $n$.
+    $2^\circ \implies 3^\circ$: Знаем, что  $\exists$ обратимые  $C, D$:  $CAD = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$. По пункту 2  $C, D$ представимы элементарными преобразованиями.
 
-    База:  $n = 1$. Упражнение или смотри дальше.\\
-    Переход:  $n \to n+1$.  $A = (a_ij)_{\substack{i = 1..m \\ j=1..{n+1}}}$
+    $1^\circ$ $A \in M_{m, n}(K)$. Индукция по  $n$.
 
-    1 случай. $a_{11} \neq 0$, применим $t_{21}(-\frac{a_{21}}{a_{11}}), t_{31}(-\frac{a_{31}}{a_{11}}),\ldots, t_{m_1}(-\frac{a_{m_1}}{a_{11}})$. После домножения получим: первую строчку, в последующих в первом столбце ноль, а дальше получилась матрица с размерностью метшей на 1.
+    База: $n = 1$. Упражнение или смотри дальше (на то, что происходит в индукционном переходе).\\
+    Переход: $n \to n+1$.  $A = (a_ij)_{\substack{i = 1..m \\ j=1..{n+1}}}$. Рассмотрим случаи:
+    \begin{enumerate}
+        \item $a_{11} \neq 0$, применим $t_{21}(-\frac{a_{21}}{a_{11}}), t_{31}(-\frac{a_{31}}{a_{11}}),\ldots, t_{m_1}(-\frac{a_{m_1}}{a_{11}})$. После домножения получим: первую строчку, в последующих в первом столбце ноль, а дальше получилась матрица с размерностью меньшей на 1.
 
-    По индукционному переходу $\exists e_1, \ldots, e_k$ --- элементарные, $e_1 \ldots e_k A = $ матрица трапеционного вида. $e_i$ можно дополнить до нашей матрицы:  $\begin{array}{c|c} 1 & 0 \\ \hline 0 & e_i \end{array}$.
+        По индукционному переходу $\exists e_1, \ldots, e_k$ --- элементарные, $e_1 \ldots e_k A = $ трапециевидная матрица. $e_i$ можно дополнить до нашей матрицы:  $\begin{array}{c|c} 1 & 0 \\ \hline 0 & e_i \end{array}$.
 
-    Второй случай:  $a_{11} = 0$, но $\exists k\!: a_{k_1} \neq 0$. Поменяем две строчки местами.
+        \item $a_{11} = 0$, но $\exists k\!: a_{k_1} \neq 0$. Поменяем две строчки местами.
 
-    Третий случай: весь первый столбец --- нули. Забьем на него и делаем шаг индукции как в п.1.
-
-    Теперь докажем второй пункт. Понятно, что $e_1, e_2, \ldots, e_k$ --- обратимы. Тогда $A$ --- обратимы  $\iff$  $e_1e_2e_3\ldots e_k A = $ треугольная матрица.
+        \item Весь первый столбец --- нули. Забьем на него и делаем шаг индукции как в п.1.
+    \end{enumerate}
 
     \begin{statement}
         Треугольная матрица обратима $\implies$ все  $a_i \neq 0$.
     \end{statement}
     \begin{proof}
-        Пусть не так. Рассмотрим такой минимальный $i$, что  $a_i = 0$. Посмотрим на столбцы. Тогда  $c_1, c_2, \ldots, c_i \in \langle e_1, \ldots, e_{i-1} \rangle \implies c_1, c_2, \ldots, c_i$ --- ЛЗ. $c_1,\ldots,c_n$ --- ЛЗ, $\rank < n \implies$ A --- необратима. Где $e_i$ --- столбец с  $1$ на  $i$-той позиции. 
+        Пусть не так. Рассмотрим такой минимальный $i$, что  $a_i = 0$. Посмотрим на столбцы. Тогда  $c_1, c_2, \ldots, c_i \in \langle e_1, \ldots, e_{i-1} \rangle \implies c_1, c_2, \ldots, c_i$ --- ЛЗ. $c_1,\ldots,c_n$ --- ЛЗ и $\rank < n \implies$ A --- необратима.
     \end{proof}
-    Итого, пусть у нас есть треугольная матрица. Применим $t_{1, n}(-\frac{a_{1n}}{a_{nn}})t_{2n}(-\frac{a_{2n}}{a_{nn}})\ldots t_{n-1,n}(-\frac{a_{n-1,n}}{a_{n,n}})$. Теперь у нас в последнем столбце везде нули, кроме последней строчки. После этого мы получаем диагональ с какими-то элементами.
+    Итого, пусть у нас есть треугольная матрица. Применим $t_{1, n}(-\frac{a_{1n}}{a_{nn}})t_{2n}(-\frac{a_{2n}}{a_{nn}})\ldots t_{n-1,n}(-\frac{a_{n-1,n}}{a_{n,n}})$ (методом Гаусса убиваем все ненулевые элементы в последнем столбце). Теперь у нас в последнем столбце везде нули, кроме последней строчки. Повторяем процесс для всех столбцов, итого получаем матрицу, где на диагонали остались $a_{ii}$, а всё остальное - нули.
 \end{proof}
 \begin{statement}[Алгоритм поиска обратной матрицы]
     Для того, чтобы найти обратную матрицу нужно взять матрицу $\left(\begin{array}{c|c} A & E \end{array}\right)$ и привести левую матрицу к единичной. Тогда справа будет обратная.
@@ -518,7 +521,7 @@ $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c
 \begin{statement}
     \begin{enumerate}
         \item $LT_n(K)$,  $UT_n(K)$ (множество нижне/верхнетреугольных) --- подкольца в  $M_n(K)$.
-        \item $LT_n \cap UT_n$ --- кольцо диагональных матриц  $\cong \underbrace{K \times K \times \ldots \times K}_{n\ text{раз}}$
+        \item $LT_n \cap UT_n$ --- кольцо диагональных матриц  $\cong \underbrace{K \times K \times \ldots \times K}_{n \text{раз}}$
     \end{enumerate}
 \end{statement}
 \begin{proof}
@@ -529,10 +532,12 @@ $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c
     \end{enumerate}
 \end{proof}
 \begin{remark}
-    $A \in UT_n(K) \iff \forall i \in 1:n\quad \mathcal{A}(e_i) \in \langle e_1, \ldots, e_i \rangle$. $\langle e_1 \rangle \le \langle e_1, e_2 \rangle \le \ldots \le \langle e_1, \ldots, e_n \rangle$. 
+    $A \in M_n(K) \implies \exists \mathcal{A}: K^n \rightarrow K^n (x \mapsto A\cdot x)$, тогда
+
+    $A \in UT_n(K) \iff \forall i \in 1:n\quad \mathcal{A}(e_i) \in \langle e_1, \ldots, e_i \rangle$. $\langle e_1 \rangle \le \langle e_1, e_2 \rangle \le \ldots \le \langle e_1, \ldots, e_n \rangle$.
 \end{remark}
 \begin{definition}
-    $A$ --- нильподентна, елси $\exists k\!: A^k = 0$. 
+    $A$ --- нильподентна, если $\exists k\!: A^k = 0$.
 \end{definition}
 \begin{statement}
     $A \in UT_n(K)$.  $A$ --- нильп.  $\iff a_{ii} = 0$.
@@ -540,11 +545,11 @@ $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c
 \begin{proof}
     $\begin{pmatrix} a_{11} & & * \\ & \ddots & \\ 0 & & a_{nn} \end{pmatrix}^n = \begin{pmatrix} a_{11}^n & & * \\ & \ddots & \\ 0 & & a_{nn}^n \end{pmatrix}$
 
-    Тогда $\implies$ очев.
+    Тогда $\implies$ $\exists a_{ii} \not = 0 \implies A^n \not = 0$.
 
-    В обратную сторону:  $\mathcal{A}(e_i) \in \langle a_1, \ldots, e_i \rangle, a_{ii} = 0$. Откуда получаем $Ae_i = b_1e_1 + b_2e_2 + \ldots + b_{i-1}e_{i-1}$.
+    В обратную сторону:  $\mathcal{A}(e_i) \in \langle e_1, \ldots, e_i \rangle, a_{ii} = 0$. Откуда получаем $Ae_i = b_1e_1 + b_2e_2 + \ldots + b_{i-1}e_{i-1} + 0$.
 
-    Значит $\mathcal{A}(e_i) \in \langle e_1, \ldots, e_{i-1} \rangle \quad \forall i$.  Тогда $\mathcal{A}^2(e_i) \in \langle e_1,\ldots, e_{i-2} \rangle$. Это значит, что $\mathcal{A}^i(e_i) = 0$.
+    Значит $\mathcal{A}(e_i) \in \langle e_1, \ldots, e_{i-1} \rangle \quad \forall i$. Тогда $\mathcal{A}^2(e_i) \in \langle e_1,\ldots, e_{i-2} \rangle$. Это значит, что $\mathcal{A}^i(e_i) \in \langle \rangle \implies \mathcal{A}^i(e_i) = 0$.
 \end{proof}
 \begin{remark}
     $A^k = 0 \iff \exists $ замена базиса  такая, что $A \in M_n(K)$ перейдет в верхнетреугольный вид.
@@ -556,7 +561,7 @@ $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c
 
 Тогда  $LA = U$,  $L \in LT_n, U \in UT_n$, то есть  $A = L^{-1}U$,  $L^{-1} \in LT_n$,  $U \in UT_n$. Получили  $LU$ разложение.
 
-В общем случае сделаем все перестановки в начале. То есть пусть мы свели задачу к $PA = LU \implies A = P^{-1}LU$.
+В общем случае сделаем в начале сделаем перестановки строк $P = s_{i_1,j_1}s_{i_2,j_2}\idots s_{i_k,j_k}$. Тогда $PA$ - матрица, для которой $\exists LU$ - разложение. Тогда $PA = LU \implies A = P^{-1}LU$ - $LPU$-разложение на матрицу перестановки, нижне- и верхне-треугольную.
 \begin{theorem}
     Следующие условия равносильны ($A \in M_n(K)$): 
     \begin{enumerate}
@@ -564,7 +569,7 @@ $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c
         \item  $A = e_1 \ldots e_k$, $e_i$ --- элементарные матрицы. 
         \item $\rk A = n$.
         \item  $\mathcal{A}\!: X \mapsto A \cdot X$ --- инъективный линейный оператор: $K^n \to K^n$ .
-        \item Тоже самое, но сюръективна.
+        \item Тоже самое, но cюръективный.
         \item Если рассмотреть матрицу как систему, то для любого вектора правой части есть единственное решение  $AX = B \iff A^{-1}B = X$.
     \end{enumerate}
 \end{theorem}
