@@ -15,12 +15,12 @@
 
 Рассмотрим матрицу $A \in M_{m, n}$. Её можно разбить на  $n$ столбцов  $(c_1 \mid c_2 \mid \ldots \mid c_n), c_i \in K^m$ и $m$ строчек:  $\begin{pmatrix} r_1 \\ r_2 \\ \ldots \\ r_n \end{pmatrix}, r_i \in \prescript{n}{}{K}$.
 
-Также заметим, что $M_{m, n}(K)$ --- векторное пространство над  $K$. Ясно, что  $M_{m, 1}(K) \cong K^m$ и  $M_{1, m}(K) \cong \prescript{n}{}{K}$.
+Также заметим, что $M_{m, n}(K)$ --- векторное пространство над  $K$. Ясно, что  $M_{m, 1}(K) \cong K^m$ и  $M_{1, n}(K) \cong \prescript{n}{}{K}$.
 
 \begin{definition}
     Умножение матрицы на столбец: $M_{m, n}(K) \times K^n \to K^m$: $(a_{ij}, \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}) \mapsto \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix}$, где $y_i = a_{i 1} x_1 + a_{i 2}x_2 + \ldots + a_{in}x_n = \sum\limits_{k=1}^n a_{ik}x_k$.
 
-    Можно определить умножение строки на столбец:  $\begin{pmatrix} a_1 & a_2 & \ldots & a_m \end{pmatrix} \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{pmatrix} \leadsto \sum a_i x_i$.  Тогда умножение матрицы на столбец можно записать как $\begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_m \end{pmatrix} \cdot X \leadsto \begin{pmatrix} r_1 \cdot X \\ r_2 \cdot X \\ \vdots \\ r_m \cdot X \end{pmatrix}$, где $r_i$ --- строчки, а $X$ - столбец.
+    Можно определить умножение строки на столбец:  $\begin{pmatrix} a_1 & a_2 & \ldots & a_n \end{pmatrix} \cdot \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n\end{pmatrix} \leadsto \sum a_i x_i$.  Тогда умножение матрицы на столбец можно записать как $\begin{pmatrix} r_1 \\ r_2 \\ \vdots \\ r_m \end{pmatrix} \cdot X \leadsto \begin{pmatrix} r_1 \cdot X \\ r_2 \cdot X \\ \vdots \\ r_m \cdot X \end{pmatrix}$, где $r_i$ --- строчки, а $X$ - столбец.
 
      Тогда заметим, что умножение матриц: $A \cdot B = \begin{pmatrix} Ac_1 & Ac_2 & \ldots  & Ac_l \end{pmatrix}$.
 \end{definition}
@@ -33,13 +33,13 @@
     $A \in M_{m, n}(K)$. Рассмотрим  $\mathcal{A}\!: K^n \to K^m$,  $X \mapsto A \cdot X$.
 \end{remark}
 \begin{statement}
-    $\mathcal{A}$ --- линейное отображение. 
+    $\mathcal{A}$ --- линейное отображение.
 \end{statement}
 \begin{proof}
-    $\mathcal{A}(X+Y) = A \cdot X + A \cdot Y\quad \forall x, y$,  $\mathcal{A}(kX) = kA\cdot X$,  $k \in K$.
+    $\mathcal{A}(X+Y) = A \cdot X + A \cdot Y\quad \forall X, Y$,  $\mathcal{A}(kX) = kA\cdot X$,  $k \in K$.
 \end{proof}
 
-Однородная СЛУ: $AX = 0$.  $A = \begin{pmatrix} c_1 & c_2 & \ldots & c_n \end{pmatrix}$. Эта система имеет только  тривиальное решение $x = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0\end{pmatrix} \iff c_1, \ldots, c_n$ --- ЛНЗ. $c_i \in K^m, \dim K^m = m$, тогда по ЛЗЛК заметим, что если $n > m$, то  $AX=0$ имеет нетривиальное решение (т.к. уравнений $>$ неизвестных).
+Однородная СЛУ: $AX = 0$.  $A = \begin{pmatrix} c_1 & c_2 & \ldots & c_n \end{pmatrix}$. Эта система имеет только  тривиальное решение $x = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0\end{pmatrix} \iff c_1, \ldots, c_n$ --- ЛНЗ. $c_i \in K^m, \dim K^m = m$, тогда по ЛЗЛК заметим, что если $n > m$, то  $AX=0$ имеет нетривиальное решение (т.к. неизвестных $>$ уравнений).
 \Subsection{Структура линейных отображений}
 \begin{example}
    $V=R^2$. Поворот вокруг $O$ --- линейное отображение. Симметрия относительно прямой --- линейное отображение, если  $0 \in l$. Проекция на  $l$ --- линейное отображение.
@@ -55,13 +55,13 @@
 \end{properties}
 \begin{proof}
      \begin{enumerate}
-         \item $\mathcal{A}(0) = \mathcal{A}(0+0) = \mathcal{A}(0) + \mathcal{A}(0)$ 
-         \item $\Rightarrow\!:$  $\mathcal{A}$ --- инъекция,  $\mathcal{A}(x) = 0, \mathcal{A}(0)=0 \Rightarrow x = 0$. 
+         \item $\mathcal{A}(0) = \mathcal{A}(0+0) = \mathcal{A}(0) + \mathcal{A}(0)$
+         \item $\Rightarrow\!:$  $\mathcal{A}$ --- инъекция,  $\mathcal{A}(x) = 0, \mathcal{A}(0)=0 \Rightarrow x = 0$.
 
         $\Leftarrow\!:$ От противного, пусть $x \neq y \in U : \mathcal{A}(x) = \mathcal{A}(y) \Rightarrow \mathcal{A}(x) - \mathcal{A}(y) = \mathcal{A}(x - y) = 0 \Rightarrow x - y = 0$. Противоречие.
         \item  $\sum a_i x_i = 0 \implies \sum a_i \mathcal{A}(x_i) = \sum \mathcal{A}(a_i x_i) = \mathcal{A}(\sum a_i x_i) = \mathcal{A}(0) = 0$.
         \item[3'.] Пусть $0 = \sum a_i \mathcal{A}(x_i) = \mathcal{A}(\sum a_i x_i) \implies \sum a_i x_i = 0 \Rightarrow a_i = 0$.
-        \item Определим $A$: пусть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
+        \item Определим $\mathcal{A}$: пусть  $u \in U$.  $\exists! \{a_i\}\!:\ u = \sum a_i u_i$. Положим,  $\mathcal{A}(u) = \sum a_i v_i$.  $\mathcal{A}$ --- линейно (очевидно/упражнение).
 
              Единственность: пусть  $\mathcal{A}_2(u_i) = v_i$, тогда  по линейности  $\mathcal{A}_2(\sum a_i u_i) = \sum a_i \mathcal{A}_2(u_i) = \sum a_i v_i = \mathcal{A}(\sum a_i u_i)$.
     \end{enumerate}
@@ -82,7 +82,7 @@
     \begin{enumerate}
         \item Нам нужно собственно проверить замкнутость $\ker \mathcal{A}$. Пусть $x, y \in \ker \mathcal{A} \Rightarrow \mathcal{A}(x + y) = \mathcal{A}(x) + \mathcal{A}(y) = 0$ по определению ядра. Осталось проверить замкнутость домножения на скаляр. Ну действительно, пусть $x \in \ker \mathcal{A} \Rightarrow \mathcal{A}(kx) = k \cdot \mathcal{A}(x) = 0$.\\
         $\Im \mathcal{A} \le U$ аналогично. Пусть $X, Y \in \Im \mathcal{A} \Rightarrow \exists x, y \in U : \begin{cases}\mathcal{A}(x) = X\\
-        \mathcal{A}(y) = Y\end{cases} \Rightarrow \mathcal{A}(x + y) = X + Y$. Замкнутость по домножению на скаляр: пусть $x \in \Im \mathcal{A} \Rightarrow \exists x \in U : \mathcal{A}(x) = X \Rightarrow \mathcal{A}(kx) = kX$. 
+        \mathcal{A}(y) = Y\end{cases} \Rightarrow \mathcal{A}(x + y) = X + Y$. Замкнутость по домножению на скаляр: пусть $x \in \Im \mathcal{A} \Rightarrow \exists x \in U : \mathcal{A}(x) = X \Rightarrow \mathcal{A}(kx) = kX$.
         \item Это абсолютно тривиально -- просто перефразирования одного и того же: если достигаются все значения, то у каждого значения хотя бы один достигающий его аргумент и наоборот.
         \item $\Leftarrow\!:$ Очевидно, так как тогда только $\mathcal{A}(0) = 0$.\\
         $\Rightarrow\!:$ Предположим от противного: $x \neq y \in U : \mathcal{A}(x) = \mathcal{A}(y) \Rightarrow \mathcal{A}(x - y) = 0 \Rightarrow 0 \neq x - y \in \ker \mathcal{A}$. Противоречие.
@@ -96,7 +96,7 @@
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    Рассмотрим базис $u_1, u_2, \ldots, u_k$ --- базис $\ker \mathcal{A}$. По лемме эту систему можно дополнить до базиса  $U$. Рассмотрим $u_{k+1}, \ldots, u_n$ из нового базиса. 
+    Рассмотрим базис $u_1, u_2, \ldots, u_k$ --- базис $\ker \mathcal{A}$. По лемме эту систему можно дополнить до базиса  $U$. Рассмотрим $u_{k+1}, \ldots, u_n$ из нового базиса.
 
     Хотим доказать, что $\mathcal{A}(u_{k+1}), \ldots, \mathcal{A}(u_n)$ --- базис $\Im \mathcal{A}$. Докажем по определению, доказав линейную независимость и порождение всех векторов в пространстве.
 
@@ -107,26 +107,26 @@
 \end{proof}
 
 \begin{definition}
-    Пусть $U, V$ --- векторные пространства над полем $K$. 
+    Пусть $U, V$ --- векторные пространства над полем $K$.
 
     Тогда  $U \oplus V \coloneqq U \times V$ как множества. То есть  $(u_1, v_1) + (u_2,v_2) = (u_1+u_2, v_1 + v_2)$, $k(u, v) \coloneqq (ku, kv)$.
 \end{definition}
 \begin{remark}
-    Пусть $\small \begin{array}{cc} u_1,\ldots, u_n &\text{--- Базис } U \\ v_1,\ldots, v_m &\text{--- Базис } V \end{array}$, $\widetilde{v_i} = (0, v_i), \widetilde{u_i} = (0, u_i)$,
+    Пусть $\small \begin{array}{cc} u_1,\ldots, u_n &\text{--- Базис } U \\ v_1,\ldots, v_m &\text{--- Базис } V \end{array}$, $\widetilde{u_i} = (u_i, 0), \widetilde{v_i} = (0, v_i)$,
 
     Тогда $\{\widetilde{u_i}\} \cup \{\widetilde{v_i}\}$ --- Базис $U \oplus V$.
 \end{remark}
 \begin{proof}
-    $\forall (u, v) \in U \oplus V\!: \exists!(a_i) \exists!(b_i)\ (u, v) = (\sum a_i u_i, \sum b_i v_i)$. 
+    $\forall (u, v) \in U \oplus V\!: \exists!(a_i) \exists!(b_i)\ (u, v) = (\sum a_i u_i, \sum b_i v_i)$.
 
-    $(u, 0) = (\sum a_i u_i)$,  $(0, v) = (\sum b_i v_i)$.
+    $(u, 0) = (\sum a_i \widetilde{u_i})$,  $(0, v) = (\sum b_i \widetilde{v_i})$.
 \end{proof}
 \begin{remark}
-    $i_u\!: U \to U \oplus V$, $u \mapsto (u, 0)$, $i_v$ --- аналогично. Инъективный гомоморфизм векторных пространств. 
+    $i_u\!: U \to U \oplus V$, $u \mapsto (u, 0)$, $i_v$ --- аналогично. Инъективный гомоморфизм векторных пространств.
 
     $P_u\!: U \oplus V \to U, (u, v) \mapsto u$ --- проекция.  $\Im P_u = U, \ker P_u = \Im i_v$.
 
-    Диаграмма прямой суммы:  $U \xleftrightarrow[i_u]{P_u} U \oplus V \xleftrightarrow[i_v]{P_v} V$.  $P_ui_u = \id_u$, $P_vi_v = \id_v$,  $P_vi_u= 0_v$,  $P_u i_v = 0_u$,  $i_uP_u + i_v P_v = ???$
+    Диаграмма прямой суммы:  $U \xleftrightarrow[i_u]{P_u} U \oplus V \xleftrightarrow[i_v]{P_v} V$.  $P_ui_u = \id_u$, $P_vi_v = \id_v$,  $P_vi_u= 0_v$,  $P_u i_v = 0_u$,  $i_uP_u + i_v P_v = \id_{u \oplus v}$
 \end{remark}
 
 \begin{theorem}[Формула Грассмана]
@@ -142,7 +142,7 @@
     Очевидно, что $\ker f \cong U \cap V \implies \dim (\ker f) = \dim (U \cap V)$. А по теореме о размерности ядра и образа:  $\dim V + \dim U = \dim(U \oplus V) = \dim(U + V) + \dim(U \cap V)$
 \end{proof}
 \begin{example}
-    $K^n$, $U = \left\{ \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \mid a_1 x_1 + \ldots + a_n x_n = 0\right\}$ --- гиперплоскость $\dim U = n - 1$. 
+    $K^n$, $U = \left\{ \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \mid a_1 x_1 + \ldots + a_n x_n = 0\right\}$ --- гиперплоскость $\dim U = n - 1$.
 
     СЛУ ---  $m$ уравнений,  $m$ гиперплоскостей --- $u_1, u_2, \ldots, u_m$. Ответ --- $\bigcap\limits_{i=1}^n u_i$.
 
@@ -155,11 +155,11 @@
     Аналогия $(+, \cap)$ c  $(\cup, \cap)$ --- неполная:  $(V_1 + V_2) \cap V_3 \neq (V_1 \cap V_3) + (V_2 \cap V_3)$, пример: три прямые на плоскости.
 \end{remark}
 
-Пусть $A \in M_{m, n}(K), A = (a_{ij})_{\substack{i = 1..m \\ j = 1..n}}$,  $\mathcal{A}\!: \begin{array}{c} K^n \to K^m \\ x \mapsto A \cdot x \end{array}$ --- линейное отображение.
+Пусть $A \in M_{m, n}(K), A = (a_{ij})_{\substack{i = 1..m \\ j = 1..n}}$,  $\mathcal{A}\!: \begin{array}{c} K^n \to K^m \\ X \mapsto A \cdot X \end{array}$ --- линейное отображение.
 
-$K^n - \langle e_1, \ldots, e_n \rangle, K^m = \langle \widetilde{e_1}, \ldots \widetilde{e_m} \rangle$, где $e_i$ --- вектор нулей с 1 на  $i$ строчке. Тогда 
-$A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$. 
-Тогда можно сказать, что $A = \left(\begin{array}{c|c|c|c} \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots & \mathcal{A}(e_n) \end{array} \right)$ 
+$K^n - \langle e_1, \ldots, e_n \rangle, K^m = \langle \widetilde{e_1}, \ldots \widetilde{e_m} \rangle$, где $e_i$ --- вектор нулей с 1 на  $i$ строчке. Тогда
+$A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
+Тогда можно сказать, что $A = \left(\begin{array}{c|c|c|c} \mathcal{A}(e_1) & \mathcal{A}(e_2) & \ldots & \mathcal{A}(e_n) \end{array} \right)$
 
 \begin{consequence}
     $A, B \in M_{m, n}(K)$.  $\mathcal{A}, \mathcal{B}$ --- линейные отображения,  $\mathcal{A} = \mathcal{B} \implies A = B$.
@@ -181,7 +181,7 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
     $\dim \langle C_1, \ldots, C_n \rangle$ --- называется рангом матрицы.
 
     Обозначение $\rank A, \rk A, \rg A$.
-    
+
     При $n=m$  $n-\rk A$ называется  дефектом матрицы. Дефект $\dim \ker A$.
 \end{definition}
 \begin{theorem}[Принцип Дирихле для векторных пространств]
@@ -201,33 +201,33 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
 
 \end{theorem}
 \begin{proof}
-    Пусть $X_0$ --- решение $AX=B$, тогда  $AX=B \land AX_0=B \iff A(X-X_0) = 0 \iff x - x_0 \in \ker \mathcal{A}$ --- решения соответствующей однородной $A$.
-    
-    $x = x_0 + v, v \in \ker \mathcal{A} $. Множество решений $x_0 + \ker \mathcal{A} = x_0 + \ker A = x_0 + \mathcal{A}^{-1}\{0\}$. 
+    Пусть $X_0$ --- решение $AX=B$, тогда  $AX=B \land AX_0=B \iff A(X-X_0) = 0 \iff X - X_0 \in \ker \mathcal{A}$ --- решения соответствующей однородной $A$.
+
+    $X = X_0 + v, v \in \ker \mathcal{A} $. Множество решений $X_0 + \ker \mathcal{A} = X_0 + \ker A = X_0 + \mathcal{A}^{-1}\{0\}$.
 
     $\mathcal{A}^{-1}(\{A X_0\}) = X_0 + \mathcal{A}^{-1}\{0\}$.
 \end{proof}
 
 \begin{theorem}[Альтернатива Фредгольма]
-    $\forall n = m$. СЛУ: $n$ уравнений, $n$ неизвестных,  $AX=B$. Пусть  $A$ --- фиксировано,  $B$ --- нефиксировано.
+    $\forall n = m$. СЛУ: $n$ уравнений, $n$ неизвестных,  $AX=B$. Пусть  $A$ --- фиксировано,  $B$ --- нефиксировано, $K$ --- бесконечное.
 
-    Тогда верно одно из двух: 
+    Тогда верно одно из двух:
      \begin{enumerate}
-         \item однородное СЛУ имеет только тривиальное решение и неоднородное СЛУ имеет единственное решение.
-         \item $AX=0$ имеет бесконечно много решений, тогда 0 или бесконечное множество решений.
+         \item Однородное СЛУ имеет только тривиальное решение и неоднородное СЛУ имеет единственное решение при любом $B$.
+         \item $AX=0$ имеет бесконечно много решений, тогда 0 или бесконечное множество решений в зависимости от $B$.
     \end{enumerate}
 \end{theorem}
 \begin{theorem}
-    $A \in M_{n, m}(K), B \in M_{l, n}(K)$. Причем  $K^m \xrightarrow[\mathcal{B}]{} B K^n \xrightarrow[\mathcal{A}]{} K^l$.
+    $B \in M_{n, m}(K), A \in M_{l, n}(K)$. Причем  $K^m \xrightarrow[\mathcal{B}]{\cdot B} K^n \xrightarrow[\mathcal{A}]{\cdot A} K^l$.
 
     Рассмотрим  $C = A \cdot B$,  $\mathcal{C}\!: K^m \to K^l$.  $C \coloneqq A \cdot B$, тогда  $\mathcal{C}$ --- отображения домножения  $C$.
 \end{theorem}
 \begin{proof}
     Докажем, что $C_1(X) = (A \cdot B) \cdot X$,  $C(X) = A \cdot (B \cdot X)$. Достаточно проверить для какого-то базиса  $K^m$.
 
-    $e_i$ --- все нули, но на  $i$-ой строчке единица,  без волны в $K^m$, с --- в  $K^n$.  Тогда  $Be_i = \begin{pmatrix} B_{1i} \\ B_{2i} \\ \vdots \\ B_{ni} \end{pmatrix} = \sum_i b_{ki} \widetilde{e_k}$. 
+    $e_i$ --- все нули, но на  $i$-ой строчке единица,  без волны в $K^m$, с --- в  $K^n$.  Тогда  $Be_i = \begin{pmatrix} b_{1i} \\ b_{2i} \\ \vdots \\ b_{ni} \end{pmatrix} = \sum_k b_{ki} \widetilde{e_k}$.
 
-    Тогда $A(Be_i) = A(\sum b_{ki} \widetilde{e_i}) = \sum b_{ki}(A\widetilde{e_k}) = \sum b_{ki} \begin{pmatrix} a_{1k} \\ a_{2k} \\ \vdots \\ a_{lk} \end{pmatrix} = \begin{pmatrix} \sum_k a_{1k} b_{ki} \\ \sum a_{2k} b_{ki} \\ \vdots \\ \sum a_{lk} b_{ki} \end{pmatrix}$, где $i$ --- фиксированный столбец. 
+    Тогда $A(Be_i) = A(\sum b_{ki} \widetilde{e_k}) = \sum b_{ki}(A\widetilde{e_k}) = \sum b_{ki} \begin{pmatrix} a_{1k} \\ a_{2k} \\ \vdots \\ a_{lk} \end{pmatrix} = \begin{pmatrix} \sum_k a_{1k} b_{ki} \\ \sum_k a_{2k} b_{ki} \\ \vdots \\ \sum_k a_{lk} b_{ki} \end{pmatrix}$, где $i$ --- фиксированный столбец.
 \end{proof}
 
 \begin{consequence}
@@ -248,7 +248,7 @@ $A e_j = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{pmatrix}$.
 \end{example}
 \Subsection{Матрица линейного отображения}
 
-$U, V$ --- векторные пространства над  $K$.  $\mathcal{A}\!: U \to V$ --- линейное.  $u_1, \ldots, u_n$ --- базис $U$,  $v_1, \ldots, v_n$ --- базис $V$. 
+$U, V$ --- векторные пространства над  $K$.  $\mathcal{A}\!: U \to V$ --- линейное.  $u_1, \ldots, u_m$ --- базис $U$,  $v_1, \ldots, v_n$ --- базис $V$.
 
 $\mathcal{A}(u_i) \in V \Rightarrow \mathcal{A}(u_i)$ --- линейная комбинация  $\{ v_i \}$.
 
@@ -260,41 +260,43 @@ $\mathcal{A}(u_i) \in V \Rightarrow \mathcal{A}(u_i)$ --- линейная ко�
     Тогда  $A \cdot u$ --- столбец координат  $\mathcal{A}(u)$ в базисе  $\{v_i\}$.
 \end{statement}
 \begin{proof}
-    Для $u_i$ это так по определению, а для остальных векторов по дистрибутивности/линейности. 
+    Для $u_i$ это так по определению, а для остальных векторов по дистрибутивности/линейности.
 \end{proof}
 \begin{remark}
-    $\{u_i\}$ задает изоморфизм  $u \xrightarrow[f_u]{} K^n$,  $v \xrightarrow[f_v]{} K^m$ --- координатизации. Тогда верно:
+    $\{u_i\}$ задает изоморфизм  $u \xrightarrow[f_u]{} K^m$,  $v \xrightarrow[f_v]{} K^n$ --- координатизации. Тогда верно:
 
     \[
     \begin{matrix}
         U & \xrightarrow[\mathcal{A}]{} & V \\
         f_u \downarrow & & \downarrow f_v \\
-        K^n & \xrightarrow[\cdot A]{} & K^m
+        K^m & \xrightarrow[\cdot A]{} & K^n
     \end{matrix}
-    .\] 
+    .\]
 \end{remark}
 \Subsection{Матрица перехода и формулы пересчета}
 
-$V$ --- векторное пространство.  $\id_v$ --- линейное.  $\id_v\!: V \to V$,  $\{v_i\}$ --- базис.  $[\id]_{\{v_i\}, \{u_i\}} = \begin{pmatrix} 1 & \ldots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \ldots & 1 \end{pmatrix} = E_n$. Причем  $E_n$ --- единица в кольце матриц.
+$V$ --- векторное пространство.  $\id_v$ --- линейное.  $\id_v\!: V \to V$,  $\{v_i\}$ --- базис.  $[\id]_{\{v_i\}, \{v_i\}} = \begin{pmatrix} 1 & \ldots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \ldots & 1 \end{pmatrix} = E_n$. Причем  $E_n$ --- единица в кольце матриц.
 
 
-Пусть теперь $\{u_i\}, \{v_i\}$ --- базисы  $V$. Тогда  $[\id]_{\{v_i\}, \{u_i\}} = C = (c_{ij})$. $u_i = \sum_j c_{ji} v_{ji}$.  $\begin{pmatrix} u_1, \ldots, u_n\end{pmatrix} = \begin{pmatrix}v_1, \ldots, v_j \end{pmatrix} \cdot C$.
+Пусть теперь $\{u_i\}, \{v_i\}$ --- базисы  $V$. Тогда  $[\id]_{\{u_i\}, \{v_i\}} = C = (c_{ij})$. $u_i = \sum_j c_{ji} v_{j}$.  $\begin{pmatrix} u_1, \ldots, u_n\end{pmatrix} = \begin{pmatrix}v_1, \ldots, v_n \end{pmatrix} \cdot C$.
 
-$x\in V$,  $x = \sum a_i u_i$,  $x = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} = (x)_{u_i}$.
+$x\in V$,  $x = \sum a_i u_i$,  $X = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} = (X)_{u_i}$.
 
-$\chi \coloneqq \begin{pmatrix} u_1 & \ldots & u_n \end{pmatrix} \cdot X= ???$
+$x = \begin{pmatrix} u_1, \ldots, u_n\end{pmatrix} \cdot X = \begin{pmatrix}v_1, \ldots, v_n \end{pmatrix} \cdot C \cdot X$
 
-$C$ --- матрица перехода.
- \begin{remark}
+$CX$ --- координаты $x$ в базисе $v_i$
+
+$C$ --- матрица перехода от базиса $u_i$ к базису $v_i$.
+\begin{remark}(\textit{Свойства матриц перехода})
 \begin{itemize}
-    \item $C_{\{u_i\}, \{v_i\}} = E$
-    \item $\{u_i\}, \{v_i\}, \{w_i\}$ --- базисы. Тогда $C_{\{u_i\}\{w_i\}} = C_{\{u_i\}\{v_i\}} \cdot C_{\{v_i\}\{w_i\}}$.
+    \item $C_{\{u_i\}, \{u_i\}} = E$
+    \item $\{u_i\}, \{v_i\}, \{w_i\}$ --- базисы. Тогда $C_{\{u_i\}\{w_i\}} = C_{\{v_i\}\{w_i\}} \cdot C_{\{u_i\}\{v_i\}}$.
     \item  $C_1 = C_{\{u_i\}, \{v_i\}}, C_2 = C_{\{v_i\}, \{u_i\}}$. \\
         $C_1 \cdot C_2 = C_2 \cdot C_1 = E$. $C_1, C_2$ --- взаимообратные.
 \end{itemize}
 \end{remark}
 
-Пусть $\mathcal{A}\!: U \to V$,  $U, V$ --- векторное пространства над  $K$. 
+Пусть $\mathcal{A}\!: U \to V$,  $U, V$ --- векторные пространства над  $K$.
 
 Пусть  $e_i$,  $f_i$ --- базисы $U$ и  $V$, тогда существует матрица  $A = [\mathcal{A}]_{\{e_i\}, \{f_i\}}$
 
@@ -306,7 +308,7 @@ $x \in V$  $X$ --- координаты относительно  $\{e_i\} \impl
 
 $[\id]_{\{e_i\}, \{e_i\}} = E = \begin{pmatrix} 1 & \ldots & 0 \\ 0 & 1 & \ldots \\ 0 & \ldots & 1 \end{pmatrix}$. $EA = A, AE = A$.
 
-$[\id]_{\{f_i\}, \{e_i\}} = C^{-1}$,  $CC^{-1} = C^{-1}C = E$. Матрица перехода --- обратимы. 
+$[\id]_{\{f_i\}, \{e_i\}} = C^{-1}$,  $CC^{-1} = C^{-1}C = E$. Матрица перехода --- обратимы.
 
 \begin{definition}
     $V$ --- векторное пространство над  $K$.
@@ -347,7 +349,7 @@ $U (\{e'\}) \xrightarrow{\id} U(\{e_i\}) \xrightarrow{\mathcal{A}} V (\{f_i\}) \
 $A, B$ --- квадратные обратимые матрицы, тогда  $B = B A A^{-1}$.
 
 \begin{theorem}[Канонический вид линейного отображения]
-    $\mathcal{A}\!: V \to U$ --- линейное,  $V$ --- векторное пространство над  $K$. 
+    $\mathcal{A}\!: V \to U$ --- линейное,  $V$ --- векторное пространство над  $K$.
 
     Тогда $\exists$ базис $\{e_i\}$ в  $V$, базис  $\{f_i\}$ в  $U$,  $r \in \Z_{\ge 0}$, такие что $[\mathcal{A}]_{\{e_i\}, \{f_i\}} = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$, где $E_r$ --- едининичная матрица размера  $r$.
 \end{theorem}
@@ -356,7 +358,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 
     На самом деле рассмотрим базис $v_{k+1}, \ldots v_n, v_1, v_2, \ldots, v_k$. Теперь $\forall i = 1..n - k$ положим $\mathcal{A}(v_k + i) = u_i$.  $u_1, u_2, \ldots, u_{n-k}$ --- базис $\Im \mathcal{A} \le U$ --- ЛНЗ.
 
-    $u_1, u_2, \ldots u_{n-k}, \ldots, u_,$ --- базис $U$ (дополнили до базиса). 
+    $u_1, u_2, \ldots u_{n-k}, \ldots, u_,$ --- базис $U$ (дополнили до базиса).
 
     Тогда для  $\mathcal{A}(v_{k+i}) = u_i = 0 u_1 + 0 u_2 + \ldots + 1 \cdot u_i + 0 \ldots + 0 \cdot u_m\quad \forall i = 1..(n-k)$.
 
@@ -391,7 +393,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \end{proof}
 
 \begin{definition}
-    $A \in M_{m, n}(K)$. Строчный ранг  $A$ --- это  $\dim \langle r_1, r_2, \ldots, r_m\rangle$, где $A = \left(\begin{array} r_1 \\ \hline r_2 \\ \hline \vdots \\ \hline r_m \end{array}\right)$. 
+    $A \in M_{m, n}(K)$. Строчный ранг  $A$ --- это  $\dim \langle r_1, r_2, \ldots, r_m\rangle$, где $A = \left(\begin{array} r_1 \\ \hline r_2 \\ \hline \vdots \\ \hline r_m \end{array}\right)$.
 
         Обозначение $\rk_r(A)$.
 \end{definition}
@@ -407,7 +409,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \begin{proof}
      \begin{enumerate}
          \item [4)] $A$ --- обратима $\iff$ соответственно $\mathcal{A}$  --- инъективно и сюръективно $\iff \mathcal{A}$ --- сюръекция  $\iff \Im \mathcal{A} = K^n \iff \rk \mathcal{A} = n, \dim (\Im \mathcal{A}) = n$.
-         \item $\rk A = r \implies \exists C, D$ --- обратимые, такие, что  $CAD =\begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$. 
+         \item $\rk A = r \implies \exists C, D$ --- обратимые, такие, что  $CAD =\begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$.
              Тогда $(CAD)^T = D^TA^TC^T = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array} \implies \rk A^T = r$.
 
              То есть  $\rk A = \rk A^T = \rk A$, то есть строчки $A$ $\leftrightarrow$ столбцы $A^T$.
@@ -528,7 +530,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
     \slashn
     \begin{enumerate}
         \item[2.] Сложение --- очев. Умножение --- очев (записать руками и удостовериться).
-        \item [1.] Очев/упражнение (очев). 
+        \item [1.] Очев/упражнение (очев).
     \end{enumerate}
 \end{proof}
 \begin{remark}
@@ -563,10 +565,10 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 
 В общем случае сделаем в начале сделаем перестановки строк $P = s_{i_1,j_1}s_{i_2,j_2}\ldots s_{i_k,j_k}$. Тогда $PA$ - матрица, для которой $\exists LU$ - разложение. Тогда $PA = LU \implies A = P^{-1}LU$ - $LPU$-разложение на матрицу перестановки, нижне- и верхне-треугольную.
 \begin{theorem}
-    Следующие условия равносильны ($A \in M_n(K)$): 
+    Следующие условия равносильны ($A \in M_n(K)$):
     \begin{enumerate}
         \item $\exists A^{-1} (A \in GL(K) = M_n(K)^*)$.
-        \item  $A = e_1 \ldots e_k$, $e_i$ --- элементарные матрицы. 
+        \item  $A = e_1 \ldots e_k$, $e_i$ --- элементарные матрицы.
         \item $\rk A = n$.
         \item  $\mathcal{A}\!: X \mapsto A \cdot X$ --- инъективный линейный оператор: $K^n \to K^n$ .
         \item Тоже самое, но cюръективный.

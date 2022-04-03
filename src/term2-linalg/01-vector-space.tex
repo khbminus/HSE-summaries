@@ -217,7 +217,7 @@ $$
 
     У $K[[x]]$ есть базис, но на человеческом нельзя задать.
     
-    У $\R$ тоже есть базис, но как его задать --- вопрос.
+    У $\R$ над $\Q$ тоже есть базис, но как его задать --- вопрос.
 \end{example}
 \begin{definition}
     Размерность пространства $\dim V$ --- количество элементов в базисе.
@@ -251,7 +251,7 @@ $$
 \begin{example}
     Рассмотрим $\Z / 6 \Z$. Пусть  $R$ --- модуль над  $R$. 
 
-    $\{1\}$ --- минимальная порождающая система. При этом,  $\{2, 3\}$ --- минимальная порождающая система.
+    $\{1\}$ --- минимальная порождающая система. При этом,  $\{2, 3\}$ --- тоже минимальная порождающая система (пример показывает что лемма работает только для векторных пространств, но не для модулей).
 \end{example}
 \begin{lemma}
     Пусть $V$ --- конечномерное пространство.
@@ -279,16 +279,19 @@ $$
     Плюс есть домножение на скаляр: $f(k\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}) = kf(\begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix})$
 \end{remark}
 \begin{definition}
-    $a \in \CC$ называется алгебраическим,  $\exists f \in \Z[x]$, такой что  $f(a) = 0 \land f \not\equiv 0$
+    $a \in \CC$ называется алгебраическим, если $\exists f \in \Z[x]$, такой что  $f(a) = 0 \land f \not\equiv 0$ ($a$ --- корень какого-то многочлена с целыми коэффициентами, отличного от тождественного нуля)
 \end{definition}
+\begin{remark}
+ Если разрешить коэффициентам многочлена быть рациональными, получим то же самое (можно домножить все коээфициенты на их общий знаменатель)
+\end{remark}
  \begin{statement}
-     $a$ --- алгебраическое  $\Rightarrow \langle 1, a, a^2, \ldots \rangle$ --- конечномерное. 
+     $a$ --- алгебраическое  $\Rightarrow \langle 1, a, a^2, \ldots \rangle$ над $\Q$ --- конечномерное. 
 \end{statement}
 \begin{proof}
     $\exists P = \sum\limits_{i=0}^n k_i x^i$, такое что  $k_n = 1, P(a) = 0$. Тогда $a^n = -\sum\limits_{i=0}^{n-1} k_i a^i \in \langle 1, a, \ldots, a^{n-1} \rangle$, $a^{n+1} = -\sum\limits_{i=0}^{n-1} k_i a^{i+1} \in \langle 1, a, \ldots, a^{n-1} \rangle$  ($a^n$ выражается через первые $n$)  и так далее для  $\forall N > n$.  $a^N \in \langle 1, a,\ldots, a^{n-1} \rangle$
 \end{proof}
 \begin{statement}
-    $a, b$ --- алгебраические. Тогда  $\langle a^i b^k \rangle$ --- конечномерное. 
+    $a, b$ --- алгебраические. Тогда  $\langle a^i b^k \rangle$ над $\Q$ --- конечномерное. 
 \end{statement}
 \begin{proof}
     $a$ --- корень  $f$:  $\deg f = m$.  $b$ --- корень  $g$:  $\deg g = n$.
@@ -301,7 +304,7 @@ $$
 \begin{proof}
     $\CC$ --- векторное пространство над  $\Q$. 
 
-    Докажем, что $a+b$ --- алгебраическое: рассмотрим  $1, a+b, (a+b)^2, (a+b)^3, \ldots$. $(a+b)^i = \sum \binom{i}{k} a^k b^{i-k} \in V$, причем  $\dim V = N$. Тогда  $1, a+b, \ldots, (a+b)^N$ --- ЛЗ система. $\implies c_i \in \Q\!: \sum c_i(a+b)^i = 0 \Rightarrow a+b$ --- корень  $\sum c_i x^i = 0$ (ЛЗ система $\implies \sum c_ix^i \not\equiv 0$).  $ab$ --- аналогично.
+    Докажем, что $a+b$ --- алгебраическое: рассмотрим  $1, a+b, (a+b)^2, (a+b)^3, \ldots$. $(a+b)^i = \sum \binom{i}{k} a^k b^{i-k} \in V$, причем  $\dim V = N$. Тогда  $1, a+b, \ldots, (a+b)^N$ --- ЛЗ система. $\implies \exists \{c_i\}, c_i \in \Q\!: \sum c_i(a+b)^i = 0 \Rightarrow a+b$ --- корень  $\sum c_i x^i = 0$ (ЛЗ система $\implies \sum c_ix^i \not\equiv 0$).  $ab$ --- аналогично.
 \end{proof}
 
 \begin{example}
@@ -311,6 +314,6 @@ $$
 
     При этом есть другой, хороший базис:  $\begin{array}{l} u_1 = (1, \vphi, \vphi^2, \vphi^3, \ldots) \\ u_2 =(1, -\frac{1}{\vphi}, \left(-\frac{1}{\vphi}\right)^2, \ldots ) \end{array}$
 
-    Например, $u = au_1 + bu_2 \iff \begin{cases} 1 = a\cdot 1 + b\cdot1 \\ 1 = a + \vphi  + b \left(-\frac{1}{\vphi}\right) \end{cases} \leadsto \binom{a}{b}$ --- вектор $\Rightarrow u_n = a \vphi^{n-1} + b \left(-\frac{1}{\vphi}\right)^{n-1}$. 
+    Например, $u = au_1 + bu_2 \iff \begin{cases} 1 = a\cdot 1 + b\cdot1 \\ 1 = a \vphi  + b \left(-\frac{1}{\vphi}\right) \end{cases} \leadsto \binom{a}{b}$ --- вектор $\Rightarrow u_n = a \vphi^{n-1} + b \left(-\frac{1}{\vphi}\right)^{n-1}$. 
 \end{example}
 
