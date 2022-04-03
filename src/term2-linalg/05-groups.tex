@@ -165,7 +165,7 @@
 \begin{definition}
     $H \le G$ называется нормальной ($H \trianglelefteq G$), если выполнено любое из трех равносильных утверждений:
     \begin{enumerate}
-        \item $a \underset{H}{\equiv} b, c \underset{H}{\equiv} d \implies ac = bd \quad \forall a,b,c,d \in G$.
+        \item $a \underset{H}{\equiv} b, c \underset{H}{\equiv} d \implies ac \underset{H}{\equiv} bd \quad \forall a,b,c,d \in G$.
         \item $\forall a \in G\!: aH=Ha$.
         \item  $\forall h \in H, g \in G\!: g^{-1}hg \in H$.
     \end{enumerate}
@@ -238,7 +238,7 @@ $\ker f = \{g \in G \mid f(g) = e_{G_2}\}$ --- ядро гомоморфизма
 
     $f^{-1}(a) = b_0 \ker f$.
 
-    Построим  $\widetilde{f}\!: G_1 / \ker f  \to \Im f$. $\widetilde{f}(G \ker f) = f(b)$.
+    Построим  $\widetilde{f}\!: G_1 / \ker f  \to \Im f$. $\widetilde{f}(b \cdot  \ker f) = f(b)$.
     \begin{enumerate}
          \item $\widetilde{f}$ корректно.  $c \in b \ker f \implies f(c) = f(bh) = f(b) f(h) = f(b)$.
          \item $\widetilde{f}$ --- гомоморфизм:  $\widetilde{f}(\overline{a} \cdot \overline{b}) = \widetilde{f}(\overline{ab}) = f(ab) = f(a)f(b) = \widetilde{f}(\overline{a}) \widetilde{f}(\overline{b})$.
