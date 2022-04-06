@@ -336,3 +336,114 @@
              Ежу понятно.
     \end{enumerate}
 \end{proof}
+\begin{theorem}[Теорема Коши о произведении рядов]
+    Пусть $A \coloneqq \sum\limits_{n=1}^\infty a_n$ и  $B \coloneqq \sum\limits_{n=1}^\infty b_n$ и ряды абсолютно сходятся.
+
+    Тогда ряд, составленный из  $a_kb_n$ в произвольном порядке абсолютно сходится и его сумма  $AB$.
+\end{theorem}
+\begin{proof}
+    $A^* \coloneqq \sum\limits_{n=1}^\infty |a_n|, A_n^* \coloneqq \sum\limits_{k=1}^n |a_k|$.  $A^*_n \le A^*, B_n^* \le B^*$.
+
+    $S_m^*$ --- частичная сумма для рада из  $|a_kb_j|$. $S_N \le (|a_1| + |a_2| + \ldots + |a_n|)(|b_1| + |b_2| + \ldots + |b_m|) = A_n^* B_m^* \le A^* B^*$, где $n$ --- максимальный индекс у  $a_k$ в слагаемом из  $S_N^*$, $m$ --- тоже самое для  $b_k$.
+
+    $S_N^*$ ограничены $\implies$ ряд абсолютно сходится. Можно сделать \textit{рисунок}, тогда $S_{n^2} = \sum\limits_{k=1}^n \sum\limits_{j=1}^n a_k b_j = \sum\limits_{k=1}^n a_k \sum\limits_{j=1}^n b_j = A_nB_n \to AB$. 
+\end{proof}
+
+\begin{definition}
+    $\sum\limits_{n=1}^\infty a_n$ и $\sum\limits_{n=1}^\infty b_n$ произведение этих рядов --- ряд  $\sum\limits_{n=1}^\infty c_n$, где  $c_n = a_1b_n + a_2b_{n-1} + a_3b_{n-2} + \ldots + a_nb_1$.
+\end{definition}
+\begin{theorem}[Теорема Мертенса]
+    $A = \sum\limits_{n=1}^\infty a_n, B = \sum\limits_{n=1}^\infty b_n$ --- сходится, причем один из них абсолютно.
+
+    Тогда  $\sum\limits_{n=1}^\infty c_n$ --- сходится и его сумма  $AB$.
+\end{theorem}
+\begin{proof}
+    Не доказывалось в курсе.
+\end{proof}
+\begin{remark}
+    Абсолютной сходимости нет, важен порядок слагаемых.
+\end{remark}
+\begin{remark}
+    Обычной сходимости не хватает.
+\end{remark}
+\begin{example}
+    $\sum\limits_{n=1}^\infty \frac{(-1)^{n-1}}{\sqrt{n}}$ сходится по признаку Лейбница.
+
+    $a_n = b_n = \frac{(-1)^{n-1}}{\sqrt{n}}$. \[c_n = (-1)^{n-1}(\underbrace{\frac{1}{\sqrt{n}} + \frac{1}{\sqrt{2}}\frac{1}{\sqrt{n-1}} + \ldots + \frac{1}{\sqrt{n}}1}_{\ge n \cdot \frac{1}{\sqrt{n}} \frac{1}{\sqrt{n}}}).\]
+    А значит $|c_n| \ge 1$, а необходимое условие сходимости отсутствует. 
+\end{example}
+\begin{theorem}[Теорема Абеля]
+    $A = \sum\limits_{n=1}^\infty a_n, B = \sum\limits_{n=1}^\infty b_n$ и  $C = \sum\limits_{n=1}^\infty c_n$ ---  произведения рядов.
+
+    Если все три ряда сходятся, то  $AB=C$.
+\end{theorem}
+\begin{lemma}
+    Пусть $x_n \to x$ и  $y_n \to y$. Тогда:
+     \[
+    \frac{x_1y_n + x_2y_{n-1} + \ldots + x_ny_1}{n} \to xy
+    .\] 
+\end{lemma}
+\begin{proof}[Доказательство леммы]
+    Случай $y=0$. Надо доказать, что $x_1y_n + \ldots + x_ny_1 = o(n)$. $|x_n| \le M, |y_n| \le M$. $\forall \eps > 0 \exists N\!: |y_n| \le \eps$ при $n \ge N$.
+
+    Тогда в сумму все слагаемые с  $y_n$, где  $n \ge N$ будут $\le \eps M$, а первые $N$ ---  $\le M^2$. Тогда сумма $\frac{|\ldots|}{n} < \eps M + \frac{NM^2}{n} < 2\eps M$ при больших $n$.
+
+    Случай  $y_n \equiv y$. Тогда сумма $\frac{\ldots}{n} = y \frac{x_1 + x_2 + \ldots + x_n}{n} \to xy$ по теореме Штольца.
+
+    Общий случай: $y_n = y + \widetilde{y_n}, y_n \to 0$. Тогда сумма с  $\widetilde{y_n}$ стремится к нулю, а, следовательно исходная стремится к  $xy$.
+\end{proof}
+\begin{proof}[Доказательство теоремы]
+    Рассмотрим $AB \leftarrow \frac{A_1 B_n + A_2 B_{n-1} + \ldots + A_nB_2}{n} = \frac{C_1 + C_2 + \ldots + C_n}{n} \to C$
+\end{proof}
+\Subsection{Бесконечные произведения}
+\begin{definition}
+    $\prod\limits_{k=1}^\infty b_k$, сходящийся, если  $\exists \lim P_n$, он конечен и  $\neq 0$.
+\end{definition}
+\begin{example}
+    \begin{enumerate}
+        \item $\prod\limits_{k=2}^\infty \left(1-\frac{1}{k^2}\right)$. Оно очевидным образом равно $\frac{1}{2}$.
+        \item $\prod_{n=1}^\infty(1 - \frac{1}{4n^2}) = \frac{1 \cdot 3 \cdot 3 \cdot 5 \cdot 5 \cdot 7 \cdot \ldots \cdot (2n-1)(2n+1)}{2^2 4^2 6^2} = \frac{((2n-1)!!)^2(2n+1)}{((2n)!!)^2} \to \frac{2}{\pi}$
+    \end{enumerate}
+\end{example}
+\begin{properties}
+    \begin{enumerate}
+        \item Добавление / выкидывание конечного числа ненулевых сомножителей не влияет на сходимость.
+        \item Если  $\prod\limits_{k=1}^\infty b_k$ --- сходится, то  $\lim b_k = 1$.
+             \begin{proof}
+                $b_n = \frac{P_n}{P_{n-1}} \to \frac{P}{P} = 1$, так как $P \neq 0$ и  $\infty$.
+            \end{proof}
+        \item У сходящегося произведения начиная с некоторого места все множители $>0$. 
+        \item  $\prod\limits_{n=1}^\infty b_n$ для  $b_n > 0$. 
+
+             $\prod\limits_{n=1}^\infty b_n$ --- сходится  $\iff \sum\limits_{n = 0}^\infty \ln b_n$ --- сходится. Причем произведение --- $\exp$ от суммы.
+\begin{proof}
+    $P_n = \prod\limits_{k=1}^n b_k$.  $\ln P_n = \sum\limits_{k=1}^n \ln b_k \eqqcolon S_n$.
+
+     $P_n$ имеет предел из  $(0; +\infty) \iff \ln P_n = S_n$ --- имеет конечный  $\lim \iff \sum \ln b_n$ --- сходящийся.
+\end{proof}
+
+    \end{enumerate}
+\end{properties}
+\begin{example}
+    $\prod\limits_{n=1}^\infty \frac{p_n}{p_n - 1} = \prod\limits_{n=1}^\infty \sum\limits_{j=0}^\infty \frac{1}{p_n^j}$ --- где $p_n$ ---  $n$-ое простое число.
+
+     $\prod\limits_{k=1}^n \frac{p_k}{p_k - 1} \ge H_n$.
+
+
+     $\prod\limits_{k=1}^n \frac{p_k}{p_k - 1} = \prod_{k=1}^n \frac{1}{1-\frac{1}{p_k}} > \prod\limits_{k=1}^n \sum\limits_{j=0}^n \frac{1}{p_k^j} = \sum \frac{1}{p_1^{\alpha_1} \ldots p_n^{\alpha_n}} > \sum\limits_{k=1}^n \frac{1}{k} = H_n \to \infty$.
+\end{example}
+\begin{theorem}
+    $\sum\limits_{n=1}^\infty \frac{1}{p_n}$ --- расходится. Более того $\sum\limits_{k=1}^n \frac{1}{p_k} \ge \ln \ln n - 2$.
+\end{theorem}
+\begin{proof}
+    $\sum\limits_{k=1}^n \frac{1}{1-\frac{1}{p_k}} > H_n \implies \sum\limits_{k=1}^n \ln(\frac{1}{1-\frac{1}{p_k}}) > \ln H_n > \ln \ln n$.
+
+    Очевидно (нет), что $\ln(1-x) \ge -x -x^2$.
+
+    Тогда $\sum\limits_{k=1}^n \ln(\frac{1}{1-\frac{1}{p_k}}) \le \sum\limits_{k=1}^n \frac{1}{p_k} + \sum\limits_{k=1}^n \frac{1}{p_k^2}$
+\end{proof}
+\begin{remark}
+    \[
+    \sum\limits_{k=1}^n \frac{1}{p_k} = \ln \ln n + O(1).
+    .\] 
+\end{remark}
