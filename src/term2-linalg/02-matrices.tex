@@ -321,14 +321,14 @@ $[\id]_{\{f_i\}, \{e_i\}} = C^{-1}$,  $CC^{-1} = C^{-1}C = E$. Матрица п
 $C \circ (\mathcal{A} + \mathcal{B}) = C \circ \mathcal{A} + C \circ \mathcal{B}$ --- из линейности $C$.
 
  \begin{definition}
-     $\text{End}(V)$ --- эндоморфизм,  $\dim V = b \implies \text{End } V \cong M_n(K)$.
+     $\text{End}(V)$ --- эндоморфизм --- множество операторов на $V$,  $\dim V = n \implies \text{End } V \cong M_n(K)$.
 \end{definition}
 
 Так как $[\mathcal{A} + \mathcal{B}]_{\{e_i\}} = [\mathcal{A}]_{\{e_i\}} + [\mathcal{B}]_{\{e_i\}}$.
 
 $[\mathcal{A} \circ \mathcal{B}]_{\{e_i\}} = [\mathcal{A}]_{\{e_i\}} \circ [\mathcal{B}]_{\{e_i\}}$. Говоря об операторах, будем писать  $[\mathcal{A}]_{\{e_i\}}$.
 
-$\left(M_n(K)\right)^*$ --- группа обратимых матриц, обозначение  $GL_n(k), GL(b, k)$.
+$\left(M_n(K)\right)^*$ --- группа обратимых матриц, обозначение  $GL_n(K), GL(n, K)$.
 
 \begin{example}
     $GL_1(K) = K^* = K \setminus \{0\}$.
@@ -340,16 +340,18 @@ $\begin{array}{llll} \mathcal{A}\!: & U & \to & V\text{ --- линейно} \\ &
 
 $U (\{e'\}) \xrightarrow{\id} U(\{e_i\}) \xrightarrow{\mathcal{A}} V (\{f_i\}) \xrightarrow{\id} V(\{f'_i\})$.
 
-Тогда  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = [\id_v \circ \mathcal{A} \circ \id_u]_{\{e'_i\}, \{f'_i\}} = [\id_v]_{\{f_i\}, \{f'_i\}} \cdot [\mathcal{A}]_{\{e_i\}, \{f_i\}} \cdot [\id_v]_{\{e'_i\}, \{e_i\}} = C A \cdot D^{-1}$, где  $C$ --- матрица перехода от  $f_i$ к  $f'_i$,  $D$ --- матрица перехода  от $e_i$ к  $e'_i$.
+Тогда  $[\mathcal{A}]_{\{e'_i\}, \{f'_i\}} = [\id_v \circ \mathcal{A} \circ \id_u]_{\{e'_i\}, \{f'_i\}} = [\id_v]_{\{f_i\}, \{f'_i\}} \cdot [\mathcal{A}]_{\{e_i\}, \{f_i\}} \cdot [\id_u]_{\{e'_i\}, \{e_i\}} = C A \cdot D^{-1}$, где  $C$ --- матрица перехода от  $f_i$ к  $f'_i$,  $D$ --- матрица перехода  от $e_i$ к  $e'_i$.
 
-Тогда:  \[
+\textbf{Формула замены матрицы при замене базиса.} Если $\mathcal{A}$ --- линейный оператор, то:   \[
     A_{new} = C A C^{-1}
 .\]
 
-$A, B$ --- квадратные обратимые матрицы, тогда  $B = B A A^{-1}$.
+Тогда $A, B$ --- матрицы одного отображения в разных базисах $\iff \exists C, D: B=CAD$, где $C, D$ --- обратимые. Это отношение эквивалентности.
+
+Если $A, B$ --- квадратные обратимые матрицы, то $B = B A A^{-1}$.
 
 \begin{theorem}[Канонический вид линейного отображения]
-    $\mathcal{A}\!: V \to U$ --- линейное,  $V$ --- векторное пространство над  $K$.
+    $\mathcal{A}\!: V \to U$ --- линейное,  $V$ --- конечномерное векторное пространство над  $K$.
 
     Тогда $\exists$ базис $\{e_i\}$ в  $V$, базис  $\{f_i\}$ в  $U$,  $r \in \Z_{\ge 0}$, такие что $[\mathcal{A}]_{\{e_i\}, \{f_i\}} = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$, где $E_r$ --- едининичная матрица размера  $r$.
 \end{theorem}
@@ -358,7 +360,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 
     На самом деле рассмотрим базис $v_{k+1}, \ldots v_n, v_1, v_2, \ldots, v_k$. Теперь $\forall i = 1..n - k$ положим $\mathcal{A}(v_k + i) = u_i$.  $u_1, u_2, \ldots, u_{n-k}$ --- базис $\Im \mathcal{A} \le U$ --- ЛНЗ.
 
-    $u_1, u_2, \ldots u_{n-k}, \ldots, u_,$ --- базис $U$ (дополнили до базиса).
+    $u_1, u_2, \ldots u_{n-k}, \ldots, u_m$ --- базис $U$ (дополнили до базиса).
 
     Тогда для  $\mathcal{A}(v_{k+i}) = u_i = 0 u_1 + 0 u_2 + \ldots + 1 \cdot u_i + 0 \ldots + 0 \cdot u_m\quad \forall i = 1..(n-k)$.
 
@@ -368,7 +370,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \end{proof}
 
 \begin{remark}
-    $A \in M_{m, n}(K)$,  $\rk A = r$,  $\exists $ обратимые матрицы  $C, D$:  $\begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$, $\rk(A) = \rk(A') = r \implies A' = \widetilde{C} A \widetilde{D}$
+    $A \in M_{m, n}(K)$,  $\rk A = r$,  $\exists $ обратимые матрицы  $C, D$:  $CAD = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$. $ A' \in M_{m,n}, \rk(A') = \rk(A) = r \implies A' = \widetilde{C} A \widetilde{D}$
 \end{remark}
 \begin{definition}
     $A \in M_{m, n}(K)$, транспонированная матрица  $A^T \in M_{n, m}(K) (A^T)_{i, j} = (A)_{j, i} \quad \substack{\forall i=1..n \\ \forall j=1..m}$
@@ -399,7 +401,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \end{definition}
 \begin{theorem}[Свойства ранга]
     \begin{enumerate}
-        \item $\rk A = \rk_r A, \rk A = \rk A^T, A \in M_{n, n}(K)$.
+        \item $\rk A = \rk_r A, \rk A = \rk A^T, A \in M_{m, n}(K)$.
         \item  $\rk (AB) \le \min(\rk A, \rk B)$.
         \item $\rk (A+B) \le \rk (A) + \rk(B)$
         \item[2')] $A$ --- обратима $\implies \rk AB = \rk B, \rk BA = B$.
@@ -413,13 +415,13 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
              Тогда $(CAD)^T = D^TA^TC^T = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array} \implies \rk A^T = r$.
 
              То есть  $\rk A = \rk A^T = \rk A$, то есть строчки $A$ $\leftrightarrow$ столбцы $A^T$.
-         \item  $\rk AB = \dim(\Im(AB)) = \dim \{ AB \cdot x \mid x \in K^n \} \le \dim \{AY \mid Y \in K^m \}$.
+         \item  $\rk AB = \dim(\Im(AB)) = \dim \{ AB \cdot X \mid X \in K^n \} \le \dim \{AY \mid Y \in K^m \} = \rk A$.
 
-             $\rk AB = \dim (\Im AB) = \dim (\Im A \mid_{\Im B}) \le \dim (\Im B)$
+             $\rk AB = \dim (\Im AB) = \dim (\Im A \mid_{\Im B}) \le \dim (\Im B) = \rk B$ ( $\le$ --- по теореме о размерности ядра и образа)
          \item[2')] $A$ -- обратимый  $\exists A^{-1}$.  $\rk (AB) \le \rk B$ по 2.
 
              $\rk B = rk(A^{-1}(AB)) \le \rk AB$ по 2. $\implies \rk AB = \rk B$.
-         \item $\rk(A+B) = \dim \{(A+B)X \mid X \in U\} = \dim \{AX + BX \mid x \in U \} \le \dim \{Ax + By \mid x, y \in y\} = \dim(\Im A + \Im B) \stackrel{\text{Грасс.}}{\le} \dim \Im A + \dim \Im B = \rk A + \rk B$.
+         \item $\rk(A+B) = \dim \{(A+B)X \mid X \in U\} = \dim \{AX + BX \mid X \in U \} \le \dim \{AX + BY \mid X, Y \in U\} = \dim(\Im A + \Im B) \stackrel{\text{Грасс.}}{\le} \dim \Im A + \dim \Im B = \rk A + \rk B$.
     \end{enumerate}
 \end{proof}
 
@@ -438,7 +440,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 
     $t_{i_0, j_0}(k)$ --- трансвекция: $\begin{pmatrix} x_1 \\ \vdots \\ x_{i_0} \\ \vdots  \\ x_n \end{pmatrix} \to \begin{pmatrix} x_1 \\ \vdots \\ x_{i_0} + k \cdot x_{j_0} \\ \vdots  \\ x_n \end{pmatrix}$
 
-    Обратная матрица к трансвекции $t_{i_0, j_0}(k)$: \ $t^{-1}_{i_0, j_0}(k) = t_{i_0, j_0}(-1 \cdot k)$
+    Обратная матрица к трансвекции $t_{i_0, j_0}(k)$: \ $t^{-1}_{i_0, j_0}(k) = t_{i_0, j_0}(-k)$
 
     Матрица трансвекции --- единичная матрица, но на позиции $(a)_{i_0, j_0}$ стоит $k$.
 
@@ -459,7 +461,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \begin{proof}
     $1, 2$ следует из того что  $T_{ij}(a) \left(\begin{array}{c|c|c|c} c_1 & c_2 & \ldots & c_n \end{array} \right) = \left(\begin{array}{c|c|c|c} T_{ij}(a)c_1 & T_{ij}(a)c_2 & \ldots & T_{ij}c_n \end{array} \right)$ и тоже для $m_i$.
 
-    А для столбцов  $1,2$ --- это определения элементарного преобразования  $3, 4$. Ну там можно транспонировать.
+    А для столбцов  $1,2$ --- это определения элементарного преобразования  $3, 4$. Ну там можно транспонировать: $(A \cdot T_{i,j}(a))^T = (T_{i,j}(a))^T \cdot A^T = T_{j,i}(a) \cdot A^T$ --- прибавляем к $j$-ой строке $A^T$ $i$-ую строку. Транспонировав обратно, получим заявленное
 \end{proof}
 \begin{remark}
     $E$ --- элементарная матрица  $\implies \rk(EA) = \rk(A) = \rk(AE)$, по свойству  $2'$ ранга, так как  $E$ --- обратима  $\iff$ элементарные преобразования матрицы не меняют их ранга.
@@ -470,30 +472,30 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
 \begin{remark}
     Элементарное преобразование 3-го типа.
     $S_{ij}\!: \begin{pmatrix} x_1 \\ \vdots \\ x_i \\ \vdots \\ x_j \\ \vdots \\x_n \end{pmatrix} = \begin{pmatrix} x_1 \\ \vdots \\ x_j \\ \vdots \\ x_i \\ \vdots \\x_n \end{pmatrix}$
-    Матрица $E$, где вместо единицы на  $s_{ii}$ стоят единицы на  $s_{ij}$ и  $s_{ji}$.
+    Матрица $E$, где вместо единиц на  $s_{ii}$ и $s_{jj}$ стоят единицы на  $s_{ij}$ и  $s_{ji}$. Умножение слева на $S_{ij}$ меняет местами строки $i, j$, а справа --- столбцы.
 
-    $s_{ij} = m_{j}(-1)t_{ij}(1)t_{ji}(-1)t_{ij}(1)$.
+    $S_{ij} = m_{j}(-1)t_{ij}(1)t_{ji}(-1)t_{ij}(1)$.
 \end{remark}
 \begin{theorem}
     $A$ --- матрица:
     \begin{enumerate}
-        \item $\exists e_1, \ldots, e_k$ --- элементарные, такие что $e_1 \cdot \ldots \cdot e_k \cdot A$ --- трапециевидная.
-        \item $A \in GL_n(K) \implies \exists e_1, \ldots, e_k$ --- элементарные, такие, что $e_1 \cdot \ldots \cdot e_k \cdot A = E$.
-        \item[2')] $A \in GL_n(K), \exists e_1, \ldots, e_k \quad A=e_1 \cdot \ldots \cdot e_k$.
-        \item $\exists e_1, \ldots, e_k$ --- элементарные $\exists f_1,\ldots, f_l$ --- элементарные, такие что $e_1 \ldots e_k \cdot A \cdot f_1 \ldots f_l = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$.
+        \item $\exists e_1, \ldots, e_k$ --- элементарные, такие что $e_k \cdot \ldots \cdot e_1 \cdot A$ --- трапециевидная.
+        \item $A \in GL_n(K) \implies \exists e_1, \ldots, e_k$ --- элементарные, такие, что $e_k \cdot \ldots \cdot e_1 \cdot A = E$.
+        \item[2')] $A \in GL_n(K), \exists e_1, \ldots, e_k \quad A=e_k \cdot \ldots \cdot e_1$.
+        \item $\exists e_1, \ldots, e_k$ --- элементарные $\exists f_1,\ldots, f_l$ --- элементарные, такие что $e_k \ldots e_1 \cdot A \cdot f_l \ldots f_1 = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    $2^\circ$ Понятно, что $e_1, e_2, \ldots, e_k$ --- обратимы. Тогда $A$ --- обратима  $\iff$  $e_1e_2e_3\ldots e_k A = $ треугольная матрица.
+    $2^\circ$ Понятно, что $e_1, e_2, \ldots, e_k$ --- обратимы. Тогда $A$ --- обратима  $\iff$  $e_k\ldots e_2e_1 A = $ треугольная матрица (результат Гаусса). Дальше её можно превратить в единичную
 
-    $2^\circ \to 2'^\circ$:  $A \in GL_n(K) \exists A^{-1} \in GL_n(K)$ по пункту 2  $\exists e_1, \ldots, e_k\!: e_1 \cdot e_2 \ldots \cdot e_k A^{-1} = E$.
+    $2^\circ \to 2'^\circ$:  $A \in GL_n(K) \exists A^{-1} \in GL_n(K)$ по пункту 2  $\exists e_1, \ldots, e_k\!: e_k \cdot \ldots \cdot e_2 \cdot e_1 A^{-1} = E$.
 
     $2^\circ \implies 3^\circ$: Знаем, что  $\exists$ обратимые  $C, D$:  $CAD = \begin{array}{|c|c|} E_r & 0 \\ \hline 0 & 0 \end{array}$. По пункту 2  $C, D$ представимы элементарными преобразованиями.
 
     $1^\circ$ $A \in M_{m, n}(K)$. Индукция по  $n$.
 
     База: $n = 1$. Упражнение или смотри дальше (на то, что происходит в индукционном переходе).\\
-    Переход: $n \to n+1$.  $A = (a_ij)_{\substack{i = 1..m \\ j=1..{n+1}}}$. Рассмотрим случаи:
+    Переход: $n \to n+1$.  $A = (a_{ij})_{\substack{i = 1..m \\ j=1..{n+1}}}$. Рассмотрим случаи:
     \begin{enumerate}
         \item $a_{11} \neq 0$, применим $t_{21}(-\frac{a_{21}}{a_{11}}), t_{31}(-\frac{a_{31}}{a_{11}}),\ldots, t_{m_1}(-\frac{a_{m_1}}{a_{11}})$. После домножения получим: первую строчку, в последующих в первом столбце ноль, а дальше получилась матрица с размерностью меньшей на 1.
 
@@ -505,7 +507,7 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
     \end{enumerate}
 
     \begin{statement}
-        Треугольная матрица обратима $\implies$ все  $a_i \neq 0$.
+        Треугольная матрица обратима $\implies$ все  $a_i \neq 0$ (на диагонали не нули).
     \end{statement}
     \begin{proof}
         Пусть не так. Рассмотрим такой минимальный $i$, что  $a_i = 0$. Посмотрим на столбцы. Тогда  $c_1, c_2, \ldots, c_i \in \langle e_1, \ldots, e_{i-1} \rangle \implies c_1, c_2, \ldots, c_i$ --- ЛЗ. $c_1,\ldots,c_n$ --- ЛЗ и $\rank < n \implies$ A --- необратима.
@@ -534,12 +536,12 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
     \end{enumerate}
 \end{proof}
 \begin{remark}
-    $A \in M_n(K) \implies \exists \mathcal{A}: K^n \rightarrow K^n (x \mapsto A\cdot x)$, тогда
+    $A \in M_n(K) \implies \exists \mathcal{A}: K^n \rightarrow K^n (X \mapsto A\cdot X)$, тогда
 
     $A \in UT_n(K) \iff \forall i \in 1:n\quad \mathcal{A}(e_i) \in \langle e_1, \ldots, e_i \rangle$. $\langle e_1 \rangle \le \langle e_1, e_2 \rangle \le \ldots \le \langle e_1, \ldots, e_n \rangle$.
 \end{remark}
 \begin{definition}
-    $A$ --- нильподентна, если $\exists k\!: A^k = 0$.
+    $A$ --- нильпотентна, если $\exists k\!: A^k = 0$.
 \end{definition}
 \begin{statement}
     $A \in UT_n(K)$.  $A$ --- нильп.  $\iff a_{ii} = 0$.
@@ -557,11 +559,11 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
     $A^k = 0 \iff \exists $ замена базиса  такая, что $A \in M_n(K)$ перейдет в верхнетреугольный вид.
 
 \end{remark}
-В методе Гаусса у нас есть набор преобразований $e_1e_2\ldots e_kA$. Вспомним, что $e_i$ либо перестановка строк, либо  $t_{ij}(a)$, где  $i > j$.
+В методе Гаусса у нас есть набор преобразований $e_k\ldots e_2e_1A \in UT_n(K)$. Вспомним, что $e_i$ либо перестановка строк, либо  $t_{ij}(a)$, где  $i > j$.
 
-Пусть перестановок нет. Тогда  $e_k = t_{i_k j_k}(a) \in LT_n(K) \implies e_1 \ldots e_k \in LT_n(K)$, где $i_k > j_k$.
+Пусть перестановок нет. Тогда  $e_k = t_{i_k j_k}(a) \in LT_n(K) \implies e_k \ldots e_1 \in LT_n(K)$, где $i_k > j_k$.
 
-Тогда  $LA = U$,  $L \in LT_n, U \in UT_n$, то есть  $A = L^{-1}U$,  $L^{-1} \in LT_n$,  $U \in UT_n$. Получили  $LU$ разложение.
+Тогда  $LA = U$,  $L \in LT_n, U \in UT_n$, то есть  $A = L^{-1}U$,  $L^{-1} \in LT_n$,  $U \in UT_n$ ($L^{-1} \in LT_n$, так как $L^{-1}$ --- композиция $t_{i_k,j_k}^{-1}(a)=t_{i_k,j_k}(-a)$, где $i_k>j_k$). Получили  $LU$ разложение.
 
 В общем случае сделаем в начале сделаем перестановки строк $P = s_{i_1,j_1}s_{i_2,j_2}\ldots s_{i_k,j_k}$. Тогда $PA$ - матрица, для которой $\exists LU$ - разложение. Тогда $PA = LU \implies A = P^{-1}LU$ - $LPU$-разложение на матрицу перестановки, нижне- и верхне-треугольную.
 \begin{theorem}
@@ -575,3 +577,6 @@ $A, B$ --- квадратные обратимые матрицы, тогда  $
         \item Если рассмотреть матрицу как систему, то для любого вектора правой части есть единственное решение  $AX = B \iff A^{-1}B = X$.
     \end{enumerate}
 \end{theorem}
+\begin{proof}
+    Уже доказывали
+\end{proof}
