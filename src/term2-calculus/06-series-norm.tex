@@ -469,3 +469,280 @@
     \sum\limits_{k=1}^n \frac{1}{p_k} = \ln \ln n + O(1)
     .\] 
 \end{remark}
+\begin{exerc}
+    \begin{enumerate}
+        \item Доказать, что $S(k) = \sum\limits_{k < p \le k^2} \frac{1}{p} < \frac{4}{3}$.
+
+            \textbf{Указание:} Посчитать количество чисел $\le k^2$, которые делятся на такие $p$.
+        \item Доказать, что  $\sum\limits_{\mathclap{\substack{p \ge n\\p\text{ ---  простое}}}} \frac{1}{p} < 2 \ln \ln n + 4$.
+    \end{enumerate}
+\end{exerc}
+\Subsection{Функциональные последовательности и ряды}
+\begin{definition}
+    $f, f_n\!: E \to \R$,  $f_n$ поточечно сходится к  $f$, если   $\forall x \in E\!: \lim\limits_{n \to \infty} f_n(x) = f(x)$.
+
+    В кванторах:  $\forall x \in E \forall \eps > 0 \exists N = N(x, \eps)\!: \forall n \ge N |f_n(x) - f(x)| < \eps$.
+\end{definition}
+\begin{definition}
+    $f_n$ равномерно сходится к  $f$ на  $E$  $f_n \rightrightarrows f$ на $E$:
+     \[
+    \forall \eps > 0 \exists N=N(\eps) \forall n \ge N \forall x \in E\!: |f_n(x) - f(x)| < \eps
+    .\] 
+\end{definition}
+\begin{remark}
+    Из равномерной сходимости следует поточечная.
+\end{remark}
+\begin{example}
+    $f_n(x) = x^n$,  $E = (0, 1)$.
+
+     $\lim f_n(x) \lim x^n = 0$. $f(x) \equiv 0 \implies $  $f_n$ поточечно сходится к  $f$. При этом, если взять  $x > \sqrt[n]{\eps}$, то мы проиграли, следовательно равномерной сходимости нет.
+\end{example}
+\begin{remark}
+    Равномерная сходимость на графике --- графики $f_n$ начиная с некоторого места попадают в полоску графика  $f$.
+\end{remark}
+\begin{theorem}
+    $f_n, f\!:E \to \R$. 
+
+    Тогда  $f_n \underset{E}{\rightrightarrows} \iff \sup\limits_{x \to E} |f_n(x) - f(x)| \to 0$
+\end{theorem}
+\begin{proof}
+    $\Rightarrow$. $f_n \underset{E}{\rightrightarrows} f \implies \forall \eps > 0 \exists N \forall n \ge N\!: \forall x \in E |f_n(x) - f(x)| < \eps$. Из части c $\forall x \in E$ как раз прямо и следует условие на  $\sup$.
+    $\Leftarrow$. $\lim\limits_{n \to \infty} \sup\limits_{x \to E} |f_n(x) - f(x)| = 0 \implies \forall \eps > 0 \exists N \forall n \ge N \sup\limits_{x \in E}|f_n(x) - f(x)| < \eps$. Из супремума следует $\forall x \in E |f_n(x) - f(x)| < \eps$.
+\end{proof}
+\begin{consequence}
+\begin{enumerate}
+    \item Если $\forall x \in E\!L |f_n(x) - f(x)| \le a_n$ и $\lim a_n = 0$, то $f_n \underset{E}{\rightrightarrows} f$.
+    \item Если  $x_n \in E\!: f_n(x_n) - f(x_n) \centernot \to 0$, то нет равномерной сходимости  $f_n \underset{E}{\rightrightarrows} f$.
+\end{enumerate}
+\end{consequence}
+\begin{proof}
+    \begin{enumerate}
+        \item $\implies 0 \le \sup\limits_{x \in E} |f_n(x) - f(x)| \le a_n \to 0 \implies \sup \to 0 \implies f_n \underset{E}{\rightrightarrows}f$.
+        \item $\sup\limits_{x \in E} |f_n(x) - f(x)| \ge |f_n(x_n)  - f(x_n)| \centernot \to 0 \implies \sup \centernot \to 0 \implies \sup \centernot \to 0$.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    $E=(0, 1), f(x) \equiv 0, f_n(x) = x^n$. $x_n = 1 - \frac{1}{n}$, $f_n(x_n) - f(x_n) = \left(1-\frac{1}{n}\right)^n \to \frac{1}{e} \neq 0$.
+\end{example}
+\begin{definition}
+    $g_n \!: E \to \R$ --- равномерно ограничена, если найдется  $M$, такой что  $|g_n(x) \le M \quad \forall x \in E \forall n$
+\end{definition}
+\begin{statement}
+    Произведение равномерно ограниченной и равномерно сходящейся к нулю равномерно сходится к нулю.
+\end{statement}
+\begin{proof}
+    $g_n$ --- равномерно ограничена,  $|g_n(x)| \le M, f_n(x) \rightrightarrows 0$, $\sup\limits_{x \in E} |f_n(x)| \to 0$.
+
+     $\sup\limits_{x \in E} |f_n(x)g_n(x)| \le M \sup \to 0 \implies f_ng_n \rightrightarrows 0$.
+\end{proof}
+\begin{remark}
+    \begin{enumerate}
+        \item $f_n \underset{E}{\rightrightarrows} f \iff f_n - f \underset{E}{\rightrightarrows} 0$.
+        \item  Если $f_n \rightrightarrows f, g_n \rightrightarrows g \implies \alpha f_n + \beta g_n \rightrightarrows \alpha f + \beta g$.
+    \end{enumerate}
+\end{remark}
+\begin{theorem}[Критерий Коши для равномерной сходимости последовательности функций]
+    $f_n\!: E \to \R$ тогда  $f_n$ равномерно сходится к некоторой функции  $\iff \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E |f_n(x) - f_m(x) | < \eps$.
+\end{theorem}
+\begin{proof}
+    $\implies$.  $f_n \underset{E}{\rightrightarrows} f$  $\forall \eps > 0 \exists N \begin{array}{l} \forall n \ge N \forall x \in E |f_n(x) - f(x)| < \frac{\eps}{2} \\ \forall m \ge N \forall x \in E |f_m(x) - f(x)| < \frac{\eps}{2} \end{array}$. 
+
+    $\forall m, n \ge N \forall x \in E |f_n(x) - f_m(x)| \le |f_n(x) - f(x)| + |f(x) - f_n(x)| < \frac{\eps}{2} + \frac{\eps}{2} = \eps$.
+
+    $\Leftarrow$.  $\forall \eps > 0 \exists N \forall m, n \ge N_e \forall x \in E\quad |f_n(x) - f_m(x)| < \eps$. Зафиксируем $x \in E$. Если  $m_n \ge N_\eps$, то знаем заклинание $\implies f_n(x)$ --- фундаментальная последовательность  $\implies$ она имеет конечный предел.  $f(x) \coloneqq \lim\limits_{n \to \infty} f_n(x)$.
+
+    Тогда  $\forall \eps > 0 \exists N \forall m \ge n \ge N \forall x \in E \quad |f_n(x) - f_m(x)| < \eps$ --- критерий Коши. Устремим тут $m \to \infty$. Тогда  $\forall \eps > 0 \exists N \forall n \ge N \forall x \in E |f_n(x) - f(x)| \le \eps$ равномерно сходится к $f$.
+\end{proof}
+\begin{definition}
+    Пространство $C(K)$,  $K$ --- компакт. 
+
+     $C(K) \coloneqq \{f\!: K \to \R \land f \text{ непрерывна во всех точках}\}$ --- векторное пространство.
+
+      $f, g\!: K \to \R, (\alpha f+\beta g)(x) \coloneqq \alpha f(x) + \beta g(x)$.
+
+      Можно завести норму  $\|f\|_{C(K)} \coloneqq \max\limits_{x \in K} |f(x)|$ --- нормированное пространство.
+
+      Интересно только неравенство треугольника $\|f+g\| = |f(x_0) + g(x_0)| \le |f(x_0)| + |g(x_0| \le \|f\| + \|g\|$.
+\end{definition}
+\begin{definition}
+    Пространство $l^\infty(E)$.
+
+     $l^\infty(E) \coloneqq \{f\!: E \to \R \land f\text{ --- ограничена}\}$ --- векторное пространство.
+
+     $\|f\|_{l^\infty(E)} \coloneqq \sup_{x \o E}|f(x)|$ нормированное пространство.
+\end{definition}
+\begin{remark}
+    $C(K) \subset l^{\infty}(K)$.
+\end{remark}
+\begin{theorem}
+    $l^\infty(E)$ --- полное пространство.
+\end{theorem}
+\begin{proof}
+    $f_n$ --- фундаментальная последовательность  $\forall \eps > 0 \exists N \forall m, n \ge N \sup\limits_{x \in E} |f_n(x) - f_m(y)| = \|f_n - f_m\| < \eps \implies \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E |f_n(x) - f_m(x)| < \eps \implies f_n$ --- равномерно сходится на $E \implies \sup_{x \to E} |f_n(x) - f(x)| = \|f_n - f\|_{l^\infty(E)} \to 0$. Надо проверить, что  $f \in l^\infty(E)$.
+
+     $f_n(x) \le \underbrace{|f(x) - f_n(x)}_{\le \|f - f_n\|} + \underbrace{|f_n(x)|}_{\le \|f\|}$.
+\end{proof}
+\begin{theorem}
+    $f_n, f\!: E \to R, a \in E, f_n \underset{E}{\rightrightarrows} f$ и  $f_n$ непрерывна в точке $a$. Тогда  $f$ непрерывна в точке  $a$.
+\end{theorem}
+\begin{proof}
+    Берем $\eps > 0$. Найдем  $N$, такой что  $\forall n \ge N \forall x \in E |f_n(x) - f(x)| < \eps$.
+
+    $|f(x) - f(a)| \le \underbrace{|f(x) - f_N(x)|}_{< \eps} + \underbrace{|f_N(x) - f_N(a)|}_{< \eps, \text{ если } |x-a| < \delta} + \underbrace{|f_N(a) - f(a)|}_{< \eps} < 3\eps$.
+
+    $\exists \delta > 0 \forall |x-a| < \delta\quad |f_N(x)- f_N(a)| < \eps \implies f$ --- непрерывна в $a$.
+\end{proof}
+\begin{consequence}[Теорема Стокса-Зайделя]
+    $f_n \underset{E}{\rightrightarrows} f$ и  $f_n$ непрерывна во всех точках  $E \implies f$ непрерывна во всех точках из  $E$.
+\end{consequence}
+\begin{theorem}
+    $C(K)$ --- полное.
+\end{theorem}
+\begin{lemma}
+    $(X, \rho)$ --- полное метрическое пространство, $Y \subset X$ --- замкнутое  $\implies (Y, \rho)$ --- полное. 
+\end{lemma}
+\begin{proof}[Доказательство леммы]
+    Возьмем $y_n \in Y$ --- фундаментальная последовательность в  $Y \implies$ она фундаментальна в $X \implies \exists y_* \in X\!: y_* = \lim y_n \implies y_*$ ---  предельная точка  $Y \implies y_* \in Y$.
+\end{proof}
+\begin{proof}[Доказательство теоремы]
+    $C(K)$ --- замкнутое подпространство  $l^\infty(K)$.  $\sup\limits_{x \in K}|f_n(x) - f(x)| =\|f_n - f\|_{l^\infty(K)} \to 0$. Тогда если $f_n \in C(K), f_n \underset{K}{\rightrightarrows} f \implies f \in C(K)$.
+\end{proof}
+\begin{definition}
+    $u_n\!: E \to \R$.  $\sum\limits_{n=1}^\infty u_n(x)$ --- функциональный ряд.
+
+     $S_n(x) \coloneqq \sum\limits_{k=1}^n u_k(x)\!: E \to \R$ --- частичная сумма ряда.
+
+     Если  $S_n$ поточечно сходится к  $S$, то ряд сходится поточечно.
+
+     Если $S_n \underset{E}{\rightrightarrows} S$, то ряд равномерно сходится на  $E$.
+\end{definition}
+\begin{definition}
+    Если ряд $\sum\limits_{n=1}^\infty u_n(x)$ сходится поточечно, то  $r_n(x) \coloneqq \sum\limits_{k=n+1}^\infty u_k(x)$ --- остаток (хвост) ряда.
+\end{definition}
+\begin{theorem}
+    Ряд $\sum\limits_{k=1}^\infty u_n(x)$ сходится равномерно на  $E \iff r_n \underset{E}{\rightrightarrows} 0$.
+\end{theorem}
+\begin{proof}
+    $S_n \underset{E}{\rightrightarrows} S \iff S - S_n \rightrightarrows 0$.
+\end{proof}
+\begin{remark}
+    Необходимые условия равномерной сходимости. Если $\sum u_n(x)$ равномерно сходится, то  $u_n \rightrightarrows 0$.
+\end{remark}
+\begin{proof}
+    Равномерная сходимость $\implies S_n \rightrightarrows S \implies S_n - S_{n-1} \rightrightarrows S - S = 0$.
+\end{proof}
+\begin{remark}
+    Если $x_n \in E\!: \underbracket{u_n(x_n) \centernot \to 0}_{\mathclap{\text{нет равномерной сходимости } \to 0}}$, то $\sum\limits_{n=1}^\infty u_n(x)$ не может равномерно сходиться.
+\end{remark}
+\begin{remark}
+    Из расходимости ряда $\sum\limits_{n=1}^\infty u_n(x_n)$ ничего не следует.
+
+    $u_n(x) = \begin{cases} \frac{1}{n} & x \in (\frac{1}{n+1}, n] \\ 0 & \text{иначе} \end{cases}.$ 
+
+    $x_n = \frac{1}{n} \implies u_n(x_n) = \frac{1}{n}$ и ряд $\sum u_n(x_n)$ --- расходится.
+
+    Но ряд $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится.  $0 \le r_n(x) \le \frac{1}{n+1} r_n \rightrightarrows 0$.
+\end{remark}
+\begin{theorem}[Критерий Коши для равномерной сходимости ряда]
+    $u_n\!: E \to \R$. Ряд  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится на  $E \iff$
+     \[
+    \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E |\sum\limits_{k=n+1}^m u_k(x)| < \eps.
+    .\] 
+\end{theorem}
+\begin{proof}
+    $\sum u_n(x)$ равномерно сходится  $\iff S_n(x) \coloneqq \sum\limits_{k=1}^n u_k(x)$ равномерно сходится  $\iff \forall \eps > 0 \exists N \forall m > n \ge N \forall x \in E |S_m(x) - S_n(x)| < \eps$, а эта разность как раз то, что надо.
+\end{proof}
+
+\begin{theorem}[Признак сравнения]
+   $u_n, v_n\!: E \to \R$,  $|u_n(x)| \le v_n(x) \quad \forall x \in E, \forall n$.
+
+   Если $\sum\limits_{n=1}^\infty v_n(x)$ сходится равномерно на  $E$, то ряд  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится на  $E$.
+\end{theorem}
+\begin{proof}
+    Применим к левой части критерий Коши: $\forall \eps > 0 \exists N \forall m > n \ge N \forall x \in E \quad |\sum\limits_{k=n+1}^m u_k(x)| \le \sum\limits_{k=n+1}^m |u_k(x)|\le \sum\limits_{k=n+1}^m v_k(x)< \eps$. Откуда получаем, что ряд $\sum\limits_{k=1}^\infty u_k(x) $ равномерно сходится на  $E$.
+\end{proof}
+\begin{consequence}
+    \begin{enumerate}
+        \item Если $\sum |u_n(x)|$ сходится равномерно на  $E$, то  $\sum u_n(x)$ сходится равномерно на  $E$. 
+        \item Признак Вейерштрасса. Если  $|u_n(x)| \le a_n \quad \forall x \in E \forall n$ и ряд $\sum a_n$ --- сходится, то  $\sum u_n(x)$ сходится равномерно на  $E$.
+    \end{enumerate}
+\end{consequence}
+\begin{example}
+    $\sum\limits_{n=1}^\infty \frac{\sin nx}{n^2}$ равномерная сходимость на $\R$.
+
+     $\left| \frac{\sin nx}{n^2}\right| \le \frac{1}{n^2}$. $\sum\limits_{n=1}^\infty \frac{1}{n^2}$ --- сходится.
+\end{example}
+\begin{remark}
+    Ряд сходится равномерно, но не абсолютно $\sum\limits_{n=1}^\infty \frac{(-1)^n}{n}$
+
+    Ряд сходится абсолютно, но не сходится равномерно $\sum\limits_{n=1}^\infty x^n$ при $x \in (-1, 1)$.
+
+    Ряд сходится абсолютно, ряд сходится равномерно, но ряд $\sum |u_n(x)|$ сходится неравномерно.
+\end{remark}
+\begin{theorem}[Признак Дирихле]
+    $a_n, b_n\!: E \to \R$.
+     \begin{enumerate}
+         \item $\left|\sum\limits_{k=1}^n a_k(x)\right| \le M \quad \forall x \in E \forall n$.
+         \item $b_n(x)$ монотонно при любом фиксированном $x \in E$.
+         \item  $b_n \rightrightarrows 0$.
+    \end{enumerate}
+
+    Тогда ряд $\sum\limits_{n=1}^\infty a_n(x)b_n(x)$ сходится равномерно на  $E$.
+\end{theorem}
+\begin{proof}
+   $S_n(x) \coloneqq \sum\limits_{k=1}^n a_k(x)b_k(x) = A_n(x)b_n(x) + \sum\limits_{k=1}^{n-1}A_k(x)(b_k(x) - b_{k+1}(x))$, где $A_n$ --- частичная сумма  $a$.
+
+   $A_nb_n \rightrightarrows 0$, так как  $A_n$ равномерно ограничена и  $b_n \rightrightarrows 0$.
+
+   Докажем, что ряд $\sum\limits_{k=1}^\infty A_k(x)(b_k(x) - b_{k+1}(x))$ равномерно сходится.
+
+   $|A_k(x)| |b_k(x) - b_{k+1}(x)| \le M|b_k(x) - b_{k+1}(x)| \eqqcolon v_k(x)$. Надо доказать, что $\sum\limits_{k=1}^\infty |b_k(x) - b_{k+1}(x)|$ равномерно сходится, то есть  $\sum\limits_{k=1} |b_k(x) - b_{k+1}(x)|$ равномерно сходится. $\sum\limits_{k=1}^n |b_k(x) - b_{k+1}(x)| = |\sum\limits_{k=1}^n (b_k(x) - b_{k+1}(x))| = b_1(x) - b_n(x) \rightrightarrows b_1(x)$
+\end{proof}
+\begin{theorem}[Признак Абеля]
+    $a_n, b_n\!: E \to \R$.
+     \begin{enumerate}
+         \item $\sum\limits_{n=1}^\infty a_n(x)$ --- равномерно сходится.
+         \item  $b_n(x)$ монотонно при любом фиксированном  $x \in E$.
+         \item  $b_n(x)$ равномерно ограничена.
+    \end{enumerate}
+
+    Тогда $\sum\limits_{n=1}^\infty a_n(x)b_n(x)$ сходится равномерно на  $E$.
+\end{theorem}
+\begin{proof}
+    $\sum\limits_{k=n+1}^{n+p} a_k(x)b_k(x) = \sum\limits_{k=1}^p a_{n+k}(x)b_{n+k}(x) = (A_{n+p}(x) - A_p(x))b_{n+p}(x)+\sum\limits_{k=1}^{p-1} (A_{n+k}(x) - A_{n+1}(x))(b_{n+k}(x) - b_{n+k+1}(x))$.
+
+    $A_n(x) \rightrightarrows A(x) \implies \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E\!: |A_n(x) - A_m(x)| < \eps$.
+
+    Тогда $|A_{n+p}(x) - A_n(x)| < \eps$ и  $|A_{n+k}(x) - A_n(x)| < \eps$.
+
+     $|\sum\limits_{k=n+1}^{n+p} a_k(x)b_k(x)| \le \underbrace{|A_{n+p}(x) - A_n(x)|}_{\mathclap{< \eps}} \cdot \underbrace{|b_{n+p}(x)|}_{\le M} + \sum\limits_{k=1}^{p-1} \underbrace{|A_{n+k}(x)-A_n(x)}_{\le \eps}|b_{n+k}(x) - b_{n+k+1}(x)| \le \eps M + \eps\sum\limits_{k=1}^{p-1}|b_{n+k}(x) - b_{n+k+1}(x)| = \eps M + \eps|\sum\limits_{k=1}^{n-1}(b_{n+k}(x) - b_{n+k+1}(x)) \le \eps M + \eps \cdot 2M = 3M\eps$.
+\end{proof}
+\begin{theorem}[Признак Лейбница]
+    $b_n\!: E \to \R$,  $b_n \rightrightarrows 0, b_n(x)$ монотонна при любом фиксированном  $x \in E$. Тогда ряд  $\sum\limits_{k=1}^\infty (-1)^k b_n(x)$ равномерно сходится на  $E$.
+\end{theorem}
+\begin{proof}
+    $a_n(x) = (-1)^n$,  $\sum\limits_{k=1}^n a_k(x) = 0$ или  $-1  \implies $ равномерно ограничен. Применим признак Дирихле.
+\end{proof}
+\begin{example}
+    $\sum\limits_{n=1}^\infty \frac{(-1)^n}{n}x^n$ при $x \in (0, 1)$.
+
+    Ряд абсолютно сходится $\forall x \in (0, 1)\!: \left| \frac{(-1)^n}{n}x^n\right| \le x^n$.
+
+    Ряд сходится равномерно $b_n(x) = x^n \rightrightarrows 0, 0 \le b_n(x) \le \frac{1}{n}, x_n(x) \searrow$.
+
+    $\sum\limits_{n=1}^\infty \left|\frac{(-1)^n}{n}x^n \right| = \sum\limits_{n=1}^\infty \frac{x^n}{n}$.
+
+    Нет равномерной сходимости. $\sum\limits_{k=n}^{2n} \frac{x^k}{k} \ge n \frac{x^{2n}}{2n} = \frac{x^{2n}}{2} \to \frac{1}{2e}$, $x = 1 - \frac{1}{2n}$.
+\end{example}
+\begin{theorem}[Признак Дини]
+    $0 \le u_n \in C_(K)$, $K$ --- компакт и  $S_x( \coloneqq \sum\limits_{N=1}^\infty u_n(x) \in C(k)$. Тогда ряд сходится равномерно на  $K$.
+\end{theorem}
+\begin{proof}
+    $r_n(x) = S(x) - S_n(x) \in C(K), S(x) - S_n(x) = \sum\limits_{n=1}^\infty u_k(x), 0 \le r_{n+1} \le r_n(x)$.
+
+    Надо доказать, что $r_n \underset{K}{\rightrightarrows} 0$.  $r_n(x_n) = \sup\limits_{x \in K} r_n(x) \to 0$ для некоторого $x_n \in K$.
+
+    От противного. Пусть нет стремления к нулю.  $r_{n_k}(x_{n_k}) \ge \eps$, $x_{n_k} \in K$. Выберем сходящуюся подпоследовательность  $x_{n_k} \to x_n \in K$.
+
+     $r_{m_k}(x_{m_k}) \ge \eps$. $x_{m_k} \to x_k$. Тогда  $r_n(x_{m_k}) \ge r_{n+1}(x_{m_k}) \ge r_{n+2}(x_{m_k}) \ge \ldots \ge r_{m_k}(x_{m_k}) \ge \eps$, при этом $r_n(x_{m_k}) \to r_n(x_n) \implies r_n(x_n) \ge \eps \quad \forall x$. Но $r_n(x_n) \to 0$. Противоречие.
+\end{proof}
