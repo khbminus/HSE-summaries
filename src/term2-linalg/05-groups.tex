@@ -546,3 +546,164 @@ $|G| = n$. Верно ли, что в  $G$ есть элемент порядк�
             Я потерялся очень сильно я не знаю как жить дальше.
     \end{enumerate}
 \end{proof}
+
+\Subsection{Центр и коммутант}
+
+\begin{definition}
+    $G$ --- группа, центр  $G$  $Z(G) = \{ a \mid ag = ga\ \forall g \in G\}$.
+\end{definition}
+\begin{definition}
+    $a, b \in G$ коммутатор  $s$ и  $b$ ---  $[a, b] = a^{-1}b^{-1}ab = (ba)^{-1}ab$.
+\end{definition}
+\begin{definition}
+    Пусть $H_1, H_2 \le G$. Тогда коммутант $[H_1, H_2] = \langle [h_1, h_2] \mid h_1 \in H_1, h_2 \in H_2\rangle$.
+\end{definition}
+\begin{definition}
+    Коммутант $G$ --- $[G, G]$.
+\end{definition}
+\begin{theorem}[Свойства центра и коммутанта]
+    \begin{enumerate}
+        \item[$0_1$.] $G$ --- абелева  $\iff Z(G) = G$.
+        \item[$0_2$.] $G$ --- абелева $\iff [G, G] = \{e\}$.
+        \item[$1_1$.] $Z(g) \trianglelefteq G$.
+        \item[$1_2$.] $[G_1, G_2] \trianglelefteq G$.
+        \item[$2_1$.] $Z(G)$ --- абелева группа.
+        \item[$2_2$.] $G / [G, G]$ --- абелева.
+        \item[3.]  $H \trianglelefteq G$,  $G / H$ --- абелева  $\implies H \ge [H, H]$ (универсальное свойство коммутанта).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[$1_1$.] $e \in Z(G)$.  $a, b \in Z(G), \forall c \in G ac = ca, bc = cb \implies (ab)c = a(bc) = a(cb) = (ac)b = (ca)b \implies ab \in Z(G)$.
+
+            $a \in Z(G) \implies a^{-1} \in Z(G)$. Нормальность проверяется легко: $g^{-1}hg = hg^{-1}g = h$.
+        \item[$1_2$.] $[G, G] \le G$ --- по определению. 
+
+            Теперь заметим, что $x = [a, b] = a^{-1}b^{-1}ab$. Рассмотрим  $g^{-1}xg = g^{-1}a^{-1}b^{-1}abg = \ldots = [a', b']$, где $a' = g^{-1}ag, b' = g^{-1}bg$.
+
+            $[a, b]^{-1} = (a^{-1}b^{-1}ab)^{-1} = b^{-1}a^{-1}ba = [b, a] \implies \forall $ элемент  $[G, G]$ --- произведение коммутаторов. 
+
+             $x \in [G, G]$, тогда  $x = [a_1, b_1][a_2,b_2]\ldots[a_n, b_n]$, $g^{-1}xg = g^{-1}[a_1, b_1][a_2, b_2]\ldots[a_n, b_n]g = \ldots = [a_1', b_1']\ldots \in [G, G]$.
+         \item[2.] $G / [G, G] = \overline{a}, \overline{b}$.  $\overline{a} \cdot \overline{b} = \overline{a}\overline{b}\overline{b^{-1}a^{-1}}\overline{ba} = \overline{a}\overline{b}\overline{b^{-1}}\overline{a^{-1}}\overline{ba} = \overline{ba}$.
+         \item[3.] $G / H$ --- абелева  $\forall a, b \in G\quad \overline{a_H} \overline{b_H} = \overline{b_H}\overline{a_H}$.  $\overline{a_H}^{-1}\overline{b_H}^{-1} \overline{a_H}\overline{b_H} = \overline{e} \implies \overline{a^{-1} b^{-1}ab} = \overline{e} \implies a^{-1}b^{-1}ab \in H$
+         \item[4.] Тут нужна картинка, но я краб.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}
+    $A$ --- коммутативна абелева  $\implies$  $A \cong \Z / p_1^{\alpha_1} \times \ldots$.
+\end{theorem}
+\begin{proof}
+    Нет.
+\end{proof}
+\begin{example}
+    $S_n$,  $n \ge 5$.
+    $[S_n, S_n] = A_n$,  $S_n / A_n = C_2$,  $[A_n, A_n] = A_n$ --- соверешенная.
+
+     $Z(S_n) = \{e\} = Z(A_n) = \{e\}$.
+
+     $n = 4$.  $[S_4, S_4] = A_4$.  $[A_4, A_4] = D_4 = \langle (12), (34), (13), (34) \rangle$. $[D_4, D_4] = \{e\}$.
+\end{example}
+\begin{example}
+    $G$ --- конечная  $\to G_1 =G / Z(G) \to G_2 = G_1 / Z(G_1) \to \ldots$.
+
+    Либо. $G \to G_1 = [G, G] \to G_2 = [G, G_1] \to G_i = [G, G_{i-1}]$.
+
+    Либо $G_{k+1} = [G_k, G_k]$.
+\end{example}
+\begin{statement}
+    \begin{enumerate}
+        \item Первая цепочка приходит к $\{e\}$ $\iff$ вторая цепочка приходит к $\{e\}$.
+        \item Вторая цепочка приходит к $\{e\} \implies$ третья цепочка приходит к  $\{e\}$.
+    \end{enumerate}
+
+    Если существует $k$, такое  $G_k = \{e\}$(первый или второй случай), то  $G$ называется нильподентной группой. 
+    Если существует $k$, такое  $G_k = \{e\}$(третий случай), то  $G$ называется разрешимая группой. 
+\end{statement}
+\begin{example}
+    $S_4$ --- разрешима, но не нильподентна. 
+\end{example}
+\begin{example}
+    Рассмотрим нижнетреугольные матрицы $\le GL_n(K)$  --- нмльподентная подгруппа.
+
+    $Z(GL_n(K)) = \{k\cdot E\}$ --- скалярные матрицы.  $GL_n / Z(GL_n) = PGL_n$,  $Z(PGL_n) = \{e\}$.
+
+     $[GL_n, GL_n] = SL_n(K), [SL_n, SL_n] = SL_n(n)$.
+\end{example}
+\begin{theorem}
+    $G$ --- конечна. Тогда
+
+    Следующие условия равносильный: 
+    \begin{enumerate}
+        \item $G$ --- разрешима.
+        \item Все простые подфакторы $G$ --- это  $\Z / p_i \Z$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $1 \implies 2$. Абоба.
+
+    $2 \implies 1$. Пусть $G$ неразрешима. Тогда  $\exists i\!: [G_i, G_i] = G_i \neq \{e\}$. Все подфакторы  $G$ абелевы  $\iff$ все подфакторы  $G_i$ абелевы.  $G_i = H$.
+
+    Разложим  $G_i$.
+\end{proof}
+\begin{theorem}
+    $G$ --- конечная, тогда  $|G| = p^n \implies G$ --- нильподентна. 
+\end{theorem}
+\begin{proof}
+    $G \to G / Z(G) = G / Z(G) = G_1 \leadsto G_1 / Z(G_1) = G_2 \leadsto \ldots$, $G_i = p^{\alpha_i} \quad \forall i$. Достаточно доказать:  $G_i \neq \{e\} G_{i+1} \neq G_i$, то есть  $Z(G_i) \neq \{e\}$. 
+
+    То есть  Th  $\Leftarrow$  лемма.
+\end{proof}
+\begin{lemma}
+    $|G| = p^n$,  $p$ --- простое  $\implies Z(G) \neq \{e\}$.
+\end{lemma}
+\begin{proof}
+    $G \acts G$ сопряжениями. $g \neq m = g \cdot m g^{-1}$.   $O_i$ --- орбита,  $O_1 = G \cdot e = \{e\}$.  $|O_1| + |O_2| + \ldots = p^n \implies \exists i \neq 1\!: |O_i| = 1$, так как любая орбита имеет порядок либо $1$, либо степень $p$. 
+
+    Теперь пусть $|G| = p_1^{\alpha_1} \ldots p_k^{\alpha_k}$. По первой теореме Силова $\exists |G_1| = p_1^{\alpha_1}, \ldots$.
+\end{proof}
+\begin{theorem}
+    $|G| = p^2 \implies G$ --- абелева.
+\end{theorem}
+\begin{proof}
+    $|G| = p^2$,  $\exists g\!: \ord g =p^2 \implies G$ --- циклическая  $\cong \Z / p^2 \Z \ldots$
+
+    Иначе $\forall g \neq e \ord g = p$.  Тогда $Z(G) = G$ (тогда $G$ --- абелева) или $|Z(G)| = p$. Тогда  $Z(G) = \langle a \rangle, \ord a = p$,  $b \notin Z(G), \ord b = p$.  $\langle a, b\rangle p^2 \implies \langle a, b \rangle = G \implies G$ --- абелева.
+\end{proof}
+\begin{remark}
+    $G \cong \Z / p^2 \Z$ или $\Z / p \Z \times \Z / p \Z$.
+\end{remark}
+\begin{example}
+    $|G| = p^3$.
+    Пусть $H \trianglelefteq G$.  $H = \langle x, y \mid x^p = y^p = e, xy=yx\rangle \cong \Z / p\Z \times \Z / p\Z$.
+
+     $\exists z \in G \setminus H, \ord z = p$, $\langle x, y, z\rangle = G = \{ x^k y^l z^m \}$.  
+
+     $H \trianglelefteq G \implies g^{-1}x^{k}y^{l}g = x^{k'}y^{l'}$.
+
+     Тогда $z^{-1}hz = f(h) \in H$, знание  $f$ однозначно задает  $G$.  $z^{-1}hz = f(h), hz = zf(h)$.
+
+     Наблюдение: $H \trianglelefteq G, g \in G$.  $f_g(h) = g^{-1}hg$ --- автоморфизм  $H$. $(f_g(h))^{-1} = f_{g^{-1}}(h)$.
+\end{example}
+\begin{definition}
+    $Aut(G)$ --- группа автоморфизмов  $H$ (относительно композиции).
+\end{definition}
+\begin{statement}
+    $G$ --- группа.  $G_1, G_2 \le G$. $f\!: G_1 \times G_2 \to G$ и $(g_1,g_2) \to g_1g_2$.
+
+    $f$ --- изоморфно (тогда $\implies G \cong G_1 \times G_2$) $\iff$
+    \begin{enumerate}
+        \item $G_1+G_2 = G$.
+        \item $G_1 \cap G_2 = \{e\}$.
+        \item $g_1g_2 = g_2g_1\quad \forall g_1 \in G_1, g_2 \in G_2$.
+    \end{enumerate}
+\end{statement}
+\begin{exerc}
+    Пусть знаем $1, 2$ --- выполнены, тогда  $3 \iff G_1 \trianglelefteq G, G_2 \trianglelefteq G$.
+\end{exerc}
+\begin{definition}
+    Если все то же, что и выше, но только одна из $G_1, G_2$ нормальна, то $G$ называется внутренним полупрямым произведением  $G_1$ и $G_2$.
+
+    $g = g_1g_2$, $(g_1g_2) \cdot (g_1' g_2') = g_1g_1'(g_1')^{-1}g_2g_1'g_2' = (g_1g_1')((g_1')^{-1}g_2g_1')g_2' = \underbrace{(g_1g_1')}_{\in G_1}\underbrace{(f_{g_1'}(g_2)g_2')}_{\in G_2}$.
+
+    Полупрямые произведения задаётся $G_1, G_2$ гомоморфизмами. $G_1 \to Aut(G_2)$.
+\end{definition}
