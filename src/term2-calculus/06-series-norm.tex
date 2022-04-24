@@ -495,40 +495,44 @@
 \begin{example}
     $f_n(x) = x^n$,  $E = (0, 1)$.
 
-     $\lim f_n(x) \lim x^n = 0$. $f(x) \equiv 0 \implies $  $f_n$ поточечно сходится к  $f$. При этом, если взять  $x > \sqrt[n]{\eps}$, то мы проиграли, следовательно равномерной сходимости нет.
+     $\lim f_n(x) = \lim x^n = 0$. $f(x) \equiv 0 \implies $  $f_n$ поточечно сходится к  $f$. При этом, если взять  $x > \sqrt[n]{\eps}$, то мы проиграли, следовательно равномерной сходимости нет.
 \end{example}
 \begin{remark}
     Равномерная сходимость на графике --- графики $f_n$ начиная с некоторого места попадают в полоску графика  $f$.
 \end{remark}
+\begin{figure}[!h]
+	\includegraphics[scale=0.45]{uniform_conv}
+\end{figure}
 \begin{theorem}
     $f_n, f\!:E \to \R$. 
 
-    Тогда  $f_n \underset{E}{\rightrightarrows} \iff \sup\limits_{x \to E} |f_n(x) - f(x)| \to 0$
+    Тогда  $f_n \underset{E}{\rightrightarrows} f \iff \sup\limits_{x \in E} |f_n(x) - f(x)| \to 0$
 \end{theorem}
 \begin{proof}
-    $\Rightarrow$. $f_n \underset{E}{\rightrightarrows} f \implies \forall \eps > 0 \exists N \forall n \ge N\!: \forall x \in E |f_n(x) - f(x)| < \eps$. Из части c $\forall x \in E$ как раз прямо и следует условие на  $\sup$.
-    $\Leftarrow$. $\lim\limits_{n \to \infty} \sup\limits_{x \to E} |f_n(x) - f(x)| = 0 \implies \forall \eps > 0 \exists N \forall n \ge N \sup\limits_{x \in E}|f_n(x) - f(x)| < \eps$. Из супремума следует $\forall x \in E |f_n(x) - f(x)| < \eps$.
+    $\Rightarrow$: $f_n \underset{E}{\rightrightarrows} f \iff \forall \eps > 0 \exists N \forall n \ge N\!: \forall x \in E |f_n(x) - f(x)| < \eps$. Из части c $\forall x \in E$ как раз прямо и следует условие на  $\sup$.\\
+    $\Leftarrow$: $\lim\limits_{n \to \infty} \sup\limits_{x \in E} |f_n(x) - f(x)| = 0 \iff \forall \eps > 0 \exists N \forall n \ge N \sup\limits_{x \in E}|f_n(x) - f(x)| < \eps$. Из супремума следует $\forall x \in E |f_n(x) - f(x)| < \eps$.\\
+    Здесь мы пользовались тем, что $\sup|f_n(x) - f(x)| \geq |f_n(x) - f(x)|$.
 \end{proof}
 \begin{consequence}
 \begin{enumerate}
-    \item Если $\forall x \in E\!L |f_n(x) - f(x)| \le a_n$ и $\lim a_n = 0$, то $f_n \underset{E}{\rightrightarrows} f$.
+    \item Если $\forall x \in E\quad |f_n(x) - f(x)| \le a_n$ и $\lim a_n = 0$, то $f_n \underset{E}{\rightrightarrows} f$.
     \item Если  $x_n \in E\!: f_n(x_n) - f(x_n) \centernot \to 0$, то нет равномерной сходимости  $f_n \underset{E}{\rightrightarrows} f$.
 \end{enumerate}
 \end{consequence}
 \begin{proof}
     \begin{enumerate}
         \item $\implies 0 \le \sup\limits_{x \in E} |f_n(x) - f(x)| \le a_n \to 0 \implies \sup \to 0 \implies f_n \underset{E}{\rightrightarrows}f$.
-        \item $\sup\limits_{x \in E} |f_n(x) - f(x)| \ge |f_n(x_n)  - f(x_n)| \centernot \to 0 \implies \sup \centernot \to 0 \implies \sup \centernot \to 0$.
+        \item $\sup\limits_{x \in E} |f_n(x) - f(x)| \ge |f_n(x_n)  - f(x_n)| \centernot \to 0 \implies \sup \centernot \to 0 \implies$ нет равномерной сходимости. Здесь $x_n$~--- какая-то конкретная точка.
     \end{enumerate}
 \end{proof}
 \begin{example}
-    $E=(0, 1), f(x) \equiv 0, f_n(x) = x^n$. $x_n = 1 - \frac{1}{n}$, $f_n(x_n) - f(x_n) = \left(1-\frac{1}{n}\right)^n \to \frac{1}{e} \neq 0$.
+    $E=(0, 1), f(x) \equiv 0, f_n(x) = x^n$. $x_n = 1 - \frac{1}{n}$, $f_n(x_n) - f(x_n) = \left(1-\frac{1}{n}\right)^n \to \frac{1}{e} \neq 0 \implies$ нет равномерной сходимости.
 \end{example}
 \begin{definition}
-    $g_n \!: E \to \R$ --- равномерно ограничена, если найдется  $M$, такой что  $|g_n(x) \le M \quad \forall x \in E \forall n$
+    $g_n \!: E \to \R$ --- равномерно ограничена, если найдется  $M$, такой что\\$|g_n(x)| \le M \quad \forall x \in E\quad\forall n$
 \end{definition}
 \begin{statement}
-    Произведение равномерно ограниченной и равномерно сходящейся к нулю равномерно сходится к нулю.
+    Произведение равномерно ограниченной и равномерно сходящейся к нулю равномерно~--- сходится к нулю.
 \end{statement}
 \begin{proof}
     $g_n$ --- равномерно ограничена,  $|g_n(x)| \le M, f_n(x) \rightrightarrows 0$, $\sup\limits_{x \in E} |f_n(x)| \to 0$.
@@ -545,13 +549,13 @@
     $f_n\!: E \to \R$ тогда  $f_n$ равномерно сходится к некоторой функции  $\iff \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E |f_n(x) - f_m(x) | < \eps$.
 \end{theorem}
 \begin{proof}
-    $\implies$.  $f_n \underset{E}{\rightrightarrows} f$  $\forall \eps > 0 \exists N \begin{array}{l} \forall n \ge N \forall x \in E |f_n(x) - f(x)| < \frac{\eps}{2} \\ \forall m \ge N \forall x \in E |f_m(x) - f(x)| < \frac{\eps}{2} \end{array}$. 
+    $\implies$:  $f_n \underset{E}{\rightrightarrows} f$ $\iff$ $\forall \eps > 0 \exists N \begin{array}{l} \forall n \ge N \forall x \in E |f_n(x) - f(x)| < \frac{\eps}{2} \\ \forall m \ge N \forall x \in E |f_m(x) - f(x)| < \frac{\eps}{2} \end{array}$. 
 
-    $\forall m, n \ge N \forall x \in E |f_n(x) - f_m(x)| \le |f_n(x) - f(x)| + |f(x) - f_n(x)| < \frac{\eps}{2} + \frac{\eps}{2} = \eps$.
+    $\forall m, n \ge N \forall x \in E |f_n(x) - f_m(x)| \le |f_n(x) - f(x)| + |f_m(x) - f(x)| < \frac{\eps}{2} + \frac{\eps}{2} = \eps$.
 
-    $\Leftarrow$.  $\forall \eps > 0 \exists N \forall m, n \ge N_e \forall x \in E\quad |f_n(x) - f_m(x)| < \eps$. Зафиксируем $x \in E$. Если  $m_n \ge N_\eps$, то знаем заклинание $\implies f_n(x)$ --- фундаментальная последовательность  $\implies$ она имеет конечный предел.  $f(x) \coloneqq \lim\limits_{n \to \infty} f_n(x)$.
+    $\Leftarrow$:  $\forall \eps > 0 \exists N \forall m, n \ge N_e \forall x \in E\quad |f_n(x) - f_m(x)| < \eps$. Зафиксируем $x \in E$. Если  $m_n \ge N_\eps$, то знаем заклинание $\implies f_n(x)$ --- фундаментальная последовательность  $\implies$ она имеет конечный предел. Пусть $f(x) \coloneqq \lim\limits_{n \to \infty} f_n(x)$.
 
-    Тогда  $\forall \eps > 0 \exists N \forall m \ge n \ge N \forall x \in E \quad |f_n(x) - f_m(x)| < \eps$ --- критерий Коши. Устремим тут $m \to \infty$. Тогда  $\forall \eps > 0 \exists N \forall n \ge N \forall x \in E |f_n(x) - f(x)| \le \eps$ равномерно сходится к $f$.
+    Тогда  $\forall \eps > 0 \exists N \forall m \ge n \ge N \forall x \in E \quad |f_n(x) - f_m(x)| < \eps$ --- критерий Коши. Устремим тут $m \to \infty$. Тогда  $\forall \eps > 0 \exists N \forall n \ge N \forall x \in E |f_n(x) - f(x)| \le \eps \implies f_n$ равномерно сходится к $f$.
 \end{proof}
 \begin{definition}
     Пространство $C(K)$,  $K$ --- компакт. 
@@ -562,14 +566,14 @@
 
       Можно завести норму  $\|f\|_{C(K)} \coloneqq \max\limits_{x \in K} |f(x)|$ --- нормированное пространство.
 
-      Интересно только неравенство треугольника $\|f+g\| = |f(x_0) + g(x_0)| \le |f(x_0)| + |g(x_0| \le \|f\| + \|g\|$.
+      Убедимся, что это действительно норма. Интересно только неравенство треугольника: $\|f+g\| = |f(x_0) + g(x_0)| \le |f(x_0)| + |g(x_0| \le \|f\| + \|g\|$.
 \end{definition}
 \begin{definition}
     Пространство $l^\infty(E)$.
 
      $l^\infty(E) \coloneqq \{f\!: E \to \R \land f\text{ --- ограничена}\}$ --- векторное пространство.
 
-     $\|f\|_{l^\infty(E)} \coloneqq \sup_{x \o E}|f(x)|$ нормированное пространство.
+     $\|f\|_{l^\infty(E)} \coloneqq \sup_{x \in E}|f(x)|$~--- нормированное пространство.
 \end{definition}
 \begin{remark}
     $C(K) \subset l^{\infty}(K)$.
@@ -578,12 +582,12 @@
     $l^\infty(E)$ --- полное пространство.
 \end{theorem}
 \begin{proof}
-    $f_n$ --- фундаментальная последовательность  $\forall \eps > 0 \exists N \forall m, n \ge N \sup\limits_{x \in E} |f_n(x) - f_m(y)| = \|f_n - f_m\| < \eps \implies \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E |f_n(x) - f_m(x)| < \eps \implies f_n$ --- равномерно сходится на $E \implies \sup_{x \to E} |f_n(x) - f(x)| = \|f_n - f\|_{l^\infty(E)} \to 0$. Надо проверить, что  $f \in l^\infty(E)$.
+    $f_n$ --- фундаментальная последовательность  $\iff \forall \eps > 0 \exists N \forall m, n \ge N \sup\limits_{x \in E} |f_n(x) - f_m(y)| = \|f_n - f_m\| < \eps \implies \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E |f_n(x) - f_m(x)| < \eps \implies f_n$ --- равномерно сходится на $E \implies \sup_{x \in E} |f_n(x) - f(x)| = \|f_n - f\|_{l^\infty(E)} \to 0$. Надо проверить, что  $f \in l^\infty(E)$.
 
-     $f_n(x) \le \underbrace{|f(x) - f_n(x)}_{\le \|f - f_n\|} + \underbrace{|f_n(x)|}_{\le \|f\|}$.
+     $f_n(x) \le \underbrace{|f(x) - f_n(x)}_{\le \|f - f_n\| < 1} + \underbrace{|f_n(x)|}_{\le \|f_n\|}$.
 \end{proof}
 \begin{theorem}
-    $f_n, f\!: E \to R, a \in E, f_n \underset{E}{\rightrightarrows} f$ и  $f_n$ непрерывна в точке $a$. Тогда  $f$ непрерывна в точке  $a$.
+    $f_n, f\!: E \to \R, a \in E, f_n \underset{E}{\rightrightarrows} f$ и  $f_n$ непрерывна в точке $a$. Тогда  $f$ непрерывна в точке  $a$.
 \end{theorem}
 \begin{proof}
     Берем $\eps > 0$. Найдем  $N$, такой что  $\forall n \ge N \forall x \in E |f_n(x) - f(x)| < \eps$.
@@ -593,7 +597,7 @@
     $\exists \delta > 0 \forall |x-a| < \delta\quad |f_N(x)- f_N(a)| < \eps \implies f$ --- непрерывна в $a$.
 \end{proof}
 \begin{consequence}[Теорема Стокса-Зайделя]
-    $f_n \underset{E}{\rightrightarrows} f$ и  $f_n$ непрерывна во всех точках  $E \implies f$ непрерывна во всех точках из  $E$.
+    $f_n \underset{E}{\rightrightarrows} f$ и  $f_n$ непрерывна во всех точках  $E \implies f$ непрерывна во всех точках из  $E$. Пользуемся предыдущей теоремой для каждой точки.
 \end{consequence}
 \begin{theorem}
     $C(K)$ --- полное.
@@ -605,7 +609,7 @@
     Возьмем $y_n \in Y$ --- фундаментальная последовательность в  $Y \implies$ она фундаментальна в $X \implies \exists y_* \in X\!: y_* = \lim y_n \implies y_*$ ---  предельная точка  $Y \implies y_* \in Y$.
 \end{proof}
 \begin{proof}[Доказательство теоремы]
-    $C(K)$ --- замкнутое подпространство  $l^\infty(K)$.  $\sup\limits_{x \in K}|f_n(x) - f(x)| =\|f_n - f\|_{l^\infty(K)} \to 0$. Тогда если $f_n \in C(K), f_n \underset{K}{\rightrightarrows} f \implies f \in C(K)$.
+    $C(K)$ --- замкнутое подпространство  $l^\infty(K)$.  $\sup\limits_{x \in K}|f_n(x) - f(x)| =\|f_n - f\|_{l^\infty(K)} \to 0$. Тогда если $f_n \in C(K), f_n \underset{K}{\rightrightarrows} f \implies f \in C(K)$ по т.Стокса-Зайделя.
 \end{proof}
 \begin{definition}
     $u_n\!: E \to \R$.  $\sum\limits_{n=1}^\infty u_n(x)$ --- функциональный ряд.
@@ -623,10 +627,10 @@
     Ряд $\sum\limits_{k=1}^\infty u_n(x)$ сходится равномерно на  $E \iff r_n \underset{E}{\rightrightarrows} 0$.
 \end{theorem}
 \begin{proof}
-    $S_n \underset{E}{\rightrightarrows} S \iff S - S_n \rightrightarrows 0$.
+    $S_n \underset{E}{\rightrightarrows} S \iff S - S_n \rightrightarrows 0$. ($S - S_n = r_n$).
 \end{proof}
 \begin{remark}
-    Необходимые условия равномерной сходимости. Если $\sum u_n(x)$ равномерно сходится, то  $u_n \rightrightarrows 0$.
+    Необходимые условия равномерной сходимости. Если $\sum\limits_{n = 1}^{\infty} u_n(x)$ равномерно сходится, то  $u_n \rightrightarrows 0$.
 \end{remark}
 \begin{proof}
     Равномерная сходимость $\implies S_n \rightrightarrows S \implies S_n - S_{n-1} \rightrightarrows S - S = 0$.
