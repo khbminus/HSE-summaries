@@ -1,0 +1,145 @@
+\begin{definition}
+    Линейный оператор --- линейное отображение (линейный эндоморфизм) $\CA\!: V \to V$.
+
+    Кольцо операторов --- $End(V)\quad (+, \cdot)$ с единицей, алгебра над $V$.
+\end{definition}
+\begin{definition}
+    Алгебра над $K$ --- кольцо  $(A, +, \cdot)$ являющееся векторным пространством над  $K$.
+
+    Причем $\forall a, b \in A, k \in K\!: k(ab) = a(kb) = (ka)b$.
+\end{definition}
+\begin{remark}
+    $A$ --- алгебра с 1  $\implies$ задан гомоморфизм колец  $i\!: K\to A$ ($k \leadsto k \cdot 1$).
+
+    Обратно: задан $i\!: K \to A$  $\Im i \subset Z(a) \implies A$ превращается в алгебру над $K$.
+\end{remark}
+\begin{example}
+    $K[x]$ --- алгебра над  $K$.
+\end{example}
+\begin{example}
+    $K \subset F$ --- поля.  $F$ --- алгебра над  $K$.  $\CC$ --- алгебра над  $\R$.
+\end{example}
+\begin{example}
+    $A = End(V) \cong M_n(K), n = \dim V$.
+\end{example}
+\begin{remark}[Напоминание]
+    $\CA\!: V \to V$,  $e_1, \ldots, e_n$ --- базис.
+
+    $\CA(e_i) = \sum a_{ij} e_j \implies (a_{ji})$ --- матрица  $\CA$ в базисе  $\{e_i\}$.  $A = [\CA]$.
+\end{remark}
+
+Вопросы:
+\begin{enumerate}
+    \item Классификация эндоморфизмов. $B = C^{-1}AC \iff B, A$ --- матрица одного оператора в разных базисах. Классификация --- определение классов сопряжения в  $M_n(K)$.
+    \item Распознавание типов отображений. $\CA$ --- оператор  $\leadsto$ находим базис,  $e_1, \ldots, e_n$ --- базис, $A$ --- очень простая. 
+
+        $\CA \in End(V)$, $K[t]$.  $A \in M_n(K)$. Тогда  $\exists!$ гомоморфизм  $P = \sum a_i t^i \to \sum a_i A^i$, $t_A\!: K[t] \to M_n(K), t \mapsto A$. 
+
+        Если зафиксировать $\CA \in End(V) \leadsto V, K[t]$.
+
+        То есть теперь мы можем сделать  $t \cdot V \coloneqq A(V)$. В итоге,  $(V, \CA) \sim K[t]$ --- модуль + ОГИ.
+\end{enumerate}
+\begin{example}
+    $V_1, V_2$ --- векторные пространства над $K$.  
+
+    $\CA_1 \oplus \CA_2\!: V_1 \oplus V_2 \to V_1 \oplus V_2, \CA(v_1, v_2) = (\CA_1(v_1), \CA_2(v_2))$, $e_i$ --- базис  $V_1 \leadsto A_1$,  $l_i$ --- базис $V_2 \leadsto A_2$.
+
+    $\CA_i \in End(V_i)$, тогда  $(\CA_1 \oplus \CA_2)_{\{e_i\} \cup \{l_i\}} = \left(\begin{array}{c|c} A_1 & 0 \\ \hline 0 & A_2 \end{array} \right)$.
+\end{example}
+\begin{definition}
+    $\CA \in End(V)$.  $U \le V$ --- называется инвариантивным ($\CA$-инвариантивным), если $\CA(U) \subset U$.
+\end{definition}
+
+Пусть $V \cong V_1 \oplus V_2$, $V_1, V_2$ --- инвариативные подпространства. Тогда $[A]$ имеет вид  $\left(\begin{array}{c|c} A_1 & 0 \\ \hline 0 & A_2 \end{array} \right)$ в базисе объединения базисов $V_1$ и $V_2$.
+
+\begin{statement}
+    $\CA \in End(V), U \le V$ --- инвариантно.
+
+    Тогда, в базисе $U$ ($u_1, u_2,\ldots, u_k$) + как-то дополненном до  $V$  $[\CA]$ имеет вид $\left(\begin{array}{c|c} A_1 & B \\ \hline 0 & A_2 \end{array} \right)$, где  $A_1 = [\CA \Big|_u]_{u_1, u_2, \ldots, u_k}$.
+
+    Что такое $A_2$?  $\CA(u_{k+1}) = \sum\limits_{i=1}^k b_i u_i + \underbrace{\sum\limits_{i=k+1}^n a_iu_i}_{u_0} \equiv \sum\limits_{k=1}^n a_i u_i \pmod U$.
+
+    Множество классов --- пространство  $V / U$ (потому что можно говорить, что $v_1 \equiv v_2 \pmod U$, если $v_1 - v_2 \le U$).
+
+    $A_2 = [\CA \Big|_{V / U}]_{u_{k+1}, \ldots, u_n}$ --- на базисе дополнения $U$ до базиса  $V$.
+\end{statement}
+\begin{example}
+Картинка.
+
+\end{example}
+
+Теперь $\CA\!: V \to V$,  $U$ --- инвариативно относительно  $\mathcal{A} \implies $ корректна задана $\CA \Big|_{V / U} = End(V / U)$. 
+
+$\CA(\overline{v}) \coloneqq \overline{\CA(v)}$. Это легко проверяется по определению:  $\overline{v} = \overline{v'} \iff v - v' \in U \implies \CA(v - v') \in U \iff \CA(v) - \CA(v') \in U \implies \overline{\CA(v)} = \overline{\CA(v')}$ в  $V / U$.
+
+$U$ --- инвариантное подпространство,  $\dim U = 1, U = \langle u \rangle, Au \subset \langle u \rangle$, то есть $\CA u = \lambda u$.
+
+\begin{definition}
+    Собственный вектор оператора $\CA$ назывется $v \in V \setminus \{0\}\!: \CA(v) = \lambda v$.
+
+    А $\lambda$ называется собственным числом оператора $\CA$.
+
+    $v$ --- собственный вектор  $\implies \langle v \rangle$ --- инвариативное подпространство --- неподвижная прямая.
+\end{definition}
+
+    $V$ --- конечномерное пространство. $\CA \in End(V)$.  $A$ --- его матрица,  $\lambda \in K$.
+
+    Тогда $\lambda$ --- собственное число  $\CA \iff \exists V \neq 0\!: \CA(v) = \lambda V \iff \CA(v) - \lambda V = \iff \CA(v) - \lambda Id(v) = 0 \iff (\CA - \lambda \cdot Id)(v) = 0 \iff \ker (\CA - A \cdot id) \neq 0 \iff \ker (A - \lambda E) \neq 0 \iff \det (A - \lambda E) = 0$.
+
+    Рассмотрим $\det(A - tE) = \det \begin{pmatrix} a_{11}t & \ldots & a_{ij} \\ & \ddots & \\ a_{ij} &  & a_{nn}t \end{pmatrix} \in K[t]$.
+
+\begin{theorem}
+    $\lambda$ --- собственное число  $\CA \iff \lambda$ --- корень многочлена  $\chi_A(t) = \det(A - tE)$.
+\end{theorem}
+\begin{definition}
+    $\chi_A(t)$ --- характеристический многочлен оператора $A$ (и матрицы).
+\end{definition}
+\begin{statement}
+    $\chi_A(t)$ не зависит от  $A$.
+\end{statement}
+\begin{proof}
+    $A, A'$ --- матрицы  $\CA$ в разных базисах.  $A' = C^{-1}AC \implies \chi_A(t) = \det(C^{-1}AC - tE) = \det(C^{-1}AC - C^{-1}tEC) = \det(C^{-1}(A-tE)\cdot C) = \det(C^{-1})\cdot \det(A - tE) \cdot \det(C) = \det(A - tE) = \chi_A(t)$.
+\end{proof}
+\begin{consequence}[Следствие из Th]
+    $\CA \in End(V)$,  $\dim V = n \implies \CA$ имеет  $\le n$ собственных чисел.
+\end{consequence}
+\begin{lemma}
+    Собственные вектора, соответствующие различным собственным числам ЛНЗ. 
+\end{lemma}
+\begin{proof}
+    $v_1, v_2, \ldots, v_k$ $\CA(v_i) = \lambda_i v_i$.  $\lambda_i \neq \lambda_j$ при  $i \neq j$. Хотим показать ЛНЗ. 
+
+    Индукция по $k$. База:  $k=0$ --- верно.
+
+    Переход от  $k$ к  $k+1$.
+
+     $v_1, \ldots, v_{k+1}$ --- собственные вектора $\lambda_1, \ldots, \lambda_{k+1}$ --- собственные числа. Пусть $v_1, \ldots, v_{k+1}$ --- ЛЗ. То есть есть набор $a_i$: $\sum a_i v_i = 0$. Применим  $\CA \implies \sum a_i\lambda_i v_i = 0$, с другой стороны умножим комбинацию на  $\lambda_{k+1}$ и вычтем одно из другого.
+\\
+      Получим $\sum\limits_{i=1}^k a_i\underbrace{(\lambda_i - \lambda_{i+1})}_{\neq 0}v_i = 0 \implies a_1, \ldots, a_k = 0 \implies a_{k+1} = 0$.
+\end{proof}
+\begin{consequence}
+    $\CA \in End(V)$,  $n = \dim V$. Пусть  $\chi_A(t) = (-1)^n \prod (t-a_i), a_i \neq a_j$. 
+
+    Тогда существует базис  $V$, состоящих из собственных векторов  $\CA$. 
+
+    В этом базиса матрица  $A$ --- диагональная.
+\end{consequence}
+\begin{proof}
+    По предыдущей теореме $\forall a_i \exists $ собственный  вектор  $v_i\!: \CA(v_i) = A_iv_i$. По лемме  $v_1, v_2, \ldots, v_n$ --- базис. 
+
+    $\CA(v_i) = 0 \cdot v_1 + 0 \cdot v_2 + \ldots + \lambda_i \cdot v_i + \ldots + 0 \cdot v_n \implies$ $i$-ый столбец выглядит как $\begin{pmatrix} 0 \\ \ldots \\ \lambda_i \\ \ldots \\ 0 \end{pmatrix} \implies$ получили диагональную матрицу с $A_{ii} = \lambda_i$.
+\end{proof}
+\begin{definition}
+    Такие операторы называются диагонализируемыми.
+\end{definition}
+Как работать в общем случае? Идея: придумать $f \in K[x]\!: f(\CA) = 0$.
+
+\begin{definition}
+    $Tr(A) = \sum\limits_{i=1}^n a_{ii}$.  $A = (a_{ij})$.  $Tr(A) = \pm(\text{коэффициент при }t^{n-1}\text{ у }\chi_{A}(t)) \implies Tr(A)$ не зависит от выбора базиса.
+\end{definition}
+\begin{theorem}[Кэли-Гамильтона]
+    Пусть $\CA \in End(V)$. Тогда  $\chi_A(\CA)=0 \in End(V)$. 
+    \begin{example}
+        Матрица 2х2. $A^2 = Tr(A) \cdot A - \det A$.
+    \end{example}
+\end{theorem}
