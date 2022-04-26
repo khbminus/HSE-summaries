@@ -645,7 +645,7 @@
 
     $x_n = \frac{1}{n} \implies u_n(x_n) = \frac{1}{n}$ и ряд $\sum u_n(x_n)$ --- расходится.
 
-    Но ряд $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится.  $0 \le r_n(x) \le \frac{1}{n+1} r_n \rightrightarrows 0$.
+    Но ряд $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится.  $0 \le r_n(x) \le \frac{1}{n+1}. r_n \rightrightarrows 0$.
 \end{remark}
 \begin{theorem}[Критерий Коши для равномерной сходимости ряда]
     $u_n\!: E \to \R$. Ряд  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится на  $E \iff$
@@ -677,7 +677,7 @@
      $\left| \frac{\sin nx}{n^2}\right| \le \frac{1}{n^2}$. $\sum\limits_{n=1}^\infty \frac{1}{n^2}$ --- сходится.
 \end{example}
 \begin{remark}
-    Ряд сходится равномерно, но не абсолютно $\sum\limits_{n=1}^\infty \frac{(-1)^n}{n}$
+    Ряд может сходиться равномерно, но не абсолютно $\sum\limits_{n=1}^\infty \frac{(-1)^n}{n}$
 
     Ряд сходится абсолютно, но не сходится равномерно $\sum\limits_{n=1}^\infty x^n$ при $x \in (-1, 1)$.
 
@@ -700,7 +700,7 @@
 
    Докажем, что ряд $\sum\limits_{k=1}^\infty A_k(x)(b_k(x) - b_{k+1}(x))$ равномерно сходится.
 
-   $|A_k(x)| |b_k(x) - b_{k+1}(x)| \le M|b_k(x) - b_{k+1}(x)| \eqqcolon v_k(x)$. Надо доказать, что $\sum\limits_{k=1}^\infty |b_k(x) - b_{k+1}(x)|$ равномерно сходится, то есть  $\sum\limits_{k=1} |b_k(x) - b_{k+1}(x)|$ равномерно сходится. $\sum\limits_{k=1}^n |b_k(x) - b_{k+1}(x)| = |\sum\limits_{k=1}^n (b_k(x) - b_{k+1}(x))| = b_1(x) - b_n(x) \rightrightarrows b_1(x)$
+   $|A_k(x)| |b_k(x) - b_{k+1}(x)| \le M|b_k(x) - b_{k+1}(x)| \eqqcolon v_k(x)$. Надо доказать, что $\sum\limits_{k=1}^\infty v_k(x)$ равномерно сходится, то есть  $\sum\limits_{k=1}^\infty |b_k(x) - b_{k+1}(x)|$ равномерно сходится. $\sum\limits_{k=1}^n |b_k(x) - b_{k+1}(x)| = |\sum\limits_{k=1}^n (b_k(x) - b_{k+1}(x))| = b_1(x) - b_n(x) \rightrightarrows b_1(x)$
 \end{proof}
 \begin{theorem}[Признак Абеля]
     $a_n, b_n\!: E \to \R$.
@@ -713,13 +713,17 @@
     Тогда $\sum\limits_{n=1}^\infty a_n(x)b_n(x)$ сходится равномерно на  $E$.
 \end{theorem}
 \begin{proof}
-    $\sum\limits_{k=n+1}^{n+p} a_k(x)b_k(x) = \sum\limits_{k=1}^p a_{n+k}(x)b_{n+k}(x) = (A_{n+p}(x) - A_p(x))b_{n+p}(x)+\sum\limits_{k=1}^{p-1} (A_{n+k}(x) - A_{n+1}(x))(b_{n+k}(x) - b_{n+k+1}(x))$.
+    $\sum\limits_{k=n+1}^{n+p} a_k(x)b_k(x) = \sum\limits_{k=1}^p a_{n+k}(x)b_{n+k}(x) = (A_{n+p}(x) - A_p(x))b_{n+p}(x)+\sum\limits_{k=1}^{p-1} (A_{n+k}(x) - A_{k}(x))(b_{n+k}(x) - b_{n+k+1}(x))$.
+    
+    $\sum\limits_{k=1}^{m} a_{n+k}(x) = A_{n+m}(x) - A_n(x)$.
 
     $A_n(x) \rightrightarrows A(x) \implies \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E\!: |A_n(x) - A_m(x)| < \eps$.
 
     Тогда $|A_{n+p}(x) - A_n(x)| < \eps$ и  $|A_{n+k}(x) - A_n(x)| < \eps$.
 
-     $|\sum\limits_{k=n+1}^{n+p} a_k(x)b_k(x)| \le \underbrace{|A_{n+p}(x) - A_n(x)|}_{\mathclap{< \eps}} \cdot \underbrace{|b_{n+p}(x)|}_{\le M} + \sum\limits_{k=1}^{p-1} \underbrace{|A_{n+k}(x)-A_n(x)}_{\le \eps}|b_{n+k}(x) - b_{n+k+1}(x)| \le \eps M + \eps\sum\limits_{k=1}^{p-1}|b_{n+k}(x) - b_{n+k+1}(x)| = \eps M + \eps|\sum\limits_{k=1}^{n-1}(b_{n+k}(x) - b_{n+k+1}(x)) \le \eps M + \eps \cdot 2M = 3M\eps$.
+     $|\sum\limits_{k=n+1}^{n+p} a_k(x)b_k(x)| \le \underbrace{|A_{n+p}(x) - A_n(x)|}_{\mathclap{< \eps}} \cdot \underbrace{|b_{n+p}(x)|}_{\le M} + \sum\limits_{k=1}^{p-1} \underbrace{|A_{n+k}(x)-A_n(x)}_{\le \eps}|b_{n+k}(x) - b_{n+k+1}(x)| \le \eps M + \eps\sum\limits_{k=1}^{p-1}|b_{n+k}(x) - b_{n+k+1}(x)| = \eps M + \eps|\sum\limits_{k=1}^{p-1}(b_{n+k}(x) - b_{n+k+1}(x))| \le \eps M + \eps \cdot 2M = 3M\eps$.
+     
+     По критерию Коши для $\sum a_nb_n$ он равномерно сходится.
 \end{proof}
 \begin{theorem}[Признак Лейбница]
     $b_n\!: E \to \R$,  $b_n \rightrightarrows 0, b_n(x)$ монотонна при любом фиксированном  $x \in E$. Тогда ряд  $\sum\limits_{k=1}^\infty (-1)^k b_n(x)$ равномерно сходится на  $E$.
@@ -732,21 +736,21 @@
 
     Ряд абсолютно сходится $\forall x \in (0, 1)\!: \left| \frac{(-1)^n}{n}x^n\right| \le x^n$.
 
-    Ряд сходится равномерно $b_n(x) = x^n \rightrightarrows 0, 0 \le b_n(x) \le \frac{1}{n}, x_n(x) \searrow$.
+    Ряд сходится равномерно $b_n(x) = \frac{x^n}{n} \rightrightarrows 0, 0 \le b_n(x) \le \frac{1}{n}, x_n(x) \searrow$.
 
     $\sum\limits_{n=1}^\infty \left|\frac{(-1)^n}{n}x^n \right| = \sum\limits_{n=1}^\infty \frac{x^n}{n}$.
 
     Нет равномерной сходимости. $\sum\limits_{k=n}^{2n} \frac{x^k}{k} \ge n \frac{x^{2n}}{2n} = \frac{x^{2n}}{2} \to \frac{1}{2e}$, $x = 1 - \frac{1}{2n}$.
 \end{example}
 \begin{theorem}[Признак Дини]
-    $0 \le u_n \in C_(K)$, $K$ --- компакт и  $S_x( \coloneqq \sum\limits_{N=1}^\infty u_n(x) \in C(k)$. Тогда ряд сходится равномерно на  $K$.
+    $0 \le u_n \in C(K)$, $K$ --- компакт и  $S_x \coloneqq \sum\limits_{n=1}^\infty u_n(x) \in C(k)$. Тогда ряд сходится равномерно на  $K$.
 \end{theorem}
 \begin{proof}
-    $r_n(x) = S(x) - S_n(x) \in C(K), S(x) - S_n(x) = \sum\limits_{n=1}^\infty u_k(x), 0 \le r_{n+1} \le r_n(x)$.
+    $r_n(x) = S(x) - S_n(x) \in C(K), S(x) - S_n(x) = \sum\limits_{k=n+1}^\infty u_k(x), 0 \le r_{n+1} \le r_n(x)$.
 
     Надо доказать, что $r_n \underset{K}{\rightrightarrows} 0$.  $r_n(x_n) = \sup\limits_{x \in K} r_n(x) \to 0$ для некоторого $x_n \in K$.
 
-    От противного. Пусть нет стремления к нулю.  $r_{n_k}(x_{n_k}) \ge \eps$, $x_{n_k} \in K$. Выберем сходящуюся подпоследовательность  $x_{n_k} \to x_n \in K$.
+    От противного. Пусть нет стремления к нулю.  $r_{n_k}(x_{n_k}) \ge \eps$, $x_{n_k} \in K$. Выберем сходящуюся подпоследовательность  $x_{m_k} \to x_* \in K$.
 
-     $r_{m_k}(x_{m_k}) \ge \eps$. $x_{m_k} \to x_k$. Тогда  $r_n(x_{m_k}) \ge r_{n+1}(x_{m_k}) \ge r_{n+2}(x_{m_k}) \ge \ldots \ge r_{m_k}(x_{m_k}) \ge \eps$, при этом $r_n(x_{m_k}) \to r_n(x_n) \implies r_n(x_n) \ge \eps \quad \forall x$. Но $r_n(x_n) \to 0$. Противоречие.
+     $r_{m_k}(x_{m_k}) \ge \eps$. $x_{m_k} \to x_*$. Тогда  $r_n(x_{m_k}) \ge r_{n+1}(x_{m_k}) \ge r_{n+2}(x_{m_k}) \ge \ldots \ge r_{m_k}(x_{m_k}) \ge \eps$, при этом $r_n(x_{m_k}) \to r_n(x_*) \implies r_n(x_*) \ge \eps \quad \forall x$. Но $r_n(x_*) \to 0$. Противоречие.
 \end{proof}
