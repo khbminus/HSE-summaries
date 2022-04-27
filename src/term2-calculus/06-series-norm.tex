@@ -754,3 +754,95 @@
 
      $r_{m_k}(x_{m_k}) \ge \eps$. $x_{m_k} \to x_*$. Тогда  $r_n(x_{m_k}) \ge r_{n+1}(x_{m_k}) \ge r_{n+2}(x_{m_k}) \ge \ldots \ge r_{m_k}(x_{m_k}) \ge \eps$, при этом $r_n(x_{m_k}) \to r_n(x_*) \implies r_n(x_*) \ge \eps \quad \forall x$. Но $r_n(x_*) \to 0$. Противоречие.
 \end{proof}
+
+\Subsection{Свойства равномерно сходящихся последовательностей и рядов}
+\begin{theorem}
+    $f_n, f\!: E \to \R$,  $a$ --- предельная точка  $E$,  $f_n \rightrightarrows f$ на  $E$ и  $\lim\limits_{x \to a} f_n(x) \eqqcolon b_n \in \R$. Тогда  $\lim b_n, \lim\limits_{x \to a} f(x)$ существуют, конечны и равны.
+
+    В частности, $\lim\limits_{x \to a} \lim\limits_{n \to \infty} f_n(x) = \lim\limits_{n \to \infty} \lim_{x \to a} f_n(x)$.
+\end{theorem}
+\begin{proof}
+    Запишем Критерий Коши:
+    \[\forall \eps > 0 \exists N\forall m, n \ge N \forall x \in E\!: |f_n(x) - f_m(x)| < \eps.\] 
+    Устремим в этом неравенстве $x \to a$ (тогда $f_n(x) \to b_n, f_m(x) \to b_m$):
+    \[
+    \forall \eps > 0 \exists N\forall m, n \ge N \forall x \in E\!: |b_n - b_m| \le \eps 
+    .\] А это критерий Коши для последовательности $b_n \implies \lim b_n = b \in \R$.
+
+    Остается показать, что $\lim\limits_{x \to a} f(x) = b$. Честно проверим. Что такое $|f(x) - b|$? Это  $\le |f_n(x) - f(x)| + |b_n - f_n(x)| + |b-b_n|$. Мы знаем, что $b_n \to b \implies |b-b_n|$ при  $n \ge N_1$ не больше $\eps$. При  $n \ge N_2$ $|f_n(x) - f(x)| M \eps$. 
+
+    Тогда, взяв  $N \coloneqq \max(N_1, N_2)$, получаем $|f(x) - b| < 2\eps + |b_n - f_n(x)|$. Но оставшаяся разность стремится к нулю при  $x \to a$. Тогда можно выбрать $\delta$-окрестность, чтобы эта разность  была меньше $\eps$. Следовательно,  $|f(x) - b| < 3\eps$.
+\end{proof}
+\begin{theorem}
+    $u_n\!: E \to \R$,  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится и $\lim\limits_{x \to a}u_n(x) = c_n$, $a$ --- предельная точка.
+\\
+   Тогда,  $\lim\limits_{x \to a} \sum\limits_{n=1}^\infty u_n(x) = \sum\limits_{n=1}^\infty c_n = \sum\limits_{n=1}^\infty \lim\limits_{x \to a}u_n(x)$ и ряд сходится.
+\\
+   То есть, в случае равномерной сходимости ряда мы можем менять предел суммы.
+\end{theorem}
+\begin{proof}
+    $f_n(x) \coloneqq \sum\limits_{k=1}^n u_k(x) \rightrightarrows f(x) = \sum\limits_{n=1}^\infty u_n(x)$, $b_n = \lim\limits_{x \to a} f_n(x) \overset{(*)}{=} \lim\limits_{x \to a} \sum\limits_{k=1}^n u_k(x) = \sum\limits_{k=1}^n \lim\limits_{x \to a} u_k(x) = \sum\limits_{k=1}^n c_k$.
+\\
+    Тогда $\exists \lim b_n$, то есть ряд $\sum\limits_{n=1}^\infty c_n$ сходится и $\lim\limits_{n \to \infty} b_n = \lim\limits_{x \to a} f(x) = \lim\limits_{x \to a} \sum\limits_{n=1}^\infty u_n(x)$.
+\\
+     $(*)$ --- тут конечная сумма, поэтому все переходы конечны.
+\end{proof}
+\begin{consequence}
+    Если $u_n$ непрерывны в точке  $a$ и  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится, то  $\sum u_n(x)$ непрерывна в точке  $a$.
+\end{consequence}
+\begin{proof}
+    $c_n = u_n(a)$.
+\end{proof}
+\begin{theorem}
+    Пусть $f_n \in C[a, b]$ и  $f_n \rightrightarrows f$ на  $[a, b]$, $c \in [a,b]$.
+
+    Тогда $\int\limits_c^x f_n(t)\dt \rightrightarrows \int\limits_c^x f(t)\dt$. В частности $\lim\limits_{n \to \infty} \int\limits_c^x f_n(t)\dt = \int\limits_c^x \lim\limits_{n \to \infty} f_n(t)\dt$
+
+\end{theorem}
+\begin{proof}
+    $F_n(x) \coloneqq \int\limits_c^x f_n(t) \dt$. Тогда  $|F_n(x) - F(x)| = \left|\int\limits_c^xf_n(t)\dt - \int\limits_c^x f(t)\dt\right| \le \int\limits_c^x |f_n(t) - f(t)| \dt \le |x-c|\max\limits_{t \in [c, x]} |f_n(t) - f(t)| \le (b-a)\sum\limits_{t \in [a, b]} |f_n(t) - f(t)|$, но по свойству равномерной сходимости $\sup \to 0$. Значит равномерная сходимость есть.
+\end{proof}
+\begin{consequence}
+    $u_n \in C[a, b]$ и  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится, то $\int\limits_c^x \sum\limits_{n=1}^\infty u_n(t)\dt = \sum\limits_{n=1}^\infty \int\limits_c^x u_n(t)\dt$.
+\end{consequence}
+\begin{proof}
+    $\int\limits_c^x\sum\limits_{k=1}^n u_k(t)\dt = \sum\limits_{k=1}^n \int\limits_c^x u_k(t)\dt$. А дальше можно просто устремить к бесконечности по предыдущей теореме.
+\end{proof}
+\begin{remark}
+    Поточечной сходимости не хватает. Пример: $f_n(x) nxe^{-nx^2}$ на  $[0, 1]$.  $f_n(x) \xrightarrow{n \to \infty} 0$. То $\int\limits_0^1 f_n(x) \dx = \int\limits_0^1 nxe^{-nx^2}\dx = \frac{1}{2} \int\limits_0^1 e^{-nx^2} \mathrm(nx^2) = -\frac{e^{-nx^2}}{2} \Big|_0^1 = \frac{1-e^{-n}}{2} \to \frac{1}{2} \neq 0 = \int\limits_0^1 f(x)\dx$.
+\end{remark}
+\begin{theorem}
+    $f_n \in C^1[a, b], c \in [a, b], f_n(c) \to A$ и  $f_n' \rightrightarrows g$ на $[a, b]$. 
+    
+    Тогда  $f_n \rightrightarrows f$ на  $[a, b]$,  $f \in C^1[a, b]$ и $f' = g$.
+
+    В частности, $\lim\limits_{n \to \infty} f_n'(x) = (\lim\limits_{n \to \infty} f_n(x))'$
+\end{theorem}
+\begin{proof}
+    $\int\limits_c^x g(t)\dt = \int\limits_c^x \lim\limits_{n \to \infty} f_n'(t) \dt \overset{(*)} = \lim_{n \to \infty} \int\limits)c^x f_n'\dt = \lim\limits_{n \to \infty} (f_n(x) - f_n(c)) = \lim\limits_{n \to \infty} f_n(x) - \lim\limits_{n \to \infty} f_n(c) = f(x) - A$. $(*)$ --- предыдущая теорема.
+
+    Тогда $f(x) = A + \int\limits_c^x g(y)\dt \implies f \in C^1[a, b]$ и  $f'(x) = g(x)$.
+
+    Осталось понять, что  $f_n \rightrightarrows f$.
+
+     $f_n(x) = \int\limits_c^x f_n'(t)\dt + f_n(c)$,  $f(x) = \int\limits_c^x g(t)\dt + A$.
+
+     Мы знаем, что  $\int\limits_c^x f_n'(t)\dt \rightrightarrows \int\limits_c^xg(t)\dt$, а $f_n(c) \to A \implies f_n(c) \rightrightarrows A$.
+\end{proof}
+\begin{consequence}
+    $u_n \in C^1[a, b]$ и  $\sum\limits_{n=1}^\infty u'_n(x)$ равномерно сходится на  $[a, b)$,  $\sum\limits_{n=1}^\infty u_n(c)$ сходится. 
+
+    Тогда  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится к дифференцируемой функции и $\left(\sum\limits_{n=1}^\infty u_n(x)\right)' = \sum\limits_{n=1}^\infty u_n'(x)$.
+\end{consequence}
+\begin{proof}
+    $f_n(x) = \sum\limits_{k=1}^n u_k(x) \in C^1[a, b]$ и  $f_n'(x) = \sum\limits_{k=1}^n u_k'(x) \rightrightarrows \sum\limits_{k=1}^\infty u_k'(x) \eqqcolon g(x)$.
+
+     $f_n' \rightrightarrows g$ и  $f_n(c)$ сходятся.
+
+     Тогда по теорема  $f_n \rightrightarrows f$,  $f$ --- дифференцируемая функция и  $f' = g$.
+
+     То есть мы поняли, что $\left(\sum\limits_{n=1}^\infty u_n(x)\right)' = g(x) = \sum\limits_{n=1}^\infty u_n'(x)$. 
+\end{proof}
+\begin{remark}
+    Равномерной сходимости исходных функций недостаточно. Пример: $\sum\limits_{n=1}^\infty \frac{\sin nx}{n^2}$ равномерно сходится: $\left| \frac{\sin nx}{n^2} \right| \le \frac{1}{n^2}$ и признак Вейерштрасса. $\sum\limits_{n=1}^\infty \left(\frac{\sin nx}{n^2}\right)' = \sum\limits_{n=1}^\infty \frac{\cos nx}{n}$ расходится в $x = 0$.
+\end{remark}
