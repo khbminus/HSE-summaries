@@ -846,3 +846,182 @@
 \begin{remark}
     Равномерной сходимости исходных функций недостаточно. Пример: $\sum\limits_{n=1}^\infty \frac{\sin nx}{n^2}$ равномерно сходится: $\left| \frac{\sin nx}{n^2} \right| \le \frac{1}{n^2}$ и признак Вейерштрасса. $\sum\limits_{n=1}^\infty \left(\frac{\sin nx}{n^2}\right)' = \sum\limits_{n=1}^\infty \frac{\cos nx}{n}$ расходится в $x = 0$.
 \end{remark}
+\Subsection{Степенные ряды}
+\begin{definition}
+    $a_n \in \CC, z, z_o \in \CC$,  $\sum\limits_{n=0}^\infty a_n(z-z_0)^n$ --- степенной ряд. Здесь $a_n$ --- закрепленная последовательность,  $z_0$ --- константа. Поэтому можно делать формулы проще и использовать  $w = z - z_0$.
+\end{definition}
+\begin{theorem}
+    Пусть ряд $\sum\limits_{n=0}^\infty a_nz^n$ сходится при некотором  $z = z_0$. Тогда ряд абсолютно сходится  $\forall z\!: |z| < |z_0|$.
+\end{theorem}
+\begin{proof}
+    $\sum\limits_{n=0}^\infty a_n z_0^n$ --- сходящийся $\implies |a_nz_0^n| \to 0 \implies |a_nz_0^n| \le M$.
+
+    Тогда скажем, что $|a_nz^n| = |a_nz_0^n| \cdot \left|\frac{z}{z_0}\right|^n \le M \left|\frac{z}{z_0}\right|^n$.
+\end{proof}
+\begin{consequence}
+    Если ряд $\sum\limits_{n=0}^\infty a_nz^n$ расходится при  $z=z_0$, то он расходится  $\forall z\!: |z| > |z_0|$.
+\end{consequence}
+\begin{definition}
+    $R$ --- радиус сходимости ряда, если ряд  $\sum a_nz^n$  сходится $\forall z\!: |z| < R$ и расходится  $\forall z\!: |z| > R$.
+\end{definition}
+\begin{theorem}
+    Радиус сходимости существует $\in [0, +\infty]$ и  $R = \frac{1}{\varlimsup \sqrt[n]{|a_n|}}$ --- формула Коши-Адамара (Hadamard).
+\end{theorem}
+\begin{proof}
+    Докажем, что $R = \frac{1}{\varlimsup \sqrt[n]{a_n}}$ подходит. Для этого применим к этому ряд признак Коши с $K \coloneqq \varlimsup \sqrt[n]{|a_n|} = \varlimsup |z| \sqrt[n]{|a_n|} = \frac{|z|}{R}$. Признак Коши: $K < 1 \implies$ ряд сходится, если  $K > 1 \implies$ ряд расходится.
+\end{proof}
+\begin{example}
+    \begin{enumerate}
+        \item $\sum\limits_{k=0}^\infty \frac{z^n}{n!}$. $R = \frac{1}{\varlimsup \sqrt[n]{\frac{1}{n!}}} = +\infty$. Ряд сходится всегда.
+        \item $\sum\limits_{n=0}^\infty n!z^n$,  $R = \frac{1}{\varlimsup \sqrt[n]{n!}} = 0$. Ряд сходится при $z = 0$.
+        \item  $\sum\limits_{n=1}^\infty \frac{z^n}{n^p}$, $R = \frac{1}{\varlimsup \sqrt[n]{\frac{1}{n^p}}} = 1$. Ряд точно сходится при $|z| < 1$. Ряд при  $|z| \le 1$ ряд сходится. А вот при $p=1$ ряд расходится при  $p=1$ и сходится при  $z = -1$.
+    \end{enumerate}
+\end{example}
+\begin{definition}
+    $R$ --- радиус сходимости  $\sum\limits_{n=0}^\infty a_n(z-z_0)^n$.
+
+    Круг $\{z \in \CC \mid |z-z_0| < R\|$ --- круг сходимости.
+\end{definition}
+\begin{theorem}
+    $R$ --- радиус сходимости ряда  $\sum\limits_{n=0}^\infty a_nz^n$ и  $0 < r < R$.
+
+    Тогда ряд  $\sum a_nz^n$ сходится равномерно при  $|z| \le r$.
+\end{theorem}
+\begin{proof}
+    $\sum\limits_{n=0}^\infty a_nr^n$ --- абсолютно сходится  $\implies \sum\limits_{n=0}^\infty |a_n| r^n < +\infty$.
+
+    Если $|z| \le r$, то $|a_nz^n| \le |a_n|r^n \implies$ равномерно сходится по признаку Вейерштрасса.  
+\end{proof}
+\begin{consequence}
+    Сумма степенного ряда --- непрерывная в круге сходимости функция.
+\end{consequence}
+\begin{proof}
+    Проверим непрерывность в точке $z = w$.
+
+     $|w| < r < R \implies$ ряд сходится равномерно в круге  $|z| \le r \implies$ сумма ряда непрерывна в круге $|z| < r \implies$ в точке $z = w$ есть непрерывность. 
+\end{proof}
+\begin{theorem}[Теорема Абеля]
+    Пусть $\sum\limits_{n=0}^\infty a_nz^n$ сходится при  $z = R$, где  $R$ --- радиус сходимости. 
+
+    Тогда ряд сходится равномерно на $[0; R]$ и его сумма непрерывна на  $[0; R]$.
+
+    В том числе $\lim\limits_{x \to R-} \sum\limits_{n=0}^\infty a_nx^n = \sum\limits_{n=0}^\infty a_nR^n$.
+\end{theorem}
+\begin{proof}
+    $\sum\limits_{n=0}^\infty a_nx^n = \sum\limits_{n=0}^\infty a_nR^n\left(\frac{x}{R}\right)^n$.
+
+    $\sum\limits_{n=0}^\infty a_nR^n$ --- равномерно сходящийся.  $\left(\frac{x}{R}\right)^n$ монотонна и равномерно ограничена $\xRightarrow{\text{пр. Абеля}} \sum\limits_{n=0}^\infty a_nx^n$ равномерно сходится  $\implies f(x) \coloneqq \sum\limits_{n=0}^\infty a_nx^n$ непрерывна на  $[0; R]$.
+\end{proof}
+\begin{lemma}
+    $x_n, y_n \ge 0$. $\lim x_b \in (0; +\infty)$.
+
+    Тогда  $\varlimsup x_ny_n = \lim x_n \varlimsup y_n$.
+\end{lemma}
+\begin{proof}
+    Берем $x_{n_k}y_{n_k} \to \varlimsup x_n y_n = b$.
+
+    $x_{n_k} \to a \implies y_{n_k} \to \frac{b}{a} \le c \coloneqq \varlimsup y_n \implies b \le ac$.
+
+    Берем $y_{n_k} \to c \implies x_{n_k}y_{n_k} \to ac \le b \implies b = ac$.
+\end{proof}
+\begin{consequence}
+    $\sum\limits_{n=0}^\infty a_n z^n, \sum\limits_{n=0}^\infty a_n \frac{z^{n+1}}{n+1}$ и $\sum\limits_{n=1}^\infty na_n z^{n-1}$ имеют одинаковые радиусы сходимости.
+\end{consequence}
+\begin{proof}
+    Заметим, что $\sum\limits_{n=0}^\infty a_n \frac{z^{n+1}}{n+1}$ и $\sum\limits_{n=0}^\infty a_n \frac{z^{n}}{n+1}$ имеют одинаковые радиусы сходимости.
+
+    Заметим, что  $\sum\limits_{n=0}^\infty n a_n z^{n-1}$ и  $\sum\limits_{n=0}^\infty n a_n z^{n}$ имеют одинаковые радиусы сходимости.
+
+    $R_1 = \frac{1}{\varlimsup \sqrt[n]{|a_n|}}$, $R_2 = \frac{1}{\varlimsup \sqrt[n]{\frac{|a_n|}{n+1}}}$, $R_3 = \frac{1}{\varlimsup \sqrt[n]{|a_n| \cdot n}}$.
+\end{proof}
+
+\begin{theorem}[о почленном интегрировании степенного ряда $\sum\limits_{n=0}^\infty a_n(x-x_0)^n = f(x)$]
+    $R$ --- его радиус сходимости. Тогда  $\int\limits_{x_0}^y f(x)\dx = \sum\limits_{n=1}^\infty a_n \frac{(y-x_0)^{n+1}}{n+1}$, где $|y-x_0| < R$.
+\end{theorem}
+\begin{proof}
+    Ряд $\sum a_n(x-x_0)^n$ равномерно сходится при $|x-x_0| \le |y-x_0|$. На $[x_0, y]$ есть равномерная сходимость. Тогда
+\begin{align*}
+    \sum\limits_{x_0}^y \sum\limits_{n=0}^\infty a_n(x-x_0)^n \dx = \sum\limits_{n=0}^\infty \int\limits_{x_0}^y a_n(x-x_0)^n \dx = \sum\limits_{n=0}^\infty a_n \frac{(y-x_0)^{n+1}}{n+1}.
+\end{align*}
+\end{proof}
+\begin{definition}
+    $f\!: E \to \CC$,  $z_0 \in \Int E$.
+
+    $f$ --- дифференцируема в точке  $z_0$, если $f(z) = f(z_0) + k(z-z_0) + o(z-z_0)$  при $z \to z_0$.
+\end{definition}
+\begin{definition}
+    $f'(z_0) = \lim\limits_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}$.
+\end{definition}
+\begin{remark}
+    Дифференцируемость $\iff$ $f'(z_0)$ конечна и $k = f'(z_0)$.
+\end{remark}
+\begin{theorem}
+    $f(z) = \sum\limits_{n=0}^\infty a_n(z-z_0)^n, |z-z_0| < R$ --- радиус сходимости.
+
+    Тогда $f$ бесконечно дифференцируема в круге сходимости и  $f^{(m)}(z) = \sum\limits_{n=m}^\infty a_n n (n-1) \ldots (n - m + 1)(z-z_0)^{n-m}$
+\end{theorem}
+\begin{proof}
+    Ряд справа имеет тот же радиус сходимости.
+
+    $\sum\limits_{n=1}^\infty na_n(z - z_0)^{n-1} \implies$ при $|z-z_0| \le r < R$ он равномерно сходится.
+
+    \begin{align*}
+        f'(z) &= \lim\limits_{w \to z} \frac{f(w) - f(z)}{w - z} = \lim\limits_{w \to z} \frac{\sum\limits_{n=0}^\infty a_nw^n - \sum\limits_{n=0}^\infty a_nz^n}{w - z} = \lim\limits_{w \to z} \sum\limits_{n=0}a_n \frac{w^n - z^n}{w - z}  = \\
+              &= \lim\limits_{w \to z} \sum\limits_{n=1}^\infty a_n(w^{n-1} + w^{n-2}z + \ldots + wz^{n-2} + z^{n-1}) \overset{?}{=} \sum\limits_{n=1}^\infty \lim\limits_{w \to z} a_n(w^{n-1} + \ldots z^{n-1}) = \sum\limits_{n=1}^\infty a_n n z^{n-1}
+\end{align*}
+Разберемся с вопросом: $|a_n(w^{n-1} + \ldots + z^{n-1})| \le |a_n| n r^{n-1}$, а $\sum\limits_{n=1}^\infty n|a_n| r^{n-1}$ сходится.
+\end{proof}
+\begin{theorem}
+    Разложение функции в степенной ряд единственно. 
+
+    Если $f(z) = \sum\limits_{n=0}^\infty a_n(z-z_0)^n$, то $a_b = \frac{f^{(n)}(z_0)}{n!}$.
+\end{theorem}
+\begin{proof}
+    $f^{(m)}(z_0) = a_m m(m-1)\ldots 1 = m!a_m$.
+\end{proof}
+\begin{definition}
+    $f$ аналитическая в точке  $x_0$, если в окрестности $x_0$ $f(x) = \sum\limits_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$
+\end{definition}
+\begin{remark}
+    Бесконечно дифференцируемая функция $\centernot\implies$ аналитичность. 
+\end{remark}
+\begin{example}
+    $f(x) = \begin{cases} 0, & x = 0\\e^{-\frac{1}{x^2}}, & x \neq 0 \end{cases}$. Это бесконечно дифференцируемая функция. 
+
+    Тут абоба по индукции.
+\end{example}
+\begin{example}
+    $e^z \coloneqq \sum\limits_{n=0}^\infty \frac{z^n}{n!}$, $\cos z \coloneqq \sum\limits_{n=0}^\infty \frac{(-1)^n z^{2n}}{(2n)!}$, $\sin z \coloneqq \sum\limits_{n=0}^\infty \frac{(-1)^n z^{2n+1}}{(2n+1)!}$.
+\end{example}
+\begin{exerc}
+    $e^{iz} = \cos z + i\sin z$,  $\cos^2 z + \sin^2 z = 1, e^w e^z = e^{w+z}$.
+
+    $\cos z = \frac{e^{iz} + e^{-iz}}{2}$, $\sin z = \frac{e^{iz} - e^{-iz}}{2}$.
+\end{exerc}
+\begin{example}
+    При $|x| < 1$.
+
+    $\ln(1+x) = \sum\limits_{n=1}^\infty \frac{(-1)^{n-1}x^n}{n}$.
+
+    $\arctg x = \sum\limits_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{2n+1}$.
+\end{example}
+\begin{proof}
+    $(\ln (1+x))' = \frac{1}{1+x} = \sum\limits_{n=0}^\infty (-1)^n x^n$.
+
+    $\ln(1+y) = \int\limits_0^y \frac{\dx}{1+x} = \int\limits_0^y \sum\limits_{n=0}^\infty (-1)^n x^n = \sum\limits_{n=0}^\infty (-1)^n \frac{y^{n=1}}{n+1}$.
+
+     $(\arctg x)' = \frac{1}{1+x^2} = \sum\limits_{n=0}^\infty (-1)^n x^{2n}$.
+
+     $\arctg y = \int\limits_0^y \frac{\dx}{1+x^2} = \int\limits_0^y \sum\limits_{y=0}^\infty (-1)^n x^{2n} \dx = \sum\limits_{n=0}^\infty (-1)^n \frac{y^{2n+1}}{2n+1}$.
+\end{proof}
+\begin{example}
+    $(1+x)^p = \sum\limits_{n=0}^\infty \frac{p(p-1)\ldots(p-n+1)}{n!}x^n$ при $|x| < 1$.
+\end{example}
+\begin{proof}
+    $(1+x)^p = \sum\limits_{k=0}^n \frac{p(p-1)\ldots (p-k+1)}{k!}x^k + \frac{1}{n!}\int\limits_0^x p(p-1)\ldots (p-n)(1+t)^{p-n-1}(x-t)^n \dt$. 
+
+    Посчитаем $\frac{c_{n+1}}{c_n} = \frac{1}{n} \cdot \ldots = \frac{p-n}{n} \frac{\int\limits_0^x (1+t)^{p-n}(x-t)^{n-1}\frac{x-t}{1+t} \dt}{\int\limits_0^x (1+t)^{p-n} (x_t)^{n-1}\dt}$.
+
+    Тогда $\left| \frac{x-t}{1+t} \right| \le |x|$. А значит отношение $\le \frac{p - n}{n}|x| \to |x| \le 1$.
+\end{proof}
+

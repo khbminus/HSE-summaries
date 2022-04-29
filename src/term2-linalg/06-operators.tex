@@ -138,8 +138,103 @@ $U$ --- инвариантное подпространство,  $\dim U = 1, U
     $Tr(A) = \sum\limits_{i=1}^n a_{ii}$.  $A = (a_{ij})$.  $Tr(A) = \pm(\text{коэффициент при }t^{n-1}\text{ у }\chi_{A}(t)) \implies Tr(A)$ не зависит от выбора базиса.
 \end{definition}
 \begin{theorem}[Кэли-Гамильтона]
-    Пусть $\CA \in End(V)$. Тогда  $\chi_A(\CA)=0 \in End(V)$. 
+    Пусть $\CA \in End(V)$. Тогда  $\chi_A(\CA)=0$. 
+    
+    То есть $\CA^n + a_{n-1}\CA^{n-1} + \ldots + a_1 \CA + a_0Id = 0$.
     \begin{example}
         Матрица 2х2. $A^2 = Tr(A) \cdot A - \det A$.
     \end{example}
 \end{theorem}
+\begin{proof}
+    Пусть у нас есть поле $K \leadsto \overline{K}$ --- алгебраическое замыкание.  То есть любой многочлен представим как произведение  $(x-a_i)$, где  $a_i$ --- корень многочлена.
+
+    Тогда $\xi_A(x) = \prod (x- a_i), a_i \in \overline{K}$. Тогда  $a_1, a_2,\ldots,a_n$ --- собственные числа.
+
+    Индукция по $n = \dim V$. При  $n=1$ это база: матрица  $\begin{pmatrix} a \end{pmatrix} = aE, x_0 = t - a \leadsto A-aE = 0$ --- верно.
+
+    Переход от  $n-1$ к $n$. $a_1$ --- собственное число  $A \implies \exists x\!: x = a_1x$,  $\langle x \rangle$ --- инвариантное пространство. Тогда матрица в базисе$x_1 \equiv x, x_2, \ldots$. Получим матрицу вида $\left(\begin{array}{c|c} a_1 & * \\ \hline 0 & \widetilde{A} \end{array} \right)$. Тогда  $\widetilde{A}$ --- матрица  $A \Big|_{v / \langle x \rangle}$. 
+
+    Тогда  $\xi_\CA = (a_1 - t) \cdot \xi_{\widetilde{A}}(t)$. Значит  $\implies \xi_{\overline{A}}(t) = \prod\limits_{i=2}^n (t-a_i) \implies (\prod_{i=2}^n (t-a_i))(\widetilde{A}) = 0$.
+
+    А значит, $(\prod\limits_{i=2}^n (t-a_i))A(v) = kx$. А значит,  $(A - a_1Id)(kx) = k(\CA x - a_1x) = 0$.
+\end{proof}
+
+Возьмем характеристический многочлен матрицы $\xi(t) = \prod_{i=1}^k p_1^{a_1}(t)$,  $p_i$ --- неразложимые.
+
+Тогда пусть  $v_i = \{v \in V \mid p_i^{a_i}(\CA)(v) = 0\}$ --- аннуляторное пространство. Пусть  $p_i^{a_i} = t - a$. Тогда  $v_i = \{v \mid \CA(v) = a \cdot v\}$ --- собственное подпространство соответствующее $a$. 
+
+\begin{remark}
+    Это подпространство. (очев)
+\end{remark}
+
+\begin{theorem}
+    $V = V_1 \oplus V_2 \oplus \ldots \oplus V_k$.
+\end{theorem}
+\begin{proof}
+    Пусть $A \in End(U)$, тогда $\forall P\!: P = P_1 \cdot P_2, (P_1, P_2) = 1 \implies A = \ker(P_1(\CA)) \oplus \ker(P_2(\CA))$. $\xi(\CA) = 0$, $\xi(t_1) = p_1^{a_1} \cdot (p_2^{a_2} \cdot \ldots \cdot p_n^{a_n})$. 
+
+    Тогда $V = \ker p_1^{a_1} \oplus \ker(p_2^{a_2} \cdot \ldots \cdot p_n^{a_n})$. 
+
+    Тогда $\CA\Big|_{V'_i} = \CA'$,  $V_i$ --- инвариантные пространства.  $p_2^{a_2} (p_3^{a_3} \cdot \ldots p_n^{a_n})$ и поехали дальше.
+
+    Теперь докажем утверждение со звездочкой.
+
+    $(P_1, P_2) = 1 \implies \exists f, g \in K[x]\!: P_1 \cdot f + P_2 \cdot g = 1$. Тогда $P_1(\CA) f(\CA) + P_2(\CA)\cdot g(\CA) = id$. А значит для любого $u \in U\!:$  $P_1(\CA)u f(\CA)u + P_1(\CA)u \cdot g(\CA)u = u$. Обозначим первое слагаемое за $u_2$, а второе за $u_1$. Тогда $P_2(\CA) u_2 = P_2(\CA) \cdot P_1(\CA) f(\CA)u  P(\CA)(f \CA(u_2)) = 0 \implies u_2 \in \ker P_2(\CA)$. 
+
+    Значит $u = u_1 + u_2$, лежащие в $\ker(P_1(\CA))$ и $\ker(P_2(\CA))$.
+
+    Тогда $\ker(P_1(\CA)) \cap \ker(P_2(\CA)) = \{0\}$.
+\end{proof}
+
+Перейдем теперь в $\CC$.  $p_i = (t-a_i)$.  $v_i = \ker(\CA - a_iE)^{b_i}$ --- корневые подпространства. $V = V_1 \oplus V_2 \oplus \ldots \oplus V_n$, $V_i$ --- инвариантные подпространства.  $p(\CA)(v) = 0$.  $V \to \CA v$.  $p(\CA) \cdot = (\CA \cdot p(\CA)v = \CA(P(A(V))) = 0)$. 
+
+Продолжим изучать операторы $\CA$: $(\CA - aId)^k = 0$. Пусть  $\mathcal{B} = \CA - aId \implies \mathcal{B}^b = 0$.
+
+$\mathcal{B} \leadsto B$ --- очень простая матрица в хорошем базисе. 
+
+\Subsection{Жорданов базис нильпотенотного оператора}
+\begin{definition}
+$\CA \in End(V)$ --- нильпотентный, если  $\exists k\!: \CA^k = 0$.    
+\end{definition}
+\begin{remark}
+    $\CA$ --- диагонализуемая нильпотентная  $\implies \CA = 0$.
+\end{remark}
+\begin{example}[Жордановка цепочка]
+    $V = \langle v_1, v_2, \ldots, v_n \rangle$. $\CA \in End(v)\!: \CA(v_i) = v_{i+1}, \CA(v_n) = 0$.
+
+    То есть  $v_1 \xRightarrow{\CA} v_1 \xRightarrow{\CA} \ldots \xRightarrow{\CA} v_n \xRightarrow{\CA} 0$. Например, $V = K[x]_n$,  $\CA(f) = f'$.
+\end{example}
+\begin{theorem}
+    У любого нильпонетного оператора есть базис из жордановых цепочек (непересекающийся)
+\end{theorem}
+\begin{remark}
+    Для любой жордановой цепочки $\CA$ в таком базисе будет как все нули + единицы на диагонали снизу от главной.
+
+    Для нильпотентного --- набор таких блоков.
+\end{remark}
+\begin{proof}
+    Любой нельпотентный оператор можно представить как какую-то диаграмму Юнга. 
+
+    Пусть $\mathcal{B}$ --- нильпотентна,  $k$ --- минимальное, такое что  $B^k = 0$. 
+
+    Пусть  $S_0 = \ker B$. Построим  $S_0 \supset S_1 \supset S_2 \supset \ldots \supset S_{k-1}$, $S_i = (\ker B) \cap (\Im B^i)$. $S_k = (\ker B) \cap \Im B^k = 0$.
+    
+    Если мы доказали существование, то покажем, что  $\sum \dim (s_i) = \dim V$.
+
+    Причем скажем, что $s_i = \ker(B \Big|_{\Im B^i}) \implies \dim s_i = \dim (\Im B^i) - \dim(\Im(B\Big|_{\Im B^i})) = \dim (\Im (B^i)) - \dim(\Im(B^{i+1}))$. Cложим  $\dim s_i$. Получим  $\dim \Im B^0 - \dim \Im B^k = \dim V$. 
+
+    Выведем базис $s_{k-1}\!: v_{1,1}^{k-1}, v_{2, 1}^{k-1}, \ldots, v_{s_{k-1}}^{k-1} \in \Im(B^{k-1}) \implies \exists v_{1, k-1}^{k-1}, v_{2, k - 1}^{k-1}\!: B^{k-1} (v_{i, k - 1}^{k-1}) = v_{i, 1}^{k-1}$.
+
+    Тогда $v_{i,j}^{k-1} = B^{k-1-j}(V_{i, k-1}^{k-1})$ --- построили  $a_{k-1}$ жордановых цепочек длины  $k-1$. 
+
+    Дополним до базиса $s_{k-2}\!: v_{1,1}^{k-2}, \ldots, v_{a_{k-2}, 1}^{k-2} \in S_{k-2}$ и аналогично.
+
+    Построили $\{v_{i, j}^{k-2}\}_{\substack{i=1..k-2\\j=1..k-2}}$. 
+
+    Сколько мы построили векторов? $(\dim s_{k-1}) k + (\dim s_{k-2} - \dim s_{k-1})(k-1) + \ldots + \dim s_0 - \dim s_1 = \dim s_{k-1} + \dim s_{k-2} + \ldots = \dim V$.
+
+    Осталось доказать: $\{v_{i, j}\}$ --- ЛНЗ  $\implies \{v_{i, j}^k\}$ --- базис.
+
+    Пусть  $\sum_{\substack{l=0..k-1\\j=1..l+1\\i=1..a_l}} a_{i, j}^l v_{i, j}^l = 0$. Пусть  $L = \max\{j \mid \exists i, l\!: a_{ij}^l \neq 0\}$. Применим  $B^{l-1}$:  $\sum a_{i, L}^l v_{i, 1}^l = 0$, а это базис ядра  $\mathcal{B} \implies a_{i, L}^l = 0$. Противоречие. 
+\end{proof}
+
