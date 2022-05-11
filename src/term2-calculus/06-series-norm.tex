@@ -1024,4 +1024,20 @@
 
     Тогда $\left| \frac{x-t}{1+t} \right| \le |x|$. А значит отношение $\le \frac{p - n}{n}|x| \to |x| \le 1$.
 \end{proof}
-
+\begin{example}
+    Частный случай при  $p = -\frac{1}{2}$. 
+    \begin{align*}
+        \frac{1}{\sqrt{1+x}} = 1 + \sum\limits_{n=1}^\infty \frac{(-1)^n\frac{1}{2} \cdot \frac{3}{2} \cdot \frac{5}{2} \cdot \ldots \cdot (n-\frac{1}{2})}{n!}x^n = 1 + \sum \limits_{n=1}^\infty \frac{(2n-1)!!(-1)^n}{2^nn!}x^n = 1 + \sum\limits_{n=1}^\infty \frac{\binom{2n}{n}(-1)^n}{4^n}x^n
+    \end{align*}
+\end{example}
+\begin{example}
+    \begin{align*}
+        \arcsin x = \sum\limits_{n=0}^\infty \frac{\binom{2n}{n}}{4^n} \cdot \frac{2^{n+1}}{2n+1}.
+    \end{align*}
+\end{example}
+\begin{proof}
+     \begin{align*}
+        \frac{1}{\sqrt{1-x^2}} = 1 + \sum\limits_{k=1}^\infty \frac{\binom{2n}{n}}{4^n}x^{2n}
+    \end{align*}
+    Но мы знаем, что $\arcsin y = \int\limits_0^y \frac{\mathrm{d}x}{\sqrt{1-x^2}} = y + \sum\limits_{n=1}^\infty \frac{\binom{2n}{n}}{4^n} \frac{y^{2n+1}}{2n+1}$.
+\end{proof}
