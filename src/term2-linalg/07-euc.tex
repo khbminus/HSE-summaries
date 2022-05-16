@@ -1,0 +1,59 @@
+\begin{definition}
+    Евклидовым пространством называется пара $(V, (\ ,\ ))$, так что $V$ --- векторное пространство над  $\R$.
+
+    $(\ ,\ )\: V \times V \to \R$, такой что  $(\ ,\ )$ билинейна,  $(\ ,\ )$ --- симметрична и  $\forall v \in V\!: (v, v) \ge 0 \land (v, v) = 0 \iff v = 0$.
+
+    Будем называть $(\ ,\ )$ скалярным произведением.
+\end{definition}
+\begin{example}
+    $V=\R^n$. Тогда формула известна. Очев, что все очев.
+\end{example}
+\begin{example}
+    $V = C[0, 1], (f, g) = \int\limits_0^{1}f(x)g(x) \mathrm{d}x$.
+\end{example}
+\begin{definition}
+    $V$ --- евклидово  $v \in V$, норма  $V$ --- $\|v\| = \sqrt{(v, v)}$.
+
+     $v_1, v_2 \in V, d(v_1, v_2) = \|v_1 - v_2\|$.
+\end{definition}
+\begin{statement}
+    $d$ --- метрика.
+\end{statement}
+\begin{statement}
+    $V$ --- евклидово. $v_1, v_2 \in V \implies |(v_1,v_2)|^2 \le \|v_1\| \cdot \|v_2\|$.
+\end{statement}
+\begin{definition}
+    $V$ --- евклидово. Тогда  $\langle v_1, v_2 \rangle$ --- это $\alpha \in [0; \pi]$,  такой, что  $\cos \alpha = \frac{(v_1, v_2)}{\|v_1\| \cdot \|v_2\|}$. 
+\end{definition}
+\begin{definition}
+    Если $(v_1, v_2) = 0$, то будем называть $v_1, v_2$ ортогональными.
+\end{definition}
+\begin{definition}
+    $V$ --- евклидово пространство,  $v_1, \ldots, v_n$ --- базис. Тогда матрица $a_{ij} = (v_i, v_j)$ --- матрица Грама.
+\end{definition}
+
+Возьмем $u_1, u_2 \in V$, с координатами $x_i, y_i$ в векторе  $\{v_i\}$. Тогда скалярное  $(u_1, u_2) = u_1Gu_2$, где $G$ --- матрица Грама.
+
+Если матрица Грама равна  $E$, то у нас ортонормированный базис.
+
+\begin{definition}
+    Пусть $v_1, \ldots, v_n$ --- базис. Тогда он ортонормирован, если $\forall i,j\!: (v_i, v_j) = \delta_{ij}$.
+\end{definition}
+\begin{theorem}[оротогонализация Грама Шмидта]
+    $V$ --- евклидово пространство,  $v_1, v_2, \ldots, v_n$ --- базис.
+    Тогда $\exists$ ортонормированный базис (ОНБ)  $e_1, \ldots, e_n$, причем $\forall i\!: \langle v_1, \ldots, v_i\rangle \overset{(*)}{=} \langle e_1, \ldots, e_i\rangle$.
+\end{theorem}
+\begin{proof}
+    Докажем, что $\exists$ базис со  $(*)$ по индукции.
+
+    База: $e_1 = \frac{v_1}{\|v_1\|}$. $\langle e_1\rangle = \langle v_1\rangle$, $(e_1, e_1) = \frac{1}{\|v_1\|^2} (v_1, v_1) = 1$.
+
+    Переход $l \to l+1$.  Строим  $\widetilde{e_{l+1}} = a_1e_1 + a_2e_2 + \ldots + v_{l+1}, a_i \in \R$. $\langle e_1, \ldots, e_l, \widetilde{e_{l+1}} \rangle = \langle e_1, e_2, \ldots, e_l, v_{l+1} \rangle = \langle v_1, v_2., \ldots, v_{l+1}\rangle$.
+
+    Проверим ортогональность. $\forall a_i\!: (a_1e_1 + \ldots + a_le_l + v_{l+1}, e_i) = 0$i
+
+    Это следует из того, что можно раскрыть сумму $\sum\limits_{j=1}^l a_j(e_j, e_i) + (v_{l+1}, e_i) = 0 \implies a_i(e_i, e_j) + (v_{l+1}, e_i) = 0$. Тут почти все равно нулю, кроме  $(e_i, e_i) = 1$. Тогда  $a_i = - \frac{(v_{l+1}, e_i)}{(e_i, e_i)} = -(v_{l+1}, e_i)$.
+\end{proof}
+\begin{remark}
+    Пусть $e_1, e_2, \ldots, e_n$ --- ОНБ,$v \in V$.  $x_1, \ldots, x_n$ --- координаты $v$. Тогда  $v\cdot e_i = (\sum x_i e_i, e_i) = \sum x_j(e_j, e_i) = x_i$.
+\end{remark}

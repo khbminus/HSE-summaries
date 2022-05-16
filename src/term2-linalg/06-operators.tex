@@ -238,3 +238,51 @@ $\CA \in End(V)$ --- нильпотентный, если  $\exists k\!: \CA^k =
     Пусть  $\sum_{\substack{l=0..k-1\\j=1..l+1\\i=1..a_l}} a_{i, j}^l v_{i, j}^l = 0$. Пусть  $L = \max\{j \mid \exists i, l\!: a_{ij}^l \neq 0\}$. Применим  $B^{l-1}$:  $\sum a_{i, L}^l v_{i, 1}^l = 0$, а это базис ядра  $\mathcal{B} \implies a_{i, L}^l = 0$. Противоречие. 
 \end{proof}
 
+Хотим теперь возвести матрицу в степень, то есть $A \leadsto A^N$. Давайте посмотрим на  $f(n) = \max(a_{ij}^n)$. Для довольно случайно матрицы эта функция будет расти довольно экспоненциально $f(n) \sim a^n$. Но $a$ тоже имеет значение.
+
+Будем считать, что  $A \in M_{n}(\CC)$. Тогда  $\exists C\!: C^{-1}AC = I$ --- блочная жорданова матричка. Тогда заметим, что  $A^n = (CIC^{-1})(CIC^{-1})\ldots = CI^nC^{-1}$. Теперь научимся считать возводить в степень жорданову матрицу.
+
+Для этого заметим, что нам достаточно умножать только жордановы блоки. $(J_\alpha(\lambda))^n = (\lambda E_{\alpha} + J_\alpha(0))^n = \sum\limits_{k=0}^n \binom{n}{k} \lambda^{n-k}J_\alpha(0)^k$. Тогда если посмотреть на блок, то заметим, что блок из единиц двигается. Ну тогда все понятно.
+
+Тогда заметим, что $f(n) \sim \mathcal{O}^*(\lambda^n)$ для блока, а для всей матрицы надо взять максимум  по  $\lambda$.
+
+Когда  $\{A^n\}$ ограничена ограничена? Когда  $|\lambda| \ge 1$ и все блоки с $\lambda = 1$ размера 1.
+
+Когда  $A^n \to 0$? Когда  $|\lambda| \le 1$.
+
+\Subsection{Когда мы в $\CC$}
+Рассмотрим несколько случаев:
+\begin{enumerate}
+    \item $K = \R$. Перейдем в  $\CC$. Пусть  $v_1, v_2. \ldots, v_n$ --- базис из собственных векторов, $\lambda_1, \ldots, \lambda_n$ --- собственные числа.
+
+        $x \mapsto Ax$.  $v_i \in \CC^n$.  Наблюденме: $Av_i = \lambda_i v_i$,  $\lambda_i \notin \R$. Сопряжение:  $A \cdot \overline{v_i} = \overline{\lambda_i} \cdot \overline{v_i}$. 
+
+        Тогда заметим, что $v_i, \overline{v_i} \to \left(v_i + \overline{v_i}, \frac{v_i - \overline{v_i}}{2}\right)$, где числа из пары $\in \R$. 
+
+        Тогда заметим, что $A(v_i + \overline{v_i}) = Av_i + A\overline{v_i} = \lambda v_i + \overline{\lambda} \overline{v_i}$, тоже самое для  $\frac{v_i - \overline{v_i}}{2}$, $\langle v_i + \overline{v_i}, v_i - \overline{v_i} \rangle $ --- инвариантное подпространство.  
+
+        Тогда $A \in M_n(K)$ диагонализуема как матрица над $\CC \implies \exists$ базис в  $\R^n$ в котором матрица состоит из блоков вида $\begin{pmatrix} a_i & b_i \\ -b_i & a_i\end{pmatrix}$. 
+
+        А если матрица не диагонализуема, то матрица будет выглядеть вот так:\\ $\begin{pmatrix} a_i & b_i & 0 & 0 \\ -b_i & a_i & 1 & 0 \\ 0 & 0 & a_{i+1} & b_{i+1} \\ 0 & 0 & -b_{i+1} & a_{i+1} \end{pmatrix}$
+\end{enumerate}
+\Subsection{Циклические пространства и фробениусова форма}
+$\CA\!: V \to V$, поле по  $K$.
+
+Выберем  $v \in V, v \neq 0$
+
+Рассмотрим последовательность  $\langle v, \CA v, \CA^2 v,\ldots, \CA^k v \rangle$ --- не ЛНЗ.
+$\exists \{a_i\}, A^k(v) = A^k(v) = \sum\limits_{i=1}^k a_i A^i(V) \land \{v, v, \CA v, \CA^2 v,\ldots, \CA^k v\}$ --- не ЛНЗ.
+
+\begin{statement}
+    $\langle v \rangle_{K[t]} = \langle v, \CA v, \ldots, \CA^{k-1} \rangle$. Найдем $\min k$, такое, $\exists \{a_i\} \! \in K$, такие, что  $A\Big|_{\langle v\rangle_{K[t]}} = \begin{pmatrix} 0 & 0 & \ldots & 0 & -a_0 \\ 1 & 0 & \ldots & 0 & -a_1 \\ \vdots & \vdots & \ddots & \vdots & \vdots\\ 0 & 0 & \ldots & 1 & -a_{n-1} \end{pmatrix}$.
+
+    $\langle v\rangle_{K[t]}$ --- циклическое подпространство. 
+
+    $A(b_0 + b_1 Av + \ldots + A^{k-1}v) = b_0Av + \ldots + b_{k-2}A^{k-1}(v)$.
+\end{statement}
+\begin{statement}
+    $\chi_{\CA \Big|_{\langle v \rangle}} = t^k - a_{k-1}t^{k-1} .. - a_0$.
+\end{statement}
+\begin{statement}
+    $\forall$ пространство раскладываемое прямую сумму циклических подпространств. Относительно $\CA$. На матричном языке просто блоки как выше.
+\end{statement}
