@@ -759,7 +759,7 @@
 \begin{theorem}
     $f_n, f\!: E \to \R$,  $a$ --- предельная точка  $E$,  $f_n \rightrightarrows f$ на  $E$ и  $\lim\limits_{x \to a} f_n(x) \eqqcolon b_n \in \R$. Тогда  $\lim b_n, \lim\limits_{x \to a} f(x)$ существуют, конечны и равны.
 
-    В частности, $\lim\limits_{x \to a} \lim\limits_{n \to \infty} f_n(x) = \lim\limits_{n \to \infty} \lim_{x \to a} f_n(x)$.
+    В частности, $\lim\limits_{x \to a} \lim\limits_{n \to \infty} f_n(x) = \lim\limits_{n \to \infty} \lim\limits_{x \to a} f_n(x)$.
 \end{theorem}
 \begin{proof}
     Запишем Критерий Коши:
@@ -769,7 +769,7 @@
     \forall \eps > 0 \exists N\forall m, n \ge N \forall x \in E\!: |b_n - b_m| \le \eps 
     .\] А это критерий Коши для последовательности $b_n \implies \lim b_n = b \in \R$.
 
-    Остается показать, что $\lim\limits_{x \to a} f(x) = b$. Честно проверим. Что такое $|f(x) - b|$? Это  $\le |f_n(x) - f(x)| + |b_n - f_n(x)| + |b-b_n|$. Мы знаем, что $b_n \to b \implies |b-b_n|$ при  $n \ge N_1$ не больше $\eps$. При  $n \ge N_2$ $|f_n(x) - f(x)| M \eps$. 
+    Остается показать, что $\lim\limits_{x \to a} f(x) = b$. Честно проверим. Что такое $|f(x) - b|$? Это  $\le |f_n(x) - f(x)| + |b_n - f_n(x)| + |b-b_n|$. Мы знаем, что $b_n \to b \implies |b-b_n|$ при  $n \ge N_1$ не больше $\eps$. При  $n \ge N_2$ $|f_n(x) - f(x)| < \eps$. 
 
     Тогда, взяв  $N \coloneqq \max(N_1, N_2)$, получаем $|f(x) - b| < 2\eps + |b_n - f_n(x)|$. Но оставшаяся разность стремится к нулю при  $x \to a$. Тогда можно выбрать $\delta$-окрестность, чтобы эта разность  была меньше $\eps$. Следовательно,  $|f(x) - b| < 3\eps$.
 \end{proof}
@@ -800,7 +800,7 @@
 
 \end{theorem}
 \begin{proof}
-    $F_n(x) \coloneqq \int\limits_c^x f_n(t) \dt$. Тогда  $|F_n(x) - F(x)| = \left|\int\limits_c^xf_n(t)\dt - \int\limits_c^x f(t)\dt\right| \le \int\limits_c^x |f_n(t) - f(t)| \dt \le |x-c|\max\limits_{t \in [c, x]} |f_n(t) - f(t)| \le (b-a)\sum\limits_{t \in [a, b]} |f_n(t) - f(t)|$, но по свойству равномерной сходимости $\sup \to 0$. Значит равномерная сходимость есть.
+    $F_n(x) \coloneqq \int\limits_c^x f_n(t) \dt$. Тогда  $|F_n(x) - F(x)| = \left|\int\limits_c^xf_n(t)\dt - \int\limits_c^x f(t)\dt\right| \le \int\limits_c^x |f_n(t) - f(t)| \dt \le |x-c|\max\limits_{t \in [c, x]} |f_n(t) - f(t)| \le (b-a)\sup\limits_{t \in [a, b]} |f_n(t) - f(t)|$, но по свойству равномерной сходимости $\sup \to 0$. Значит равномерная сходимость есть.
 \end{proof}
 \begin{consequence}
     $u_n \in C[a, b]$ и  $\sum\limits_{n=1}^\infty u_n(x)$ равномерно сходится, то $\int\limits_c^x \sum\limits_{n=1}^\infty u_n(t)\dt = \sum\limits_{n=1}^\infty \int\limits_c^x u_n(t)\dt$.
@@ -809,7 +809,7 @@
     $\int\limits_c^x\sum\limits_{k=1}^n u_k(t)\dt = \sum\limits_{k=1}^n \int\limits_c^x u_k(t)\dt$. А дальше можно просто устремить к бесконечности по предыдущей теореме.
 \end{proof}
 \begin{remark}
-    Поточечной сходимости не хватает. Пример: $f_n(x) nxe^{-nx^2}$ на  $[0, 1]$.  $f_n(x) \xrightarrow{n \to \infty} 0$. То $\int\limits_0^1 f_n(x) \dx = \int\limits_0^1 nxe^{-nx^2}\dx = \frac{1}{2} \int\limits_0^1 e^{-nx^2} \mathrm(nx^2) = -\frac{e^{-nx^2}}{2} \Big|_0^1 = \frac{1-e^{-n}}{2} \to \frac{1}{2} \neq 0 = \int\limits_0^1 f(x)\dx$.
+    Поточечной сходимости не хватает. Пример: $f_n(x) = nxe^{-nx^2}$ на  $[0, 1]$.  $f_n(x) \xrightarrow{n \to \infty} 0$. Но $\int\limits_0^1 f_n(x) \dx = \int\limits_0^1 nxe^{-nx^2}\dx = \frac{1}{2} \int\limits_0^1 e^{-nx^2} \mathrm(nx^2) = -\frac{e^{-nx^2}}{2} \Big|_0^1 = \frac{1-e^{-n}}{2} \to \frac{1}{2} \neq 0 = \int\limits_0^1 f(x)\dx$.
 \end{remark}
 \begin{theorem}
     $f_n \in C^1[a, b], c \in [a, b], f_n(c) \to A$ и  $f_n' \rightrightarrows g$ на $[a, b]$. 
@@ -819,7 +819,7 @@
     В частности, $\lim\limits_{n \to \infty} f_n'(x) = (\lim\limits_{n \to \infty} f_n(x))'$
 \end{theorem}
 \begin{proof}
-    $\int\limits_c^x g(t)\dt = \int\limits_c^x \lim\limits_{n \to \infty} f_n'(t) \dt \overset{(*)} = \lim_{n \to \infty} \int\limits)c^x f_n'\dt = \lim\limits_{n \to \infty} (f_n(x) - f_n(c)) = \lim\limits_{n \to \infty} f_n(x) - \lim\limits_{n \to \infty} f_n(c) = f(x) - A$. $(*)$ --- предыдущая теорема.
+    $\int\limits_c^x g(t)\dt = \int\limits_c^x \lim\limits_{n \to \infty} f_n'(t) \dt \overset{(*)} = \lim_{n \to \infty} \int\limits_c^x f_n'\dt = \lim\limits_{n \to \infty} (f_n(x) - f_n(c)) = \lim\limits_{n \to \infty} f_n(x) - \lim\limits_{n \to \infty} f_n(c) = f(x) - A$. $(*)$ --- предыдущая теорема.
 
     Тогда $f(x) = A + \int\limits_c^x g(y)\dt \implies f \in C^1[a, b]$ и  $f'(x) = g(x)$.
 
@@ -827,7 +827,7 @@
 
      $f_n(x) = \int\limits_c^x f_n'(t)\dt + f_n(c)$,  $f(x) = \int\limits_c^x g(t)\dt + A$.
 
-     Мы знаем, что  $\int\limits_c^x f_n'(t)\dt \rightrightarrows \int\limits_c^xg(t)\dt$, а $f_n(c) \to A \implies f_n(c) \rightrightarrows A$.
+     Мы знаем, что  $\int\limits_c^x f_n'(t)\dt \rightrightarrows \int\limits_c^xg(t)\dt$, а $f_n(c) \to A \implies f_n(x) \rightrightarrows f(x)$.
 \end{proof}
 \begin{consequence}
     $u_n \in C^1[a, b]$ и  $\sum\limits_{n=1}^\infty u'_n(x)$ равномерно сходится на  $[a, b)$,  $\sum\limits_{n=1}^\infty u_n(c)$ сходится. 
@@ -839,7 +839,7 @@
 
      $f_n' \rightrightarrows g$ и  $f_n(c)$ сходятся.
 
-     Тогда по теорема  $f_n \rightrightarrows f$,  $f$ --- дифференцируемая функция и  $f' = g$.
+     Тогда по теореме  $f_n \rightrightarrows f$,  $f$ --- дифференцируемая функция и  $f' = g$.
 
      То есть мы поняли, что $\left(\sum\limits_{n=1}^\infty u_n(x)\right)' = g(x) = \sum\limits_{n=1}^\infty u_n'(x)$. 
 \end{proof}
@@ -856,13 +856,13 @@
 \begin{proof}
     $\sum\limits_{n=0}^\infty a_n z_0^n$ --- сходящийся $\implies |a_nz_0^n| \to 0 \implies |a_nz_0^n| \le M$.
 
-    Тогда скажем, что $|a_nz^n| = |a_nz_0^n| \cdot \left|\frac{z}{z_0}\right|^n \le M \left|\frac{z}{z_0}\right|^n$.
+    Тогда скажем, что $|a_nz^n| = |a_nz_0^n| \cdot \left|\frac{z}{z_0}\right|^n \le M \left|\frac{z}{z_0}\right|^n \Rightarrow$ ряд сходится, так как мажорируется геометрической прогрессией.
 \end{proof}
 \begin{consequence}
-    Если ряд $\sum\limits_{n=0}^\infty a_nz^n$ расходится при  $z=z_0$, то он расходится  $\forall z\!: |z| > |z_0|$.
+    Если ряд $\sum\limits_{n=0}^\infty a_nz^n$ расходится при  $z=z_0$, то он расходится  $\forall z\!: |z| > |z_0|$ (от противного).
 \end{consequence}
 \begin{definition}
-    $R$ --- радиус сходимости ряда, если ряд  $\sum a_nz^n$  сходится $\forall z\!: |z| < R$ и расходится  $\forall z\!: |z| > R$.
+    $R$ --- радиус сходимости ряда, если ряд  $\sum a_nz^n$  сходится $\forall z\!: |z| < R$ и расходится  $\forall z\!: |z| > R$. Для равного $R$ --- непонятно.
 \end{definition}
 \begin{theorem}
     Радиус сходимости существует $\in [0, +\infty]$ и  $R = \frac{1}{\varlimsup \sqrt[n]{|a_n|}}$ --- формула Коши-Адамара (Hadamard).
@@ -872,15 +872,15 @@
 \end{proof}
 \begin{example}
     \begin{enumerate}
-        \item $\sum\limits_{k=0}^\infty \frac{z^n}{n!}$. $R = \frac{1}{\varlimsup \sqrt[n]{\frac{1}{n!}}} = +\infty$. Ряд сходится всегда.
-        \item $\sum\limits_{n=0}^\infty n!z^n$,  $R = \frac{1}{\varlimsup \sqrt[n]{n!}} = 0$. Ряд сходится при $z = 0$.
-        \item  $\sum\limits_{n=1}^\infty \frac{z^n}{n^p}$, $R = \frac{1}{\varlimsup \sqrt[n]{\frac{1}{n^p}}} = 1$. Ряд точно сходится при $|z| < 1$. Ряд при  $|z| \le 1$ ряд сходится. А вот при $p=1$ ряд расходится при  $p=1$ и сходится при  $z = -1$.
+        \item $\sum\limits_{k=0}^\infty \frac{z^n}{n!}$. $R = \frac{1}{\varlimsup \sqrt[n]{\frac{1}{n!}}} = +\infty$. Ряд расходится всегда.
+        \item $\sum\limits_{n=0}^\infty n!z^n$,  $R = \frac{1}{\varlimsup \sqrt[n]{n!}} = 0$. Ряд сходится только при $z = 0$.
+        \item  $\sum\limits_{n=1}^\infty \frac{z^n}{n^p}$, $R = \frac{1}{\varlimsup \sqrt[n]{\frac{1}{n^p}}} = 1$. Ряд точно сходится при $|z| < 1$. При  $|z| \le 1$ ряд сходится при $p = 2$. А вот при $p=1$ ряд расходится при  $z=1$ и сходится при  $z = -1$.
     \end{enumerate}
 \end{example}
 \begin{definition}
     $R$ --- радиус сходимости  $\sum\limits_{n=0}^\infty a_n(z-z_0)^n$.
 
-    Круг $\{z \in \CC \mid |z-z_0| < R\|$ --- круг сходимости.
+    Круг $\{z \in \CC \mid |z-z_0| < R\}$ --- круг сходимости.
 \end{definition}
 \begin{theorem}
     $R$ --- радиус сходимости ряда  $\sum\limits_{n=0}^\infty a_nz^n$ и  $0 < r < R$.
@@ -913,7 +913,7 @@
     $\sum\limits_{n=0}^\infty a_nR^n$ --- равномерно сходящийся.  $\left(\frac{x}{R}\right)^n$ монотонна и равномерно ограничена $\xRightarrow{\text{пр. Абеля}} \sum\limits_{n=0}^\infty a_nx^n$ равномерно сходится  $\implies f(x) \coloneqq \sum\limits_{n=0}^\infty a_nx^n$ непрерывна на  $[0; R]$.
 \end{proof}
 \begin{lemma}
-    $x_n, y_n \ge 0$. $\lim x_b \in (0; +\infty)$.
+    $x_n, y_n \ge 0$. $\lim x_n \in (0; +\infty)$.
 
     Тогда  $\varlimsup x_ny_n = \lim x_n \varlimsup y_n$.
 \end{lemma}
@@ -928,7 +928,7 @@
     $\sum\limits_{n=0}^\infty a_n z^n, \sum\limits_{n=0}^\infty a_n \frac{z^{n+1}}{n+1}$ и $\sum\limits_{n=1}^\infty na_n z^{n-1}$ имеют одинаковые радиусы сходимости.
 \end{consequence}
 \begin{proof}
-    Заметим, что $\sum\limits_{n=0}^\infty a_n \frac{z^{n+1}}{n+1}$ и $\sum\limits_{n=0}^\infty a_n \frac{z^{n}}{n+1}$ имеют одинаковые радиусы сходимости.
+    Заметим, что $\sum\limits_{n=0}^\infty a_n \frac{z^{n+1}}{n+1}$ и $\sum\limits_{n=0}^\infty a_n \frac{z^{n}}{n+1}$ имеют одинаковые радиусы сходимости, т.к. отличаются домножением на $z$.
 
     Заметим, что  $\sum\limits_{n=0}^\infty n a_n z^{n-1}$ и  $\sum\limits_{n=0}^\infty n a_n z^{n}$ имеют одинаковые радиусы сходимости.
 
@@ -941,7 +941,7 @@
 \begin{proof}
     Ряд $\sum a_n(x-x_0)^n$ равномерно сходится при $|x-x_0| \le |y-x_0|$. На $[x_0, y]$ есть равномерная сходимость. Тогда
 \begin{align*}
-    \sum\limits_{x_0}^y \sum\limits_{n=0}^\infty a_n(x-x_0)^n \dx = \sum\limits_{n=0}^\infty \int\limits_{x_0}^y a_n(x-x_0)^n \dx = \sum\limits_{n=0}^\infty a_n \frac{(y-x_0)^{n+1}}{n+1}.
+    \int\limits_{x_0}^y \sum\limits_{n=0}^\infty a_n(x-x_0)^n \dx = \sum\limits_{n=0}^\infty \int\limits_{x_0}^y a_n(x-x_0)^n \dx = \sum\limits_{n=0}^\infty a_n \frac{(y-x_0)^{n+1}}{n+1}.
 \end{align*}
 \end{proof}
 \begin{definition}
@@ -969,7 +969,7 @@
         f'(z) &= \lim\limits_{w \to z} \frac{f(w) - f(z)}{w - z} = \lim\limits_{w \to z} \frac{\sum\limits_{n=0}^\infty a_nw^n - \sum\limits_{n=0}^\infty a_nz^n}{w - z} = \lim\limits_{w \to z} \sum\limits_{n=0}a_n \frac{w^n - z^n}{w - z}  = \\
               &= \lim\limits_{w \to z} \sum\limits_{n=1}^\infty a_n(w^{n-1} + w^{n-2}z + \ldots + wz^{n-2} + z^{n-1}) \overset{?}{=} \sum\limits_{n=1}^\infty \lim\limits_{w \to z} a_n(w^{n-1} + \ldots z^{n-1}) = \sum\limits_{n=1}^\infty a_n n z^{n-1}
 \end{align*}
-Разберемся с вопросом: $|a_n(w^{n-1} + \ldots + z^{n-1})| \le |a_n| n r^{n-1}$, а $\sum\limits_{n=1}^\infty n|a_n| r^{n-1}$ сходится.
+Разберемся с вопросом: $|a_n(w^{n-1} + \ldots + z^{n-1})| \le |a_n| n r^{n-1}$, а $\sum\limits_{n=1}^\infty n|a_n| r^{n-1}$ сходится, потому что $r < R$.
 \end{proof}
 \begin{theorem}
     Разложение функции в степенной ряд единственно. 
@@ -988,7 +988,7 @@
 \begin{example}
     $f(x) = \begin{cases} 0, & x = 0\\e^{-\frac{1}{x^2}}, & x \neq 0 \end{cases}$. Это бесконечно дифференцируемая функция. 
 
-    Тут абоба по индукции.
+    Тут абоба по индукции... Все члены Тейлора равны нулю $\Rightarrow$ тождественное равенство нулю.
 \end{example}
 \begin{example}
     $e^z \coloneqq \sum\limits_{n=0}^\infty \frac{z^n}{n!}$, $\cos z \coloneqq \sum\limits_{n=0}^\infty \frac{(-1)^n z^{2n}}{(2n)!}$, $\sin z \coloneqq \sum\limits_{n=0}^\infty \frac{(-1)^n z^{2n+1}}{(2n+1)!}$.
@@ -1008,7 +1008,7 @@
 \begin{proof}
     $(\ln (1+x))' = \frac{1}{1+x} = \sum\limits_{n=0}^\infty (-1)^n x^n$.
 
-    $\ln(1+y) = \int\limits_0^y \frac{\dx}{1+x} = \int\limits_0^y \sum\limits_{n=0}^\infty (-1)^n x^n = \sum\limits_{n=0}^\infty (-1)^n \frac{y^{n=1}}{n+1}$.
+    $\ln(1+y) = \int\limits_0^y \frac{\dx}{1+x} = \int\limits_0^y \sum\limits_{n=0}^\infty (-1)^n x^n = \sum\limits_{n=0}^\infty (-1)^n \frac{y^{n+1}}{n+1}$.
 
      $(\arctg x)' = \frac{1}{1+x^2} = \sum\limits_{n=0}^\infty (-1)^n x^{2n}$.
 
@@ -1020,9 +1020,9 @@
 \begin{proof}
     $(1+x)^p = \sum\limits_{k=0}^n \frac{p(p-1)\ldots (p-k+1)}{k!}x^k + \frac{1}{n!}\int\limits_0^x p(p-1)\ldots (p-n)(1+t)^{p-n-1}(x-t)^n \dt$. 
 
-    Посчитаем $\frac{c_{n+1}}{c_n} = \frac{1}{n} \cdot \ldots = \frac{p-n}{n} \frac{\int\limits_0^x (1+t)^{p-n}(x-t)^{n-1}\frac{x-t}{1+t} \dt}{\int\limits_0^x (1+t)^{p-n} (x_t)^{n-1}\dt}$.
+    Посчитаем $\frac{c_{n+1}}{c_n} = \frac{1}{n} \cdot \ldots = \frac{p-n}{n} \frac{\int\limits_0^x (1+t)^{p-n}(x-t)^{n-1}\frac{x-t}{1+t} \dt}{\int\limits_0^x (1+t)^{p-n} (x-t)^{n-1}\dt}$.
 
-    Тогда $\left| \frac{x-t}{1+t} \right| \le |x|$. А значит отношение $\le \frac{p - n}{n}|x| \to |x| \le 1$.
+    Тогда $\left| \frac{x-t}{1+t} \right| \le |x|$. А значит отношение $\le \frac{p - n}{n}|x| \to |x| < 1$.
 \end{proof}
 \begin{example}
     Частный случай при  $p = -\frac{1}{2}$. 
@@ -1032,12 +1032,12 @@
 \end{example}
 \begin{example}
     \begin{align*}
-        \arcsin x = \sum\limits_{n=0}^\infty \frac{\binom{2n}{n}}{4^n} \cdot \frac{2^{n+1}}{2n+1}.
+        \arcsin x = \sum\limits_{n=0}^\infty \frac{\binom{2n}{n}}{4^n} \cdot \frac{x^{2n+1}}{2n+1}.
     \end{align*}
 \end{example}
 \begin{proof}
      \begin{align*}
-        \frac{1}{\sqrt{1-x^2}} = 1 + \sum\limits_{k=1}^\infty \frac{\binom{2n}{n}}{4^n}x^{2n}
+        \frac{1}{\sqrt{1+x^2}} = 1 + \sum\limits_{k=1}^\infty \frac{\binom{2n}{n}}{4^n}x^{2n}
     \end{align*}
     Но мы знаем, что $\arcsin y = \int\limits_0^y \frac{\mathrm{d}x}{\sqrt{1-x^2}} = y + \sum\limits_{n=1}^\infty \frac{\binom{2n}{n}}{4^n} \frac{y^{2n+1}}{2n+1}$.
 \end{proof}
