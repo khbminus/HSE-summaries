@@ -8,7 +8,7 @@
     Если $f$ дифференцируема в точке  $a$, то  $T$ определена однозначно. 
 \end{remark}
 \begin{proof}
-    $f(a+th) = f(a) + T(th) P o(\|th\|) = f(a) + tTh + o(t\|h\|) = f(a) + tTh + o(t)$.
+    $f(a+th) = f(a) + T(th) + o(\|th\|) = f(a) + tTh + o(t\|h\|) = f(a) + tTh + o(t)$. $\|h\|$ --- константа, поэтому можно выкинуть.
 
      $Th = \lim\limits_{t \to 0} \frac{f(a+th) - f(a)}{t}$
 \end{proof}
@@ -21,10 +21,10 @@
     $T$ --- дифференциал $f$ в точке  $a$. Обозначается  $\mathrm{d}_af$. 
 \end{definition}
 \begin{definition}
-    Матрица отображение $\mathrm{d}_af$ назовем матрицей Якоби  $f$ в точке  $a$.
+    Матрицу отображения $\mathrm{d}_af$ назовем матрицей Якоби  $f$ в точке  $a$.
 \end{definition}
 
-Важный частный случай $m = 1$.  $f(a+h) = f(a) + \langle v, h \rangle o(\| h\|)$. $V$ --- градиент функции  $f$ в точке  $a$. Обозначается  $\text{grad}\ f$,  $\nabla f(a)$.
+Важный частный случай $m = 1$.  $f(a+h) = f(a) + \langle v, h \rangle o(\| h\|)$. $V$ --- градиент функции  $f$ в точке  $a$. Обозначается  $\text{grad}\ f$,  $\nabla f(a)$ (набла).
 
 \begin{theorem}
 Пусть $f = \begin{pmatrix} f_1 \\ f_2 \\ \vdots \\ f_n \end{pmatrix}\!: E \to \R^m$, $a \in \Int E$.
@@ -37,9 +37,9 @@
         \item $\Rightarrow$.  $f_j(a+h) = f_j(a) + (Th)_j + \alpha_j(h)$. Надо доказать, что  $\frac{\alpha_j(h)}{\|h\|} \to 0$. $|\alpha_j(h)| \le \|\alpha(h)\|$. Значит, $\frac{|\alpha_j(h)|}{\|h\|} \le \frac{\|\alpha_j(h)\|}{\|h\|} \to 0$.
         \item $\Leftarrow$. Знаем, что  $f_j(a+h) = f_j(a) + T_jh + \alpha_j(h)$, где  $\frac{\alpha_j(h)}{\|h\|} \to 0$. 
 
-            $\alpha(h) = \begin{pmatrix} \alpha_1(h) \\ \vdots \\ \alpha_n(h) \end{pmatrix}$. Надо доказать, что $\frac{\|\alpha(h)\|}{\|h\|} \to 0$.
+            $\alpha(h) = \begin{pmatrix} \alpha_1(h) \\ \vdots \\ \alpha_m(h) \end{pmatrix}$. Надо доказать, что $\frac{\|\alpha(h)\|}{\|h\|} \to 0$.
 
-            Заметим, что $\frac{\|\alpha(h)\|}{\|h\|} = \frac{\sqrt{\alpha_1(h)^2 + \ldots + \alpha_n(h)^2}}{\|h\|} \le  \frac{|\alpha_1(h)| + \ldots + |\alpha_n(h)|}{\|h\|} \to 0$.
+            Заметим, что $\frac{\|\alpha(h)\|}{\|h\|} = \frac{\sqrt{\alpha_1(h)^2 + \ldots + \alpha_m(h)^2}}{\|h\|} \le  \frac{|\alpha_1(h)| + \ldots + |\alpha_m(h)|}{\|h\|} \to 0$.
     \end{itemize}
 \end{proof}
 \begin{consequence}
@@ -49,9 +49,9 @@
     $Th = \begin{pmatrix} T_1 \\ T_2 \\ \vdots \\ T_m \end{pmatrix}(h) = \begin{pmatrix} T_1h \\ \vdots \\ T_mh \end{pmatrix}$.
 \end{proof}
 \begin{definition}
-    Производная по направлению. $\|h\|=1$.
+    Производная по направлению. $f\!: E \to \R, \|h\|=1$.
 
-     $\frac{\partial f}{\partial h} = \lim\limits_{t \to 0} \frac{f(a+th) - f(a)}{t}$.
+     $\frac{\partial f}{\partial h}(a) \coloneqq \lim\limits_{t \to 0} \frac{f(a+th) - f(a)}{t}$.
 \end{definition}
 \begin{remark}
     $\frac{\partial f}{\partial h}(a) = \mathrm{d}_af(h)$.
@@ -67,7 +67,7 @@
     В неравенстве Коши-Буняковского равенство $\iff$ векторы пропорциональны  $\implies h = \pm \frac{\nabla f(a)}{\|\nabla f(a)\|}$.
 \end{proof}
 \begin{definition}
-    Частные производные. $f\!: E \to \R, e_k$ --- базисный вектор.
+    Частные производные. $f\!: E \to \R$ (это $\iff f$ --- скалярная), $e_k$ --- базисный вектор (везде нули кроме $k$-й позиции).
 
      $\frac{\partial f}{\partial x_k}, f'_{x_k}, D_{x_k}f,\ldots$. $\frac{\partial f}{\partial x_k} (a) \coloneqq \frac{\partial f}{\partial e_k}(a)$.
 \end{definition}
@@ -86,9 +86,9 @@
    $\frac{\partial f}{\partial x_k}(a) = \frac{\partial f}{\partial e_k}(a) = \langle \nabla f(a), e_k \rangle = (\nabla f(a))_k$.
 \end{proof}
 \begin{consequence}
-    $f\!: E \subset \R^n \to \R^m$,  $a \in \Int E$,  $f$ --- дифференциал в точке  $a$.
+    $f\!: E \subset \R^n \to \R^m$,  $a \in \Int E$,  $f$ --- дифференцируема в точке  $a$.
 
-    Тогда  $f'(a) = \begin{pmatrix} \frac{\partial f_1}{x_1} & \frac{\partial f_1}{x_2} & \ldots & \frac{\partial f_1}{x_n}\\  \frac{\partial f_2}{x_1} &\frac{\partial f_2}{x_2} & \ldots &\frac{\partial f_2}{x_n}\\ \ldots & \ldots & \ldots & \ldots\\ \frac{\partial f_n}{x_1} & \frac{\partial f_n}{x_2} & \ldots & \frac{\partial f_n}{x_n} \end{pmatrix}$.
+    Тогда  $f'(a) = \begin{pmatrix} \frac{\partial f_1}{x_1} & \frac{\partial f_1}{x_2} & \ldots & \frac{\partial f_1}{x_n}\\  \frac{\partial f_2}{x_1} &\frac{\partial f_2}{x_2} & \ldots &\frac{\partial f_2}{x_n}\\ \ldots & \ldots & \ldots & \ldots\\ \frac{\partial f_m}{x_1} & \frac{\partial f_m}{x_2} & \ldots & \frac{\partial f_m}{x_n} \end{pmatrix}$.
 \end{consequence}
 \begin{theorem}(линейность дифференциала)
     $f, g\!: E \subset \R^n \to \R^m$,  $a \in \Int E$,  $\lambda \in \R$, $f, g$ дифференцируемы в точке $a$.
@@ -96,7 +96,7 @@
     Тогда $f + g, \lambda f$ --- дифференцируемы в  $a$ и $\mathrm{d}_a(f+g) = \mathrm{d}_af + \mathrm{d}_ag $ и $\mathrm{d}_a(\lambda f) = \lambda \mathrm{d}_a f$.
 \end{theorem}
 \begin{proof}
-    $f(a+h) = f(a) + \mathrm{d}_af + \mathrm{d}_ag + \alpha(h)$, $\frac{\alpha(h)}{\|h\|} \to 0$, $g(a + h) = g(a) + \mathrm{d}_ag(h) + \beta(h)$, $\frac{\beta(h)}{\|h\|} \to 0$.
+    $f(a+h) = f(a) + \mathrm{d}_af(h) + \alpha(h)$, $\frac{\alpha(h)}{\|h\|} \to 0$, $g(a + h) = g(a) + \mathrm{d}_ag(h) + \beta(h)$, $\frac{\beta(h)}{\|h\|} \to 0$.
 
     Тогда $f(a+h) + g(a+h) = f(a) + g(a) + \mathrm{d}_af(h) + \mathrm{d}_ag(h) + \alpha(h) + \beta(h)$. Считаем, что  $\alpha(h) + \beta(h) = o(\|h\|)$.
 
@@ -116,7 +116,7 @@
 
     Хотим показать, что все корректно.
 
-    $\frac{\|\mathrm{d}_bg(\alpha(g))\|}{\|h\|} \le \|\mathrm{d}_b(g)\| \underbracket{\frac{\|\alpha(h)\|}{\|h\|}}_{\to 0}$. $k = \mathrm{d}_af(h) + \alpha(h)$.  $\|k\| \le \|\mathrm{d}_af(h)\| + \|\alpha(h)\| \le \|\mathrm{d}_af\| \cdot \|h\| + \|\alpha(h)\| \to 0$, так как $\frac{\|k\|}{\|h\|} \le \|\mathrm{d}_af\| + \frac{\|\alpha(h)\|}{\|h\|}$.
+    $\frac{\|\mathrm{d}_bg(\alpha(h))\|}{\|h\|} \le \|\mathrm{d}_b(g)\| \underbracket{\frac{\|\alpha(h)\|}{\|h\|}}_{\to 0}$. $k = \mathrm{d}_af(h) + \alpha(h)$.  $\|k\| \le \|\mathrm{d}_af(h)\| + \|\alpha(h)\| \le \|\mathrm{d}_af\| \cdot \|h\| + \|\alpha(h)\| \to 0$, так как $\frac{\|k\|}{\|h\|} \le \|\mathrm{d}_af\| + \frac{\|\alpha(h)\|}{\|h\|}$.
 
     В итоге, $\frac{\|\beta(k)\|}{\|k\|} \cdot \frac{\|k\|}{\|h\|} \xrightarrow{h \to 0} 0$.
 \end{proof}
@@ -129,11 +129,9 @@
 \begin{proof}
     $f(a+h) = f(a) + \mathrm{d}_af(h) + \alpha(h)$,  $\frac{\alpha(h)}{\|h\|} \to 0$. $\lambda(a + h) = \lambda(a) + \mathrm{d}_a\lambda(h) + \beta(h), \frac{\beta(h)}{\|h\|} \to 0$.
 
-    $\lambda(a+h)f(a+h) = \lambda(a)f(a) + \mathrm{d}_a\lambda(h)f(a) + \lambda(a)\mathrm{d}_af(h) + \mathrm{d}_a\lambda(h)\cdot \mathrm{d}_af(h) + \lambda(a) \cdot \alpha(h) + f(a) \beta(h) + \mathrm{d}_af(h)\beta(h) + \mathrm{d}_a\lambda(h)\alpha(h) +\alpha(h)\beta(h)$. 
+    $\lambda(a+h)f(a+h) = \lambda(a)f(a) + {\color{orange}\mathrm{d}_a\lambda(h)f(a) + \lambda(a)\mathrm{d}_af(h)} + {\color{purple}\mathrm{d}_a\lambda(h)\cdot \mathrm{d}_af(h)} + \lambda(a) \cdot \alpha(h) + f(a) \beta(h) + {\color{blue}\mathrm{d}_af(h)\beta(h)} + {\color{olive}\mathrm{d}_a\lambda(h)\alpha(h)} +\alpha(h)\beta(h)$. 
 
-    Заметим, что второе и третье слагаемое очевидно подходит под наше свойство. Теперь заметим, что  $\text{const} \cdot \|h\|^2 = o(\|h\|)$ и  $\text{const} \cdot \|h\| \beta(h) = o(\|h\|)$ и  $\text{const} \|h\| \|\alpha(h)\| = o(\|h\|)$. И все получается. 
-
-    Тут надо наверно аккуратно с цветами поработать, но  я не умею(
+    Заметим, что {\color{orange}второе и третье} слагаемые очевидно подходят под наше свойство. Теперь заметим, что  {\color{purple}$\text{const} \cdot \|h\|^2 = o(\|h\|)$} и  {\color{blue}$\text{const} \cdot \|h\| \beta(h) = o(\|h\|)$} и  {\color{olive}$\text{const} \|h\| \|\alpha(h)\| = o(\|h\|)$}. И всё получается. 
 \end{proof}
 \begin{theorem}[о дифференциале скалярного произведения]
     $f, g\!: E \to \R^m, a \in \Int E$,  $f, g$ --- дифференцируемы в  $a$. 
@@ -148,31 +146,30 @@
 \begin{remark}
     При $n=1$  $\langle f, g \rangle'(a) = \langle f'(a), g(a)\rangle + \langle f(a), g'(a) \rangle$.
 \end{remark}
-\begin{theorem}[Лагранжа для векторнозначимых функций]
+\begin{theorem}[Лагранжа для векторнозначных функций]
     $f\!: [a, b] \to \R^m$,  $f$ --- дифференцируема во всех точках из  $a, b$ и непрерывна на  $[a, b]$.
 
     Тогда существует  $c \in (a, b)$, такая что  $\|f(b) - f(a)\| \le \|f'(c)\|(b-a)$.
 \end{theorem}
 \begin{proof}
-    $\vphi(t) \coloneqq \langle f(t), f(b) - f(a) \rangle$ --- дифференцируемая функция  $\implies \exists c \in (a, b)\!: \|f(b) - f(a)\|^2 \langle f(b), f(b) - f(a) \rangle - \langle f(a) - f(b) - f(a) \rangle = \vphi(b) - \vphi(a)= \vphi'(c)(b-a) = (b-a) \langle f'(c), f(b) - f(a) \rangle \le (b-a) \|f'(c)\|\|f(b) - f(a)\|$.
+    $\vphi(t) \coloneqq \langle f(t), f(b) - f(a) \rangle$ --- дифференцируемая функция  $\implies \exists c \in (a, b)\!: \|f(b) - f(a)\|^2 = \langle f(b), f(b) - f(a) \rangle - \langle f(a), f(b) - f(a) \rangle = \vphi(b) - \vphi(a)= \vphi'(c)(b-a) = (b-a) \langle f'(c), f(b) - f(a) \rangle \le (b-a) \|f'(c)\|\|f(b) - f(a)\|$.\\
+    $\vphi'(t) = \langle f'(t), f(b) - f(a) \rangle$.
 \end{proof}
 \begin{example}
-    $m = 2$,  $f(t) = \begin{pmatrix} \cos t \\ \sin t \end{pmatrix}, f'(t) = \begin{pmatrix} -\sin t \\ \cos t \end{pmatrix}$. $f(2n) - f(0) = \overrightarrow{0}$,  $\|f'(t)\| = 1$. Тогда получаем  $\|f(2n) - f(0)\| - 0 < 2\pi\|f'(c)\|$.
+    $m = 2$,  $[a, b] = [0, 2\pi], f(t) = \begin{pmatrix} \cos t \\ \sin t \end{pmatrix}, f'(t) = \begin{pmatrix} -\sin t \\ \cos t \end{pmatrix}$. $f(2\pi) - f(0) = \overrightarrow{0}$,  $\|f'(t)\| = 1$. Тогда получаем  $\|f(2\pi) - f(0)\| = 0 < 2\pi\|f'(c)\|$.
 \end{example}
 \Subsection{Непрерывная дифференцируемость}
 \begin{theorem}
     $f\!: E \subset \R^n \to \R$,  $a \in \Int E$. Все частные производные функции  $f$ существуют в окрестности  $a$ и непрерывны в ней. Тогда  $f$ дифференцируема в точке  $a$.
 \end{theorem}
 \begin{proof}
-    $f(a+h) - f(a) = \sum\limits_{i=1}^n \frac{\partial f}{x_k}(a) h_i + o(\|h\|)$, $R(h) = f(a + h) - f(a) - \sum\limits_{i=1}^n \frac{\partial f}{\partial x_i}(a) h_i$.
+    $f(a+h) - f(a) = \sum\limits_{i=1}^n \frac{\partial f}{x_i}(a) h_i + o(\|h\|)$, $R(h) = f(a + h) - f(a) - \sum\limits_{i=1}^n \frac{\partial f}{\partial x_i}(a) h_i$.
 
     $b_0 = a, b_1 = (a_1 + h, a_2, \ldots, a_n), b_k = (a_1 + h_1, a_2 + h_2, \ldots, a_k + h_k, a_{k+1}, \ldots, a_n).$
 
     $f(b_k) - f(b_{k-1}) = f(a_1 + h_1, \ldots, a_{k-1} + h_{k-1}, a_k + h_k, a_{k+1}, \ldots, a_n) - f(a_1 + h_1, \ldots, a_{k-1} + h_{k-1}, a_k, \ldots, a_n) = h_k \frac{\partial f}{\partial x_k}(b_{k-1} - \Theta_k h_k e_k)$ ($0 < \Theta_k < 1$). 
 
-    Тогда $f(a + h) - f(a) = f(b_n) - f(b_0) = \sum\limits_{k=1}^n k_k \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_ke_k) = \sum\limits_{k=1}^n h_k \frac{\partial f}{\partial x_k}(a) + \sum\limits_{k=1}^nh_k(\frac{\partial f}{\partial x_k}(b_k + \Theta_k h_k w_k) - \frac{\partial f}{\partial x_k}(a))$.
+    Тогда $f(a + h) - f(a) = f(b_n) - f(b_0) = \sum\limits_{k=1}^n h_k \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_ke_k) = \sum\limits_{k=1}^n h_k \frac{\partial f}{\partial x_k}(a) + \sum\limits_{k=1}^nh_k(\frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k) - \frac{\partial f}{\partial x_k}(a))$.
 
-    Тогда $|R(h)| = \left|\sum\limits_{k=1}^n h_k \left( \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k) - \frac{\partial f}{\partial x_k}(a)\right)\right| \ge \|h\| (\sum)$ 
-
-    Я не дописал
+    Тогда $|R(h)| = \left|\sum\limits_{k=1}^n h_k \left( \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k) - \frac{\partial f}{\partial x_k}(a)\right)\right| \le \|h\| (\sum(...)^2)^{\frac{1}{2}}$, а $(\sum(...)^2)^{\frac{1}{2}} \to 0$.
 \end{proof}
