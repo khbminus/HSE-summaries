@@ -173,3 +173,158 @@
 
     Тогда $|R(h)| = \left|\sum\limits_{k=1}^n h_k \left( \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k) - \frac{\partial f}{\partial x_k}(a)\right)\right| \le \|h\| (\sum(...)^2)^{\frac{1}{2}}$, а $(\sum(...)^2)^{\frac{1}{2}} \to 0$.
 \end{proof}
+\begin{remark}
+    Дифференциал функции в точке не влечет существования частных производных (и даже непрерывности) в окрестности точки. 
+
+    Пример: $f(x, y) = \begin{cases} x^2 + y^2 & \text{если } x,y\in\Q\\ 0 & \text{иначе} \end{cases}$. Дифференциал в точке $(0, 0)$:  $f(x, y) = f(0, 0) + o(\sqrt{x^2 + y^2})$ при  $(x, y) \to (0, 0)$.
+\end{remark}
+\begin{definition}
+$f\!: E \subset \R^n \to \R^m$  $f$ непрерывно дифференцируема в каждой точке и  $\dd_xf$ непрерывно зависит от точки, то есть $\|\dd_xf - \dd_af\| \to 0$  при $x \to a$.
+\end{definition}
+\begin{theorem}
+    $f$ непрерывно дифференцируема  $\iff$  $f$ дифференцируема во всех точка и все частные производные непрерывны. 
+\end{theorem}
+\begin{remark}
+    $A = \begin{pmatrix} a_{11} & \ldots & a_{1m}\\ \vdots & \ddots & \vdots \\ a_{n_1} & \ldots & a_{nm} \end{pmatrix}$, $a_{jk} = \langle Ae_k, e_j \rangle$,  $|a_{jk}| = |\langle A_{e_k}, e_j \rangle| \le \|Ae_k\| \underbrace{\|e_j\|}_{=1} \le \|A\| \cdot \|e_k\| = \|A\|$.
+\end{remark}
+
+\begin{proof}
+    \begin{itemize}
+        \item $\Rightarrow$. $\|\dd_xf - \dd_af\| \to 0$. \\ Матрица для  $\dd_xf - \dd_af = \begin{pmatrix} \frac{\partial f_1}{\partial x_1}(x) - \frac{\partial f_1}{\partial x_1}(a) & \ldots & \frac{\partial f_1}{\partial x_n}(x) - \frac{\partial f_1}{\partial x_n}(a) \\ \vdots & \ddots & \vdots \\ \frac{\partial f_m}{\partial x_1}(x) - \frac{\partial f_m}{\partial x_1}(a) & \ldots & \frac{\partial f_m}{\partial x_n}(x) - \frac{\partial f_m}{\partial x_n}(a) \end{pmatrix}$. $\left|\frac{\partial f_j}{\partial x_k}(x) - \frac{\partial f_j}{\partial x_k}(a)\right| \le \|\dd_xf-\dd_af\| \xrightarrow{x\to a} 0 \implies \frac{\partial f_j}{\partial x_k}$ непрерывна в $a$.
+        \item $\|\dd_xf - \dd_af\|^2 \le \sum\limits_{j=1}^m \sum\limits_{k=1}^n \left( \frac{\partial f_j}{\partial x_k}(x) - \frac{\partial f_j}{\partial x_k}(a) \right)^2 \to 0$. 
+   \end{itemize} 
+\end{proof}
+\begin{consequence}
+   $f$ --- непрерывно дифференцируема  $\iff$ существуют все частные производные и они непрерывны.
+\end{consequence}
+\begin{theorem}
+    Линейная комбинация, композиция, скалярное произведение, непрерывной дифференцируемой функции --- непрерывно дифференцируема.
+\end{theorem}
+\Subsection{Частные производные высших порядков}
+\begin{definition}
+    $f\!: E \subset \R^n \to \R, f(x_1, x_2, \ldots, x_n)$.
+
+    $\frac{\partial f}{\partial x_j}\!: E \to \R$. Тогда считаем, что $\frac{\partial^2 f}{\partial x_i \partial x_j}(x) = \frac{\partial}{\partial x_i}\left(\frac{\partial f}{\partial f)j}\right)$
+\end{definition}
+\begin{definition}[Обозначения]
+    $f''_{x_j, x_i}$ или  $D_{x_i, x_j}f$.    
+
+    $\frac{\partial^r f}{\partial x_{i_r} \partial x_{i_{r-1}} \ldots \partial x_{i_1}} \coloneqq \frac{\partial}{\partial x_{i_r}} \left( \frac{\partial^{r-1}}{\partial x_{i_{r-1}} \ldots x_{i_1}}\right)$
+\end{definition}
+\begin{remark}
+    Всего $n^r$ частных производных порядка $r$.
+\end{remark}
+\begin{example}
+    $f(x, y) = x^y$,  $\frac{\partial f}{\partial x} = y x^{y-1}$, $\frac{\partial f}{\partial y} = x^y \ln x$.
+
+    $\frac{\partial^2 f}{\partial x^2} = y(y-1)x^{y-2}$
+
+    $\frac{\partial^2 f}{\partial y^2} = x^y (\ln x)^2$.
+
+    $\frac{\partial^2 f}{\partial y \partial x} = x^{y-1} + y x^{y-1} \ln x$.
+
+    $\frac{\partial^2 f}{\partial x \partial y} = x^{y-1} + y x^{y-1} \ln x$.
+\end{example}
+\begin{example}
+    $f(x, y) = \begin{cases} xy \frac{x^2 - y^2}{x^2 + y^2} & \text{если } x^2 + y^2 \neq 0\\ 0 & \text{иначе} \end{cases}$.
+
+    $\frac{\partial f}{\partial x}(x, y) = \left( \frac{x^2y - xy^2}{x^2+y^2}\right)'_X = \frac{(3x^2y-y^3)(x^2+y^2) - 2x(x^3y-xy^3)}{(x^2+y^2)^2} = \frac{x^4y-y^5+4x^2y^3}{(x^2+y^2)^2}$.
+
+    $\frac{\partial f}{\partial x}(0, 0) = \lim\limits_{x \to 0} \frac{f(x, 0) - f(0, 0)}{x} = \lim\limits_{x \to 0} \frac{0 - 0}{x} = 0$.
+
+    $\frac{\partial^2 f}{\partial y \partial x}(0, 0) = \lim\limits_{y \to 0} \frac{\frac{\partial f}{\partial x}(0, y - \frac{\partial f}{\partial x}(0, 0))}{u} = \lim\limits_{y \to 0}\frac{-y - 0}{y} = -1$. А если в другом порядке, то 1.
+\end{example}
+\begin{theorem}
+    $f\!: E \subset \R^2 \to \R, (x_0, y_0) \in \Int E$.
+
+    $f'_x, f'_y, f''_{xy}$ существуют в окрестности  точки  $(x_0, y_0)$ и $f_{xy}''$ непрерывны в точке  $(x_0, y_0)$.
+
+    Тогда существует $f''_{yx}(x_0, y_0)$ и $f''_{xy}(x_0, y_0) = f''_{yx}(x_0, y_0)$.
+\end{theorem}
+\begin{proof}
+    $\vphi(s) \coloneqq f(s, y_0 + k) - f(s, y_0)$, $\vphi'(s) = f'_x(s, y_0 + k) - f'_x(s, y_0)$.
+
+    $\vphi(x_0+h) - \vphi(x_0) = h'\vphi(x_0 + \Theta h) = h(f'_x(x_0 + \Theta h, y_0 + k) - f'_x(x_0 + \Theta h, y_0)) = hk f''_{xy}(x_0 + \Theta h, y_0 + \widetilde{\Theta}k)$.
+
+    $\frac{\vphi(x_0 + h) - \vphi(x_0)}{hk} - f''_{xy}(x_0, y_0) = f''_{xy}(x_0 + \Theta h, y_0 + \widetilde{\Theta}k) - f''_{xy}(x_0, y_0) \to 0$, при $(h, k) \to (0, 0)$.
+
+    При малых $h$ и  $k$  $\left| \frac{1}{h} \left(\frac{\vphi(x_0 + h)}{k} - \frac{\vphi(x_0)}{k}\right) - f''_{xy}(x_0, y_0) \right| < \eps \xrightarrow{k \to 0} \left| \frac{1}{h} \left( f'_y(x_0+h, y_0) - f'_y(x_0, y_0) \right) - f''_{xy}(x_0, y_0) \right| \le 0 \implies \lim\limits_{h \to 0} \frac{f'_y(x_0+h, y_0) - f'_y(x_0, y_0)}{h} = f''_{xy}(x_0, y_0)$.
+\end{proof}
+\begin{definition}
+    $f\!: D \subset \R^n \to \R$ ($D$ --- открытое), $f$  $r$ раз непрерывно дифференцируема, если у нее существуют все частные производные порядка  $\le v$ и они непрерывны.
+
+    Обозначение. $f \in C^r(D)$.
+\end{definition}
+\begin{theorem}
+    $f \in C^r(D)$ и $(i_1, i_2, \ldots, i_r)$ перестановка $(j_1, j_2,\ldots,j_r)$.
+
+Тогда $\frac{\partial^r f}{\partial x_{i_r}\ldots\partial x_{i_1}} = \frac{\partial^r f}{\partial x_{j_r} \ldots \partial x_{j_1}}$.
+\end{theorem}
+\begin{proof}
+    Достаточно доказать данное утверждение для одной транспозиции ($a, b \to b, a$), тогда заметим, что у на есть общий префикс + общий суффикс + пара различных переменных. 
+\end{proof}
+\begin{definition}
+    Мультииндекс $k = (k_1, k_2, \ldots, k_n)$ --- набор из $n$ неотрицательных чисел.
+
+    $k! \coloneqq k_1!k_2!\ldots k_n!$, $|k| \coloneqq k_1 + k_2 + \ldots + k_n$ --- высота мультииндекса.
+
+    $\binom{k_1 + k_2 + \ldots + k_n}{k_1, k_2, \ldots, k_n} \frac{|k|!}{k!}$.
+
+    $h=(h_1, h_2, \ldots, h_n), h^k \coloneqq h_1^{k_1}\ldots h_n^{k_n}$.
+
+    $f^{(k)} = \frac{\partial^{|k|} f}{\partial x_1^{k_1} \ldots \partial x_n^{k_n}}$.
+\end{definition}
+
+\begin{lemma}
+    $f \in C^r(D), D \subset \R^n, D$ --- открытое,  $[x, x + h] \subset D, F(t) \coloneqq f(x+th), t \in [0; 1]$.
+
+    Тогда $F \in C^r[0, 1]$ и  $F^{(t)}(t) = \sum\limits_{|k| = l} \frac{l!}{k!}f^{(k)}(x + th)h^k$.
+\end{lemma}
+\begin{proof}
+    $g \in C^1(D), G(t) = g(x+th)$.  $G'(t) = \sum\limits_{j=1}^n g'_{x_j}(x+th) h_j$.  $v(t) \coloneqq x+th$.
+
+    Тогда  $G'(t) = g'(v(t))v'(t) = g'(x+th)h= \begin{pmatrix} g'_{x_1}(x+th) & \ldots & g'_{x_n}(x+th) \end{pmatrix} \begin{pmatrix} h_1 \\ h_2 \\ \vdots \\ h_n \end{pmatrix} = \sum\limits_{j=1}^n g'_{x_j}(x+th)h_j$.
+
+    А значит $F^{(l)}(t) = \sum\limits_{j_l=1}^n \sum\limits_{j_{l-1}=1}^n \ldots \sum\limits_{j=1}^n f^{(l)}_{x_{j_1}, x_{j_2}, \ldots, x_{j_l}}(x+th)h_{j_1}h_{j_2}\ldots h_{j_l} = \sum\limits{|k| = l} \frac{l!}{k!} f^{(k)}(x+th)h^k$. Просто $f^{(l)}_{x_{j_1}, x_{j_2}, \ldots, x_{j_l}}$ $k_1$ раз $x_1$, $k_2$ раз $x_2$, \ldots
+\end{proof}
+\begin{theorem}[Многомерная формула Тейлора (с остатком в форме Лагранжа)]
+    $f \in C^{n+1}(D), D \subset \R^n$,  $D$ --- открытое,  $f\!: D \to \R, [x, x+h] \subset D$. 
+
+    Тогда существует  $\Theta \in (0, 1)$, что  $f(x+h) = \sum\limits_{|k| \le r} \frac{f^{(k)}(x)}{k!}h^k + \sum\limits_{|k| = r+1} \frac{f^{(k)}(x + \Theta h)}{k!} h^k$.
+\end{theorem}
+\begin{proof}
+    $F(t) \coloneqq f(x+th)$,  $F(1) = \underbrace{\sum\limits_{l=0}^r \frac{F^{(1)}(0)}{l!}1^l}_{=\sum\limits_{|k|=l} \frac{f^{(k)}(x)}{k!}h^k} + \underbrace{\frac{f^{(k+1)}(\Theta)}{(k+1)!}1^{r+1}}_{\sum\limits_{|k|=r+1} \frac{f^{(k)}(x+\Theta h)}{k!}h^k}$
+\end{proof}
+\begin{remark}
+\begin{enumerate}
+    \item Многочлен Тейлора степени $r$.  $\sum\limits_{|k| \le r} \frac{f^{(k)}(a)}{k!}(x-a)^k$.
+    \item $r=0$. Многомерная формула Лагранжа. 
+
+        $f(x+h) = f(x) + \sum\limits_{j=1}^n f'_{x_j}(x+\Theta h)h_j = f(x) \langle \nabla f(x + \Theta h), h \rangle$.
+    \item $n=2$ в координатной записи.
+
+        $f(x, y) = f(a, b) + f'_x(a, b)(x-a) + f'_y(a, b)(y-b)  + \frac{1}{2}f''_{xx}(a, b)(x-a)^2 + \frac{1}{2} f''_{yy}(a, b)(y-b)^2 + f''_{xy}(a, b)(x-a)(y-b) + \ldots$.
+\end{enumerate}    
+\end{remark}
+\begin{theorem}[с остатком в форме Пеано]
+    $f \in C^r(D), a \in D \subset \R^n$,  $D$ --- открытое. Тогда при  $x \to a$
+
+    $f(x) = \sum\limits_{|k| \le r} \frac{f^{(k)}(a)}{k!}(x-a)^k + o(\|x-a\|^r)$.
+\end{theorem}
+\begin{proof}
+    Пишем формулу с остатком в форме Лагранжа для $r-1$.
+
+    $f(x) = \sum\limits_{|k| \le r-1} \frac{f^{(k)}(x)}{k!}(x-a)^k + \sum\limits_{|k| = r} \frac{f^{(k)}(a + \Theta(x-a))}{k!}(x-a)^k = \sum\limits_{|k| \le r} \frac{f^{(k)}(a)}{k!}(x-a)^k + \underbracket{\sum\limits_{|k| = r} \frac{f^{(k)}(a + \Theta(x-a)) - f^{(k)}(a)}{k!}(x-a)^k}_{=o(\|x-a\|^r)}$.
+
+    Достаточно проверить, что $\underbrace{(f^{(k)}(a+\Theta(x-a)) -f^{(k)}(a))}_{\xrightarrow{x \to a} 0}(x-a)^k= o(\|x-a\|^r)$.
+
+    Надо понять, что  $|(x-a)^k| \le \|x-a\|^r$. Заметим, что $|x_j - a_j| \le \|x-a\|$, тогда можно воспользоваться определением.
+\end{proof}
+\begin{consequence}[Полиномиальная (мультиномиальная) формула]
+    $(x_1 + x_2 + \ldots + x_n)^r = \sum_{|k| = r} \frac{r!}{k!}x^k = \sum_{|k| = r} \binom{r}{k_1, k_2, \ldots, k_n} x_1^{k_1}\ldots x_n^{k_n}$.
+\end{consequence}
+\begin{proof}
+    $f(x) = (x_1 + x_2 + \ldots + x_n)^r = g^r(x)$, где $g(x) = x_1 + \ldots + x_n$.
+
+    $f'_{x_j}(x) = rg^{r-1}(x) g'_{x_j}(x) = r g^{r-1}(x)$. Знаем, что если $|k| = r$, то  $f^{(k)}(x) = r!$. А если  $<$, то  $f^{(k)}(x) = \ldots \cdot g^{r-|k|}(x), f^{(k)}(0) = 0$.
+\end{proof}
