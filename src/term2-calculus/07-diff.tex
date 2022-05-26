@@ -328,3 +328,160 @@ $f\!: E \subset \R^n \to \R^m$  $f$ непрерывно дифференцир�
 
     $f'_{x_j}(x) = rg^{r-1}(x) g'_{x_j}(x) = r g^{r-1}(x)$. Знаем, что если $|k| = r$, то  $f^{(k)}(x) = r!$. А если  $<$, то  $f^{(k)}(x) = \ldots \cdot g^{r-|k|}(x), f^{(k)}(0) = 0$.
 \end{proof}
+\Subsection{Обратные и неявные функции}
+\begin{definition}
+    $(X, \rho)$ --- метрическое пространство,  $f\!: X \to X$.  $f$ --- сжатие с коэффициентом $\lambda$, если  $\rho(f(x), f(y)) \le \lambda \rho(x, y)$, где $0 < \lambda < 1$.
+\end{definition}
+\begin{theorem}[Банаха о сжатии]
+    Пусть $X$ --- полное метрическое пространство,  $f$ --- сжатие.
+
+    Тогда у  $f$ существует единственная неподвижная точка, то есть  $\exists! x\!: f(x) = x$.
+\end{theorem}
+\begin{proof}
+    Единственность. Пусть $x$ и  $y$ --- неподвижные точка. Тогда  $\rho(f(x), f(y)) = \rho(x, y)$, но при это  $\rho(f(x), f(y)) \le \lambda\rho(x, y) \implies \rho(x, y) = 0 \implies x = y$.
+
+    Существование. Построим последовательность $x_n$.  $x_0 \in X, x_{n+1} \coloneqq f(x_n)$.
+
+    Докажем, что последовательность  $x_n$ --- фундаментальная.  $\rho(x_{n+k}, x_n) = \rho(f(x_{n+k-1}, f(x_{n-1}))) \le \lambda \rho(x_{n+k-1}, x_{n-1}) \le \ldots \le \ldots \rho \lambda^n \rho(x_k, x_0)$. Посмотрим на $\rho(x_k, x_0) \le \rho(x_k, x_{k-1}) + \rho(x_{k-1}, x_{k-2}) + \ldots + \rho(x_1, x_0) \le (\lambda^{k-1} + \lambda^{k-2} + \ldots + \lambda +1) \rho(x, x_0) < \frac{\rho(x_1, x_0)}{1-\lambda}$. А значит, $\lambda^n \rho(x_{k}, x_0) \le \frac{\lambda^n}{1-\lambda} \rho(x_1, x_0) \le C\lambda^n$. А значит последовательность фундаментальная.
+
+    Тогда $\exists x_* \in X\!: \lim x_n = x_*$. $x_* \leftarrow x_{n+1} = f(x_n) \to f(x_*)$. 
+\end{proof}
+\begin{remark}
+    $\rho(x_*, x_n) \le \frac{\lambda^n}{1 - \lambda}\rho(x_1, x_0) \implies \rho(x_*, x_n) \le \lambda^n \rho(x_*, x_0)$.
+\end{remark}
+\begin{consequence}
+    Пусть $f, g$ --- сжатия с коэффициентами $\lambda$,  $x, y$ их неподвижные точки.
+
+    Тогда $\rho(x, y) \le \frac{\rho(f(x), g(x))}{1-\lambda}$.
+\end{consequence}
+\begin{proof}
+    $\rho(x, y) = \rho(f(x), g(y)) \le \rho(f(x), g(x)) + \underbrace{\rho(g(x), g(y))}_{\le \lambda \rho(x, y)} \implies (1-\lambda)\rho(x, y) \le \rho(f(x), g(x))$.
+\end{proof}
+\begin{example}[Метод касательных Ньютона]
+    Мы знаем, что $\exists a\!: f(a) = 0$, но не знаем  $a$, но зато знаем, что  $f\!: [a, x_0] \to \R, f\uparrow, f$ --- выпукла, $f \in C^2$.
+
+    $g(x) \coloneqq x - \frac{f(x)}{f'(x)}$. Сразу требование: $f'(a) = \mu > 0$. Тогда будем делать  $x_{n+1} \coloneqq g(x_n)$, Если $x_*$ --- неподвижная точка, то  $g(x_*) = x_* \iff x_* - \frac{f(x_*)}{f'(x_*)} \implies f(x_*) = 0$.
+
+    Картинка\dots
+
+    $y = f'(x_k)(x-x_k) + f(x_k)$, \dots, $0 = f'(x_k)(x-x_k) + f(x_k) \implies x = x_k - \frac{f(x_k)}{f'(x_k)}$.
+
+    $f(x) = f(x) - f(a) = f'(c)(x-a) < f'(x)(x-a)$, теорема Лагранжа,  $c \in (a, x) \implies f'(c) \le f'(x)$, так как $f$ выпукла.
+
+    Тогда  $\frac{f(x)}{f'(x)} < x-a \implies a < x - \frac{f(x)}{f'(x)} = g(x) \implies g\!: [a, x_0] \to [a, x_0]$.
+
+    $g(x) - g(y) = g'(c)(x-y)$,  $g'(x) = 1 - \frac{f'(x) f'(x) - f(x)f''(x)}{f'(x)^2} = \frac{f(x)f''(x)}{f'(x)^2}$. $M = \max\limits_{a \le x \le x_0} f''(x)$, $1 > \frac{Mf(x_0)}{\mu^2} \eqqcolon \lambda \ge g'(x)$
+
+    Но, штука может быть $>1$, это регулируется  $x_0$, которую можно аккуратнее искать. Получили оценку порядка  $\lambda^n$.
+
+     $f(x) < f'(x)(x-a) \implies 0 \le \frac{f'(x)(x-a)f''(x)}{f'(x)^2} = \frac{f''(x)(x-a)}{f'(x)} \le \frac{M(x_0 - a)}{\mu}$ --- нашли границу для стартовой точки.
+
+     \begin{exerc}
+         Доказать, что $x_{n+1} - a \le \frac{M}{2\mu}(x_n-a)^2 \implies x_n -a \le \frac{2\mu}{M}(\frac{M}{2\mu}(x_n-a))^{2^n}$.
+     \end{exerc}
+\end{example}
+\begin{remark}
+    $f(x) = x^k - b$,  $g(x) = x - \frac{x^k - b}{kx^{k-1}} = x - \frac{x}{k} + \frac{b}{kx^{k-1}} = (1-\frac{1}{k}x)+\frac{b}{kx^{k-1}}$.
+\end{remark}
+\begin{definition}
+    $f\!: D \subset \R^2 \to \R, D$ --- открытое, $\exists (x_0, y_0) \in D$.
+
+     Задача Коши: $
+\begin{cases}
+    y'(x) = f(x, y(x))\\
+    y(x_0) = y_0
+\end{cases}
+     $
+\end{definition}
+\begin{theorem}[Пикара]
+    $f\!: D \subset \R^2 \to \R$,  $D$ --- открытое,  $(x_0, y_0) \in D$, $|f(x, y) - f(x, \widetilde{y})| \le M |y-\widetilde{y}|\ \forall x, y, \widetilde{y}$, $f$ --- непрерывна.
+
+    Тогда  $\exists \delta > 0$, что на  $[x_0 - \delta, x_0 + \delta]$ задача Коши имеет единственное решение.
+\end{theorem}
+\begin{remark}
+    $\begin{cases} y' = -y^2\\y(1) = 1 \end{cases} \implies y(x) = \frac{1}{x}$. В нуле беды с бедами.
+\end{remark}
+\begin{proof}[Доказательство теоремы]
+    $\vphi\!: [x_0-\delta, x_0 + \delta] \to \R$,  $\vphi'(x) = f(x, \vphi(x)) \land \vphi(x_0) = y_0$. Переформулируем: $\vphi(x) = y_0 + \int\limits_{x_0}^x f(t, \vphi(t)) \dt$.
+
+    Тогда $T(\vphi) \coloneqq \psi, \psi(x) \coloneqq y_0 + \int\limits_{x_0}^x f(t, \vphi(t)) \dt$. То есть $\vphi_{n+1} \coloneqq T(\vphi_n)$.
+
+    Возьмем  $\overline{B}_r(x_0, y_0) \subset D$,  $|f(x, y)| \le K$ на $\overline{B}_r(x_0, y_0)$. Выберем $\delta > 0$, такое что 
+    \begin{enumerate}
+        \item $\delta K < 1$,
+        \item  $x - x_0 \le \delta, |y-y_0| \le K\delta \implies (x, y) \in \overline{B}_r(x_0, y_0)$
+    \end{enumerate}
+    Возьмем $C_* \coloneqq \{ \vphi\!: [x_0 -\delta, x_0 + \delta] \to \R, \vphi \in C[x_0 - \delta, x_0 + \delta]\!: |\vphi(x) - y_0| \le K\delta\} \subset C[x_0-\delta, x_0 + \delta]$.
+
+    Надо доказать, что $T\!: C_* \to C_*$ и это сжатие.
+
+    Возьмем $\psi = T\vphi$, проверим, что $|\psi(x) - y_0| \le K\delta$ и $|\int\limits_{x_0}^x f(t, \vphi(t))| \le K\delta$.
+
+    Тогда $T$ --- сжатие,  $|\psi(x) - \widetilde{\psi}(x)| = |y_0 \int\limits_{x_0}^x f(t, \vphi(t))\dt - y_0 -\int\limits_{x_0}^x f(t, \widetilde{\vphi}(t)) \dt| \le \int\limits_{x_0}^x \int\limits_{x_0}^x |f(t, \vphi(t)) f(t, \widetilde{\vphi}(t))| \dt \le \int\limits_{x_0}^x M|\vphi(t) - \widetilde{\vphi}(t)|\dt \le \underbrace{\delta M}_{< 1} \|\vphi - \widetilde{\vphi}\|$
+\end{proof}
+\begin{theorem}
+    Пусть $A\!: \R^n \to \R^n$,  $A$ --- линейное,  $\|Ax\| \ge m \|x\|\ \forall x$, $m > 0$.
+
+    Тогда $A$ --- обратим и  $\|A^{-1}\| \le \frac{1}{m}$.
+\end{theorem}
+\begin{proof}
+    $A$ --- инъекция. Так как линейно достаточно понять, что  $Ax = 0 \implies x = 0$. $Ax = 0 \implies \|Ax\| = 0, \|Ax\| \ge m\|x\| \implies \|x\| = 0 \implies x = 0$.
+
+    Так как $A$ --- инъекция  $\implies A$ --- суръекция $\implies A$ --- биекция, значит обратим. 
+
+    $\|A^{-1}\| = \sup\limits_{x \neq 0} \frac{\|A^{-1}x\|}{\|x\|} = \sup\limits_{y \neq 0} \frac{\|A^{-1}Ay\|}{\|Ay\|} = \sup\limits_{y \neq 0} \frac{\|y\|}{\|Ay\|} \le \frac{1}{m}$. так как $\|Ay\| \ge m \|y\|$.
+\end{proof}
+\begin{theorem}[Теорема об операторах, близких к обратным]
+    $A, B\!: \R^n \to \R^n$,  $A$ --- обратим и  $\|B-A\| < \frac{1}{\|A^{-1}\|}$.
+
+    Тогда:
+    \begin{enumerate}
+        \item $B$ --- обратим,
+        \item  $\|B^{-1}\| \le \frac{1}{\frac{1}{\|A^{-1}\|}- \|B-A\|}$,
+        \item $\|B^{-1} - A^{-1}\| \le \frac{\|B-A\| \cdot \|A^{-1}\|}{(\frac{1}{\|A^{-1}\|} - \|B-A\|)}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+   \slashn
+   \begin{enumerate}
+       \item    $\|Bx\| = \|(B-A)x + Ax\| \ge \underbrace{\|Ax\|}_{\ge \frac{1}{\|A^{-1}\| \cdot \|x\|}} - \underbrace{\|(B-A)x\|}_{\le \|B-A\|\cdot\|x\|} \ge \underbrace{\left(\frac{1}{\|A^{-1}} - \|B-A\|\right)}_{=m}\|x\|$.
+
+       $\|A^{-1}\| \cdot \|Ax\| \ge \|A^{-1}Ax\| = \|x\|$.
+   \item[3.] $\|B^{-1} - A^{-1}\| \le \|B^{-1}\| \|A-B\|\|A^{-1}\|$, а так как $\|B^{-1}\| \le \frac{1}{\frac{1}{\|A^{-1}\|} - \|B-A\|}$.
+   \end{enumerate}
+\end{proof}
+\begin{theorem}
+    $f\!: D \subset \R^n \to \R^m$ --- дифференцируема во всех точках $D$ и $\|f'(x)\| \le C$, $D$ --- выпуклая.
+
+    Тогда $\|f(x) - f(y)\| \le C\|x-y\|$.
+\end{theorem}
+\begin{proof}
+    $\vphi(t) = \langle f(x+t(y-x)), f(y)-f(x) \rangle$.  $\vphi\!: [0, 1] \to \R$, $\vphi(0) = \langle f(x), f(y) - f(x) \rangle$,  $\vphi(1) = \langle f(y), f(y) - f(x) \rangle$, откуда  $\underbrace{\vphi(1) - \vphi(0)}_{\vphi'(c)(1-0)} = \|f(y) - f(x)\|^2$.  $\vphi'(c) = \langle f'(x+c(y-x))(y-x), f(y)-f(x) \rangle \le \underbrace{\|f'(x+c(y-x))(y-x)\|}_{\mathclap{\le \|f'(\ldots) \| \|y-x\| \le C\|y-x\|}} \cdot \|f(y)-f(x)\| \le C\|y-x\|\|f(y) - f(x)\|$.
+\end{proof}
+\begin{theorem}[теорема об обратной функции]
+    $D$ --- открытое  $\subset \R^n$,  $x_0 \in D$. $f\!: D \to \R^n$ непрерывно дифференцируема,   $y_0 = f(x_0), A \coloneqq f'(x_0)$ --- обратима.
+
+    Тогда $\exists$ окрестности  $U, V$ точек  $x_0, y_0$, такие, что $f\!: U \to V$ --- обратима и  $f^{-1}\!: V \to U$  непрерывна.
+\end{theorem}
+\begin{proof}
+    $G_y(x) \coloneqq x + A^{-1}(y-f(x))$. Если  $x$ --- неподвижная точка  $G_y$, то $x = x + A^{-1}(y-f(x)) \iff A^{-1}(y-f(x)) = 0$.
+
+
+    Выбираем  $B_r(x_0)$ так, что $\|A^{-1}\| \|A-f'(x)\| \le \frac{1}{2}\ \forall x \in B_r(x_0)$.
+
+    $G_y(x) = E + A^{-1}(-f'(x)) = E - A^{-1}f'(x) = A^{-1}(A - f'(x))$. Тогда $\|G'_y(x)\| \le \|A^{-1}\|\|A-f'(x)\| \le \frac{1}{2}\ \forall x \in B_r(x_0)$.
+
+    Хотим, чтобы $G_y\!: B_r(x_0) \to B_r(x_0)$. $\|G_y(x) - x_0\| = \underbrace{\|G_y(x) - G_y(x_0)\|}_{\le \frac{1}{2} \|x-x_0\| < \frac{r}{2}} + \|G_y(x_0) - x_0\| < \frac{r}{2} \|A^{-1}(y-\underbrace{f(x_0)}_{y_0})\| \le \frac{r}{2} + \|A^{-1}\| \cdot \|y-y_0\| \overset{(*)}{\le} \frac{r}{2} + \|A^{-1}\|R < r$.
+
+    $(*)$ --- берем  $y$ из  $B_R(y_0)$.
+
+    Если $y \in B_r(y_0)$, то $G_y\!: \overline{B}_r(x_0) \to \overline{B}_r(x_0)$ и является сжатием $\implies \forall y \in B_r(x_0) \exists!$ $x_*$ --- неподвижная точка для  $G_y \implies u = f(x_*) \implies y \in f(B_r(x_0))$. 
+
+
+    $V \coloneqq B_R(y_0)$ и $Y \coloneqq f^{-1}(V)$ --- открыто, так как прообраз открыт.
+
+    То есть мы поняли, что $f\!: U \to V$ ---  биекция. Осталось проверить, что  $f^{-1}\!: V \to U$ --- непрерывна.
+
+    Пусть $\widetilde{y} = f(\widetilde{x})$ и  $y = f(x)$,  $x$ --- неподвижная точка  $G_y$ и  $\widetilde{x}$ --- неподвижная в  $G_{\widetilde{y}}$. Тогда  $\|x - \widetilde{x}\| \le \frac{\|G_y(x) - G_{\widetilde{y}}(x)\|}{1-\frac{1}{2}} = 2\|G_y(x) - G_{\widetilde{y}}(x)\| = 2\|A^{-1}(y-f(x)) - A^{-1}(\widetilde{y}-f(x))\| = 2\|A^{-1}(\widetilde{y}-f(x))\| \le 2\|A^{-1}\| \|y-\widetilde{y}\|$ 
+\end{proof}
+
