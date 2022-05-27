@@ -117,3 +117,145 @@ $C_1 = A \to (B \lor A)$, аксиома 4. $C_2 = B \to (B \lor A)$, какая
 
 Теперь посмотрим на правило $A \to B \to (A \land B)$. По сути это $\varnothing \vdash A \to B \to (A \land B)$ что $\Leftrightarrow A \vdash B \to (A \land B) \Leftrightarrow A, B \vdash A \land B$.
 
+Но зачем же всё это нужно?
+
+Представим, что мы знаем всю теорию групп. В ней три аксиомы: $(ab)c = a(bc), \exists e : ea = ae; \forall a \exists a^{-1}: a a^{-1} = a^{-1} a = e$. Т.е. для доказательства любого факта про группы достаточно знать эти три. 
+
+Хотелось бы в математике тоже сформулировать какое-то число аксиом, и чтобы из них всё следовало. Ну вот примерно в этом направлении мы и двигаемся (но вообще это не очень возможно). 
+
+А вообще мы это изучаем чтобы дальше ориентироваться в более сложных вещей. Пример из аксиом вещественных чисел: $\forall x > 0 \exists y, z : x = y^2 + z^2$. Тут перебрать уже все значения переменных, в отличии от перебора значений булевых переменных, не получится. 
+
+А теперь к булевой логике.
+
+\Subsection{И ещё правила вывода}
+
+Из одиннадцати аксиом и modus ponens можно получить ещё правила вывода, упрощающие жизнь (и домашку):
+
+\begin{enumerate}
+	\item{$\Gamma A, B, A \to (B \to (A \land B)), B \to (A \land B), A \land B$, так получили, что $\frac{\Gamma \vdash A\ \ \ \Gamma \vdash B}{\Gamma \vdash A \land B}$}
+	\item{$ \Gamma, A \land B \vdash (A \land B) \to A, A \land B, A, (A \land B) \to B, B, \cdots, C$, так получили, что $\frac{\Gamma, A, B \vdash C}{\Gamma, A \land B \vdash C}$}
+	\item{$\Gamma, A, B \vdash A \to (B \to (A \land B)), A \land B $, так получили, что $\frac{\Gamma, A \land B \vdash C}{\Gamma, A, B \vdash C}$}
+	\item{$\Gamma \vdash A, A \to B, B$, так получили $\frac{\Gamma \vdash A\ \ \ \Gamma, A \vdash B}{\Gamma \vdash B}$. Ну и обобщение есть, когда у нас больше переменных выводится из $\Gamma$}
+	\item{$\Gamma \vdash A \to B, A \vdash \lnot B, (A \to B) \to ((A \to \lnot B) \to \lnot A ), \text{Дважды modus ponens: } \lnot A$, так получили $\frac{\Gamma, A \vdash B\ \ \ \Gamma, A \vdash \lnot B}{\Gamma \vdash \lnot A} $}
+	\item{$\lnot A \to (A \to B), \lnot A, A, A \to B, B$, Так получили $\Gamma, A, \lnot A \vdash B$}
+	\item{$\Gamma, A \lor B \vdash A \to C, B \to C, (A \to C) \to ((B \to C) \to ((A \lor B) \to C)), A \lor B \to C, C$, Так получили $\frac{\Gamma, A \vdash C\ \ \ \Gamma, B \vdash C}{\Gamma, A \lor B \vdash C}$}
+	\item{Подставим в 7 $A$ и $\lnot A$, получим $\frac{\Gamma, A \vdash C\ \ \ , |Gamma, \lnot A \vdash C}{}Gamma, A \lor \lnot A \vdash C$, а аксиому можно из итогов выкинуть и получить $\frac{\Gamma, A \vdash C\ \ \Gamma, \lnot A \vdash C}{\Gamma \vdash C}$}
+\end{enumerate}
+
+\Subsection{И обратно к утверждениям}
+
+\begin{statement}
+    $\vdash \lnot \lnot A \to A$
+\end{statement}
+\begin{proof}
+    $\lnot \lnot A \vdash A$
+
+    $A \lor \lnot A, \lnot \lnot A \vdash A$
+
+    Подставим $A$ и $\lnot A$ к $\lnot \lnot A$, получим
+
+    $A, \lnot \lnot A \vdash A$ поскольку оно есть среди посылок, $\lnot A, \lnot \lnot A \vdash A$ по правилу вывода из противоречия (шестое).  А теперь по седьмому объединили полученные два утверждения.
+\end{proof}
+
+\begin{lemma}
+	$A, B \vdash A \land B, A \lor B, A \to B$
+
+	$A, \lnot B \vdash \lnot A \land B, A \lor B, \lnot (A \to B)$
+
+	$\lnot A, B \vdash \lnot(A \land B), A \lor B, A \to B$
+
+	$\lnot A, \lnot B \vdash \lnot(A \land B), \lnot(A \lor B), A \to B$
+
+	$\lnot A \vdash \lnot A$
+
+	$A \vdash \lnot(\lnot A)$
+
+	В доказательство предыдущего: $A, \lnot A \vdash A; A, \lnot A \vdash \lnot A$
+
+	Дванадцать первых утверждений доказываются или через modus ponens, или через правило вывода номер пять (которым можно отрицания получать, выводя противоречие). Конкретные доказательства, увы, упущены.
+\end{lemma}
+
+А вообще её можно было несколько иначе сформулировать: давайте писать $A^x = \left\{\begin{aligned} A &, x = 1\\ \lnot A &, x = 0  \end{aligned} \right.$
+
+\begin{lemma}
+	$\varphi(A_1, A_2, \cdots, A_k)$ --- формула, $f(x_1, x_2, \cdots, x_k)$ --- функция, вычисляющая эту формулу
+
+	$A_1^{x_1}, A_2^{x_2}, \cdots, A_k^{x_k} \vdash \varphi(A_1, \cdots, A_k)^{f(x_1, \cdots x_k)}$
+
+	Пример:
+
+
+	Тогда, подставив туда $\lor$ и единицы  получим $A_1^1, A_2^1 \vdash (A_1 \lor A_2)^{1 \lor 1} = a_1 \lor A_2$. Аналогично можно подставлять нули и единицы в произвольных комбинациях с соответсвующими изменениями результата.
+\end{lemma}
+\begin{proof}
+	Доказывать будем по индукции по сложности построения формулы $\varphi$. База: если $\varphi(A_1, \cdots, A_k) = A_i$, то $A_1^{x_1}, \cdots, A_k^{x_k} \vdash A_i^{x_i}$
+
+	Переход: $\varphi = \varphi_1 (op) \varphi_2$, где $\varphi$ соответствует $f$, $\varphi_1$ соответствует $g$, $\varphi_2$ соответствует $h$, а $(op)$  соответствует $\land, \lor, \to, \cdots$. Тогда $f(x_1, \cdots, x_k) = g(x_1, \cdots, x_k) (op) h(x_1, \cdots, x_k)$. Знаем (по ИП), что $A_1^{x_1}, \cdots, A_k^{x_k} \vdash \varphi_1(A_1, \cdots, A_k)^{g(x_1, \cdots x_k)}, \varphi_2(A_1, \cdots, A_k)^{h(x_1, \cdots, x_k)}$. 
+
+	Ну и дальше тут происходило что-тоо особо странное, если честно. Кто помнит и понял --- допишите этот момент, пожалуйста.
+\end{proof}
+
+\begin{theorem}
+	Любая тавтология выводима
+\end{theorem}
+\begin{proof}
+	Возьмём произвольную тавтологию $\varphi$. Пускай он зависит от $A_1, A_2, \cdots, A_k$. Умеем выводить $A_1, A_2, \cdots, A_k \vdash \varphi(A_1, \cdots, A_k)^{\varphi(1, \cdots, 1)}; \lnot A_1, A_2, \cdots, A_n \vdash \varphi(A_1, \cdots, A_k)^{\varphi(0, 1, \cdots, 1)}; \cdots, \lnot A_1, \lnot A_2, \cdots, \lnot A_k \vdash \varphi(A_1, \cdots, A_k)$. Но мы знаем, что $\varphi$ тавтология, поэтому верхние $\varphi(1/0, 1/0, \cdots, 1/0)$ можно убрать. Заметим, что $A_1, \cdots, A_k \vdash \varphi, \lnot A_1, \cdots, A_k \vdash \varphi$, а значит $A_1 \lor \lnot A_1, A_2, \cdots, A_k \vdash \varphi$, а значит можно убрать $A_1 \lor \lnot A_1$. Останемся с хвостом $A_2, \cdots, A_k \vdash \varphi$, потом к $A_2$ можно применить похожий трюк, и в итоге останемся с тем, что $\vdash \varphi$, т.е. $\varphi$ выводится из ИВ. 
+\end{proof}
+
+А теперь докажем ещё иным способом:
+
+Но сначала введём определения:
+
+\begin{definition}
+	Множество (/набор) формул $\Gamma$ --- совместно, если $\exists$ набор значений, на котором все формулы из $\Gamma$ вычисляются в единицу.
+\end{definition}
+
+\begin{definition}
+	$\Gamma$ является противоречивым множеством формул, если $\Gamma \vdash F$ и $\Gamma \vdash \lnot F$. Если же $\Gamma$ не противоречиво, то оно непротиворечиво. 
+\end{definition}
+
+\begin{theorem}
+	Множество непротиворечиво тогда и только тогда когда оно совместно. 
+\end{theorem}
+
+Перед доказательством поймём, почему из него следует полнота и корректность. 
+
+\begin{theorem}
+	Из этого следует теорема о корректности --- всё выводимое является тавтологиями
+\end{theorem}
+\begin{proof}
+	Пусть $\vdash \varphi$, тогда $\lnot \varphi$ противоречиво, т.к. $\lnot \varphi \vdash \varphi$ и $\lnot \varphi \vdash \lnot \varphi$. Раз противоречиво, то несовместно. Значит нет набора, на котором оно есть единица, тогда $\varphi$ от всех наборов равняется единице. Корректность доказана. 
+\end{proof}
+
+\begin{theorem}
+	Теорема о полносте --- любая тавтология выводится
+\end{theorem}
+\begin{proof}
+	$\varphi$ --- тавтология, тогда $\lnot \varphi$ --- несовместно, а тогда оно противоречиво (всё по той же недоказанной теореме). А раз противоречиво. Тогда можно $\vdash \lnot \lnot \varphi$, т.к. $\lnot \varphi \vdash G, \lnot \varphi \vdash \lnot G$. А тогда $\vdash \lnot \lnot \varphi, \lnot \lnot \varphi \to \varphi$
+\end{proof}
+
+\begin{statement}
+	$\Gamma$ --- совместно, тогда $\Gamma$ непротиворечиво. Пусть $F_1, F_2, \cdots, F_k$ (формул, возможно, бесконечность) $\vdash$. Ну а потом там modus ponens бахаем и пытаемся радоваться жизни, я снова проиграл, кто понял + воспринял --- распишите пж.
+\end{statement}
+\begin{statement}
+	$\Gamma$ --- непротиворечиво, тогда $\Gamma$ --- совместно. 
+\end{statement}
+\begin{proof}
+	Ну там если есть прямые формулы вида $x_1, x_2, \lnot x_3$ то для них значения очевидны. И тогда если есть выполняющий набор, то это такой.
+
+	А теперь хотим $\Gamma$ вложить в непротиворечивый $\Gamma'$, содержащий $x_1$ или $\lnot x_1$. И так последовательно продобавляем для каждой переменной $x_i$ или $\lnot x_i$. 
+\end{proof}
+\begin{definition}
+	$\Gamma$ --- полное, если $\forall \varphi \Gamma \vdash \varphi$ или $\Gamma \vdash \lnot \varphi$.
+\end{definition}
+\begin{statement}
+	$\forall \Gamma $ непротиворечивых $\exists$ полное $\Gamma': \Gamma \subset \Gamma'$ и $\Gamma'$ --- непротиворечиво.
+
+	Пусть формул счётное число, тогда выпишем их по порядку. И пойдём по ним в этом порядке. $\Gamma_{i} = \left\{ \begin{aligned} \Gamma_{i-1} &\cup \varphi_i \\ \Gamma_{i-1} &\cup \lnot \varphi_i \end{aligned} \right.$ что $\Gamma_{i}$ --- непротиворечиво. Хотим получить это, зная, что $\Gamma_{i-1}$ --- непротиворечиво. Пусть $\Gamma_{i-1} \vdash \varphi$, тогда $\Gamma_i = \Gamma_{i-1} \cup \varphi_i$. А если $\Gamma \vdash \lnot \varphi_i$, то $\Gamma_i = \Gamma_{i-1} \cup \lnot \varphi_i$. А если же ни одно не выводится, то возьмём произвольное, в частности $\Gamma_i = \Gamma-{i-1} \cup \varphi_i$. 
+
+	Почему не возникло противоречий? Пусть возникли, тоогда $\Gamma_{i-1}, \varphi_i \vdash G; \text{ и } \vdash \lnot G$, но тогда просто $\Gamma_{i-1} \vdash \lnot \varphi_i$. А мы в третьем случае предположили, что ни то, ни это выводить не умеем, противоречие. 
+\end{statement}
+
+\begin{proof}
+	Продолжение предыдущего доказательства: теперь умеем выписывать ещё и все переменные, почему такое означение будет корректным? Узнаем на следующей паре
+\end{proof}
