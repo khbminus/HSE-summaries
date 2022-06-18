@@ -988,7 +988,11 @@
 \begin{example}
     $f(x) = \begin{cases} 0, & x = 0\\e^{-\frac{1}{x^2}}, & x \neq 0 \end{cases}$. Это бесконечно дифференцируемая функция. 
 
-    Тут абоба по индукции... Все члены Тейлора равны нулю $\Rightarrow$ тождественное равенство нулю.
+    $f'(x) = e^{-\frac{1}{x^2}} \cdot \frac{2}{x^3}, f'(0) = \lim\limits_{x \to 0} \frac{e^{-\frac{1}{x^2}} - 0}{x} = 0$.
+
+    $f^{(n)}(x) = e^{-\frac{1}{x^2}} \frac{\text{многочлен}}{x^{3n}}, f^{(n+1)}(0) = 0$.
+
+    Получается, что по индукции все производные в нуле --- 0, тогда Тейлор равен 0, а $f \not \equiv 0$.
 \end{example}
 \begin{example}
     $e^z \coloneqq \sum\limits_{n=0}^\infty \frac{z^n}{n!}$, $\cos z \coloneqq \sum\limits_{n=0}^\infty \frac{(-1)^n z^{2n}}{(2n)!}$, $\sin z \coloneqq \sum\limits_{n=0}^\infty \frac{(-1)^n z^{2n+1}}{(2n+1)!}$.

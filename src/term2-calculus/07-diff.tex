@@ -24,7 +24,7 @@
     Матрицу отображения $\mathrm{d}_af$ назовем матрицей Якоби  $f$ в точке  $a$.
 \end{definition}
 
-Важный частный случай $m = 1$.  $f(a+h) = f(a) + \langle v, h \rangle o(\| h\|)$. $V$ --- градиент функции  $f$ в точке  $a$. Обозначается  $\text{grad}\ f$,  $\nabla f(a)$ (набла).
+Важный частный случай $m = 1$.  $f(a+h) = f(a) + \langle v, h \rangle + o(\| h\|)$. $V$ --- градиент функции  $f$ в точке  $a$. Обозначается  $\text{grad}\ f$,  $\nabla f(a)$ (набла).
 
 \begin{theorem}
 Пусть $f = \begin{pmatrix} f_1 \\ f_2 \\ \vdots \\ f_n \end{pmatrix}\!: E \to \R^m$, $a \in \Int E$.
@@ -62,7 +62,7 @@
 \begin{proof}
     $\frac{\partial f}{\partial h}(a) = \mathrm{d}_af(h) = \langle \nabla f(a), h \rangle$.
 \\
-    $\left| \frac{\partial f}{\partial h}(a) \right| = | \langle \nabla f(a), h| \le \|\nabla f(a) \| \cdot \|h\| = \|\nabla f(a)\|$.
+    $\left| \frac{\partial f}{\partial h}(a) \right| = | \langle \nabla f(a), h \rangle | \le \|\nabla f(a) \| \cdot \|h\| = \|\nabla f(a)\|$.
 
     В неравенстве Коши-Буняковского равенство $\iff$ векторы пропорциональны  $\implies h = \pm \frac{\nabla f(a)}{\|\nabla f(a)\|}$.
 \end{proof}
@@ -88,7 +88,13 @@
 \begin{consequence}
     $f\!: E \subset \R^n \to \R^m$,  $a \in \Int E$,  $f$ --- дифференцируема в точке  $a$.
 
-    Тогда  $f'(a) = \begin{pmatrix} \frac{\partial f_1}{x_1} & \frac{\partial f_1}{x_2} & \ldots & \frac{\partial f_1}{x_n}\\  \frac{\partial f_2}{x_1} &\frac{\partial f_2}{x_2} & \ldots &\frac{\partial f_2}{x_n}\\ \ldots & \ldots & \ldots & \ldots\\ \frac{\partial f_m}{x_1} & \frac{\partial f_m}{x_2} & \ldots & \frac{\partial f_m}{x_n} \end{pmatrix}$.
+    Тогда  $f'(a) = 
+    \begin{pmatrix} 
+    \frac{\partial f_1}{x_1} & \frac{\partial f_1}{x_2} & \ldots & \frac{\partial f_1}{x_n}\\
+    \frac{\partial f_2}{x_1} &\frac{\partial f_2}{x_2} & \ldots &\frac{\partial f_2}{x_n}\\ 
+    \vdots & \vdots & \ddots & vdots\\ 
+    \frac{\partial f_m}{x_1} & \frac{\partial f_m}{x_2} & \ldots & \frac{\partial f_m}{x_n} 
+    \end{pmatrix}$.
 \end{consequence}
 \begin{theorem}(линейность дифференциала)
     $f, g\!: E \subset \R^n \to \R^m$,  $a \in \Int E$,  $\lambda \in \R$, $f, g$ дифференцируемы в точке $a$.
@@ -139,7 +145,7 @@
     Тогда  $\langle f, g\rangle$ дифференцируемы в  $a$. $\mathrm{d}_a \langle f, g \rangle(h) = \langle \mathrm{d}_af(h), g(a) \rangle + \langle f(a), \mathrm{d}_ag(h) \rangle$.
 \end{theorem}
 \begin{proof}
-    $\langle f(x), g(x) = \sum\limits_{j=1}^m f_j(x) g_j(x)$.
+    $\langle f(x), g(x) \rangle = \sum\limits_{j=1}^m f_j(x) g_j(x)$.
 
      $\mathrm{d}_a\langle f, g \rangle(h) = \sum\limits_{j=1}^m \mathrm{d}_a(f_jg_j)(h) = \sum\limits_{j=1}^m (\mathrm{d}_a g_j(h)f_j(a) + g_j(a) \mathrm{d}_af_j(h)) = \sum\limits_{j=1}^m f_j(a) \mathrm{d}_ag_j(h) + \sum\limits_{j=1}^m \mathrm{d}_a f_j(h)g_j(a) = \langle f(a), \mathrm{d}_ag(h)\rangle + \langle \mathrm{d}_a f(h), g(a) \rangle$.
 \end{proof}
@@ -244,11 +250,16 @@ $f\!: E \subset \R^n \to \R^m$  $f$ непрерывно дифференцир�
 \begin{proof}
     $\vphi(s) \coloneqq f(s, y_0 + k) - f(s, y_0)$, $\vphi'(s) = f'_x(s, y_0 + k) - f'_x(s, y_0)$.
 
-    $\vphi(x_0+h) - \vphi(x_0) = h'\vphi(x_0 + \Theta h) = h(f'_x(x_0 + \Theta h, y_0 + k) - f'_x(x_0 + \Theta h, y_0)) = hk f''_{xy}(x_0 + \Theta h, y_0 + \widetilde{\Theta}k)$.
+    $\vphi(x_0+h) - \vphi(x_0) = h\vphi'(x_0 + \Theta h) = h(f'_x(x_0 + \Theta h, y_0 + k) - f'_x(x_0 + \Theta h, y_0)) = hk f''_{xy}(x_0 + \Theta h, y_0 + \widetilde{\Theta}k)$, где $0 < \widetilde{\Theta} < 1$.
 
     $\frac{\vphi(x_0 + h) - \vphi(x_0)}{hk} - f''_{xy}(x_0, y_0) = f''_{xy}(x_0 + \Theta h, y_0 + \widetilde{\Theta}k) - f''_{xy}(x_0, y_0) \to 0$, при $(h, k) \to (0, 0)$.
 
-    При малых $h$ и  $k$  $\left| \frac{1}{h} \left(\frac{\vphi(x_0 + h)}{k} - \frac{\vphi(x_0)}{k}\right) - f''_{xy}(x_0, y_0) \right| < \eps \xrightarrow{k \to 0} \left| \frac{1}{h} \left( f'_y(x_0+h, y_0) - f'_y(x_0, y_0) \right) - f''_{xy}(x_0, y_0) \right| \le 0 \implies \lim\limits_{h \to 0} \frac{f'_y(x_0+h, y_0) - f'_y(x_0, y_0)}{h} = f''_{xy}(x_0, y_0)$.
+    При малых $h$ и  $k$:
+    \begin{align*}
+    &\left| \frac{1}{h} \left(\frac{\vphi(x_0 + h)}{k} - \frac{\vphi(x_0)}{k}\right) - f''_{xy}(x_0, y_0) \right| < \eps
+    \xrightarrow{k \to 0} \left| \frac{1}{h} \left( f'_y(x_0+h, y_0) - f'_y(x_0, y_0) \right) - f''_{xy}(x_0, y_0) \right| \le 0 \\
+    & \implies \lim\limits_{h \to 0} \frac{f'_y(x_0+h, y_0) - f'_y(x_0, y_0)}{h} = f''_{xy}(x_0, y_0).
+    \end{align*}
 \end{proof}
 \begin{definition}
     $f\!: D \subset \R^n \to \R$ ($D$ --- открытое), $f$  $r$ раз непрерывно дифференцируема, если у нее существуют все частные производные порядка  $\le v$ и они непрерывны.
