@@ -24,7 +24,7 @@
     Матрицу отображения $\mathrm{d}_af$ назовем матрицей Якоби  $f$ в точке  $a$.
 \end{definition}
 
-Важный частный случай $m = 1$.  $f(a+h) = f(a) + \langle v, h \rangle + o(\| h\|)$. $V$ --- градиент функции  $f$ в точке  $a$. Обозначается  $\text{grad}\ f$,  $\nabla f(a)$ (набла).
+Важный частный случай $m = 1$.  $f(a+h) = f(a) + \langle v, h \rangle + o(\| h\|)$. $v$ --- градиент функции  $f$ в точке  $a$. Обозначается  $\text{grad}\ f$,  $\nabla f(a)$ (набла).
 
 \begin{theorem}
 Пусть $f = \begin{pmatrix} f_1 \\ f_2 \\ \vdots \\ f_n \end{pmatrix}\!: E \to \R^m$, $a \in \Int E$.
@@ -34,7 +34,7 @@
 \begin{proof}
     $f(a+h) = f(a) + Th + \alpha(h)$, где  $\frac{\alpha(h)}{\|h\|} \xrightarrow{h \to 0} 0$.
     \begin{itemize}
-        \item $\Rightarrow$.  $f_j(a+h) = f_j(a) + (Th)_j + \alpha_j(h)$. Надо доказать, что  $\frac{\alpha_j(h)}{\|h\|} \to 0$. $|\alpha_j(h)| \le \|\alpha(h)\|$. Значит, $\frac{|\alpha_j(h)|}{\|h\|} \le \frac{\|\alpha_j(h)\|}{\|h\|} \to 0$.
+        \item $\Rightarrow$.  $f_j(a+h) = f_j(a) + (Th)_j + \alpha_j(h)$. Надо доказать, что  $\frac{\alpha_j(h)}{\|h\|} \to 0$. $|\alpha_j(h)| \le \|\alpha(h)\|$. Значит, $\frac{|\alpha_j(h)|}{\|h\|} \le \frac{\|\alpha(h)\|}{\|h\|} \to 0$.
         \item $\Leftarrow$. Знаем, что  $f_j(a+h) = f_j(a) + T_jh + \alpha_j(h)$, где  $\frac{\alpha_j(h)}{\|h\|} \to 0$. 
 
             $\alpha(h) = \begin{pmatrix} \alpha_1(h) \\ \vdots \\ \alpha_m(h) \end{pmatrix}$. Надо доказать, что $\frac{\|\alpha(h)\|}{\|h\|} \to 0$.
@@ -92,7 +92,7 @@
     \begin{pmatrix} 
     \frac{\partial f_1}{x_1} & \frac{\partial f_1}{x_2} & \ldots & \frac{\partial f_1}{x_n}\\
     \frac{\partial f_2}{x_1} &\frac{\partial f_2}{x_2} & \ldots &\frac{\partial f_2}{x_n}\\ 
-    \vdots & \vdots & \ddots & vdots\\ 
+    \vdots & \vdots & \ddots & \vdots\\ 
     \frac{\partial f_m}{x_1} & \frac{\partial f_m}{x_2} & \ldots & \frac{\partial f_m}{x_n} 
     \end{pmatrix}$.
 \end{consequence}
@@ -122,7 +122,7 @@
 
     Хотим показать, что все корректно.
 
-    $\frac{\|\mathrm{d}_bg(\alpha(h))\|}{\|h\|} \le \|\mathrm{d}_b(g)\| \underbracket{\frac{\|\alpha(h)\|}{\|h\|}}_{\to 0}$. $k = \mathrm{d}_af(h) + \alpha(h)$.  $\|k\| \le \|\mathrm{d}_af(h)\| + \|\alpha(h)\| \le \|\mathrm{d}_af\| \cdot \|h\| + \|\alpha(h)\| \to 0$, так как $\frac{\|k\|}{\|h\|} \le \|\mathrm{d}_af\| + \frac{\|\alpha(h)\|}{\|h\|}$.
+    $\frac{\|\mathrm{d}_bg(\alpha(h))\|}{\|h\|} \le \|\mathrm{d}_b(g)\| \underbracket{\frac{\|\alpha(h)\|}{\|h\|}}_{\to 0}$. $k = \mathrm{d}_af(h) + \alpha(h)$.  $\|k\| \le \|\mathrm{d}_af(h)\| + \|\alpha(h)\| \le \|\mathrm{d}_af\| \cdot \|h\| + \|\alpha(h)\| \to 0$, откуда $\frac{\|k\|}{\|h\|} \le \|\mathrm{d}_af\| + \frac{\|\alpha(h)\|}{\|h\|}$.
 
     В итоге, $\frac{\|\beta(k)\|}{\|k\|} \cdot \frac{\|k\|}{\|h\|} \xrightarrow{h \to 0} 0$.
 \end{proof}
@@ -153,7 +153,7 @@
     При $n=1$  $\langle f, g \rangle'(a) = \langle f'(a), g(a)\rangle + \langle f(a), g'(a) \rangle$.
 \end{remark}
 \begin{theorem}[Лагранжа для векторнозначных функций]
-    $f\!: [a, b] \to \R^m$,  $f$ --- дифференцируема во всех точках из  $a, b$ и непрерывна на  $[a, b]$.
+    $f\!: [a, b] \to \R^m$,  $f$ --- дифференцируема во всех точках из  $(a, b)$ и непрерывна на  $[a, b]$.
 
     Тогда существует  $c \in (a, b)$, такая что  $\|f(b) - f(a)\| \le \|f'(c)\|(b-a)$.
 \end{theorem}
@@ -163,6 +163,8 @@
 \end{proof}
 \begin{example}
     $m = 2$,  $[a, b] = [0, 2\pi], f(t) = \begin{pmatrix} \cos t \\ \sin t \end{pmatrix}, f'(t) = \begin{pmatrix} -\sin t \\ \cos t \end{pmatrix}$. $f(2\pi) - f(0) = \overrightarrow{0}$,  $\|f'(t)\| = 1$. Тогда получаем  $\|f(2\pi) - f(0)\| = 0 < 2\pi\|f'(c)\|$.
+
+    Тут не достигается равенства вообще никогда.
 \end{example}
 \Subsection{Непрерывная дифференцируемость}
 \begin{theorem}
@@ -171,13 +173,15 @@
 \begin{proof}
     $f(a+h) - f(a) = \sum\limits_{i=1}^n \frac{\partial f}{x_i}(a) h_i + o(\|h\|)$, $R(h) = f(a + h) - f(a) - \sum\limits_{i=1}^n \frac{\partial f}{\partial x_i}(a) h_i$.
 
+    Хочется показать, что $R(h) = o(\|h\|)$, тогда мы победили и дифференцируемость есть.
+
     $b_0 = a, b_1 = (a_1 + h, a_2, \ldots, a_n), b_k = (a_1 + h_1, a_2 + h_2, \ldots, a_k + h_k, a_{k+1}, \ldots, a_n).$
 
-    $f(b_k) - f(b_{k-1}) = f(a_1 + h_1, \ldots, a_{k-1} + h_{k-1}, a_k + h_k, a_{k+1}, \ldots, a_n) - f(a_1 + h_1, \ldots, a_{k-1} + h_{k-1}, a_k, \ldots, a_n) = h_k \frac{\partial f}{\partial x_k}(b_{k-1} - \Theta_k h_k e_k)$ ($0 < \Theta_k < 1$). 
+    $f(b_k) - f(b_{k-1}) = f(a_1 + h_1, \ldots, a_{k-1} + h_{k-1}, a_k + h_k, a_{k+1}, \ldots, a_n) - f(a_1 + h_1, \ldots, a_{k-1} + h_{k-1}, a_k, \ldots, a_n) = h_k \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k)$ ($0 < \Theta_k < 1$). Здесь $b_{k-1} +\Theta_k h_k e_k$ --- какая-то точка из  $(a_{k}, a_{k} + h_k)$ полученная путем теоремы Лагранжа.
 
     Тогда $f(a + h) - f(a) = f(b_n) - f(b_0) = \sum\limits_{k=1}^n h_k \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_ke_k) = \sum\limits_{k=1}^n h_k \frac{\partial f}{\partial x_k}(a) + \sum\limits_{k=1}^nh_k(\frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k) - \frac{\partial f}{\partial x_k}(a))$.
 
-    Тогда $|R(h)| = \left|\sum\limits_{k=1}^n h_k \left( \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k) - \frac{\partial f}{\partial x_k}(a)\right)\right| \le \|h\| (\sum(...)^2)^{\frac{1}{2}}$, а $(\sum(...)^2)^{\frac{1}{2}} \to 0$.
+    Тогда $|R(h)| = \left|\sum\limits_{k=1}^n h_k \left( \frac{\partial f}{\partial x_k}(b_{k-1} + \Theta_k h_k e_k) - \frac{\partial f}{\partial x_k}(a)\right)\right| \le \|h\| (\sum(...)^2)^{\frac{1}{2}}$, а $(\sum(...)^2)^{\frac{1}{2}} \to 0$ при $h \to 0$ из непрерывности частных производных.
 \end{proof}
 \begin{remark}
     Дифференциал функции в точке не влечет существования частных производных (и даже непрерывности) в окрестности точки. 
