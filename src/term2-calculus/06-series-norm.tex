@@ -584,7 +584,7 @@
 \begin{proof}
     $f_n$ --- фундаментальная последовательность  $\iff \forall \eps > 0 \exists N \forall m, n \ge N \sup\limits_{x \in E} |f_n(x) - f_m(y)| = \|f_n - f_m\| < \eps \implies \forall \eps > 0 \exists N \forall m, n \ge N \forall x \in E |f_n(x) - f_m(x)| < \eps \implies f_n$ --- равномерно сходится на $E \implies \sup_{x \in E} |f_n(x) - f(x)| = \|f_n - f\|_{l^\infty(E)} \to 0$. Надо проверить, что  $f \in l^\infty(E)$.
 
-     $f_n(x) \le \underbrace{|f(x) - f_n(x)}_{\le \|f - f_n\| < 1} + \underbrace{|f_n(x)|}_{\le \|f_n\|}$.
+     $f(x) \le \underbrace{|f(x) - f_n(x)|}_{\le \|f - f_n\| < 1} + \underbrace{|f_n(x)|}_{\le \|f_n\|}$.
 \end{proof}
 \begin{theorem}
     $f_n, f\!: E \to \R, a \in E, f_n \underset{E}{\rightrightarrows} f$ и  $f_n$ непрерывна в точке $a$. Тогда  $f$ непрерывна в точке  $a$.
@@ -641,7 +641,7 @@
 \begin{remark}
     Из расходимости ряда $\sum\limits_{n=1}^\infty u_n(x_n)$ ничего не следует.
 
-    $u_n(x) = \begin{cases} \frac{1}{n} & x \in (\frac{1}{n+1}, n] \\ 0 & \text{иначе} \end{cases}.$ 
+    $u_n(x) = \begin{cases} \frac{1}{n} & x \in (\frac{1}{n+1}, \frac{1}{n}] \\ 0 & \text{иначе} \end{cases}.$ 
 
     $x_n = \frac{1}{n} \implies u_n(x_n) = \frac{1}{n}$ и ряд $\sum u_n(x_n)$ --- расходится.
 
@@ -740,7 +740,7 @@
 
     $\sum\limits_{n=1}^\infty \left|\frac{(-1)^n}{n}x^n \right| = \sum\limits_{n=1}^\infty \frac{x^n}{n}$.
 
-    Нет равномерной сходимости. $\sum\limits_{k=n}^{2n} \frac{x^k}{k} \ge n \frac{x^{2n}}{2n} = \frac{x^{2n}}{2} \to \frac{1}{2e}$, $x = 1 - \frac{1}{2n}$.
+    Нет равномерной абсолютной сходимости. $\sum\limits_{k=n}^{2n} \frac{x^k}{k} \ge n \frac{x^{2n}}{2n} = \frac{x^{2n}}{2} \to \frac{1}{2e}$, $x = 1 - \frac{1}{2n}$.
 \end{example}
 \begin{theorem}[Признак Дини]
     $0 \le u_n \in C(K)$, $K$ --- компакт и  $S_x \coloneqq \sum\limits_{n=1}^\infty u_n(x) \in C(k)$. Тогда ряд сходится равномерно на  $K$.
@@ -752,7 +752,7 @@
 
     От противного. Пусть нет стремления к нулю.  $r_{n_k}(x_{n_k}) \ge \eps$, $x_{n_k} \in K$. Выберем сходящуюся подпоследовательность  $x_{m_k} \to x_* \in K$.
 
-     $r_{m_k}(x_{m_k}) \ge \eps$. $x_{m_k} \to x_*$. Тогда  $r_n(x_{m_k}) \ge r_{n+1}(x_{m_k}) \ge r_{n+2}(x_{m_k}) \ge \ldots \ge r_{m_k}(x_{m_k}) \ge \eps$, при этом $r_n(x_{m_k}) \to r_n(x_*) \implies r_n(x_*) \ge \eps \quad \forall x$. Но $r_n(x_*) \to 0$. Противоречие.
+     $r_{m_k}(x_{m_k}) \ge \eps$. $x_{m_k} \to x_*$. Тогда  $r_n(x_{m_k}) \ge r_{n+1}(x_{m_k}) \ge r_{n+2}(x_{m_k}) \ge \ldots \ge r_{m_k}(x_{m_k}) \ge \eps$, при этом $r_n(x_{m_k}) \to r_n(x_*) \implies r_n(x_*) \ge \eps \quad \forall x$. Но $r_n(x_*) \to 0$, так как ряд в точке $x_*$ сходится. Противоречие.
 \end{proof}
 
 \Subsection{Свойства равномерно сходящихся последовательностей и рядов}
@@ -868,7 +868,7 @@
     Радиус сходимости существует $\in [0, +\infty]$ и  $R = \frac{1}{\varlimsup \sqrt[n]{|a_n|}}$ --- формула Коши-Адамара (Hadamard).
 \end{theorem}
 \begin{proof}
-    Докажем, что $R = \frac{1}{\varlimsup \sqrt[n]{a_n}}$ подходит. Для этого применим к этому ряд признак Коши с $K \coloneqq \varlimsup \sqrt[n]{|a_n|} = \varlimsup |z| \sqrt[n]{|a_n|} = \frac{|z|}{R}$. Признак Коши: $K < 1 \implies$ ряд сходится, если  $K > 1 \implies$ ряд расходится.
+    Докажем, что $R = \frac{1}{\varlimsup \sqrt[n]{a_n}}$ подходит. Для этого применим к этому ряд признак Коши с $K \coloneqq \varlimsup \sqrt[n]{|a_nz^n|} = \varlimsup |z| \sqrt[n]{|a_n|} = \frac{|z|}{R}$. Признак Коши: $K < 1 \implies$ ряд сходится, если  $K > 1 \implies$ ряд расходится.
 \end{proof}
 \begin{example}
     \begin{enumerate}
@@ -1000,7 +1000,7 @@
 \begin{exerc}
     $e^{iz} = \cos z + i\sin z$,  $\cos^2 z + \sin^2 z = 1, e^w e^z = e^{w+z}$.
 
-    $\cos z = \frac{e^{iz} + e^{-iz}}{2}$, $\sin z = \frac{e^{iz} - e^{-iz}}{2}$.
+    $\cos z = \frac{e^{iz} + e^{-iz}}{2}$, $\sin z = \frac{e^{iz} - e^{-iz}}{2i}$.
 \end{exerc}
 \begin{example}
     При $|x| < 1$.
@@ -1019,14 +1019,14 @@
      $\arctg y = \int\limits_0^y \frac{\dx}{1+x^2} = \int\limits_0^y \sum\limits_{y=0}^\infty (-1)^n x^{2n} \dx = \sum\limits_{n=0}^\infty (-1)^n \frac{y^{2n+1}}{2n+1}$.
 \end{proof}
 \begin{example}
-    $(1+x)^p = \sum\limits_{n=0}^\infty \frac{p(p-1)\ldots(p-n+1)}{n!}x^n$ при $|x| < 1$.
+    $(1+x)^p = 1 + \sum\limits_{n=1}^\infty \frac{p(p-1)\ldots(p-n+1)}{n!}x^n = \sum\limits_{n=0}^\infty \frac{p(p-1)\ldots(p-n+1)}{n!}x^n$ при $|x| < 1$.
 \end{example}
 \begin{proof}
     $(1+x)^p = \sum\limits_{k=0}^n \frac{p(p-1)\ldots (p-k+1)}{k!}x^k + \frac{1}{n!}\int\limits_0^x p(p-1)\ldots (p-n)(1+t)^{p-n-1}(x-t)^n \dt$. 
 
-    Посчитаем $\frac{c_{n+1}}{c_n} = \frac{1}{n} \cdot \ldots = \frac{p-n}{n} \frac{\int\limits_0^x (1+t)^{p-n}(x-t)^{n-1}\frac{x-t}{1+t} \dt}{\int\limits_0^x (1+t)^{p-n} (x-t)^{n-1}\dt}$.
+    Посчитаем $\left| \frac{c_{n+1}}{c_n} \right| = \frac{|p-n-1|}{n + 1} \cdot \left| \frac{\int\limits_0^x (x-t)^{n+1} (1+t)^{p-n-2} \dt}{\int\limits_0^x (x-t)^n (1+t)^{p-n-1} \dt} \right| = \frac{|p-n - 1|}{n} \left| \frac{\int\limits_0^x (1+t)^{p-n - 1}(x-t)^{n}\frac{x-t}{1+t} \dt}{\int\limits_0^x (1+t)^{p-n - 1} (x-t)^{n}\dt} \right|$.
 
-    Тогда $\left| \frac{x-t}{1+t} \right| \le |x|$. А значит отношение $\le \frac{p - n}{n}|x| \to |x| < 1$.
+    Тогда $\left| \frac{x-t}{1+t} \right| \le |x|$ (при $x > 0$ понятно, а при  $x < 0\!: \frac{t - x}{1+t} \le - x \iff t-x \le -x -tx \iff t \le -tx \iff t(1+x) \le 0 \Leftarrow -1 < x, t \le 0$) А значит отношение $\le \frac{|p - n - 1|}{n + 1}|x| \to |x| < 1$.
 \end{proof}
 \begin{example}
     Частный случай при  $p = -\frac{1}{2}$. 
