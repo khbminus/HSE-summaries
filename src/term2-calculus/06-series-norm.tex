@@ -234,7 +234,7 @@
     \end{align*}
     Надо показать, что $\sum\limits_{k=1}^\infty A_k(b_k - b_{k+1})$ --- сходится. Для этого докажем, что ряд абсолютно сходится: $\sum\limits_{k=1}^\infty |A_k||b_k - b_{k+1}|$ --- сходится. 
 
-    Мы знаем, что $\sum\limits_{k=1}^\infty |A_k||b_k - b_{k+1}| \le \sum\limits_{k=1}^\infty M \cdot |b_k - b_{k+1}| \overset{(*)}{=} M|\sum\limits_{k=1}^\infty (b_k - b_{k+1})| \le M|b_1|$.
+    Мы знаем, что $\sum\limits_{k=1}^\infty |A_k||b_k - b_{k+1}| \le \sum\limits_{k=1}^\infty M \cdot |b_k - b_{k+1}| \overset{(*)}{=} M|\sum\limits_{k=1}^\infty (b_k - b_{k+1})| \le M|b_1|$. А еще мы знаем, что из ограниченности суммы знакопостоянного ряда следует его сходимость. Следовательно ряд абсолютно сходится.
 
     $(*)$ --- у нас постоянная монотонность, следовательно все слагаемые одного знака.
 \end{proof}
@@ -304,7 +304,7 @@
             $\widetilde{S}_n \coloneqq \sum\limits_{k=1}^n a_{\vphi(k)} \le S_{\max{\vphi(1), \ldots, \vphi(n)}} \le S \implies \lim \widetilde{S}_n \le S \implies \widetilde{S} \le S$. Но $\phi$ - биекция и, т.к. любая перестановка не увеличивает сумму ряда, то можем сделать обратную перестановку и получим $S \le \widetilde{S} \implies S = \widetilde{S}$
         \item $a_n \in \R$.  $a_n = (a_n)_+ - (a_n)_-$, где $(a)_+ \coloneqq \max\{a, 0\}, (a)_- \coloneqq \max\{-a, 0\}$.  $|a_n| = (a)_- + (a)_+ \ge (a_n)_\pm \ge 0$.
 
-            Если $\sum |a_n|$ --- сходится, то  $\sum\limits_{n=1}^\infty(a_n)_\pm $ --- сходится.  $\sum (a_{\vphi(n)})_+ = \sum (a_n)_+$ и  $\sum (a_{\vphi(n)})_- = \sum (a_n)_- \implies $ ряд сходится.
+            Если $\sum |a_n|$ --- сходится, то  $\sum\limits_{n=1}^\infty(a_n)_\pm $ --- сходится.  $\sum (a_{\vphi(n)})_+ = \sum (a_n)_+$ и  $\sum (a_{\vphi(n)})_- = \sum (a_n)_- \implies $ ряд сходится. Причем после применения пункта 1 мы получаем равенство сумм.
     \end{enumerate}
 \end{proof}
 
@@ -423,7 +423,7 @@
 \end{definition}
 \begin{example}
     \begin{enumerate}
-        \item $\prod\limits_{k=2}^\infty \left(1-\frac{1}{k^2}\right)$. Оно очевидным образом равно $\frac{1}{2}$.
+        \item $\prod\limits_{k=2}^\infty \left(1-\frac{1}{k^2}\right)$. Оно очевидным образом равно $\frac{1}{2}$ из того, что $\frac{k^2 - 1}{k^2} = \frac{(k-1)(k+1)}{k^2} \implies$ частичная сумма равна $\frac{2 \cdot n \cdot n+1}{2^2 \cdot n^2} = \frac{1}{2} \frac{n+1}{n} \to \frac{1}{2}$ 
         \item $\prod_{n=1}^\infty(1 - \frac{1}{4n^2}) = \frac{1 \cdot 3 \cdot 3 \cdot 5 \cdot 5 \cdot 7 \cdot \ldots \cdot (2n-1)(2n+1)}{2^2 \cdot 4^2 \cdot 6^2 \cdot \dots \cdot (2n)^2 } = \frac{((2n-1)!!)^2(2n+1)}{((2n)!!)^2} \xrightarrow{\text{ф-ла Валиса}} \frac{2}{\pi}$
     \end{enumerate}
 \end{example}
