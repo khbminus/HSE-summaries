@@ -95,12 +95,12 @@ $U$ --- инвариантное подпространство,  $\dim U = 1, U
     $\chi_A(t)$ --- характеристический многочлен оператора $A$ (и матрицы).
 \end{definition}
 \begin{statement}
-    $\chi_A(t)$ не зависит от  $A$.
+    $\chi_A(t)$ не зависит от базиса $A$.
 \end{statement}
 \begin{proof}
     $A, A'$ --- матрицы  $\CA$ в разных базисах.  $A' = C^{-1}AC \implies \chi_A(t) = \det(C^{-1}AC - tE) = \det(C^{-1}AC - C^{-1}tEC) = \det(C^{-1}(A-tE)\cdot C) = \det(C^{-1})\cdot \det(A - tE) \cdot \det(C) = \det(A - tE) = \chi_A(t)$.
 \end{proof}
-\begin{consequence}[Следствие из Th]
+\begin{consequence}[из Th]
     $\CA \in End(V)$,  $\dim V = n \implies \CA$ имеет  $\le n$ собственных чисел.
 \end{consequence}
 \begin{lemma}
@@ -152,7 +152,7 @@ $U$ --- инвариантное подпространство,  $\dim U = 1, U
 
     Индукция по $n = \dim V$. При  $n=1$ это база: матрица  $\begin{pmatrix} a \end{pmatrix} = aE, x_0 = t - a \leadsto A-aE = 0$ --- верно.
 
-    Переход от  $n-1$ к $n$. $a_1$ --- собственное число  $A \implies \exists x\!: x = a_1x$,  $\langle x \rangle$ --- инвариантное пространство. Тогда матрица в базисе$x_1 \equiv x, x_2, \ldots$. Получим матрицу вида $\left(\begin{array}{c|c} a_1 & * \\ \hline 0 & \widetilde{A} \end{array} \right)$. Тогда  $\widetilde{A}$ --- матрица  $A \Big|_{v / \langle x \rangle}$. 
+    Переход от  $n-1$ к $n$. $a_1$ --- собственное число  $\CA \implies \exists x\!: \CA x = a_1x$,  $\langle x \rangle$ --- инвариантное пространство. Тогда матрица в базисе $x_1 \equiv x, x_2, \ldots$. Получим матрицу вида $\left(\begin{array}{c|c} a_1 & * \\ \hline 0 & \widetilde{A} \end{array} \right)$. Тогда  $\widetilde{A}$ --- матрица  $A \Big|_{v / \langle x \rangle}$. 
 
     Тогда  $\xi_\CA = (a_1 - t) \cdot \xi_{\widetilde{A}}(t)$. Значит  $\implies \xi_{\overline{A}}(t) = \prod\limits_{i=2}^n (t-a_i) \implies (\prod_{i=2}^n (t-a_i))(\widetilde{A}) = 0$.
 
@@ -179,11 +179,11 @@ $U$ --- инвариантное подпространство,  $\dim U = 1, U
 
     Теперь докажем утверждение со звездочкой.
 
-    $(P_1, P_2) = 1 \implies \exists f, g \in K[x]\!: P_1 \cdot f + P_2 \cdot g = 1$. Тогда $P_1(\CA) f(\CA) + P_2(\CA)\cdot g(\CA) = id$. А значит для любого $u \in U\!:$  $P_1(\CA)u f(\CA)u + P_1(\CA)u \cdot g(\CA)u = u$. Обозначим первое слагаемое за $u_2$, а второе за $u_1$. Тогда $P_2(\CA) u_2 = P_2(\CA) \cdot P_1(\CA) f(\CA)u  P(\CA)(f \CA(u_2)) = 0 \implies u_2 \in \ker P_2(\CA)$. 
+    $(P_1, P_2) = 1 \implies \exists f, g \in K[x]\!: P_1 \cdot f + P_2 \cdot g = 1$. Тогда $P_1(\CA) f(\CA) + P_2(\CA)\cdot g(\CA) = id$. А значит для любого $u \in U\!:$  $P_1(\CA)u f(\CA)u + P_1(\CA)u \cdot g(\CA)u = u$. Обозначим первое слагаемое за $u_2$, а второе за $u_1$. Тогда $P_2(\CA) u_2 = P_2(\CA) \cdot P_1(\CA) f(\CA)u = P(\CA)(f \CA(u_2)) = 0 \implies u_2 \in \ker P_2(\CA)$. 
 
     Значит $u = u_1 + u_2$, лежащие в $\ker(P_1(\CA))$ и $\ker(P_2(\CA))$.
 
-    Тогда $\ker(P_1(\CA)) \cap \ker(P_2(\CA)) = \{0\}$.
+    При этом $\ker(P_1(\CA)) \cap \ker(P_2(\CA)) = \{0\}$, т.к если $u_1=u_2=0$, то $u=0$.
 \end{proof}
 
 Перейдем теперь в $\CC$.  $p_i = (t-a_i)$.  $v_i = \ker(\CA - a_iE)^{b_i}$ --- корневые подпространства. $V = V_1 \oplus V_2 \oplus \ldots \oplus V_n$, $V_i$ --- инвариантные подпространства.  $p(\CA)(v) = 0$.  $V \to \CA v$.  $p(\CA) \cdot = (\CA \cdot p(\CA)v = \CA(P(A(V))) = 0)$. 
@@ -233,7 +233,7 @@ $\CA \in End(V)$ --- нильпотентный, если  $\exists k\!: \CA^k =
 
     Сколько мы построили векторов? $(\dim s_{k-1}) k + (\dim s_{k-2} - \dim s_{k-1})(k-1) + \ldots + \dim s_0 - \dim s_1 = \dim s_{k-1} + \dim s_{k-2} + \ldots = \dim V$.
 
-    Осталось доказать: $\{v_{i, j}\}$ --- ЛНЗ  $\implies \{v_{i, j}^k\}$ --- базис.
+    Осталось доказать: $\{v_{i, j}^k\}$ --- ЛНЗ  $\implies \{v_{i, j}^k\}$ --- базис.
 
     Пусть  $\sum_{\substack{l=0..k-1\\j=1..l+1\\i=1..a_l}} a_{i, j}^l v_{i, j}^l = 0$. Пусть  $L = \max\{j \mid \exists i, l\!: a_{ij}^l \neq 0\}$. Применим  $B^{l-1}$:  $\sum a_{i, L}^l v_{i, 1}^l = 0$, а это базис ядра  $\mathcal{B} \implies a_{i, L}^l = 0$. Противоречие. 
 \end{proof}
@@ -242,7 +242,10 @@ $\CA \in End(V)$ --- нильпотентный, если  $\exists k\!: \CA^k =
 
 Будем считать, что  $A \in M_{n}(\CC)$. Тогда  $\exists C\!: C^{-1}AC = I$ --- блочная жорданова матричка. Тогда заметим, что  $A^n = (CIC^{-1})(CIC^{-1})\ldots = CI^nC^{-1}$. Теперь научимся считать возводить в степень жорданову матрицу.
 
-Для этого заметим, что нам достаточно умножать только жордановы блоки. $(J_\alpha(\lambda))^n = (\lambda E_{\alpha} + J_\alpha(0))^n = \sum\limits_{k=0}^n \binom{n}{k} \lambda^{n-k}J_\alpha(0)^k$. Тогда если посмотреть на блок, то заметим, что блок из единиц двигается. Ну тогда все понятно.
+Для этого заметим, что нам достаточно умножать только жордановы блоки. $(J_\alpha(\lambda))^n = (\lambda E_{\alpha} + J_\alpha(0))^n = \sum\limits_{k=0}^n \binom{n}{k} \lambda^{n-k}J_\alpha(0)^k$. Тогда если посмотреть на блок, то заметим, что блок из единиц двигается. Ну тогда все понятно.\\
+Для тех, кому не понятно:\\
+Матрица $J_\alpha(0))^n$ будет на $(k+1)$-й диагонали иметь единицы, всё остальное нули.\\
+А у матрицы $J_\alpha(\lambda))^n$ на главной диагонали $\lambda^n$, на следующей $\binom{n}{1} \lambda^{n-1}$ и так далее.\\
 
 Тогда заметим, что $f(n) \sim \mathcal{O}^*(\lambda^n)$ для блока, а для всей матрицы надо взять максимум  по  $\lambda$.
 
@@ -263,7 +266,7 @@ $\CA \in End(V)$ --- нильпотентный, если  $\exists k\!: \CA^k =
 
         Тогда $A \in M_n(K)$ диагонализуема как матрица над $\CC \implies \exists$ базис в  $\R^n$ в котором матрица состоит из блоков вида $\begin{pmatrix} a_i & b_i \\ -b_i & a_i\end{pmatrix}$. 
 
-        А если матрица не диагонализуема, то матрица будет выглядеть вот так:\\ $\begin{pmatrix} a_i & b_i & 0 & 0 \\ -b_i & a_i & 1 & 0 \\ 0 & 0 & a_{i+1} & b_{i+1} \\ 0 & 0 & -b_{i+1} & a_{i+1} \end{pmatrix}$
+        А если матрица не диагонализуема, то матрица будет состоять из таких блоков $B_i$ (аналогично Жордановым):\\ $\begin{pmatrix} a_i & b_i & 0 & 0 \\ -b_i & a_i & 1 & 0 \\ 0 & 0 & a_{i} & b_{i} \\ 0 & 0 & -b_{i} & a_{i} \end{pmatrix}$
 \end{enumerate}
 \Subsection{Циклические пространства и фробениусова форма}
 $\CA\!: V \to V$, поле по  $K$.
