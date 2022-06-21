@@ -67,7 +67,7 @@
     Или $V=2^M$ и  $f(x,y) = | X \cap Y| \pmod 2$, если явно записывать, то  $f(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}) = x_1y_1 + \ldots + x_ny_n$.
 \end{example}
 \begin{definition}
-    Симметрическая билинейная форма на $V$ (над $K$) называется невырожденной если $(\forall y \in V\!L f(x, y) = 0) \implies x = 0$.
+    Симметрическая билинейная форма на $V$ (над $K$) называется невырожденной если $(\forall y \in V: f(x, y) = 0) \implies x = 0$.
 \end{definition}
 \begin{definition}
     $V$ --- векторное пространство, то  $V^* = Hom(V, K)$ --- множество линейных отображений (функционалов $V \to K$).
@@ -77,9 +77,9 @@
 
 $f$ --- невырождена $\implies F$ --- изоморфизм. 
 
-Пусть $f$ --- билинейная форма  $\leadsto \Gamma_f = (a_{ij})$,  $a_{ij} = f(e_i, e_j)$, где  $\{e_i\}$ --- базис. Тогда  $f(\sum x_i e_i, \sum y_i e_i) = \sum a_{ij} x_i y_hj = X^T \Gamma_f Y$.
+Пусть $f$ --- билинейная форма  $\leadsto \Gamma_f = (a_{ij})$,  $a_{ij} = f(e_i, e_j)$, где  $\{e_i\}$ --- базис. Тогда  $f(\sum x_i e_i, \sum y_i e_i) = \sum a_{ij} x_i y_{hj} = X^T \Gamma_f Y$.
 
-Перейдем теперь  $K = \CC$.  $f(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}) = \sum x_i \overline{y}_i$, $f(x, x) > 0$.
+Перейдем теперь к $K = \CC$.  $f(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}) = \sum x_i \overline{y}_i$, $f(x, x) > 0$.
 
 \begin{definition}
     Унитарным пространством называется пара $(V, (-,-))$, где  $V$ --- векторное пространство над  $\CC$,  $(-, -)\!: V \times V \to \CC$, такое, что 
@@ -93,7 +93,7 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
 \\
     С углами сложнее (это останется тайной).
     \\
-    Отрогонализация Грамма-Шмидта работает, в чатсности, $\forall$ унитарном пространстве есть ортонормированный базис. При этом $f(X, Y) = X^T\Gamma_f\overline{Y}$.
+    Отрогонализация Грама-Шмидта работает, в частности, $\forall$ унитарном пространстве есть ортонормированный базис. При этом $f(X, Y) = X^T\Gamma_f\overline{Y}$.
 \end{definition}
 \Subsection{Ортогональное дополнение}
  \begin{definition}
@@ -116,13 +116,13 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
  \begin{proof}
      \slashn
      \begin{enumerate}
-         \item $\dim V = n, \dim U = K$. Возьмем базис $e_1, \ldots, e_k$, дополним через $e_{k+1}, \ldots, e_n$ до ОНБ (до любого, а далее Грамм-Шмидт).
+         \item $\dim V = n, \dim U = K$. Возьмем базис $e_1, \ldots, e_k$, дополним через $e_{k+1}, \ldots, e_n$ до ОНБ (до любого, а далее Грам-Шмидт).
 
              Заметим, что $x = \sum x_ie_i \in U^{\perp} \iff (\sum\limits_{i=1}^n x_ie_i, e_j) = 0 \forall j=1,..,k \land e_j \in U^{\perp} \iff x_j = 0 \forall j=1..k \iff x = \sum\limits_{k+1}^n x_ie_i \iff x \in \langle e_{k+1}, \ldots, e_n \rangle$.
 
             Итого, $\dim U^\perp = n - k = \dim V - \dim U$.
 
-            Тогда  $U^{\perp\perp} = \ldots$. 
+            Тогда  $U^{\perp\perp} = \langle e_{k+1}, \ldots, e_n \rangle ^{\perp} = \langle e_1, \ldots, e_k \rangle = U$. 
 
             Ну и понятно, как раскладывается вектор из $V$.
      \end{enumerate}
@@ -142,7 +142,7 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
 
      $X \leadsto C X = \widetilde{X}$. Пусть  $D = C^{-1}$. Тогда  $X = D\widetilde{X}$.
 
-     $f(x, y) = X^T\Gamma Y = \ldots = \widetilde{X}^{T} (D^T\Gamma D)\widetilde{Y} \implies D^T\Gamma D = \widetilde{\Gamma}$ --- матрица Грама в новом базисе.
+     $f(x, y) = X^T\Gamma Y = (\widetilde{X}D)^T\Gamma (D\widetilde{Y})= \widetilde{X}^{T} (D^T\Gamma D)\widetilde{Y} \implies D^T\Gamma D = \widetilde{\Gamma}$ --- матрица Грама в новом базисе.
  \end{statement}
  \Subsection{Соответствиемежду формами/матрицами}
 
@@ -156,41 +156,42 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
 
  $f$ --- симметрическая билинейная/полуторная форма.
 
- Переформулировка: дана  $f(X, X) = \sum a_{ij} x_i x_j$ --- квадратичная формат.
+ Переформулировка: дана  $f(X, X) = \sum a_{ij} x_i x_j$ --- квадратичная форма.
 
  Как понять: верно ли, что  $q(x) > 0 \ \forall x \neq 0$.
 
   $f$ -- положительно определена  $\implies f$ --- скалярное произведение  $\implies \exists $ ОНБ:  $\exists C\!:$  $\det C^TAC = \det(C^T)\det(C)\det(A) = (\det C)^2 \det A = 1 = \det E \implies \det A > 0$
 
-  \begin{theorem}[Критерий Сильвестера]
+  \begin{theorem}[Критерий Сильвестра]
     $f$ --- симметричная билинейная,  $A \in M_n(\R)$ --- матрица Грама  $f$  в базисе $e_1, \ldots, e_n$.
 
-    Тогда $f$ --- полодительно определена  $\iff \forall i = 1..n \vartriangle_i > 0$, где $\vartriangle_i \coloneqq \det(a_{jk})_{\substack{j=1..i\\k=1..i}}$.
+    Тогда $f$ --- положительно определена  $\iff \forall i = 1..n \vartriangle_i > 0$, где $\vartriangle_i \coloneqq \det(a_{jk})_{\substack{j=1..i\\k=1..i}}$.
 \end{theorem}
 \begin{proof}
     Необходимость. $I = \{i_1, i_2, \ldots, i_k\}$ --- номера строк/столбцов.
 \\
-    $A_I$ --- подматрица со строками/столбцами из  $I$.  $A_I$ --- матрица Грама.  $f\Big|_{\langle e_{i_1}, \ldots, e_{i_k} \rangle}$ --- положительная определена.
+    $A_I$ --- подматрица со строками/столбцами из  $I$.  $A_I$ --- матрица Грама.  $f\Big|_{\langle e_{i_1}, \ldots, e_{i_k} \rangle}$ --- положительно определена.
 
-    Достаточность. Пусть $\Delta_i > 0$. Докажем индукцией по $k$:  $f\Big|_{\langle e_1, \ldots, e_k\rangle}$ ---  положительно определена $\implies$ при  $k = n$ то , что нажо.
+    Достаточность. Пусть $\Delta_i > 0$. Докажем индукцией по $k$:  $f\Big|_{\langle e_1, \ldots, e_k\rangle}$ ---  положительно определена $\implies$ при  $k = n$ то , что надо.
 
-    База:  $f \Big|_{\langle e_1 \rangle}\ f(ae_1, ae_1) = a^2(e_1, a) = a^2a_1 > 0$.
+    База:  $f \Big|_{\langle e_1 \rangle}\ f(ae_1, ae_1) = a^2(e_1, e_1) = a^2a_{11} > 0$.
 
-    Переход: $k \to k + 1$.  $f\Big|_{\langle e_1, \ldots, e_k \rangle}$ --- положительно определена, $()\langle e_1, \ldots, e_k \rangle, f)$ --- евклидово пространство. $\implies \exists$ ОНБ, $\widetilde{e_1}, \ldots, \widetilde{e_k}$. Матрица Грама $f \Big|_{\langle e_1, \ldots, e_{k+1} \rangle}$ в базисе $\widetilde{e_1}, \ldots, \widetilde{e_k}, e_{k+1} =
+    Переход: $k \to k + 1$.  $f\Big|_{\langle e_1, \ldots, e_k \rangle}$ --- положительно определена, $(\langle e_1, \ldots, e_k \rangle, f)$ --- евклидово пространство. $\implies \exists$ ОНБ, $\widetilde{e_1}, \ldots, \widetilde{e_k}$. Матрица Грама $f \Big|_{\langle e_1, \ldots, e_{k+1} \rangle}$ в базисе $\widetilde{e_1}, \ldots, \widetilde{e_k}, e_{k+1} =
     \left(\begin{array}{ccc|c}
     1 & \ldots & 0 & a_1\\
     \vdots & \ddots & \vdots & \vdots\\
     0 & \ldots & 1 & a_k\\ \hline
     a_1 & \ldots & a_k & a
 \end{array}\right)$. 
-$\widetilde{e}_{k+1} = e_{k+1} \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теперь $\widetilde{e}_{k+1}, \widetilde{e}_i = (e_{k+1} - \sum a_i \widetilde{e_i}, \widetilde{e}_i) = (e_{k+1}, \widetilde{e}_i) - \sum\limits_{j=1}^k a_j(\widetilde{e_j}, \widetilde{e_i}) = a_i - a_i = 0$.
+$\widetilde{e}_{k+1} = e_{k+1} - \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теперь $(\widetilde{e}_{k+1}, \widetilde{e}_i) = (e_{k+1} - \sum a_i \widetilde{e_i}, \widetilde{e}_i) = (e_{k+1}, \widetilde{e}_i) - \sum\limits_{j=1}^k a_j(\widetilde{e_j}, \widetilde{e_i}) = a_i - a_i = 0$.
 
 Тогда $\widetilde{A} = 
 \begin{pmatrix}
     1 & \ldots & 0\\
     \vdots & \ddots & \vdots\\
     0 & \ldots & b
-\end{pmatrix}$, $\det \widetilde{A} = \det (C^T) \cdot \Delta_{k+1} \det C > 0 \implies b > 0 \implies f$ имеет ОНБ в $\langle e_1, \ldots, e_{k+1} \rangle \implies f$ --- положительно определена на $\langle e_1, \ldots, e_{k+1} \rangle$.
+\end{pmatrix}$, $\det \widetilde{A} = \det (C^T) \cdot \Delta_{k+1} \det C > 0 \implies b > 0 \implies f$ имеет ОНБ в $\langle e_1, \ldots, e_{k+1} \rangle \implies f$ --- положительно определена на $\langle e_1, \ldots, e_{k+1} \rangle$.\\
+*. $f(\sum c_i \widetilde{e_i}, \sum c_i \widetilde{e_i}) = \sum_{i=1}^k c_i^2 + c_{k+1}^{2}b > 0$
 \end{proof}
 \Section{Операторы в евклидовых и унитарных пространствах}{ХБ}
 \Subsection{Самосопряженные операторы}
