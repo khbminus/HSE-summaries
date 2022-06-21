@@ -206,18 +206,18 @@ $\widetilde{e}_{k+1} = e_{k+1} - \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теп
 \begin{theorem}
     $\CA$ --- самосопряжен  $\iff$ у  $\CA$ есть ОНБ из собственных векторов и все с.ч вещественны. 
 
-    $\CA$ --- самосопряжен  $\iff$  $[\CA]_{\text{ОНБ}} = A$ такова, что $A^T = \overline{A}$,  $A = (\delta_{ij})$,  $A = (\overline{\delta_{ij}})$.
+    $\CA$ --- самосопряжен  $\iff$  $[\CA]_{\text{ОНБ}} = A$ такова, что $A^T = \overline{A}$,  $A = (\delta_{ij})$,  $\overline{A} = (\overline{\delta_{ij}})$.
 \end{theorem}
 \begin{proof}
     $\CA$ --- самосопряжен  $\iff$ $\forall i, j\!: (\CA e_i, e_j) = (e_i, \CA e_j) \iff (\sum\limits_{k=1}^n a_{ik} e_k, e_j) = (e_i, \sum\limits_{k=1}^n a_{jk}e_k) \iff -(a_{ij}e_j, e_J) = (e_i, a_{ji}e_i) \iff a_{ij}(e_j, e_i) = \overline{a_{ji}} (e_i, e_i) \iff a_{ij} = \overline{a_{ji}}$.
 
-    $\CA$ --- самосопряжена  $\implies \forall \lambda$ --- собственное число  $\lambda \in \R$.
+    $\CA$ --- самосопряжена  $\implies \forall \lambda$ --- собственное число  $\lambda \in \R$, потому что, если взять собственный вектор $x, \CA x=\lambda x$, получим, что $(\CA x, x) = (x, \CA x) \implies (\lambda x, x) = (x, \lambda x) \implies \lambda (x, x) = \overline{\lambda} (x, x) \implies \lambda = \overline{\lambda}$
 
     В том числе для  $A \in M_n(\R), A = A^T$ --- все корни  $\chi_A(t)$ --- вещественны.
 \end{proof}
 
 \begin{statement}
-    $\CA$ --- самосопряженный оператора,  $\CA \in End(V)$,  $U \le V$ --- инвариантное подпространство относительно $\CA$, тогда  $U^\perp$ --- инвариантное подпространство. 
+    $\CA$ --- самосопряженный оператор,  $\CA \in End(V)$,  $U \le V$ --- инвариантное подпространство относительно $\CA$, тогда  $U^\perp$ --- инвариантное подпространство. 
 \end{statement}
 \begin{proof}
     $v \in U^\perp$, то есть  $(u, v) = 0\ \forall u \in U$,  $\CA v\!:\ (um \CA V) = (\CA u, v) = 0 \implies \CA v \in u^\perp$.
@@ -227,9 +227,9 @@ $\widetilde{e}_{k+1} = e_{k+1} - \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теп
 
     $\Rightarrow$. База $n=1$.
 
-    Переход  $n \to n+1$.  $\CA$ --- самосопряженная,  $v_1, \ldots, v_n$ --- ОНБ. $[\CA]_{\{v_i\}} = A, A^T = \overline{A}, \exists \lambda_1 \in \R$ --- собственные числа $A$.
+    Переход  $n \to n+1$.  $\CA$ --- самосопряженная,  $v_1, \ldots, v_n$ --- ОНБ. $[\CA]_{\{v_i\}} = A, A^T = \overline{A}, \exists \lambda_1 \in \R$ --- собственное число $A$.
 
-    $\exists v \in V\!: \CA v = \lambda_1 v$, $\langle v \rangle$ --- инвариантное подпространство  $\implies \langle v \rangle^\perp$ --- инвариантное подпространство,  $\dim \langle v \rangle^{\perp} = n  + 1 - 1 = n$.  $\CA \Big|_{\langle v \rangle}\!: \langle v \rangle^p\perp \to \langle v^\perp \rangle$.
+    $\exists v \in V\!: \CA v = \lambda_1 v$, $\langle v \rangle$ --- инвариантное подпространство  $\implies \langle v \rangle^\perp$ --- инвариантное подпространство,  $\dim \langle v \rangle^{\perp} = n  + 1 - 1 = n$.  $\CA \Big|_{\langle v \rangle^{\perp}}\!: \langle v \rangle^\perp \to \langle v \rangle ^\perp$.
 
     $\CA\Big|_{\langle v \rangle^\perp}$ --- самосопряженнная по предположению.  $\exists e_1, \ldots ,e_n$ -- ОНБ из собственных векторов $\CA$ с вещественными собственными числами.
 
@@ -237,15 +237,15 @@ $\widetilde{e}_{k+1} = e_{k+1} - \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теп
 \end{proof}
 \Subsection{Оценка квадратичной формы}
 
-Хотим посмотреть на $q(x_1, \ldots, x_n) = \sum\limits_{i \neq j} a_{ij} x_ix_j$.
+Хотим посмотреть на $q(x_1, \ldots, x_n) = \sum\limits_{i,j=1} a_{ij} x_ix_j$.
 
 Ищем $A\!: q(x_1, \ldots, x_n) \le A(x_1^2 + \ldots + x_n^2)$, причем $A$ --- минимально.
 
 Заметим, что  $\sum a_{ij} x_ix_j = (AX, X)$,  $X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, A = (a_{ij})$.
 
-$X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_i c_i^2$.
+$X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, \sum c_i v_i) = \sum \lambda_i c_i^2$.
 
-Возьмем  $A = \max \{\lambda_i, 0\} \implies \sum \lambda_i c_I \le A \sum c_i^2$. Следовательно, $q(x_1, \ldots ,x_n) \le \lambda_{\max} (\sum x_i^2), \lambda_{max}$ --- максимальное собственное число.  Аналогично, $\ge \lambda_{min}(\sum x_i^2)$.
+Возьмем  $A = \max \{\lambda_i, 0\} \implies \sum \lambda_i c_i \le A \sum c_i^2$. Следовательно, $q(x_1, \ldots ,x_n) \le \lambda_{\max} (\sum x_i^2), \lambda_{max}$ --- максимальное собственное число.  Аналогично, $\ge \lambda_{min}(\sum x_i^2)$.
 \Subsection{Ортогональные и унитарные операторы}
 \begin{definition}
     $\CA \in End(V)$,  $V$ --- евклидово/унитарно.
@@ -268,7 +268,7 @@ $X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_
      $6 \implies 1\!: \CA e_i = f_i, \{e_i\}, \{f_i\}$ --- ОНБ,  $x = \sum x_i e_i, y = \sum y_i f_i$.  \dots
 \end{proof}
 \begin{remark}
-    $\CA$ --- самосопряженный  $\implies$ ОН собственный базис. 
+    $\CA$ --- самосопряженный  $\implies$ есть ОН собственный базис ($\lambda \in \R$). 
 
     $A = \overline{A}^T$ --- матрица  $\CA$ в ОНБ.  $\exists C\!: C^{-1}AC = C^{T}AC$. RHS сохраняется при применении  $\CA \implies$ LHS --- тоже.
 
@@ -277,8 +277,12 @@ $X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_
 \begin{property}
     $\CA$ --- ортогональный/унитарный оператор. $\lambda$ --- собственное число,  $(A \in M_n(\CC) \implies \overline{A}^T = A^{-1})$. 
     
-    $\lambda$ --- собственное число $\implies |\lambda| = 1$,  $Av = \lambda v \implies(Av, v) = (v, A^{-1}v) \iff \lambda(v, v) = (v, \frac{1}{\lambda}v) = \frac{1}{\lambda}(v, v)$.
+    $\lambda$ --- собственное число $\implies |\lambda| = 1$,  $Av = \lambda v \implies(Av, v) = (v, A^{-1}v) \iff \lambda(v, v) = (v, \frac{1}{\lambda}v) = \frac{1}{\overline{\lambda}}(v, v) \implies \lambda \overline{\lambda} = 1$.\\
+    В частности $|\det A| = 1$
 \end{property}
+\begin{definition}
+Собственный ортогональный оператор — такой, что $\det A = 1$ (сохр-й ориентацию).
+\end{definition}
 \begin{remark}
     Ортогональные/унитарные операторы --- группа по умножению. Группы $O_n, SO_n, Un_n, SO_n$.
 \end{remark}
@@ -292,28 +296,33 @@ $X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_
     $V$ --- унитарное пространство,  $\CA \in End(V)$ --- унитарный оператор  $\iff \exists$ ОНБ из собственных векторов  собственными числами  $\{\lambda_i\}, |\lambda_i| = 1 \quad \forall i$.
 \end{theorem}
 \begin{lemma}
-    $U \le V$ --- инвариантное $\implies U^perp$ --- инвариантное.
+    $U \le V$ --- инвариантное $\implies U^{\perp}$ --- инвариантное.
 \end{lemma}
 \begin{proof}
-    $v \in u^\perp$ рассмотрим  $\CA v$:  $\forall u \in u\!: (u, \CA v) = (\CA^{-1}u, \CA^{-1}\CA v) = (\CA^{-1}u, v) = 0$.
+    $v \in u^\perp$ рассмотрим  $\CA v$:  $\forall u \in U\!: (u, \CA v) = (\CA^{-1}u, \CA^{-1}\CA v) = (\CA^{-1}u, v) = 0$.
 \end{proof}
 \begin{proof}
     см евклидов случай.
 \end{proof}
 \begin{theorem}
-    $V$ --- евклидово пространство.  $\CA \in End(V)$ --- ортогонально  $\iff \exists$ ОНБ $e_1, \ldots, e_n$ такой что, $A$ --- блочная матрица из ($n=2$)
-    $
-    \begin{matrix}
-        \cos \alpha & -\sin \alpha\\
-        +\sin \alpha & \cos \alpha
-    \end{matrix}$
+    $V$ --- евклидово пространство.  $\CA \in End(V)$ --- ортогонально  $\iff \exists$ ОНБ $e_1, \ldots, e_n$ такой что, $A$ --- блочная матрица из блоков ($n=2$)
+    $\left(
+        \begin{matrix}
+            \cos \alpha & -\sin \alpha\\
+            +\sin \alpha & \cos \alpha
+        \end{matrix} \right)$
+и возможно блоков размера $1$ из $\{-1, 1\}$.\\
+То есть $\forall$ ортогональное преобразование — это композиция поворотов в нескольких попарно ортогональных плоскостях и зеркальных симметрий.
 \end{theorem}
 \begin{proof}
-    $\CA \leadsto A$,  $A^T = A^{-1}$.  $A \in M_n(\R) \subset M_n(\CC)$.  $\overline{A}^T = A^{-1}$ --- унитарный оператор $\CC^n \to \CC^n \implies \exists$ ОНБ из собственных векторов  $e_1, \ldots, e_n$. $V = \omega_1 \oplus \omega_{-1} (\bigoplus\limits_{\{\lambda_i \neq \pm 1\} \omega_{\lambda_i} \oplus \omega_{\overline{\lambda}_i}})$.
+    $\CA \leadsto A$,  $A^T = A^{-1}$.  $A \in M_n(\R) \subset M_n(\CC)$.  $\overline{A}^T = A^{-1}$ --- унитарный оператор $\CC^n \to \CC^n \implies \exists$ ОНБ из собственных векторов  $e_1, \ldots, e_n$. $V = \omega_1 \oplus \omega_{-1} (\omega_{\lambda_i} \bigoplus\limits_{\lambda_i \neq \pm 1} \omega_{\overline{\lambda}_i})$.
 
-    $\omega_i = \langle e_{i_1}, \ldots, e_{i_k} \rangle, \rk_\CC A - E = n - k, \rk_\R (A-E) = n - k \implies \exists$ базис $\widetilde{e_{i_1}}, \ldots, \widetilde{e_{i_k}} \in \R^n$. Ортонормируем его: $\widetilde{\widetilde{e_{i_k}}}$. Точно так же для  $\omega_{-1}$.
+    $\omega_i = \langle e_{i_1}, \ldots, e_{i_k} \rangle, \rk_\CC (A - E) = n - k, \rk_\R (A-E) = n - k \implies \exists$ базис $\widetilde{e_{i_1}}, \ldots, \widetilde{e_{i_k}} \in \R^n$. Ортонормируем его по Граму-Шмидту: $\widetilde{\widetilde{e_{i_k}}}$. Точно так же для  $\omega_{-1}$.
 
-    Все новые вектора ортогональны, так как  $\omega_{1} \perp \omega_{-1}$.  $x_i \neq 1, -1, \omega_{x_i} = \langle e_{j_1}, \ldots , e_{j_n} \rangle$.
+    Все новые вектора ортогональны, так как  $\omega_{1} \perp \omega_{-1}$.  $x_i \neq 1, -1, \omega_{x_i} = \langle e_{j_1}, \ldots , e_{j_k} \rangle$.
 
-    $\begin{pmatrix} a + bi \\ c + di \end{pmatrix} e_{jl} = r_{jl} + is_{i}$. $A(\overline{e}_{jl}) = (\overline{\lambda_i} e) \implies$ число собственных векторов.
+    $\begin{pmatrix} a + bi \\ c + di \end{pmatrix} e_{jl} = r_{jl} + is_{jl}$. $A(\overline{e}_{jl}) = \overline{\lambda_i} \overline{e}_{jl} \implies \dim w_{\lambda_i} = \dim w_{\overline{\lambda_i}}$.\\
+$\lambda_i = \cos \alpha_i + i\sin \alpha_i$\\
+А дальше посмотрите запись, у меня лапки.\\
+<<Опять немножечко скомкано получилось, кое-какие детали замяты, но что-то мне надоело \ldots, будем считать, что доказали.>> — Михаил Антипов.
 \end{proof}
