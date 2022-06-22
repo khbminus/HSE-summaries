@@ -521,11 +521,11 @@ $$
 
      Теперь ответим на два главных вопроса:
      \begin{enumerate}
-         \item $|G| = |G_1| \cdot |G_1 \cdot 2| \cdot |G_{12} \cdot 3| \cdot \ldots = k_1 \cdot k_2 \cdots  k_{n-1} \le n! \quad (k_1 \le n, k_2 \le n-1, \ldots)$.
+         \item $|G| = |G_1| \cdot |G_1 \cdot 2| \cdot |G_{12} \cdot 3| \cdot \ldots = k_1 \cdot k_2 \cdots  k_{n-1} \le n! \quad (k_1 \le n, k_2 \le n-1, \ldots)$ (конкретно тут $n$ --- число слоёв в нашей сильной базе).
 
          \item membership test: $g \in S_n$
 
-        $g(1) = a_1 = x_{1a_1}(1), x_{1a_1} \in G$. $x_{1a_1}^{-1} g \in (S_n)_1$.
+		 $g(1) = a_1 = x_{1a_1}(1) \text{( $x_{1a_1}$ --- элемент, который переводит 1 в $a_1$)} , x_{1a_1} \in G$. $x_{1a_1}^{-1} g \in (S_n)_1$.
 
         $x_{1a_1}^{-1}g(2) = a_2 = x_{2a_2}(2), x_{2a_2} \in G_1, x_{2a_2}^{-1}x_{1a_1}^{-1}g \in (S_n)_{12}$. И так далее\dots
 
@@ -533,9 +533,18 @@ $$
 
              Тогда $g = x_{1 a_1}x_{2 a_2}...x_{(n-1) a_{n-1}}$.
 
-             Если на каком-то шаге $k \not\exists x_{ka_k}$, то membership test провален
+             Если на каком-то шаге $k$ не нашлось такого $x_{ka_k}$, то membership test провален
+
+	     Если же дошли до конца, то получили $x_{n-1 a_{n-1}}^{-1} x_{n-2 a_{n-2}}^{-1} \cdots x_{1a_1}^{-1} g = 1$, а значит 
+
+	     $$
+	     g = x_{1a_1} x_{2a_2} \cdots x_{n-1 a_{n-1}}
+	     $$
      \end{enumerate}
 
+\begin{definition}
+	Построение сильной базы и то, как мы проверяем membership test есть алгоритм Шрайера---Симса
+\end{definition}
 \begin{remark}
 	Размер сильной базы --- не более чем квадратичен от $n$ $(k_1 + \ldots + k_{n-1} \le n + (n-1) + \ldots)$.
 \end{remark}
