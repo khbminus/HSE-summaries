@@ -633,12 +633,12 @@ $$
             $a \in Z(G) \implies(?) a^{-1} \in Z(G). a^{-1}b = (b^{-1}a)^{-1} = (ab^{-1})^{-1} = ba^{-1} \implies a^{-1} \in Z(G)$. Проверили, что $Z(G)$~--- подргруппа. Нормальность проверяется легко: $g^{-1}hg = g^{-1}gh = h$.
         \item[$1_2$.] $[G, G] \le G$ --- по определению.
 
-            Теперь заметим, что если 1) $x = [a, b] = a^{-1}b^{-1}ab$. Рассмотрим  $g^{-1}xg = g^{-1}a^{-1}b^{-1}abg = g^{-1}a^{-1}gg^{-1}b^{-1}gg^{-1}agg^{-1}bg = (g^{-1}ag)^{-1}(g^{-1}bg)^{-1}(g^{-1}ag)^{-1}(g^{-1}bg)^{-1} = [a', b']$, где $a' = g^{-1}ag, b' = g^{-1}bg$.
+            Теперь заметим, что если 1) $x = [a, b] = a^{-1}b^{-1}ab$. Рассмотрим  $g^{-1}xg = g^{-1}a^{-1}b^{-1}abg = g^{-1}a^{-1}gg^{-1}b^{-1}gg^{-1}agg^{-1}bg = (g^{-1}ag)^{-1}(g^{-1}bg)^{-1}(g^{-1}ag)^{1}(g^{-1}bg)^{1} = [a', b']$, где $a' = g^{-1}ag, b' = g^{-1}bg$.
 
             $[a, b]^{-1} = (a^{-1}b^{-1}ab)^{-1} = b^{-1}a^{-1}ba = [b, a] \implies \forall $ элемент  $[G, G]$ --- произведение коммутаторов.
 
              2) $x \in [G, G]$, тогда  $x = [a_1, b_1][a_2,b_2]\ldots[a_n, b_n]$, $g^{-1}xg = g^{-1}[a_1, b_1][a_2, b_2]\ldots[a_n, b_n]g = (та же схема, что в 1) пункте) = [a_1', b_1'][a_2', b_2']\ldots[a_n', b_n'] \in [G, G]$.
-         \item[2.] $G / [G, G] = \overline{a}, \overline{b}$.  $\overline{a} \cdot \overline{b} = \overline{a}\overline{b}\overline{b^{-1}a^{-1}}\overline{ba} = \overline{ba}$.
+         \item[2.] $G / [G, G] = \overline{a}, \overline{b}$.  $\overline{a} \cdot \overline{b} = \overline{a}\overline{b}\underbrace{\overline{b^{-1}a^{-1}}\overline{ba}}_{\in [G, G]} = \overline{ba}$.
          \item[3.] $G / H$ --- абелева  $\forall a, b \in G\quad \overline{a_H} \overline{b_H} = \overline{b_H}\overline{a_H}$.  $\overline{a_H}^{-1}\overline{b_H}^{-1} \overline{a_H}\overline{b_H} = \overline{e_H} \implies \overline{a^{-1} b^{-1}ab} = \overline{e_H} \implies a^{-1}b^{-1}ab \in H$, т.е. $[a, b] \in H \implies [G, G] \le H$.
          \item[4.] Тут нужна картинка, но я краб.
     \end{enumerate}
@@ -711,7 +711,7 @@ $$
     $|G| = p^n$,  $p$ --- простое  $\implies Z(G) \neq \{e\}$.
 \end{lemma}
 \begin{proof}
-    Пусть $G \acts G$ сопряжениями. $g \cdot m = g m g^{-1}$.   $O_i$ --- орбита,  $O_1 = G \cdot e = \{e\}$.  $|O_1| + |O_2| + \ldots = p^n \implies \exists i \neq 1\!: |O_i| = 1$, так как любая орбита имеет порядок либо $1$, либо степень $p$.
+    Пусть $G \acts G$ сопряжениями. $g \cdot m = g m g^{-1}$.   $O_i$ --- орбита,  $O_1 = G \cdot e = \{e\}$.  $|O_1| + |O_2| + \ldots = p^n \implies \exists i \neq 1\!: |O_i| = 1$, так как любая орбита имеет порядок либо $1$, либо степень $p$. Тут важно пояснить, что если $gxg^{-1} = x$, то  $gx = xg$, а если орбита  $=1$, то это выполняется для всех  $g \implies x\in Z(G)$.
 
     Теперь пусть $|G| = p_1^{\alpha_1} \ldots p_k^{\alpha_k}$. По первой теореме Силова $\exists |G_1| = p_1^{\alpha_1}, |G_2| = p_2^{\alpha_2}, \ldots$.
 \end{proof}
