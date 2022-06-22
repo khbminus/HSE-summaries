@@ -32,9 +32,9 @@
     $V$ --- евклидово пространство,  $v_1, \ldots, v_n$ --- базис. Тогда матрица $a_{ij} = (v_i, v_j)$ --- матрица Грама.
 \end{definition}
 
-Возьмем $u_1, u_2 \in V$, с координатами $x_i, y_i$ в векторе  $\{v_i\}$. Тогда скалярное  $(u_1, u_2) = u_1Gu_2$, где $G$ --- матрица Грама.
+Возьмем $u_1, u_2 \in V$, с координатами $x_i, y_i$ в базисе  $\{v_i\}$. Тогда скалярное  $(u_1, u_2) = X^TGY$, где $G$ --- матрица Грама.
 
-Если матрица Грама равна  $E$, то у нас ортонормированный базис.
+Если матрица Грама равна  $E$, то у нас ортонормированный базис и $X^TGY = X^TY=x_1y_1 + x_2y_2 + \ldots + x_ny_n$.
 
 \begin{definition}
     Пусть $v_1, \ldots, v_n$ --- базис. Тогда он ортонормирован, если $\forall i,j\!: (v_i, v_j) = \delta_{ij}$.
@@ -67,7 +67,7 @@
     Или $V=2^M$ и  $f(x,y) = | X \cap Y| \pmod 2$, если явно записывать, то  $f(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}) = x_1y_1 + \ldots + x_ny_n$.
 \end{example}
 \begin{definition}
-    Симметрическая билинейная форма на $V$ (над $K$) называется невырожденной если $(\forall y \in V\!L f(x, y) = 0) \implies x = 0$.
+    Симметрическая билинейная форма на $V$ (над $K$) называется невырожденной если $(\forall y \in V: f(x, y) = 0) \implies x = 0$.
 \end{definition}
 \begin{definition}
     $V$ --- векторное пространство, то  $V^* = Hom(V, K)$ --- множество линейных отображений (функционалов $V \to K$).
@@ -77,9 +77,9 @@
 
 $f$ --- невырождена $\implies F$ --- изоморфизм. 
 
-Пусть $f$ --- билинейная форма  $\leadsto \Gamma_f = (a_{ij})$,  $a_{ij} = f(e_i, e_j)$, где  $\{e_i\}$ --- базис. Тогда  $f(\sum x_i e_i, \sum y_i e_i) = \sum a_{ij} x_i y_hj = X^T \Gamma_f Y$.
+Пусть $f$ --- билинейная форма  $\leadsto \Gamma_f = (a_{ij})$,  $a_{ij} = f(e_i, e_j)$, где  $\{e_i\}$ --- базис. Тогда  $f(\sum x_i e_i, \sum y_i e_i) = \sum a_{ij} x_i y_{hj} = X^T \Gamma_f Y$.
 
-Перейдем теперь  $K = \CC$.  $f(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}) = \sum x_i \overline{y}_i$, $f(x, x) > 0$.
+Перейдем теперь к $K = \CC$.  $f(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}) = \sum x_i \overline{y}_i$, $f(x, x) > 0$.
 
 \begin{definition}
     Унитарным пространством называется пара $(V, (-,-))$, где  $V$ --- векторное пространство над  $\CC$,  $(-, -)\!: V \times V \to \CC$, такое, что 
@@ -93,7 +93,7 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
 \\
     С углами сложнее (это останется тайной).
     \\
-    Отрогонализация Грамма-Шмидта работает, в чатсности, $\forall$ унитарном пространстве есть ортонормированный базис. При этом $f(X, Y) = X^T\Gamma_f\overline{Y}$.
+    Отрогонализация Грама-Шмидта работает, в частности, $\forall$ унитарном пространстве есть ортонормированный базис. При этом $f(X, Y) = X^T\Gamma_f\overline{Y}$.
 \end{definition}
 \Subsection{Ортогональное дополнение}
  \begin{definition}
@@ -116,13 +116,13 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
  \begin{proof}
      \slashn
      \begin{enumerate}
-         \item $\dim V = n, \dim U = K$. Возьмем базис $e_1, \ldots, e_k$, дополним через $e_{k+1}, \ldots, e_n$ до ОНБ (до любого, а далее Грамм-Шмидт).
+         \item $\dim V = n, \dim U = K$. Возьмем базис $e_1, \ldots, e_k$, дополним через $e_{k+1}, \ldots, e_n$ до ОНБ (до любого, а далее Грам-Шмидт).
 
              Заметим, что $x = \sum x_ie_i \in U^{\perp} \iff (\sum\limits_{i=1}^n x_ie_i, e_j) = 0 \forall j=1,..,k \land e_j \in U^{\perp} \iff x_j = 0 \forall j=1..k \iff x = \sum\limits_{k+1}^n x_ie_i \iff x \in \langle e_{k+1}, \ldots, e_n \rangle$.
 
             Итого, $\dim U^\perp = n - k = \dim V - \dim U$.
 
-            Тогда  $U^{\perp\perp} = \ldots$. 
+            Тогда  $U^{\perp\perp} = \langle e_{k+1}, \ldots, e_n \rangle ^{\perp} = \langle e_1, \ldots, e_k \rangle = U$. 
 
             Ну и понятно, как раскладывается вектор из $V$.
      \end{enumerate}
@@ -142,7 +142,7 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
 
      $X \leadsto C X = \widetilde{X}$. Пусть  $D = C^{-1}$. Тогда  $X = D\widetilde{X}$.
 
-     $f(x, y) = X^T\Gamma Y = \ldots = \widetilde{X}^{T} (D^T\Gamma D)\widetilde{Y} \implies D^T\Gamma D = \widetilde{\Gamma}$ --- матрица Грама в новом базисе.
+     $f(x, y) = X^T\Gamma Y = (\widetilde{X}D)^T\Gamma (D\widetilde{Y})= \widetilde{X}^{T} (D^T\Gamma D)\widetilde{Y} \implies D^T\Gamma D = \widetilde{\Gamma}$ --- матрица Грама в новом базисе.
  \end{statement}
  \Subsection{Соответствиемежду формами/матрицами}
 
@@ -156,67 +156,68 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
 
  $f$ --- симметрическая билинейная/полуторная форма.
 
- Переформулировка: дана  $f(X, X) = \sum a_{ij} x_i x_j$ --- квадратичная формат.
+ Переформулировка: дана  $f(X, X) = \sum a_{ij} x_i x_j$ --- квадратичная форма.
 
  Как понять: верно ли, что  $q(x) > 0 \ \forall x \neq 0$.
 
   $f$ -- положительно определена  $\implies f$ --- скалярное произведение  $\implies \exists $ ОНБ:  $\exists C\!:$  $\det C^TAC = \det(C^T)\det(C)\det(A) = (\det C)^2 \det A = 1 = \det E \implies \det A > 0$
 
-  \begin{theorem}[Критерий Сильвестера]
+  \begin{theorem}[Критерий Сильвестра]
     $f$ --- симметричная билинейная,  $A \in M_n(\R)$ --- матрица Грама  $f$  в базисе $e_1, \ldots, e_n$.
 
-    Тогда $f$ --- полодительно определена  $\iff \forall i = 1..n \vartriangle_i > 0$, где $\vartriangle_i \coloneqq \det(a_{jk})_{\substack{j=1..i\\k=1..i}}$.
+    Тогда $f$ --- положительно определена  $\iff \forall i = 1..n \vartriangle_i > 0$, где $\vartriangle_i \coloneqq \det(a_{jk})_{\substack{j=1..i\\k=1..i}}$.
 \end{theorem}
 \begin{proof}
     Необходимость. $I = \{i_1, i_2, \ldots, i_k\}$ --- номера строк/столбцов.
 \\
-    $A_I$ --- подматрица со строками/столбцами из  $I$.  $A_I$ --- матрица Грама.  $f\Big|_{\langle e_{i_1}, \ldots, e_{i_k} \rangle}$ --- положительная определена.
+    $A_I$ --- подматрица со строками/столбцами из  $I$.  $A_I$ --- матрица Грама.  $f\Big|_{\langle e_{i_1}, \ldots, e_{i_k} \rangle}$ --- положительно определена.
 
-    Достаточность. Пусть $\Delta_i > 0$. Докажем индукцией по $k$:  $f\Big|_{\langle e_1, \ldots, e_k\rangle}$ ---  положительно определена $\implies$ при  $k = n$ то , что нажо.
+    Достаточность. Пусть $\Delta_i > 0$. Докажем индукцией по $k$:  $f\Big|_{\langle e_1, \ldots, e_k\rangle}$ ---  положительно определена $\implies$ при  $k = n$ то , что надо.
 
-    База:  $f \Big|_{\langle e_1 \rangle}\ f(ae_1, ae_1) = a^2(e_1, a) = a^2a_1 > 0$.
+    База:  $f \Big|_{\langle e_1 \rangle}\ f(ae_1, ae_1) = a^2(e_1, e_1) = a^2a_{11} > 0$.
 
-    Переход: $k \to k + 1$.  $f\Big|_{\langle e_1, \ldots, e_k \rangle}$ --- положительно определена, $()\langle e_1, \ldots, e_k \rangle, f)$ --- евклидово пространство. $\implies \exists$ ОНБ, $\widetilde{e_1}, \ldots, \widetilde{e_k}$. Матрица Грама $f \Big|_{\langle e_1, \ldots, e_{k+1} \rangle}$ в базисе $\widetilde{e_1}, \ldots, \widetilde{e_k}, e_{k+1} =
+    Переход: $k \to k + 1$.  $f\Big|_{\langle e_1, \ldots, e_k \rangle}$ --- положительно определена, $(\langle e_1, \ldots, e_k \rangle, f)$ --- евклидово пространство. $\implies \exists$ ОНБ, $\widetilde{e_1}, \ldots, \widetilde{e_k}$. Матрица Грама $f \Big|_{\langle e_1, \ldots, e_{k+1} \rangle}$ в базисе $\widetilde{e_1}, \ldots, \widetilde{e_k}, e_{k+1} =
     \left(\begin{array}{ccc|c}
     1 & \ldots & 0 & a_1\\
     \vdots & \ddots & \vdots & \vdots\\
     0 & \ldots & 1 & a_k\\ \hline
     a_1 & \ldots & a_k & a
 \end{array}\right)$. 
-$\widetilde{e}_{k+1} = e_{k+1} \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теперь $\widetilde{e}_{k+1}, \widetilde{e}_i = (e_{k+1} - \sum a_i \widetilde{e_i}, \widetilde{e}_i) = (e_{k+1}, \widetilde{e}_i) - \sum\limits_{j=1}^k a_j(\widetilde{e_j}, \widetilde{e_i}) = a_i - a_i = 0$.
+$\widetilde{e}_{k+1} = e_{k+1} - \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теперь $(\widetilde{e}_{k+1}, \widetilde{e}_i) = (e_{k+1} - \sum a_i \widetilde{e_i}, \widetilde{e}_i) = (e_{k+1}, \widetilde{e}_i) - \sum\limits_{j=1}^k a_j(\widetilde{e_j}, \widetilde{e_i}) = a_i - a_i = 0$.
 
 Тогда $\widetilde{A} = 
 \begin{pmatrix}
     1 & \ldots & 0\\
     \vdots & \ddots & \vdots\\
     0 & \ldots & b
-\end{pmatrix}$, $\det \widetilde{A} = \det (C^T) \cdot \Delta_{k+1} \det C > 0 \implies b > 0 \implies f$ имеет ОНБ в $\langle e_1, \ldots, e_{k+1} \rangle \implies f$ --- положительно определена на $\langle e_1, \ldots, e_{k+1} \rangle$.
+\end{pmatrix}$, $\det \widetilde{A} = \det (C^T) \cdot \Delta_{k+1} \det C > 0 \implies b > 0 \implies f$ имеет ОНБ в $\langle e_1, \ldots, e_{k+1} \rangle \implies f$ --- положительно определена на $\langle e_1, \ldots, e_{k+1} \rangle$.\\
+*. $f(\sum c_i \widetilde{e_i}, \sum c_i \widetilde{e_i}) = \sum_{i=1}^k c_i^2 + c_{k+1}^{2}b > 0$
 \end{proof}
 \Section{Операторы в евклидовых и унитарных пространствах}{ХБ}
 \Subsection{Самосопряженные операторы}
 \begin{definition}
     $V$ --- евклидово/унитарное пространство,  $\CA \in End(V)$.
 
-    $\mathcal{B}$ --- сопряженный оператор, если  $(\CA X, y) = (X, \mathcal{B}y) \forall x, y \in V$.
+    $\mathcal{B}$ --- сопряженный оператор, если  $(\CA x, y) = (x, \mathcal{B}y) \forall x, y \in V$.
 \end{definition}
 \begin{theorem}
-    $\exists \land \exists!$ сопряженный оператор. $\CA = \CA^*$ --- называется самосопряженным.
+    $\exists \land \exists!$ сопряженный оператор $\CA^*$. $\CA = \CA^*$ --- называется самосопряженным.
 \end{theorem}
 \begin{theorem}
     $\CA$ --- самосопряжен  $\iff$ у  $\CA$ есть ОНБ из собственных векторов и все с.ч вещественны. 
 
-    $\CA$ --- самосопряжен  $\iff$  $[\CA]_{\text{ОНБ}} = A$ такова, что $A^T = \overline{A}$,  $A = (\delta_{ij})$,  $A = (\overline{\delta_{ij}})$.
+    $\CA$ --- самосопряжен  $\iff$  $[\CA]_{\text{ОНБ}} = A$ такова, что $A^T = \overline{A}$,  $A = (\delta_{ij})$,  $\overline{A} = (\overline{\delta_{ij}})$.
 \end{theorem}
 \begin{proof}
     $\CA$ --- самосопряжен  $\iff$ $\forall i, j\!: (\CA e_i, e_j) = (e_i, \CA e_j) \iff (\sum\limits_{k=1}^n a_{ik} e_k, e_j) = (e_i, \sum\limits_{k=1}^n a_{jk}e_k) \iff -(a_{ij}e_j, e_J) = (e_i, a_{ji}e_i) \iff a_{ij}(e_j, e_i) = \overline{a_{ji}} (e_i, e_i) \iff a_{ij} = \overline{a_{ji}}$.
 
-    $\CA$ --- самосопряжена  $\implies \forall \lambda$ --- собственное число  $\lambda \in \R$.
+    $\CA$ --- самосопряжена  $\implies \forall \lambda$ --- собственное число  $\lambda \in \R$, потому что, если взять собственный вектор $x, \CA x=\lambda x$, получим, что $(\CA x, x) = (x, \CA x) \implies (\lambda x, x) = (x, \lambda x) \implies \lambda (x, x) = \overline{\lambda} (x, x) \implies \lambda = \overline{\lambda}$
 
     В том числе для  $A \in M_n(\R), A = A^T$ --- все корни  $\chi_A(t)$ --- вещественны.
 \end{proof}
 
 \begin{statement}
-    $\CA$ --- самосопряженный оператора,  $\CA \in End(V)$,  $U \le V$ --- инвариантное подпространство относительно $\CA$, тогда  $U^\perp$ --- инвариантное подпространство. 
+    $\CA$ --- самосопряженный оператор,  $\CA \in End(V)$,  $U \le V$ --- инвариантное подпространство относительно $\CA$, тогда  $U^\perp$ --- инвариантное подпространство. 
 \end{statement}
 \begin{proof}
     $v \in U^\perp$, то есть  $(u, v) = 0\ \forall u \in U$,  $\CA v\!:\ (um \CA V) = (\CA u, v) = 0 \implies \CA v \in u^\perp$.
@@ -226,9 +227,9 @@ $\widetilde{e}_{k+1} = e_{k+1} \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Тепе
 
     $\Rightarrow$. База $n=1$.
 
-    Переход  $n \to n+1$.  $\CA$ --- самосопряженная,  $v_1, \ldots, v_n$ --- ОНБ. $[\CA]_{\{v_i\}} = A, A^T = \overline{A}, \exists \lambda_1 \in \R$ --- собственные числа $A$.
+    Переход  $n \to n+1$.  $\CA$ --- самосопряженная,  $v_1, \ldots, v_n$ --- ОНБ. $[\CA]_{\{v_i\}} = A, A^T = \overline{A}, \exists \lambda_1 \in \R$ --- собственное число $A$.
 
-    $\exists v \in V\!: \CA v = \lambda_1 v$, $\langle v \rangle$ --- инвариантное подпространство  $\implies \langle v \rangle^\perp$ --- инвариантное подпространство,  $\dim \langle v \rangle^{\perp} = n  + 1 - 1 = n$.  $\CA \Big|_{\langle v \rangle}\!: \langle v \rangle^p\perp \to \langle v^\perp \rangle$.
+    $\exists v \in V\!: \CA v = \lambda_1 v$, $\langle v \rangle$ --- инвариантное подпространство  $\implies \langle v \rangle^\perp$ --- инвариантное подпространство,  $\dim \langle v \rangle^{\perp} = n  + 1 - 1 = n$.  $\CA \Big|_{\langle v \rangle^{\perp}}\!: \langle v \rangle^\perp \to \langle v \rangle ^\perp$.
 
     $\CA\Big|_{\langle v \rangle^\perp}$ --- самосопряженнная по предположению.  $\exists e_1, \ldots ,e_n$ -- ОНБ из собственных векторов $\CA$ с вещественными собственными числами.
 
@@ -236,15 +237,15 @@ $\widetilde{e}_{k+1} = e_{k+1} \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Тепе
 \end{proof}
 \Subsection{Оценка квадратичной формы}
 
-Хотим посмотреть на $q(x_1, \ldots, x_n) = \sum\limits_{i \neq j} a_{ij} x_ix_j$.
+Хотим посмотреть на $q(x_1, \ldots, x_n) = \sum\limits_{i,j=1} a_{ij} x_ix_j$.
 
 Ищем $A\!: q(x_1, \ldots, x_n) \le A(x_1^2 + \ldots + x_n^2)$, причем $A$ --- минимально.
 
 Заметим, что  $\sum a_{ij} x_ix_j = (AX, X)$,  $X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, A = (a_{ij})$.
 
-$X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_i c_i^2$.
+$X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, \sum c_i v_i) = \sum \lambda_i c_i^2$.
 
-Возьмем  $A = \max \{\lambda_i, 0\} \implies \sum \lambda_i c_I \le A \sum c_i^2$. Следовательно, $q(x_1, \ldots ,x_n) \le \lambda_{\max} (\sum x_i^2), \lambda_{max}$ --- максимальное собственное число.  Аналогично, $\ge \lambda_{min}(\sum x_i^2)$.
+Возьмем  $A = \max \{\lambda_i, 0\} \implies \sum \lambda_i c_i \le A \sum c_i^2$. Следовательно, $q(x_1, \ldots ,x_n) \le \lambda_{\max} (\sum x_i^2), \lambda_{max}$ --- максимальное собственное число.  Аналогично, $\ge \lambda_{min}(\sum x_i^2)$.
 \Subsection{Ортогональные и унитарные операторы}
 \begin{definition}
     $\CA \in End(V)$,  $V$ --- евклидово/унитарно.
@@ -267,7 +268,7 @@ $X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_
      $6 \implies 1\!: \CA e_i = f_i, \{e_i\}, \{f_i\}$ --- ОНБ,  $x = \sum x_i e_i, y = \sum y_i f_i$.  \dots
 \end{proof}
 \begin{remark}
-    $\CA$ --- самосопряженный  $\implies$ ОН собственный базис. 
+    $\CA$ --- самосопряженный  $\implies$ есть ОН собственный базис ($\lambda \in \R$). 
 
     $A = \overline{A}^T$ --- матрица  $\CA$ в ОНБ.  $\exists C\!: C^{-1}AC = C^{T}AC$. RHS сохраняется при применении  $\CA \implies$ LHS --- тоже.
 
@@ -276,8 +277,12 @@ $X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_
 \begin{property}
     $\CA$ --- ортогональный/унитарный оператор. $\lambda$ --- собственное число,  $(A \in M_n(\CC) \implies \overline{A}^T = A^{-1})$. 
     
-    $\lambda$ --- собственное число $\implies |\lambda| = 1$,  $Av = \lambda v \implies(Av, v) = (v, A^{-1}v) \iff \lambda(v, v) = (v, \frac{1}{\lambda}v) = \frac{1}{\lambda}(v, v)$.
+    $\lambda$ --- собственное число $\implies |\lambda| = 1$,  $Av = \lambda v \implies(Av, v) = (v, A^{-1}v) \iff \lambda(v, v) = (v, \frac{1}{\lambda}v) = \frac{1}{\overline{\lambda}}(v, v) \implies \lambda \overline{\lambda} = 1$.\\
+    В частности $|\det A| = 1$
 \end{property}
+\begin{definition}
+Собственный ортогональный оператор — такой, что $\det A = 1$ (сохр-й ориентацию).
+\end{definition}
 \begin{remark}
     Ортогональные/унитарные операторы --- группа по умножению. Группы $O_n, SO_n, Un_n, SO_n$.
 \end{remark}
@@ -291,28 +296,33 @@ $X = \sum c_iv_i \implies(AX, X) = (\sum c_i \lambda_i v_i, v_i) = \sum \lambda_
     $V$ --- унитарное пространство,  $\CA \in End(V)$ --- унитарный оператор  $\iff \exists$ ОНБ из собственных векторов  собственными числами  $\{\lambda_i\}, |\lambda_i| = 1 \quad \forall i$.
 \end{theorem}
 \begin{lemma}
-    $U \le V$ --- инвариантное $\implies U^perp$ --- инвариантное.
+    $U \le V$ --- инвариантное $\implies U^{\perp}$ --- инвариантное.
 \end{lemma}
 \begin{proof}
-    $v \in u^\perp$ рассмотрим  $\CA v$:  $\forall u \in u\!: (u, \CA v) = (\CA^{-1}u, \CA^{-1}\CA v) = (\CA^{-1}u, v) = 0$.
+    $v \in u^\perp$ рассмотрим  $\CA v$:  $\forall u \in U\!: (u, \CA v) = (\CA^{-1}u, \CA^{-1}\CA v) = (\CA^{-1}u, v) = 0$.
 \end{proof}
 \begin{proof}
     см евклидов случай.
 \end{proof}
 \begin{theorem}
-    $V$ --- евклидово пространство.  $\CA \in End(V)$ --- ортогонально  $\iff \exists$ ОНБ $e_1, \ldots, e_n$ такой что, $A$ --- блочная матрица из ($n=2$)
-    $
-    \begin{matrix}
-        \cos \alpha & -\sin \alpha\\
-        +\sin \alpha & \cos \alpha
-    \end{matrix}$
+    $V$ --- евклидово пространство.  $\CA \in End(V)$ --- ортогонально  $\iff \exists$ ОНБ $e_1, \ldots, e_n$ такой что, $A$ --- блочная матрица из блоков ($n=2$)
+    $\left(
+        \begin{matrix}
+            \cos \alpha & -\sin \alpha\\
+            +\sin \alpha & \cos \alpha
+        \end{matrix} \right)$
+и возможно блоков размера $1$ из $\{-1, 1\}$.\\
+То есть $\forall$ ортогональное преобразование — это композиция поворотов в нескольких попарно ортогональных плоскостях и зеркальных симметрий.
 \end{theorem}
 \begin{proof}
-    $\CA \leadsto A$,  $A^T = A^{-1}$.  $A \in M_n(\R) \subset M_n(\CC)$.  $\overline{A}^T = A^{-1}$ --- унитарный оператор $\CC^n \to \CC^n \implies \exists$ ОНБ из собственных векторов  $e_1, \ldots, e_n$. $V = \omega_1 \oplus \omega_{-1} (\bigoplus\limits_{\{\lambda_i \neq \pm 1\} \omega_{\lambda_i} \oplus \omega_{\overline{\lambda}_i}})$.
+    $\CA \leadsto A$,  $A^T = A^{-1}$.  $A \in M_n(\R) \subset M_n(\CC)$.  $\overline{A}^T = A^{-1}$ --- унитарный оператор $\CC^n \to \CC^n \implies \exists$ ОНБ из собственных векторов  $e_1, \ldots, e_n$. $V = \omega_1 \oplus \omega_{-1} (\omega_{\lambda_i} \bigoplus\limits_{\lambda_i \neq \pm 1} \omega_{\overline{\lambda}_i})$.
 
-    $\omega_i = \langle e_{i_1}, \ldots, e_{i_k} \rangle, \rk_\CC A - E = n - k, \rk_\R (A-E) = n - k \implies \exists$ базис $\widetilde{e_{i_1}}, \ldots, \widetilde{e_{i_k}} \in \R^n$. Ортонормируем его: $\widetilde{\widetilde{e_{i_k}}}$. Точно так же для  $\omega_{-1}$.
+    $\omega_i = \langle e_{i_1}, \ldots, e_{i_k} \rangle, \rk_\CC (A - E) = n - k, \rk_\R (A-E) = n - k \implies \exists$ базис $\widetilde{e_{i_1}}, \ldots, \widetilde{e_{i_k}} \in \R^n$. Ортонормируем его по Граму-Шмидту: $\widetilde{\widetilde{e_{i_k}}}$. Точно так же для  $\omega_{-1}$.
 
-    Все новые вектора ортогональны, так как  $\omega_{1} \perp \omega_{-1}$.  $x_i \neq 1, -1, \omega_{x_i} = \langle e_{j_1}, \ldots , e_{j_n} \rangle$.
+    Все новые вектора ортогональны, так как  $\omega_{1} \perp \omega_{-1}$.  $x_i \neq 1, -1, \omega_{x_i} = \langle e_{j_1}, \ldots , e_{j_k} \rangle$.
 
-    $\begin{pmatrix} a + bi \\ c + di \end{pmatrix} e_{jl} = r_{jl} + is_{i}$. $A(\overline{e}_{jl}) = (\overline{\lambda_i} e) \implies$ число собственных векторов.
+    $\begin{pmatrix} a + bi \\ c + di \end{pmatrix} e_{jl} = r_{jl} + is_{jl}$. $A(\overline{e}_{jl}) = \overline{\lambda_i} \overline{e}_{jl} \implies \dim w_{\lambda_i} = \dim w_{\overline{\lambda_i}}$.\\
+$\lambda_i = \cos \alpha_i + i\sin \alpha_i$\\
+А дальше посмотрите запись, у меня лапки.\\
+<<Опять немножечко скомкано получилось, кое-какие детали замяты, но что-то мне надоело \ldots, будем считать, что доказали.>> — Михаил Антипов.
 \end{proof}
