@@ -363,5 +363,16 @@ $\lambda_i = \cos \alpha_i + i\sin \alpha_i$\\
 \begin{proof}
     $\exists$ ОНБ такой, что $\CA e_i = \lambda_i e_i, \lambda > 0$, а $\mathcal{B}$ тогда $\mathcal{B} e_i = \sqrt{\lambda_i} e_i \forall i = 1, \cdots, n, \Rightarrow \forall i \mathcal{B}^2(e_i) = \lambda_i e_i \Rightarrow \mathcal{B}^2 = \CA$ 
 
-    Единственность: $WIP$
+    Единственность: пусть есть $(\mathcal{B}')^2 = \CA$, и он самосопряжённый положительный. Тогда в нём тоже есть базис из собственных векторов. Пусть $\mu$ --- какое-то собственное число $\mathcal{B}'$. Наберём по максимуму векторов, соответствующих этому собственному числу --- $\langle v_1, \cdots, v_k\rangle = \{x | \mathcal{B}' x = \mu x  \}$, а тогда $\CA(v_i) = (\mathcal{B}')^2 (v_i) = \mu^2 v_i$, а тогда $\exists i: \lambda_i = \mu^2$ (а из-за положительности $\mu = \sqrt{\lambda_i}$). И более того, кратность $\lambda_i$ в $\chi_A$ --- хотя-бы кратность $\mu$ в $\chi_{B'}$. 
+
+    А теперь $\mu_1, \cdots, \mu_k$ --- все собственные числа $\mathcal{B}'$. Тогда есть инъекция $\mu_1 \to \mu_1^2 = \lambda_{i_1}, \mu_2 \to \lambda_2^2 = \lambda_{i_2}, \cdots, \mu_k \to \mu_k^2 = \lambda_{i_k}$. А ещё суммы кратностей у нас равны, а значит наша биекция --- инъекция, а ещё $\forall i \{x | \mathcal{B}' x = \mu_i x^2\} = \{ x | \CA x = \lambda_i x\} \Rightarrow \mathcal{B}'$ задаётся однозначно (в правом блоке $v_i, \forall x \in v_i \mathcal{B}' x = \sqrt{\lambda_{i_k}} x$). Мы просто обязаны умножать собственный вектор на $\sqrt{\lambda_{i_k}}$, а значит, раз так заданы для каждого собственного вектора однозначно, то и вообще заданы однозначно.
 \end{proof}
+
+\Subsection{Полярное разложение}
+
+\begin{theorem}
+    $V$ --- евклидово пространство, $\mathcal{A} \in End(V)$, тогда $\exists! S$ --- положительный и $U$ --- ортогональный ($S, U \in End(V)$), такие, что $\CA = S \circ U$
+\end{theorem}
+\begin{theorem}[Матричная переформулировка]
+    $\forall A$ --- квадратной матрицы $\exists! S, U: A = S \cdot U, S = S^T, U^T = U^{-1}$
+\end{theorem}
