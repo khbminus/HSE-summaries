@@ -401,12 +401,34 @@ $\lambda_i = \cos \alpha_i + i\sin \alpha_i$\\
 \Subsection{SVD разложение}
 
 \begin{theorem}
-    $\CA : U \to V$ --- линейное, $U, V$ --- евклидовы пространства. Тогда $\exists$ ОНБ $e_1, \cdots, e_n$ в $U$, $f_1, \cdots , f_n$ в $V$ такие, что $[\CA] = \begin{pmatrix} G_1 & 0 & \cdots & 0 \\ 0 & G_2 & \cdots & 0 \\ \vdots & & G_k & \vdots \\ 0 & 0 & \cdots & 0  \end{pmatrix}$ и $G_i > 0$. Т.е. $\exists$ ОНБ, переводящий в ортогональный. 
+    $\CA : U \to V$ --- линейное, $U, V$ --- евклидовы пространства. Тогда $\exists$ ОНБ $e_1, \cdots, e_n$ в $U$, $f_1, \cdots , f_n$ в $V$ такие, что $[\CA] = \begin{pmatrix} \sigma_1 & 0 & \cdots & 0 \\ 0 & \sigma_2 & \cdots & 0 \\ \vdots & & \sigma_k & \vdots \\ 0 & 0 & \cdots & 0  \end{pmatrix}$ и $\sigma_i > 0$. Т.е. $\exists$ ОНБ, переводящий в ортогональный. 
 \end{theorem}
 \begin{proof}
 	Выберем 2 ОНБ, и $A$ --- матрица $\CA$. Рассмотрим $A^T A$, $U \stackrel{\CA}{\to} V \stackrel{\CA^*}{\to} U$ 
 
 	$\CA^* \CA \in End(U)$ --- самосопряжённый положительный (доказывали в полярном разложении), а значит $\exists$ ОНБ $\{ e_i \}$ в $U$. 
 
-	$A^T A(e_i) = s_i e_i, s_i \ge 0$, положим $f_i = A(e_i)$. 
+	$A^T A(e_i) = s_i e_i, s_i \ge 0$, положим $\widetilde{f_i} = \CA(e_i)$. 
+
+	$\widetilde{f_i}$ --- ортогональная система: $(\widetilde{f_i}, \widetilde{f_j}) = (\CA(e_i), \CA(e_j)) = (e_i, A^T A e_j) = (e_i, s_i e_j) = s_i(e_i, e_j) = 0$ при $i \neq j$
+
+	$|| \widetilde{f_i} || = \sqrt{(\widetilde{f_i}, \widetilde{f_i})} = \sqrt{s_i}$, тогда положим $f_i = \frac{\widetilde{f_i}}{|| \widetilde{f_i} ||} = \frac1{\sqrt{s_i}} \widetilde{f_i}$ для $s_i \neq 0$ ($s_i = 0$ не рассматриваем)
+
+	Дополним, если нужно, $\{f_i\}$ до ОНБ, и получим то, что нужно:
+
+	$\sigma_i = \sqrt{s_i}, A e_i = \widetilde{f_i} = \sqrt{s_i} f_i$.
 \end{proof}
+\begin{definition}
+	$\sqrt{s_i}$ --- сингулярные числа.
+
+	Если $A = A^T$ положительно, то сингулярные числа --- собственные числа.
+\end{definition}
+
+Пусть $A \in M_{m, n}(\R)$, и $A$ --- матрица $\CA$ в ОНБ базисах. По теореме $\exists C, D$ --- матрицы перехода такие, что $C^{-1} A D = \begin{pmatrix} \sigma_1 & \cdots & 0 \\ \vdots & \sigma_k & \vdots \\ 0 & \cdots & 0  \end{pmatrix}$, причём $C, D$ --- ортогональны. Умножим на $C$, $D^{-1}$, и получим, что $A = U \cdot T \cdot V$, причём $U, V$ --- ортогональны, а $T$ --- диагональная неотрицательная.
+
+\begin{definition}
+    То, что получили на прошлой строке, и есть $SVD$-разложение (Singular Value Decomposition)
+\end{definition}
+\begin{consequence}
+    Образ шара при линейном отображении --- эллипсоид.
+\end{consequence}
