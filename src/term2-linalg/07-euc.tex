@@ -20,7 +20,7 @@
     $d$ --- метрика.
 \end{statement}
 \begin{statement}
-    $V$ --- евклидово. $v_1, v_2 \in V \implies |(v_1,v_2)|^2 \le \|v_1\| \cdot \|v_2\|$.
+    $V$ --- евклидово. $v_1, v_2 \in V \implies |(v_1,v_2)| \le \|v_1\| \cdot \|v_2\|$.
 \end{statement}
 \begin{definition}
     $V$ --- евклидово. Тогда  $\langle v_1, v_2 \rangle$ --- это $\alpha \in [0; \pi]$,  такой, что  $\cos \alpha = \frac{(v_1, v_2)}{\|v_1\| \cdot \|v_2\|}$. 
@@ -50,9 +50,9 @@
 
     Переход $l \to l+1$.  Строим  $\widetilde{e_{l+1}} = a_1e_1 + a_2e_2 + \ldots + v_{l+1}, a_i \in \R$. $\langle e_1, \ldots, e_l, \widetilde{e_{l+1}} \rangle = \langle e_1, e_2, \ldots, e_l, v_{l+1} \rangle = \langle v_1, v_2., \ldots, v_{l+1}\rangle$.
 
-    Проверим ортогональность. $\forall a_i\!: (a_1e_1 + \ldots + a_le_l + v_{l+1}, e_i) = 0$i
+    Проверим ортогональность. Хочется: $\forall i\!: (a_1e_1 + \ldots + a_le_l + v_{l+1}, e_i) = 0$i
 
-    Это следует из того, что можно раскрыть сумму $\sum\limits_{j=1}^l a_j(e_j, e_i) + (v_{l+1}, e_i) = 0 \implies a_i(e_i, e_j) + (v_{l+1}, e_i) = 0$. Тут почти все равно нулю, кроме  $(e_i, e_i) = 1$. Тогда  $a_i = - \frac{(v_{l+1}, e_i)}{(e_i, e_i)} = -(v_{l+1}, e_i)$.
+    Это следует из того, что можно раскрыть сумму $\sum\limits_{j=1}^l a_j(e_j, e_i) + (v_{l+1}, e_i) = 0 \overset{(*)}{\implies} a_i(e_i, e_i) + (v_{l+1}, e_i) = 0$. Тут почти все равно нулю, кроме  $(e_i, e_i) = 1$. Тогда  $a_i = - \frac{(v_{l+1}, e_i)}{(e_i, e_i)} = -(v_{l+1}, e_i)$. $(*)$ --- у нас по индукционному предположению получается, что  $(e_i, e_j) = \delta_{ij}$, поэтому почти все сократится.
 \end{proof}
 \begin{remark}
     Пусть $e_1, e_2, \ldots, e_n$ --- ОНБ,$v \in V$.  $x_1, \ldots, x_n$ --- координаты $v$. Тогда  $v\cdot e_i = (\sum x_i e_i, e_i) = \sum x_j(e_j, e_i) = x_i$.
