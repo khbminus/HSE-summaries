@@ -244,14 +244,14 @@ $\CA \in End(V)$ --- нильпотентный, если  $\exists k\!: \CA^k =
 
 Для этого заметим, что нам достаточно умножать только жордановы блоки. $(J_\alpha(\lambda))^n = (\lambda E_{\alpha} + J_\alpha(0))^n = \sum\limits_{k=0}^n \binom{n}{k} \lambda^{n-k}J_\alpha(0)^k$. Тогда если посмотреть на блок, то заметим, что блок из единиц двигается. Ну тогда все понятно.\\
 Для тех, кому не понятно:\\
-Матрица $J_\alpha(0))^n$ будет на $(k+1)$-й диагонали иметь единицы, всё остальное нули.\\
-А у матрицы $J_\alpha(\lambda))^n$ на главной диагонали $\lambda^n$, на следующей $\binom{n}{1} \lambda^{n-1}$ и так далее.\\
+Матрица $J_\alpha(0)^n$ будет на $(k+1)$-й диагонали иметь единицы, всё остальное нули.\\
+А у матрицы $J_\alpha(\lambda)^n$ на главной диагонали $\lambda^n$, на следующей $\binom{n}{1} \lambda^{n-1}$ и так далее.\\
 
 Тогда заметим, что $f(n) \sim \mathcal{O}^*(\lambda^n)$ для блока, а для всей матрицы надо взять максимум  по  $\lambda$.
 
-Когда  $\{A^n\}$ ограничена ограничена? Когда  $|\lambda| \ge 1$ и все блоки с $\lambda = 1$ размера 1.
+Когда  $\{A^n\}$ ограничена ограничена? Когда  $|\lambda| \le 1$ и все блоки с $\lambda = 1$ размера 1.
 
-Когда  $A^n \to 0$? Когда  $|\lambda| \le 1$.
+Когда  $A^n \to 0$? Когда  $|\lambda| < 1$.
 
 \Subsection{Когда мы в $\CC$}
 Рассмотрим несколько случаев:
@@ -273,19 +273,20 @@ $\CA\!: V \to V$, поле по  $K$.
 
 Выберем  $v \in V, v \neq 0$
 
-Рассмотрим последовательность  $\langle v, \CA v, \CA^2 v,\ldots, \CA^k v \rangle$ --- не ЛНЗ.
-$\exists \{a_i\}, A^k(v) = A^k(v) = \sum\limits_{i=1}^k a_i A^i(V) \land \{v, v, \CA v, \CA^2 v,\ldots, \CA^k v\}$ --- не ЛНЗ.
+Рассмотрим последовательность $\langle v, \CA v, \CA^2 v,\ldots, \CA^k v \rangle$ --- не ЛНЗ. Найдем такое минимальное $k$. Значит $\exists \{a_i\}, A^k(v) = A^k(v) = \sum\limits_{i=1}^k a_i A^i(V) \land \{v, v, \CA v, \CA^2 v,\ldots, \CA^k v\}$ --- не ЛНЗ.
 
 \begin{statement}
-    $\langle v \rangle_{K[t]} = \langle v, \CA v, \ldots, \CA^{k-1} \rangle$. Найдем $\min k$, такое, $\exists \{a_i\} \! \in K$, такие, что  $A\Big|_{\langle v\rangle_{K[t]}} = \begin{pmatrix} 0 & 0 & \ldots & 0 & -a_0 \\ 1 & 0 & \ldots & 0 & -a_1 \\ \vdots & \vdots & \ddots & \vdots & \vdots\\ 0 & 0 & \ldots & 1 & -a_{k-1} \end{pmatrix}$.
-
+    $\langle v \rangle_{K[t]} = \langle v, \CA v, \ldots, \CA^{k-1} \rangle$. Найдем $\min k$, такое, $\exists \{a_i\} \! \in K$, такие, что  $A\Big|_{\langle v\rangle_{K[t]}} = \begin{pmatrix} 0 & 0 & \ldots & 0 & -a_0 \\ 1 & 0 & \ldots & 0 & -a_1 \\ \vdots & \vdots & \ddots & \vdots & \vdots\\ 0 & 0 & \ldots & 1 & -a_{k-1} \end{pmatrix}$ --- тут под главной диагональю единицы, а так же в последнем столбце не нули. Это называется фробениусова. Легко убедиться, что $\langle v \rangle_{K[t]}$ --- инвариантное: 
     $\langle v\rangle_{K[t]}$ --- циклическое подпространство. 
 
-    $A(b_0 + b_1 Av + \ldots + A^{k-1}v) = b_0Av + \ldots + b_{k-2}A^{k-1}(v)$.
+    $\CA(b_0 + b_1 \CA v + \ldots + b_{k-1}\CA^{k-1}v) = b_0\CA v + \ldots + b_{k-2}\CA^{k-1}(v) + b_k{k-1}\CA^k(v)$, а $\CA^{k}(v)$ --- линейно зависимая.  
 \end{statement}
 \begin{statement}
     $\chi_{\CA \Big|_{\langle v \rangle}} = t^k - a_{k-1}t^{k-1} .. - a_0$.
 \end{statement}
+\begin{proof}
+    Легкое упражнение на аннуляторы и определитель.
+\end{proof}
 \begin{statement}
     $\forall$ пространство раскладывается в прямую сумму циклических подпространств (относительно $\CA$).\\ На матричном языке — любая матрица подобна матрице, состоящей из нескольких блоков, как выше (фробениусова форма).
 \end{statement}
