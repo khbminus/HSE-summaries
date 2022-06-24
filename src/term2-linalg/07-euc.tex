@@ -209,7 +209,7 @@ $\widetilde{e}_{k+1} = e_{k+1} - \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теп
     $\CA$ --- самосопряжен  $\iff$  $[\CA]_{\text{ОНБ}} = A$ такова, что $A^T = \overline{A}$,  $A = (\delta_{ij})$,  $\overline{A} = (\overline{\delta_{ij}})$.
 \end{theorem}
 \begin{proof}
-    $\CA$ --- самосопряжен  $\iff$ $\forall i, j\!: (\CA e_i, e_j) = (e_i, \CA e_j) \iff (\sum\limits_{k=1}^n a_{ik} e_k, e_j) = (e_i, \sum\limits_{k=1}^n a_{jk}e_k) \iff -(a_{ij}e_j, e_J) = (e_i, a_{ji}e_i) \iff a_{ij}(e_j, e_i) = \overline{a_{ji}} (e_i, e_i) \iff a_{ij} = \overline{a_{ji}}$.
+    $\CA$ --- самосопряжен  $\iff$ $\forall i, j\!: (\CA e_i, e_j) = (e_i, \CA e_j) \iff (\sum\limits_{k=1}^n a_{ik} e_k, e_j) = (e_i, \sum\limits_{k=1}^n a_{jk}e_k) \iff (a_{ij}e_j, e_j) = (e_i, a_{ji}e_i) \iff a_{ij}(e_j, e_i) = \overline{a_{ji}} (e_i, e_i) \iff a_{ij} = \overline{a_{ji}}$.
 
     $\CA$ --- самосопряжена  $\implies \forall \lambda$ --- собственное число  $\lambda \in \R$, потому что, если взять собственный вектор $x, \CA x=\lambda x$, получим, что $(\CA x, x) = (x, \CA x) \implies (\lambda x, x) = (x, \lambda x) \implies \lambda (x, x) = \overline{\lambda} (x, x) \implies \lambda = \overline{\lambda}$
 
@@ -220,20 +220,20 @@ $\widetilde{e}_{k+1} = e_{k+1} - \sum\limits_{i=1}^k a_i\widetilde{e_i}$. Теп
     $\CA$ --- самосопряженный оператор,  $\CA \in End(V)$,  $U \le V$ --- инвариантное подпространство относительно $\CA$, тогда  $U^\perp$ --- инвариантное подпространство. 
 \end{statement}
 \begin{proof}
-    $v \in U^\perp$, то есть  $(u, v) = 0\ \forall u \in U$,  $\CA v\!:\ (um \CA V) = (\CA u, v) = 0 \implies \CA v \in u^\perp$.
+    $v \in U^\perp$, то есть  $(u, v) = 0\ \forall u \in U$,  $\CA v\!:\ (u, \CA V) = (\CA u, v) = 0 \implies \CA v \in u^\perp$.
 \end{proof}
 \begin{proof}[Доказтельство теоремы\dots]
-    $\Leftarrow$. Пусть у  $\CA \exists$ ОНБ из собственных векторов с вещественными собственными числами. То есть в некотором ОНБ $[\CA]$ диагонализуема и  $\lambda_i \in \R$.  $A^T = \overline{A}(= A)$.  
+    $\Leftarrow$. Пусть у  $\CA \exists$ ОНБ из собственных векторов с вещественными собственными числами. То есть в некотором ОНБ $[\CA]$ диагонализуема и  $\lambda_i \in \R$.  $A^T = \overline{A}(= A)$, потому что она диагональная и состоит из действительных чисел. 
 
     $\Rightarrow$. База $n=1$.
 
-    Переход  $n \to n+1$.  $\CA$ --- самосопряженная,  $v_1, \ldots, v_n$ --- ОНБ. $[\CA]_{\{v_i\}} = A, A^T = \overline{A}, \exists \lambda_1 \in \R$ --- собственное число $A$.
+    Переход  $n \to n+1$.  $\CA$ --- самосопряженная,  $v_1, \ldots, v_{n+1}$ --- ОНБ. $[\CA]_{\{v_i\}} = A, A^T = \overline{A}, \exists \lambda_1 \in \R$ --- собственное число $A$.
 
     $\exists v \in V\!: \CA v = \lambda_1 v$, $\langle v \rangle$ --- инвариантное подпространство  $\implies \langle v \rangle^\perp$ --- инвариантное подпространство,  $\dim \langle v \rangle^{\perp} = n  + 1 - 1 = n$.  $\CA \Big|_{\langle v \rangle^{\perp}}\!: \langle v \rangle^\perp \to \langle v \rangle ^\perp$.
 
     $\CA\Big|_{\langle v \rangle^\perp}$ --- самосопряженнная по предположению.  $\exists e_1, \ldots ,e_n$ -- ОНБ из собственных векторов $\CA$ с вещественными собственными числами.
 
-    $e_{n+1} \coloneqq \frac{v}{\|v\|}, \|e_{n+1}\| = 1$ и $\langle e_{n+1}, e_i \rangle = 0 \implies e_1, \ldots, e_{n+1}$. 
+    $e_{n+1} \coloneqq \frac{v}{\|v\|}, \|e_{n+1}\| = 1$ и $\langle e_{n+1}, e_i \rangle = 0 \implies e_1, \ldots, e_{n+1}$ --- базис, который нам подходит. 
 \end{proof}
 \Subsection{Оценка квадратичной формы}
 
