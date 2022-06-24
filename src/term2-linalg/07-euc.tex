@@ -62,8 +62,8 @@
 \begin{example}
     $\R^2, f(\begin{pmatrix} x_1 \\ y_1 \end{pmatrix}, \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}) =x_1y_1 - x_2y_2$ или $(x_1-x_2)(y_1-y_2)$ или $x_1y_2 - x_2y_1$.
 
-    Это все симметрические билинейные формы. 
-
+    Первые две --- симметрическая билинейная форма, последняя симметрическая кососимметрическая. 
+ 
     Или $V=2^M$ и  $f(x,y) = | X \cap Y| \pmod 2$, если явно записывать, то  $f(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}) = x_1y_1 + \ldots + x_ny_n$.
 \end{example}
 \begin{definition}
@@ -75,7 +75,7 @@
 
 Пусть $f$ --- билинейная форма  $\implies \exists F\!: V \to V^*, x \mapsto f_x\!: f_x(g) = f(x, y)$.
 
-$f$ --- невырождена $\implies F$ --- изоморфизм. 
+$f$ --- невырождена $\iff F$ --- изоморфизм. 
 
 Пусть $f$ --- билинейная форма  $\leadsto \Gamma_f = (a_{ij})$,  $a_{ij} = f(e_i, e_j)$, где  $\{e_i\}$ --- базис. Тогда  $f(\sum x_i e_i, \sum y_i e_i) = \sum a_{ij} x_i y_{hj} = X^T \Gamma_f Y$.
 
@@ -118,7 +118,7 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
      \begin{enumerate}
          \item $\dim V = n, \dim U = K$. Возьмем базис $e_1, \ldots, e_k$, дополним через $e_{k+1}, \ldots, e_n$ до ОНБ (до любого, а далее Грам-Шмидт).
 
-             Заметим, что $x = \sum x_ie_i \in U^{\perp} \iff (\sum\limits_{i=1}^n x_ie_i, e_j) = 0 \forall j=1,..,k \land e_j \in U^{\perp} \iff x_j = 0 \forall j=1..k \iff x = \sum\limits_{k+1}^n x_ie_i \iff x \in \langle e_{k+1}, \ldots, e_n \rangle$.
+             Заметим, что $x = \sum x_ie_i \in U^{\perp} \iff (\sum\limits_{i=1}^n x_ie_i, e_j) = 0 \forall j=1,..,k \xLeftrightarrow{(\sum x_i e_i, e_j) = x_j} x_j = 0 \forall j=1..k \iff x = \sum\limits_{k+1}^n x_ie_i \iff x \in \langle e_{k+1}, \ldots, e_n \rangle = U$.
 
             Итого, $\dim U^\perp = n - k = \dim V - \dim U$.
 
@@ -130,11 +130,11 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
  \begin{definition}
      $v = u+u^{\perp}, u \in U, u^{\perp} \in U^{\perp}$,  $u$ --- проекция  $v$ на  $U$, $u^\perp$ --- ортогональная составляющая.
 
-     $\|u^{\perp}\|$ --- расстояние от $v$ до  $u$.
+     $\|u^{\perp}\| = \min\limits_{\widetilde{u} \in U} \|v - \widetilde{u}\|$ --- расстояние от $v$ до  $u$.
  \end{definition}
- %\begin{remark}
-     %Для любых билинейных форм верно $U \subset U^{\perp\perp}$.
- %\end{remark}
+\begin{remark}
+     Для любых билинейных форм верно $U \subset U^{\perp\perp}$. Для невырожденных верно $1, 2$,  $3$ --- неверно.
+ \end{remark}
  \begin{statement}[Матрица Грама при замене базиса]
      $f$ --- билинейная полуторномерная форма.  $\Gamma_f$ --- матрица Грама в базисе  $e_1, \ldots, e_n$.
 
@@ -156,11 +156,11 @@ $f$ --- невырождена $\implies F$ --- изоморфизм.
 
  $f$ --- симметрическая билинейная/полуторная форма.
 
- Переформулировка: дана  $f(X, X) = \sum a_{ij} x_i x_j$ --- квадратичная форма.
+ Переформулировка: дана  $q(X) = f(X, X) = \sum a_{ij} x_i x_j$ --- квадратичная форма.
 
  Как понять: верно ли, что  $q(x) > 0 \ \forall x \neq 0$.
 
-  $f$ -- положительно определена  $\implies f$ --- скалярное произведение  $\implies \exists $ ОНБ:  $\exists C\!:$  $\det C^TAC = \det(C^T)\det(C)\det(A) = (\det C)^2 \det A = 1 = \det E \implies \det A > 0$
+  $f$ -- положительно определена  $\implies f$ --- скалярное произведение  $\implies \exists $ ОНБ:  $\exists C\!: C^TAC = E$. Тогда $\det C^TAC = \det(C^T)\det(C)\det(A) = (\det C)^2 \det A = 1 = \det E \implies \det A > 0$
 
   \begin{theorem}[Критерий Сильвестра]
     $f$ --- симметричная билинейная,  $A \in M_n(\R)$ --- матрица Грама  $f$  в базисе $e_1, \ldots, e_n$.
