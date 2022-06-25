@@ -326,3 +326,109 @@ $\lambda_i = \cos \alpha_i + i\sin \alpha_i$\\
 А дальше посмотрите запись, у меня лапки.\\
 <<Опять немножечко скомкано получилось, кое-какие детали замяты, но что-то мне надоело \ldots, будем считать, что доказали.>> — Михаил Антипов.
 \end{proof}
+
+\Subsection{Положительные операторы}
+
+\begin{definition}
+    $V$ --- евклидово пространство, $\CA \in End(V)$ --- самосопряжённый. Тогда $\CA$ называется положительным, если 
+
+    \begin{enumerate}
+	\item $(\CA x, x) > 0 \forall x \neq 0$
+	\item Каждое собственное число $\CA$ --- положительно
+    \end{enumerate}
+
+    При этом условия 1 и 2 равносильны.
+
+    Аналогично можно определить и неотрицательные операторы, просто неравенства становятся нестрогими.
+\end{definition}
+
+\begin{proof}
+	Докажем равносильность:
+
+
+    \begin{enumerate}
+	\item[$1 \to 2$.] $0 < (\CA x, x) = (\lambda x, x) = \lambda (x, x), (x, x) > 0 \to \lambda > 0$
+	\item[$2 \to 1$.] Существует ортонормированный базис из собственных векторов $\{ e_i \}$ и $\CA(e_i) = \lambda_i e_i, \lambda_i > 0$
+
+		Тогда $(\CA x, x) = (\sum \lambda_i x_i e_i, \sum e_i x_i) = \sum_{i=1}^n \lambda_i x_i^2 > 0$, т.к. $\lambda_i > 0, x_i^2 \ge 0$
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+	$\CA$ --- положительный оператор, тогда $[\CA]_{\{ e_i \}}$ --- матрица положительно определённой квадратичной формы ($\{e_i\}$ --- ортонормированный базис)
+\end{remark}
+\begin{theorem}
+	$\CA$ --- положительный самосопряжённый, тогда $\exists ! $ положительный самосопряжённый $\mathcal{B} : \mathcal{B}^2 = \CA$, и этот $\mathcal{B}$ --- корень из $\CA$
+\end{theorem}
+\begin{proof}
+    $\exists$ ОНБ такой, что $\CA e_i = \lambda_i e_i, \lambda > 0$, а $\mathcal{B}$ тогда $\mathcal{B} e_i = \sqrt{\lambda_i} e_i \forall i = 1, \cdots, n, \Rightarrow \forall i \mathcal{B}^2(e_i) = \lambda_i e_i \Rightarrow \mathcal{B}^2 = \CA$ 
+
+    Единственность: пусть есть $(\mathcal{B}')^2 = \CA$, и он самосопряжённый положительный. Тогда в нём тоже есть базис из собственных векторов. Пусть $\mu$ --- какое-то собственное число $\mathcal{B}'$. Наберём по максимуму векторов, соответствующих этому собственному числу --- $\langle v_1, \cdots, v_k\rangle = \{x | \mathcal{B}' x = \mu x  \}$, а тогда $\CA(v_i) = (\mathcal{B}')^2 (v_i) = \mu^2 v_i$, а тогда $\exists i: \lambda_i = \mu^2$ (а из-за положительности $\mu = \sqrt{\lambda_i}$). И более того, кратность $\lambda_i$ в $\chi_A$ --- хотя-бы кратность $\mu$ в $\chi_{B'}$. 
+
+    А теперь $\mu_1, \cdots, \mu_k$ --- все собственные числа $\mathcal{B}'$. Тогда есть инъекция $\mu_1 \to \mu_1^2 = \lambda_{i_1}, \mu_2 \to \lambda_2^2 = \lambda_{i_2}, \cdots, \mu_k \to \mu_k^2 = \lambda_{i_k}$. А ещё суммы кратностей у нас равны, а значит наша биекция --- инъекция, а ещё $\forall i \{x | \mathcal{B}' x = \mu_i x^2\} = \{ x | \CA x = \lambda_i x\} \Rightarrow \mathcal{B}'$ задаётся однозначно (в правом блоке $v_i, \forall x \in v_i \mathcal{B}' x = \sqrt{\lambda_{i_k}} x$). Мы просто обязаны умножать собственный вектор на $\sqrt{\lambda_{i_k}}$, а значит, раз так заданы для каждого собственного вектора однозначно, то и вообще заданы однозначно.
+\end{proof}
+
+\Subsection{Полярное разложение}
+
+\begin{theorem}
+    $V$ --- евклидово пространство, $\mathcal{A} \in End(V)$, тогда $\exists! S$ --- положительный и $U$ --- ортогональный ($S, U \in End(V)$), такие, что $\CA = S \circ U$
+\end{theorem}
+\begin{theorem}[Матричная переформулировка]
+    $\forall A$ --- квадратной матрицы $\exists! S, U: A = S \cdot U, S = S^T, U^T = U^{-1}$ а ещё $S$ --- матрица положительного оператора (т.е., видимо, матрица положительной квадратичной формы
+\end{theorem}
+\begin{remark}
+    Аналогично $\exists! S_1, U_1 : \mathcal{A} = S_1 \circ U_1$ (порядок другой)
+
+    А ещё для вырожденных существование всё ещё верно, но вот с единственностью уже проблемы.
+\end{remark}
+
+\begin{proof}
+    Докажем сразу существование и единственность. Предположим, что $\CA = S \circ U$, посмотрим, как оно может выглядеить. Перейдём в ОНБ и на матричный язык: $A = S \cdot U$, рассмотрим $A \cdot A^T$:
+
+    $A A^T = SU(SU)^T = SUU^TS^T = S^2$
+
+    $(AA^T)^T = AA^T$ --- самосопряжённый, а ещё положительный, т.к. $(AA^Tx, x) = (A^Tx, A^Tx) > 0$, т.к. $x > 0$ и $A$ --- невырожденная.
+
+    По предыдущей теореме $\exists ! S : S^2 = AA^T$, т.к. самосопряжённый и положительный, т.е. корень можно брать. А тогда $U$ определён однозначно, т.к. $U = S^{-1}A$ --- единственность доказали.
+
+    $U^T U = (S^{-1}A)^T SA = A^T (S^{-1}) ^T S^{-1}A = A^T (S^2)^{-1}A = A^T (AA^T)^{-1}A = A^T(A^T)^{-1}A^{-1}A = E$, а значит $U$ --- ортогональная матрица.
+\end{proof}
+
+Напоминание: $\CA : U \to V$ --- линейно, тогда $\exists$ базисы $\{e_i\}$ и $\{ f_i \}$ такие, что $[\CA]_{\{e_i\}, \{f_i\}} = \begin{pmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ \vdots & & & \vdots \\ 0 & 0 & \cdots & 0  \end{pmatrix}$
+
+А теперь докажем более содержательную штуку:
+
+\Subsection{SVD разложение}
+
+\begin{theorem}
+    $\CA : U \to V$ --- линейное, $U, V$ --- евклидовы пространства. Тогда $\exists$ ОНБ $e_1, \cdots, e_n$ в $U$, $f_1, \cdots , f_n$ в $V$ такие, что $[\CA] = \begin{pmatrix} \sigma_1 & 0 & \cdots & 0 \\ 0 & \sigma_2 & \cdots & 0 \\ \vdots & & \sigma_k & \vdots \\ 0 & 0 & \cdots & 0  \end{pmatrix}$ и $\sigma_i > 0$. Т.е. $\exists$ ОНБ, переводящий в ортогональный. 
+\end{theorem}
+\begin{proof}
+	Выберем 2 ОНБ, и $A$ --- матрица $\CA$. Рассмотрим $A^T A$, $U \stackrel{\CA}{\to} V \stackrel{\CA^*}{\to} U$ 
+
+	$\CA^* \CA \in End(U)$ --- самосопряжённый положительный (доказывали в полярном разложении), а значит $\exists$ ОНБ $\{ e_i \}$ в $U$. 
+
+	$A^T A(e_i) = s_i e_i, s_i \ge 0$, положим $\widetilde{f_i} = \CA(e_i)$. 
+
+	$\widetilde{f_i}$ --- ортогональная система: $(\widetilde{f_i}, \widetilde{f_j}) = (\CA(e_i), \CA(e_j)) = (e_i, A^T A e_j) = (e_i, s_i e_j) = s_i(e_i, e_j) = 0$ при $i \neq j$
+
+	$|| \widetilde{f_i} || = \sqrt{(\widetilde{f_i}, \widetilde{f_i})} = \sqrt{s_i}$, тогда положим $f_i = \frac{\widetilde{f_i}}{|| \widetilde{f_i} ||} = \frac1{\sqrt{s_i}} \widetilde{f_i}$ для $s_i \neq 0$ ($s_i = 0$ не рассматриваем)
+
+	Дополним, если нужно, $\{f_i\}$ до ОНБ, и получим то, что нужно:
+
+	$\sigma_i = \sqrt{s_i}, A e_i = \widetilde{f_i} = \sqrt{s_i} f_i$.
+\end{proof}
+\begin{definition}
+	$\sqrt{s_i}$ --- сингулярные числа.
+
+	Если $A = A^T$ положительно, то сингулярные числа --- собственные числа.
+\end{definition}
+
+Пусть $A \in M_{m, n}(\R)$, и $A$ --- матрица $\CA$ в ОНБ базисах. По теореме $\exists C, D$ --- матрицы перехода такие, что $C^{-1} A D = \begin{pmatrix} \sigma_1 & \cdots & 0 \\ \vdots & \sigma_k & \vdots \\ 0 & \cdots & 0  \end{pmatrix}$, причём $C, D$ --- ортогональны. Умножим на $C$, $D^{-1}$, и получим, что $A = U \cdot T \cdot V$, причём $U, V$ --- ортогональны, а $T$ --- диагональная неотрицательная.
+
+\begin{definition}
+    То, что получили на прошлой строке, и есть $SVD$-разложение (Singular Value Decomposition)
+\end{definition}
+\begin{consequence}
+    Образ шара при линейном отображении --- эллипсоид.
+\end{consequence}
